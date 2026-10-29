@@ -9,6 +9,14 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
+  String get onboardingIntro => 'Comer bien empieza con un buen plan.';
+
+  @override
+  String onboardingStep(int current, int total) {
+    return 'Paso $current de $total';
+  }
+
+  @override
   String get welcomeTitle => 'Tu semana, a tu gusto.';
 
   @override

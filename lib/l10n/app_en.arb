@@ -1,4 +1,16 @@
 {
+  "onboardingIntro": "Good food starts with a good plan.",
+  "onboardingStep": "Step {current} of {total}",
+  "@onboardingStep": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "welcomeTitle": "Your week, your way.",
   "welcomeDescription": "Plan your meals and organize your groceries with ease.",
   "planTitle": "Plan your week.",

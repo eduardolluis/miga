@@ -95,6 +95,18 @@ abstract class AppLocalizations {
     Locale('es')
   ];
 
+  /// No description provided for @onboardingIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Good food starts with a good plan.'**
+  String get onboardingIntro;
+
+  /// No description provided for @onboardingStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String onboardingStep(int current, int total);
+
   /// No description provided for @welcomeTitle.
   ///
   /// In en, this message translates to:

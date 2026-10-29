@@ -1,4 +1,16 @@
 {
+  "onboardingIntro": "Comer bien empieza con un buen plan.",
+  "onboardingStep": "Paso {current} de {total}",
+  "@onboardingStep": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "welcomeTitle": "Tu semana, a tu gusto.",
   "welcomeDescription": "Planea tus comidas y organiza tus compras fácilmente.",
   "planTitle": "Planifica tu semana.",
