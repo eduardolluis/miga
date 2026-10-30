@@ -256,6 +256,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your next grocery stop, closer.'**
   String get onboardingStoresIntro;
+
+  /// No description provided for @authTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your table starts here.'**
+  String get authTitle;
+
+  /// No description provided for @authSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in or create an account your way. No password.'**
+  String get authSubtitle;
+
+  /// No description provided for @continueWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get continueWithGoogle;
+
+  /// No description provided for @continueWithApple.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Apple'**
+  String get continueWithApple;
+
+  /// No description provided for @orWithEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'or with email'**
+  String get orWithEmail;
+
+  /// No description provided for @emailMeCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Email me a code'**
+  String get emailMeCode;
+
+  /// No description provided for @checkEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email.'**
+  String get checkEmail;
+
+  /// No description provided for @codeSentTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code we sent to {email}.'**
+  String codeSentTo(String email);
+
+  /// No description provided for @emailCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code'**
+  String get emailCode;
+
+  /// No description provided for @verifyCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify and continue'**
+  String get verifyCode;
+
+  /// No description provided for @resendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get resendCode;
+
+  /// No description provided for @resendIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend in {seconds}s'**
+  String resendIn(int seconds);
+
+  /// No description provided for @changeEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Use another email'**
+  String get changeEmail;
+
+  /// No description provided for @codeRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the complete code from your email.'**
+  String get codeRequired;
+
+  /// No description provided for @invalidCode.
+  ///
+  /// In en, this message translates to:
+  /// **'The code is invalid or expired. Request a new one.'**
+  String get invalidCode;
+
+  /// No description provided for @authError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn’t complete sign-in. Check your connection and try again.'**
+  String get authError;
+
+  /// No description provided for @authRateLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Please wait a moment before requesting another code.'**
+  String get authRateLimited;
+
+  /// No description provided for @authUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in has not been configured yet.'**
+  String get authUnavailable;
+
+  /// No description provided for @authSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'You’re signed in to Miga.'**
+  String get authSuccess;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOut;
+
+  /// No description provided for @authBrowserError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn’t open the browser to sign in. Check that Safari is available and try again.'**
+  String get authBrowserError;
+
+  /// No description provided for @appleSignInUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with Apple is not available yet.'**
+  String get appleSignInUnavailable;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

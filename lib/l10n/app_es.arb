@@ -35,5 +35,41 @@
   "passwordMismatch": "Las contraseñas no coinciden",
   "onboardingPlanIntro": "Un menú que va contigo.",
   "onboardingShoppingIntro": "Todo lo que necesitas, en una lista.",
-  "onboardingStoresIntro": "Tu próxima compra, más cerca."
+  "onboardingStoresIntro": "Tu próxima compra, más cerca.",
+  "authTitle": "Tu mesa empieza aquí.",
+  "authSubtitle": "Entra o crea tu cuenta con tu opción favorita. Sin contraseña.",
+  "continueWithGoogle": "Continuar con Google",
+  "continueWithApple": "Continuar con Apple",
+  "orWithEmail": "o con tu correo",
+  "emailMeCode": "Enviarme un código",
+  "checkEmail": "Revisa tu correo.",
+  "codeSentTo": "Introduce el código que enviamos a {email}.",
+  "emailCode": "Código de verificación",
+  "verifyCode": "Verificar y continuar",
+  "resendCode": "Reenviar código",
+  "resendIn": "Reenviar en {seconds} s",
+  "changeEmail": "Usar otro correo",
+  "codeRequired": "Introduce el código completo de tu correo.",
+  "invalidCode": "El código no es válido o ha expirado. Solicita uno nuevo.",
+  "authError": "No pudimos completar el acceso. Comprueba tu conexión e inténtalo de nuevo.",
+  "authRateLimited": "Espera un momento antes de solicitar otro código.",
+  "authUnavailable": "El acceso todavía no está configurado.",
+  "authSuccess": "Ya estás en Miga.",
+  "signOut": "Cerrar sesión",
+  "@codeSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@resendIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "authBrowserError": "No pudimos abrir el navegador para iniciar sesión. Comprueba que Safari esté disponible e inténtalo de nuevo.",
+  "appleSignInUnavailable": "El inicio de sesión con Apple todavía no está disponible."
 }

@@ -90,4 +90,74 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get onboardingStoresIntro => 'Tu próxima compra, más cerca.';
+
+  @override
+  String get authTitle => 'Tu mesa empieza aquí.';
+
+  @override
+  String get authSubtitle => 'Entra o crea tu cuenta con tu opción favorita. Sin contraseña.';
+
+  @override
+  String get continueWithGoogle => 'Continuar con Google';
+
+  @override
+  String get continueWithApple => 'Continuar con Apple';
+
+  @override
+  String get orWithEmail => 'o con tu correo';
+
+  @override
+  String get emailMeCode => 'Enviarme un código';
+
+  @override
+  String get checkEmail => 'Revisa tu correo.';
+
+  @override
+  String codeSentTo(String email) {
+    return 'Introduce el código que enviamos a $email.';
+  }
+
+  @override
+  String get emailCode => 'Código de verificación';
+
+  @override
+  String get verifyCode => 'Verificar y continuar';
+
+  @override
+  String get resendCode => 'Reenviar código';
+
+  @override
+  String resendIn(int seconds) {
+    return 'Reenviar en $seconds s';
+  }
+
+  @override
+  String get changeEmail => 'Usar otro correo';
+
+  @override
+  String get codeRequired => 'Introduce el código completo de tu correo.';
+
+  @override
+  String get invalidCode => 'El código no es válido o ha expirado. Solicita uno nuevo.';
+
+  @override
+  String get authError => 'No pudimos completar el acceso. Comprueba tu conexión e inténtalo de nuevo.';
+
+  @override
+  String get authRateLimited => 'Espera un momento antes de solicitar otro código.';
+
+  @override
+  String get authUnavailable => 'El acceso todavía no está configurado.';
+
+  @override
+  String get authSuccess => 'Ya estás en Miga.';
+
+  @override
+  String get signOut => 'Cerrar sesión';
+
+  @override
+  String get authBrowserError => 'No pudimos abrir el navegador para iniciar sesión. Comprueba que Safari esté disponible e inténtalo de nuevo.';
+
+  @override
+  String get appleSignInUnavailable => 'El inicio de sesión con Apple todavía no está disponible.';
 }

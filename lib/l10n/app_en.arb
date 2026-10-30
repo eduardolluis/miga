@@ -35,5 +35,41 @@
   "passwordMismatch": "Passwords do not match",
   "onboardingPlanIntro": "A menu that fits your life.",
   "onboardingShoppingIntro": "Everything you need, in one list.",
-  "onboardingStoresIntro": "Your next grocery stop, closer."
+  "onboardingStoresIntro": "Your next grocery stop, closer.",
+  "authTitle": "Your table starts here.",
+  "authSubtitle": "Sign in or create an account your way. No password.",
+  "continueWithGoogle": "Continue with Google",
+  "continueWithApple": "Continue with Apple",
+  "orWithEmail": "or with email",
+  "emailMeCode": "Email me a code",
+  "checkEmail": "Check your email.",
+  "codeSentTo": "Enter the code we sent to {email}.",
+  "emailCode": "Verification code",
+  "verifyCode": "Verify and continue",
+  "resendCode": "Resend code",
+  "resendIn": "Resend in {seconds}s",
+  "changeEmail": "Use another email",
+  "codeRequired": "Enter the complete code from your email.",
+  "invalidCode": "The code is invalid or expired. Request a new one.",
+  "authError": "We couldn’t complete sign-in. Check your connection and try again.",
+  "authRateLimited": "Please wait a moment before requesting another code.",
+  "authUnavailable": "Sign-in has not been configured yet.",
+  "authSuccess": "You’re signed in to Miga.",
+  "signOut": "Sign out",
+  "@codeSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "@resendIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "authBrowserError": "We couldn’t open the browser to sign in. Check that Safari is available and try again.",
+  "appleSignInUnavailable": "Sign in with Apple is not available yet."
 }

@@ -90,4 +90,74 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingStoresIntro => 'Your next grocery stop, closer.';
+
+  @override
+  String get authTitle => 'Your table starts here.';
+
+  @override
+  String get authSubtitle => 'Sign in or create an account your way. No password.';
+
+  @override
+  String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get continueWithApple => 'Continue with Apple';
+
+  @override
+  String get orWithEmail => 'or with email';
+
+  @override
+  String get emailMeCode => 'Email me a code';
+
+  @override
+  String get checkEmail => 'Check your email.';
+
+  @override
+  String codeSentTo(String email) {
+    return 'Enter the code we sent to $email.';
+  }
+
+  @override
+  String get emailCode => 'Verification code';
+
+  @override
+  String get verifyCode => 'Verify and continue';
+
+  @override
+  String get resendCode => 'Resend code';
+
+  @override
+  String resendIn(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get changeEmail => 'Use another email';
+
+  @override
+  String get codeRequired => 'Enter the complete code from your email.';
+
+  @override
+  String get invalidCode => 'The code is invalid or expired. Request a new one.';
+
+  @override
+  String get authError => 'We couldn’t complete sign-in. Check your connection and try again.';
+
+  @override
+  String get authRateLimited => 'Please wait a moment before requesting another code.';
+
+  @override
+  String get authUnavailable => 'Sign-in has not been configured yet.';
+
+  @override
+  String get authSuccess => 'You’re signed in to Miga.';
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get authBrowserError => 'We couldn’t open the browser to sign in. Check that Safari is available and try again.';
+
+  @override
+  String get appleSignInUnavailable => 'Sign in with Apple is not available yet.';
 }
