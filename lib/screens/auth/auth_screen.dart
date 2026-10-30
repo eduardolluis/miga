@@ -326,12 +326,30 @@ class _AuthScreenState extends State<AuthScreen> {
                                           ),
                                     ),
                                     const SizedBox(height: 14),
-                                    Text(
-                                      session != null
-                                          ? session.user.email ?? ''
-                                          : enteringCode
-                                          ? l10n.codeSentTo(_sentTo!)
-                                          : l10n.authSubtitle,
+                                    Text.rich(
+                                      enteringCode && session == null
+                                          ? TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: l10n
+                                                      .codeSentTo(_sentTo!)
+                                                      .split(_sentTo!)
+                                                      .first
+                                                      .trimRight(),
+                                                ),
+                                                TextSpan(
+                                                  text: '\n${_sentTo!}',
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          : TextSpan(
+                                              text: session != null
+                                                  ? session.user.email ?? ''
+                                                  : l10n.authSubtitle,
+                                            ),
                                       style: theme.textTheme.bodyLarge
                                           ?.copyWith(
                                             color: Colors.white,
