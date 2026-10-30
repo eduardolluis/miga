@@ -78,7 +78,8 @@ acceso real contra los proveedores desde este repositorio.
 
 ### Google nativo
 
-Android/iOS usan `google_sign_in` 7 y entregan el ID token y el access token a
+Android usa `google_sign_in` 7 e iOS su adaptador oficial `google_sign_in_ios`.
+Ambos entregan el ID token y el access token a
 `Supabase.auth.signInWithIdToken`. En Android se presenta el selector de cuentas
 del sistema. En iOS el SDK de Google puede presentar una ventana de autenticación
 del sistema; Google controla esa interfaz. La app web conserva OAuth.
@@ -123,9 +124,20 @@ Google Auth Platform → Clients (o APIs & Services → Credentials).
 
    Para `123-abc.apps.googleusercontent.com`, el scheme es
    `com.googleusercontent.apps.123-abc`. Conserva también el scheme de Miga
-   para los enlaces de correo. Sigue la configuración de Supabase para Google
-   nativo en iOS, incluida la opción **Skip nonce check** que indica su guía para
-   este SDK. El SDK también puede devolver un nonce en iOS.
+   para los enlaces de correo. En Supabase → Authentication → Providers → Google,
+   deja **Skip nonce check apagado**: esta app envía un nonce explícito en iOS.
+
+En cada intento iOS genera un nonce con 32 bytes de `Random.secure`, envía su
+SHA-256 hexadecimal a Google y el original a Supabase para validarlo. El adaptador
+iOS se crea e inicializa una vez por intento: el singleton de `google_sign_in` 7
+solo permite fijar el nonce al inicializarse y no sirve para renovarlo por intento.
+Los intentos concurrentes se rechazan para evitar que compartan configuración.
+Los nonces y los tokens no se guardan en los registros de diagnóstico.
+
+Después de recompilar, comprueba en un iPhone real con **Skip nonce check apagado**:
+entrar, cerrar sesión y volver a entrar; cancelar el selector y reintentar. Los
+tests verifican el hash y la renovación, pero no sustituyen esta comprobación
+con Google y Supabase reales.
 
 `supabase.env.example.json` muestra las cuatro claves de configuración. No contiene
 credenciales reales; copia los valores a tu archivo local existente sin perder

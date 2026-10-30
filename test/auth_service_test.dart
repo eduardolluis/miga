@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_sign_in_platform_interface/google_sign_in_platform_interface.dart';
@@ -15,6 +17,7 @@ class FakeGooglePlatform extends GoogleSignInPlatform {
   String? idToken = 'google-id-token';
   GoogleSignInException? error;
   bool needsConsent = false;
+  Completer<void>? authenticationPending;
   final authorizationPrompts = <bool>[];
 
   @override
@@ -27,6 +30,7 @@ class FakeGooglePlatform extends GoogleSignInPlatform {
   Future<AuthenticationResults> authenticate(
     AuthenticateParameters params,
   ) async {
+    if (authenticationPending != null) await authenticationPending!.future;
     if (error != null) throw error!;
     return AuthenticationResults(
       user: const GoogleSignInUserData(
@@ -80,6 +84,7 @@ void main() {
       ..idToken = 'google-id-token'
       ..error = null
       ..needsConsent = false
+      ..authenticationPending = null
       ..authorizationPrompts.clear();
     client = SupabaseClient(
       'https://project.supabase.co',
@@ -121,6 +126,7 @@ void main() {
       client,
       googleWebClientId: 'web.apps.googleusercontent.com',
       googleIosClientId: 'ios.apps.googleusercontent.com',
+      iosGoogleFactory: () => google,
     );
   });
 
@@ -258,6 +264,98 @@ void main() {
       ),
     );
     expect(requests, isEmpty);
+  });
+
+  test(
+    'iOS sends a fresh hashed nonce to Google and raw nonce to Supabase',
+    () async {
+      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+      final nonces = <String>{};
+      final previousInitializations = google.initializeCalls;
+      for (var attempt = 0; attempt < 3; attempt++) {
+        await service.signInWithProvider(OAuthProvider.google);
+        final body = jsonDecode(requests.last.body) as Map<String, dynamic>;
+        final nonce = body['nonce'] as String;
+        expect(base64Url.decode(nonce), hasLength(32));
+        expect(nonces.add(nonce), isTrue);
+        expect(
+          google.initialization?.nonce,
+          sha256.convert(utf8.encode(nonce)).toString(),
+        );
+        expect(
+          google.initialization?.clientId,
+          'ios.apps.googleusercontent.com',
+        );
+        expect(
+          google.initialization?.serverClientId,
+          'web.apps.googleusercontent.com',
+        );
+        expect(body['access_token'], 'google-access-token');
+        expect(service.session, isNotNull);
+        final signOutCalls = google.signOutCalls;
+        await service.signOut();
+        expect(google.signOutCalls, signOutCalls + 1);
+        expect(service.session, isNull);
+      }
+      expect(google.initializeCalls, previousInitializations + 3);
+    },
+  );
+
+  test(
+    'iOS cancellation and rejected exchange discard their nonce on retry',
+    () async {
+      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+      google.error = const GoogleSignInException(
+        code: GoogleSignInExceptionCode.canceled,
+      );
+      await expectLater(
+        service.signInWithProvider(OAuthProvider.google),
+        throwsA(
+          isA<AuthException>().having(
+            (e) => e.code,
+            'code',
+            'sign_in_canceled',
+          ),
+        ),
+      );
+      final canceledNonce = google.initialization!.nonce;
+      expect(requests, isEmpty);
+      google.error = null;
+      rejectToken = true;
+      await expectLater(
+        service.signInWithProvider(OAuthProvider.google),
+        throwsA(isA<AuthException>()),
+      );
+      final rejectedNonce = google.initialization!.nonce;
+      expect(rejectedNonce, isNot(canceledNonce));
+      expect(service.session, isNull);
+      rejectToken = false;
+      await service.signInWithProvider(OAuthProvider.google);
+      expect(google.initialization!.nonce, isNot(rejectedNonce));
+      expect(service.session, isNotNull);
+    },
+  );
+
+  test('Concurrent iOS attempts cannot replace an in-flight nonce', () async {
+    debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+    google.authenticationPending = Completer<void>();
+    final first = service.signInWithProvider(OAuthProvider.google);
+    await Future<void>.delayed(Duration.zero);
+    final nonce = google.initialization!.nonce;
+    await expectLater(
+      service.signInWithProvider(OAuthProvider.google),
+      throwsA(
+        isA<AuthException>().having(
+          (e) => e.code,
+          'code',
+          'sign_in_in_progress',
+        ),
+      ),
+    );
+    expect(google.initialization!.nonce, nonce);
+    google.authenticationPending!.complete();
+    await first;
+    expect(service.session, isNotNull);
   });
 
   test(

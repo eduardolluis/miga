@@ -116,7 +116,7 @@ class _AuthScreenState extends State<AuthScreen> {
   // Log diagnostic metadata in development without logging credentials,
   // email addresses, codes, or callback URLs that may contain tokens.
   void _logAuthFailure(Object error, StackTrace stackTrace) {
-    if (!kDebugMode) return;
+    if (kReleaseMode) return;
     final details = switch (error) {
       AuthException e => 'code=${e.code}, status=${e.statusCode}',
       PlatformException e => 'code=${e.code}',
@@ -472,6 +472,8 @@ class _AuthScreenState extends State<AuthScreen> {
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.black,
                 foregroundColor: Colors.white,
+                disabledBackgroundColor: const Color(0xFF242424),
+                disabledForegroundColor: const Color(0xFFBDBDBD),
                 side: const BorderSide(color: Color(0xFF747775)),
                 textStyle: const TextStyle(
                   fontSize: 15,
@@ -527,7 +529,7 @@ class _AuthScreenState extends State<AuthScreen> {
             textInputAction: TextInputAction.done,
             onFieldSubmitted: (_) => _sendCode(),
             decoration: InputDecoration(
-              hintText: l10n.email,
+              hintText: 'hello@example.com',
               hintStyle: const TextStyle(color: Colors.white),
             ),
             validator: (value) {
@@ -559,6 +561,8 @@ class _AuthScreenState extends State<AuthScreen> {
           style: FilledButton.styleFrom(
             backgroundColor: olive,
             foregroundColor: Colors.white,
+            disabledBackgroundColor: const Color(0xFF465536),
+            disabledForegroundColor: const Color(0xFFCDD2C7),
             textStyle: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w600,
