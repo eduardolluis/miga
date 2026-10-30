@@ -1,4 +1,4 @@
-package com.example.miga
+package com.eduardoluisdlcg.miga
 
 import io.flutter.embedding.android.FlutterActivity
 
