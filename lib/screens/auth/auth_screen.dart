@@ -255,13 +255,19 @@ class _AuthScreenState extends State<AuthScreen> {
                       child: Form(
                         key: _formKey,
                         child: CustomScrollView(
+                          physics: const ClampingScrollPhysics(),
                           keyboardDismissBehavior:
                               ScrollViewKeyboardDismissBehavior.onDrag,
                           slivers: [
-                            SliverPadding(
-                              padding: const EdgeInsets.fromLTRB(24, 8, 24, 36),
-                              sliver: SliverFillRemaining(
-                                hasScrollBody: false,
+                            SliverFillRemaining(
+                              hasScrollBody: false,
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                  24,
+                                  8,
+                                  24,
+                                  36,
+                                ),
                                 child: Column(
                                   crossAxisAlignment:
                                       CrossAxisAlignment.stretch,
