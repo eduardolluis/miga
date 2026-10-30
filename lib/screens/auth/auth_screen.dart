@@ -29,6 +29,8 @@ class _AuthScreenState extends State<AuthScreen> {
   String? _sentTo;
   String? _error;
   bool _busy = false;
+  bool _codeHasError = false;
+  int _codeErrorCount = 0;
   int _resendSeconds = 0;
 
   @override
@@ -40,7 +42,10 @@ class _AuthScreenState extends State<AuthScreen> {
         if (state.event == AuthChangeEvent.signedOut) {
           _changeEmail();
         } else {
-          setState(() => _error = null);
+          setState(() {
+            _error = null;
+            _codeHasError = false;
+          });
         }
       },
       onError: (Object error, StackTrace stackTrace) {
@@ -73,6 +78,7 @@ class _AuthScreenState extends State<AuthScreen> {
     setState(() {
       _busy = true;
       _error = null;
+      _codeHasError = false;
     });
     try {
       await action(service);
@@ -81,6 +87,10 @@ class _AuthScreenState extends State<AuthScreen> {
       if (!mounted) return;
       final l10n = AppLocalizations.of(context)!;
       setState(() {
+        if (error.code == 'otp_expired') {
+          _codeHasError = true;
+          _codeErrorCount++;
+        }
         _error = switch (error.code) {
           'otp_expired' => l10n.invalidCode,
           'browser_launch_failed' => l10n.authBrowserError,
@@ -143,6 +153,7 @@ class _AuthScreenState extends State<AuthScreen> {
     setState(() {
       _sentTo = null;
       _error = null;
+      _codeHasError = false;
       _codeController.clear();
       _resendSeconds = 0;
     });
@@ -150,6 +161,12 @@ class _AuthScreenState extends State<AuthScreen> {
 
   void _onCodeChanged(String value) {
     _codeVerificationTimer?.cancel();
+    if (_codeHasError) {
+      setState(() {
+        _codeHasError = false;
+        _error = null;
+      });
+    }
     if (value.length == 6) {
       _codeVerificationTimer = Timer(
         const Duration(milliseconds: 500),
@@ -527,6 +544,8 @@ class _AuthScreenState extends State<AuthScreen> {
             enabled: !_busy,
             label: l10n.emailCode,
             errorText: l10n.codeRequired,
+            hasError: _codeHasError,
+            errorCount: _codeErrorCount,
             onChanged: _onCodeChanged,
             onSubmitted: _verifyCode,
           ),
@@ -576,7 +595,11 @@ class _AuthScreenState extends State<AuthScreen> {
           child: Text(
             _error!,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: Color(0xFFFFC7BE)),
+            style: const TextStyle(
+              color: Color(0xFFFF6B6B),
+              fontWeight: FontWeight.w600,
+              shadows: [Shadow(color: Colors.black, blurRadius: 6)],
+            ),
           ),
         ),
       ],
@@ -586,7 +609,13 @@ class _AuthScreenState extends State<AuthScreen> {
   Future<void> _verifyCode() async {
     _codeVerificationTimer?.cancel();
     if (_busy || _sentTo == null) return;
-    if (!_formKey.currentState!.validate()) return;
+    if (!_formKey.currentState!.validate()) {
+      setState(() {
+        _codeHasError = true;
+        _codeErrorCount++;
+      });
+      return;
+    }
     await _run((service) => service.verifyCode(_sentTo!, _codeController.text));
   }
 }
