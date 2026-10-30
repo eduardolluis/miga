@@ -407,6 +407,7 @@ class _AuthScreenState extends State<AuthScreen> {
           ),
           if (showApple) ...[
             const SizedBox(height: 12),
+            // TODO: Completar la integración de Sign in with Apple al final.
             FilledButton.icon(
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.black,
@@ -420,7 +421,16 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               onPressed: _busy
                   ? null
-                  : () => _run((s) => s.signInWithProvider(OAuthProvider.apple)),
+                  : () {
+                      final messenger = ScaffoldMessenger.of(context);
+                      messenger.hideCurrentSnackBar();
+                      messenger.showSnackBar(
+                        SnackBar(
+                          content: Text(l10n.appleSignInUnavailable),
+                          behavior: SnackBarBehavior.floating,
+                        ),
+                      );
+                    },
               icon: const Icon(Icons.apple),
               label: Text(l10n.continueWithApple),
             ),
