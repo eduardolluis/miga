@@ -25,6 +25,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final _codeController = TextEditingController();
   StreamSubscription<AuthState>? _subscription;
   Timer? _resendTimer;
+  Timer? _codeVerificationTimer;
   String? _sentTo;
   String? _error;
   bool _busy = false;
@@ -55,12 +56,14 @@ class _AuthScreenState extends State<AuthScreen> {
   void dispose() {
     _subscription?.cancel();
     _resendTimer?.cancel();
+    _codeVerificationTimer?.cancel();
     _emailController.dispose();
     _codeController.dispose();
     super.dispose();
   }
 
   Future<void> _run(Future<void> Function(AuthService) action) async {
+    _codeVerificationTimer?.cancel();
     if (_busy) return;
     final service = widget.authService;
     if (service == null) {
@@ -136,12 +139,23 @@ class _AuthScreenState extends State<AuthScreen> {
 
   void _changeEmail() {
     _resendTimer?.cancel();
+    _codeVerificationTimer?.cancel();
     setState(() {
       _sentTo = null;
       _error = null;
       _codeController.clear();
       _resendSeconds = 0;
     });
+  }
+
+  void _onCodeChanged(String value) {
+    _codeVerificationTimer?.cancel();
+    if (value.length == 6) {
+      _codeVerificationTimer = Timer(
+        const Duration(milliseconds: 500),
+        _verifyCode,
+      );
+    }
   }
 
   @override
@@ -489,6 +503,7 @@ class _AuthScreenState extends State<AuthScreen> {
             enabled: !_busy,
             label: l10n.emailCode,
             errorText: l10n.codeRequired,
+            onChanged: _onCodeChanged,
             onSubmitted: _verifyCode,
           ),
         ],
@@ -545,7 +560,9 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Future<void> _verifyCode() async {
-    if (!_formKey.currentState!.validate() || _sentTo == null) return;
+    _codeVerificationTimer?.cancel();
+    if (_busy || _sentTo == null) return;
+    if (!_formKey.currentState!.validate()) return;
     await _run((service) => service.verifyCode(_sentTo!, _codeController.text));
   }
 }
