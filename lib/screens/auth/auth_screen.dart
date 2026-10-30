@@ -90,6 +90,8 @@ class _AuthScreenState extends State<AuthScreen> {
         if (error.code == 'otp_expired') {
           _codeHasError = true;
           _codeErrorCount++;
+          _resendTimer?.cancel();
+          _resendSeconds = 0;
         }
         _error = switch (error.code) {
           'otp_expired' => l10n.invalidCode,
@@ -571,6 +573,17 @@ class _AuthScreenState extends State<AuthScreen> {
         if (enteringCode) ...[
           const SizedBox(height: 8),
           TextButton(
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              disabledForegroundColor: Colors.white54,
+              textStyle: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                decoration: !_busy && _resendSeconds == 0
+                    ? TextDecoration.underline
+                    : TextDecoration.none,
+              ),
+            ),
             onPressed: _busy || _resendSeconds > 0 ? null : _sendCode,
             child: Text(
               _resendSeconds > 0
