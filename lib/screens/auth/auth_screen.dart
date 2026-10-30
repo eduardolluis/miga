@@ -8,6 +8,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../services/auth_service.dart';
+import '../../widgets/verification_code_field.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key, this.authService});
@@ -482,24 +483,13 @@ class _AuthScreenState extends State<AuthScreen> {
             },
           ),
         ] else ...[
-          TextFormField(
+          VerificationCodeField(
             key: const ValueKey('code'),
-            cursorColor: Colors.white,
             controller: _codeController,
             enabled: !_busy,
-            keyboardType: TextInputType.number,
-            style: const TextStyle(color: Colors.white),
-            autofillHints: const [AutofillHints.oneTimeCode],
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            textInputAction: TextInputAction.done,
-            onFieldSubmitted: (_) => _verifyCode(),
-            decoration: InputDecoration(
-              hintText: l10n.emailCode,
-              hintStyle: const TextStyle(color: Colors.white),
-            ),
-            validator: (value) => RegExp(r'^\d{6,10}$').hasMatch(value ?? '')
-                ? null
-                : l10n.codeRequired,
+            label: l10n.emailCode,
+            errorText: l10n.codeRequired,
+            onSubmitted: _verifyCode,
           ),
         ],
         const SizedBox(height: 20),

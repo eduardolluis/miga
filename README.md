@@ -40,7 +40,7 @@ flutter run --dart-define-from-file=supabase.env.json
    llegue un código que se pueda introducir en la app. El template predeterminado
    con `{{ .ConfirmationURL }}` envía un enlace, que no corresponde a esta pantalla.
    Configura SMTP para enviar a usuarios reales. La app acepta códigos numéricos de
-   6 a 10 dígitos y deja que Supabase compruebe validez, caducidad y límites.
+   6 dígitos y deja que Supabase compruebe validez, caducidad y límites.
 2. **Google:** configura un cliente OAuth web en Google Cloud y habilita Google en
    Supabase con su Client ID y Client Secret. En Google registra como URI de retorno
    la URL de callback que muestra Supabase (`https://<project-ref>.supabase.co/auth/v1/callback`).
