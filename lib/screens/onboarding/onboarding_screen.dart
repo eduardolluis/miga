@@ -3,11 +3,14 @@ import 'package:flutter/services.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../auth/auth_screen.dart';
+import '../../services/auth_service.dart';
 import 'onboarding_page.dart';
 import 'onboarding_page_data.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+  const OnboardingScreen({super.key, this.authService});
+
+  final AuthService? authService;
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -188,7 +191,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 if (isLastPage) {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (_) => const AuthScreen(),
+                                      builder: (_) => AuthScreen(
+                                        authService: widget.authService,
+                                      ),
                                     ),
                                   );
                                 } else {
