@@ -68,7 +68,7 @@ class _VerificationCodeFieldState extends State<VerificationCodeField> {
       text: code,
       selection: TextSelection.collapsed(offset: code.length),
     );
-    _focusNode.requestFocus();
+    _focusInput();
     _onChanged(code);
   }
 
@@ -76,11 +76,18 @@ class _VerificationCodeFieldState extends State<VerificationCodeField> {
     widget.onChanged?.call(value);
   }
 
-  void _focusDigit(int index) {
+  void _focusInput() {
     if (!widget.enabled) return;
-    final offset = index.clamp(0, widget.controller.text.length);
-    widget.controller.selection = TextSelection.collapsed(offset: offset);
-    _focusNode.requestFocus();
+    widget.controller.selection = TextSelection.collapsed(
+      offset: widget.controller.text.length,
+    );
+    if (_focusNode.hasFocus) {
+      // Tapping another box must also reopen a dismissed keyboard when the
+      // input still holds focus.
+      SystemChannels.textInput.invokeMethod<void>('TextInput.show');
+    } else {
+      _focusNode.requestFocus();
+    }
   }
 
   @override
@@ -175,7 +182,7 @@ class _VerificationCodeFieldState extends State<VerificationCodeField> {
                         return Expanded(
                           child: GestureDetector(
                             behavior: HitTestBehavior.opaque,
-                            onTap: () => _focusDigit(index),
+                            onTap: _focusInput,
                             onLongPressStart: (details) =>
                                 _showPasteMenu(details.globalPosition),
                             child: AnimatedContainer(

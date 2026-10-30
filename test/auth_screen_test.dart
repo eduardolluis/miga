@@ -258,6 +258,65 @@ void main() {
     await tester.pumpWidget(const SizedBox());
   });
 
+  testWidgets(
+    'Any code box reopens keyboard and deletes from the end after an error',
+    (tester) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      service.verifyError = const AuthException('expired', code: 'otp_expired');
+      await tester.pumpWidget(authApp(service));
+      await requestCode(tester);
+      final boxes = find.descendant(
+        of: find.byType(VerificationCodeField),
+        matching: find.byType(AnimatedContainer),
+      );
+      final controller = tester
+          .widget<TextField>(find.byType(TextField))
+          .controller!;
+      void backspaceFromKeyboard() {
+        final value = controller.value;
+        final offset = value.selection.extentOffset;
+        expect(offset, value.text.length);
+        // Mobile keyboards send the edited value through the text input
+        // channel; iOS does not handle a raw backspace key in the framework.
+        tester.testTextInput.updateEditingValue(
+          TextEditingValue(
+            text: value.text.replaceRange(offset - 1, offset, ''),
+            selection: TextSelection.collapsed(offset: offset - 1),
+          ),
+        );
+      }
+
+      for (var index = 0; index < 6; index++) {
+        await tester.enterText(find.byType(TextFormField), '123456');
+        await tester.tap(find.text('Verificar y continuar'));
+        await tester.pumpAndSettle();
+        expect(find.textContaining('El código no es válido'), findsOneWidget);
+        tester.testTextInput.hide();
+        await tester.tap(boxes.at(index));
+        await tester.pump();
+        expect(tester.testTextInput.isVisible, isTrue);
+        expect(controller.selection, const TextSelection.collapsed(offset: 6));
+        backspaceFromKeyboard();
+        await tester.pump();
+        expect(controller.text, '12345');
+        expect(controller.selection, const TextSelection.collapsed(offset: 5));
+      }
+      // Empty boxes in a partial code focus the end of the entered digits too.
+      await tester.tap(boxes.last);
+      await tester.pump();
+      expect(controller.selection, const TextSelection.collapsed(offset: 5));
+      backspaceFromKeyboard();
+      await tester.pump();
+      expect(controller.text, '1234');
+      await tester.pumpWidget(const SizedBox());
+    },
+    variant: TargetPlatformVariant({
+      TargetPlatform.android,
+      TargetPlatform.iOS,
+    }),
+  );
+
   testWidgets('First code box pastes a complete code from the clipboard', (
     tester,
   ) async {
