@@ -1,0 +1,309 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:miga/app.dart';
+import 'package:miga/l10n/app_localizations.dart';
+import 'package:miga/screens/auth/auth_screen.dart';
+import 'package:miga/screens/onboarding/onboarding_screen.dart';
+import 'package:miga/services/auth_service.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+class FakeAuthService implements AuthService {
+  final events = StreamController<AuthState>.broadcast();
+  @override
+  Session? session;
+  String? sentEmail;
+  String? sentLanguage;
+  String? verifiedEmail;
+  String? verifiedCode;
+  OAuthProvider? provider;
+  AuthException? sendError;
+  AuthException? verifyError;
+  Completer<void>? sendPending;
+
+  @override
+  Stream<AuthState> get changes => events.stream;
+
+  @override
+  Future<void> sendCode(String email, {required String languageCode}) async {
+    sentLanguage = languageCode;
+    sentEmail = email;
+    if (sendError != null) throw sendError!;
+    if (sendPending != null) await sendPending!.future;
+  }
+
+  @override
+  Future<void> verifyCode(String email, String code) async {
+    verifiedEmail = email;
+    verifiedCode = code;
+    if (verifyError != null) throw verifyError!;
+    session = Session(
+      accessToken: 'test-token',
+      tokenType: 'bearer',
+      user: User(
+        id: 'test-user',
+        appMetadata: {},
+        userMetadata: {},
+        aud: 'authenticated',
+        createdAt: '2026-10-29T00:00:00Z',
+        email: email,
+      ),
+    );
+    events.add(AuthState(AuthChangeEvent.signedIn, session));
+  }
+
+  @override
+  Future<void> signInWithProvider(OAuthProvider provider) async {
+    this.provider = provider;
+  }
+
+  @override
+  Future<void> signOut() async {
+    session = null;
+    events.add(const AuthState(AuthChangeEvent.signedOut, null));
+  }
+}
+
+Widget authApp(FakeAuthService service, {Locale locale = const Locale('es')}) {
+  return MaterialApp(
+    locale: locale,
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
+    home: AuthScreen(authService: service),
+  );
+}
+
+Future<void> requestCode(WidgetTester tester) async {
+  await tester.enterText(find.byType(TextFormField), ' person@example.com ');
+  await tester.tap(find.text('Enviarme un código'));
+  await tester.pumpAndSettle();
+}
+
+void main() {
+  late FakeAuthService service;
+  setUp(() => service = FakeAuthService());
+  tearDown(() async => service.events.close());
+
+  testWidgets('Validates email before sending and never asks for a password', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(authApp(service));
+    expect(find.byType(TextFormField), findsOneWidget);
+    expect(find.text('Contraseña'), findsNothing);
+    await tester.tap(find.text('Enviarme un código'));
+    await tester.pumpAndSettle();
+    expect(find.text('Introduce tu correo'), findsOneWidget);
+    await tester.enterText(find.byType(TextFormField), 'invalid');
+    await tester.tap(find.text('Enviarme un código'));
+    await tester.pumpAndSettle();
+    expect(find.text('Introduce un correo válido'), findsOneWidget);
+    expect(service.sentEmail, isNull);
+  });
+
+  testWidgets('Sends trimmed email, verifies code, then signs out', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(authApp(service));
+    await requestCode(tester);
+    expect(service.sentEmail, 'person@example.com');
+    expect(service.sentLanguage, 'es');
+    expect(find.text('Revisa tu correo.'), findsOneWidget);
+    await tester.enterText(find.byType(TextFormField), '123456');
+    await tester.tap(find.text('Verificar y continuar'));
+    await tester.pumpAndSettle();
+    expect(service.verifiedEmail, 'person@example.com');
+    expect(service.verifiedCode, '123456');
+    expect(find.text('Ya estás en Miga.'), findsOneWidget);
+    await tester.tap(find.text('Cerrar sesión'));
+    await tester.pumpAndSettle();
+    expect(find.text('Enviarme un código'), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets('Failed delivery stays on email form and can be retried', (
+    tester,
+  ) async {
+    service.sendError = const AuthException('offline');
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(authApp(service));
+    await requestCode(tester);
+    expect(find.text('Revisa tu correo.'), findsNothing);
+    expect(find.textContaining('No pudimos'), findsOneWidget);
+    service.sendError = null;
+    await tester.tap(find.text('Enviarme un código'));
+    await tester.pumpAndSettle();
+    expect(find.text('Revisa tu correo.'), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets('Expired code keeps user signed out and allows resending', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(authApp(service));
+    await requestCode(tester);
+    await tester.tap(find.text('Verificar y continuar'));
+    await tester.pumpAndSettle();
+    expect(service.verifiedCode, isNull);
+    service.verifyError = const AuthException('expired', code: 'otp_expired');
+    await tester.enterText(find.byType(TextFormField), '123456');
+    await tester.tap(find.text('Verificar y continuar'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('El código no es válido'), findsOneWidget);
+    expect(service.session, isNull);
+    expect(find.text('Reenviar código'), findsNothing);
+    await tester.pump(const Duration(seconds: 61));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Reenviar código'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('El código no es válido'), findsNothing);
+    await tester.tap(find.text('Usar otro correo'));
+    await tester.pumpAndSettle();
+    expect(find.text('Enviarme un código'), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets('Email request disables controls until it finishes', (
+    tester,
+  ) async {
+    service.sendPending = Completer<void>();
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(authApp(service));
+    await tester.enterText(find.byType(TextFormField), 'person@example.com');
+    await tester.tap(find.text('Enviarme un código'));
+    await tester.pump();
+    final button = tester.widget<FilledButton>(
+      find.widgetWithText(FilledButton, 'Enviarme un código'),
+    );
+    expect(button.onPressed, isNull);
+    service.sendPending!.complete();
+    await tester.pumpAndSettle();
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  for (final platform in [TargetPlatform.android, TargetPlatform.iOS]) {
+    testWidgets('Provider buttons on $platform wait for actual session', (
+      tester,
+    ) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.pumpWidget(authApp(service));
+      expect(
+        find.text('Continuar con Apple'),
+        platform == TargetPlatform.iOS ? findsOneWidget : findsNothing,
+      );
+      await tester.tap(find.text('Continuar con Google'));
+      await tester.pumpAndSettle();
+      expect(service.provider, OAuthProvider.google);
+      expect(find.text('Ya estás en Miga.'), findsNothing);
+      if (platform == TargetPlatform.iOS) {
+        await tester.tap(find.text('Continuar con Apple'));
+        await tester.pumpAndSettle();
+        expect(service.provider, OAuthProvider.google);
+        expect(
+          find.text(
+            'El inicio de sesión con Apple todavía no está disponible.',
+          ),
+          findsOneWidget,
+        );
+      }
+      await service.verifyCode('person@example.com', '123456');
+      await tester.pumpAndSettle();
+      expect(find.text('Ya estás en Miga.'), findsOneWidget);
+      await tester.pumpWidget(const SizedBox());
+    }, variant: TargetPlatformVariant({platform}));
+  }
+
+  testWidgets('Apple shows an English notification without starting OAuth', (
+    tester,
+  ) async {
+    await tester.pumpWidget(authApp(service, locale: const Locale('en')));
+    await tester.tap(find.text('Continue with Apple'));
+    await tester.pumpAndSettle();
+    expect(
+      find.descendant(
+        of: find.byType(SnackBar),
+        matching: find.text('Sign in with Apple is not available yet.'),
+      ),
+      findsOneWidget,
+    );
+    expect(service.provider, isNull);
+    expect(
+      find.text(
+        'We couldn’t complete sign-in. Check your connection and try again.',
+      ),
+      findsNothing,
+    );
+  }, variant: TargetPlatformVariant({TargetPlatform.iOS}));
+
+  testWidgets(
+    'Restores session at startup and returns to onboarding on signout',
+    (tester) async {
+      await service.verifyCode('person@example.com', '123456');
+      await tester.pumpWidget(MigaApp(authService: service));
+      await tester.pumpAndSettle();
+      expect(find.byType(AuthScreen), findsOneWidget);
+      expect(find.byType(OnboardingScreen), findsNothing);
+      await service.signOut();
+      await tester.pumpAndSettle();
+      expect(find.byType(OnboardingScreen), findsOneWidget);
+    },
+  );
+
+  testWidgets('English code screen fits small display with large text', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(320, 568));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        builder: (context, child) => MediaQuery(
+          data: MediaQuery.of(context)
+              .copyWith(textScaler: TextScaler.linear(2)),
+          child: child!,
+        ),
+        home: AuthScreen(authService: service),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.byType(TextFormField),
+      150,
+      scrollable: find
+          .descendant(
+            of: find.byType(CustomScrollView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    await tester.enterText(find.byType(TextFormField), 'person@example.com');
+    await tester.ensureVisible(find.text('Email me a code'));
+    await tester.tap(find.text('Email me a code'));
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.text('Check your email.'),
+      -150,
+      scrollable: find
+          .descendant(
+            of: find.byType(CustomScrollView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    expect(find.text('Check your email.'), findsOneWidget);
+    expect(service.sentLanguage, 'en');
+    expect(tester.takeException(), isNull);
+    await tester.pumpWidget(const SizedBox());
+  });
+}
