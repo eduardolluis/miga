@@ -83,6 +83,7 @@ class _AuthScreenState extends State<AuthScreen> {
     try {
       await action(service);
     } on AuthException catch (error, stackTrace) {
+      if (error.code == 'sign_in_canceled') return;
       _logAuthFailure(error, stackTrace);
       if (!mounted) return;
       final l10n = AppLocalizations.of(context)!;
@@ -96,6 +97,7 @@ class _AuthScreenState extends State<AuthScreen> {
         _error = switch (error.code) {
           'otp_expired' => l10n.invalidCode,
           'browser_launch_failed' => l10n.authBrowserError,
+          'google_not_configured' => l10n.authUnavailable,
           'over_email_send_rate_limit' ||
           'over_request_rate_limit' => l10n.authRateLimited,
           _ => l10n.authError,

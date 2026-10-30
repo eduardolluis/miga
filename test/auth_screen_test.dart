@@ -23,7 +23,9 @@ class FakeAuthService implements AuthService {
   OAuthProvider? provider;
   AuthException? sendError;
   AuthException? verifyError;
+  AuthException? providerError;
   Completer<void>? sendPending;
+  Completer<void>? providerPending;
 
   @override
   Stream<AuthState> get changes => events.stream;
@@ -60,6 +62,8 @@ class FakeAuthService implements AuthService {
   @override
   Future<void> signInWithProvider(OAuthProvider provider) async {
     this.provider = provider;
+    if (providerPending != null) await providerPending!.future;
+    if (providerError != null) throw providerError!;
   }
 
   @override
@@ -540,6 +544,53 @@ void main() {
       await tester.pumpWidget(const SizedBox());
     }, variant: TargetPlatformVariant({platform}));
   }
+
+  testWidgets('Canceling Google releases controls without an error', (
+    tester,
+  ) async {
+    service.providerPending = Completer<void>();
+    service.providerError = const AuthException(
+      'Canceled',
+      code: 'sign_in_canceled',
+    );
+    await tester.pumpWidget(authApp(service));
+    await tester.tap(find.text('Continuar con Google'));
+    await tester.pump();
+    expect(
+      tester
+          .widget<OutlinedButton>(
+            find.widgetWithText(OutlinedButton, 'Continuar con Google'),
+          )
+          .onPressed,
+      isNull,
+    );
+    service.providerPending!.complete();
+    await tester.pumpAndSettle();
+    expect(find.textContaining('No pudimos'), findsNothing);
+    expect(find.text('Ya estás en Miga.'), findsNothing);
+    expect(
+      tester
+          .widget<OutlinedButton>(
+            find.widgetWithText(OutlinedButton, 'Continuar con Google'),
+          )
+          .onPressed,
+      isNotNull,
+    );
+  });
+
+  testWidgets('Missing Google configuration shows the setup message', (
+    tester,
+  ) async {
+    service.providerError = const AuthException(
+      'Missing client ID',
+      code: 'google_not_configured',
+    );
+    await tester.pumpWidget(authApp(service));
+    await tester.tap(find.text('Continuar con Google'));
+    await tester.pumpAndSettle();
+    expect(find.text('El acceso todavía no está configurado.'), findsOneWidget);
+    expect(find.text('Ya estás en Miga.'), findsNothing);
+  });
 
   testWidgets('Apple shows an English notification without starting OAuth', (
     tester,
