@@ -41,16 +41,19 @@ flutter run --dart-define-from-file=supabase.env.json
    con `{{ .ConfirmationURL }}` envía un enlace, que no corresponde a esta pantalla.
    Configura SMTP para enviar a usuarios reales. La app acepta códigos numéricos de
    6 dígitos y deja que Supabase compruebe validez, caducidad y límites.
-2. **Google:** configura un cliente OAuth web en Google Cloud y habilita Google en
-   Supabase con su Client ID y Client Secret. En Google registra como URI de retorno
-   la URL de callback que muestra Supabase (`https://<project-ref>.supabase.co/auth/v1/callback`).
-   Si el proyecto de Google está en modo de pruebas, añade los usuarios de prueba.
+2. **Google:** usa el SDK nativo en Android/iOS y OAuth en web. El cliente OAuth web
+   existente se reutiliza como `GOOGLE_WEB_CLIENT_ID`; también hay que registrar
+   las aplicaciones Android/iOS como se explica en **Google nativo** más abajo.
+   Habilita Google en Supabase con el Client ID y Client Secret del cliente web.
+   El secreto se guarda únicamente en Supabase. Para OAuth web, registra como URI
+   de retorno `https://<project-ref>.supabase.co/auth/v1/callback` en Google Cloud.
+   Si Google está en modo de pruebas, añade los usuarios de prueba.
 3. **Apple (pendiente):** el botón muestra un aviso y no inicia OAuth. Para completar
    la integración mediante OAuth en el navegador, configura el App ID, Services ID, dominio y Return URL en Apple
    Developer y habilita el proveedor Apple en Supabase con las credenciales
    correspondientes. Su Return URL es la del callback de Supabase. Los secretos
    de Apple para OAuth requieren renovación; consulta su caducidad antes de publicar.
-4. **Regreso al móvil:** en Supabase Authentication → URL Configuration → Redirect
+4. **Enlaces de correo al móvil:** en Supabase Authentication → URL Configuration → Redirect
    URLs, añade exactamente `com.eduardodelacruz.miga://login-callback`. El scheme ya
    está registrado en `ios/Runner/Info.plist` y en el manifest de Android. El manejo
    de enlaces de Flutter está desactivado para dejarlo a `supabase_flutter`.
@@ -58,7 +61,7 @@ flutter run --dart-define-from-file=supabase.env.json
 5. **Web, si se usa:** añade el origen de la aplicación a las Redirect URLs. En web
    el código usa `Uri.base.origin` para regresar después de OAuth.
 
-El envío de un código o la apertura del navegador no se consideran un acceso
+El envío de un código o la selección de una cuenta de Google no se consideran un acceso
 exitoso: hace falta una sesión confirmada por Supabase. Por ahora, al entrar se
 muestra una confirmación de sesión con la opción de cerrarla; la pantalla principal
 de planificación todavía no está implementada. Al reiniciar se recupera la sesión
@@ -68,13 +71,77 @@ que guarda `supabase_flutter`.
 
 Las pruebas automáticas verifican validación, errores, reenvío, sesión y botones
 por plataforma. Tras configurar los proveedores, prueba en dispositivos reales:
-correo nuevo y existente, código incorrecto/caducado, cancelación de OAuth, regreso
-a la app desde Google, aviso de Apple en ambos idiomas, reinicio y cierre de sesión. No se ha comprobado el
+correo nuevo y existente, código incorrecto/caducado, cancelación del selector de
+Google, sesión después del acceso nativo, cambio de cuenta, aviso de Apple en ambos
+idiomas, reinicio y cierre de sesión. No se ha comprobado el
 acceso real contra los proveedores desde este repositorio.
+
+### Google nativo
+
+Android/iOS usan `google_sign_in` 7 y entregan el ID token y el access token a
+`Supabase.auth.signInWithIdToken`. En Android se presenta el selector de cuentas
+del sistema. En iOS el SDK de Google puede presentar una ventana de autenticación
+del sistema; Google controla esa interfaz. La app web conserva OAuth.
+Cancelar el selector no muestra un error ni crea una sesión. Un fallo móvil no
+abre el navegador como alternativa. Google se inicializa al pulsar el botón;
+la falta de sus IDs no impide entrar por correo.
+
+Los tres clientes OAuth se crean en el **mismo proyecto de Google Cloud**, en
+Google Auth Platform → Clients (o APIs & Services → Credentials).
+
+1. **Web:** reutiliza el cliente existente. Añade su ID a `supabase.env.json` con
+   la clave `GOOGLE_WEB_CLIENT_ID`. Es el `serverClientId` del SDK y debe estar
+   permitido en Authentication → Providers → Google de Supabase.
+2. **Android:** crea un cliente OAuth de tipo Android. El paquete actual es
+   `com.eduardoluisdlcg.miga` (`applicationId` en `android/app/build.gradle.kts`). Introduce
+   el SHA-1 del certificado que firma esa compilación. Puedes consultarlo con:
+
+   ```sh
+   keytool -list -v -keystore "$HOME/.android/debug.keystore" \
+     -alias androiddebugkey -storepass android -keypass android
+   ```
+
+   El cliente Android registra paquete y certificado; su Client ID no se pasa
+   a Dart. La integración usa el ID web sin necesitar Firebase ni
+   `google-services.json`. Para publicar, registra también el certificado de
+   producción/Play App Signing. Si cambias el `applicationId`, actualiza el registro.
+3. **iOS:** crea un cliente OAuth de tipo iOS con Bundle ID
+   `com.eduardoluisdlcg.miga`. Añade su Client ID como `GOOGLE_IOS_CLIENT_ID` en
+   `supabase.env.json`. En `ios/Runner/Info.plist`, dentro del array existente de
+   `CFBundleURLTypes`, añade otro diccionario con el ID iOS invertido:
+
+   ```xml
+   <dict>
+     <key>CFBundleTypeRole</key>
+     <string>Editor</string>
+     <key>CFBundleURLSchemes</key>
+     <array>
+       <string>com.googleusercontent.apps.TU_ID_IOS</string>
+     </array>
+   </dict>
+   ```
+
+   Para `123-abc.apps.googleusercontent.com`, el scheme es
+   `com.googleusercontent.apps.123-abc`. Conserva también el scheme de Miga
+   para los enlaces de correo. Sigue la configuración de Supabase para Google
+   nativo en iOS, incluida la opción **Skip nonce check** que indica su guía para
+   este SDK. El SDK también puede devolver un nonce en iOS.
+
+`supabase.env.example.json` muestra las cuatro claves de configuración. No contiene
+credenciales reales; copia los valores a tu archivo local existente sin perder
+los de Supabase. Reinicia con `flutter run --dart-define-from-file=supabase.env.json`;
+los plugins, los Client IDs y el scheme de iOS requieren recompilar.
+
+Si solo existe el cliente web, el código queda preparado, pero el acceso móvil
+real necesita completar los registros anteriores. Los tests simulan Google y
+Supabase y no validan la configuración de Google Cloud.
 
 Documentación oficial:
 - [Códigos por correo](https://supabase.com/docs/guides/auth/auth-email-passwordless)
 - [Google](https://supabase.com/docs/guides/auth/social-login/auth-google)
+- [SDK Google para Flutter](https://pub.dev/packages/google_sign_in)
+- [Configuración Android](https://pub.dev/packages/google_sign_in_android)
+- [Configuración iOS](https://pub.dev/packages/google_sign_in_ios)
 - [Apple](https://supabase.com/docs/guides/auth/social-sign-in/auth-apple)
 - [OAuth en Flutter](https://supabase.com/docs/reference/dart/auth-signinwithoauth)
 
@@ -99,7 +166,7 @@ Para cuentas existentes en móvil, el idioma de cada solicitud tiene prioridad
 mediante `.RedirectTo`, sin tener que cambiar metadatos antes de entrar.
 
 Añade también estas dos URLs exactas en Authentication → URL Configuration →
-Redirect URLs, además de la URL original que sigue usando OAuth:
+Redirect URLs, además de la URL original de callback móvil:
 
 ```text
 com.eduardodelacruz.miga://login-callback?language=es
