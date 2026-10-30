@@ -456,6 +456,7 @@ class _AuthScreenState extends State<AuthScreen> {
           const SizedBox(height: 24),
           TextFormField(
             key: const ValueKey('email'),
+            cursorColor: Colors.white,
             controller: _emailController,
             enabled: !_busy,
             keyboardType: TextInputType.emailAddress,
@@ -483,6 +484,7 @@ class _AuthScreenState extends State<AuthScreen> {
         ] else ...[
           TextFormField(
             key: const ValueKey('code'),
+            cursorColor: Colors.white,
             controller: _codeController,
             enabled: !_busy,
             keyboardType: TextInputType.number,
