@@ -687,6 +687,35 @@ void main() {
     },
   );
 
+  testWidgets('First sign-in hides the back arrow on a pushed auth screen', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('es'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: Builder(
+          builder: (context) => TextButton(
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => AuthScreen(authService: service),
+              ),
+            ),
+            child: const Text('Open sign-in'),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('Open sign-in'));
+    await tester.pumpAndSettle();
+    expect(find.byType(BackButton), findsOneWidget);
+    await service.verifyCode('person@example.com', '123456');
+    await tester.pumpAndSettle();
+    expect(find.text('Ya estás en Miga.'), findsOneWidget);
+    expect(find.byType(BackButton), findsNothing);
+  });
+
   testWidgets('English code screen fits small display with large text', (
     tester,
   ) async {

@@ -295,7 +295,8 @@ class _AuthScreenState extends State<AuthScreen> {
                                   children: [
                                     Row(
                                       children: [
-                                        if (Navigator.of(context).canPop()) ...[
+                                        if (session == null &&
+                                            Navigator.of(context).canPop()) ...[
                                           DecoratedBox(
                                             decoration: BoxDecoration(
                                               color: Colors.white.withValues(
