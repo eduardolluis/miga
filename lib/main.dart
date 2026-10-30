@@ -12,18 +12,6 @@ const supabasePublishableKey = String.fromEnvironment(
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final uri = Uri.tryParse(supabaseUrl);
-  if (uri == null ||
-      !['http', 'https'].contains(uri.scheme) ||
-      uri.host.isEmpty ||
-      supabasePublishableKey.trim().isEmpty) {
-    throw StateError(
-      'Missing or invalid Supabase configuration. Start with the Miga launch '
-      'configuration in VS Code, or run '
-      'flutter run --dart-define-from-file=supabase.env.json',
-    );
-  }
-
   await Supabase.initialize(
     url: supabaseUrl,
     publishableKey: supabasePublishableKey,
