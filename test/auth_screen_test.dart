@@ -302,7 +302,6 @@ void main() {
         expect(controller.text, '12345');
         expect(controller.selection, const TextSelection.collapsed(offset: 5));
       }
-      // Empty boxes in a partial code focus the end of the entered digits too.
       await tester.tap(boxes.last);
       await tester.pump();
       expect(controller.selection, const TextSelection.collapsed(offset: 5));

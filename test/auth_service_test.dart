@@ -56,7 +56,6 @@ class FakeGooglePlatform extends GoogleSignInPlatform {
   @override
   Future<void> signOut(SignOutParams params) async => signOutCalls++;
 
-  // Unused platform operations fail if the service unexpectedly calls them.
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }

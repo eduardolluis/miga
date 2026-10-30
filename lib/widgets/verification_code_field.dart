@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../theme/app_colors.dart';
+
 /// One accessible input preserves paste, autofill, and backspace across digits.
 class VerificationCodeField extends StatefulWidget {
   const VerificationCodeField({
@@ -30,7 +32,6 @@ class VerificationCodeField extends StatefulWidget {
 
 class _VerificationCodeFieldState extends State<VerificationCodeField> {
   static const _codeLength = 6;
-  static const _errorColor = Color(0xFFFF6B6B);
   final _focusNode = FocusNode();
   static final _shake = TweenSequence<double>([
     TweenSequenceItem(tween: Tween(begin: 0, end: -6), weight: 1),
@@ -143,7 +144,7 @@ class _VerificationCodeFieldState extends State<VerificationCodeField> {
                   focusedErrorBorder: InputBorder.none,
                   errorMaxLines: 3,
                   errorStyle: const TextStyle(
-                    color: _errorColor,
+                    color: AppColors.error,
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     shadows: [Shadow(color: Colors.black, blurRadius: 6)],
@@ -193,7 +194,7 @@ class _VerificationCodeFieldState extends State<VerificationCodeField> {
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(
                                   color: widget.hasError
-                                      ? _errorColor
+                                      ? AppColors.error
                                       : active
                                       ? Colors.white
                                       : Colors.white60,

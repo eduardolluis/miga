@@ -8,6 +8,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../services/auth_service.dart';
+import '../../theme/app_colors.dart';
 import '../../widgets/verification_code_field.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -113,8 +114,7 @@ class _AuthScreenState extends State<AuthScreen> {
     }
   }
 
-  // Log diagnostic metadata in development without logging credentials,
-  // email addresses, codes, or callback URLs that may contain tokens.
+  // Keep credentials, personal data, and token-bearing URLs out of logs.
   void _logAuthFailure(Object error, StackTrace stackTrace) {
     if (kReleaseMode) return;
     final details = switch (error) {
@@ -187,7 +187,16 @@ class _AuthScreenState extends State<AuthScreen> {
     final enteringCode = _sentTo != null;
 
     final formTheme = theme.copyWith(
+      colorScheme: theme.colorScheme.copyWith(error: AppColors.error),
       inputDecorationTheme: InputDecorationTheme(
+        errorMaxLines: 3,
+        errorStyle: const TextStyle(
+          color: AppColors.error,
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          shadows: [Shadow(color: Colors.black, blurRadius: 6)],
+          height: 1.5,
+        ),
         filled: true,
         fillColor: const Color(0xB3202A1F),
         contentPadding: const EdgeInsets.symmetric(
@@ -207,6 +216,14 @@ class _AuthScreenState extends State<AuthScreen> {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(color: Colors.white, width: 1.5),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.2),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.5),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -468,7 +485,7 @@ class _AuthScreenState extends State<AuthScreen> {
           ),
           if (showApple) ...[
             const SizedBox(height: 12),
-            // TODO: Completar la integración de Sign in with Apple al final.
+            // TODO: Implement Sign in with Apple.
             FilledButton.icon(
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.black,
@@ -616,7 +633,7 @@ class _AuthScreenState extends State<AuthScreen> {
             _error!,
             textAlign: TextAlign.center,
             style: const TextStyle(
-              color: Color(0xFFFF6B6B),
+              color: AppColors.error,
               fontWeight: FontWeight.w600,
               shadows: [Shadow(color: Colors.black, blurRadius: 6)],
             ),

@@ -9,7 +9,6 @@ import 'package:google_sign_in_platform_interface/google_sign_in_platform_interf
     as platform;
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-/// Keeps Supabase calls separate from the form so the flow can be tested.
 abstract class AuthService {
   Session? get session;
   Stream<AuthState> get changes;
@@ -37,8 +36,7 @@ class SupabaseAuthService implements AuthService {
   final platform.GoogleSignInPlatform Function() iosGoogleFactory;
   static platform.GoogleSignInPlatform? _iosGoogle;
   static bool _googleSignInPending = false;
-  // GoogleSignIn is a singleton and must be initialized exactly once. Keep
-  // initialization lazy so missing Google configuration doesn't block email.
+  // Initialize the Android singleton once, without blocking email sign-in.
   static Future<void>? _googleInitialization;
   static const redirectUrl = 'com.eduardodelacruz.miga://login-callback';
 
@@ -91,8 +89,7 @@ class SupabaseAuthService implements AuthService {
   @override
   Future<void> sendCode(String email, {required String languageCode}) {
     final language = languageCode == 'es' ? 'es' : 'en';
-    // Existing accounts don't get new metadata from an unauthenticated OTP
-    // request. The mobile redirect also carries this request's language.
+    // OTP metadata does not update existing users; also pass language in the redirect.
     final emailRedirect = Uri.parse(kIsWeb ? Uri.base.origin : redirectUrl)
         .replace(queryParameters: {'language': language});
     return client.auth.signInWithOtp(
@@ -128,8 +125,7 @@ class SupabaseAuthService implements AuthService {
           ? LaunchMode.platformDefault
           : LaunchMode.externalApplication,
     );
-    // Opening the browser isn't a successful login. The session arrives later
-    // through onAuthStateChange after Supabase handles the callback.
+    // OAuth confirms the session through onAuthStateChange after the callback.
     if (!launched) {
       throw const AuthException(
         'Could not open sign-in',
@@ -148,8 +144,7 @@ class SupabaseAuthService implements AuthService {
       );
     }
 
-    // Native Google configuration is shared. Don't let another attempt replace
-    // the nonce while the current one is presenting UI or exchanging tokens.
+    // Native configuration is shared; concurrent attempts could replace the nonce.
     if (_googleSignInPending) {
       throw const AuthException(
         'Google sign-in is already in progress',
@@ -170,8 +165,7 @@ class SupabaseAuthService implements AuthService {
           serverClientId: googleWebClientId,
         ),
       );
-      // Clear any SDK account left by a previous attempt, including attempts
-      // where Google succeeded but the Supabase token exchange failed.
+      // Clear accounts left by a failed Supabase exchange before choosing again.
       await _googleStep('clear_previous_account', google.signOut);
       final account = await _googleStep(
         'choose_account',
@@ -223,10 +217,8 @@ class SupabaseAuthService implements AuthService {
     );
     final hashedNonce = sha256.convert(utf8.encode(rawNonce)).toString();
 
-    // google_sign_in 7's singleton accepts a nonce only at initialization,
-    // which must happen once. Use the official iOS adapter directly with a new
-    // instance per attempt, initialized once with this attempt's nonce.
-    // Supabase remains the source of session/auth events for the app.
+    // The singleton fixes its nonce at initialization. A fresh iOS adapter
+    // allows a new nonce per attempt; Supabase receives the original, Google its hash.
     final google = iosGoogleFactory();
     await _googleStep(
       'initialize',
