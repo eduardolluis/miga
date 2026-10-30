@@ -32,5 +32,8 @@
   "emailInvalid": "Introduce un correo válido",
   "passwordRequired": "Introduce tu contraseña",
   "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
-  "passwordMismatch": "Las contraseñas no coinciden"
+  "passwordMismatch": "Las contraseñas no coinciden",
+  "onboardingPlanIntro": "Un menú que va contigo.",
+  "onboardingShoppingIntro": "Todo lo que necesitas, en una lista.",
+  "onboardingStoresIntro": "Tu próxima compra, más cerca."
 }

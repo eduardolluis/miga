@@ -43,7 +43,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final colors = theme.colorScheme;
     final pages = OnboardingPageData.fromLocalizations(l10n);
     final isLastPage = _currentPage == pages.length - 1;
 
@@ -123,14 +122,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     ],
                                   ),
                                   const SizedBox(height: 12),
-                                  Text(
-                                    l10n.onboardingIntro,
-                                    style: theme.textTheme.headlineSmall
-                                        ?.copyWith(
-                                          fontWeight: FontWeight.w700,
-                                          height: 1.2,
-                                          color: Colors.white,
-                                        ),
+                                  AnimatedSwitcher(
+                                    duration: const Duration(milliseconds: 250),
+                                    layoutBuilder:
+                                        (currentChild, previousChildren) =>
+                                            Stack(
+                                              alignment: Alignment.topLeft,
+                                              children: [
+                                                ...previousChildren,
+                                                ?currentChild,
+                                              ],
+                                            ),
+                                    child: Text(
+                                      pages[_currentPage].header,
+                                      key: ValueKey(pages[_currentPage].header),
+                                      style: theme.textTheme.headlineSmall
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.w700,
+                                            height: 1.2,
+                                            color: Colors.white,
+                                          ),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -163,12 +175,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             width: double.infinity,
                             child: FilledButton(
                               style: FilledButton.styleFrom(
-                                backgroundColor: colors.primaryContainer,
-                                foregroundColor: colors.onPrimaryContainer,
-                                minimumSize: const Size.fromHeight(56),
+                                backgroundColor: const Color(0xFF52643D),
+                                foregroundColor: Colors.white,
+                                minimumSize: const Size.fromHeight(52),
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 24,
-                                  vertical: 16,
+                                  vertical: 14,
                                 ),
                               ),
                               onPressed: () {
@@ -246,17 +258,17 @@ class _PageIndicator extends StatelessWidget {
             onTap: () => onSelected(index),
             borderRadius: BorderRadius.circular(24),
             child: SizedBox(
-              width: 48,
+              width: 44,
               height: 48,
               child: Center(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  width: isSelected ? 24 : 8,
-                  height: 8,
+                  width: 36,
+                  height: 4,
                   decoration: BoxDecoration(
                     color: isSelected
                         ? primaryColor
-                        : primaryColor.withValues(alpha: 0.35),
+                        : primaryColor.withValues(alpha: 0.25),
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),

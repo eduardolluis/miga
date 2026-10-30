@@ -238,6 +238,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match'**
   String get passwordMismatch;
+
+  /// No description provided for @onboardingPlanIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'A menu that fits your life.'**
+  String get onboardingPlanIntro;
+
+  /// No description provided for @onboardingShoppingIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything you need, in one list.'**
+  String get onboardingShoppingIntro;
+
+  /// No description provided for @onboardingStoresIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Your next grocery stop, closer.'**
+  String get onboardingStoresIntro;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

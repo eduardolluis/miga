@@ -32,5 +32,8 @@
   "emailInvalid": "Enter a valid email",
   "passwordRequired": "Enter your password",
   "passwordMinLength": "Password must be at least 8 characters",
-  "passwordMismatch": "Passwords do not match"
+  "passwordMismatch": "Passwords do not match",
+  "onboardingPlanIntro": "A menu that fits your life.",
+  "onboardingShoppingIntro": "Everything you need, in one list.",
+  "onboardingStoresIntro": "Your next grocery stop, closer."
 }

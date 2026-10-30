@@ -47,6 +47,7 @@ void main() {
       await tester.drag(find.byType(PageView), const Offset(-350, 0));
       await tester.pumpAndSettle();
       expect(find.text(l10n.planTitle), findsOneWidget);
+      expect(find.text(l10n.onboardingPlanIntro), findsOneWidget);
       expect(
         tester
             .widget<OnboardingBackground>(find.byType(OnboardingBackground))
@@ -58,6 +59,7 @@ void main() {
       await tester.tap(find.text(l10n.next));
       await tester.pumpAndSettle();
       expect(find.text(l10n.shoppingTitle), findsOneWidget);
+      expect(find.text(l10n.onboardingShoppingIntro), findsOneWidget);
       expect(
         tester
             .widget<OnboardingBackground>(find.byType(OnboardingBackground))
@@ -69,6 +71,7 @@ void main() {
       await tester.drag(find.byType(PageView), const Offset(350, 0));
       await tester.pumpAndSettle();
       expect(find.text(l10n.planTitle), findsOneWidget);
+      expect(find.text(l10n.onboardingPlanIntro), findsOneWidget);
 
       await tester.tap(find.bySemanticsLabel(l10n.onboardingStep(1, 4)));
       await tester.pumpAndSettle();
@@ -77,6 +80,7 @@ void main() {
       await tester.tap(find.text(l10n.skip));
       await tester.pumpAndSettle();
       expect(find.text(l10n.storesTitle), findsOneWidget);
+      expect(find.text(l10n.onboardingStoresIntro), findsOneWidget);
       expect(
         tester
             .widget<OnboardingBackground>(find.byType(OnboardingBackground))

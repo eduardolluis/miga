@@ -81,4 +81,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordMismatch => 'Passwords do not match';
+
+  @override
+  String get onboardingPlanIntro => 'A menu that fits your life.';
+
+  @override
+  String get onboardingShoppingIntro => 'Everything you need, in one list.';
+
+  @override
+  String get onboardingStoresIntro => 'Your next grocery stop, closer.';
 }
