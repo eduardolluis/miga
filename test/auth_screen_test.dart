@@ -6,10 +6,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:miga/app.dart';
 import 'package:miga/l10n/app_localizations.dart';
 import 'package:miga/screens/auth/auth_screen.dart';
+import 'package:miga/screens/home/home_screen.dart';
 import 'package:miga/screens/onboarding/onboarding_screen.dart';
 import 'package:miga/services/auth_service.dart';
 import 'package:miga/widgets/verification_code_field.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FakeAuthService implements AuthService {
   final events = StreamController<AuthState>.broadcast();
@@ -100,7 +102,10 @@ Future<void> requestCode(WidgetTester tester) async {
 
 void main() {
   late FakeAuthService service;
-  setUp(() => service = FakeAuthService());
+  setUp(() {
+    service = FakeAuthService();
+    SharedPreferences.setMockInitialValues({});
+  });
   tearDown(() async => service.events.close());
 
   testWidgets('Validates email before sending and never asks for a password', (
@@ -678,41 +683,44 @@ void main() {
       await service.verifyCode('person@example.com', '123456');
       await tester.pumpWidget(MigaApp(authService: service));
       await tester.pumpAndSettle();
-      expect(find.byType(AuthScreen), findsOneWidget);
+      expect(find.byType(HomeScreen), findsOneWidget);
+      expect(find.byType(AuthScreen), findsNothing);
       expect(find.byType(OnboardingScreen), findsNothing);
-      await service.signOut();
+      await tester.tap(find.text('Profile'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Sign out'));
       await tester.pumpAndSettle();
       expect(find.byType(OnboardingScreen), findsOneWidget);
     },
   );
 
-  testWidgets('First sign-in hides the back arrow on a pushed auth screen', (
+  testWidgets('Validated sign-in opens home and removes the login route', (
     tester,
   ) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        locale: const Locale('es'),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        home: Builder(
-          builder: (context) => TextButton(
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => AuthScreen(authService: service),
-              ),
-            ),
-            child: const Text('Open sign-in'),
-          ),
-        ),
-      ),
-    );
-    await tester.tap(find.text('Open sign-in'));
+    await tester.pumpWidget(MigaApp(authService: service));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Skip'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Create account'));
     await tester.pumpAndSettle();
     expect(find.byType(BackButton), findsOneWidget);
-    await service.verifyCode('person@example.com', '123456');
+    await tester.enterText(find.byType(TextFormField), 'person@example.com');
+    await tester.tap(find.text('Email me a code'));
     await tester.pumpAndSettle();
-    expect(find.text('Ya estás en Miga.'), findsOneWidget);
+    expect(find.byType(HomeScreen), findsNothing);
+    await tester.enterText(find.byType(TextFormField), '123456');
+    await tester.tap(find.text('Verify and continue'));
+    await tester.pumpAndSettle();
+    expect(service.verifiedCode, '123456');
+    expect(find.byType(HomeScreen), findsOneWidget);
+    expect(find.byType(AuthScreen, skipOffstage: false), findsNothing);
+    expect(find.byType(OnboardingScreen, skipOffstage: false), findsNothing);
     expect(find.byType(BackButton), findsNothing);
+    expect(
+      tester.state<NavigatorState>(find.byType(Navigator)).canPop(),
+      isFalse,
+    );
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('English code screen fits small display with large text', (

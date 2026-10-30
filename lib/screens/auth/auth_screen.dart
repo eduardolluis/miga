@@ -3,13 +3,14 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../services/auth_service.dart';
 import '../../theme/app_colors.dart';
-import '../../widgets/verification_code_field.dart';
+import 'auth_code_form.dart';
+import 'auth_email_form.dart';
+import 'auth_scaffold.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key, this.authService});
@@ -47,6 +48,9 @@ class _AuthScreenState extends State<AuthScreen> {
             _error = null;
             _codeHasError = false;
           });
+          if (widget.authService?.session != null) {
+            Navigator.of(context).popUntil((route) => route.isFirst);
+          }
         }
       },
       onError: (Object error, StackTrace stackTrace) {
@@ -182,465 +186,65 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final theme = Theme.of(context);
     final session = widget.authService?.session;
-    final enteringCode = _sentTo != null;
 
-    final formTheme = theme.copyWith(
-      colorScheme: theme.colorScheme.copyWith(error: AppColors.error),
-      inputDecorationTheme: InputDecorationTheme(
-        errorMaxLines: 3,
-        errorStyle: const TextStyle(
-          color: AppColors.error,
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          shadows: [Shadow(color: Colors.black, blurRadius: 6)],
-          height: 1.5,
-        ),
-        filled: true,
-        fillColor: const Color(0xB3202A1F),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 18,
-          vertical: 18,
-        ),
-        labelStyle: TextStyle(color: Colors.white.withValues(alpha: 0.8)),
-        floatingLabelStyle: const TextStyle(color: Colors.white),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.white60, width: 1.2),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.white60, width: 1.2),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.white, width: 1.5),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: AppColors.error, width: 1.2),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: AppColors.error, width: 1.5),
-        ),
-      ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          backgroundColor: const Color(0xB3202A1F),
-          foregroundColor: Colors.white,
-          side: const BorderSide(color: Colors.white60, width: 1.2),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-        ),
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(foregroundColor: Colors.white),
-      ),
-      dividerTheme: DividerThemeData(
-        color: Colors.white.withValues(alpha: 0.42),
-        thickness: 1,
-      ),
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-        ),
-      ),
-    );
-
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light,
-      child: Scaffold(
-        backgroundColor: const Color(0xFF0E1710),
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              'assets/images/onboarding/welcome.png',
-              fit: BoxFit.cover,
-              alignment: const Alignment(-0.1, 0.35),
-              excludeFromSemantics: true,
-            ),
-            const DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0x000E1710),
-                    Color(0x800E1710),
-                    Color(0xD90E1710),
-                  ],
-                  stops: [0, 0.4, 1],
-                ),
+    return AuthScaffold(
+      formKey: _formKey,
+      signedIn: session != null,
+      sentTo: _sentTo,
+      userEmail: session?.user.email,
+      builder: (context, availableWidth) => Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (session != null)
+            OutlinedButton(
+              onPressed: _busy ? null : () => _run((s) => s.signOut()),
+              child: Text(l10n.signOut),
+            )
+          else if (_sentTo != null)
+            AuthCodeForm(
+              controller: _codeController,
+              busy: _busy,
+              hasError: _codeHasError,
+              errorCount: _codeErrorCount,
+              resendSeconds: _resendSeconds,
+              onChanged: _onCodeChanged,
+              onVerify: _verifyCode,
+              onResend: _sendCode,
+              onChangeEmail: _changeEmail,
+            )
+          else
+            AuthEmailForm(
+              controller: _emailController,
+              busy: _busy,
+              availableWidth: availableWidth,
+              onSendCode: _sendCode,
+              onGoogleSignIn: () => _run(
+                (service) => service.signInWithProvider(OAuthProvider.google),
               ),
             ),
-            SafeArea(
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 520),
-                  child: LayoutBuilder(
-                    builder: (context, constraints) => Theme(
-                      data: formTheme,
-                      child: Form(
-                        key: _formKey,
-                        child: CustomScrollView(
-                          physics: const ClampingScrollPhysics(),
-                          keyboardDismissBehavior:
-                              ScrollViewKeyboardDismissBehavior.onDrag,
-                          slivers: [
-                            SliverFillRemaining(
-                              hasScrollBody: false,
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                  24,
-                                  8,
-                                  24,
-                                  36,
-                                ),
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        if (session == null &&
-                                            Navigator.of(context).canPop()) ...[
-                                          DecoratedBox(
-                                            decoration: BoxDecoration(
-                                              color: Colors.white.withValues(
-                                                alpha: 0.12,
-                                              ),
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                color: Colors.white24,
-                                              ),
-                                            ),
-                                            child: const BackButton(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          const SizedBox(width: 14),
-                                        ],
-                                        const Icon(
-                                          Icons.eco_rounded,
-                                          color: Colors.white,
-                                          size: 25,
-                                        ),
-                                        const SizedBox(width: 8),
-                                        Text(
-                                          'miga',
-                                          style: theme.textTheme.headlineSmall
-                                              ?.copyWith(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w800,
-                                                letterSpacing: -1,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                    const Spacer(flex: 2),
-                                    const SizedBox(height: 32),
-                                    Text(
-                                      session != null
-                                          ? l10n.authSuccess
-                                          : enteringCode
-                                          ? l10n.checkEmail
-                                          : l10n.authTitle,
-                                      style: theme.textTheme.displaySmall
-                                          ?.copyWith(
-                                            fontSize: 38,
-                                            height: 1.1,
-                                            letterSpacing: -1.2,
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.white,
-                                            shadows: const [
-                                              Shadow(
-                                                color: Colors.black26,
-                                                blurRadius: 12,
-                                              ),
-                                            ],
-                                          ),
-                                    ),
-                                    const SizedBox(height: 14),
-                                    Text.rich(
-                                      enteringCode && session == null
-                                          ? TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: l10n
-                                                      .codeSentTo(_sentTo!)
-                                                      .split(_sentTo!)
-                                                      .first
-                                                      .trimRight(),
-                                                ),
-                                                TextSpan(
-                                                  text: '\n${_sentTo!}',
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                ),
-                                              ],
-                                            )
-                                          : TextSpan(
-                                              text: session != null
-                                                  ? session.user.email ?? ''
-                                                  : l10n.authSubtitle,
-                                            ),
-                                      style: theme.textTheme.bodyLarge
-                                          ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500,
-                                            shadows: const [
-                                              Shadow(
-                                                color: Colors.black54,
-                                                blurRadius: 8,
-                                                offset: Offset(0, 1),
-                                              ),
-                                            ],
-                                            height: 1.5,
-                                          ),
-                                    ),
-                                    const SizedBox(height: 28),
-                                    ..._buildFormContent(
-                                      context,
-                                      constraints.maxWidth - 48,
-                                    ),
-                                    const SizedBox(height: 24),
-                                    Text(
-                                      l10n.onboardingIntro,
-                                      textAlign: TextAlign.center,
-                                      style: theme.textTheme.bodySmall
-                                          ?.copyWith(
-                                            color: Colors.white.withValues(
-                                              alpha: 0.88,
-                                            ),
-                                            height: 1.5,
-                                          ),
-                                    ),
-                                    const Spacer(),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+          if (_busy) ...[
+            const SizedBox(height: 16),
+            const Center(child: CircularProgressIndicator()),
+          ],
+          if (_error != null) ...[
+            const SizedBox(height: 16),
+            Semantics(
+              liveRegion: true,
+              child: Text(
+                _error!,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: AppColors.error,
+                  fontWeight: FontWeight.w600,
+                  shadows: [Shadow(color: Colors.black, blurRadius: 6)],
                 ),
               ),
             ),
           ],
-        ),
+        ],
       ),
     );
-  }
-
-  List<Widget> _buildFormContent(BuildContext context, double availableWidth) {
-    final l10n = AppLocalizations.of(context)!;
-    final session = widget.authService?.session;
-    final enteringCode = _sentTo != null;
-    final showApple = !kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
-    const olive = Color(0xFF52643D);
-    return [
-      if (session != null)
-        OutlinedButton(
-          onPressed: _busy ? null : () => _run((s) => s.signOut()),
-          child: Text(l10n.signOut),
-        )
-      else ...[
-        if (!enteringCode) ...[
-          OutlinedButton.icon(
-            style: OutlinedButton.styleFrom(
-              minimumSize: const Size.fromHeight(52),
-              backgroundColor: Colors.white,
-              disabledBackgroundColor: const Color(0xFFF2F2F2),
-              side: const BorderSide(color: Color(0xFF747775)),
-              foregroundColor: const Color(0xFF1F1F1F),
-              disabledForegroundColor: const Color(0xFF8E918F),
-              textStyle: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            onPressed: _busy
-                ? null
-                : () => _run((s) => s.signInWithProvider(OAuthProvider.google)),
-            icon: SvgPicture.asset(
-              'assets/google.svg',
-              width: 20,
-              height: 20,
-              excludeFromSemantics: true,
-            ),
-            label: Text(l10n.continueWithGoogle),
-          ),
-          if (showApple) ...[
-            const SizedBox(height: 12),
-            // TODO: Implement Sign in with Apple.
-            FilledButton.icon(
-              style: FilledButton.styleFrom(
-                backgroundColor: Colors.black,
-                foregroundColor: Colors.white,
-                disabledBackgroundColor: const Color(0xFF242424),
-                disabledForegroundColor: const Color(0xFFBDBDBD),
-                side: const BorderSide(color: Color(0xFF747775)),
-                textStyle: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                ),
-                minimumSize: const Size.fromHeight(52),
-              ),
-              onPressed: _busy
-                  ? null
-                  : () {
-                      final messenger = ScaffoldMessenger.of(context);
-                      messenger.hideCurrentSnackBar();
-                      messenger.showSnackBar(
-                        SnackBar(
-                          content: Text(l10n.appleSignInUnavailable),
-                          behavior: SnackBarBehavior.floating,
-                        ),
-                      );
-                    },
-              icon: const Icon(Icons.apple),
-              label: Text(l10n.continueWithApple),
-            ),
-          ],
-          const SizedBox(height: 24),
-          Row(
-            children: [
-              const Expanded(child: Divider(color: Color(0xFF9BA197))),
-              ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: availableWidth * 0.6),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    l10n.orWithEmail,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Color(0xFFEBEEE7)),
-                  ),
-                ),
-              ),
-              const Expanded(child: Divider(color: Color(0xFF9BA197))),
-            ],
-          ),
-          const SizedBox(height: 24),
-          TextFormField(
-            key: const ValueKey('email'),
-            cursorColor: Colors.white,
-            controller: _emailController,
-            enabled: !_busy,
-            keyboardType: TextInputType.emailAddress,
-            style: const TextStyle(color: Colors.white),
-            autofillHints: const [AutofillHints.email],
-            autocorrect: false,
-            textCapitalization: TextCapitalization.none,
-            textInputAction: TextInputAction.done,
-            onFieldSubmitted: (_) => _sendCode(),
-            decoration: InputDecoration(
-              hintText: 'hello@example.com',
-              hintStyle: const TextStyle(color: Colors.white),
-            ),
-            validator: (value) {
-              final email = value?.trim() ?? '';
-              if (email.isEmpty) {
-                return l10n.emailRequired;
-              }
-              if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(email)) {
-                return l10n.emailInvalid;
-              }
-              return null;
-            },
-          ),
-        ] else ...[
-          VerificationCodeField(
-            key: const ValueKey('code'),
-            controller: _codeController,
-            enabled: !_busy,
-            label: l10n.emailCode,
-            errorText: l10n.codeRequired,
-            hasError: _codeHasError,
-            errorCount: _codeErrorCount,
-            onChanged: _onCodeChanged,
-            onSubmitted: _verifyCode,
-          ),
-        ],
-        const SizedBox(height: 20),
-        FilledButton(
-          style: FilledButton.styleFrom(
-            backgroundColor: olive,
-            foregroundColor: Colors.white,
-            disabledBackgroundColor: const Color(0xFF465536),
-            disabledForegroundColor: const Color(0xFFCDD2C7),
-            textStyle: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-            ),
-            minimumSize: const Size.fromHeight(58),
-          ),
-          onPressed: _busy
-              ? null
-              : enteringCode
-              ? _verifyCode
-              : _sendCode,
-          child: Text(enteringCode ? l10n.verifyCode : l10n.emailMeCode),
-        ),
-        if (enteringCode) ...[
-          const SizedBox(height: 8),
-          TextButton(
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.white,
-              disabledForegroundColor: Colors.white54,
-              textStyle: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                decoration: !_busy && _resendSeconds == 0
-                    ? TextDecoration.underline
-                    : TextDecoration.none,
-              ),
-            ),
-            onPressed: _busy || _resendSeconds > 0 ? null : _sendCode,
-            child: Text(
-              _resendSeconds > 0
-                  ? l10n.resendIn(_resendSeconds)
-                  : l10n.resendCode,
-            ),
-          ),
-          TextButton(
-            onPressed: _busy ? null : _changeEmail,
-            child: Text(l10n.changeEmail),
-          ),
-        ],
-      ],
-      if (_busy) ...[
-        const SizedBox(height: 16),
-        const Center(child: CircularProgressIndicator()),
-      ],
-      if (_error != null) ...[
-        const SizedBox(height: 16),
-        Semantics(
-          liveRegion: true,
-          child: Text(
-            _error!,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: AppColors.error,
-              fontWeight: FontWeight.w600,
-              shadows: [Shadow(color: Colors.black, blurRadius: 6)],
-            ),
-          ),
-        ),
-      ],
-    ];
   }
 
   Future<void> _verifyCode() async {

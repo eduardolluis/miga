@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'screens/onboarding/onboarding_screen.dart';
-import 'screens/auth/auth_screen.dart';
+import 'screens/home/home_screen.dart';
 import 'services/auth_service.dart';
 
 import 'l10n/app_localizations.dart';
@@ -32,8 +32,11 @@ class MigaApp extends StatelessWidget {
       ),
       home: StreamBuilder<AuthState>(
         stream: authService?.changes,
-        builder: (context, snapshot) => authService?.session != null
-            ? AuthScreen(authService: authService)
+        builder: (context, _) => authService?.session != null
+            ? HomeScreen(
+                key: ValueKey(authService!.session!.user.id),
+                authService: authService,
+              )
             : OnboardingScreen(authService: authService),
       ),
     );

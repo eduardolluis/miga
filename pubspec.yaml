@@ -19,6 +19,7 @@ dependencies:
   google_sign_in_ios: ^6.3.2
   google_sign_in_platform_interface: ^3.1.0
   crypto: ^3.0.8
+  shared_preferences: ^2.5.6
 
 dev_dependencies:
   flutter_test:
@@ -39,3 +40,9 @@ flutter:
   assets:
     - assets/google.svg
     - assets/images/onboarding/
+    - assets/images/home/
+    - assets/fonts/OFL.txt
+  fonts:
+    - family: LiberationSerif
+      fonts:
+        - asset: assets/fonts/LiberationSerif-Regular.ttf

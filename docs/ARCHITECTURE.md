@@ -4,7 +4,7 @@
 
 Miga is a cross-platform mobile app built with Flutter for Android and iOS.
 
-The first version is planned to work without a user account or a custom backend. Recipes and initial app data will be bundled with the app, and user preferences will be stored on the device.
+The app uses Supabase Authentication for passwordless email and Google sign-in. Meal plans, weekly budgets, and grocery lists currently stay on the device, scoped to the signed-in account. Recipes and their images are bundled with the app.
 
 ## Current project structure
 
@@ -36,7 +36,7 @@ The initial recipe catalog will be included in the app. The first meal-planning 
 
 ### Local data
 
-The first version is planned to store preferences and saved plans on the device. Cloud sync and user accounts are outside the initial scope.
+`LocalMealPlanStore` stores meals by local calendar date and meal slot. `HomeDetailsStore` stores budgets by week and a grocery checklist. Both use `shared_preferences` with a separate key for each account. `HomeController` coordinates loading, selection, and saving; widgets handle presentation and editing. Failed saves leave the displayed data unchanged and allow retry. Cloud sync is not implemented.
 
 ### Maps and store locations
 

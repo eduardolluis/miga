@@ -62,10 +62,15 @@ flutter run --dart-define-from-file=supabase.env.json
    el código usa `Uri.base.origin` para regresar después de OAuth.
 
 El envío de un código o la selección de una cuenta de Google no se consideran un acceso
-exitoso: hace falta una sesión confirmada por Supabase. Por ahora, al entrar se
-muestra una confirmación de sesión con la opción de cerrarla; la pantalla principal
-de planificación todavía no está implementada. Al reiniciar se recupera la sesión
-que guarda `supabase_flutter`.
+exitoso: hace falta una sesión confirmada por Supabase. Al entrar se abre el Home
+con el resumen del día, el calendario semanal, recetas y perfil. El cierre de sesión
+está en Perfil. Al reiniciar se recupera la sesión que guarda `supabase_flutter`.
+
+El plan de comidas, el presupuesto semanal y la lista de compras se guardan en el
+dispositivo con `shared_preferences`, separados por cuenta. La planificación y el
+registro de gastos son manuales en esta versión. Las tiendas muestran un estado
+vacío hasta incorporar ubicaciones reales. Consulta [el diseño del Home](docs/home-design.md)
+para ver capturas, alcance y recursos gráficos.
 
 ### Validación pendiente con cuentas reales
 

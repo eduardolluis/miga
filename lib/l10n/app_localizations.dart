@@ -388,6 +388,438 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign in with Apple is not available yet.'**
   String get appleSignInUnavailable;
+
+  /// No description provided for @homeGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Make yourself at home.'**
+  String get homeGreeting;
+
+  /// No description provided for @homeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What’s cooking today?'**
+  String get homeTitle;
+
+  /// No description provided for @homeMealsPlanned.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} of 21 meals planned'**
+  String homeMealsPlanned(int count);
+
+  /// No description provided for @homeWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Your week'**
+  String get homeWeek;
+
+  /// No description provided for @homeToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get homeToday;
+
+  /// No description provided for @homeDayPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'On your table'**
+  String get homeDayPlan;
+
+  /// No description provided for @homeBreakfast.
+  ///
+  /// In en, this message translates to:
+  /// **'Breakfast'**
+  String get homeBreakfast;
+
+  /// No description provided for @homeLunch.
+  ///
+  /// In en, this message translates to:
+  /// **'Lunch'**
+  String get homeLunch;
+
+  /// No description provided for @homeDinner.
+  ///
+  /// In en, this message translates to:
+  /// **'Dinner'**
+  String get homeDinner;
+
+  /// No description provided for @homeEmptyMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Room for something good.'**
+  String get homeEmptyMeal;
+
+  /// No description provided for @homeAddMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a meal'**
+  String get homeAddMeal;
+
+  /// No description provided for @homeEditMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit meal'**
+  String get homeEditMeal;
+
+  /// No description provided for @homeMealName.
+  ///
+  /// In en, this message translates to:
+  /// **'What will you eat?'**
+  String get homeMealName;
+
+  /// No description provided for @homeMealHint.
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. rice with vegetables'**
+  String get homeMealHint;
+
+  /// No description provided for @homeMealRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a name for your meal.'**
+  String get homeMealRequired;
+
+  /// No description provided for @homeSaveMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Save meal'**
+  String get homeSaveMeal;
+
+  /// No description provided for @homeRemoveMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove meal'**
+  String get homeRemoveMeal;
+
+  /// No description provided for @homeStorageNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan is saved on this device.'**
+  String get homeStorageNotice;
+
+  /// No description provided for @homeLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn’t load your plan.'**
+  String get homeLoadError;
+
+  /// No description provided for @homeSaveError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn’t save your change. Please try again.'**
+  String get homeSaveError;
+
+  /// No description provided for @homeRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get homeRetry;
+
+  /// No description provided for @homeAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account'**
+  String get homeAccount;
+
+  /// No description provided for @homeSignOutError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn’t sign you out. Please try again.'**
+  String get homeSignOutError;
+
+  /// No description provided for @homeInspiration.
+  ///
+  /// In en, this message translates to:
+  /// **'A little mealtime inspiration'**
+  String get homeInspiration;
+
+  /// No description provided for @homeRecipeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lemon & herb salmon'**
+  String get homeRecipeTitle;
+
+  /// No description provided for @homeRecipeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple ingredients. Plenty of color.'**
+  String get homeRecipeSubtitle;
+
+  /// No description provided for @homeRecipeMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'30 min · 2 servings'**
+  String get homeRecipeMeta;
+
+  /// No description provided for @homeViewRecipe.
+  ///
+  /// In en, this message translates to:
+  /// **'View recipe'**
+  String get homeViewRecipe;
+
+  /// No description provided for @homeIngredients.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredients'**
+  String get homeIngredients;
+
+  /// No description provided for @homeRecipeIngredients.
+  ///
+  /// In en, this message translates to:
+  /// **'2 salmon fillets\n300 g baby potatoes\n2 cups broccoli\n1 lemon\n1 tablespoon olive oil\nHerbs, salt and pepper to taste'**
+  String get homeRecipeIngredients;
+
+  /// No description provided for @homePreparation.
+  ///
+  /// In en, this message translates to:
+  /// **'Method'**
+  String get homePreparation;
+
+  /// No description provided for @homeRecipeSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Preheat the oven to 200 °C. Cut the potatoes, toss with some of the oil and roast until starting to soften.\n\n2. Add the salmon and broccoli to the tray. Drizzle with the remaining oil, lemon and herbs.\n\n3. Bake until the fish is cooked through and the potatoes are tender. Serve with fresh lemon.'**
+  String get homeRecipeSteps;
+
+  /// No description provided for @homeUseRecipe.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to my plan'**
+  String get homeUseRecipe;
+
+  /// No description provided for @homeNavHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get homeNavHome;
+
+  /// No description provided for @homeNavPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan'**
+  String get homeNavPlan;
+
+  /// No description provided for @homeNavRecipes.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipes'**
+  String get homeNavRecipes;
+
+  /// No description provided for @homeNavProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get homeNavProfile;
+
+  /// No description provided for @homeViewPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'See plan'**
+  String get homeViewPlan;
+
+  /// No description provided for @homeEmptyHeroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your next meal,\nyour way.'**
+  String get homeEmptyHeroTitle;
+
+  /// No description provided for @homeEmptyHeroDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'No meal planned for this moment yet.'**
+  String get homeEmptyHeroDescription;
+
+  /// No description provided for @homeRecipeIdea.
+  ///
+  /// In en, this message translates to:
+  /// **'Get inspired'**
+  String get homeRecipeIdea;
+
+  /// No description provided for @homeTodayPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'YOUR DAILY PLAN'**
+  String get homeTodayPlan;
+
+  /// No description provided for @homeBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly budget'**
+  String get homeBudget;
+
+  /// No description provided for @homeBudgetEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Good food.\nA budget that fits.'**
+  String get homeBudgetEmptyTitle;
+
+  /// No description provided for @homeBudgetEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Set an amount for this week and track your grocery spending.'**
+  String get homeBudgetEmptyDescription;
+
+  /// No description provided for @homeSetBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a budget'**
+  String get homeSetBudget;
+
+  /// No description provided for @homeEditBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit budget'**
+  String get homeEditBudget;
+
+  /// No description provided for @homeBudgetLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly spending limit'**
+  String get homeBudgetLimit;
+
+  /// No description provided for @homeBudgetSpent.
+  ///
+  /// In en, this message translates to:
+  /// **'Recorded spending'**
+  String get homeBudgetSpent;
+
+  /// No description provided for @homeCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'Currency'**
+  String get homeCurrency;
+
+  /// No description provided for @homeBudgetValidation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter valid amounts. The budget must be greater than zero.'**
+  String get homeBudgetValidation;
+
+  /// No description provided for @homeBudgetOnTrack.
+  ///
+  /// In en, this message translates to:
+  /// **'Within your budget.'**
+  String get homeBudgetOnTrack;
+
+  /// No description provided for @homeBudgetOver.
+  ///
+  /// In en, this message translates to:
+  /// **'You’re over your budget.'**
+  String get homeBudgetOver;
+
+  /// No description provided for @homeSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get homeSave;
+
+  /// No description provided for @homeGroceryList.
+  ///
+  /// In en, this message translates to:
+  /// **'Grocery list'**
+  String get homeGroceryList;
+
+  /// No description provided for @homeGroceryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your list starts here.'**
+  String get homeGroceryEmpty;
+
+  /// No description provided for @homeGroceryDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Add what you need and check it off as you shop.'**
+  String get homeGroceryDescription;
+
+  /// No description provided for @homeGroceryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. tomatoes, 4'**
+  String get homeGroceryHint;
+
+  /// No description provided for @homeGroceryAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add item'**
+  String get homeGroceryAdd;
+
+  /// No description provided for @homeGroceryRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove item'**
+  String get homeGroceryRemove;
+
+  /// No description provided for @homeGroceryCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 item to pick up} other{{count} items to pick up}}'**
+  String homeGroceryCount(int count);
+
+  /// No description provided for @homeStores.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearby stores'**
+  String get homeStores;
+
+  /// No description provided for @homeStoresSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your next grocery stop'**
+  String get homeStoresSubtitle;
+
+  /// No description provided for @homeStoresEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No stores to show yet.'**
+  String get homeStoresEmpty;
+
+  /// No description provided for @homeStoresDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Get your list ready so you have everything at hand when you head out to shop.'**
+  String get homeStoresDescription;
+
+  /// No description provided for @homeProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your space in Miga'**
+  String get homeProfileTitle;
+
+  /// No description provided for @homeCalendarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your whole week.'**
+  String get homeCalendarTitle;
+
+  /// No description provided for @homeCalendarSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Breakfast, lunch and dinner, one day at a time.'**
+  String get homeCalendarSubtitle;
+
+  /// No description provided for @homePlannedDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Has planned meals'**
+  String get homePlannedDay;
+
+  /// No description provided for @homeEmptyDay.
+  ///
+  /// In en, this message translates to:
+  /// **'No planned meals'**
+  String get homeEmptyDay;
+
+  /// No description provided for @homeCarouselPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Show daily meal'**
+  String get homeCarouselPlan;
+
+  /// No description provided for @homeCarouselBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Show weekly budget'**
+  String get homeCarouselBudget;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
