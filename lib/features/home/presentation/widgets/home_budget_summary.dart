@@ -34,7 +34,7 @@ class HomeBudgetSummary extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(18, 18, 18, 12),
+          padding: const EdgeInsets.all(18),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -64,11 +64,7 @@ class HomeBudgetSummary extends StatelessWidget {
                           value == null
                               ? l10n.homeSetBudget
                               : '${value.format(value.spent)} / ${value.format(value.limit)}',
-                          style: const TextStyle(
-                            color: AppColors.muted,
-                            fontSize: 14,
-                            height: 1.4,
-                          ),
+                          style: const TextStyle(color: AppColors.muted, fontSize: 14, height: 1.4),
                         ),
                       ],
                     ),
@@ -80,20 +76,14 @@ class HomeBudgetSummary extends StatelessWidget {
               if (totals.priced > 0 && value != null) ...[
                 const SizedBox(height: 12),
                 Text(
-                  l10n.groceryEstimate(
-                    value.format(totals.subtotalCents / 100),
-                  ),
+                  l10n.groceryEstimate(value.format(totals.subtotalCents / 100)),
                   style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 5),
                 Text(
                   projected > value.limit
-                      ? l10n.budgetShoppingOver(
-                          value.format(projected - value.limit),
-                        )
-                      : l10n.budgetAfterShopping(
-                          value.format(value.limit - projected),
-                        ),
+                      ? l10n.budgetShoppingOver(value.format(projected - value.limit))
+                      : l10n.budgetAfterShopping(value.format(value.limit - projected)),
                   style: const TextStyle(color: AppColors.olive, height: 1.5),
                 ),
               ],
@@ -103,6 +93,7 @@ class HomeBudgetSummary extends StatelessWidget {
                   l10n.groceryPricesMissing(totals.missing),
                   style: const TextStyle(color: AppColors.muted, height: 1.4),
                 ),
+                const SizedBox(height: 10),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: FilledButton.tonalIcon(
@@ -110,10 +101,7 @@ class HomeBudgetSummary extends StatelessWidget {
                     style: FilledButton.styleFrom(
                       foregroundColor: AppColors.olive,
                       backgroundColor: const Color(0xFFE8EBDF),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                        vertical: 10,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                     ),
                     icon: const Icon(Icons.add, size: 18),
                     label: Text(l10n.groceryAddPrice),
@@ -126,9 +114,7 @@ class HomeBudgetSummary extends StatelessWidget {
                   value: (projected / value.limit).clamp(0.0, 1.0),
                   minHeight: 6,
                   borderRadius: BorderRadius.circular(6),
-                  color: projected > value.limit
-                      ? const Color(0xFFA34F36)
-                      : AppColors.olive,
+                  color: projected > value.limit ? const Color(0xFFA34F36) : AppColors.olive,
                   backgroundColor: const Color(0xFFE5E9DD),
                 ),
                 const SizedBox(height: 9),
