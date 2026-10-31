@@ -49,9 +49,7 @@ class _GroceryListState extends State<_GroceryList> {
     final name = _input.text.trim();
     if (name.isEmpty) return;
     setState(() {
-      if (!_items.any(
-        (item) => item.name.toLowerCase() == name.toLowerCase(),
-      )) {
+      if (!_items.any((item) => item.name.toLowerCase() == name.toLowerCase())) {
         _items.add(GroceryItem(name, currency: widget.currency));
       }
       _input.clear();
@@ -77,9 +75,8 @@ class _GroceryListState extends State<_GroceryList> {
     if (!mounted || index == null) return;
     final offer = await showDialog<SupermarketOffer>(
       context: context,
-      builder: (_) => SupermarketComparisonPage(
-        query: _items[index].offer?.product ?? _items[index].name,
-      ),
+      builder: (_) =>
+          SupermarketComparisonPage(query: _items[index].offer?.product ?? _items[index].name),
     );
     if (!mounted || offer == null) return;
     setState(() => _items[index] = _items[index].withOffer(offer));
@@ -94,11 +91,8 @@ class _GroceryListState extends State<_GroceryList> {
       );
     } catch (_) {}
     if (!opened && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context)!.homeMapsUnavailable),
-        ),
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.homeMapsUnavailable)));
     }
   }
 
@@ -106,18 +100,14 @@ class _GroceryListState extends State<_GroceryList> {
     var opened = false;
     try {
       opened = await launchUrl(
-        Uri.parse(
-          'https://proconsumidor.gob.do/sondeo-de-precios-canasta-de-precios-justos/',
-        ),
+        Uri.parse('https://proconsumidor.gob.do/sondeo-de-precios-canasta-de-precios-justos/'),
         mode: LaunchMode.externalApplication,
       );
     } catch (_) {}
     if (!opened && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context)!.groceryReferenceError),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.groceryReferenceError)));
     }
   }
 
@@ -143,10 +133,7 @@ class _GroceryListState extends State<_GroceryList> {
                 children: [
                   Text(
                     l10n.homeGroceryList,
-                    style: const TextStyle(
-                      fontFamily: 'LiberationSerif',
-                      fontSize: 28,
-                    ),
+                    style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 28),
                   ),
                   const SizedBox(height: 8),
                   Text(
@@ -188,32 +175,19 @@ class _GroceryListState extends State<_GroceryList> {
                         children: [
                           Text(
                             totals.priced > 0
-                                ? l10n.groceryEstimate(
-                                    money.formatCents(totals.subtotalCents),
-                                  )
+                                ? l10n.groceryEstimate(money.formatCents(totals.subtotalCents))
                                 : l10n.groceryPricesNeeded,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 17,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
                           ),
                           const SizedBox(height: 8),
                           Text(
                             totals.missing > 0
-                                ? l10n.groceryPriceCoverage(
-                                    totals.missing,
-                                    widget.currency,
-                                  )
+                                ? l10n.groceryPriceCoverage(totals.missing, widget.currency)
                                 : l10n.groceryEstimateNote,
-                            style: const TextStyle(
-                              color: AppColors.muted,
-                              height: 1.4,
-                            ),
+                            style: const TextStyle(color: AppColors.muted, height: 1.4),
                           ),
                           const SizedBox(height: 16),
-                          Text(
-                            l10n.groceryCartProgress(checked, _items.length),
-                          ),
+                          Text(l10n.groceryCartProgress(checked, _items.length)),
                           const SizedBox(height: 8),
                           TweenAnimationBuilder<double>(
                             tween: Tween(end: checked / _items.length),
@@ -259,11 +233,8 @@ class _GroceryListState extends State<_GroceryList> {
                               ),
                             ),
                             subtitle: itemPriceLabel(_items[index], l10n),
-                            onChanged: (value) => setState(
-                              () => _items[index] = _items[index].withChecked(
-                                value!,
-                              ),
-                            ),
+                            onChanged: (value) =>
+                                setState(() => _items[index] = _items[index].withChecked(value!)),
                           ),
                         ),
                         TextButton(
@@ -274,15 +245,12 @@ class _GroceryListState extends State<_GroceryList> {
                                 ? l10n.storeRefreshPrice
                                 : _items[index].totalCents == null
                                 ? l10n.groceryAddPrice
-                                : _items[index].formatCents(
-                                    _items[index].totalCents!,
-                                  ),
+                                : _items[index].formatCents(_items[index].totalCents!),
                           ),
                         ),
                         IconButton(
                           tooltip: l10n.homeGroceryRemove,
-                          onPressed: () =>
-                              setState(() => _items.removeAt(index)),
+                          onPressed: () => setState(() => _items.removeAt(index)),
                           icon: const Icon(Icons.close, size: 19),
                         ),
                       ],
@@ -291,12 +259,9 @@ class _GroceryListState extends State<_GroceryList> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: TextButton.icon(
-                          onPressed: () =>
-                              _storeMap(_items[index].offer!.store),
+                          onPressed: () => _storeMap(_items[index].offer!.store),
                           icon: const Icon(Icons.map_outlined, size: 18),
-                          label: Text(
-                            '${_items[index].offer!.store.label} · ${l10n.storeNearby}',
-                          ),
+                          label: Text('${_items[index].offer!.store.label} · ${l10n.storeNearby}'),
                         ),
                       ),
                   ],
@@ -307,11 +272,7 @@ class _GroceryListState extends State<_GroceryList> {
                   ),
                   Text(
                     l10n.groceryReferenceNote,
-                    style: const TextStyle(
-                      color: AppColors.muted,
-                      fontSize: 12,
-                      height: 1.4,
-                    ),
+                    style: const TextStyle(color: AppColors.muted, fontSize: 12, height: 1.4),
                   ),
                   const SizedBox(height: 20),
                 ],
@@ -336,8 +297,7 @@ class _GroceryListState extends State<_GroceryList> {
     );
   }
 
-  Widget? itemPriceLabel(GroceryItem item, AppLocalizations l10n) =>
-      item.unitPriceCents == null
+  Widget? itemPriceLabel(GroceryItem item, AppLocalizations l10n) => item.unitPriceCents == null
       ? null
       : Text(
           '${item.quantity} × ${item.formatCents(item.unitPriceCents!)} · ${item.offer != null
@@ -377,10 +337,7 @@ class _GroceryCompareItemDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14),
                 onTap: () => Navigator.of(context).pop(index),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 12,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                   child: Row(
                     children: [
                       CircleAvatar(
@@ -394,27 +351,16 @@ class _GroceryCompareItemDialog extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              item.name,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                            Text(item.name, style: const TextStyle(fontWeight: FontWeight.w600)),
                             const SizedBox(height: 3),
                             Text(
                               price,
-                              style: const TextStyle(
-                                color: AppColors.muted,
-                                fontSize: 12,
-                              ),
+                              style: const TextStyle(color: AppColors.muted, fontSize: 12),
                             ),
                           ],
                         ),
                       ),
-                      const Icon(
-                        Icons.chevron_right_rounded,
-                        color: AppColors.olive,
-                      ),
+                      const Icon(Icons.chevron_right_rounded, color: AppColors.olive),
                     ],
                   ),
                 ),
