@@ -62,8 +62,7 @@ import 'app_localizations_es.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -71,8 +70,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -84,18 +82,17 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('es'),
+    Locale('es')
   ];
 
   /// No description provided for @onboardingIntro.
@@ -1280,6 +1277,12 @@ abstract class AppLocalizations {
   /// **'Search prices'**
   String get storeSearch;
 
+  /// No description provided for @storePriceSmartNote.
+  ///
+  /// In en, this message translates to:
+  /// **'PriceSmart: Los Prados club (6801), membership required. Pack prices; other clubs may differ.'**
+  String get storePriceSmartNote;
+
   /// No description provided for @storeCompareNote.
   ///
   /// In en, this message translates to:
@@ -1345,10 +1348,141 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Refresh price'**
   String get storeRefreshPrice;
+
+  /// No description provided for @groceryEstimating.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimating…'**
+  String get groceryEstimating;
+
+  /// No description provided for @groceryEstimateUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimate unavailable'**
+  String get groceryEstimateUnavailable;
+
+  /// No description provided for @groceryAutoEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated purchase: one package per quantity. Review size and brand.'**
+  String get groceryAutoEstimate;
+
+  /// No description provided for @groceryItemAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Product added successfully'**
+  String get groceryItemAdded;
+
+  /// No description provided for @budgetRecipeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Meals for your budget'**
+  String get budgetRecipeTitle;
+
+  /// No description provided for @budgetRecipeCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipe prices are available in Dominican pesos. Set your budget to DOP to compare.'**
+  String get budgetRecipeCurrency;
+
+  /// No description provided for @budgetMealAllowance.
+  ///
+  /// In en, this message translates to:
+  /// **'Target per meal: {amount}. Remaining budget divided across the meal slots left this week.'**
+  String budgetMealAllowance(Object amount);
+
+  /// No description provided for @budgetCostNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated ingredients consumed, not full shopping packages. Kitchen quantities and produce weights are approximate. Prices may combine stores; buying all packages can cost more.'**
+  String get budgetCostNote;
+
+  /// No description provided for @budgetNoConfirmedFit.
+  ///
+  /// In en, this message translates to:
+  /// **'No fully priced meal fits this target yet. Review costs or adjust your budget.'**
+  String get budgetNoConfirmedFit;
+
+  /// No description provided for @budgetRecipeTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'≈ {amount} for {servings} servings'**
+  String budgetRecipeTotal(Object amount, Object servings);
+
+  /// No description provided for @budgetRecipePartial.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing prices or package sizes: {count} ingredients.'**
+  String budgetRecipePartial(Object count);
+
+  /// No description provided for @budgetRecipeFits.
+  ///
+  /// In en, this message translates to:
+  /// **'Within your meal target'**
+  String get budgetRecipeFits;
+
+  /// No description provided for @budgetRecipeOver.
+  ///
+  /// In en, this message translates to:
+  /// **'Above your meal target'**
+  String get budgetRecipeOver;
+
+  /// No description provided for @budgetCostDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredient costs'**
+  String get budgetCostDetails;
+
+  /// No description provided for @budgetPieces.
+  ///
+  /// In en, this message translates to:
+  /// **'pieces'**
+  String get budgetPieces;
+
+  /// No description provided for @budgetMealTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Target per meal'**
+  String get budgetMealTarget;
+
+  /// No description provided for @budgetTargetNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on your remaining budget and the meals left this week.'**
+  String get budgetTargetNote;
+
+  /// No description provided for @budgetKnownSubtotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtotal of priced ingredients · incomplete'**
+  String get budgetKnownSubtotal;
+
+  /// No description provided for @budgetPriceCoverage.
+  ///
+  /// In en, this message translates to:
+  /// **'{priced} of {total} ingredients priced'**
+  String budgetPriceCoverage(Object priced, Object total);
+
+  /// No description provided for @budgetEstimateInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'How this estimate works'**
+  String get budgetEstimateInfo;
+
+  /// No description provided for @budgetPackPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference package: {amount}'**
+  String budgetPackPrice(Object amount);
+
+  /// No description provided for @budgetRecipeEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated recipe total'**
+  String get budgetRecipeEstimate;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -1357,26 +1491,25 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'es'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'es':
-      return AppLocalizationsEs();
+    case 'en': return AppLocalizationsEn();
+    case 'es': return AppLocalizationsEs();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

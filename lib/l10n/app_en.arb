@@ -309,6 +309,7 @@
   "groceryEstimateNote": "Based on your prices and any dated references you chose. Actual checkout prices may differ.",
   "storeCompare": "Compare supermarket prices",
   "storeSearch": "Search prices",
+  "storePriceSmartNote": "PriceSmart: Los Prados club (6801), membership required. Pack prices; other clubs may differ.",
   "storeCompareNote": "Online catalog prices by supermarket. Choose the exact brand and package size; different products are not a like-for-like comparison. Physical-store prices, offers and stock may differ.",
   "storeNearby": "See nearby stores",
   "storeUnavailable": "Live prices are unavailable for this store. You can still see its nearby locations.",
@@ -326,5 +327,27 @@
       }
     }
   },
-  "storeRefreshPrice": "Refresh price"
+  "storeRefreshPrice": "Refresh price",
+  "groceryEstimating": "Estimating…",
+  "groceryEstimateUnavailable": "Estimate unavailable",
+  "groceryAutoEstimate": "Estimated purchase: one package per quantity. Review size and brand.",
+  "groceryItemAdded": "Product added successfully",
+  "budgetRecipeTitle": "Meals for your budget",
+  "budgetRecipeCurrency": "Recipe prices are available in Dominican pesos. Set your budget to DOP to compare.",
+  "budgetMealAllowance": "Target per meal: {amount}. Remaining budget divided across the meal slots left this week.",
+  "budgetCostNote": "Estimated ingredients consumed, not full shopping packages. Kitchen quantities and produce weights are approximate. Prices may combine stores; buying all packages can cost more.",
+  "budgetNoConfirmedFit": "No fully priced meal fits this target yet. Review costs or adjust your budget.",
+  "budgetRecipeTotal": "≈ {amount} for {servings} servings",
+  "budgetRecipePartial": "Missing prices or package sizes: {count} ingredients.",
+  "budgetRecipeFits": "Within your meal target",
+  "budgetRecipeOver": "Above your meal target",
+  "budgetCostDetails": "Ingredient costs",
+  "budgetPieces": "pieces",
+  "budgetMealTarget": "Target per meal",
+  "budgetTargetNote": "Based on your remaining budget and the meals left this week.",
+  "budgetKnownSubtotal": "Subtotal of priced ingredients · incomplete",
+  "budgetPriceCoverage": "{priced} of {total} ingredients priced",
+  "budgetEstimateInfo": "How this estimate works",
+  "budgetPackPrice": "Reference package: {amount}",
+  "budgetRecipeEstimate": "Estimated recipe total"
 }

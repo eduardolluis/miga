@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:miga/core/theme/app_colors.dart';
+import 'package:miga/features/groceries/data/grocery_price_estimator.dart';
 import 'package:miga/core/theme/app_theme.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
 import 'package:miga/features/groceries/presentation/sheets/grocery_price_editor.dart';
@@ -14,6 +17,7 @@ Future<List<GroceryItem>?> showGroceryList(
   BuildContext context,
   List<GroceryItem> items, {
   String currency = 'DOP',
+  Future<SupermarketOffer?> Function(String)? estimate,
 }) => showModalBottomSheet<List<GroceryItem>>(
   context: context,
   isScrollControlled: true,
@@ -22,14 +26,19 @@ Future<List<GroceryItem>?> showGroceryList(
   backgroundColor: AppColors.cream,
   builder: (context) => Theme(
     data: AppTheme.household(Theme.of(context)),
-    child: _GroceryList(items: items, currency: currency),
+    child: _GroceryList(items: items, currency: currency, estimate: estimate),
   ),
 );
 
 class _GroceryList extends StatefulWidget {
-  const _GroceryList({required this.items, required this.currency});
+  const _GroceryList({
+    required this.items,
+    required this.currency,
+    this.estimate,
+  });
   final List<GroceryItem> items;
   final String currency;
+  final Future<SupermarketOffer?> Function(String)? estimate;
 
   @override
   State<_GroceryList> createState() => _GroceryListState();
@@ -38,6 +47,74 @@ class _GroceryList extends StatefulWidget {
 class _GroceryListState extends State<_GroceryList> {
   final _input = TextEditingController();
   late final _items = List<GroceryItem>.of(widget.items);
+
+  final _estimator = GroceryPriceEstimator();
+  final _loading = <String>{};
+  final _manual = <String>{};
+  final _attempted = <String>{};
+  final _requests = <String, Future<void>>{};
+  bool _saving = false;
+  bool _added = false;
+
+  @override
+  void initState() {
+    super.initState();
+    unawaited(_estimateExisting());
+  }
+
+  Future<void> _estimateExisting() async {
+    // Bound concurrent catalog lookups for longer shopping lists.
+    final names = _items.map((item) => item.name).toList();
+    for (var offset = 0; offset < names.length && mounted; offset += 2) {
+      await Future.wait(names.skip(offset).take(2).map(_estimate));
+    }
+  }
+
+  Future<void> _estimate(String name) {
+    return _requests[name] ??= _estimateItem(name).whenComplete(() {
+      _requests.remove(name);
+    });
+  }
+
+  Future<void> _estimateItem(String name) async {
+    final index = _items.indexWhere((item) => item.name == name);
+    if (!mounted ||
+        index < 0 ||
+        _loading.contains(name) ||
+        _manual.contains(name) ||
+        _attempted.contains(name)) {
+      return;
+    }
+    final original = _items[index];
+    if (original.currency != 'DOP' ||
+        (original.unitPriceCents != null &&
+            !(original.offer?.isStale ?? false))) {
+      return;
+    }
+    _attempted.add(name);
+    setState(() => _loading.add(name));
+    SupermarketOffer? offer;
+    try {
+      offer = await (widget.estimate ?? _estimator.estimate)(name);
+    } catch (_) {}
+    if (!mounted) return;
+    setState(() {
+      _loading.remove(name);
+      final current = _items.indexWhere((item) => item.name == name);
+      if (current < 0 ||
+          _manual.contains(name) ||
+          offer == null ||
+          offer.isStale) {
+        return;
+      }
+      final item = _items[current];
+      if (item.currency == original.currency &&
+          item.unitPriceCents == original.unitPriceCents &&
+          identical(item.offer, original.offer)) {
+        _items[current] = item.withOffer(offer, estimated: true);
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -48,15 +125,33 @@ class _GroceryListState extends State<_GroceryList> {
   void _add() {
     final name = _input.text.trim();
     if (name.isEmpty) return;
+    var added = false;
     setState(() {
-      if (!_items.any((item) => item.name.toLowerCase() == name.toLowerCase())) {
+      if (!_items.any(
+        (item) => item.name.toLowerCase() == name.toLowerCase(),
+      )) {
         _items.add(GroceryItem(name, currency: widget.currency));
+        added = true;
       }
       _input.clear();
     });
+    if (added) setState(() => _added = true);
+    unawaited(_estimate(name));
+  }
+
+  Future<void> _save() async {
+    if (_input.text.trim().isNotEmpty) {
+      _add();
+      return;
+    }
+    setState(() => _saving = true);
+    await _estimateExisting();
+    if (mounted) Navigator.of(context).pop(List<GroceryItem>.of(_items));
   }
 
   Future<void> _editPrice(int index) async {
+    final name = _items[index].name;
+    _manual.add(name);
     final item = await showDialog<GroceryItem>(
       context: context,
       builder: (_) => GroceryPriceEditor(item: _items[index]),
@@ -75,11 +170,15 @@ class _GroceryListState extends State<_GroceryList> {
     if (!mounted || index == null) return;
     final offer = await showDialog<SupermarketOffer>(
       context: context,
-      builder: (_) =>
-          SupermarketComparisonPage(query: _items[index].offer?.product ?? _items[index].name),
+      builder: (_) => SupermarketComparisonPage(
+        query: _items[index].offer?.product ?? _items[index].name,
+      ),
     );
     if (!mounted || offer == null) return;
-    setState(() => _items[index] = _items[index].withOffer(offer));
+    setState(() {
+      _manual.add(_items[index].name);
+      _items[index] = _items[index].withOffer(offer);
+    });
   }
 
   Future<void> _storeMap(Supermarket store) async {
@@ -91,8 +190,11 @@ class _GroceryListState extends State<_GroceryList> {
       );
     } catch (_) {}
     if (!opened && mounted) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.homeMapsUnavailable)));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.homeMapsUnavailable),
+        ),
+      );
     }
   }
 
@@ -100,14 +202,18 @@ class _GroceryListState extends State<_GroceryList> {
     var opened = false;
     try {
       opened = await launchUrl(
-        Uri.parse('https://proconsumidor.gob.do/sondeo-de-precios-canasta-de-precios-justos/'),
+        Uri.parse(
+          'https://proconsumidor.gob.do/sondeo-de-precios-canasta-de-precios-justos/',
+        ),
         mode: LaunchMode.externalApplication,
       );
     } catch (_) {}
     if (!opened && mounted) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.groceryReferenceError)));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.groceryReferenceError),
+        ),
+      );
     }
   }
 
@@ -133,7 +239,10 @@ class _GroceryListState extends State<_GroceryList> {
                 children: [
                   Text(
                     l10n.homeGroceryList,
-                    style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 28),
+                    style: const TextStyle(
+                      fontFamily: 'LiberationSerif',
+                      fontSize: 28,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Text(
@@ -151,6 +260,8 @@ class _GroceryListState extends State<_GroceryList> {
                     controller: _input,
                     maxLength: 100,
                     textCapitalization: TextCapitalization.sentences,
+                    textInputAction: TextInputAction.done,
+                    onChanged: (_) => setState(() => _added = false),
                     onSubmitted: (_) => _add(),
                     decoration: InputDecoration(
                       labelText: l10n.homeGroceryAdd,
@@ -162,6 +273,17 @@ class _GroceryListState extends State<_GroceryList> {
                       ),
                     ),
                   ),
+                  if (_added)
+                    Semantics(
+                      liveRegion: true,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                          l10n.groceryItemAdded,
+                          style: const TextStyle(color: AppColors.olive),
+                        ),
+                      ),
+                    ),
                   const SizedBox(height: 12),
                   if (_items.isNotEmpty) ...[
                     Container(
@@ -175,19 +297,32 @@ class _GroceryListState extends State<_GroceryList> {
                         children: [
                           Text(
                             totals.priced > 0
-                                ? l10n.groceryEstimate(money.formatCents(totals.subtotalCents))
+                                ? l10n.groceryEstimate(
+                                    money.formatCents(totals.subtotalCents),
+                                  )
                                 : l10n.groceryPricesNeeded,
-                            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 17,
+                            ),
                           ),
                           const SizedBox(height: 8),
                           Text(
                             totals.missing > 0
-                                ? l10n.groceryPriceCoverage(totals.missing, widget.currency)
+                                ? l10n.groceryPriceCoverage(
+                                    totals.missing,
+                                    widget.currency,
+                                  )
                                 : l10n.groceryEstimateNote,
-                            style: const TextStyle(color: AppColors.muted, height: 1.4),
+                            style: const TextStyle(
+                              color: AppColors.muted,
+                              height: 1.4,
+                            ),
                           ),
                           const SizedBox(height: 16),
-                          Text(l10n.groceryCartProgress(checked, _items.length)),
+                          Text(
+                            l10n.groceryCartProgress(checked, _items.length),
+                          ),
                           const SizedBox(height: 8),
                           TweenAnimationBuilder<double>(
                             tween: Tween(end: checked / _items.length),
@@ -233,24 +368,30 @@ class _GroceryListState extends State<_GroceryList> {
                               ),
                             ),
                             subtitle: itemPriceLabel(_items[index], l10n),
-                            onChanged: (value) =>
-                                setState(() => _items[index] = _items[index].withChecked(value!)),
+                            onChanged: (value) => setState(
+                              () => _items[index] = _items[index].withChecked(
+                                value!,
+                              ),
+                            ),
                           ),
                         ),
                         TextButton(
                           key: ValueKey('grocery-price-$index'),
                           onPressed: () => _editPrice(index),
                           child: Text(
-                            (_items[index].offer?.isStale ?? false)
+                            _loading.contains(_items[index].name)
+                                ? l10n.groceryEstimating
+                                : (_items[index].offer?.isStale ?? false)
                                 ? l10n.storeRefreshPrice
                                 : _items[index].totalCents == null
-                                ? l10n.groceryAddPrice
-                                : _items[index].formatCents(_items[index].totalCents!),
+                                ? l10n.groceryEstimateUnavailable
+                                : '${_items[index].isEstimated ? '≈ ' : ''}${_items[index].formatCents(_items[index].totalCents!)}',
                           ),
                         ),
                         IconButton(
                           tooltip: l10n.homeGroceryRemove,
-                          onPressed: () => setState(() => _items.removeAt(index)),
+                          onPressed: () =>
+                              setState(() => _items.removeAt(index)),
                           icon: const Icon(Icons.close, size: 19),
                         ),
                       ],
@@ -259,9 +400,12 @@ class _GroceryListState extends State<_GroceryList> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: TextButton.icon(
-                          onPressed: () => _storeMap(_items[index].offer!.store),
+                          onPressed: () =>
+                              _storeMap(_items[index].offer!.store),
                           icon: const Icon(Icons.map_outlined, size: 18),
-                          label: Text('${_items[index].offer!.store.label} · ${l10n.storeNearby}'),
+                          label: Text(
+                            '${_items[index].offer!.store.label} · ${l10n.storeNearby}',
+                          ),
                         ),
                       ),
                   ],
@@ -272,7 +416,11 @@ class _GroceryListState extends State<_GroceryList> {
                   ),
                   Text(
                     l10n.groceryReferenceNote,
-                    style: const TextStyle(color: AppColors.muted, fontSize: 12, height: 1.4),
+                    style: const TextStyle(
+                      color: AppColors.muted,
+                      fontSize: 12,
+                      height: 1.4,
+                    ),
                   ),
                   const SizedBox(height: 20),
                 ],
@@ -283,11 +431,14 @@ class _GroceryListState extends State<_GroceryList> {
               child: SizedBox(
                 width: double.infinity,
                 child: FilledButton(
-                  onPressed: () {
-                    _add();
-                    Navigator.of(context).pop(List<GroceryItem>.of(_items));
-                  },
-                  child: Text(l10n.homeSave),
+                  onPressed: _saving ? null : _save,
+                  child: Text(
+                    _saving
+                        ? l10n.groceryEstimating
+                        : _input.text.trim().isNotEmpty
+                        ? l10n.homeGroceryAdd
+                        : l10n.homeSave,
+                  ),
                 ),
               ),
             ),
@@ -297,10 +448,11 @@ class _GroceryListState extends State<_GroceryList> {
     );
   }
 
-  Widget? itemPriceLabel(GroceryItem item, AppLocalizations l10n) => item.unitPriceCents == null
+  Widget? itemPriceLabel(GroceryItem item, AppLocalizations l10n) =>
+      item.unitPriceCents == null
       ? null
       : Text(
-          '${item.quantity} × ${item.formatCents(item.unitPriceCents!)} · ${item.offer != null
+          '${item.isEstimated ? '${l10n.groceryAutoEstimate}\n' : ''}${item.quantity} × ${item.formatCents(item.unitPriceCents!)} · ${item.offer != null
               ? '${item.offer!.presentation}\n${item.offer!.store.label} · ${item.offer!.observedAt.toLocal().toIso8601String().substring(0, 10)}'
               : item.reference == null
               ? l10n.groceryYourPrice
@@ -328,7 +480,7 @@ class _GroceryCompareItemDialog extends StatelessWidget {
           itemBuilder: (context, index) {
             final item = items[index];
             final price = item.unitPriceCents == null
-                ? l10n.groceryAddPrice
+                ? l10n.groceryEstimateUnavailable
                 : item.formatCents(item.unitPriceCents!);
             return Material(
               color: const Color(0xFFF3F4EC),
@@ -337,7 +489,10 @@ class _GroceryCompareItemDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14),
                 onTap: () => Navigator.of(context).pop(index),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 12,
+                  ),
                   child: Row(
                     children: [
                       CircleAvatar(
@@ -351,16 +506,27 @@ class _GroceryCompareItemDialog extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(item.name, style: const TextStyle(fontWeight: FontWeight.w600)),
+                            Text(
+                              item.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
                             const SizedBox(height: 3),
                             Text(
                               price,
-                              style: const TextStyle(color: AppColors.muted, fontSize: 12),
+                              style: const TextStyle(
+                                color: AppColors.muted,
+                                fontSize: 12,
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      const Icon(Icons.chevron_right_rounded, color: AppColors.olive),
+                      const Icon(
+                        Icons.chevron_right_rounded,
+                        color: AppColors.olive,
+                      ),
                     ],
                   ),
                 ),

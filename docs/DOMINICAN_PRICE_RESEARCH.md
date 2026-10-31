@@ -1,6 +1,6 @@
 # Dominican supermarket prices: research and prototype
 
-Research date: 2026-10-30. This is a technical prototype, not an assertion that
+Research date: 2026-10-30; Jumbo and PriceSmart follow-up: 2026-10-31. This is a technical prototype, not an assertion that
 retailer data is licensed for commercial redistribution or that checkout error
 has been demonstrated to stay below 10%.
 
@@ -11,7 +11,8 @@ has been demonstrated to stay below 10%.
 | Pro Consumidor / Datos Abiertos | CKAN API and CSV work. JSON export lacks useful price columns. | Periodic observations by establishment category, not live branch quotes. The inspected observations were July–September 2026. Catalog declares ODbL. |
 | Nacional | Public Magento GraphQL catalog returns product/SKU, stock status, final price and currency. | Default Nacional online store context. Check store context and currency before accepting a quote. Commercial reuse requires a written CCN agreement under published terms. |
 | Sirena | Public VTEX catalog returns SKU, EAN where present, seller, offer price and availability. | Catalog may return HTTP 206 for a successful partial result set. Published terms restrict commercial/automated use without permission and distinguish online from physical-store prices. |
-| Jumbo | Tested GraphQL hostname returned Nacional's default store configuration. | Do not relabel Nacional data as Jumbo. No Jumbo price adapter is enabled. Nearby-map search remains available. |
+| Jumbo | Magento GraphQL works with the public `Store: jumbo` header; default requests return Nacional. | Validate the response base URL is Jumbo before accepting DOP prices. Same CCN commercial agreement restrictions. |
+| PriceSmart | Public storefront search middleware returns Dominican catalog offers for Los Prados club 6801 without login or API keys. | Prices are pack amounts in minor units, with club-specific stock. Membership required for shopping. Published terms restrict harvesting and commercial redistribution; permission is unresolved. |
 | Supermix | Category content was blocked in the direct check; robots excludes API/search paths. | No scraping workaround or fabricated provider was added. |
 | SupermercadosRD | Price comparison exists, but no public integration contract was verified. | Published terms prohibit unauthorized automated extraction and mass commercial redistribution. Not used as a feed. |
 | ReefAPI | Documentation advertises VTEX lookup, API-key authentication and credit billing. | Coverage and commercial permission for specific Dominican chains were not independently verified. No account, purchase or integration was created. |
@@ -90,3 +91,33 @@ maximum error.
 - [SupermercadosRD terms](https://supermercadosrd.com/terminos)
 - [ReefAPI VTEX documentation](https://reefapi.com/docs/vtex)
 - [ReefAPI pricing and authentication](https://reefapi.com/docs)
+
+## Jumbo and PriceSmart verification (2026-10-31)
+
+Jumbo's storefront identifies its store code as `jumbo`. The GraphQL request
+explicitly supplies that Store header and validates the returned HTTPS base host.
+Without the header the endpoint returns Nacional, which must be rejected.
+Live searches returned 11 rice, 12 milk-related and 6 egg offers for Jumbo.
+
+PriceSmart uses a public POST search at
+`https://www.pricesmart.com/api/br_discovery/getProductsByKeyword` with
+`view_id=DO`, the Spanish catalog and club fields `*_DO_6801`. No retailer keys,
+member credentials or browser identifiers are copied into the app. Generic
+`price` is zero; `price_DO_6801` is already cents with `fractionDigits=2`.
+The adapter accepts positive integer DOP amounts, in-stock/available products,
+and excludes flagged weighted products. It shows the full pack and Los Prados
+reference club, not a fabricated per-unit estimate or all-branch guarantee.
+
+Live searches returned 8 rice, 12 milk-related and 4 egg offers for PriceSmart.
+Examples: Jumbo SKU 2047670 rice 20 lb RD$934.95; PriceSmart SKU 363516 rice
+50 lb RD$2,020.00. These are different packages and not a same-product savings
+comparison. PriceSmart membership cost is not included in grocery totals.
+
+These are undocumented storefront interfaces, not contracted partner APIs.
+PriceSmart's terms sections 6–7 limit personal/noncommercial use and prohibit
+harvesting and commercial redistribution. An agreement is needed before a
+commercial rollout; technical availability does not supply permission.
+
+- [PriceSmart Dominican storefront](https://www.pricesmart.com/es-do)
+- [PriceSmart terms and conditions](https://www.pricesmart.com/en-do/terms-and-conditions)
+- [PriceSmart Dominican local policies](https://www.pricesmart.com/es-do/politicas-locales)

@@ -309,6 +309,7 @@
   "groceryEstimateNote": "Basado en tus precios y las referencias fechadas que elegiste. El precio al pagar puede cambiar.",
   "storeCompare": "Comparar precios de supermercados",
   "storeSearch": "Buscar precios",
+  "storePriceSmartNote": "PriceSmart: club Los Prados (6801), requiere membresía. Precios por empaque; pueden variar en otros clubes.",
   "storeCompareNote": "Precios del catálogo online por supermercado. Elige la marca y presentación exactas; productos distintos no son una comparación equivalente. Los precios, ofertas y existencias en tienda física pueden variar.",
   "storeNearby": "Ver tiendas cercanas",
   "storeUnavailable": "No hay precios en vivo disponibles para esta tienda. Puedes ver sus ubicaciones cercanas.",
@@ -326,5 +327,27 @@
       }
     }
   },
-  "storeRefreshPrice": "Actualizar precio"
+  "storeRefreshPrice": "Actualizar precio",
+  "groceryEstimating": "Estimando…",
+  "groceryEstimateUnavailable": "Sin estimación",
+  "groceryAutoEstimate": "Compra estimada: un empaque por cantidad. Revisa tamaño y marca.",
+  "groceryItemAdded": "Producto añadido correctamente",
+  "budgetRecipeTitle": "Platos para tu presupuesto",
+  "budgetRecipeCurrency": "Los precios de recetas están en pesos dominicanos. Usa DOP para compararlos.",
+  "budgetMealAllowance": "Objetivo por comida: {amount}. Presupuesto restante dividido entre las comidas que quedan esta semana.",
+  "budgetCostNote": "Estimación de ingredientes consumidos, no de empaques completos. Cantidades de cocina y pesos de vegetales aproximados. Puede combinar tiendas; comprar todos los empaques puede costar más.",
+  "budgetNoConfirmedFit": "Todavía no hay un plato con todos los precios que encaje en este objetivo. Revisa los costos o ajusta el presupuesto.",
+  "budgetRecipeTotal": "≈ {amount} para {servings} porciones",
+  "budgetRecipePartial": "Faltan precios o tamaños de empaque: {count} ingredientes.",
+  "budgetRecipeFits": "Dentro de tu objetivo por comida",
+  "budgetRecipeOver": "Supera tu objetivo por comida",
+  "budgetCostDetails": "Costo por ingrediente",
+  "budgetPieces": "unidades",
+  "budgetMealTarget": "Objetivo por comida",
+  "budgetTargetNote": "Según tu presupuesto restante y las comidas que quedan esta semana.",
+  "budgetKnownSubtotal": "Subtotal de ingredientes con precio · incompleto",
+  "budgetPriceCoverage": "{priced} de {total} ingredientes con precio",
+  "budgetEstimateInfo": "Cómo se calcula la estimación",
+  "budgetPackPrice": "Empaque de referencia: {amount}",
+  "budgetRecipeEstimate": "Total estimado de la receta"
 }

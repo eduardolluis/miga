@@ -1,7 +1,8 @@
 enum Supermarket {
   nacional('Nacional', 'Supermercados Nacional'),
   sirena('Sirena', 'Sirena supermercado'),
-  jumbo('Jumbo', 'Jumbo supermercado');
+  jumbo('Jumbo', 'Jumbo supermercado'),
+  pricesmart('PriceSmart', 'PriceSmart');
 
   const Supermarket(this.label, this.mapsQuery);
   final String label;

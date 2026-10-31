@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miga/features/home/presentation/widgets/budget_recipe_suggestions.dart';
 
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/home/application/home_controller.dart';
@@ -61,7 +62,11 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 25, height: 1.1),
+                style: const TextStyle(
+                  fontFamily: 'LiberationSerif',
+                  fontSize: 25,
+                  height: 1.1,
+                ),
               ),
             ),
             PopupMenuButton<String>(
@@ -72,7 +77,10 @@ class HomeScreen extends StatelessWidget {
               itemBuilder: (_) => [
                 PopupMenuItem(value: 'auto', child: Text(l10n.homeUseTime)),
                 for (final slot in MealSlot.values)
-                  PopupMenuItem(value: slot.name, child: Text(slot.label(l10n))),
+                  PopupMenuItem(
+                    value: slot.name,
+                    child: Text(slot.label(l10n)),
+                  ),
               ],
               icon: Container(
                 width: 40,
@@ -81,7 +89,11 @@ class HomeScreen extends StatelessWidget {
                   color: const Color(0xFFE8EBDF),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(Icons.tune_rounded, size: 22, color: AppColors.olive),
+                child: const Icon(
+                  Icons.tune_rounded,
+                  size: 22,
+                  color: AppColors.olive,
+                ),
               ),
             ),
           ],
@@ -89,10 +101,15 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           controller.automaticSlot ? l10n.homeIdeasNow : l10n.homeIdeasManual,
-          style: const TextStyle(color: AppColors.muted, fontSize: 13, height: 1.4),
+          style: const TextStyle(
+            color: AppColors.muted,
+            fontSize: 13,
+            height: 1.4,
+          ),
         ),
         const SizedBox(height: 18),
-        if (controller.loading || controller.saving) const LinearProgressIndicator(),
+        if (controller.loading || controller.saving)
+          const LinearProgressIndicator(),
         if (controller.loadFailed) ...[
           Text(l10n.homeLoadError, textAlign: TextAlign.center),
           TextButton(onPressed: controller.load, child: Text(l10n.homeRetry)),
@@ -109,7 +126,10 @@ class HomeScreen extends StatelessWidget {
           onSelected: controller.selectDate,
           hasMeals: controller.hasMeals,
           onViewPlan: onPlan,
-          meal: controller.mealFor(controller.selectedDate, controller.selectedSlot),
+          meal: controller.mealFor(
+            controller.selectedDate,
+            controller.selectedSlot,
+          ),
           slotLabel: controller.selectedSlot.label(l10n),
           onEditMeal: enabled ? onEditMeal : null,
         ),
@@ -120,6 +140,15 @@ class HomeScreen extends StatelessWidget {
           onTap: enabled ? onBudget : null,
           onAddPrices: enabled ? onGroceries : null,
         ),
+        if (controller.budget != null) ...[
+          const SizedBox(height: 16),
+          BudgetRecipeSuggestions(
+            budget: controller.budget!,
+            now: controller.now,
+            recipes: RecipeCatalog.forSlot(controller.selectedSlot),
+            onRecipe: onRecipe,
+          ),
+        ],
         const SizedBox(height: 16),
         HomeQuickActions(
           pendingItems: controller.pendingGroceries,

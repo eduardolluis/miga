@@ -8,20 +8,27 @@ import 'package:miga/features/stores/data/nearby_stores.dart';
 import 'package:miga/l10n/app_localizations.dart';
 
 class SupermarketComparisonPage extends StatefulWidget {
-  const SupermarketComparisonPage({super.key, required this.query, this.search, this.openMaps});
+  const SupermarketComparisonPage({
+    super.key,
+    required this.query,
+    this.search,
+    this.openMaps,
+  });
   final String query;
   final Future<List<StoreSearchResult>> Function(String)? search;
   final Future<bool> Function(Supermarket, String)? openMaps;
 
   @override
-  State<SupermarketComparisonPage> createState() => _SupermarketComparisonPageState();
+  State<SupermarketComparisonPage> createState() =>
+      _SupermarketComparisonPageState();
 }
 
 class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
   late final _input = TextEditingController(text: widget.query);
   final _source = SupermarketPriceSource();
   late Future<List<StoreSearchResult>> _request = _search();
-  Future<List<StoreSearchResult>> _search() => (widget.search ?? _source.search)(_input.text);
+  Future<List<StoreSearchResult>> _search() =>
+      (widget.search ?? _source.search)(_input.text);
 
   @override
   void dispose() {
@@ -38,20 +45,28 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
               NearbyStores.openForStore(store.mapsQuery, language));
     } catch (_) {}
     if (!opened && mounted) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.homeMapsUnavailable)));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.homeMapsUnavailable),
+        ),
+      );
     }
   }
 
   Future<void> _product(SupermarketOffer offer) async {
     var opened = false;
     try {
-      opened = await launchUrl(Uri.parse(offer.sourceUrl), mode: LaunchMode.externalApplication);
+      opened = await launchUrl(
+        Uri.parse(offer.sourceUrl),
+        mode: LaunchMode.externalApplication,
+      );
     } catch (_) {}
     if (!opened && mounted) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.groceryReferenceError)));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.groceryReferenceError),
+        ),
+      );
     }
   }
 
@@ -110,21 +125,41 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
                         Expanded(
                           child: Text(
                             result.store.label,
-                            style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 27),
+                            style: const TextStyle(
+                              fontFamily: 'LiberationSerif',
+                              fontSize: 27,
+                            ),
                           ),
                         ),
                         IconButton(
                           key: ValueKey('store-map-${result.store.name}'),
                           tooltip: l10n.storeNearby,
                           onPressed: () => _maps(result.store),
-                          icon: const Icon(Icons.map_outlined, color: AppColors.olive),
+                          icon: const Icon(
+                            Icons.map_outlined,
+                            color: AppColors.olive,
+                          ),
                         ),
                       ],
                     ),
+                    if (result.store == Supermarket.pricesmart)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: Text(
+                          l10n.storePriceSmartNote,
+                          style: const TextStyle(
+                            color: AppColors.muted,
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
                     if (result.unavailable)
                       Text(
                         l10n.storeUnavailable,
-                        style: const TextStyle(color: AppColors.muted, height: 1.5),
+                        style: const TextStyle(
+                          color: AppColors.muted,
+                          height: 1.5,
+                        ),
                       )
                     else if (result.offers.isEmpty)
                       Text(l10n.storeNoProducts),
@@ -152,7 +187,10 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
                             if (offer.presentation != offer.product)
                               Text(
                                 offer.presentation,
-                                style: const TextStyle(color: AppColors.muted, height: 1.4),
+                                style: const TextStyle(
+                                  color: AppColors.muted,
+                                  height: 1.4,
+                                ),
                               ),
                             const SizedBox(height: 12),
                             Text(

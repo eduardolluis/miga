@@ -31,7 +31,8 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
   @override
   void didUpdateWidget(HomeHeroCarousel oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.recipes.map((r) => r.id).join(',') != widget.recipes.map((r) => r.id).join(',')) {
+    if (oldWidget.recipes.map((r) => r.id).join(',') !=
+        widget.recipes.map((r) => r.id).join(',')) {
       _page = widget.recipes.length * 1000;
       if (_controller.hasClients) _controller.jumpToPage(_page);
     }
@@ -57,7 +58,11 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
       children: [
         LayoutBuilder(
           builder: (context, constraints) => SizedBox(
-            height: homeHeroHeight(context, constraints.maxWidth, widget.recipes),
+            height: homeHeroHeight(
+              context,
+              constraints.maxWidth,
+              widget.recipes,
+            ),
             child: PageView.builder(
               key: const ValueKey('home-hero-carousel'),
               controller: _controller,
@@ -66,8 +71,12 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
                 final recipe = widget.recipes[index % widget.recipes.length];
                 return MealHeroCard(
                   recipe: recipe,
-                  onOpen: widget.onOpenRecipe == null ? null : () => widget.onOpenRecipe!(recipe),
-                  onPlan: widget.onPlanRecipe == null ? null : () => widget.onPlanRecipe!(recipe),
+                  onOpen: widget.onOpenRecipe == null
+                      ? null
+                      : () => widget.onOpenRecipe!(recipe),
+                  onPlan: widget.onPlanRecipe == null
+                      ? null
+                      : () => widget.onPlanRecipe!(recipe),
                 );
               },
             ),

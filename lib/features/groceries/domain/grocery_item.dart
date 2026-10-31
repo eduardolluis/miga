@@ -10,6 +10,7 @@ class GroceryItem {
     this.currency = 'DOP',
     this.reference,
     this.offer,
+    this.isEstimated = false,
   });
 
   final String name;
@@ -19,6 +20,7 @@ class GroceryItem {
   final String currency;
   final GroceryPriceReference? reference;
   final SupermarketOffer? offer;
+  final bool isEstimated;
   int? get totalCents => unitPriceCents == null || (offer?.isStale ?? false)
       ? null
       : unitPriceCents! * quantity;
@@ -31,16 +33,19 @@ class GroceryItem {
     currency: currency,
     reference: reference,
     offer: offer,
+    isEstimated: isEstimated,
   );
 
-  GroceryItem withOffer(SupermarketOffer value) => GroceryItem(
-    name,
-    checked: checked,
-    quantity: quantity,
-    currency: value.currency,
-    unitPriceCents: value.priceCents,
-    offer: value,
-  );
+  GroceryItem withOffer(SupermarketOffer value, {bool estimated = false}) =>
+      GroceryItem(
+        name,
+        checked: checked,
+        quantity: quantity,
+        currency: value.currency,
+        unitPriceCents: value.priceCents,
+        offer: value,
+        isEstimated: estimated,
+      );
 
   String formatCents(int cents) =>
       '${currency == 'DOP' ? 'RD\$' : 'US\$'}${(cents / 100).toStringAsFixed(2)}';
@@ -49,6 +54,7 @@ class GroceryItem {
     'name': name,
     'checked': checked,
     'quantity': quantity,
+    'isEstimated': isEstimated,
     'currency': currency,
     'unitPriceCents': ?unitPriceCents,
     if (reference != null) 'reference': reference!.toJson(),
@@ -57,6 +63,7 @@ class GroceryItem {
 
   factory GroceryItem.fromJson(Map<String, dynamic> json) => GroceryItem(
     json['name'] as String,
+    isEstimated: json['isEstimated'] as bool? ?? false,
     checked: json['checked'] as bool,
     unitPriceCents: json['unitPriceCents'] as int?,
     quantity: json['quantity'] as int? ?? 1,
