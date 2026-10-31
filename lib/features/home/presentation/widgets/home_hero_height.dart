@@ -18,7 +18,8 @@ double homeHeroHeight(
     final painter = TextPainter(
       text: TextSpan(
         text: text,
-        style: DefaultTextStyle.of(context).style.merge(style),
+        // Match the default text style installed by MealHeroCard's Material.
+        style: Theme.of(context).textTheme.bodyMedium!.merge(style),
       ),
       textDirection: Directionality.of(context),
       textScaler: scaler,
@@ -55,5 +56,31 @@ double homeHeroHeight(
         ),
       )
       .reduce(math.max);
-  return 190 + 36 + titleHeight + 8 + metaHeight + 14 + buttonHeight + 4;
+  final nutritionHeight = recipes.any((r) => r.nutrition != null)
+      ? recipes
+            .where((r) => r.nutrition != null)
+            .map(
+              (r) =>
+                  measure(
+                    l10n.recipeNutrition(
+                      r.nutrition!.calories,
+                      r.nutrition!.proteinGrams,
+                      r.nutrition!.carbsGrams,
+                    ),
+                    MealHeroCard.nutritionStyle,
+                    width - 40,
+                  ) +
+                  6,
+            )
+            .fold<double>(0, math.max)
+      : 0.0;
+  return 190 +
+      36 +
+      titleHeight +
+      8 +
+      metaHeight +
+      nutritionHeight +
+      14 +
+      buttonHeight +
+      4;
 }

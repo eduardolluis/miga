@@ -28,6 +28,11 @@ class MealHeroCard extends StatelessWidget {
     height: 1.4,
     color: AppColors.muted,
   );
+  static const nutritionStyle = TextStyle(
+    fontSize: 12,
+    color: AppColors.muted,
+    fontWeight: FontWeight.w500,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +111,17 @@ class MealHeroCard extends StatelessWidget {
                     '${l10n.recipeMinutes(recipe.minutes)}  ·  ${l10n.recipeServings(recipe.servings)}',
                     style: metaStyle,
                   ),
+                  if (recipe.nutrition != null) ...[
+                    const SizedBox(height: 6),
+                    Text(
+                      l10n.recipeNutrition(
+                        recipe.nutrition!.calories,
+                        recipe.nutrition!.proteinGrams,
+                        recipe.nutrition!.carbsGrams,
+                      ),
+                      style: nutritionStyle,
+                    ),
+                  ],
                   const Spacer(),
                   const SizedBox(height: 14),
                   FilledButton(

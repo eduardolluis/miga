@@ -36,6 +36,17 @@ class GroceryItem {
     isEstimated: isEstimated,
   );
 
+  GroceryItem withQuantity(int value) => GroceryItem(
+    name,
+    checked: checked,
+    unitPriceCents: unitPriceCents,
+    quantity: value,
+    currency: currency,
+    reference: reference,
+    offer: offer,
+    isEstimated: isEstimated,
+  );
+
   GroceryItem withOffer(SupermarketOffer value, {bool estimated = false}) =>
       GroceryItem(
         name,

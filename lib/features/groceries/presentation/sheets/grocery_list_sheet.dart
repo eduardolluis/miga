@@ -18,6 +18,7 @@ Future<List<GroceryItem>?> showGroceryList(
   List<GroceryItem> items, {
   String currency = 'DOP',
   Future<SupermarketOffer?> Function(String)? estimate,
+  List<GroceryItem> Function(List<GroceryItem>)? onGenerateFromPlan,
 }) => showModalBottomSheet<List<GroceryItem>>(
   context: context,
   isScrollControlled: true,
@@ -26,7 +27,12 @@ Future<List<GroceryItem>?> showGroceryList(
   backgroundColor: AppColors.cream,
   builder: (context) => Theme(
     data: AppTheme.household(Theme.of(context)),
-    child: _GroceryList(items: items, currency: currency, estimate: estimate),
+    child: _GroceryList(
+      items: items,
+      currency: currency,
+      estimate: estimate,
+      onGenerateFromPlan: onGenerateFromPlan,
+    ),
   ),
 );
 
@@ -35,10 +41,12 @@ class _GroceryList extends StatefulWidget {
     required this.items,
     required this.currency,
     this.estimate,
+    this.onGenerateFromPlan,
   });
   final List<GroceryItem> items;
   final String currency;
   final Future<SupermarketOffer?> Function(String)? estimate;
+  final List<GroceryItem> Function(List<GroceryItem>)? onGenerateFromPlan;
 
   @override
   State<_GroceryList> createState() => _GroceryListState();
@@ -137,6 +145,27 @@ class _GroceryListState extends State<_GroceryList> {
     });
     if (added) setState(() => _added = true);
     unawaited(_estimate(name));
+  }
+
+  void _generateFromPlan() {
+    if (widget.onGenerateFromPlan == null) return;
+    final items = widget.onGenerateFromPlan!(List<GroceryItem>.of(_items));
+    final l10n = AppLocalizations.of(context)!;
+    setState(() {
+      _items
+        ..clear()
+        ..addAll(items);
+    });
+    unawaited(_estimateExisting());
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          items.isEmpty
+              ? l10n.groceryNoPlannedMeals
+              : l10n.groceryGeneratedCount(items.length),
+        ),
+      ),
+    );
   }
 
   Future<void> _save() async {
@@ -250,10 +279,22 @@ class _GroceryListState extends State<_GroceryList> {
                     style: const TextStyle(color: AppColors.muted, height: 1.5),
                   ),
                   const SizedBox(height: 12),
-                  OutlinedButton.icon(
-                    onPressed: _items.isEmpty ? null : _comparePrices,
-                    icon: const Icon(Icons.compare_arrows_rounded),
-                    label: Text(l10n.storeCompare),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      if (widget.onGenerateFromPlan != null)
+                        FilledButton.tonalIcon(
+                          onPressed: _generateFromPlan,
+                          icon: const Icon(Icons.auto_awesome, size: 18),
+                          label: Text(l10n.groceryGenerateFromPlan),
+                        ),
+                      OutlinedButton.icon(
+                        onPressed: _items.isEmpty ? null : _comparePrices,
+                        icon: const Icon(Icons.compare_arrows_rounded),
+                        label: Text(l10n.storeCompare),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 20),
                   TextField(
@@ -375,6 +416,66 @@ class _GroceryListState extends State<_GroceryList> {
                             ),
                           ),
                         ),
+                        IconButton(
+                          tooltip: l10n.homeGroceryRemove,
+                          onPressed: () =>
+                              setState(() => _items.removeAt(index)),
+                          icon: const Icon(Icons.close, size: 19),
+                        ),
+                      ],
+                    ),
+                    Wrap(
+                      spacing: 12,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: const Icon(
+                                Icons.remove_circle_outline,
+                                size: 18,
+                              ),
+                              visualDensity: VisualDensity.compact,
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(
+                                minWidth: 26,
+                                minHeight: 26,
+                              ),
+                              onPressed: _items[index].quantity > 1
+                                  ? () => setState(
+                                      () => _items[index] = _items[index]
+                                          .withQuantity(
+                                            _items[index].quantity - 1,
+                                          ),
+                                    )
+                                  : null,
+                            ),
+                            Text(
+                              '${_items[index].quantity}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                              ),
+                            ),
+                            IconButton(
+                              icon: const Icon(
+                                Icons.add_circle_outline,
+                                size: 18,
+                              ),
+                              visualDensity: VisualDensity.compact,
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(
+                                minWidth: 26,
+                                minHeight: 26,
+                              ),
+                              onPressed: () => setState(
+                                () => _items[index] = _items[index]
+                                    .withQuantity(_items[index].quantity + 1),
+                              ),
+                            ),
+                          ],
+                        ),
                         TextButton(
                           key: ValueKey('grocery-price-$index'),
                           onPressed: () => _editPrice(index),
@@ -387,12 +488,6 @@ class _GroceryListState extends State<_GroceryList> {
                                 ? l10n.groceryEstimateUnavailable
                                 : '${_items[index].isEstimated ? '≈ ' : ''}${_items[index].formatCents(_items[index].totalCents!)}',
                           ),
-                        ),
-                        IconButton(
-                          tooltip: l10n.homeGroceryRemove,
-                          onPressed: () =>
-                              setState(() => _items.removeAt(index)),
-                          icon: const Icon(Icons.close, size: 19),
                         ),
                       ],
                     ),

@@ -104,10 +104,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         : '${first[0].toUpperCase()}${first.substring(1)}';
   }
 
-  Future<void> _save(Future<bool> Function() action) async {
-    if (!mounted) return;
+  Future<bool> _save(Future<bool> Function() action) async {
+    if (!mounted) return false;
     final success = await action();
-    if (!mounted) return;
+    if (!mounted) return success;
     if (success) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
     } else {
@@ -122,6 +122,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         ),
       );
     }
+    return success;
   }
 
   Future<void> _editMeal(
@@ -138,7 +139,15 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       suggestion: suggestion,
     );
     if (!mounted || result == null) return;
-    await _save(() => _controller.saveMeal(date, slot, result));
+    final saved = await _save(() => _controller.saveMeal(date, slot, result));
+    if (!mounted || !saved || result.isEmpty) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(AppLocalizations.of(context)!.mealAddedSuccess),
+        duration: const Duration(seconds: 2),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
   }
 
   Future<void> _openRecipe(Recipe recipe) async {
@@ -148,7 +157,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     final add = await showRecipeDetails(
       context,
       recipe,
-      onAddIngredients: () => _addIngredients(recipe),
+      onAddIngredients: _addIngredients,
     );
     if (!mounted || add != true) return;
     await _editMeal(
@@ -173,16 +182,19 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       context,
       _controller.details.groceries,
       currency: _controller.budget?.currency ?? 'DOP',
+      onGenerateFromPlan: (items) =>
+          _controller.generateGroceriesFromPlannedMeals(
+            existingItems: items,
+            languageCode: Localizations.localeOf(context).languageCode,
+            currency: _controller.budget?.currency ?? 'DOP',
+          ),
     );
     if (!mounted || items == null) return;
     await _save(() => _controller.saveGroceries(items));
   }
 
-  Future<bool> _addIngredients(Recipe recipe) async {
+  Future<bool> _addIngredients(List<String> ingredients) async {
     if (!_controller.canEdit) return false;
-    final ingredients = recipe
-        .contentFor(Localizations.localeOf(context).languageCode)
-        .ingredients;
     final items = List<GroceryItem>.of(_controller.details.groceries);
     for (final ingredient in ingredients) {
       if (!items.any(
@@ -230,6 +242,44 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     );
   }
 
+  Future<void> _copyDay(DateTime fromDate) async {
+    if (!_controller.canEdit) return;
+    final l10n = AppLocalizations.of(context)!;
+    final dates = MaterialLocalizations.of(context);
+    final targetDate = await showDialog<DateTime>(
+      context: context,
+      builder: (ctx) => SimpleDialog(
+        title: Text(l10n.planCopyDayTo(dates.formatShortMonthDay(fromDate))),
+        children: [
+          for (final date in _controller.week)
+            if (!DateUtils.isSameDay(date, fromDate))
+              SimpleDialogOption(
+                onPressed: () => Navigator.of(ctx).pop(date),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Text(dates.formatFullDate(date)),
+                ),
+              ),
+        ],
+      ),
+    );
+    if (!mounted || targetDate == null) return;
+    final success = await _save(
+      () => _controller.copyDayMeals(fromDate, targetDate),
+    );
+    if (mounted && success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            l10n.planCopySuccess(dates.formatShortMonthDay(targetDate)),
+          ),
+          duration: const Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+  }
+
   Future<void> _signOut() async {
     if (_signingOut) return;
     setState(() => _signingOut = true);
@@ -269,6 +319,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       mealFor: _controller.mealFor,
       onRetry: _controller.load,
       onEditMeal: _editMeal,
+      onCopyDay: _copyDay,
     ),
     AppTab.recipes => RecipesPage(
       onOpenRecipe: _controller.canEdit ? _openRecipe : null,

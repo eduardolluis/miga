@@ -17,6 +17,9 @@ class HomeWeek extends StatefulWidget {
     required this.slotLabel,
     required this.onEditMeal,
     this.onViewPlan,
+    this.mealCount = 0,
+    this.remainingBudget,
+    this.todayMeal,
   });
   final DateTime today;
   final DateTime selectedDate;
@@ -26,6 +29,9 @@ class HomeWeek extends StatefulWidget {
   final String slotLabel;
   final VoidCallback? onEditMeal;
   final VoidCallback? onViewPlan;
+  final int mealCount;
+  final String? remainingBudget;
+  final String? todayMeal;
 
   @override
   State<HomeWeek> createState() => _HomeWeekState();
@@ -97,6 +103,75 @@ class _HomeWeekState extends State<HomeWeek> {
               ),
             ],
           ),
+          const SizedBox(height: 6),
+          Wrap(
+            spacing: 8,
+            runSpacing: 6,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF3F4EC),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  l10n.homeMealsPlanned(widget.mealCount),
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.olive,
+                  ),
+                ),
+              ),
+              if (widget.remainingBudget != null)
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF3F4EC),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    '${widget.remainingBudget} ${l10n.localeName.startsWith('es') ? 'restante' : 'remaining'}',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.olive,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+          if (widget.mealCount == 0) ...[
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: const Color(0xFFF9FAF6),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.line),
+              ),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.info_outline_rounded,
+                    size: 18,
+                    color: AppColors.olive,
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      l10n.homeWeekEmpty,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: AppColors.muted,
+                        height: 1.3,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
           const SizedBox(height: 14),
           SingleChildScrollView(
             controller: _scroll,

@@ -731,10 +731,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get budgetPieces => 'unidades';
 
   @override
-  String get budgetMealTarget => 'Objetivo por comida';
+  String get budgetMealTarget => 'Presupuesto sugerido por comida';
 
   @override
-  String get budgetTargetNote => 'Según tu presupuesto restante y las comidas que quedan esta semana.';
+  String get budgetTargetNote => 'Basado en tu presupuesto semanal restante.';
 
   @override
   String get budgetKnownSubtotal => 'Subtotal de ingredientes con precio · incompleto';
@@ -754,4 +754,72 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get budgetRecipeEstimate => 'Total estimado de la receta';
+
+  @override
+  String get homeWeekEmpty => 'Tu semana está vacía. Añade tu primera comida para empezar a planificar.';
+
+  @override
+  String recipeNutrition(int calories, int protein, int carbs) {
+    return '$calories kcal · ${protein}g proteínas · ${carbs}g carbohidratos';
+  }
+
+  @override
+  String recipeCostPerServing(String amount) {
+    return '≈ $amount por porción';
+  }
+
+  @override
+  String recipePantryBreakdown(int total, int have, int missing) {
+    return '$total ingredientes necesarios: $have en casa · $missing por comprar';
+  }
+
+  @override
+  String get recipeAtHome => 'En casa';
+
+  @override
+  String get recipeToBuy => 'Por comprar';
+
+  @override
+  String recipeAddMissingToGroceries(int count) {
+    return 'Añadir $count faltantes a la lista';
+  }
+
+  @override
+  String get mealAddedSuccess => 'Comida añadida a tu plan ✓';
+
+  @override
+  String get planCopyDay => 'Copiar menú del día';
+
+  @override
+  String planCopyDayTo(String day) {
+    return 'Copiar menú de $day a:';
+  }
+
+  @override
+  String planCopySuccess(String day) {
+    return 'Menú copiado a $day ✓';
+  }
+
+  @override
+  String get groceryGenerateFromPlan => 'Generar desde el menú semanal';
+
+  @override
+  String groceryGeneratedCount(int count) {
+    return 'Se agregaron $count ingredientes de tu plan semanal';
+  }
+
+  @override
+  String get groceryNoPlannedMeals => 'No tienes comidas planificadas aún. Añade comidas para generar tu lista.';
+
+  @override
+  String get budgetThreeLimit => 'Presupuesto semanal: Cuánto quiero gastar';
+
+  @override
+  String get budgetThreeSpent => 'Gasto real: Cuánto he gastado realmente';
+
+  @override
+  String get budgetThreeEstimated => 'Costos estimados: Estimación de ingredientes';
+
+  @override
+  String get budgetDistinctionTip => 'El gasto real se mantiene separado de los costos estimados.';
 }

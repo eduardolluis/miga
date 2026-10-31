@@ -62,6 +62,12 @@ class ProPage extends StatelessWidget {
                       icon: Icons.shopping_bag_outlined,
                       title: l10n.proFreeShopping,
                     ),
+                    _Benefit(
+                      icon: Icons.account_balance_wallet_outlined,
+                      title: l10n.localeName.startsWith('es')
+                          ? 'Presupuesto semanal y costos estimados'
+                          : 'Weekly budget and estimated meal costs',
+                    ),
                   ],
                 ),
                 const SizedBox(height: 16),
@@ -76,6 +82,15 @@ class ProPage extends StatelessWidget {
                       description: l10n.proAutomaticPlansDescription,
                     ),
                     _Benefit(
+                      icon: Icons.recommend_outlined,
+                      title: l10n.localeName.startsWith('es')
+                          ? 'Recomendaciones personalizadas'
+                          : 'Personalized recommendations',
+                      description: l10n.localeName.startsWith('es')
+                          ? 'Sugerencias adaptadas a tus gustos y presupuesto familiar.'
+                          : 'Suggestions tailored to your tastes and family budget.',
+                    ),
+                    _Benefit(
                       icon: Icons.kitchen_outlined,
                       title: l10n.proPantryPlans,
                       description: l10n.proPantryPlansDescription,
@@ -84,6 +99,15 @@ class ProPage extends StatelessWidget {
                       icon: Icons.people_outline_rounded,
                       title: l10n.proSharedLists,
                       description: l10n.proSharedListsDescription,
+                    ),
+                    _Benefit(
+                      icon: Icons.insights_outlined,
+                      title: l10n.localeName.startsWith('es')
+                          ? 'Análisis y optimización de gastos'
+                          : 'Spending analysis & budget optimization',
+                      description: l10n.localeName.startsWith('es')
+                          ? 'Sustituciones inteligentes para ahorrar sin perder calidad.'
+                          : 'Smart substitutions to save without losing quality.',
                     ),
                   ],
                 ),

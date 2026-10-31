@@ -16,6 +16,7 @@ class MealPlanPage extends StatelessWidget {
     required this.mealFor,
     required this.onRetry,
     required this.onEditMeal,
+    this.onCopyDay,
   });
   final List<DateTime> week;
   final int mealCount;
@@ -25,6 +26,7 @@ class MealPlanPage extends StatelessWidget {
   final String? Function(DateTime date, MealSlot slot) mealFor;
   final VoidCallback onRetry;
   final void Function(DateTime date, MealSlot slot) onEditMeal;
+  final void Function(DateTime fromDate)? onCopyDay;
 
   @override
   Widget build(BuildContext context) {
@@ -55,16 +57,60 @@ class MealPlanPage extends StatelessWidget {
         if (loadFailed) ...[
           Text(l10n.homeLoadError),
           TextButton(onPressed: onRetry, child: Text(l10n.homeRetry)),
-        ] else if (!loading)
+        ] else if (!loading) ...[
+          if (mealCount == 0) ...[
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFEFDF9),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: AppColors.line),
+              ),
+              child: Column(
+                children: [
+                  const Icon(
+                    Icons.calendar_today_outlined,
+                    size: 32,
+                    color: AppColors.olive,
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    l10n.homeWeekEmpty,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: AppColors.muted,
+                      height: 1.4,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
           for (final date in week) ...[
             Padding(
-              padding: const EdgeInsets.only(top: 10, bottom: 14),
-              child: Text(
-                MaterialLocalizations.of(context).formatFullDate(date),
-                style: const TextStyle(
-                  fontFamily: 'LiberationSerif',
-                  fontSize: 22,
-                ),
+              padding: const EdgeInsets.only(top: 10, bottom: 8),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      MaterialLocalizations.of(context).formatFullDate(date),
+                      style: const TextStyle(
+                        fontFamily: 'LiberationSerif',
+                        fontSize: 22,
+                      ),
+                    ),
+                  ),
+                  if (canEdit &&
+                      onCopyDay != null &&
+                      MealSlot.values.any((s) => mealFor(date, s) != null))
+                    TextButton.icon(
+                      onPressed: () => onCopyDay!(date),
+                      icon: const Icon(Icons.copy_rounded, size: 16),
+                      label: Text(l10n.planCopyDay),
+                    ),
+                ],
               ),
             ),
             for (final slot in MealSlot.values)
@@ -75,6 +121,7 @@ class MealPlanPage extends StatelessWidget {
               ),
             const SizedBox(height: 14),
           ],
+        ],
       ],
     );
   }

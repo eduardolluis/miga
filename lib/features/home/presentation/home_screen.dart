@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(24, 18, 24, 28),
       children: [
         HomeHeader(onProfile: onProfile, now: controller.now, name: userName),
-        const SizedBox(height: 26),
+        const SizedBox(height: 16),
         Row(
           children: [
             Expanded(
@@ -126,6 +126,14 @@ class HomeScreen extends StatelessWidget {
           onSelected: controller.selectDate,
           hasMeals: controller.hasMeals,
           onViewPlan: onPlan,
+          mealCount: controller.mealCount,
+          remainingBudget: controller.budget?.format(
+            controller.budget!.limit - controller.budget!.spent,
+          ),
+          todayMeal: controller.mealFor(
+            controller.today,
+            controller.selectedSlot,
+          ),
           meal: controller.mealFor(
             controller.selectedDate,
             controller.selectedSlot,

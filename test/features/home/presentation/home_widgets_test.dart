@@ -88,6 +88,15 @@ void main() {
             ),
           );
           await tester.pumpAndSettle();
+          // Reveal the strip vertically without scrolling its selected day
+          // horizontally; the empty-state message can grow at larger text sizes.
+          await tester.ensureVisible(
+            find.descendant(
+              of: find.byType(HomeWeek),
+              matching: find.byType(SingleChildScrollView),
+            ),
+          );
+          await tester.pumpAndSettle();
           expect(
             find.byKey(ValueKey('home-day-${date.weekday}')).hitTestable(),
             findsOneWidget,

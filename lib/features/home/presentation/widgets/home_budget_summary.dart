@@ -141,6 +141,14 @@ class HomeBudgetSummary extends StatelessWidget {
                       : l10n.homeBudgetOnTrack,
                   style: const TextStyle(color: AppColors.muted, fontSize: 12),
                 ),
+                const SizedBox(height: 6),
+                Text(
+                  l10n.budgetDistinctionTip,
+                  style: const TextStyle(
+                    color: AppColors.muted,
+                    fontSize: 11,
+                  ),
+                ),
               ],
             ],
           ),

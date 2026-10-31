@@ -1442,13 +1442,13 @@ abstract class AppLocalizations {
   /// No description provided for @budgetMealTarget.
   ///
   /// In en, this message translates to:
-  /// **'Target per meal'**
+  /// **'Suggested budget per meal'**
   String get budgetMealTarget;
 
   /// No description provided for @budgetTargetNote.
   ///
   /// In en, this message translates to:
-  /// **'Based on your remaining budget and the meals left this week.'**
+  /// **'Based on your remaining weekly budget.'**
   String get budgetTargetNote;
 
   /// No description provided for @budgetKnownSubtotal.
@@ -1480,6 +1480,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Estimated recipe total'**
   String get budgetRecipeEstimate;
+
+  /// No description provided for @homeWeekEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your week is looking empty. Add your first meal to start planning.'**
+  String get homeWeekEmpty;
+
+  /// No description provided for @recipeNutrition.
+  ///
+  /// In en, this message translates to:
+  /// **'{calories} kcal · {protein}g protein · {carbs}g carbs'**
+  String recipeNutrition(int calories, int protein, int carbs);
+
+  /// No description provided for @recipeCostPerServing.
+  ///
+  /// In en, this message translates to:
+  /// **'≈ {amount} per serving'**
+  String recipeCostPerServing(String amount);
+
+  /// No description provided for @recipePantryBreakdown.
+  ///
+  /// In en, this message translates to:
+  /// **'{total} ingredients needed: {have} at home · {missing} to buy'**
+  String recipePantryBreakdown(int total, int have, int missing);
+
+  /// No description provided for @recipeAtHome.
+  ///
+  /// In en, this message translates to:
+  /// **'At home'**
+  String get recipeAtHome;
+
+  /// No description provided for @recipeToBuy.
+  ///
+  /// In en, this message translates to:
+  /// **'To buy'**
+  String get recipeToBuy;
+
+  /// No description provided for @recipeAddMissingToGroceries.
+  ///
+  /// In en, this message translates to:
+  /// **'Add {count} missing items to grocery list'**
+  String recipeAddMissingToGroceries(int count);
+
+  /// No description provided for @mealAddedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Meal added to your plan ✓'**
+  String get mealAddedSuccess;
+
+  /// No description provided for @planCopyDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy day\'s menu'**
+  String get planCopyDay;
+
+  /// No description provided for @planCopyDayTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy {day}\'s menu to:'**
+  String planCopyDayTo(String day);
+
+  /// No description provided for @planCopySuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Menu copied to {day} ✓'**
+  String planCopySuccess(String day);
+
+  /// No description provided for @groceryGenerateFromPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate from weekly plan'**
+  String get groceryGenerateFromPlan;
+
+  /// No description provided for @groceryGeneratedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Added {count} ingredients from your weekly plan'**
+  String groceryGeneratedCount(int count);
+
+  /// No description provided for @groceryNoPlannedMeals.
+  ///
+  /// In en, this message translates to:
+  /// **'No meals planned yet. Add meals to your plan to generate groceries.'**
+  String get groceryNoPlannedMeals;
+
+  /// No description provided for @budgetThreeLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly budget: What I want to spend'**
+  String get budgetThreeLimit;
+
+  /// No description provided for @budgetThreeSpent.
+  ///
+  /// In en, this message translates to:
+  /// **'Actual spending: What I have really spent'**
+  String get budgetThreeSpent;
+
+  /// No description provided for @budgetThreeEstimated.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated meal costs: Ingredients estimate'**
+  String get budgetThreeEstimated;
+
+  /// No description provided for @budgetDistinctionTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Actual spending is kept separate from estimated meal costs.'**
+  String get budgetDistinctionTip;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -82,9 +82,27 @@ class RecipeCostSheet extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  l10n.recipeServings(cost.recipe.servings),
-                  style: const TextStyle(color: AppColors.ink),
+                  '${l10n.recipeServings(cost.recipe.servings)}  ·  ${l10n.recipeCostPerServing(budget.format(cost.perServingCents / 100))}',
+                  style: const TextStyle(
+                    color: AppColors.ink,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
+                if (cost.recipe.nutrition != null) ...[
+                  const SizedBox(height: 6),
+                  Text(
+                    l10n.recipeNutrition(
+                      cost.recipe.nutrition!.calories,
+                      cost.recipe.nutrition!.proteinGrams,
+                      cost.recipe.nutrition!.carbsGrams,
+                    ),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: AppColors.muted,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 14),
                 LinearProgressIndicator(
                   value: cost.ingredients.isEmpty

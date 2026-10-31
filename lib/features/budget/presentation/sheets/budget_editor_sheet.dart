@@ -69,7 +69,45 @@ class _BudgetEditorState extends State<_BudgetEditor> {
                   fontSize: 28,
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 14),
+              Container(
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFE8EBDF),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '• ${l10n.budgetThreeLimit}',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.olive,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '• ${l10n.budgetThreeSpent}',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.olive,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '• ${l10n.budgetThreeEstimated}',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: AppColors.muted,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
               for (final isLimit in [true, false]) ...[
                 TextFormField(
                   key: ValueKey(isLimit ? 'budget-limit' : 'budget-spent'),

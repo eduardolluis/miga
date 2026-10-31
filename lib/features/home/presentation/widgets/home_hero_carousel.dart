@@ -25,6 +25,7 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
   late final _controller = PageController(
     keepPage: false,
     initialPage: widget.recipes.length * 1000,
+    viewportFraction: 0.92,
   );
   late int _page = widget.recipes.length * 1000;
 
@@ -60,7 +61,7 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
           builder: (context, constraints) => SizedBox(
             height: homeHeroHeight(
               context,
-              constraints.maxWidth,
+              constraints.maxWidth * _controller.viewportFraction - 10,
               widget.recipes,
             ),
             child: PageView.builder(
@@ -69,14 +70,17 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
               onPageChanged: (value) => setState(() => _page = value),
               itemBuilder: (context, index) {
                 final recipe = widget.recipes[index % widget.recipes.length];
-                return MealHeroCard(
-                  recipe: recipe,
-                  onOpen: widget.onOpenRecipe == null
-                      ? null
-                      : () => widget.onOpenRecipe!(recipe),
-                  onPlan: widget.onPlanRecipe == null
-                      ? null
-                      : () => widget.onPlanRecipe!(recipe),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: MealHeroCard(
+                    recipe: recipe,
+                    onOpen: widget.onOpenRecipe == null
+                        ? null
+                        : () => widget.onOpenRecipe!(recipe),
+                    onPlan: widget.onPlanRecipe == null
+                        ? null
+                        : () => widget.onPlanRecipe!(recipe),
+                  ),
                 );
               },
             ),

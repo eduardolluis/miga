@@ -22,6 +22,9 @@ class RecipeCost {
       ingredients.isNotEmpty && ingredients.every((line) => line.cents != null);
   int get subtotalCents =>
       ingredients.fold(0, (sum, line) => sum + (line.cents ?? 0));
+  int get perServingCents => recipe.servings > 0
+      ? (subtotalCents / recipe.servings).round()
+      : subtotalCents;
   bool fits(int allowance) => complete && subtotalCents <= allowance;
 }
 
@@ -214,7 +217,8 @@ class RecipeCostEstimator {
       return false;
     }
     if (ingredient == RecipeIngredient.tomatoes &&
-        RegExp(r'\b(?:pelado|pelados|conserva|frito|fritos)\b').hasMatch(text)) {
+        RegExp(r'\b(?:pelado|pelados|conserva|frito|fritos)\b')
+            .hasMatch(text)) {
       return false;
     }
     if (ingredient == RecipeIngredient.cheese &&

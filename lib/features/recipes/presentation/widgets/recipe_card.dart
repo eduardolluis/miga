@@ -72,6 +72,15 @@ class RecipeCard extends StatelessWidget {
                             height: 1.4,
                           ),
                         ),
+                      ] else if (recipe.nutrition != null) ...[
+                        const SizedBox(height: 6),
+                        Text(
+                          '${recipe.nutrition!.calories} kcal · ${recipe.nutrition!.proteinGrams}g prot',
+                          style: const TextStyle(
+                            color: AppColors.muted,
+                            fontSize: 12,
+                          ),
+                        ),
                       ],
                     ],
                   ),

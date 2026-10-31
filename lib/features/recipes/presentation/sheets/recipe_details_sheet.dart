@@ -8,7 +8,7 @@ import 'package:miga/l10n/app_localizations.dart';
 Future<bool?> showRecipeDetails(
   BuildContext context,
   Recipe recipe, {
-  Future<bool> Function()? onAddIngredients,
+  Future<bool> Function(List<String>)? onAddIngredients,
 }) => showModalBottomSheet<bool>(
   context: context,
   isScrollControlled: true,
@@ -22,7 +22,7 @@ Future<bool?> showRecipeDetails(
 class _RecipeDetails extends StatefulWidget {
   const _RecipeDetails({required this.recipe, required this.onAddIngredients});
   final Recipe recipe;
-  final Future<bool> Function()? onAddIngredients;
+  final Future<bool> Function(List<String>)? onAddIngredients;
 
   @override
   State<_RecipeDetails> createState() => _RecipeDetailsState();
@@ -35,11 +35,19 @@ class _RecipeDetailsState extends State<_RecipeDetails> {
   bool _failed = false;
 
   Future<void> _addIngredients() async {
+    final ingredients = widget.recipe
+        .contentFor(Localizations.localeOf(context).languageCode)
+        .ingredients;
+    final missing = [
+      for (var index = 0; index < ingredients.length; index++)
+        if (!_checked.contains(index)) ingredients[index],
+    ];
+    if (missing.isEmpty) return;
     setState(() {
       _adding = true;
       _failed = false;
     });
-    final success = await widget.onAddIngredients!();
+    final success = await widget.onAddIngredients!(missing);
     if (!mounted) return;
     setState(() {
       _adding = false;
@@ -85,6 +93,41 @@ class _RecipeDetailsState extends State<_RecipeDetails> {
             '${l10n.recipeMinutes(recipe.minutes)} · ${l10n.recipeServings(recipe.servings)}',
             style: const TextStyle(color: AppColors.muted),
           ),
+          if (recipe.nutrition != null) ...[
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              decoration: BoxDecoration(
+                color: const Color(0xFFE8EBDF),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.bolt_rounded,
+                    size: 18,
+                    color: AppColors.olive,
+                  ),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      l10n.recipeNutrition(
+                        recipe.nutrition!.calories,
+                        recipe.nutrition!.proteinGrams,
+                        recipe.nutrition!.carbsGrams,
+                      ),
+                      style: const TextStyle(
+                        color: AppColors.olive,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
           const SizedBox(height: 12),
           Text(
             content.description,
@@ -95,6 +138,26 @@ class _RecipeDetailsState extends State<_RecipeDetails> {
             l10n.homeIngredients,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
+          const SizedBox(height: 6),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF3F4EC),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              l10n.recipePantryBreakdown(
+                content.ingredients.length,
+                _checked.length,
+                content.ingredients.length - _checked.length,
+              ),
+              style: const TextStyle(
+                color: AppColors.ink,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
           const SizedBox(height: 10),
           for (var index = 0; index < content.ingredients.length; index++)
             CheckboxListTile(
@@ -102,22 +165,44 @@ class _RecipeDetailsState extends State<_RecipeDetails> {
               controlAffinity: ListTileControlAffinity.leading,
               value: _checked.contains(index),
               title: Text(content.ingredients[index]),
-              onChanged: (value) => setState(() {
-                if (value == true) {
-                  _checked.add(index);
-                } else {
-                  _checked.remove(index);
-                }
-              }),
+              subtitle: Text(
+                _checked.contains(index)
+                    ? '✓ ${l10n.recipeAtHome}'
+                    : '🛒 ${l10n.recipeToBuy}',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: _checked.contains(index)
+                      ? AppColors.olive
+                      : AppColors.muted,
+                ),
+              ),
+              onChanged: _adding
+                  ? null
+                  : (value) => setState(() {
+                      _added = false;
+                      _failed = false;
+                      if (value == true) {
+                        _checked.add(index);
+                      } else {
+                        _checked.remove(index);
+                      }
+                    }),
             ),
           if (widget.onAddIngredients != null)
             OutlinedButton.icon(
-              onPressed: _adding || _added ? null : _addIngredients,
+              onPressed:
+                  _adding ||
+                      _added ||
+                      _checked.length == content.ingredients.length
+                  ? null
+                  : _addIngredients,
               icon: Icon(_added ? Icons.check : Icons.shopping_basket_outlined),
               label: Text(
                 _added
                     ? l10n.recipeIngredientsAdded
-                    : l10n.recipeAddIngredients,
+                    : l10n.recipeAddMissingToGroceries(
+                        content.ingredients.length - _checked.length,
+                      ),
               ),
             ),
           if (_adding) const LinearProgressIndicator(),

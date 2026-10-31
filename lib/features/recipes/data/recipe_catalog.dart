@@ -20,6 +20,12 @@ abstract final class RecipeCatalog {
       minutes: 10,
       servings: 2,
       imageIndex: 0,
+      nutrition: RecipeNutrition(
+        calories: 340,
+        proteinGrams: 11,
+        carbsGrams: 58,
+        fatGrams: 8,
+      ),
       es: RecipeContent(
         title: 'Avena con banana y canela',
         description: 'Calentita, sencilla y lista para empezar el día.',
@@ -68,6 +74,12 @@ abstract final class RecipeCatalog {
       minutes: 15,
       servings: 2,
       imageIndex: 1,
+      nutrition: RecipeNutrition(
+        calories: 380,
+        proteinGrams: 14,
+        carbsGrams: 32,
+        fatGrams: 22,
+      ),
       es: RecipeContent(
         title: 'Tostadas de aguacate y huevo',
         description: 'Crujientes por fuera, cremosas por dentro.',
@@ -115,6 +127,12 @@ abstract final class RecipeCatalog {
       minutes: 5,
       servings: 2,
       imageIndex: 2,
+      nutrition: RecipeNutrition(
+        calories: 290,
+        proteinGrams: 15,
+        carbsGrams: 42,
+        fatGrams: 6,
+      ),
       es: RecipeContent(
         title: 'Yogur con fruta y granola',
         description:
@@ -163,6 +181,12 @@ abstract final class RecipeCatalog {
       minutes: 30,
       servings: 2,
       imageIndex: 3,
+      nutrition: RecipeNutrition(
+        calories: 460,
+        proteinGrams: 38,
+        carbsGrams: 26,
+        fatGrams: 22,
+      ),
       es: RecipeContent(
         title: 'Salmón al limón y hierbas',
         description: 'Una bandeja al horno y el almuerzo resuelto.',
@@ -214,6 +238,12 @@ abstract final class RecipeCatalog {
       minutes: 30,
       servings: 2,
       imageIndex: 4,
+      nutrition: RecipeNutrition(
+        calories: 520,
+        proteinGrams: 42,
+        carbsGrams: 64,
+        fatGrams: 10,
+      ),
       es: RecipeContent(
         title: 'Pollo con arroz y vegetales',
         description: 'Un almuerzo de casa, completo y sin complicaciones.',
@@ -264,6 +294,12 @@ abstract final class RecipeCatalog {
       minutes: 15,
       servings: 2,
       imageIndex: 5,
+      nutrition: RecipeNutrition(
+        calories: 340,
+        proteinGrams: 12,
+        carbsGrams: 44,
+        fatGrams: 14,
+      ),
       es: RecipeContent(
         title: 'Ensalada de garbanzos y aguacate',
         description: 'Fresca, con limón y lista en pocos minutos.',
@@ -315,6 +351,12 @@ abstract final class RecipeCatalog {
       minutes: 25,
       servings: 2,
       imageIndex: 6,
+      nutrition: RecipeNutrition(
+        calories: 480,
+        proteinGrams: 18,
+        carbsGrams: 72,
+        fatGrams: 14,
+      ),
       es: RecipeContent(
         title: 'Pasta con tomate y albahaca',
         description: 'Una cena sencilla que siempre apetece.',
@@ -364,6 +406,12 @@ abstract final class RecipeCatalog {
       minutes: 25,
       servings: 2,
       imageIndex: 7,
+      nutrition: RecipeNutrition(
+        calories: 310,
+        proteinGrams: 13,
+        carbsGrams: 46,
+        fatGrams: 9,
+      ),
       es: RecipeContent(
         title: 'Batata con espinaca y huevo',
         description: 'Todo en un bowl para cerrar el día con calma.',
@@ -412,6 +460,12 @@ abstract final class RecipeCatalog {
       minutes: 35,
       servings: 2,
       imageIndex: 8,
+      nutrition: RecipeNutrition(
+        calories: 360,
+        proteinGrams: 22,
+        carbsGrams: 54,
+        fatGrams: 5,
+      ),
       es: RecipeContent(
         title: 'Sopa de lentejas y vegetales',
         description:

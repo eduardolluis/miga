@@ -203,16 +203,11 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
                             const SizedBox(height: 16),
                             if (cost.complete) ...[
                               Text(
-                                l10n.budgetRecipeTotal(
-                                  widget.budget.format(
-                                    cost.subtotalCents / 100,
-                                  ),
-                                  cost.recipe.servings,
-                                ),
+                                '${l10n.budgetRecipeTotal(widget.budget.format(cost.subtotalCents / 100), cost.recipe.servings)}  ·  ${l10n.recipeCostPerServing(widget.budget.format(cost.perServingCents / 100))}',
                                 style: const TextStyle(
                                   color: AppColors.olive,
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 17,
+                                  fontSize: 15,
                                   height: 1.4,
                                 ),
                               ),

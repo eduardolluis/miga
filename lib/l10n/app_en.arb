@@ -343,11 +343,68 @@
   "budgetRecipeOver": "Above your meal target",
   "budgetCostDetails": "Ingredient costs",
   "budgetPieces": "pieces",
-  "budgetMealTarget": "Target per meal",
-  "budgetTargetNote": "Based on your remaining budget and the meals left this week.",
+  "budgetMealTarget": "Suggested budget per meal",
+  "budgetTargetNote": "Based on your remaining weekly budget.",
   "budgetKnownSubtotal": "Subtotal of priced ingredients · incomplete",
   "budgetPriceCoverage": "{priced} of {total} ingredients priced",
   "budgetEstimateInfo": "How this estimate works",
   "budgetPackPrice": "Reference package: {amount}",
-  "budgetRecipeEstimate": "Estimated recipe total"
+  "budgetRecipeEstimate": "Estimated recipe total",
+  "homeWeekEmpty": "Your week is looking empty. Add your first meal to start planning.",
+  "recipeNutrition": "{calories} kcal · {protein}g protein · {carbs}g carbs",
+  "@recipeNutrition": {
+    "placeholders": {
+      "calories": { "type": "int" },
+      "protein": { "type": "int" },
+      "carbs": { "type": "int" }
+    }
+  },
+  "recipeCostPerServing": "≈ {amount} per serving",
+  "@recipeCostPerServing": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+  "recipePantryBreakdown": "{total} ingredients needed: {have} at home · {missing} to buy",
+  "@recipePantryBreakdown": {
+    "placeholders": {
+      "total": { "type": "int" },
+      "have": { "type": "int" },
+      "missing": { "type": "int" }
+    }
+  },
+  "recipeAtHome": "At home",
+  "recipeToBuy": "To buy",
+  "recipeAddMissingToGroceries": "Add {count} missing items to grocery list",
+  "@recipeAddMissingToGroceries": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "mealAddedSuccess": "Meal added to your plan ✓",
+  "planCopyDay": "Copy day's menu",
+  "planCopyDayTo": "Copy {day}'s menu to:",
+  "@planCopyDayTo": {
+    "placeholders": {
+      "day": { "type": "String" }
+    }
+  },
+  "planCopySuccess": "Menu copied to {day} ✓",
+  "@planCopySuccess": {
+    "placeholders": {
+      "day": { "type": "String" }
+    }
+  },
+  "groceryGenerateFromPlan": "Generate from weekly plan",
+  "groceryGeneratedCount": "Added {count} ingredients from your weekly plan",
+  "@groceryGeneratedCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "groceryNoPlannedMeals": "No meals planned yet. Add meals to your plan to generate groceries.",
+  "budgetThreeLimit": "Weekly budget: What I want to spend",
+  "budgetThreeSpent": "Actual spending: What I have really spent",
+  "budgetThreeEstimated": "Estimated meal costs: Ingredients estimate",
+  "budgetDistinctionTip": "Actual spending is kept separate from estimated meal costs."
 }

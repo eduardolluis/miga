@@ -731,10 +731,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get budgetPieces => 'pieces';
 
   @override
-  String get budgetMealTarget => 'Target per meal';
+  String get budgetMealTarget => 'Suggested budget per meal';
 
   @override
-  String get budgetTargetNote => 'Based on your remaining budget and the meals left this week.';
+  String get budgetTargetNote => 'Based on your remaining weekly budget.';
 
   @override
   String get budgetKnownSubtotal => 'Subtotal of priced ingredients · incomplete';
@@ -754,4 +754,72 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get budgetRecipeEstimate => 'Estimated recipe total';
+
+  @override
+  String get homeWeekEmpty => 'Your week is looking empty. Add your first meal to start planning.';
+
+  @override
+  String recipeNutrition(int calories, int protein, int carbs) {
+    return '$calories kcal · ${protein}g protein · ${carbs}g carbs';
+  }
+
+  @override
+  String recipeCostPerServing(String amount) {
+    return '≈ $amount per serving';
+  }
+
+  @override
+  String recipePantryBreakdown(int total, int have, int missing) {
+    return '$total ingredients needed: $have at home · $missing to buy';
+  }
+
+  @override
+  String get recipeAtHome => 'At home';
+
+  @override
+  String get recipeToBuy => 'To buy';
+
+  @override
+  String recipeAddMissingToGroceries(int count) {
+    return 'Add $count missing items to grocery list';
+  }
+
+  @override
+  String get mealAddedSuccess => 'Meal added to your plan ✓';
+
+  @override
+  String get planCopyDay => 'Copy day\'s menu';
+
+  @override
+  String planCopyDayTo(String day) {
+    return 'Copy $day\'s menu to:';
+  }
+
+  @override
+  String planCopySuccess(String day) {
+    return 'Menu copied to $day ✓';
+  }
+
+  @override
+  String get groceryGenerateFromPlan => 'Generate from weekly plan';
+
+  @override
+  String groceryGeneratedCount(int count) {
+    return 'Added $count ingredients from your weekly plan';
+  }
+
+  @override
+  String get groceryNoPlannedMeals => 'No meals planned yet. Add meals to your plan to generate groceries.';
+
+  @override
+  String get budgetThreeLimit => 'Weekly budget: What I want to spend';
+
+  @override
+  String get budgetThreeSpent => 'Actual spending: What I have really spent';
+
+  @override
+  String get budgetThreeEstimated => 'Estimated meal costs: Ingredients estimate';
+
+  @override
+  String get budgetDistinctionTip => 'Actual spending is kept separate from estimated meal costs.';
 }

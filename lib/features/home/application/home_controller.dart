@@ -1,11 +1,17 @@
+import 'dart:math' as math;
+
 import 'package:flutter/foundation.dart';
 
+import 'package:miga/features/budget/domain/recipe_amount.dart';
 import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
 import 'package:miga/features/home/domain/home_details.dart';
 import 'package:miga/features/home/domain/home_details_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_plan_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
+import 'package:miga/features/recipes/data/recipe_catalog.dart';
+import 'package:miga/features/recipes/domain/recipe.dart';
+import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 
 class HomeController extends ChangeNotifier {
   HomeController({
@@ -120,6 +126,109 @@ class HomeController extends ChangeNotifier {
       saving = false;
       _emit();
     }
+  }
+
+  Future<bool> copyDayMeals(DateTime fromDate, DateTime toDate) async {
+    if (!canEdit) return false;
+    final next = Map<String, String>.of(_meals);
+    var copied = false;
+    for (final slot in MealSlot.values) {
+      final meal = mealFor(fromDate, slot);
+      final key = slot.keyFor(toDate);
+      if (meal != null && meal.isNotEmpty) {
+        next[key] = meal;
+        copied = true;
+      }
+    }
+    if (!copied) return true;
+    saving = true;
+    _emit();
+    try {
+      await planStore.save(next);
+      _meals = next;
+      return true;
+    } catch (_) {
+      return false;
+    } finally {
+      saving = false;
+      _emit();
+    }
+  }
+
+  List<GroceryItem> generateGroceriesFromPlannedMeals({
+    List<GroceryItem>? existingItems,
+    Set<RecipeIngredient> pantry = const {},
+    String languageCode = 'es',
+    String currency = 'DOP',
+  }) {
+    final plannedMealNames = <String>[];
+    for (final date in week) {
+      for (final slot in MealSlot.values) {
+        final meal = mealFor(date, slot);
+        if (meal != null && meal.trim().isNotEmpty) {
+          plannedMealNames.add(meal.trim().toLowerCase());
+        }
+      }
+    }
+
+    final ingredientCounts = <RecipeIngredient, int>{};
+    for (final mealName in plannedMealNames) {
+      final matchingRecipe = RecipeCatalog.all.cast<Recipe?>().firstWhere(
+        (r) =>
+            r!.es.title.toLowerCase() == mealName ||
+            r.en.title.toLowerCase() == mealName,
+        orElse: () => null,
+      );
+      if (matchingRecipe != null) {
+        final amounts = RecipeAmounts.values[matchingRecipe.id] ?? [];
+        for (final amount in amounts) {
+          if (pantry.contains(amount.ingredient)) continue;
+          ingredientCounts[amount.ingredient] =
+              (ingredientCounts[amount.ingredient] ?? 0) + 1;
+        }
+      }
+    }
+
+    final existingMap = {
+      for (final item in existingItems ?? details.groceries)
+        item.name.toLowerCase(): item,
+    };
+
+    final generated = <GroceryItem>[];
+    for (final entry in ingredientCounts.entries) {
+      final name = entry.key.label(languageCode);
+      final existing = existingMap[name.toLowerCase()];
+      if (existing != null) {
+        generated.add(
+          GroceryItem(
+            name,
+            quantity: math.max(existing.quantity, entry.value),
+            currency: existing.currency,
+            unitPriceCents: existing.unitPriceCents,
+            reference: existing.reference,
+            offer: existing.offer,
+            isEstimated: existing.isEstimated,
+            checked: existing.checked,
+          ),
+        );
+        existingMap.remove(name.toLowerCase());
+      } else {
+        generated.add(
+          GroceryItem(
+            name,
+            quantity: entry.value,
+            currency: currency,
+            isEstimated: true,
+          ),
+        );
+      }
+    }
+
+    for (final remaining in existingMap.values) {
+      generated.add(remaining);
+    }
+
+    return generated;
   }
 
   Future<bool> saveBudget(WeeklyBudget budget) =>

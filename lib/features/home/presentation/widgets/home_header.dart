@@ -35,12 +35,12 @@ class HomeHeader extends StatelessWidget {
                 style: const TextStyle(
                   fontFamily: 'LiberationSerif',
                   color: AppColors.ink,
-                  fontSize: 32,
-                  height: 1.06,
-                  letterSpacing: -0.7,
+                  fontSize: 26,
+                  height: 1.08,
+                  letterSpacing: -0.4,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 6),
               Text(
                 MaterialLocalizations.of(context).formatFullDate(now),
                 style: const TextStyle(

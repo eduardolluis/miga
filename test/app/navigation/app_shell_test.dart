@@ -9,6 +9,7 @@ import 'package:miga/features/home/presentation/widgets/home_quick_actions.dart'
 import 'package:miga/features/home/presentation/widgets/meal_hero_card.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
 import 'package:miga/features/profile/presentation/profile_page.dart';
+import 'package:miga/features/recipes/data/recipe_catalog.dart';
 import 'package:miga/features/meal_plan/data/local_meal_plan_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_plan_store.dart';
 import 'package:miga/l10n/app_localizations.dart';
@@ -114,7 +115,7 @@ void main() {
           .widget<PageView>(find.byType(PageView))
           .controller!
           .viewportFraction,
-      1,
+      0.92,
     );
     await tester.drag(find.byType(PageView), const Offset(-320, 0));
     await tester.pumpAndSettle();
@@ -337,15 +338,31 @@ void main() {
       await reveal(tester, find.text('Salmón al limón y hierbas'));
       await tester.tap(find.text('Salmón al limón y hierbas'));
       await tester.pumpAndSettle();
+      final atHome = RecipeCatalog.all
+          .firstWhere((r) => r.id == 'lemon-salmon')
+          .es
+          .ingredients
+          .first;
+      final firstIngredient = find.widgetWithText(CheckboxListTile, atHome);
       await tester.scrollUntilVisible(
-        find.text('Añadir ingredientes a la lista'),
+        firstIngredient,
         200,
         scrollable: find.byType(Scrollable).last,
       );
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Añadir ingredientes a la lista'));
+      await tester.tap(firstIngredient);
       await tester.pumpAndSettle();
-      expect((await LocalHomeDetailsStore('guest').load()).groceries.length, 6);
+      await tester.scrollUntilVisible(
+        find.text('Añadir 5 faltantes a la lista'),
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Añadir 5 faltantes a la lista'));
+      await tester.pumpAndSettle();
+      final groceries = (await LocalHomeDetailsStore('guest').load()).groceries;
+      expect(groceries.length, 5);
+      expect(groceries.map((item) => item.name), isNot(contains(atHome)));
       await tester.scrollUntilVisible(
         find.text('Añadir a mi plan'),
         200,
@@ -414,6 +431,15 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Pasta'), findsNothing);
     expect(find.textContaining('No pudimos guardar'), findsOneWidget);
+    await tester.drag(find.byType(SnackBar), const Offset(0, 300));
+    await tester.pumpAndSettle();
+    expect(find.text('Comida añadida a tu plan ✓'), findsNothing);
+    // Open and save again to verify that the retry action still succeeds.
+    await tester.tap(find.text('Añadir comida'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextFormField), 'Pasta');
+    await tester.tap(find.text('Guardar comida'));
+    await tester.pumpAndSettle();
     store.fail = false;
     await tester.tap(find.text('Reintentar'));
     await tester.pumpAndSettle();
