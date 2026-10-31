@@ -386,4 +386,71 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get homeCarouselBudget => 'Ver presupuesto semanal';
+
+  @override
+  String get homeGoodMorning => 'Buenos días';
+
+  @override
+  String get homeGoodAfternoon => 'Buenas tardes';
+
+  @override
+  String get homeGoodEvening => 'Buenas noches';
+
+  @override
+  String get homeIdeasBreakfast => 'Para tu desayuno';
+
+  @override
+  String get homeIdeasLunch => 'Para tu almuerzo';
+
+  @override
+  String get homeIdeasDinner => 'Para tu cena';
+
+  @override
+  String get homeIdeasNow => 'Ideas para este momento del día.';
+
+  @override
+  String get homeIdeasManual => 'Elige lo que te apetezca preparar.';
+
+  @override
+  String get homeChangeMeal => 'Cambiar momento del día';
+
+  @override
+  String get homeUseTime => 'Según la hora actual';
+
+  @override
+  String recipeMinutes(int minutes) {
+    return '$minutes min';
+  }
+
+  @override
+  String recipeServings(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count porciones',
+      one: '1 porción',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get recipeSearch => 'Buscar una receta';
+
+  @override
+  String get recipeAll => 'Todas';
+
+  @override
+  String get recipeNoResults => 'No encontramos recetas con ese nombre.';
+
+  @override
+  String get recipeAddIngredients => 'Añadir ingredientes a la lista';
+
+  @override
+  String get recipeIngredientsAdded => 'Ingredientes añadidos';
+
+  @override
+  String get homeOpenMaps => 'Abrir en mapas';
+
+  @override
+  String get homeMapsUnavailable => 'No pudimos abrir los mapas. Inténtalo de nuevo.';
 }

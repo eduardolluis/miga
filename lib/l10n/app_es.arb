@@ -157,5 +157,38 @@
         "type": "int"
       }
     }
+  },
+  "homeGoodMorning": "Buenos días",
+  "homeGoodAfternoon": "Buenas tardes",
+  "homeGoodEvening": "Buenas noches",
+  "homeIdeasBreakfast": "Para tu desayuno",
+  "homeIdeasLunch": "Para tu almuerzo",
+  "homeIdeasDinner": "Para tu cena",
+  "homeIdeasNow": "Ideas para este momento del día.",
+  "homeIdeasManual": "Elige lo que te apetezca preparar.",
+  "homeChangeMeal": "Cambiar momento del día",
+  "homeUseTime": "Según la hora actual",
+  "recipeMinutes": "{minutes} min",
+  "recipeServings": "{count, plural, =1{1 porción} other{{count} porciones}}",
+  "recipeSearch": "Buscar una receta",
+  "recipeAll": "Todas",
+  "recipeNoResults": "No encontramos recetas con ese nombre.",
+  "recipeAddIngredients": "Añadir ingredientes a la lista",
+  "recipeIngredientsAdded": "Ingredientes añadidos",
+  "homeOpenMaps": "Abrir en mapas",
+  "homeMapsUnavailable": "No pudimos abrir los mapas. Inténtalo de nuevo.",
+  "@recipeMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@recipeServings": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   }
 }

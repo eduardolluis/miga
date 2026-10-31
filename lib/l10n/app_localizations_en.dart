@@ -386,4 +386,71 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeCarouselBudget => 'Show weekly budget';
+
+  @override
+  String get homeGoodMorning => 'Good morning';
+
+  @override
+  String get homeGoodAfternoon => 'Good afternoon';
+
+  @override
+  String get homeGoodEvening => 'Good evening';
+
+  @override
+  String get homeIdeasBreakfast => 'Breakfast ideas';
+
+  @override
+  String get homeIdeasLunch => 'Lunch ideas';
+
+  @override
+  String get homeIdeasDinner => 'Dinner ideas';
+
+  @override
+  String get homeIdeasNow => 'Ideas for this time of day.';
+
+  @override
+  String get homeIdeasManual => 'Find something you’d like to cook.';
+
+  @override
+  String get homeChangeMeal => 'Choose a mealtime';
+
+  @override
+  String get homeUseTime => 'Use the current time';
+
+  @override
+  String recipeMinutes(int minutes) {
+    return '$minutes min';
+  }
+
+  @override
+  String recipeServings(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count servings',
+      one: '1 serving',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get recipeSearch => 'Search recipes';
+
+  @override
+  String get recipeAll => 'All';
+
+  @override
+  String get recipeNoResults => 'No recipes match that name.';
+
+  @override
+  String get recipeAddIngredients => 'Add ingredients to my list';
+
+  @override
+  String get recipeIngredientsAdded => 'Ingredients added';
+
+  @override
+  String get homeOpenMaps => 'Open in maps';
+
+  @override
+  String get homeMapsUnavailable => 'We couldn’t open maps. Please try again.';
 }

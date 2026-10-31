@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'app.dart';
-import 'services/auth_service.dart';
+import 'package:miga/app/miga_app.dart';
+import 'package:miga/features/auth/data/supabase_auth_service.dart';
 
 const supabaseUrl = String.fromEnvironment('SUPABASE_URL');
 const supabasePublishableKey = String.fromEnvironment(

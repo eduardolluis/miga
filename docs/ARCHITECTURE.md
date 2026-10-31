@@ -1,59 +1,80 @@
 # Miga Architecture
 
-## Overview
+Miga is a Flutter application for Android and iOS. Supabase handles passwordless authentication; meal plans, weekly budgets, and groceries currently stay on the device, separated by account. Nine bilingual recipes and their images are bundled with the app.
 
-Miga is a cross-platform mobile app built with Flutter for Android and iOS.
+## Project layout
 
-The app uses Supabase Authentication for passwordless email and Google sign-in. Meal plans, weekly budgets, and grocery lists currently stay on the device, scoped to the signed-in account. Recipes and their images are bundled with the app.
+```text
+lib/
+├── main.dart
+├── app/
+│   ├── miga_app.dart
+│   └── navigation/
+│       ├── app_shell.dart
+│       ├── app_tab.dart
+│       └── widgets/
+├── core/
+│   └── theme/
+├── features/
+│   ├── auth/          # data, domain, presentation
+│   ├── budget/        # domain, presentation
+│   ├── groceries/     # domain, presentation
+│   ├── home/          # application, data, domain, presentation
+│   ├── meal_plan/     # data, domain, presentation
+│   ├── onboarding/    # presentation
+│   ├── profile/       # presentation
+│   ├── recipes/       # data, domain, presentation
+│   └── stores/        # data
+└── l10n/
 
-## Current project structure
+test/
+├── app/navigation/
+├── features/
+│   ├── auth/
+│   ├── home/
+│   ├── meal_plan/
+│   └── onboarding/
+└── support/
+```
 
-- `lib/`: Flutter application code.
-- `assets/`: Images and other bundled resources.
-- `docs/`: Product and technical documentation.
-- `test/`: Automated tests.
-- `android/` and `ios/`: Native platform configuration.
+Only layers with an actual responsibility are present. A feature with a single screen does not need empty application, data, and domain folders.
 
-## Planned app flow
+- **`app/`** starts and composes the application. `MigaApp` selects onboarding or the authenticated `AppShell`. The shell creates account-scoped stores, owns tab navigation, and coordinates actions that open editors in other features.
+- **`core/`** contains shared visual foundations: application themes and colors. Feature-specific widgets stay in their own feature.
+- **`domain/`** contains feature models and storage contracts. `WeeklyBudget`, `GroceryItem`, and `MealSlot` live with their respective functionality. `HomeDetails` aggregates budget and grocery data without owning those models. Authentication retains Supabase types in its existing contract to preserve provider behavior.
+- **`data/`** implements contracts using Supabase or local preferences. Controllers depend on contracts, not these concrete implementations.
+- **`application/`** coordinates state and operations. `HomeController` publishes changes after successful writes and keeps failed loads visible for retry.
+- **`presentation/`** contains screens/pages, widgets, sheets, and view-only models or styles. Icons and translated labels for `MealSlot` are provided by a presentation extension, not the stored enum.
+- **`l10n/`** keeps the ARB catalogs and Flutter-generated localization files together. Edit the ARB files and run `flutter gen-l10n`; do not edit generated Dart files manually.
 
-1. The user selects household size and meal preferences.
-2. Miga creates a weekly meal plan from its recipe data.
-3. The user views recipes and can replace planned meals.
-4. Miga creates a shopping list from the selected meals.
-5. The user can explore nearby grocery stores on a map.
+`HomeScreen` is the daily summary. `MealPlanPage` is the complete weekly calendar. The calendar receives values and callbacks rather than depending on the home controller, so the two features do not form a dependency cycle. Recipe cards and recipe details are separate widgets, and the onboarding background and page indicator are also separate from their screen.
 
+## Dependency conventions
 
-## App entry point
+Use `package:miga/...` imports for application code so moving a file does not require counting parent directories. Prefer direct imports over barrel files that hide dependencies.
 
-- `lib/main.dart` starts the Flutter application.
-- `lib/app.dart` configures the app, including its theme and initial screen.
+`app` may compose features. Features may use another feature's public models or focused widgets when required; keep dependencies acyclic. Domain and application code must not import presentation or concrete data implementations. Shared code belongs in `core` only when it is actually shared.
 
-## Data and services
+Tests follow the path of the production feature or application component they verify. Reusable test doubles belong in `test/support`; tests must not import another test file to obtain a fake.
 
-### Recipes and meal plans
+Comments explain constraints and decisions that are not evident from names: provider session confirmation, Google nonce handling, storage compatibility, and carousel height measurement. Avoid comments that repeat the next statement.
 
-The initial recipe catalog will be included in the app. The first meal-planning version should work without a paid AI service.
+## Persistence compatibility
 
-### Local data
+`LocalMealPlanStore` implements `MealPlanStore`. `LocalHomeDetailsStore` implements `HomeDetailsStore`. Both use `shared_preferences`, and their existing schema is unchanged:
 
-`LocalMealPlanStore` stores meals by local calendar date and meal slot. `HomeDetailsStore` stores budgets by week and a grocery checklist. Both use `shared_preferences` with a separate key for each account. `HomeController` coordinates loading, selection, and saving; widgets handle presentation and editing. Failed saves leave the displayed data unchanged and allow retry. Cloud sync is not implemented.
+- Meals use `miga.meals.v1.<userId>` with `YYYY-MM-DD:slot` keys.
+- Budgets and groceries use `miga.home.v1.<userId>` with the JSON fields `budgets` and `groceries`.
+- Budget weeks use the Monday date in the existing, unpadded format (`2026-2-2`). This differs deliberately from padded meal dates.
+- Enum names, JSON fields, and versioned preference keys must not change as part of a file move. A future schema change needs an explicit migration.
 
-### Maps and store locations
+The storage and controller tests cover account isolation, reloads, failures, and reading data saved before the reorganization. Authentication tests continue to cover OTP, native Google flows, nonces, cancellation, and navigation.
 
-A map provider may be used to display nearby grocery stores. The provider and its pricing must be reviewed before implementation.
+## Validation
 
-### Price comparison
+```sh
+flutter analyze --no-pub
+flutter test --no-pub
+```
 
-Store prices require reliable, up-to-date data. Miga will only compare prices when that data is available. The source of price data is still undecided.
-
-### AI
-
-Gemini may be evaluated later for meal-plan generation. Any API key must be kept outside the mobile app, and the app must remain usable if AI is unavailable.
-
-## Decisions still to make
-
-- Which map provider to use.
-- How to obtain and update store prices.
-- Whether users can submit price updates.
-- What local storage solution to use.
-- Whether a backend is needed after the first version.
+Home suggestions come from `RecipeCatalog`, filtered by the local clock. The controller preserves an explicit mealtime override, and the app refreshes time every minute and when resumed. Recipe ingredients can be added to the grocery list; planning and recorded spending remain user-confirmed. `NearbyStores` launches a real maps search rather than displaying simulated store data. Cloud sync, automatic weekly plan generation, and in-app store prices are not implemented. See [the Home design](home-design.md) for behavior and screenshots.

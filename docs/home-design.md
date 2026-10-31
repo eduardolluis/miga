@@ -1,38 +1,43 @@
 # Home de Miga
 
-La pantalla usa crema, oliva, titulares con Liberation Serif y fotografías con controles nativos de Flutter. Los componentes y el estado se mantienen separados; `HomeScreen` coordina las rutas y los editores, y `HomeController` maneja el plan y el guardado.
+El Home muestra propuestas de platos para el momento del día, con saludo personalizado y fotografías de estilo cotidiano. `AppShell` coordina navegación y editores; `HomeController` mantiene el reloj y el estado guardado. La estructura está explicada en [ARCHITECTURE.md](ARCHITECTURE.md).
 
-## Comportamiento
+## Saludo y horario
 
-- **Inicio:** resumen con un carrusel de una tarjeta completa por página (`viewportFraction: 1`), swipe e indicadores accesibles. Las páginas de comida y presupuesto comparten altura y se adaptan al texto ampliado.
-- **Comidas:** desayuno, almuerzo y cena seleccionables. La tira semanal marca los días con comidas. Elegir un día actualiza el hero y vuelve a la primera página del carrusel.
-- **Plan:** calendario de la semana completa con las tres comidas de cada día. Se pueden añadir, editar y quitar comidas.
-- **Presupuesto:** límite y gasto registrados manualmente, por semana, en DOP o USD. Los importes siempre aparecen sobre un fondo sólido.
-- **Compras:** un único acceso desde Inicio. La lista permite añadir, marcar y eliminar productos, con guardado explícito.
-- **Recetas:** una receta inicial de salmón con ingredientes, preparación y confirmación antes de añadirla al día y comida seleccionados. Las comidas escritas a mano usan un fondo neutro para no atribuirles una foto incorrecta.
-- **Perfil:** datos de la cuenta, acceso al presupuesto y cierre de sesión.
+- El saludo utiliza el nombre de la cuenta (`given_name`, `full_name` o `name`); si no existe, toma la primera parte del correo. No se inventa un nombre cuando no hay cuenta.
+- Las sugerencias usan la hora local del teléfono: desayuno de 05:00 a 10:59, almuerzo de 11:00 a 16:59 y cena de 17:00 a 04:59.
+- El reloj se comprueba cada minuto y al volver del segundo plano. Al cambiar de día se actualiza la fecha seleccionada.
+- El menú junto al título permite elegir otro momento del día. Esa selección manual se conserva hasta volver a «Según la hora actual».
 
-Un usuario nuevo comienza sin comidas, presupuesto ni productos. No se precargan estadísticas de ejemplo en la aplicación. Los datos se guardan localmente por cuenta y se recuperan después de abrir de nuevo la pantalla. La lista de compras no se genera automáticamente desde las recetas.
+## Carrusel y recetas
 
-La generación de planes con IA, las ubicaciones/precios de tiendas, la sincronización entre dispositivos y las funciones premium quedan pendientes. Tiendas muestra un estado vacío. No hay promoción permanente de Pro, macros inventados ni indicadores de actividad simulados.
+El catálogo local contiene nueve recetas bilingües, tres por cada comida. El carrusel muestra una receta completa por página, con swipe, indicadores, una foto propia, duración, porciones, acceso a la preparación y un botón para añadirla al plan. El presupuesto tiene su propio resumen debajo de la semana.
 
-## Capturas
+Cada receta tiene sus propios ingredientes y pasos. Los ingredientes se pueden marcar y añadir a la lista de compras. La planificación pide confirmación antes de guardar y utiliza la categoría de la receta, incluso si se abre desde el catálogo completo. Las recetas también se pueden buscar y filtrar en su pestaña.
 
-Renderizadas desde los widgets de Flutter a 390 × 844, con las fuentes e iconos reales:
+No se calculan ni muestran macros, precios o estadísticas inventadas. La duración es una estimación orientativa de preparación; no se usa como dato nutricional.
 
-- [Primer día](previews/home-empty.png).
-- [Con comidas planificadas](previews/home-planned.png).
-- [Presupuesto](previews/home-budget.png).
+## Semana y accesos
 
-Las dos últimas capturas usan datos de prueba exclusivamente para la revisión visual.
+Los días tienen ancho y separación propios y se desplazan horizontalmente. El día seleccionado muestra la comida guardada para el momento elegido, con acceso a editarla. Plan muestra el calendario semanal completo.
 
-## Recursos
+El resumen de presupuesto y las tarjetas inferiores comparten márgenes, bordes y espaciado. Las tarjetas de compras y tiendas tienen igual tamaño cuando están en dos columnas y pasan a una columna con texto grande o pantalla estrecha.
 
-- Foto generada: [`assets/images/home/lemon-salmon.png`](../assets/images/home/lemon-salmon.png).
-- Herramienta: `imagegen`, herramienta integrada, modo de generación de imagen nueva.
-- Fuente: Liberation Serif, SIL Open Font License 1.1; aviso y licencia en [`assets/fonts/OFL.txt`](../assets/fonts/OFL.txt).
-- Las fotografías de lista de compras y tiendas reutilizan los recursos de onboarding.
+Compras permite añadir, marcar y quitar productos. Tiendas abre una búsqueda de supermercados cercanos en mapas; no simula precios ni ubicaciones dentro de la app. El presupuesto, plan y lista permanecen guardados localmente por cuenta.
 
-Prompt de la fotografía:
+## Capturas actuales
 
-> Use case: photorealistic-natural. Asset type: food photography background for a mobile meal-planning app hero card. Primary request: a freshly cooked salmon fillet with lemon slices and herbs, roasted baby potatoes and green vegetables, on a rustic ivory ceramic plate. Natural warm window light, quiet Mediterranean kitchen, linen and wood, rich olive greens and warm cream palette. Close editorial food photograph at a 45 degree angle, plate centered, composition suitable for cropping to a vertical rounded rectangle; food fills central two thirds with a little breathing room at top and bottom for app overlays. Real appetizing texture, refined restrained food magazine photography. No writing, no UI, no logos, no watermark. Create just the food photograph, not an app mockup.
+Widgets de Flutter renderizados a 390 × 844 con fuentes e iconos reales y una cuenta de prueba:
+
+- [Desayuno](previews/home-breakfast-v2.png).
+- [Almuerzo](previews/home-lunch-v2.png).
+- [Cena](previews/home-dinner-v2.png).
+- [Semana, presupuesto y accesos](previews/home-overview-v2.png).
+
+Las capturas sin el sufijo `v2` documentan la versión anterior.
+
+## Fotografía y tipografía
+
+Las nuevas imágenes tienen un tratamiento más suave, encuadres cotidianos y platos menos estilizados. Se generaron con la herramienta integrada `imagegen`; no son fotografías tomadas a usuarios. El archivo y el prompt están en [recipe-photography.md](recipe-photography.md).
+
+Liberation Serif usa SIL Open Font License 1.1; aviso y licencia en [`assets/fonts/OFL.txt`](../assets/fonts/OFL.txt).

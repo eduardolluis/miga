@@ -820,6 +820,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show weekly budget'**
   String get homeCarouselBudget;
+
+  /// No description provided for @homeGoodMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get homeGoodMorning;
+
+  /// No description provided for @homeGoodAfternoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get homeGoodAfternoon;
+
+  /// No description provided for @homeGoodEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get homeGoodEvening;
+
+  /// No description provided for @homeIdeasBreakfast.
+  ///
+  /// In en, this message translates to:
+  /// **'Breakfast ideas'**
+  String get homeIdeasBreakfast;
+
+  /// No description provided for @homeIdeasLunch.
+  ///
+  /// In en, this message translates to:
+  /// **'Lunch ideas'**
+  String get homeIdeasLunch;
+
+  /// No description provided for @homeIdeasDinner.
+  ///
+  /// In en, this message translates to:
+  /// **'Dinner ideas'**
+  String get homeIdeasDinner;
+
+  /// No description provided for @homeIdeasNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Ideas for this time of day.'**
+  String get homeIdeasNow;
+
+  /// No description provided for @homeIdeasManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Find something you’d like to cook.'**
+  String get homeIdeasManual;
+
+  /// No description provided for @homeChangeMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a mealtime'**
+  String get homeChangeMeal;
+
+  /// No description provided for @homeUseTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the current time'**
+  String get homeUseTime;
+
+  /// No description provided for @recipeMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes} min'**
+  String recipeMinutes(int minutes);
+
+  /// No description provided for @recipeServings.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 serving} other{{count} servings}}'**
+  String recipeServings(int count);
+
+  /// No description provided for @recipeSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search recipes'**
+  String get recipeSearch;
+
+  /// No description provided for @recipeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get recipeAll;
+
+  /// No description provided for @recipeNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No recipes match that name.'**
+  String get recipeNoResults;
+
+  /// No description provided for @recipeAddIngredients.
+  ///
+  /// In en, this message translates to:
+  /// **'Add ingredients to my list'**
+  String get recipeAddIngredients;
+
+  /// No description provided for @recipeIngredientsAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredients added'**
+  String get recipeIngredientsAdded;
+
+  /// No description provided for @homeOpenMaps.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in maps'**
+  String get homeOpenMaps;
+
+  /// No description provided for @homeMapsUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn’t open maps. Please try again.'**
+  String get homeMapsUnavailable;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

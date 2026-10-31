@@ -1,0 +1,377 @@
+import 'package:miga/features/meal_plan/domain/meal_slot.dart';
+import 'package:miga/features/recipes/domain/recipe.dart';
+
+abstract final class RecipeCatalog {
+  static List<Recipe> forSlot(MealSlot slot) =>
+      all.where((recipe) => recipe.slot == slot).toList(growable: false);
+
+  static const all = [
+    Recipe(
+      id: 'banana-oats',
+      slot: MealSlot.breakfast,
+      minutes: 10,
+      servings: 2,
+      imageIndex: 0,
+      es: RecipeContent(
+        title: 'Avena con banana y canela',
+        description: 'Calentita, sencilla y lista para empezar el día.',
+        ingredients: [
+          '1 taza de avena',
+          '2 tazas de leche o bebida vegetal',
+          '1 banana',
+          '2 cucharadas de nueces',
+          'Canela al gusto',
+        ],
+        steps: [
+          'Calienta la leche en una olla y añade la avena.',
+          'Cocina a fuego bajo entre 5 y 8 minutos, removiendo hasta que esté cremosa.',
+          'Reparte en dos bowls y añade la banana en rodajas, las nueces y la canela.',
+        ],
+      ),
+      en: RecipeContent(
+        title: 'Banana & cinnamon oats',
+        description: 'A warm, simple start to your day.',
+        ingredients: [
+          '1 cup rolled oats',
+          '2 cups milk or plant milk',
+          '1 banana',
+          '2 tablespoons walnuts',
+          'Cinnamon to taste',
+        ],
+        steps: [
+          'Warm the milk in a saucepan and stir in the oats.',
+          'Simmer for 5–8 minutes, stirring until creamy.',
+          'Divide between two bowls. Top with sliced banana, walnuts and cinnamon.',
+        ],
+      ),
+    ),
+    Recipe(
+      id: 'avocado-toast',
+      slot: MealSlot.breakfast,
+      minutes: 15,
+      servings: 2,
+      imageIndex: 1,
+      es: RecipeContent(
+        title: 'Tostadas de aguacate y huevo',
+        description: 'Crujientes por fuera, cremosas por dentro.',
+        ingredients: [
+          '2 rebanadas de pan',
+          '1 aguacate',
+          '2 huevos',
+          '6 tomates cherry',
+          '1 cucharadita de aceite de oliva',
+          'Sal y pimienta al gusto',
+        ],
+        steps: [
+          'Tuesta el pan y machaca el aguacate con un poco de sal.',
+          'Bate los huevos. Calienta el aceite en una sartén y cocínalos, removiendo, hasta que estén cuajados.',
+          'Unta el aguacate sobre las tostadas y añade el huevo. Sirve con los tomates.',
+        ],
+      ),
+      en: RecipeContent(
+        title: 'Avocado & egg toast',
+        description: 'Crisp toast, creamy avocado and a proper breakfast.',
+        ingredients: [
+          '2 slices bread',
+          '1 avocado',
+          '2 eggs',
+          '6 cherry tomatoes',
+          '1 teaspoon olive oil',
+          'Salt and pepper to taste',
+        ],
+        steps: [
+          'Toast the bread and mash the avocado with a pinch of salt.',
+          'Beat the eggs. Warm the oil in a pan and scramble the eggs until set.',
+          'Spread the avocado on the toast, top with eggs and serve with tomatoes.',
+        ],
+      ),
+    ),
+    Recipe(
+      id: 'yogurt-fruit',
+      slot: MealSlot.breakfast,
+      minutes: 5,
+      servings: 2,
+      imageIndex: 2,
+      es: RecipeContent(
+        title: 'Yogur con fruta y granola',
+        description:
+            'Para esas mañanas en las que no quieres encender la estufa.',
+        ingredients: [
+          '2 tazas de yogur natural',
+          '1 mango',
+          '6 fresas',
+          '½ taza de granola',
+        ],
+        steps: [
+          'Lava las fresas, pela el mango y corta la fruta en trozos.',
+          'Reparte el yogur entre dos bowls.',
+          'Añade la fruta y termina con la granola justo antes de comer.',
+        ],
+      ),
+      en: RecipeContent(
+        title: 'Fruit & granola yogurt bowl',
+        description: 'A no-cook breakfast for an easy morning.',
+        ingredients: [
+          '2 cups plain yogurt',
+          '1 mango',
+          '6 strawberries',
+          '½ cup granola',
+        ],
+        steps: [
+          'Wash the strawberries, peel the mango and cut the fruit.',
+          'Divide the yogurt between two bowls.',
+          'Add the fruit and sprinkle with granola just before eating.',
+        ],
+      ),
+    ),
+    Recipe(
+      id: 'lemon-salmon',
+      slot: MealSlot.lunch,
+      minutes: 30,
+      servings: 2,
+      imageIndex: 3,
+      es: RecipeContent(
+        title: 'Salmón al limón y hierbas',
+        description: 'Una bandeja al horno y el almuerzo resuelto.',
+        ingredients: [
+          '2 filetes de salmón',
+          '300 g de papas pequeñas',
+          '2 tazas de brócoli',
+          '1 limón',
+          '1 cucharada de aceite de oliva',
+          'Hierbas, sal y pimienta al gusto',
+        ],
+        steps: [
+          'Precalienta el horno a 200 °C. Corta las papas en trozos pequeños, mezcla con parte del aceite y hornea 15 minutos.',
+          'Añade el salmón y el brócoli a la bandeja. Agrega el resto del aceite, el limón y las hierbas.',
+          'Hornea hasta que el pescado esté cocido por dentro y las papas tiernas. Sirve con el jugo de la bandeja.',
+        ],
+      ),
+      en: RecipeContent(
+        title: 'Lemon & herb salmon',
+        description: 'One tray in the oven and lunch is sorted.',
+        ingredients: [
+          '2 salmon fillets',
+          '300 g baby potatoes',
+          '2 cups broccoli',
+          '1 lemon',
+          '1 tablespoon olive oil',
+          'Herbs, salt and pepper to taste',
+        ],
+        steps: [
+          'Preheat the oven to 200 °C. Cut the potatoes into small pieces, toss with some oil and roast for 15 minutes.',
+          'Add the salmon and broccoli. Drizzle with the remaining oil, lemon and herbs.',
+          'Bake until the fish is cooked through and the potatoes are tender. Serve with the pan juices.',
+        ],
+      ),
+    ),
+    Recipe(
+      id: 'chicken-rice',
+      slot: MealSlot.lunch,
+      minutes: 30,
+      servings: 2,
+      imageIndex: 4,
+      es: RecipeContent(
+        title: 'Pollo con arroz y vegetales',
+        description: 'Un almuerzo de casa, completo y sin complicaciones.',
+        ingredients: [
+          '1 pechuga de pollo',
+          '¾ taza de arroz',
+          '1 zanahoria',
+          '1 taza de brócoli',
+          '1 cucharada de aceite de oliva',
+          'Ajo, sal y pimienta al gusto',
+        ],
+        steps: [
+          'Cocina el arroz siguiendo las instrucciones del paquete.',
+          'Corta la zanahoria y el brócoli. Cocínalos al vapor hasta que estén tiernos.',
+          'Corta el pollo en tiras, sazona y saltea con el aceite hasta que esté completamente cocido por dentro. Sirve junto al arroz y los vegetales.',
+        ],
+      ),
+      en: RecipeContent(
+        title: 'Chicken, rice & vegetables',
+        description: 'A comforting, everyday homemade lunch.',
+        ingredients: [
+          '1 chicken breast',
+          '¾ cup rice',
+          '1 carrot',
+          '1 cup broccoli',
+          '1 tablespoon olive oil',
+          'Garlic, salt and pepper to taste',
+        ],
+        steps: [
+          'Cook the rice according to the package instructions.',
+          'Chop the carrot and broccoli. Steam until tender.',
+          'Slice and season the chicken, then sauté in the oil until fully cooked through. Serve with the rice and vegetables.',
+        ],
+      ),
+    ),
+    Recipe(
+      id: 'chickpea-salad',
+      slot: MealSlot.lunch,
+      minutes: 15,
+      servings: 2,
+      imageIndex: 5,
+      es: RecipeContent(
+        title: 'Ensalada de garbanzos y aguacate',
+        description: 'Fresca, con limón y lista en pocos minutos.',
+        ingredients: [
+          '2 tazas de garbanzos cocidos',
+          '1 aguacate',
+          '1 tomate',
+          '½ pepino',
+          '¼ cebolla',
+          '1 limón',
+          '1 cucharada de aceite de oliva',
+        ],
+        steps: [
+          'Escurre los garbanzos y corta los vegetales en cubos.',
+          'Mezcla el jugo del limón con el aceite y una pizca de sal.',
+          'Combina todo en un bowl. Añade el aguacate al final y mezcla con cuidado.',
+        ],
+      ),
+      en: RecipeContent(
+        title: 'Chickpea & avocado salad',
+        description: 'Fresh, lemony and ready in minutes.',
+        ingredients: [
+          '2 cups cooked chickpeas',
+          '1 avocado',
+          '1 tomato',
+          '½ cucumber',
+          '¼ onion',
+          '1 lemon',
+          '1 tablespoon olive oil',
+        ],
+        steps: [
+          'Drain the chickpeas and dice the vegetables.',
+          'Mix the lemon juice with the oil and a pinch of salt.',
+          'Combine in a bowl. Add the avocado last and toss gently.',
+        ],
+      ),
+    ),
+    Recipe(
+      id: 'tomato-pasta',
+      slot: MealSlot.dinner,
+      minutes: 25,
+      servings: 2,
+      imageIndex: 6,
+      es: RecipeContent(
+        title: 'Pasta con tomate y albahaca',
+        description: 'Una cena sencilla que siempre apetece.',
+        ingredients: [
+          '180 g de pasta',
+          '2 tomates maduros',
+          '1 diente de ajo',
+          '1 cucharada de aceite de oliva',
+          'Albahaca fresca',
+          'Queso rallado al gusto',
+        ],
+        steps: [
+          'Hierve la pasta en agua con sal siguiendo las instrucciones del paquete. Reserva un poco del agua de cocción.',
+          'Pica el ajo y los tomates. Saltea el ajo con el aceite, añade el tomate y cocina hasta que forme una salsa.',
+          'Mezcla la pasta con la salsa y un poco del agua reservada. Termina con la albahaca y el queso.',
+        ],
+      ),
+      en: RecipeContent(
+        title: 'Tomato & basil pasta',
+        description: 'A simple dinner you’ll look forward to.',
+        ingredients: [
+          '180 g pasta',
+          '2 ripe tomatoes',
+          '1 garlic clove',
+          '1 tablespoon olive oil',
+          'Fresh basil',
+          'Grated cheese to taste',
+        ],
+        steps: [
+          'Cook the pasta in salted water according to the package. Reserve a little cooking water.',
+          'Chop the garlic and tomatoes. Sauté the garlic in the oil, then add the tomatoes and cook into a sauce.',
+          'Toss the pasta with the sauce and a splash of reserved water. Finish with basil and cheese.',
+        ],
+      ),
+    ),
+    Recipe(
+      id: 'sweet-potato-egg',
+      slot: MealSlot.dinner,
+      minutes: 25,
+      servings: 2,
+      imageIndex: 7,
+      es: RecipeContent(
+        title: 'Batata con espinaca y huevo',
+        description: 'Todo en un bowl para cerrar el día con calma.',
+        ingredients: [
+          '2 batatas medianas',
+          '2 huevos',
+          '2 tazas de espinaca',
+          '1 cucharada de aceite de oliva',
+          'Sal y pimienta al gusto',
+        ],
+        steps: [
+          'Corta las batatas en cubos pequeños y saltéalas con el aceite a fuego medio, tapadas, hasta que estén tiernas.',
+          'Añade la espinaca y cocina hasta que reduzca su volumen.',
+          'Cocina los huevos hasta que estén cuajados y sírvelos sobre las batatas y la espinaca.',
+        ],
+      ),
+      en: RecipeContent(
+        title: 'Sweet potato, spinach & egg',
+        description: 'An easy bowl for a quiet end to the day.',
+        ingredients: [
+          '2 medium sweet potatoes',
+          '2 eggs',
+          '2 cups spinach',
+          '1 tablespoon olive oil',
+          'Salt and pepper to taste',
+        ],
+        steps: [
+          'Dice the sweet potatoes and sauté in the oil over medium heat, covered, until tender.',
+          'Add the spinach and cook until wilted.',
+          'Cook the eggs until set, then serve over the sweet potatoes and spinach.',
+        ],
+      ),
+    ),
+    Recipe(
+      id: 'lentil-soup',
+      slot: MealSlot.dinner,
+      minutes: 35,
+      servings: 2,
+      imageIndex: 8,
+      es: RecipeContent(
+        title: 'Sopa de lentejas y vegetales',
+        description:
+            'Calientita y perfecta para dejar una porción para mañana.',
+        ingredients: [
+          '2 tazas de lentejas cocidas',
+          '1 zanahoria',
+          '1 rama de apio',
+          '½ cebolla',
+          '1 tomate',
+          '2 tazas de caldo de vegetales',
+          '1 cucharada de aceite de oliva',
+        ],
+        steps: [
+          'Pica la cebolla, el apio y la zanahoria. Sofríe con el aceite durante 5 minutos.',
+          'Añade el tomate picado, las lentejas y el caldo.',
+          'Cocina a fuego bajo entre 20 y 25 minutos. Ajusta la sal y sirve cuando los vegetales estén tiernos.',
+        ],
+      ),
+      en: RecipeContent(
+        title: 'Lentil & vegetable soup',
+        description: 'A warm dinner, with a little left for tomorrow.',
+        ingredients: [
+          '2 cups cooked lentils',
+          '1 carrot',
+          '1 celery stalk',
+          '½ onion',
+          '1 tomato',
+          '2 cups vegetable stock',
+          '1 tablespoon olive oil',
+        ],
+        steps: [
+          'Chop the onion, celery and carrot. Sauté in the oil for 5 minutes.',
+          'Add the chopped tomato, lentils and stock.',
+          'Simmer for 20–25 minutes. Season and serve when the vegetables are tender.',
+        ],
+      ),
+    ),
+  ];
+}
