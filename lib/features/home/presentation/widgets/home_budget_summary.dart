@@ -22,7 +22,11 @@ class HomeBudgetSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final value = budget;
-    final totals = GroceryTotals(groceries, value?.currency ?? 'DOP');
+    final totals = GroceryTotals(
+      groceries,
+      value?.currency ?? 'DOP',
+      includeChecked: false,
+    );
     final projected = (value?.spent ?? 0) + totals.subtotalCents / 100;
     return Material(
       color: const Color(0xFFFEFDF9),
@@ -139,15 +143,12 @@ class HomeBudgetSummary extends StatelessWidget {
                       : projected > value.limit
                       ? l10n.homeBudgetOver
                       : l10n.homeBudgetOnTrack,
-                  style: const TextStyle(color: AppColors.muted, fontSize: 12),
+                  style: const TextStyle(color: AppColors.muted, fontSize: 13),
                 ),
                 const SizedBox(height: 6),
                 Text(
                   l10n.budgetDistinctionTip,
-                  style: const TextStyle(
-                    color: AppColors.muted,
-                    fontSize: 11,
-                  ),
+                  style: const TextStyle(color: AppColors.muted, fontSize: 13),
                 ),
               ],
             ],

@@ -533,13 +533,8 @@ void main() {
       if (platform == TargetPlatform.iOS) {
         await tester.tap(find.text('Continuar con Apple'));
         await tester.pumpAndSettle();
-        expect(service.provider, OAuthProvider.google);
-        expect(
-          find.text(
-            'El inicio de sesión con Apple todavía no está disponible.',
-          ),
-          findsOneWidget,
-        );
+        expect(service.provider, OAuthProvider.apple);
+        expect(find.text('Ya estás en Miga.'), findsNothing);
       }
       await service.verifyCode('person@example.com', '123456');
       await tester.pumpAndSettle();
@@ -595,20 +590,15 @@ void main() {
     expect(find.text('Ya estás en Miga.'), findsNothing);
   });
 
-  testWidgets('Apple shows an English notification without starting OAuth', (
+  testWidgets('Apple starts sign-in and waits for a confirmed session', (
     tester,
   ) async {
     await tester.pumpWidget(authApp(service, locale: const Locale('en')));
     await tester.tap(find.text('Continue with Apple'));
     await tester.pumpAndSettle();
-    expect(
-      find.descendant(
-        of: find.byType(SnackBar),
-        matching: find.text('Sign in with Apple is not available yet.'),
-      ),
-      findsOneWidget,
-    );
-    expect(service.provider, isNull);
+    expect(service.provider, OAuthProvider.apple);
+    expect(find.byType(SnackBar), findsNothing);
+    expect(find.text('You’re in Miga.'), findsNothing);
     expect(
       find.text(
         'We couldn’t complete sign-in. Check your connection and try again.',
@@ -628,6 +618,11 @@ void main() {
       expect(find.byType(OnboardingScreen), findsNothing);
       await tester.tap(find.text('Profile'));
       await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('Sign out'),
+        200,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.tap(find.text('Sign out'));
       await tester.pumpAndSettle();
       expect(find.byType(OnboardingScreen), findsOneWidget);

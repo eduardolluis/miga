@@ -104,7 +104,7 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
               child: Text(
                 l10n.carouselPosition(active + 1, widget.recipes.length),
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: AppColors.muted, fontSize: 12),
+                style: const TextStyle(color: AppColors.muted, fontSize: 13),
               ),
             ),
             IconButton(

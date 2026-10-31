@@ -1,5 +1,21 @@
 import 'dart:async';
 
+import 'package:miga/features/budget/presentation/savings_page.dart';
+import 'package:miga/features/groceries/presentation/shared_grocery_page.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:miga/features/sync/data/cloud_sync.dart';
+import 'package:miga/features/pro/application/store_subscription_service.dart';
+import 'package:miga/features/privacy/presentation/privacy_page.dart';
+import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
+import 'package:miga/features/budget/domain/recipe_amount.dart';
+import 'package:miga/features/budget/presentation/sheets/ingredient_prices_sheet.dart';
+import 'package:miga/features/budget/presentation/spending_page.dart';
+import 'package:miga/features/pantry/presentation/pantry_sheet.dart';
+import 'package:miga/features/profile/presentation/preferences_sheet.dart';
+import 'package:miga/features/meal_plan/presentation/sheets/plan_recipe_sheet.dart';
+import 'package:miga/features/meal_plan/domain/planned_recipe.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,6 +33,7 @@ import 'package:miga/features/home/presentation/home_screen.dart';
 import 'package:miga/features/meal_plan/data/local_meal_plan_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_plan_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
+import 'package:miga/features/meal_plan/presentation/meal_slot_presentation.dart';
 import 'package:miga/features/meal_plan/presentation/meal_plan_page.dart';
 import 'package:miga/features/meal_plan/presentation/sheets/meal_editor_sheet.dart';
 import 'package:miga/features/profile/presentation/profile_page.dart';
@@ -36,8 +53,14 @@ class AppShell extends StatefulWidget {
     this.detailsStore,
     this.today,
     this.openNearbyStores = NearbyStores.open,
+    this.onLanguageChanged,
+    this.client,
+    this.enablePriceEstimates = false,
   });
 
+  final void Function(String?)? onLanguageChanged;
+  final bool enablePriceEstimates;
+  final SupabaseClient? client;
   final AuthService? authService;
   final MealPlanStore? planStore;
   final HomeDetailsStore? detailsStore;
@@ -52,18 +75,53 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   late final HomeController _controller;
   AppTab _tab = AppTab.home;
   bool _signingOut = false;
-  Timer? _clockTimer;
+  Timer? _clockTimer, _syncTimer;
+  CloudSync? _cloud;
+  StoreSubscriptionService? _purchases;
+  int _loadedCloudGeneration = 0;
+  int _editorDepth = 0;
+  bool _syncing = false, _deleting = false;
 
   @override
   void initState() {
     super.initState();
     final userId = widget.authService?.session?.user.id ?? 'guest';
+    if (widget.client != null &&
+        widget.client!.auth.currentUser?.id == userId) {
+      _cloud = CloudSync(widget.client!, userId)..addListener(_cloudChanged);
+      _purchases = StoreSubscriptionService(widget.client!)
+        ..addListener(_cloudChanged);
+      unawaited(_purchases!.initialize());
+    }
     _controller = HomeController(
       today: widget.today ?? DateTime.now(),
-      planStore: widget.planStore ?? LocalMealPlanStore(userId),
-      detailsStore: widget.detailsStore ?? LocalHomeDetailsStore(userId),
-    )..load();
+      planStore:
+          widget.planStore ??
+          (_cloud == null
+              ? LocalMealPlanStore(userId)
+              : SyncedMealPlanStore(_cloud!)),
+      detailsStore:
+          widget.detailsStore ??
+          (_cloud == null
+              ? LocalHomeDetailsStore(userId)
+              : SyncedHomeDetailsStore(_cloud!)),
+      costEstimator: widget.enablePriceEstimates ? RecipeCostEstimator() : null,
+    );
+    unawaited(
+      _controller.load().then((_) {
+        if (mounted) {
+          widget.onLanguageChanged?.call(_controller.preferences.language);
+          unawaited(_syncNow());
+        }
+      }),
+    );
     WidgetsBinding.instance.addObserver(this);
+    if (_cloud != null) {
+      _syncTimer = Timer.periodic(
+        const Duration(seconds: 30),
+        (_) => _syncNow(),
+      );
+    }
     // A supplied date freezes the clock for tests and design previews.
     if (widget.today == null) {
       _clockTimer = Timer.periodic(
@@ -76,6 +134,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   @override
   void dispose() {
     _clockTimer?.cancel();
+    _syncTimer?.cancel();
+    _cloud?.removeListener(_cloudChanged);
+    _cloud?.dispose();
+    _purchases?.removeListener(_cloudChanged);
+    _purchases?.dispose();
     WidgetsBinding.instance.removeObserver(this);
     _controller.dispose();
     super.dispose();
@@ -85,6 +148,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed && widget.today == null) {
       _controller.syncTime(DateTime.now());
+      unawaited(_syncNow());
+      unawaited(_purchases?.refreshEntitlement());
     }
   }
 
@@ -104,12 +169,59 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         : '${first[0].toUpperCase()}${first.substring(1)}';
   }
 
-  Future<bool> _save(Future<bool> Function() action) async {
+  Future<T?> _editSession<T>(Future<T?> Function() action) async {
+    _editorDepth++;
+    try {
+      return await action();
+    } finally {
+      _editorDepth--;
+      if (_editorDepth == 0) Timer.run(() => _syncNow());
+    }
+  }
+
+  Future<bool> _save(Future<bool> Function() action, {String? message}) async {
     if (!mounted) return false;
+    if (_cloud != null && _cloud!.remoteGeneration != _loadedCloudGeneration) {
+      final l = AppLocalizations.of(context)!;
+      final keepLocal = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(l.syncTitle),
+          content: Text(l.syncConflict),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(l.keepCloud),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: Text(l.keepLocal),
+            ),
+          ],
+        ),
+      );
+      if (!mounted) return false;
+      await _controller.load();
+      _loadedCloudGeneration = _cloud!.remoteGeneration;
+      if (keepLocal != true || !mounted) return false;
+    }
     final success = await action();
     if (!mounted) return success;
     if (success) {
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      final l = AppLocalizations.of(context)!;
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          SnackBar(
+            content: Text(message ?? l.savedSuccess),
+            action: _controller.canUndo
+                ? SnackBarAction(
+                    label: l.undoAction,
+                    onPressed: () => _save(_controller.undo),
+                  )
+                : null,
+          ),
+        );
     } else {
       final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -131,6 +243,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     String? suggestion,
   }) async {
     if (!_controller.canEdit) return;
+    final planned = _controller.recipeFor(date, slot);
+    if (planned != null && suggestion == null) {
+      await _openRecipe(planned, plannedDate: date, plannedSlot: slot);
+      return;
+    }
     final result = await showMealEditor(
       context,
       date: date,
@@ -139,80 +256,370 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       suggestion: suggestion,
     );
     if (!mounted || result == null) return;
-    final saved = await _save(() => _controller.saveMeal(date, slot, result));
-    if (!mounted || !saved || result.isEmpty) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(AppLocalizations.of(context)!.mealAddedSuccess),
-        duration: const Duration(seconds: 2),
-        behavior: SnackBarBehavior.floating,
-      ),
+    await _save(
+      () => _controller.saveMeal(date, slot, result),
+      message: result.isEmpty
+          ? null
+          : AppLocalizations.of(context)!.mealAddedSuccess,
     );
   }
 
-  Future<void> _openRecipe(Recipe recipe) async {
+  Future<void> _openRecipe(
+    Recipe recipe, {
+    DateTime? plannedDate,
+    MealSlot? plannedSlot,
+  }) async {
     if (!_controller.canEdit) return;
-    final date = _controller.selectedDate;
-    final slot = recipe.slot;
-    final add = await showRecipeDetails(
-      context,
-      recipe,
-      onAddIngredients: _addIngredients,
+    final chosen = await _editSession(
+      () => showRecipeDetails(
+        context,
+        plannedDate == null ? _controller.portionFor(recipe) : recipe,
+        planLabel: plannedDate == null
+            ? null
+            : AppLocalizations.of(context)!.homeSave,
+        pantry: _controller.details.pantry,
+        onPantryChanged: (amount, available) async {
+          final saved = await _controller.setIngredientAvailable(
+            amount,
+            available,
+          );
+          return saved ? _controller.details.pantry : null;
+        },
+        costFor: _controller.costFor,
+        budget: _controller.budget,
+        currency: _controller.costCurrency,
+        now: _controller.now,
+        favorite: _controller.details.favorites.contains(recipe.id),
+        onToggleFavorite: () => _controller.toggleFavorite(recipe.id),
+        onServingsChanged: (servings) => plannedDate == null
+            ? _controller.saveServings(recipe.id, servings)
+            : _controller.saveRecipe(
+                plannedDate,
+                plannedSlot!,
+                recipe.withServings(servings),
+              ),
+        onEditPrices: _editPrices,
+        onAddAmounts: (amounts) => _addAmounts(recipe, amounts),
+      ),
     );
-    if (!mounted || add != true) return;
-    await _editMeal(
-      date,
-      slot,
-      suggestion: recipe
-          .contentFor(Localizations.localeOf(context).languageCode)
-          .title,
-    );
+    if (!mounted || chosen == null) return;
+    if (plannedDate == null) {
+      await _planRecipe(chosen);
+    } else {
+      await _save(
+        () => _controller.saveRecipe(plannedDate, plannedSlot!, chosen),
+      );
+    }
   }
 
   Future<void> _editBudget() async {
     if (!_controller.canEdit) return;
-    final budget = await showBudgetEditor(context, _controller.budget);
+    final budget = await _editSession(
+      () => showBudgetEditor(context, _controller.budget),
+    );
     if (!mounted || budget == null) return;
     await _save(() => _controller.saveBudget(budget));
   }
 
   Future<void> _openGroceries() async {
     if (!_controller.canEdit) return;
-    final items = await showGroceryList(
-      context,
-      _controller.details.groceries,
-      currency: _controller.budget?.currency ?? 'DOP',
-      onGenerateFromPlan: (items) =>
-          _controller.generateGroceriesFromPlannedMeals(
-            existingItems: items,
-            languageCode: Localizations.localeOf(context).languageCode,
-            currency: _controller.budget?.currency ?? 'DOP',
-          ),
+    var syncWithPlan = _controller.details.syncGroceries;
+    final items = await _editSession(
+      () => showGroceryList(
+        context,
+        _controller.details.groceries,
+        syncWithPlan: syncWithPlan,
+        allowEstimates: _controller.preferences.country == 'DO',
+        onSyncChanged: (value) => syncWithPlan = value,
+        currency: _controller.preferences.currency,
+        onGenerateFromPlan: (items) =>
+            _controller.generateGroceriesFromPlannedMeals(
+              existingItems: items,
+              languageCode: Localizations.localeOf(context).languageCode,
+              currency: _controller.preferences.currency,
+            ),
+      ),
     );
     if (!mounted || items == null) return;
-    await _save(() => _controller.saveGroceries(items));
+    await _save(() => _controller.setGrocerySync(syncWithPlan, items: items));
   }
 
-  Future<bool> _addIngredients(List<String> ingredients) async {
-    if (!_controller.canEdit) return false;
+  Future<bool> _addAmounts(Recipe recipe, List<RecipeAmount> amounts) async {
+    final language = Localizations.localeOf(context).languageCode;
     final items = List<GroceryItem>.of(_controller.details.groceries);
-    for (final ingredient in ingredients) {
-      if (!items.any(
-        (item) => item.name.toLowerCase() == ingredient.toLowerCase(),
-      )) {
-        items.add(GroceryItem(ingredient));
+    for (final amount in amounts) {
+      final index = items.indexWhere(
+        (item) => item.ingredientId == amount.ingredient.name,
+      );
+      final old = index < 0 ? null : items[index];
+      final item = GroceryItem(
+        amount.ingredient.label(language),
+        checked: false,
+        quantity: old?.quantity ?? 1,
+        currency: _controller.preferences.currency,
+        unitPriceCents: old?.unitPriceCents,
+        offer: old?.offer,
+        reference: old?.reference,
+        isEstimated: old?.isEstimated ?? true,
+        ingredientId: amount.ingredient.name,
+        requiredAmount: (old?.requiredAmount ?? 0) + amount.amount,
+        requiredUnit: amount.unit,
+      );
+      if (index < 0) {
+        items.add(item);
+      } else {
+        items[index] = item;
       }
     }
     return _controller.saveGroceries(items);
   }
 
-  Future<void> _planRecipe(Recipe recipe) => _editMeal(
-    _controller.selectedDate,
-    recipe.slot,
-    suggestion: recipe
-        .contentFor(Localizations.localeOf(context).languageCode)
-        .title,
+  Future<void> _planRecipe(Recipe recipe) async {
+    if (!_controller.canEdit) return;
+    final target = await showPlanRecipe(
+      context,
+      recipe: recipe,
+      week: _controller.week,
+      selectedDate: _controller.selectedDate,
+      mealFor: _controller.mealFor,
+    );
+    if (!mounted || target == null) return;
+    await _save(
+      () => _controller.saveRecipe(
+        target.$1,
+        target.$2,
+        recipe.withServings(target.$3),
+      ),
+      message: AppLocalizations.of(context)!.mealAddedSuccess,
+    );
+  }
+
+  Future<void> _editPreferences() async {
+    final value = await _editSession(
+      () => showHouseholdPreferences(context, _controller.preferences),
+    );
+    if (!mounted || value == null) return;
+    if (await _save(() => _controller.savePreferences(value)) && mounted) {
+      widget.onLanguageChanged?.call(value.language);
+    }
+  }
+
+  Future<void> _editPantry() async {
+    final items = await _editSession(
+      () => showPantry(context, _controller.details.pantry),
+    );
+    if (!mounted || items == null) return;
+    await _save(() => _controller.savePantry(items));
+  }
+
+  Future<void> _editPrices() async {
+    final prices = await _editSession(
+      () => showIngredientPrices(
+        context,
+        _controller.preferences.currency,
+        _controller.details.ingredientPrices,
+      ),
+    );
+    if (!mounted || prices == null) return;
+    await _save(() => _controller.savePrices(prices));
+  }
+
+  void _openSpending() => Navigator.of(context).push(
+    MaterialPageRoute<void>(
+      builder: (_) => SpendingPage(controller: _controller),
+    ),
   );
+
+  bool get _requiresPro =>
+      StoreSubscriptionService.enabled &&
+      _purchases?.available == true &&
+      _purchases!.products.isNotEmpty &&
+      !_purchases!.active;
+
+  void _openSavings() {
+    if (_requiresPro) {
+      _openPro();
+      return;
+    }
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => SavingsPage(
+          controller: _controller,
+          onReplace: (date, slot, recipe) async {
+            await _save(() => _controller.saveRecipe(date, slot, recipe));
+          },
+        ),
+      ),
+    );
+  }
+
+  Future<void> _autoPlan() async {
+    if (_requiresPro) {
+      _openPro();
+      return;
+    }
+    final l = AppLocalizations.of(context)!;
+    if (_controller.budget == null) {
+      await _editBudget();
+      if (!mounted || _controller.budget == null) return;
+    }
+    final proposal = _controller.automaticPlan();
+    final added = proposal.entries
+        .where((e) => _controller.meals[e.key] != e.value)
+        .toList();
+    final accepted = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l.autoPlanPreview),
+        content: SizedBox(
+          width: 500,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(l.autoPlanNote),
+                const SizedBox(height: 12),
+                if (proposal.length < _controller.week.length * 3)
+                  Text(l.autoPlanMissing),
+                for (final entry in added)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: Text(
+                      '${entry.key.split(':').first} · ${PlannedRecipe.parse(entry.value)!.recipe!.contentFor(l.localeName).title}',
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(l.cancelAction),
+          ),
+          FilledButton(
+            onPressed: added.isEmpty
+                ? null
+                : () => Navigator.pop(context, true),
+            child: Text(l.applyPlan),
+          ),
+        ],
+      ),
+    );
+    if (!mounted || accepted != true) return;
+    await _save(() => _controller.applyPlan(proposal));
+  }
+
+  Future<void> _transferMeal(
+    DateTime from,
+    MealSlot slot,
+    String action,
+  ) async {
+    if (!_controller.canEdit) return;
+    if (action == 'delete') {
+      await _save(() => _controller.saveMeal(from, slot, ''));
+      return;
+    }
+    final l = AppLocalizations.of(context)!;
+    final chosen = <DateTime>{};
+    var targetSlot = slot;
+    final accepted = await showDialog<bool>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, update) => AlertDialog(
+          title: Text(
+            action == 'move'
+                ? l.moveMeal
+                : action == 'repeat'
+                ? l.repeatMeal
+                : l.copyMeal,
+          ),
+          content: SizedBox(
+            width: 500,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  DropdownButtonFormField<MealSlot>(
+                    initialValue: targetSlot,
+                    items: [
+                      for (final value in MealSlot.values)
+                        DropdownMenuItem(
+                          value: value,
+                          child: Text(value.label(l)),
+                        ),
+                    ],
+                    onChanged: (value) => update(() => targetSlot = value!),
+                  ),
+                  for (final day in _controller.week)
+                    CheckboxListTile(
+                      title: Text(
+                        MaterialLocalizations.of(context).formatFullDate(day),
+                      ),
+                      value: chosen.contains(day),
+                      onChanged: (value) => update(() {
+                        if (action == 'move' || action == 'copy') {
+                          chosen.clear();
+                        }
+                        if (value == true) chosen.add(day);
+                      }),
+                    ),
+                  Text(l.overwriteWarning),
+                ],
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(l.cancelAction),
+            ),
+            FilledButton(
+              onPressed: chosen.isEmpty
+                  ? null
+                  : () => Navigator.pop(context, true),
+              child: Text(l.confirmAction),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (!mounted || accepted != true) return;
+    await _save(
+      () => _controller.transferMeal(from, slot, [
+        for (final date in chosen) (date, targetSlot),
+      ], move: action == 'move'),
+    );
+  }
+
+  Future<void> _chooseRecipe(DateTime date, MealSlot slot) async {
+    final l = AppLocalizations.of(context)!;
+    final choices = _controller.recommendations(slot);
+    final recipe = await showDialog<Recipe>(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: Text(l.chooseRecipe),
+        children: [
+          if (choices.isEmpty)
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: Text(l.recipeNoResults),
+            ),
+          for (final recipe in choices)
+            SimpleDialogOption(
+              onPressed: () => Navigator.pop(context, recipe),
+              child: Text(recipe.contentFor(l.localeName).title),
+            ),
+        ],
+      ),
+    );
+    if (!mounted || recipe == null) return;
+    await _save(
+      () => _controller.saveRecipe(date, slot, recipe),
+      message: l.mealAddedSuccess,
+    );
+  }
 
   Future<void> _openStores() async {
     try {
@@ -236,7 +643,12 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       MaterialPageRoute<void>(
         builder: (context) => Theme(
           data: AppTheme.household(Theme.of(context)),
-          child: const ProPage(),
+          child: ProPage(
+            purchases: _purchases,
+            onAutoPlan: _autoPlan,
+            onPantry: _editPantry,
+            onSpending: _openSpending,
+          ),
         ),
       ),
     );
@@ -264,19 +676,120 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       ),
     );
     if (!mounted || targetDate == null) return;
-    final success = await _save(
+    await _save(
       () => _controller.copyDayMeals(fromDate, targetDate),
+      message: l10n.planCopySuccess(dates.formatShortMonthDay(targetDate)),
     );
-    if (mounted && success) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            l10n.planCopySuccess(dates.formatShortMonthDay(targetDate)),
-          ),
-          duration: const Duration(seconds: 2),
-          behavior: SnackBarBehavior.floating,
+  }
+
+  void _cloudChanged() {
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _syncNow() async {
+    if (_cloud == null ||
+        _syncing ||
+        _controller.saving ||
+        _editorDepth > 0 ||
+        _deleting) {
+      return;
+    }
+    _syncing = true;
+    try {
+      await _cloud!.sync();
+      if (mounted &&
+          _loadedCloudGeneration != _cloud!.remoteGeneration &&
+          !_controller.saving &&
+          _editorDepth == 0) {
+        _loadedCloudGeneration = _cloud!.remoteGeneration;
+        await _controller.load();
+        if (mounted) {
+          widget.onLanguageChanged?.call(_controller.preferences.language);
+        }
+      }
+    } finally {
+      _syncing = false;
+    }
+  }
+
+  Future<void> _openSync() async {
+    if (_cloud == null) return;
+    final l = AppLocalizations.of(context)!;
+    if (_cloud!.status == SyncStatus.conflict) {
+      final keepLocal = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(l.syncTitle),
+          content: Text(l.syncConflict),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(l.keepCloud),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: Text(l.keepLocal),
+            ),
+          ],
         ),
       );
+      if (!mounted || keepLocal == null) return;
+      try {
+        await _cloud!.resolve(keepLocal: keepLocal);
+        await _controller.load();
+      } catch (_) {
+        if (mounted) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(l.homeSaveError)));
+        }
+      }
+    } else {
+      await _syncNow();
+    }
+  }
+
+  Future<void> _deleteAccount() async {
+    if (_deleting || widget.client == null) return;
+    final l = AppLocalizations.of(context)!;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l.deleteAccount),
+        content: Text(l.deleteAccountPrompt),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(l.cancelAction),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(l.deleteAccount),
+          ),
+        ],
+      ),
+    );
+    if (!mounted || confirmed != true) return;
+    setState(() => _deleting = true);
+    final userId = widget.client!.auth.currentUser?.id;
+    try {
+      final response = await widget.client!.functions.invoke('delete-account');
+      if (response.status != 200 || response.data['deleted'] != true) {
+        throw StateError('Deletion failed');
+      }
+      final prefs = await SharedPreferences.getInstance();
+      for (final key in prefs.getKeys().where(
+        (key) => key.startsWith('miga.') && key.contains('.$userId'),
+      )) {
+        await prefs.remove(key);
+      }
+      await widget.authService!.signOut();
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(l.homeSaveError)));
+      }
+    } finally {
+      if (mounted) setState(() => _deleting = false);
     }
   }
 
@@ -295,7 +808,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     }
   }
 
-  Widget _body() => switch (_tab) {
+  Widget _body(AppTab tab) => switch (tab) {
     AppTab.home => HomeScreen(
       controller: _controller,
       userName: _userName,
@@ -320,9 +833,25 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       onRetry: _controller.load,
       onEditMeal: _editMeal,
       onCopyDay: _copyDay,
+      onChooseRecipe: _chooseRecipe,
+      onMealAction: _transferMeal,
+      onAutoPlan: _controller.canEdit ? _autoPlan : null,
+      estimateFor: _controller.estimateFor,
+      budget: _controller.budget,
+      pricing: _controller.pricing,
+      currency: _controller.costCurrency,
     ),
     AppTab.recipes => RecipesPage(
       onOpenRecipe: _controller.canEdit ? _openRecipe : null,
+      preferences: _controller.preferences,
+      pantry: _controller.availableIngredients,
+      favorites: _controller.details.favorites,
+      costFor: _controller.costFor,
+      onFavorite: (id) => _save(() => _controller.toggleFavorite(id)),
+      budget: _controller.budget,
+      now: _controller.now,
+      portionFor: _controller.portionFor,
+      onPantry: _editPantry,
     ),
     AppTab.profile => ProfilePage(
       name: _userName,
@@ -331,6 +860,38 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       onSignOut: widget.authService == null ? null : _signOut,
       signingOut: _signingOut,
       onPro: _openPro,
+      onPreferences: _controller.canEdit ? _editPreferences : null,
+      onPantry: _controller.canEdit ? _editPantry : null,
+      onPrices: _controller.canEdit ? _editPrices : null,
+      onSpending: _openSpending,
+      onSavings: _openSavings,
+      subscriptionActive: _purchases?.active ?? false,
+      onSharedList: widget.client == null
+          ? null
+          : () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => SharedGroceryPage(
+                  client: widget.client!,
+                  items: _controller.details.groceries,
+                  currency: _controller.preferences.currency,
+                  canCreate: !_requiresPro,
+                  onUpgrade: _openPro,
+                ),
+              ),
+            ),
+      onPrivacy: () => Navigator.of(context)
+          .push(MaterialPageRoute<void>(builder: (_) => const PrivacyPage())),
+      onDeleteAccount: widget.client == null || _deleting
+          ? null
+          : _deleteAccount,
+      onSync: _cloud == null ? null : _openSync,
+      syncLabel: _cloud == null
+          ? null
+          : switch (_cloud!.status) {
+              SyncStatus.synced => AppLocalizations.of(context)!.syncSaved,
+              SyncStatus.conflict => AppLocalizations.of(context)!.syncConflict,
+              _ => AppLocalizations.of(context)!.syncPending,
+            },
     ),
   };
 
@@ -349,7 +910,15 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                 constraints: const BoxConstraints(maxWidth: 640),
                 child: ListenableBuilder(
                   listenable: _controller,
-                  builder: (context, _) => _body(),
+                  builder: (context, _) {
+                    _controller.setLanguage(
+                      Localizations.localeOf(context).languageCode,
+                    );
+                    return IndexedStack(
+                      index: _tab.index,
+                      children: [for (final tab in AppTab.values) _body(tab)],
+                    );
+                  },
                 ),
               ),
             ),

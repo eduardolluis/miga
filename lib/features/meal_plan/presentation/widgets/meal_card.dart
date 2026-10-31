@@ -11,11 +11,15 @@ class MealCard extends StatelessWidget {
     required this.slot,
     required this.meal,
     required this.onTap,
+    this.onChooseRecipe,
+    this.onAction,
   });
 
   final MealSlot slot;
   final String? meal;
   final VoidCallback? onTap;
+  final VoidCallback? onChooseRecipe;
+  final ValueChanged<String>? onAction;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +56,7 @@ class MealCard extends StatelessWidget {
                         slot.label(l10n),
                         style: const TextStyle(
                           color: AppColors.muted,
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -71,14 +75,41 @@ class MealCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Icon(
-                  meal == null ? Icons.add_rounded : Icons.edit_outlined,
-                  color: AppColors.olive,
-                  size: 21,
-                  semanticLabel: meal == null
-                      ? l10n.homeAddMeal
-                      : l10n.homeEditMeal,
-                ),
+                if (onChooseRecipe != null)
+                  IconButton(
+                    onPressed: onChooseRecipe,
+                    tooltip: l10n.chooseRecipe,
+                    icon: const Icon(
+                      Icons.restaurant_menu,
+                      color: AppColors.olive,
+                    ),
+                  ),
+                if (meal != null && onAction != null)
+                  PopupMenuButton<String>(
+                    tooltip: l10n.mealActions,
+                    onSelected: onAction,
+                    itemBuilder: (_) => [
+                      PopupMenuItem(value: 'move', child: Text(l10n.moveMeal)),
+                      PopupMenuItem(value: 'copy', child: Text(l10n.copyMeal)),
+                      PopupMenuItem(
+                        value: 'repeat',
+                        child: Text(l10n.repeatMeal),
+                      ),
+                      PopupMenuItem(
+                        value: 'delete',
+                        child: Text(l10n.homeRemoveMeal),
+                      ),
+                    ],
+                  )
+                else
+                  Icon(
+                    meal == null ? Icons.add_rounded : Icons.edit_outlined,
+                    color: AppColors.olive,
+                    size: 21,
+                    semanticLabel: meal == null
+                        ? l10n.homeAddMeal
+                        : l10n.homeEditMeal,
+                  ),
               ],
             ),
           ),

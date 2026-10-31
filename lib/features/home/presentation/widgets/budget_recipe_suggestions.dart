@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
@@ -30,7 +32,8 @@ class BudgetRecipeSuggestions extends StatefulWidget {
 class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
   final _estimator = RecipeCostEstimator();
   late Future<List<RecipeCost>> _request = _load();
-  Future<List<RecipeCost>> _load() => widget.budget.currency != 'DOP'
+  Future<List<RecipeCost>> _load() =>
+      widget.budget.currency != 'DOP' && widget.estimate == null
       ? Future.value([])
       : (widget.estimate ?? _estimator.estimate)(widget.recipes);
 
@@ -39,7 +42,10 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.recipes.map((r) => r.id).join() !=
             widget.recipes.map((r) => r.id).join() ||
-        oldWidget.budget.currency != widget.budget.currency) {
+        oldWidget.budget.currency != widget.budget.currency ||
+        oldWidget.estimate != widget.estimate ||
+        oldWidget.recipes.map((r) => r.servings).join(',') !=
+            widget.recipes.map((r) => r.servings).join(',')) {
       _request = _load();
     }
   }
@@ -74,7 +80,7 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
             style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 23),
           ),
           const SizedBox(height: 8),
-          if (widget.budget.currency != 'DOP')
+          if (widget.budget.currency != 'DOP' && widget.estimate == null)
             Text(l10n.budgetRecipeCurrency)
           else ...[
             Container(
@@ -104,10 +110,19 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
                   ),
                   const SizedBox(height: 8),
                   Text(
+                    '${widget.budget.format(math.max(0.0, widget.budget.limit - widget.budget.spent))} ÷ ${remainingMealSlots(widget.now)} = ${widget.budget.format(allowance / 100)}',
+                    style: const TextStyle(
+                      color: AppColors.olive,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
                     l10n.budgetTargetNote,
                     style: const TextStyle(
                       color: AppColors.muted,
-                      fontSize: 12,
+                      fontSize: 13,
                       height: 1.5,
                     ),
                   ),
@@ -191,7 +206,7 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
                                         '${l10n.recipeMinutes(cost.recipe.minutes)} · ${l10n.recipeServings(cost.recipe.servings)}',
                                         style: const TextStyle(
                                           color: AppColors.muted,
-                                          fontSize: 12,
+                                          fontSize: 13,
                                           height: 1.5,
                                         ),
                                       ),
@@ -229,7 +244,7 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
                                         : l10n.budgetRecipeOver,
                                     style: const TextStyle(
                                       color: AppColors.olive,
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       height: 1.4,
                                     ),
                                   ),
@@ -258,7 +273,7 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
                                 ),
                                 style: const TextStyle(
                                   color: AppColors.muted,
-                                  fontSize: 12,
+                                  fontSize: 13,
                                   height: 1.5,
                                 ),
                               ),

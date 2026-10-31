@@ -13,6 +13,7 @@ class AuthEmailForm extends StatelessWidget {
     required this.availableWidth,
     required this.onSendCode,
     required this.onGoogleSignIn,
+    this.onAppleSignIn,
   });
 
   final TextEditingController controller;
@@ -20,6 +21,7 @@ class AuthEmailForm extends StatelessWidget {
   final double availableWidth;
   final VoidCallback onSendCode;
   final VoidCallback onGoogleSignIn;
+  final VoidCallback? onAppleSignIn;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,6 @@ class AuthEmailForm extends StatelessWidget {
         ),
         if (showApple) ...[
           const SizedBox(height: 12),
-          // TODO: Implement Sign in with Apple.
           FilledButton.icon(
             style: FilledButton.styleFrom(
               backgroundColor: Colors.black,
@@ -67,18 +68,7 @@ class AuthEmailForm extends StatelessWidget {
               ),
               minimumSize: const Size.fromHeight(52),
             ),
-            onPressed: busy
-                ? null
-                : () {
-                    final messenger = ScaffoldMessenger.of(context);
-                    messenger.hideCurrentSnackBar();
-                    messenger.showSnackBar(
-                      SnackBar(
-                        content: Text(l10n.appleSignInUnavailable),
-                        behavior: SnackBarBehavior.floating,
-                      ),
-                    );
-                  },
+            onPressed: busy ? null : onAppleSignIn,
             icon: const Icon(Icons.apple),
             label: Text(l10n.continueWithApple),
           ),

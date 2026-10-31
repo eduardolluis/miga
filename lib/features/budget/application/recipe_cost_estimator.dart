@@ -28,15 +28,21 @@ class RecipeCost {
   bool fits(int allowance) => complete && subtotalCents <= allowance;
 }
 
+/// Number of breakfast/lunch/dinner opportunities remaining this calendar
+/// week, including the current slot. Independent of how many meals are planned.
+int remainingMealSlots(DateTime now) =>
+    (7 - now.weekday) * 3 +
+    (now.hour < 11
+        ? 3
+        : now.hour < 17
+        ? 2
+        : 1);
+
 int mealAllowanceCents(WeeklyBudget budget, DateTime now) {
-  final slots =
-      (7 - now.weekday) * 3 +
-      (now.hour < 11
-          ? 3
-          : now.hour < 17
-          ? 2
-          : 1);
-  return math.max(0, ((budget.limit - budget.spent) * 100 / slots).floor());
+  final slots = remainingMealSlots(now);
+  final remaining = budget.limit - budget.spent;
+  if (slots <= 0 || !remaining.isFinite || remaining <= 0) return 0;
+  return math.max(0, (remaining * 100 / slots).floor());
 }
 
 class RecipeCostEstimator {
@@ -57,7 +63,7 @@ class RecipeCostEstimator {
 
   Future<List<RecipeCost>> estimate(List<Recipe> recipes) async {
     final ingredients = recipes
-        .expand((r) => RecipeAmounts.values[r.id] ?? <RecipeAmount>[])
+        .expand(RecipeAmounts.forRecipe)
         .map((a) => a.ingredient)
         .toSet()
         .toList();
@@ -67,9 +73,7 @@ class RecipeCostEstimator {
     return recipes
         .map(
           (recipe) => RecipeCost(recipe, [
-            for (final amount
-                in RecipeAmounts.values[recipe.id] ?? <RecipeAmount>[])
-              _cost(amount),
+            for (final amount in RecipeAmounts.forRecipe(recipe)) _cost(amount),
           ]),
         )
         .toList();

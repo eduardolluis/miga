@@ -29,10 +29,12 @@ class MealHeroCard extends StatelessWidget {
     color: AppColors.muted,
   );
   static const nutritionStyle = TextStyle(
-    fontSize: 12,
+    fontSize: 13,
     color: AppColors.muted,
     fontWeight: FontWeight.w500,
   );
+  static String nutritionLabel(AppLocalizations l, Recipe recipe) =>
+      '${l.recipeNutrition(recipe.nutrition!.calories, recipe.nutrition!.proteinGrams, recipe.nutrition!.carbsGrams)} · ${l.perServingLabel}';
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,7 @@ class MealHeroCard extends StatelessWidget {
                         recipe.slot.label(l10n),
                         style: const TextStyle(
                           color: AppColors.ink,
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -113,14 +115,7 @@ class MealHeroCard extends StatelessWidget {
                   ),
                   if (recipe.nutrition != null) ...[
                     const SizedBox(height: 6),
-                    Text(
-                      l10n.recipeNutrition(
-                        recipe.nutrition!.calories,
-                        recipe.nutrition!.proteinGrams,
-                        recipe.nutrition!.carbsGrams,
-                      ),
-                      style: nutritionStyle,
-                    ),
+                    Text(nutritionLabel(l10n, recipe), style: nutritionStyle),
                   ],
                   const Spacer(),
                   const SizedBox(height: 14),

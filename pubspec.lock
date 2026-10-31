@@ -293,6 +293,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.12.0"
+  in_app_purchase:
+    dependency: "direct main"
+    description:
+      name: in_app_purchase
+      sha256: d8317ec2ed6fe33199957d67ee67e08a4fd4871ef93b91d7611d8ee560892afc
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.1"
+  in_app_purchase_android:
+    dependency: transitive
+    description:
+      name: in_app_purchase_android
+      sha256: b76ab601573f8a848e72d015496257235066ba3479bef6300482239f417e0d72
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.5"
+  in_app_purchase_platform_interface:
+    dependency: transitive
+    description:
+      name: in_app_purchase_platform_interface
+      sha256: "0b0076cac8ce4fa7048f01e76af8b123aeb6a7c4e0dea2a5206d6664454f3e36"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.1"
+  in_app_purchase_storekit:
+    dependency: transitive
+    description:
+      name: in_app_purchase_storekit
+      sha256: fb2744b928bb0fcbfc95d1833469b3f638a44670aac3e278695930d3727011b6
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.16"
   intl:
     dependency: "direct main"
     description:
@@ -565,6 +597,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+  sign_in_with_apple:
+    dependency: "direct main"
+    description:
+      name: sign_in_with_apple
+      sha256: "6d205ad2b30f95b231812d61f19b4a8df836f16ba9cde28735b3ac8ece9113f7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.2.0"
+  sign_in_with_apple_platform_interface:
+    dependency: transitive
+    description:
+      name: sign_in_with_apple_platform_interface
+      sha256: "981bca52cf3bb9c3ad7ef44aace2d543e5c468bb713fd8dda4275ff76dfa6659"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+  sign_in_with_apple_web:
+    dependency: transitive
+    description:
+      name: sign_in_with_apple_web
+      sha256: f316400827f52cafcf50d00e1a2e8a0abc534ca1264e856a81c5f06bd5b10fed
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   sky_engine:
     dependency: transitive
     description: flutter

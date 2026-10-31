@@ -4,6 +4,8 @@ import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
 import 'package:miga/features/meal_plan/presentation/widgets/meal_card.dart';
 import 'package:miga/l10n/app_localizations.dart';
+import 'package:miga/features/meal_plan/domain/plan_estimate.dart';
+import 'package:miga/features/budget/domain/weekly_budget.dart';
 
 class MealPlanPage extends StatelessWidget {
   const MealPlanPage({
@@ -17,6 +19,13 @@ class MealPlanPage extends StatelessWidget {
     required this.onRetry,
     required this.onEditMeal,
     this.onCopyDay,
+    this.onChooseRecipe,
+    this.onMealAction,
+    this.onAutoPlan,
+    this.estimateFor,
+    this.budget,
+    this.pricing = false,
+    this.currency = 'DOP',
   });
   final List<DateTime> week;
   final int mealCount;
@@ -27,6 +36,13 @@ class MealPlanPage extends StatelessWidget {
   final VoidCallback onRetry;
   final void Function(DateTime date, MealSlot slot) onEditMeal;
   final void Function(DateTime fromDate)? onCopyDay;
+  final void Function(DateTime, MealSlot)? onChooseRecipe;
+  final void Function(DateTime, MealSlot, String)? onMealAction;
+  final VoidCallback? onAutoPlan;
+  final PlanEstimate Function([DateTime?])? estimateFor;
+  final WeeklyBudget? budget;
+  final bool pricing;
+  final String currency;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +69,15 @@ class MealPlanPage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 24),
+        if (onAutoPlan != null)
+          FilledButton.tonalIcon(
+            onPressed: onAutoPlan,
+            icon: const Icon(Icons.auto_awesome),
+            label: Text(l10n.autoPlanTitle),
+          ),
+        if (pricing) const LinearProgressIndicator(),
+        if (estimateFor != null && mealCount > 0)
+          _estimate(context, estimateFor!()),
         if (loading) const Center(child: CircularProgressIndicator()),
         if (loadFailed) ...[
           Text(l10n.homeLoadError),
@@ -89,6 +114,9 @@ class MealPlanPage extends StatelessWidget {
             const SizedBox(height: 16),
           ],
           for (final date in week) ...[
+            if (estimateFor != null &&
+                MealSlot.values.any((s) => mealFor(date, s) != null))
+              _estimate(context, estimateFor!(date)),
             Padding(
               padding: const EdgeInsets.only(top: 10, bottom: 8),
               child: Row(
@@ -118,11 +146,35 @@ class MealPlanPage extends StatelessWidget {
                 slot: slot,
                 meal: mealFor(date, slot),
                 onTap: canEdit ? () => onEditMeal(date, slot) : null,
+                onChooseRecipe: canEdit && onChooseRecipe != null
+                    ? () => onChooseRecipe!(date, slot)
+                    : null,
+                onAction: canEdit && onMealAction != null
+                    ? (action) => onMealAction!(date, slot, action)
+                    : null,
               ),
             const SizedBox(height: 14),
           ],
         ],
       ],
+    );
+  }
+
+  Widget _estimate(BuildContext context, PlanEstimate estimate) {
+    final l = AppLocalizations.of(context)!;
+    final money = WeeklyBudget(limit: 0, spent: 0, currency: currency);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${l.planEstimateTitle}: ≈ ${money.format(estimate.subtotalCents / 100)}',
+            style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
+          if (!estimate.complete) Text(l.incompleteEstimate),
+        ],
+      ),
     );
   }
 }

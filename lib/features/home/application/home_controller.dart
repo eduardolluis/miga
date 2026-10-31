@@ -1,8 +1,16 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
+import 'package:miga/core/region/supported_regions.dart';
 
 import 'package:miga/features/budget/domain/recipe_amount.dart';
+import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
+import 'package:miga/features/groceries/application/plan_groceries.dart';
+import 'package:miga/features/meal_plan/domain/planned_recipe.dart';
+import 'package:miga/features/meal_plan/domain/plan_estimate.dart';
+import 'package:miga/features/pantry/domain/pantry_item.dart';
+import 'package:miga/features/profile/domain/household_preferences.dart';
 import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
 import 'package:miga/features/home/domain/home_details.dart';
@@ -18,6 +26,7 @@ class HomeController extends ChangeNotifier {
     required DateTime today,
     required this.planStore,
     required this.detailsStore,
+    this.costEstimator,
   }) : _now = today,
        selectedSlot = MealSlot.forTime(today),
        selectedDate = DateTime(today.year, today.month, today.day);
@@ -27,6 +36,137 @@ class HomeController extends ChangeNotifier {
   DateTime get today => DateTime(_now.year, _now.month, _now.day);
   final MealPlanStore planStore;
   final HomeDetailsStore detailsStore;
+  final RecipeCostEstimator? costEstimator;
+  final Map<String, RecipeCost> _costs = {};
+  bool pricing = false;
+  String languageCode = 'es';
+  Map<String, String>? _undoMeals;
+  HomeDetails? _undoDetails;
+  bool get canUndo => _undoMeals != null && canEdit;
+  String get costCurrency => preferences.currency;
+  bool get budgetCurrencyMatches =>
+      budget == null || budget!.currency == costCurrency;
+  HouseholdPreferences get preferences => details.preferences;
+  Set<RecipeIngredient> get availableIngredients =>
+      details.pantry.map((p) => p.ingredient).toSet();
+  Map<String, String> get meals => Map.unmodifiable(_meals);
+  void setLanguage(String value) {
+    languageCode = value;
+  }
+
+  Recipe? recipeFor(DateTime date, MealSlot slot) =>
+      PlannedRecipe.parse(_meals[slot.keyFor(date)])?.recipe;
+  Recipe portionFor(Recipe recipe) =>
+      recipe.withServings(details.servings[recipe.id] ?? preferences.members);
+
+  RecipeCost costFor(Recipe recipe) {
+    final base = _costs[recipe.id];
+    return RecipeCost(recipe, [
+      for (final amount in RecipeAmounts.forRecipe(recipe))
+        _ingredientCost(amount, base),
+    ]);
+  }
+
+  IngredientCost _ingredientCost(RecipeAmount amount, RecipeCost? base) {
+    final manual = details
+        .ingredientPrices['${preferences.currency}:${amount.ingredient.name}'];
+    if (manual != null) {
+      return IngredientCost(
+        amount,
+        cents:
+            (manual *
+                    amount.amount /
+                    (amount.unit == CostUnit.pieces ? 1 : 1000))
+                .ceil(),
+      );
+    }
+    if (preferences.currency != 'DOP' || preferences.country != 'DO') {
+      return IngredientCost(amount);
+    }
+    for (final line in base?.ingredients ?? <IngredientCost>[]) {
+      if (line.amount.ingredient == amount.ingredient &&
+          line.cents != null &&
+          line.offer?.isStale == false) {
+        return IngredientCost(
+          amount,
+          cents: (line.cents! * amount.amount / line.amount.amount).ceil(),
+          offer: line.offer,
+        );
+      }
+    }
+    return IngredientCost(amount);
+  }
+
+  Future<void> refreshPrices() async {
+    if (pricing ||
+        costEstimator == null ||
+        preferences.currency != 'DOP' ||
+        preferences.country != 'DO') {
+      return;
+    }
+    pricing = true;
+    _emit();
+    try {
+      for (final cost in await costEstimator!.estimate(RecipeCatalog.all)) {
+        _costs[cost.recipe.id] = cost;
+      }
+    } catch (_) {
+      // Unknown prices stay explicitly incomplete and remain editable offline.
+    } finally {
+      pricing = false;
+      _emit();
+    }
+  }
+
+  PlanEstimate estimateFor([DateTime? date]) {
+    final dates = date == null ? week : [date];
+    var subtotal = 0, priced = 0, total = 0;
+    for (final day in dates) {
+      for (final slot in MealSlot.values) {
+        if (_meals[slot.keyFor(day)] == null) continue;
+        total++;
+        final recipe = recipeFor(day, slot);
+        if (recipe == null) continue;
+        final cost = costFor(recipe);
+        subtotal += cost.subtotalCents;
+        if (cost.complete) priced++;
+      }
+    }
+    return PlanEstimate(
+      subtotalCents: subtotal,
+      pricedMeals: priced,
+      totalMeals: total,
+    );
+  }
+
+  List<Recipe> recommendations(MealSlot slot) {
+    final recipes = RecipeCatalog.forSlot(slot)
+        .where(preferences.allows)
+        .map(portionFor)
+        .toList();
+    final allowance = budget == null || !budgetCurrencyMatches
+        ? null
+        : mealAllowanceCents(budget!, now);
+    recipes.sort((a, b) {
+      final ac = costFor(a), bc = costFor(b);
+      if (allowance != null) {
+        final fit = (bc.fits(allowance) ? 1 : 0).compareTo(
+          ac.fits(allowance) ? 1 : 0,
+        );
+        if (fit != 0) return fit;
+      }
+      final pantry = b
+          .matchingIngredients(availableIngredients)
+          .compareTo(a.matchingIngredients(availableIngredients));
+      if (pantry != 0) return pantry;
+      final favorite = (details.favorites.contains(b.id) ? 1 : 0).compareTo(
+        details.favorites.contains(a.id) ? 1 : 0,
+      );
+      return favorite != 0 ? favorite : a.imageIndex.compareTo(b.imageIndex);
+    });
+    return recipes;
+  }
+
   DateTime selectedDate;
   MealSlot selectedSlot;
   bool _automaticSlot = true;
@@ -57,7 +197,12 @@ class HomeController extends ChangeNotifier {
         MealSlot.values.where((slot) => mealFor(date, slot) != null).length,
   );
 
-  String? mealFor(DateTime date, MealSlot slot) => _meals[slot.keyFor(date)];
+  String? mealFor(DateTime date, MealSlot slot) {
+    final value = _meals[slot.keyFor(date)];
+    return PlannedRecipe.parse(value)?.recipe?.contentFor(languageCode).title ??
+        value;
+  }
+
   bool hasMeals(DateTime date) =>
       MealSlot.values.any((slot) => mealFor(date, slot) != null);
 
@@ -92,10 +237,12 @@ class HomeController extends ChangeNotifier {
     loadFailed = false;
     _emit();
     try {
-      final meals = await planStore.load();
-      final homeDetails = await detailsStore.load();
+      final (meals, homeDetails) = detailsStore is HouseholdStateStore
+          ? await (detailsStore as HouseholdStateStore).loadState()
+          : (await planStore.load(), await detailsStore.load());
       _meals = meals;
       details = homeDetails;
+      unawaited(refreshPrices());
     } catch (_) {
       loadFailed = true;
     } finally {
@@ -105,143 +252,275 @@ class HomeController extends ChangeNotifier {
   }
 
   Future<bool> saveMeal(DateTime date, MealSlot slot, String meal) async {
-    if (!canEdit) return false;
     final next = Map<String, String>.of(_meals);
     final key = slot.keyFor(date);
-    if (meal.isEmpty) {
+    if (meal.trim().isEmpty) {
       next.remove(key);
     } else {
-      next[key] = meal;
+      next[key] = meal.trim();
     }
-    saving = true;
-    _emit();
-    try {
-      // Publish changes only after storage confirms the write.
-      await planStore.save(next);
-      _meals = next;
-      return true;
-    } catch (_) {
-      return false;
-    } finally {
-      saving = false;
-      _emit();
-    }
+    return _commit(next, details);
   }
 
+  Future<bool> saveRecipe(DateTime date, MealSlot slot, Recipe recipe) =>
+      _commit({
+        ..._meals,
+        slot.keyFor(date): PlannedRecipe(recipe.id, recipe.servings).encode(),
+      }, details);
+
   Future<bool> copyDayMeals(DateTime fromDate, DateTime toDate) async {
-    if (!canEdit) return false;
     final next = Map<String, String>.of(_meals);
-    var copied = false;
     for (final slot in MealSlot.values) {
-      final meal = mealFor(fromDate, slot);
-      final key = slot.keyFor(toDate);
-      if (meal != null && meal.isNotEmpty) {
-        next[key] = meal;
-        copied = true;
-      }
+      final value = _meals[slot.keyFor(fromDate)];
+      if (value != null) next[slot.keyFor(toDate)] = value;
     }
-    if (!copied) return true;
-    saving = true;
-    _emit();
-    try {
-      await planStore.save(next);
-      _meals = next;
-      return true;
-    } catch (_) {
-      return false;
-    } finally {
-      saving = false;
-      _emit();
+    return _commit(next, details);
+  }
+
+  Future<bool> transferMeal(
+    DateTime fromDate,
+    MealSlot fromSlot,
+    List<(DateTime, MealSlot)> targets, {
+    bool move = false,
+  }) async {
+    final value = _meals[fromSlot.keyFor(fromDate)];
+    if (value == null || targets.isEmpty) return false;
+    final next = Map<String, String>.of(_meals);
+    if (move) next.remove(fromSlot.keyFor(fromDate));
+    for (final (date, slot) in targets) {
+      next[slot.keyFor(date)] = value;
     }
+    return _commit(next, details);
   }
 
   List<GroceryItem> generateGroceriesFromPlannedMeals({
     List<GroceryItem>? existingItems,
     Set<RecipeIngredient> pantry = const {},
-    String languageCode = 'es',
-    String currency = 'DOP',
-  }) {
-    final plannedMealNames = <String>[];
-    for (final date in week) {
-      for (final slot in MealSlot.values) {
-        final meal = mealFor(date, slot);
-        if (meal != null && meal.trim().isNotEmpty) {
-          plannedMealNames.add(meal.trim().toLowerCase());
-        }
-      }
+    String? languageCode,
+    String? currency,
+  }) => _groceries(
+    _meals,
+    details,
+    existingItems: existingItems,
+    excluded: pantry,
+    language: languageCode,
+    currency: currency,
+  );
+
+  List<GroceryItem> _groceries(
+    Map<String, String> meals,
+    HomeDetails source, {
+    List<GroceryItem>? existingItems,
+    Set<RecipeIngredient> excluded = const {},
+    String? language,
+    String? currency,
+  }) => groceriesForPlan(
+    recipes: [
+      for (final day in week)
+        for (final slot in MealSlot.values)
+          if (PlannedRecipe.parse(meals[slot.keyFor(day)])?.recipe
+              case final Recipe recipe)
+            recipe,
+    ],
+    existing: existingItems ?? source.groceries,
+    pantry: source.pantry,
+    excluded: excluded,
+    language: language ?? languageCode,
+    currency: currency ?? source.preferences.currency,
+  );
+
+  Future<bool> saveBudget(WeeklyBudget value) {
+    if (!value.limit.isFinite ||
+        !value.spent.isFinite ||
+        value.limit <= 0 ||
+        value.spent < 0 ||
+        !SupportedRegions.validCurrency(value.currency)) {
+      return Future.value(false);
     }
-
-    final ingredientCounts = <RecipeIngredient, int>{};
-    for (final mealName in plannedMealNames) {
-      final matchingRecipe = RecipeCatalog.all.cast<Recipe?>().firstWhere(
-        (r) =>
-            r!.es.title.toLowerCase() == mealName ||
-            r.en.title.toLowerCase() == mealName,
-        orElse: () => null,
-      );
-      if (matchingRecipe != null) {
-        final amounts = RecipeAmounts.values[matchingRecipe.id] ?? [];
-        for (final amount in amounts) {
-          if (pantry.contains(amount.ingredient)) continue;
-          ingredientCounts[amount.ingredient] =
-              (ingredientCounts[amount.ingredient] ?? 0) + 1;
-        }
-      }
-    }
-
-    final existingMap = {
-      for (final item in existingItems ?? details.groceries)
-        item.name.toLowerCase(): item,
-    };
-
-    final generated = <GroceryItem>[];
-    for (final entry in ingredientCounts.entries) {
-      final name = entry.key.label(languageCode);
-      final existing = existingMap[name.toLowerCase()];
-      if (existing != null) {
-        generated.add(
-          GroceryItem(
-            name,
-            quantity: math.max(existing.quantity, entry.value),
-            currency: existing.currency,
-            unitPriceCents: existing.unitPriceCents,
-            reference: existing.reference,
-            offer: existing.offer,
-            isEstimated: existing.isEstimated,
-            checked: existing.checked,
+    return _commit(
+      _meals,
+      details
+          .withBudget(_weekKey, value)
+          .copyWith(
+            preferences: preferences.copyWith(currency: value.currency),
           ),
-        );
-        existingMap.remove(name.toLowerCase());
-      } else {
-        generated.add(
-          GroceryItem(
-            name,
-            quantity: entry.value,
-            currency: currency,
-            isEstimated: true,
-          ),
-        );
-      }
-    }
-
-    for (final remaining in existingMap.values) {
-      generated.add(remaining);
-    }
-
-    return generated;
+    );
   }
 
-  Future<bool> saveBudget(WeeklyBudget budget) =>
-      _saveDetails(details.withBudget(_weekKey, budget));
   Future<bool> saveGroceries(List<GroceryItem> items) =>
-      _saveDetails(details.withGroceries(items));
+      _commit(_meals, details.withGroceries(items), regenerate: false);
+  Future<bool> setGrocerySync(bool value, {List<GroceryItem>? items}) =>
+      _commit(
+        _meals,
+        details.copyWith(
+          syncGroceries: value,
+          groceries: items ?? details.groceries,
+        ),
+      );
+  Future<bool> savePreferences(HouseholdPreferences value) =>
+      _commit(_meals, details.copyWith(preferences: value));
+  Future<bool> savePantry(List<PantryItem> value) =>
+      _commit(_meals, details.copyWith(pantry: value));
+  Future<bool> setIngredientAvailable(RecipeAmount amount, bool available) {
+    final pantry = details.pantry
+        .where((p) => p.ingredient != amount.ingredient)
+        .toList();
+    if (available) {
+      final existing = details.pantry
+          .where(
+            (p) => p.ingredient == amount.ingredient && p.unit == amount.unit,
+          )
+          .firstOrNull;
+      pantry.add(
+        PantryItem(
+          amount.ingredient,
+          math.max(amount.amount, existing?.amount ?? 0),
+          amount.unit,
+        ),
+      );
+    }
+    return savePantry(pantry);
+  }
 
-  Future<bool> _saveDetails(HomeDetails next) async {
+  Future<bool> saveServings(String id, int servings) => _commit(
+    _meals,
+    details.copyWith(servings: {...details.servings, id: servings}),
+  );
+  Future<bool> toggleFavorite(String id) {
+    final favorites = {...details.favorites};
+    if (!favorites.add(id)) favorites.remove(id);
+    return _commit(_meals, details.copyWith(favorites: favorites));
+  }
+
+  Future<bool> savePrices(Map<String, int> prices) =>
+      _commit(_meals, details.copyWith(ingredientPrices: prices));
+
+  Future<bool> saveIngredientPrice(RecipeIngredient ingredient, int? cents) {
+    final prices = {...details.ingredientPrices};
+    final key = '${preferences.currency}:${ingredient.name}';
+    if (cents == null) {
+      prices.remove(key);
+    } else {
+      prices[key] = cents;
+    }
+    return _commit(_meals, details.copyWith(ingredientPrices: prices));
+  }
+
+  List<(DateTime, MealSlot)> get remainingPlanSlots => [
+    for (final date in week)
+      for (final slot in MealSlot.values)
+        if (date.isAfter(today) ||
+            (date == today && slot.index >= MealSlot.forTime(now).index))
+          (date, slot),
+  ];
+
+  List<Recipe> cheaperAlternatives(Recipe recipe) {
+    final current = costFor(recipe);
+    if (!current.complete) return [];
+    final choices = RecipeCatalog.forSlot(recipe.slot)
+        .where(preferences.allows)
+        .where((r) => r.id != recipe.id)
+        .map((r) => r.withServings(recipe.servings))
+        .where((r) {
+          final cost = costFor(r);
+          return cost.complete && cost.subtotalCents < current.subtotalCents;
+        })
+        .toList();
+    choices.sort(
+      (a, b) => costFor(a).subtotalCents.compareTo(costFor(b).subtotalCents),
+    );
+    return choices;
+  }
+
+  Map<String, String> automaticPlan() {
+    final next = Map<String, String>.of(_meals);
+    if (budget == null || !budgetCurrencyMatches) return next;
+    var committed = 0;
+    for (final (day, slot) in remainingPlanSlots) {
+      if (!next.containsKey(slot.keyFor(day))) continue;
+      final recipe = recipeFor(day, slot);
+      if (recipe == null || !costFor(recipe).complete) return next;
+      committed += costFor(recipe).subtotalCents;
+    }
+    var remaining = math.max(
+      0,
+      ((budget!.limit - budget!.spent) * 100).floor() - committed,
+    );
+    final counts = <String, int>{};
+    final empty = [
+      for (final (day, slot) in remainingPlanSlots)
+        if (!next.containsKey(slot.keyFor(day))) (day, slot),
+    ];
+    for (var index = 0; index < empty.length; index++) {
+      final (date, slot) = empty[index];
+      final options = recommendations(slot);
+      final allowance = remaining ~/ (empty.length - index);
+      options.removeWhere((r) => !costFor(r).fits(allowance));
+      options.sort((a, b) => (counts[a.id] ?? 0).compareTo(counts[b.id] ?? 0));
+      if (options.isEmpty) continue;
+      final chosen = options.first;
+      next[slot.keyFor(date)] = PlannedRecipe(
+        chosen.id,
+        chosen.servings,
+      ).encode();
+      counts[chosen.id] = (counts[chosen.id] ?? 0) + 1;
+      remaining -= costFor(chosen).subtotalCents;
+    }
+    return next;
+  }
+
+  Future<bool> applyPlan(Map<String, String> value) =>
+      _commit(value, details.copyWith(syncGroceries: true));
+  Future<bool> undo() async {
+    final meals = _undoMeals;
+    final home = _undoDetails;
+    if (meals == null || home == null) return false;
+    final result = await _commit(
+      meals,
+      home,
+      remember: false,
+      regenerate: false,
+    );
+    if (result) {
+      _undoMeals = null;
+      _undoDetails = null;
+      _emit();
+    }
+    return result;
+  }
+
+  Future<bool> _commit(
+    Map<String, String> meals,
+    HomeDetails next, {
+    bool remember = true,
+    bool regenerate = true,
+  }) async {
     if (!canEdit) return false;
+    if (regenerate && next.syncGroceries) {
+      next = next.withGroceries(_groceries(meals, next));
+    }
+    final oldMeals = Map<String, String>.of(_meals);
+    final oldDetails = details;
+    final mealChange = !mapEquals(oldMeals, meals);
     saving = true;
     _emit();
     try {
-      await detailsStore.save(next);
+      if (detailsStore case final HouseholdStateStore atomic) {
+        await atomic.saveState(meals, next);
+      } else {
+        if (mealChange) await planStore.save(meals);
+        try {
+          await detailsStore.save(next);
+        } catch (_) {
+          if (mealChange) await planStore.save(oldMeals);
+          rethrow;
+        }
+      }
+      if (remember) {
+        _undoMeals = oldMeals;
+        _undoDetails = oldDetails;
+      }
+      _meals = Map.of(meals);
       details = next;
       return true;
     } catch (_) {

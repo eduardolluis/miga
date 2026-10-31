@@ -8,6 +8,7 @@ import 'package:google_sign_in_platform_interface/google_sign_in_platform_interf
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import 'package:miga/features/auth/data/supabase_auth_service.dart';
 
@@ -367,6 +368,78 @@ void main() {
       expect(service.session, isNull);
       expect(google.signOutCalls, signOutCalls + 1);
       expect(requests.last.url.path, '/auth/v1/logout');
+    },
+  );
+  const appleCredential = AuthorizationCredentialAppleID(
+    userIdentifier: 'apple-user',
+    givenName: null,
+    familyName: null,
+    authorizationCode: 'code',
+    email: null,
+    identityToken: 'apple-id-token',
+    state: null,
+  );
+
+  test('Native Apple hashes a fresh nonce and sends the original nonce to Supabase', () async {
+    debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+    final hashes = <String>[];
+    final apple = SupabaseAuthService(
+      client,
+      appleCredentials: (hash) async {
+        hashes.add(hash);
+        return appleCredential;
+      },
+    );
+    await apple.signInWithProvider(OAuthProvider.apple);
+    await client.auth.signOut();
+    await apple.signInWithProvider(OAuthProvider.apple);
+    final tokens = requests
+        .where((r) => r.url.path.endsWith('/token'))
+        .toList();
+    expect(tokens, hasLength(2));
+    final nonces = <String>[];
+    for (var i = 0; i < tokens.length; i++) {
+      final body = jsonDecode(tokens[i].body) as Map;
+      expect(body['provider'], 'apple');
+      expect(body['id_token'], 'apple-id-token');
+      final nonce = body['nonce'] as String;
+      nonces.add(nonce);
+      expect(sha256.convert(utf8.encode(nonce)).toString(), hashes[i]);
+    }
+    expect(nonces[0], isNot(nonces[1]));
+    expect(apple.session, isNotNull);
+  });
+
+  test(
+    'Canceling native Apple releases its lock and allows a new attempt',
+    () async {
+      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+      var canceled = true;
+      final apple = SupabaseAuthService(
+        client,
+        appleCredentials: (_) async {
+          if (canceled) {
+            throw const SignInWithAppleAuthorizationException(
+              code: AuthorizationErrorCode.canceled,
+              message: 'Canceled',
+            );
+          }
+          return appleCredential;
+        },
+      );
+      await expectLater(
+        apple.signInWithProvider(OAuthProvider.apple),
+        throwsA(
+          isA<AuthException>().having(
+            (e) => e.code,
+            'code',
+            'sign_in_canceled',
+          ),
+        ),
+      );
+      canceled = false;
+      await apple.signInWithProvider(OAuthProvider.apple);
+      expect(apple.session, isNotNull);
     },
   );
 }

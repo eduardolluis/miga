@@ -223,6 +223,9 @@ class _AuthScreenState extends State<AuthScreen> {
               onGoogleSignIn: () => _run(
                 (service) => service.signInWithProvider(OAuthProvider.google),
               ),
+              onAppleSignIn: () => _run(
+                (service) => service.signInWithProvider(OAuthProvider.apple),
+              ),
             ),
           if (_busy) ...[
             const SizedBox(height: 16),

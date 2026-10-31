@@ -2,9 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/l10n/app_localizations.dart';
+import 'package:miga/features/pro/application/store_subscription_service.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/foundation.dart';
 
 class ProPage extends StatelessWidget {
-  const ProPage({super.key});
+  const ProPage({
+    super.key,
+    this.purchases,
+    this.onAutoPlan,
+    this.onPantry,
+    this.onSpending,
+  });
+  final StoreSubscriptionService? purchases;
+  final VoidCallback? onAutoPlan, onPantry, onSpending;
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +122,83 @@ class ProPage extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 20),
+                Text(
+                  l10n.proToolsTitle,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(height: 8),
+                Text(l10n.proToolsNote),
+                if (onAutoPlan != null)
+                  TextButton.icon(
+                    onPressed: onAutoPlan,
+                    icon: const Icon(Icons.auto_awesome),
+                    label: Text(l10n.autoPlanTitle),
+                  ),
+                if (onPantry != null)
+                  TextButton.icon(
+                    onPressed: onPantry,
+                    icon: const Icon(Icons.kitchen_outlined),
+                    label: Text(l10n.pantryTitle),
+                  ),
+                if (onSpending != null)
+                  TextButton.icon(
+                    onPressed: onSpending,
+                    icon: const Icon(Icons.insights),
+                    label: Text(l10n.spendingTitle),
+                  ),
+                if (purchases != null)
+                  ListenableBuilder(
+                    listenable: purchases!,
+                    builder: (context, _) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        if (purchases!.busy) const LinearProgressIndicator(),
+                        if (purchases!.active)
+                          Text(
+                            '${l10n.subscriptionActive} · ${MaterialLocalizations.of(context).formatShortDate(purchases!.expiresAt!)}',
+                          ),
+                        if (purchases!.available &&
+                            purchases!.products.isNotEmpty)
+                          for (final product in purchases!.products)
+                            FilledButton(
+                              onPressed: purchases!.busy
+                                  ? null
+                                  : () => purchases!.buy(product),
+                              child: Text(
+                                '${product.title} · ${product.price}',
+                              ),
+                            )
+                        else
+                          Text(l10n.subscriptionUnavailable),
+                        if (purchases!.failed) Text(l10n.homeSaveError),
+                        OutlinedButton(
+                          onPressed: purchases!.available && !purchases!.busy
+                              ? purchases!.restore
+                              : null,
+                          child: Text(l10n.restorePurchases),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            final url =
+                                defaultTargetPlatform == TargetPlatform.iOS
+                                ? 'https://apps.apple.com/account/subscriptions'
+                                : 'https://play.google.com/store/account/subscriptions';
+                            if (!await launchUrl(
+                                  Uri.parse(url),
+                                  mode: LaunchMode.externalApplication,
+                                ) &&
+                                context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(l10n.homeSaveError)),
+                              );
+                            }
+                          },
+                          child: Text(l10n.manageSubscription),
+                        ),
+                      ],
+                    ),
+                  ),
                 const SizedBox(height: 20),
                 Text(
                   l10n.proLaunchNote,

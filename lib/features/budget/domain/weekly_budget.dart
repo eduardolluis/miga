@@ -1,3 +1,5 @@
+import 'package:miga/core/region/supported_regions.dart';
+
 class WeeklyBudget {
   const WeeklyBudget({
     required this.limit,
@@ -22,5 +24,5 @@ class WeeklyBudget {
   );
 
   String format(double value) =>
-      '${currency == 'DOP' ? 'RD\$' : '\$'}${value.toStringAsFixed(value == value.roundToDouble() ? 0 : 2)}';
+      SupportedRegions.format(currency, value, compact: true);
 }

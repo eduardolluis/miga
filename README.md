@@ -1,6 +1,16 @@
-# miga
+# Miga 💚
 
-A new Flutter project.
+**Planifica qué cocinar, organiza tu compra y controla tu presupuesto semanal.**
+Aplicación móvil Flutter para iOS y Android, bilingüe (español/inglés),
+con recetas, calendario semanal, despensa, lista automática de compras,
+referencias de precios y sincronización opcional con Supabase.
+
+La identidad visual original de Miga utiliza crema, verde oliva y tipografía
+serif. Los servicios de pago se mantienen desactivados hasta su configuración
+real con Apple/Google y validación en servidor.
+
+**Revisión de esta entrega:** [Cambios y pruebas](docs/CAMBIOS_MIGA_2026-10-31.md).
+
 
 ## Getting Started
 
@@ -26,8 +36,7 @@ modelos, contratos y almacenamiento, y conocer las reglas para añadir código.
 ## Acceso sin contraseña (Supabase)
 
 La app usa Google y códigos por correo para entrar o crear una cuenta.
-Apple es visible en iOS, pero su integración queda pendiente y muestra un aviso
-localizado al pulsarlo. `AuthService` separa las
+Apple usa acceso nativo en iOS con nonce; necesita habilitar el App ID y el proveedor de Supabase. `AuthService` separa las
 llamadas de Supabase de la pantalla; `SupabaseAuthService` es la implementación
 real. Las pruebas usan un servicio simulado y no envían correos.
 
@@ -55,11 +64,11 @@ flutter run --dart-define-from-file=supabase.env.json
    El secreto se guarda únicamente en Supabase. Para OAuth web, registra como URI
    de retorno `https://<project-ref>.supabase.co/auth/v1/callback` en Google Cloud.
    Si Google está en modo de pruebas, añade los usuarios de prueba.
-3. **Apple (pendiente):** el botón muestra un aviso y no inicia OAuth. Para completar
-   la integración mediante OAuth en el navegador, configura el App ID, Services ID, dominio y Return URL en Apple
-   Developer y habilita el proveedor Apple en Supabase con las credenciales
-   correspondientes. Su Return URL es la del callback de Supabase. Los secretos
-   de Apple para OAuth requieren renovación; consulta su caducidad antes de publicar.
+3. **Apple:** habilita Sign in with Apple para `com.eduardoluisdlcg.miga` en
+   Apple Developer, actualiza la firma y habilita el proveedor Apple de Supabase.
+   El entitlement está incluido. El acceso nativo envía un nonce SHA-256 a Apple
+   y el original a Supabase; la sesión se publica solo tras el intercambio válido.
+   Consulta [la configuración de servicios](docs/SERVICES_SETUP.md).
 4. **Enlaces de correo al móvil:** en Supabase Authentication → URL Configuration → Redirect
    URLs, añade exactamente `com.eduardodelacruz.miga://login-callback`. El scheme ya
    está registrado en `ios/Runner/Info.plist` y en el manifest de Android. El manejo
@@ -208,3 +217,25 @@ Copia el mismo HTML en ambas plantillas del dashboard. El asunto entregado es
 bilingüe y fijo. No se ha verificado la entrega real de ambas variantes desde
 este entorno: comprueba registro nuevo y acceso de una cuenta existente en ambos
 idiomas tras guardar las plantillas y las URLs.
+
+## Planificación, compras y servicios
+
+El [checklist de implementación](docs/IMPLEMENTATION_CHECKLIST.md) detalla las
+funciones disponibles y las comprobaciones que requieren servicios/dispositivos
+reales. Porciones, favoritas, preferencias, despensa, plan automático y cantidades
+comparten los mismos modelos. El historial usa gastos registrados por el usuario,
+separados de las estimaciones. Los precios sin cobertura permanecen incompletos.
+
+La copia local funciona sin conexión. La sincronización y las listas compartidas
+necesitan aplicar la migración de Supabase y desplegar sus funciones; el código
+no las despliega automáticamente. Los cobros están desactivados por defecto.
+Consulta [SERVICES_SETUP.md](docs/SERVICES_SETUP.md) antes de activar servicios,
+suscripciones o publicación. La información de privacidad tiene un
+[borrador pendiente de completar](docs/PRIVACY_DRAFT.md).
+
+Además de `flutter analyze` y `flutter test`, se comprueba SQL/RLS con:
+
+```sh
+npm --prefix supabase ci
+npm --prefix supabase test
+```

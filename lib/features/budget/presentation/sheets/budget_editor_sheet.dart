@@ -1,3 +1,4 @@
+import 'package:miga/core/region/supported_regions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -82,7 +83,7 @@ class _BudgetEditorState extends State<_BudgetEditor> {
                     Text(
                       '• ${l10n.budgetThreeLimit}',
                       style: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w600,
                         color: AppColors.olive,
                       ),
@@ -91,7 +92,7 @@ class _BudgetEditorState extends State<_BudgetEditor> {
                     Text(
                       '• ${l10n.budgetThreeSpent}',
                       style: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w600,
                         color: AppColors.olive,
                       ),
@@ -100,7 +101,7 @@ class _BudgetEditorState extends State<_BudgetEditor> {
                     Text(
                       '• ${l10n.budgetThreeEstimated}',
                       style: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 13,
                         color: AppColors.muted,
                       ),
                     ),
@@ -139,9 +140,12 @@ class _BudgetEditorState extends State<_BudgetEditor> {
               DropdownButtonFormField<String>(
                 initialValue: _currency,
                 decoration: InputDecoration(labelText: l10n.homeCurrency),
-                items: const [
-                  DropdownMenuItem(value: 'DOP', child: Text('DOP · RD\$')),
-                  DropdownMenuItem(value: 'USD', child: Text('USD · \$')),
+                items: [
+                  for (final code in SupportedRegions.currencies)
+                    DropdownMenuItem(
+                      value: code,
+                      child: Text('$code · ${SupportedRegions.symbol(code)}'),
+                    ),
                 ],
                 onChanged: (value) => _currency = value!,
               ),

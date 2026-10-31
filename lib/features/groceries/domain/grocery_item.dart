@@ -1,5 +1,10 @@
+import 'package:miga/core/region/supported_regions.dart';
 import 'package:miga/features/groceries/domain/grocery_price_reference.dart';
 import 'package:miga/features/groceries/domain/supermarket_offer.dart';
+import 'package:miga/features/budget/domain/recipe_amount.dart';
+import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
+
+import 'dart:math' as math;
 
 class GroceryItem {
   const GroceryItem(
@@ -11,6 +16,11 @@ class GroceryItem {
     this.reference,
     this.offer,
     this.isEstimated = false,
+    this.ingredientId,
+    this.requiredAmount,
+    this.requiredUnit,
+    this.manualQuantity = false,
+    this.planGenerated = false,
   });
 
   final String name;
@@ -21,45 +31,80 @@ class GroceryItem {
   final GroceryPriceReference? reference;
   final SupermarketOffer? offer;
   final bool isEstimated;
-  int? get totalCents => unitPriceCents == null || (offer?.isStale ?? false)
+  final String? ingredientId;
+  final double? requiredAmount;
+  final CostUnit? requiredUnit;
+  final bool manualQuantity;
+  final bool planGenerated;
+  bool get fromPlan => planGenerated;
+
+  GroceryItem copyWith({
+    bool? checked,
+    int? quantity,
+    int? unitPriceCents,
+    bool? manualQuantity,
+    double? requiredAmount,
+    CostUnit? requiredUnit,
+  }) => GroceryItem(
+    name,
+    checked: checked ?? this.checked,
+    quantity: quantity ?? this.quantity,
+    unitPriceCents: unitPriceCents ?? this.unitPriceCents,
+    currency: currency,
+    reference: reference,
+    offer: offer,
+    isEstimated: isEstimated,
+    ingredientId: ingredientId,
+    requiredAmount: requiredAmount ?? this.requiredAmount,
+    requiredUnit: requiredUnit ?? this.requiredUnit,
+    manualQuantity: manualQuantity ?? this.manualQuantity,
+    planGenerated: planGenerated,
+  );
+  int? get totalCents =>
+      unitPriceCents == null ||
+          unitPriceCents! < 0 ||
+          quantity <= 0 ||
+          (offer?.isStale ?? false) ||
+          (requiredAmount != null &&
+              !manualQuantity &&
+              offer != null &&
+              RecipeCostEstimator.packageAmount(offer!.product)?.$2 !=
+                  requiredUnit)
       ? null
       : unitPriceCents! * quantity;
 
-  GroceryItem withChecked(bool value) => GroceryItem(
-    name,
-    checked: value,
-    unitPriceCents: unitPriceCents,
-    quantity: quantity,
-    currency: currency,
-    reference: reference,
-    offer: offer,
-    isEstimated: isEstimated,
-  );
+  GroceryItem withChecked(bool value) => copyWith(checked: value);
 
-  GroceryItem withQuantity(int value) => GroceryItem(
-    name,
-    checked: checked,
-    unitPriceCents: unitPriceCents,
-    quantity: value,
-    currency: currency,
-    reference: reference,
-    offer: offer,
-    isEstimated: isEstimated,
-  );
+  GroceryItem withQuantity(int value) {
+    if (value < 1 || value > 9999) throw ArgumentError.value(value, 'quantity');
+    return copyWith(quantity: value, manualQuantity: true);
+  }
 
   GroceryItem withOffer(SupermarketOffer value, {bool estimated = false}) =>
       GroceryItem(
         name,
         checked: checked,
-        quantity: quantity,
+        quantity: _packagesFor(value),
         currency: value.currency,
         unitPriceCents: value.priceCents,
         offer: value,
         isEstimated: estimated,
+        ingredientId: ingredientId,
+        requiredAmount: requiredAmount,
+        requiredUnit: requiredUnit,
+        manualQuantity: manualQuantity,
+        planGenerated: planGenerated,
       );
 
+  int _packagesFor(SupermarketOffer value) {
+    if (requiredAmount == null || manualQuantity) return quantity;
+    final pack = RecipeCostEstimator.packageAmount(value.product);
+    if (pack == null || pack.$2 != requiredUnit) return quantity;
+    return math.max(1, (requiredAmount! / pack.$1).ceil());
+  }
+
   String formatCents(int cents) =>
-      '${currency == 'DOP' ? 'RD\$' : 'US\$'}${(cents / 100).toStringAsFixed(2)}';
+      SupportedRegions.format(currency, cents / 100);
 
   Map<String, Object> toJson() => {
     'name': name,
@@ -70,6 +115,11 @@ class GroceryItem {
     'unitPriceCents': ?unitPriceCents,
     if (reference != null) 'reference': reference!.toJson(),
     if (offer != null) 'offer': offer!.toJson(),
+    'ingredientId': ?ingredientId,
+    'requiredAmount': ?requiredAmount,
+    if (requiredUnit != null) 'requiredUnit': requiredUnit!.name,
+    'manualQuantity': manualQuantity,
+    'planGenerated': planGenerated,
   };
 
   factory GroceryItem.fromJson(Map<String, dynamic> json) => GroceryItem(
@@ -79,6 +129,13 @@ class GroceryItem {
     unitPriceCents: json['unitPriceCents'] as int?,
     quantity: json['quantity'] as int? ?? 1,
     currency: json['currency'] as String? ?? 'DOP',
+    ingredientId: json['ingredientId'] as String?,
+    requiredAmount: (json['requiredAmount'] as num?)?.toDouble(),
+    requiredUnit: CostUnit.values
+        .where((u) => u.name == json['requiredUnit'])
+        .firstOrNull,
+    manualQuantity: json['manualQuantity'] == true,
+    planGenerated: json['planGenerated'] == true,
     reference: json['reference'] == null
         ? null
         : GroceryPriceReference.fromJson(
@@ -91,8 +148,13 @@ class GroceryItem {
 }
 
 class GroceryTotals {
-  GroceryTotals(List<GroceryItem> items, String currency) {
+  GroceryTotals(
+    List<GroceryItem> items,
+    String currency, {
+    bool includeChecked = true,
+  }) {
     for (final item in items) {
+      if (!includeChecked && item.checked) continue;
       if (item.currency != currency || item.totalCents == null) {
         missing++;
       } else {

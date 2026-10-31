@@ -62,11 +62,7 @@ double homeHeroHeight(
             .map(
               (r) =>
                   measure(
-                    l10n.recipeNutrition(
-                      r.nutrition!.calories,
-                      r.nutrition!.proteinGrams,
-                      r.nutrition!.carbsGrams,
-                    ),
+                    MealHeroCard.nutritionLabel(l10n, r),
                     MealHeroCard.nutritionStyle,
                     width - 40,
                   ) +

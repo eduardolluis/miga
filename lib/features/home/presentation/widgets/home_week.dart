@@ -109,7 +109,10 @@ class _HomeWeekState extends State<HomeWeek> {
             runSpacing: 6,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFF3F4EC),
                   borderRadius: BorderRadius.circular(12),
@@ -117,7 +120,7 @@ class _HomeWeekState extends State<HomeWeek> {
                 child: Text(
                   l10n.homeMealsPlanned(widget.mealCount),
                   style: const TextStyle(
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: FontWeight.w600,
                     color: AppColors.olive,
                   ),
@@ -125,7 +128,10 @@ class _HomeWeekState extends State<HomeWeek> {
               ),
               if (widget.remainingBudget != null)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: const Color(0xFFF3F4EC),
                     borderRadius: BorderRadius.circular(12),
@@ -133,7 +139,7 @@ class _HomeWeekState extends State<HomeWeek> {
                   child: Text(
                     '${widget.remainingBudget} ${l10n.localeName.startsWith('es') ? 'restante' : 'remaining'}',
                     style: const TextStyle(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w600,
                       color: AppColors.olive,
                     ),
@@ -162,7 +168,7 @@ class _HomeWeekState extends State<HomeWeek> {
                     child: Text(
                       l10n.homeWeekEmpty,
                       style: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 13,
                         color: AppColors.muted,
                         height: 1.3,
                       ),
@@ -222,7 +228,7 @@ class _HomeWeekState extends State<HomeWeek> {
                                   Text(
                                     DateFormat.E(l10n.localeName).format(date),
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       color: selected
                                           ? Colors.white70
                                           : AppColors.muted,
@@ -271,7 +277,7 @@ class _HomeWeekState extends State<HomeWeek> {
           Text(
             '${widget.slotLabel} · ${dates.formatMediumDate(widget.selectedDate)}',
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 13,
               color: AppColors.muted,
               height: 1.5,
             ),

@@ -212,7 +212,7 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
                               ),
                               style: const TextStyle(
                                 color: AppColors.muted,
-                                fontSize: 12,
+                                fontSize: 13,
                                 height: 1.4,
                               ),
                             ),

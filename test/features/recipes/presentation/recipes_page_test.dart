@@ -63,11 +63,19 @@ void main() {
     await tester.pumpWidget(frame('en'));
     await selectIngredient(tester, 'eggs');
     final dinner = find.widgetWithText(ChoiceChip, 'Dinner');
-    await tester.ensureVisible(dinner);
+    await tester.scrollUntilVisible(
+      dinner,
+      -200,
+      scrollable: find.byType(Scrollable).first,
+    );
     await tester.tap(dinner);
     await tester.pumpAndSettle();
     expect(shownRecipes(tester), ['sweet-potato-egg']);
-    await tester.ensureVisible(find.byType(TextField));
+    await tester.scrollUntilVisible(
+      find.byType(TextField),
+      -200,
+      scrollable: find.byType(Scrollable).first,
+    );
     await tester.enterText(find.byType(TextField), 'salmon');
     await tester.pumpAndSettle();
     expect(shownRecipes(tester), isEmpty);

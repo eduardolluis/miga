@@ -1,4 +1,5 @@
 import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
+import 'package:miga/features/recipes/domain/recipe.dart';
 
 enum CostUnit { grams, milliliters, pieces }
 
@@ -13,11 +14,22 @@ class RecipeAmount {
   final double amount;
   final CostUnit unit;
   final double? gramsPerPiece;
+
+  RecipeAmount scaled(double factor) => RecipeAmount(
+    ingredient,
+    amount * factor,
+    unit,
+    gramsPerPiece: gramsPerPiece,
+  );
 }
 
 // Kitchen estimates for the catalog's two-serving recipes, including seasoning.
 // Produce weights and "to taste" quantities are assumptions, not measured yields.
 abstract final class RecipeAmounts {
+  static List<RecipeAmount> forRecipe(Recipe recipe) => [
+    for (final amount in values[recipe.id] ?? <RecipeAmount>[])
+      amount.scaled(recipe.servings / 2),
+  ];
   static const g = CostUnit.grams;
   static const ml = CostUnit.milliliters;
   static const pc = CostUnit.pieces;

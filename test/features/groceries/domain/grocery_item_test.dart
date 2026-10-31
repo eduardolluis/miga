@@ -64,4 +64,23 @@ void main() {
     expect(restored.reference!.month, 'Septiembre');
     expect(restored.reference!.sourceUrl, reference.sourceUrl);
   });
+  test('Projected basket excludes checked items to avoid double counting', () {
+    final items = [
+      const GroceryItem('Bought', checked: true, unitPriceCents: 8000),
+      const GroceryItem('Needed', unitPriceCents: 4500, quantity: 2),
+      const GroceryItem('Unknown'),
+    ];
+    final all = GroceryTotals(items, 'DOP');
+    final pending = GroceryTotals(items, 'DOP', includeChecked: false);
+    expect(all.subtotalCents, 17000);
+    expect(pending.subtotalCents, 9000);
+    expect(pending.priced, 1);
+    expect(pending.missing, 1);
+  });
+
+  test('Invalid persisted negative prices never enter projected totals', () {
+    const broken = GroceryItem('Invalid', unitPriceCents: -2500);
+    expect(broken.totalCents, isNull);
+    expect(GroceryTotals([broken], 'DOP').missing, 1);
+  });
 }

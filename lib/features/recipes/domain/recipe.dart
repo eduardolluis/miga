@@ -12,6 +12,13 @@ class RecipeNutrition {
   final int proteinGrams;
   final int carbsGrams;
   final int? fatGrams;
+
+  RecipeNutrition scaled(double factor) => RecipeNutrition(
+    calories: (calories * factor).round(),
+    proteinGrams: (proteinGrams * factor).round(),
+    carbsGrams: (carbsGrams * factor).round(),
+    fatGrams: fatGrams == null ? null : (fatGrams! * factor).round(),
+  );
 }
 
 class RecipeContent {
@@ -54,4 +61,19 @@ class Recipe {
 
   RecipeContent contentFor(String languageCode) =>
       languageCode == 'es' ? es : en;
+
+  Recipe withServings(int value) {
+    if (value < 1 || value > 24) throw ArgumentError.value(value, 'servings');
+    return Recipe(
+      id: id,
+      ingredients: ingredients,
+      slot: slot,
+      minutes: minutes,
+      servings: value,
+      imageIndex: imageIndex,
+      es: es,
+      en: en,
+      nutrition: nutrition,
+    );
+  }
 }

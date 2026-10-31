@@ -51,7 +51,7 @@ class _GroceryReferencePickerState extends State<GroceryReferencePicker> {
                   Text(
                     l10n.groceryReferenceDisclaimer,
                     style: const TextStyle(
-                      fontSize: 12,
+                      fontSize: 13,
                       height: 1.4,
                       color: AppColors.muted,
                     ),
@@ -145,7 +145,7 @@ class _GroceryReferencePickerState extends State<GroceryReferencePicker> {
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
                   l10n.groceryReferenceAttribution,
-                  style: const TextStyle(fontSize: 11, color: AppColors.muted),
+                  style: const TextStyle(fontSize: 13, color: AppColors.muted),
                 ),
               ),
             ),

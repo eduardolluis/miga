@@ -9,7 +9,9 @@ import 'package:miga/features/home/presentation/widgets/home_quick_actions.dart'
 import 'package:miga/features/home/presentation/widgets/meal_hero_card.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
 import 'package:miga/features/profile/presentation/profile_page.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+import 'package:miga/features/meal_plan/domain/planned_recipe.dart';
+import 'package:miga/features/home/domain/home_details.dart';
+import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 import 'package:miga/features/meal_plan/data/local_meal_plan_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_plan_store.dart';
 import 'package:miga/l10n/app_localizations.dart';
@@ -338,12 +340,9 @@ void main() {
       await reveal(tester, find.text('Salmón al limón y hierbas'));
       await tester.tap(find.text('Salmón al limón y hierbas'));
       await tester.pumpAndSettle();
-      final atHome = RecipeCatalog.all
-          .firstWhere((r) => r.id == 'lemon-salmon')
-          .es
-          .ingredients
-          .first;
-      final firstIngredient = find.widgetWithText(CheckboxListTile, atHome);
+      final firstIngredient = find.byKey(
+        const ValueKey('recipe-ingredient-salmon'),
+      );
       await tester.scrollUntilVisible(
         firstIngredient,
         200,
@@ -353,16 +352,19 @@ void main() {
       await tester.tap(firstIngredient);
       await tester.pumpAndSettle();
       await tester.scrollUntilVisible(
-        find.text('Añadir 5 faltantes a la lista'),
+        find.text('Añadir 7 faltantes a la lista'),
         200,
         scrollable: find.byType(Scrollable).last,
       );
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Añadir 5 faltantes a la lista'));
+      await tester.tap(find.text('Añadir 7 faltantes a la lista'));
       await tester.pumpAndSettle();
       final groceries = (await LocalHomeDetailsStore('guest').load()).groceries;
-      expect(groceries.length, 5);
-      expect(groceries.map((item) => item.name), isNot(contains(atHome)));
+      expect(groceries.length, 7);
+      expect(
+        groceries.map((item) => item.ingredientId),
+        isNot(contains('salmon')),
+      );
       await tester.scrollUntilVisible(
         find.text('Añadir a mi plan'),
         200,
@@ -371,20 +373,14 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Añadir a mi plan'));
       await tester.pumpAndSettle();
-      expect(
-        tester
-            .widget<TextFormField>(find.byType(TextFormField))
-            .controller!
-            .text,
-        'Salmón al limón y hierbas',
-      );
+      expect(find.byType(TextFormField), findsNothing);
       expect(await LocalMealPlanStore('guest').load(), isEmpty);
-      await tester.tap(find.text('Guardar comida'));
+      await tester.tap(find.byKey(const ValueKey('confirm-plan-recipe')));
       await tester.pumpAndSettle();
-      expect(
-        (await LocalMealPlanStore('guest').load())['2026-10-30:lunch'],
-        'Salmón al limón y hierbas',
-      );
+      final encoded = (await LocalMealPlanStore('guest')
+          .load())['2026-10-30:lunch'];
+      expect(PlannedRecipe.parse(encoded)!.recipeId, 'lemon-salmon');
+      expect(PlannedRecipe.parse(encoded)!.servings, 2);
     },
   );
 
@@ -395,6 +391,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Recetas'));
     await tester.pumpAndSettle();
+    await reveal(tester, find.text('Avena con banana y canela'));
     await tester.tap(find.text('Avena con banana y canela'));
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(
@@ -406,14 +403,20 @@ void main() {
     await tester.tap(find.text('Añadir a mi plan'));
     await tester.pumpAndSettle();
     expect(
-      find.descendant(of: find.byType(Form), matching: find.text('Desayuno')),
-      findsOneWidget,
+      tester
+          .widget<DropdownButtonFormField<MealSlot>>(
+            find.byType(DropdownButtonFormField<MealSlot>),
+          )
+          .initialValue,
+      MealSlot.breakfast,
     );
-    await tester.tap(find.text('Guardar comida'));
+    await tester.tap(find.byKey(const ValueKey('confirm-plan-recipe')));
     await tester.pumpAndSettle();
     expect(
-      (await LocalMealPlanStore('guest').load())['2026-10-30:breakfast'],
-      'Avena con banana y canela',
+      PlannedRecipe.parse(
+        (await LocalMealPlanStore('guest').load())['2026-10-30:breakfast'],
+      )!.recipeId,
+      'banana-oats',
     );
   });
 
@@ -535,6 +538,108 @@ void main() {
       }
     }
   }
+  testWidgets(
+    'Portions, pantry and favorites persist into the generated plan and shopping list',
+    (tester) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await LocalHomeDetailsStore('guest').save(
+        HomeDetails(
+          ingredientPrices: {
+            for (final ingredient in RecipeIngredient.values)
+              'DOP:${ingredient.name}': 10000,
+          },
+        ),
+      );
+      await tester.pumpWidget(appShellTestApp());
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Recetas'));
+      await tester.pumpAndSettle();
+      await reveal(tester, find.text('Avena con banana y canela'));
+      await tester.tap(find.text('Avena con banana y canela'));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('Guardar favorita'),
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+      await tester.tap(find.text('Guardar favorita'));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('recipe-servings')),
+        -200,
+        scrollable: find.byType(Scrollable).last,
+      );
+      await tester.tap(find.byKey(const ValueKey('recipe-servings')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('4').last);
+      await tester.pumpAndSettle();
+      final oats = find.byKey(const ValueKey('recipe-ingredient-oats'));
+      await tester.scrollUntilVisible(
+        oats,
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+      expect(
+        find.descendant(of: oats, matching: find.text('160 g Avena')),
+        findsOneWidget,
+      );
+      await tester.tap(oats);
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('Añadir 4 faltantes a la lista'),
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+      await tester.tap(find.text('Añadir 4 faltantes a la lista'));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('Añadir a mi plan'),
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+      await tester.tap(find.text('Añadir a mi plan'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('confirm-plan-recipe')));
+      await tester.pumpAndSettle();
+      expect(
+        PlannedRecipe.parse(
+          (await LocalMealPlanStore('guest').load())['2026-10-30:breakfast'],
+        )!.servings,
+        4,
+      );
+      await tester.tap(find.text('Inicio'));
+      await tester.pumpAndSettle();
+      await reveal(tester, find.text('Lista de compras'));
+      await tester.tap(find.text('Lista de compras'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Generar desde el menú semanal'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Guardar cambios'));
+      await tester.pumpAndSettle();
+      final details = await LocalHomeDetailsStore('guest').load();
+      expect(details.favorites, contains('banana-oats'));
+      expect(details.servings['banana-oats'], 4);
+      expect(
+        details.pantry
+            .singleWhere((p) => p.ingredient == RecipeIngredient.oats)
+            .amount,
+        160,
+      );
+      expect(
+        details.groceries.map((i) => i.ingredientId),
+        isNot(contains('oats')),
+      );
+      expect(
+        details.groceries
+            .singleWhere((i) => i.ingredientId == 'milk')
+            .requiredAmount,
+        960,
+      );
+      expect(details.syncGroceries, isTrue);
+      expect(tester.takeException(), isNull);
+    },
+  );
 }
 
 class _FailingPlanStore implements MealPlanStore {

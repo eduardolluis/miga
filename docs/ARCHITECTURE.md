@@ -1,6 +1,6 @@
 # Miga Architecture
 
-Miga is a Flutter application for Android and iOS. Supabase handles passwordless authentication; meal plans, weekly budgets, and groceries currently stay on the device, separated by account. Nine bilingual recipes and their images are bundled with the app.
+Miga is a Flutter application for Android and iOS. Supabase handles authentication and optional account-scoped cloud sync. A durable local copy supports offline use; cloud writes use compare-and-swap revisions and the server isolates accounts with RLS. Nine bilingual recipes and their images are bundled with the app.
 
 ## Project layout
 
@@ -77,4 +77,29 @@ flutter analyze --no-pub
 flutter test --no-pub
 ```
 
-Home suggestions come from `RecipeCatalog`, filtered by the local clock. The controller preserves an explicit mealtime override, and the app refreshes time every minute and when resumed. Recipe ingredients can be added to the grocery list; planning and recorded spending remain user-confirmed. `NearbyStores` launches a real maps search rather than displaying simulated store data. Cloud sync, automatic weekly plan generation, and in-app store prices are not implemented. See [the Home design](home-design.md) for behavior and screenshots.
+Home suggestions come from `RecipeCatalog`, filtered by the local clock. The controller preserves an explicit mealtime override, and the app refreshes time every minute and when resumed. Recipe ingredients can be added to the grocery list; planning and recorded spending remain user-confirmed. `NearbyStores` launches a real maps search rather than displaying simulated store data. Cloud sync, shared lists, pantry quantities, serving-aware planning, favorites and preferences are implemented; production services need the setup described in SERVICES_SETUP.md. Native store subscriptions remain disabled until real products and server verification are configured. See [the Home design](home-design.md) for behavior and screenshots.
+
+## Serving-aware state and sync
+
+Legacy meal strings remain readable. Catalog meals now store `@miga:ID:SERVINGS`
+in the same versioned plan map; titles are resolved for the current language.
+`RecipeAmounts` holds physical quantities for two servings and scales to the
+selected portions. Grocery generation sums ingredient quantities, subtracts pantry
+stock once, and tracks generated products separately from manual items. Package
+counts are derived only when a compatible package basis is known.
+
+`HomeDetails` adds optional preferences, pantry, favorites, serving defaults,
+reference prices and grocery-link settings. Missing fields use backward-compatible
+defaults. Reference prices are explicitly scoped by currency.
+
+`HouseholdStateStore` lets the production store load/save plan and household data
+atomically. `CloudSync` stores one durable account document and a pending revision.
+Legacy local keys are imported without deletion. An RPC performs authenticated CAS
+updates; conflicts require an explicit choice. SQL and functions are in `supabase/`.
+The app keeps each tab mounted in an `IndexedStack` so search/filter/editor state
+survives navigation. Account-sensitive data is separated by UUID.
+
+Subscription events are never an entitlement by themselves. Edge Functions validate
+store identity and current subscription state, and only server roles can persist
+entitlements. See the setup and implementation checklist for external validation
+and release work that code-only tests cannot complete.

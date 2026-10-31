@@ -13,6 +13,17 @@ class ProfilePage extends StatelessWidget {
     required this.onSignOut,
     required this.signingOut,
     required this.onPro,
+    this.onPreferences,
+    this.onPantry,
+    this.onPrices,
+    this.onSpending,
+    this.onPrivacy,
+    this.onDeleteAccount,
+    this.onSync,
+    this.syncLabel,
+    this.onSharedList,
+    this.onSavings,
+    this.subscriptionActive = false,
   });
 
   final String? name;
@@ -21,6 +32,17 @@ class ProfilePage extends StatelessWidget {
   final VoidCallback? onSignOut;
   final bool signingOut;
   final VoidCallback onPro;
+  final VoidCallback? onPreferences,
+      onPantry,
+      onPrices,
+      onSpending,
+      onPrivacy,
+      onDeleteAccount,
+      onSync,
+      onSharedList;
+  final String? syncLabel;
+  final VoidCallback? onSavings;
+  final bool subscriptionActive;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +85,30 @@ class ProfilePage extends StatelessWidget {
           onTap: onBudget,
         ),
         const Divider(color: AppColors.line),
+        for (final action in [
+          (Icons.settings_outlined, l10n.preferencesTitle, onPreferences),
+          (Icons.kitchen_outlined, l10n.pantryTitle, onPantry),
+          (Icons.price_change_outlined, l10n.priceSettingsTitle, onPrices),
+          (Icons.insights_outlined, l10n.spendingTitle, onSpending),
+          (Icons.savings_outlined, l10n.substitutionsTitle, onSavings),
+          (Icons.people_outline, l10n.sharedListTitle, onSharedList),
+          (Icons.sync, syncLabel ?? l10n.syncTitle, onSync),
+          (Icons.privacy_tip_outlined, l10n.privacyTitle, onPrivacy),
+        ])
+          if (action.$3 != null)
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: Icon(action.$1),
+              title: Text(action.$2),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: action.$3,
+            ),
+        if (onDeleteAccount != null)
+          TextButton.icon(
+            onPressed: onDeleteAccount,
+            icon: const Icon(Icons.delete_outline),
+            label: Text(l10n.deleteAccount),
+          ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 18),
           child: Text(
@@ -79,7 +125,7 @@ class ProfilePage extends StatelessWidget {
         if (signingOut) const Center(child: CircularProgressIndicator()),
         const SizedBox(height: 24),
         Text(
-          l10n.proFreePlan,
+          subscriptionActive ? 'Miga Pro' : l10n.proFreePlan,
           style: const TextStyle(
             color: AppColors.olive,
             fontWeight: FontWeight.w600,

@@ -82,7 +82,9 @@ class RecipeCostSheet extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  '${l10n.recipeServings(cost.recipe.servings)}  ·  ${l10n.recipeCostPerServing(budget.format(cost.perServingCents / 100))}',
+                  cost.complete
+                      ? '${l10n.recipeServings(cost.recipe.servings)}  ·  ${l10n.recipeCostPerServing(budget.format(cost.perServingCents / 100))}'
+                      : l10n.recipeServings(cost.recipe.servings),
                   style: const TextStyle(
                     color: AppColors.ink,
                     fontWeight: FontWeight.w600,
@@ -97,7 +99,7 @@ class RecipeCostSheet extends StatelessWidget {
                       cost.recipe.nutrition!.carbsGrams,
                     ),
                     style: const TextStyle(
-                      fontSize: 12,
+                      fontSize: 13,
                       color: AppColors.muted,
                       fontWeight: FontWeight.w500,
                     ),
@@ -116,7 +118,7 @@ class RecipeCostSheet extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   l10n.budgetPriceCoverage(priced, cost.ingredients.length),
-                  style: const TextStyle(color: AppColors.muted, fontSize: 12),
+                  style: const TextStyle(color: AppColors.muted, fontSize: 13),
                 ),
               ],
             ),
@@ -250,7 +252,7 @@ class _IngredientRow extends StatelessWidget {
                       ),
                       style: const TextStyle(
                         color: AppColors.muted,
-                        fontSize: 12,
+                        fontSize: 13,
                         height: 1.5,
                       ),
                     ),
@@ -264,7 +266,7 @@ class _IngredientRow extends StatelessWidget {
                           style: const TextStyle(
                             color: AppColors.olive,
                             fontWeight: FontWeight.w600,
-                            fontSize: 12,
+                            fontSize: 13,
                           ),
                         ),
                         Text(
@@ -272,7 +274,7 @@ class _IngredientRow extends StatelessWidget {
                               .formatShortDate(offer.observedAt.toLocal()),
                           style: const TextStyle(
                             color: AppColors.muted,
-                            fontSize: 12,
+                            fontSize: 13,
                           ),
                         ),
                       ],
@@ -281,7 +283,9 @@ class _IngredientRow extends StatelessWidget {
                 )
               else
                 Text(
-                  l10n.budgetRecipePartial(1),
+                  line.cents == null
+                      ? l10n.budgetRecipePartial(1)
+                      : l10n.manualPriceSource,
                   style: const TextStyle(
                     color: AppColors.muted,
                     fontSize: 13,

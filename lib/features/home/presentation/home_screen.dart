@@ -10,7 +10,6 @@ import 'package:miga/features/home/presentation/widgets/home_quick_actions.dart'
 import 'package:miga/features/home/presentation/widgets/home_week.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
 import 'package:miga/features/meal_plan/presentation/meal_slot_presentation.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
 import 'package:miga/features/recipes/domain/recipe.dart';
 import 'package:miga/l10n/app_localizations.dart';
 import 'package:miga/features/pro/presentation/widgets/pro_offer_card.dart';
@@ -115,11 +114,25 @@ class HomeScreen extends StatelessWidget {
           TextButton(onPressed: controller.load, child: Text(l10n.homeRetry)),
         ],
         HomeHeroCarousel(
-          recipes: RecipeCatalog.forSlot(controller.selectedSlot),
+          recipes: controller.recommendations(controller.selectedSlot),
           onOpenRecipe: enabled ? onRecipe : null,
           onPlanRecipe: enabled ? onPlanRecipe : null,
         ),
         const SizedBox(height: 20),
+        Text(
+          l10n.todayMealsTitle,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
+        const SizedBox(height: 8),
+        for (final slot in MealSlot.values)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 6),
+            child: Text(
+              '${slot.label(l10n)} · ${controller.mealFor(controller.today, slot) ?? l10n.homeEmptyMeal}',
+              style: const TextStyle(fontSize: 14),
+            ),
+          ),
+        const SizedBox(height: 16),
         HomeWeek(
           today: controller.today,
           selectedDate: controller.selectedDate,
@@ -148,12 +161,14 @@ class HomeScreen extends StatelessWidget {
           onTap: enabled ? onBudget : null,
           onAddPrices: enabled ? onGroceries : null,
         ),
-        if (controller.budget != null) ...[
+        if (controller.budget != null && controller.budgetCurrencyMatches) ...[
           const SizedBox(height: 16),
           BudgetRecipeSuggestions(
             budget: controller.budget!,
             now: controller.now,
-            recipes: RecipeCatalog.forSlot(controller.selectedSlot),
+            recipes: controller.recommendations(controller.selectedSlot),
+            estimate: (recipes) async =>
+                recipes.map(controller.costFor).toList(),
             onRecipe: onRecipe,
           ),
         ],

@@ -344,7 +344,7 @@
   "budgetCostDetails": "Ingredient costs",
   "budgetPieces": "pieces",
   "budgetMealTarget": "Suggested budget per meal",
-  "budgetTargetNote": "Based on your remaining weekly budget.",
+  "budgetTargetNote": "Remaining weekly budget divided by the meal slots left this week (3 per day; today depends on the current time). Recipe totals cover all servings.",
   "budgetKnownSubtotal": "Subtotal of priced ingredients · incomplete",
   "budgetPriceCoverage": "{priced} of {total} ingredients priced",
   "budgetEstimateInfo": "How this estimate works",
@@ -354,23 +354,37 @@
   "recipeNutrition": "{calories} kcal · {protein}g protein · {carbs}g carbs",
   "@recipeNutrition": {
     "placeholders": {
-      "calories": { "type": "int" },
-      "protein": { "type": "int" },
-      "carbs": { "type": "int" }
+      "calories": {
+        "type": "int"
+      },
+      "protein": {
+        "type": "int"
+      },
+      "carbs": {
+        "type": "int"
+      }
     }
   },
   "recipeCostPerServing": "≈ {amount} per serving",
   "@recipeCostPerServing": {
     "placeholders": {
-      "amount": { "type": "String" }
+      "amount": {
+        "type": "String"
+      }
     }
   },
   "recipePantryBreakdown": "{total} ingredients needed: {have} at home · {missing} to buy",
   "@recipePantryBreakdown": {
     "placeholders": {
-      "total": { "type": "int" },
-      "have": { "type": "int" },
-      "missing": { "type": "int" }
+      "total": {
+        "type": "int"
+      },
+      "have": {
+        "type": "int"
+      },
+      "missing": {
+        "type": "int"
+      }
     }
   },
   "recipeAtHome": "At home",
@@ -378,7 +392,9 @@
   "recipeAddMissingToGroceries": "Add {count} missing items to grocery list",
   "@recipeAddMissingToGroceries": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "mealAddedSuccess": "Meal added to your plan ✓",
@@ -386,25 +402,130 @@
   "planCopyDayTo": "Copy {day}'s menu to:",
   "@planCopyDayTo": {
     "placeholders": {
-      "day": { "type": "String" }
+      "day": {
+        "type": "String"
+      }
     }
   },
   "planCopySuccess": "Menu copied to {day} ✓",
   "@planCopySuccess": {
     "placeholders": {
-      "day": { "type": "String" }
+      "day": {
+        "type": "String"
+      }
     }
   },
   "groceryGenerateFromPlan": "Generate from weekly plan",
-  "groceryGeneratedCount": "Added {count} ingredients from your weekly plan",
+  "groceryGeneratedCount": "List updated with {count} ingredients from your plan",
   "@groceryGeneratedCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "groceryNoPlannedMeals": "No meals planned yet. Add meals to your plan to generate groceries.",
   "budgetThreeLimit": "Weekly budget: What I want to spend",
   "budgetThreeSpent": "Actual spending: What I have really spent",
   "budgetThreeEstimated": "Estimated meal costs: Ingredients estimate",
-  "budgetDistinctionTip": "Actual spending is kept separate from estimated meal costs."
+  "budgetDistinctionTip": "Actual spending is kept separate from estimated meal costs.",
+  "preferencesTitle": "Household preferences",
+  "countryLabel": "Country",
+  "currencyLabel": "Currency",
+  "languageLabel": "Language",
+  "systemLanguage": "Device language",
+  "householdMembers": "People at home",
+  "restrictionsTitle": "Allergies and dietary restrictions",
+  "restrictionsNote": "Recipes containing selected allergens are hidden. Always check product labels and cross-contact warnings.",
+  "vegetarian": "Vegetarian",
+  "vegan": "Vegan",
+  "dairyFree": "No dairy",
+  "glutenFree": "No gluten",
+  "nutFree": "No nuts",
+  "eggFree": "No eggs",
+  "fishFree": "No fish",
+  "dislikedFoods": "Foods to avoid",
+  "pantryTitle": "My pantry",
+  "pantryEmpty": "Add what you have at home to buy only what you need.",
+  "ingredientLabel": "Ingredient",
+  "amountLabel": "Amount",
+  "unitLabel": "Unit",
+  "amountInvalid": "Enter an amount greater than zero.",
+  "favoritesFilter": "Favorites",
+  "quickFilter": "Under 20 min",
+  "proteinFilter": "High protein",
+  "cheapFilter": "Within budget",
+  "pantryFilter": "Use my pantry",
+  "favoriteAdd": "Save favorite",
+  "favoriteRemove": "Remove favorite",
+  "servingsLabel": "Servings",
+  "nutritionPerServing": "Approximate nutrition per serving",
+  "nutritionTotal": "Approximate nutrition for the whole recipe",
+  "planRecipe": "Add recipe",
+  "chooseRecipe": "Choose a recipe",
+  "customMeal": "Write a meal",
+  "chooseDay": "Choose a day",
+  "moveMeal": "Move meal",
+  "repeatMeal": "Repeat on other days",
+  "copyMeal": "Copy meal",
+  "mealActions": "Meal actions",
+  "overwriteWarning": "This replaces the meal already saved in that slot.",
+  "confirmReplace": "Replace meal?",
+  "replaceAction": "Replace",
+  "cancelAction": "Cancel",
+  "confirmAction": "Confirm",
+  "undoAction": "Undo",
+  "savedSuccess": "Changes saved",
+  "todayMealsTitle": "Today’s meals",
+  "planEstimateTitle": "Estimated plan cost",
+  "incompleteEstimate": "Partial estimate · missing prices or custom meals",
+  "priceSettingsTitle": "Ingredient prices",
+  "priceSettingsNote": "Your price per kg, liter or piece takes priority over store estimates. Prices in another currency are not converted.",
+  "manualPriceSource": "Your reference price",
+  "clearPrice": "Clear price",
+  "autoPlanTitle": "Plan my week",
+  "autoPlanPreview": "Review your proposed week",
+  "autoPlanNote": "Fills empty slots using your household size, restrictions, pantry and budget. Existing meals stay in place.",
+  "autoPlanMissing": "Some slots could not be filled within your budget with confirmed prices. Add ingredient prices or adjust your budget.",
+  "autoPlanNoBudget": "Set your weekly budget before generating a budget-aware plan.",
+  "applyPlan": "Apply plan and update groceries",
+  "syncGroceriesLabel": "Keep groceries in sync with my plan",
+  "syncGroceriesNote": "Updates required amounts and removes ingredients from deleted meals. Your manual products, prices and purchase marks are preserved.",
+  "requiredAmountLabel": "Needed",
+  "estimatedTotalNote": "Package estimate; actual spending is recorded separately in your budget.",
+  "spendingTitle": "Spending history",
+  "spendingEmpty": "Save weekly budgets and actual spending to see your history.",
+  "actualSpending": "Actual spending",
+  "remainingBudget": "Available budget",
+  "substitutionsTitle": "Ways to spend less",
+  "substitutionsNote": "Compare complete recipe estimates with the same serving count. Review ingredients before replacing a meal.",
+  "privacyTitle": "Privacy and your data",
+  "deleteAccount": "Delete account and data",
+  "deleteAccountPrompt": "Permanently delete your account, plans, preferences and grocery data? This cannot be undone.",
+  "syncTitle": "Cloud sync",
+  "syncSaved": "Synced with your account",
+  "syncPending": "Saved on this device · waiting to sync",
+  "syncConflict": "Another device has changes. Choose which version to keep before syncing.",
+  "syncRetry": "Sync now",
+  "keepLocal": "Keep this device",
+  "keepCloud": "Use cloud version",
+  "sharedListTitle": "Shared grocery list",
+  "createSharedList": "Create shared list",
+  "joinSharedList": "Join with invitation code",
+  "invitationCode": "Invitation code",
+  "sharedListNote": "Members can edit this list. Share the invitation only with people you trust.",
+  "copyInvitation": "Copy invitation",
+  "leaveSharedList": "Leave shared list",
+  "cloudUnavailable": "Cloud services are not configured yet. Your local data is safe.",
+  "restorePurchases": "Restore purchases",
+  "manageSubscription": "Manage subscription",
+  "subscriptionUnavailable": "Subscriptions are not available yet. No payment will be taken.",
+  "proToolsTitle": "Planning tools available now",
+  "proToolsNote": "Try weekly planning, pantry-based suggestions and spending history while Miga Pro is being prepared.",
+  "sharedListDeleteWarning": "Leaving as the owner deletes the shared list for every member. Other members only remove their own access. Continue?",
+  "sharedDraftSaved": "Your edits are kept on this screen until you retry or choose the cloud version.",
+  "savingsEmpty": "No cheaper alternatives with complete prices yet. Add reference prices or plan a recipe first.",
+  "perServingLabel": "per serving",
+  "subscriptionActive": "Miga Pro active until",
+  "groceryNothingNeeded": "No ingredients to add. Check your pantry and make sure planned meals are catalog recipes."
 }

@@ -12,6 +12,7 @@ import 'package:miga/features/groceries/presentation/sheets/supermarket_comparis
 import 'package:miga/features/groceries/domain/supermarket_offer.dart';
 import 'package:miga/features/stores/data/nearby_stores.dart';
 import 'package:miga/l10n/app_localizations.dart';
+import 'package:miga/features/budget/domain/recipe_amount.dart';
 
 Future<List<GroceryItem>?> showGroceryList(
   BuildContext context,
@@ -19,6 +20,9 @@ Future<List<GroceryItem>?> showGroceryList(
   String currency = 'DOP',
   Future<SupermarketOffer?> Function(String)? estimate,
   List<GroceryItem> Function(List<GroceryItem>)? onGenerateFromPlan,
+  bool syncWithPlan = false,
+  bool allowEstimates = true,
+  ValueChanged<bool>? onSyncChanged,
 }) => showModalBottomSheet<List<GroceryItem>>(
   context: context,
   isScrollControlled: true,
@@ -32,6 +36,9 @@ Future<List<GroceryItem>?> showGroceryList(
       currency: currency,
       estimate: estimate,
       onGenerateFromPlan: onGenerateFromPlan,
+      syncWithPlan: syncWithPlan,
+      allowEstimates: allowEstimates,
+      onSyncChanged: onSyncChanged,
     ),
   ),
 );
@@ -42,11 +49,17 @@ class _GroceryList extends StatefulWidget {
     required this.currency,
     this.estimate,
     this.onGenerateFromPlan,
+    this.syncWithPlan = false,
+    this.allowEstimates = true,
+    this.onSyncChanged,
   });
   final List<GroceryItem> items;
   final String currency;
   final Future<SupermarketOffer?> Function(String)? estimate;
   final List<GroceryItem> Function(List<GroceryItem>)? onGenerateFromPlan;
+  final bool syncWithPlan;
+  final bool allowEstimates;
+  final ValueChanged<bool>? onSyncChanged;
 
   @override
   State<_GroceryList> createState() => _GroceryListState();
@@ -63,6 +76,7 @@ class _GroceryListState extends State<_GroceryList> {
   final _requests = <String, Future<void>>{};
   bool _saving = false;
   bool _added = false;
+  late bool _syncPlan = widget.syncWithPlan;
 
   @override
   void initState() {
@@ -87,6 +101,7 @@ class _GroceryListState extends State<_GroceryList> {
   Future<void> _estimateItem(String name) async {
     final index = _items.indexWhere((item) => item.name == name);
     if (!mounted ||
+        !widget.allowEstimates ||
         index < 0 ||
         _loading.contains(name) ||
         _manual.contains(name) ||
@@ -148,27 +163,32 @@ class _GroceryListState extends State<_GroceryList> {
   }
 
   void _generateFromPlan() {
-    if (widget.onGenerateFromPlan == null) return;
+    if (widget.onGenerateFromPlan == null || _saving) return;
     final items = widget.onGenerateFromPlan!(List<GroceryItem>.of(_items));
     final l10n = AppLocalizations.of(context)!;
     setState(() {
+      if (widget.onSyncChanged != null) _syncPlan = true;
       _items
         ..clear()
         ..addAll(items);
     });
+    widget.onSyncChanged?.call(_syncPlan);
     unawaited(_estimateExisting());
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          items.isEmpty
-              ? l10n.groceryNoPlannedMeals
-              : l10n.groceryGeneratedCount(items.length),
+          items.where((item) => item.fromPlan).isEmpty
+              ? l10n.groceryNothingNeeded
+              : l10n.groceryGeneratedCount(
+                  items.where((item) => item.fromPlan).length,
+                ),
         ),
       ),
     );
   }
 
   Future<void> _save() async {
+    if (_saving) return;
     if (_input.text.trim().isNotEmpty) {
       _add();
       return;
@@ -408,7 +428,22 @@ class _GroceryListState extends State<_GroceryList> {
                                     : null,
                               ),
                             ),
-                            subtitle: itemPriceLabel(_items[index], l10n),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (_items[index].requiredAmount != null)
+                                  Text(
+                                    '${l10n.requiredAmountLabel}: ${_items[index].requiredAmount!.toStringAsFixed(1).replaceFirst(RegExp(r'\.0$'), '')} ${switch (_items[index].requiredUnit) {
+                                      CostUnit.grams => 'g',
+                                      CostUnit.milliliters => 'ml',
+                                      _ => l10n.budgetPieces,
+                                    }}',
+                                  ),
+                                if (itemPriceLabel(_items[index], l10n)
+                                    case final Widget price)
+                                  price,
+                              ],
+                            ),
                             onChanged: (value) => setState(
                               () => _items[index] = _items[index].withChecked(
                                 value!,
@@ -469,10 +504,14 @@ class _GroceryListState extends State<_GroceryList> {
                                 minWidth: 26,
                                 minHeight: 26,
                               ),
-                              onPressed: () => setState(
-                                () => _items[index] = _items[index]
-                                    .withQuantity(_items[index].quantity + 1),
-                              ),
+                              onPressed: _items[index].quantity >= 9999
+                                  ? null
+                                  : () => setState(
+                                      () => _items[index] = _items[index]
+                                          .withQuantity(
+                                            _items[index].quantity + 1,
+                                          ),
+                                    ),
                             ),
                           ],
                         ),
@@ -504,6 +543,20 @@ class _GroceryListState extends State<_GroceryList> {
                         ),
                       ),
                   ],
+                  if (widget.onSyncChanged != null)
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(l10n.syncGroceriesLabel),
+                      subtitle: Text(l10n.syncGroceriesNote),
+                      value: _syncPlan,
+                      onChanged: _saving
+                          ? null
+                          : (value) {
+                              setState(() => _syncPlan = value);
+                              widget.onSyncChanged!(value);
+                              if (value) _generateFromPlan();
+                            },
+                    ),
                   TextButton.icon(
                     onPressed: _openReferences,
                     icon: const Icon(Icons.open_in_new_rounded, size: 18),
@@ -513,7 +566,7 @@ class _GroceryListState extends State<_GroceryList> {
                     l10n.groceryReferenceNote,
                     style: const TextStyle(
                       color: AppColors.muted,
-                      fontSize: 12,
+                      fontSize: 13,
                       height: 1.4,
                     ),
                   ),
@@ -552,7 +605,7 @@ class _GroceryListState extends State<_GroceryList> {
               : item.reference == null
               ? l10n.groceryYourPrice
               : '${item.reference!.presentation} · ${item.reference!.month} ${item.reference!.year} · Pro Consumidor'}',
-          style: const TextStyle(color: AppColors.muted, fontSize: 12),
+          style: const TextStyle(color: AppColors.muted, fontSize: 13),
         );
 }
 
@@ -612,7 +665,7 @@ class _GroceryCompareItemDialog extends StatelessWidget {
                               price,
                               style: const TextStyle(
                                 color: AppColors.muted,
-                                fontSize: 12,
+                                fontSize: 13,
                               ),
                             ),
                           ],

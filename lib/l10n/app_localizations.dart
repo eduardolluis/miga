@@ -62,7 +62,8 @@ import 'app_localizations_es.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -70,7 +71,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,17 +84,18 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('es')
+    Locale('es'),
   ];
 
   /// No description provided for @onboardingIntro.
@@ -1448,7 +1451,7 @@ abstract class AppLocalizations {
   /// No description provided for @budgetTargetNote.
   ///
   /// In en, this message translates to:
-  /// **'Based on your remaining weekly budget.'**
+  /// **'Remaining weekly budget divided by the meal slots left this week (3 per day; today depends on the current time). Recipe totals cover all servings.'**
   String get budgetTargetNote;
 
   /// No description provided for @budgetKnownSubtotal.
@@ -1556,7 +1559,7 @@ abstract class AppLocalizations {
   /// No description provided for @groceryGeneratedCount.
   ///
   /// In en, this message translates to:
-  /// **'Added {count} ingredients from your weekly plan'**
+  /// **'List updated with {count} ingredients from your plan'**
   String groceryGeneratedCount(int count);
 
   /// No description provided for @groceryNoPlannedMeals.
@@ -1588,9 +1591,604 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Actual spending is kept separate from estimated meal costs.'**
   String get budgetDistinctionTip;
+
+  /// No description provided for @preferencesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Household preferences'**
+  String get preferencesTitle;
+
+  /// No description provided for @countryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get countryLabel;
+
+  /// No description provided for @currencyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Currency'**
+  String get currencyLabel;
+
+  /// No description provided for @languageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get languageLabel;
+
+  /// No description provided for @systemLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Device language'**
+  String get systemLanguage;
+
+  /// No description provided for @householdMembers.
+  ///
+  /// In en, this message translates to:
+  /// **'People at home'**
+  String get householdMembers;
+
+  /// No description provided for @restrictionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allergies and dietary restrictions'**
+  String get restrictionsTitle;
+
+  /// No description provided for @restrictionsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipes containing selected allergens are hidden. Always check product labels and cross-contact warnings.'**
+  String get restrictionsNote;
+
+  /// No description provided for @vegetarian.
+  ///
+  /// In en, this message translates to:
+  /// **'Vegetarian'**
+  String get vegetarian;
+
+  /// No description provided for @vegan.
+  ///
+  /// In en, this message translates to:
+  /// **'Vegan'**
+  String get vegan;
+
+  /// No description provided for @dairyFree.
+  ///
+  /// In en, this message translates to:
+  /// **'No dairy'**
+  String get dairyFree;
+
+  /// No description provided for @glutenFree.
+  ///
+  /// In en, this message translates to:
+  /// **'No gluten'**
+  String get glutenFree;
+
+  /// No description provided for @nutFree.
+  ///
+  /// In en, this message translates to:
+  /// **'No nuts'**
+  String get nutFree;
+
+  /// No description provided for @eggFree.
+  ///
+  /// In en, this message translates to:
+  /// **'No eggs'**
+  String get eggFree;
+
+  /// No description provided for @fishFree.
+  ///
+  /// In en, this message translates to:
+  /// **'No fish'**
+  String get fishFree;
+
+  /// No description provided for @dislikedFoods.
+  ///
+  /// In en, this message translates to:
+  /// **'Foods to avoid'**
+  String get dislikedFoods;
+
+  /// No description provided for @pantryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My pantry'**
+  String get pantryTitle;
+
+  /// No description provided for @pantryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Add what you have at home to buy only what you need.'**
+  String get pantryEmpty;
+
+  /// No description provided for @ingredientLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredient'**
+  String get ingredientLabel;
+
+  /// No description provided for @amountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amountLabel;
+
+  /// No description provided for @unitLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit'**
+  String get unitLabel;
+
+  /// No description provided for @amountInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount greater than zero.'**
+  String get amountInvalid;
+
+  /// No description provided for @favoritesFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favoritesFilter;
+
+  /// No description provided for @quickFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Under 20 min'**
+  String get quickFilter;
+
+  /// No description provided for @proteinFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'High protein'**
+  String get proteinFilter;
+
+  /// No description provided for @cheapFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Within budget'**
+  String get cheapFilter;
+
+  /// No description provided for @pantryFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Use my pantry'**
+  String get pantryFilter;
+
+  /// No description provided for @favoriteAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Save favorite'**
+  String get favoriteAdd;
+
+  /// No description provided for @favoriteRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove favorite'**
+  String get favoriteRemove;
+
+  /// No description provided for @servingsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Servings'**
+  String get servingsLabel;
+
+  /// No description provided for @nutritionPerServing.
+  ///
+  /// In en, this message translates to:
+  /// **'Approximate nutrition per serving'**
+  String get nutritionPerServing;
+
+  /// No description provided for @nutritionTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Approximate nutrition for the whole recipe'**
+  String get nutritionTotal;
+
+  /// No description provided for @planRecipe.
+  ///
+  /// In en, this message translates to:
+  /// **'Add recipe'**
+  String get planRecipe;
+
+  /// No description provided for @chooseRecipe.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a recipe'**
+  String get chooseRecipe;
+
+  /// No description provided for @customMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a meal'**
+  String get customMeal;
+
+  /// No description provided for @chooseDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a day'**
+  String get chooseDay;
+
+  /// No description provided for @moveMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Move meal'**
+  String get moveMeal;
+
+  /// No description provided for @repeatMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat on other days'**
+  String get repeatMeal;
+
+  /// No description provided for @copyMeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy meal'**
+  String get copyMeal;
+
+  /// No description provided for @mealActions.
+  ///
+  /// In en, this message translates to:
+  /// **'Meal actions'**
+  String get mealActions;
+
+  /// No description provided for @overwriteWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This replaces the meal already saved in that slot.'**
+  String get overwriteWarning;
+
+  /// No description provided for @confirmReplace.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace meal?'**
+  String get confirmReplace;
+
+  /// No description provided for @replaceAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace'**
+  String get replaceAction;
+
+  /// No description provided for @cancelAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelAction;
+
+  /// No description provided for @confirmAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirmAction;
+
+  /// No description provided for @undoAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get undoAction;
+
+  /// No description provided for @savedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes saved'**
+  String get savedSuccess;
+
+  /// No description provided for @todayMealsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s meals'**
+  String get todayMealsTitle;
+
+  /// No description provided for @planEstimateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated plan cost'**
+  String get planEstimateTitle;
+
+  /// No description provided for @incompleteEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Partial estimate · missing prices or custom meals'**
+  String get incompleteEstimate;
+
+  /// No description provided for @priceSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredient prices'**
+  String get priceSettingsTitle;
+
+  /// No description provided for @priceSettingsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your price per kg, liter or piece takes priority over store estimates. Prices in another currency are not converted.'**
+  String get priceSettingsNote;
+
+  /// No description provided for @manualPriceSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Your reference price'**
+  String get manualPriceSource;
+
+  /// No description provided for @clearPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear price'**
+  String get clearPrice;
+
+  /// No description provided for @autoPlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan my week'**
+  String get autoPlanTitle;
+
+  /// No description provided for @autoPlanPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review your proposed week'**
+  String get autoPlanPreview;
+
+  /// No description provided for @autoPlanNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Fills empty slots using your household size, restrictions, pantry and budget. Existing meals stay in place.'**
+  String get autoPlanNote;
+
+  /// No description provided for @autoPlanMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Some slots could not be filled within your budget with confirmed prices. Add ingredient prices or adjust your budget.'**
+  String get autoPlanMissing;
+
+  /// No description provided for @autoPlanNoBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Set your weekly budget before generating a budget-aware plan.'**
+  String get autoPlanNoBudget;
+
+  /// No description provided for @applyPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply plan and update groceries'**
+  String get applyPlan;
+
+  /// No description provided for @syncGroceriesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep groceries in sync with my plan'**
+  String get syncGroceriesLabel;
+
+  /// No description provided for @syncGroceriesNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Updates required amounts and removes ingredients from deleted meals. Your manual products, prices and purchase marks are preserved.'**
+  String get syncGroceriesNote;
+
+  /// No description provided for @requiredAmountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Needed'**
+  String get requiredAmountLabel;
+
+  /// No description provided for @estimatedTotalNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Package estimate; actual spending is recorded separately in your budget.'**
+  String get estimatedTotalNote;
+
+  /// No description provided for @spendingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spending history'**
+  String get spendingTitle;
+
+  /// No description provided for @spendingEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Save weekly budgets and actual spending to see your history.'**
+  String get spendingEmpty;
+
+  /// No description provided for @actualSpending.
+  ///
+  /// In en, this message translates to:
+  /// **'Actual spending'**
+  String get actualSpending;
+
+  /// No description provided for @remainingBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Available budget'**
+  String get remainingBudget;
+
+  /// No description provided for @substitutionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ways to spend less'**
+  String get substitutionsTitle;
+
+  /// No description provided for @substitutionsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare complete recipe estimates with the same serving count. Review ingredients before replacing a meal.'**
+  String get substitutionsNote;
+
+  /// No description provided for @privacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy and your data'**
+  String get privacyTitle;
+
+  /// No description provided for @deleteAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account and data'**
+  String get deleteAccount;
+
+  /// No description provided for @deleteAccountPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Permanently delete your account, plans, preferences and grocery data? This cannot be undone.'**
+  String get deleteAccountPrompt;
+
+  /// No description provided for @syncTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud sync'**
+  String get syncTitle;
+
+  /// No description provided for @syncSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Synced with your account'**
+  String get syncSaved;
+
+  /// No description provided for @syncPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved on this device · waiting to sync'**
+  String get syncPending;
+
+  /// No description provided for @syncConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'Another device has changes. Choose which version to keep before syncing.'**
+  String get syncConflict;
+
+  /// No description provided for @syncRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync now'**
+  String get syncRetry;
+
+  /// No description provided for @keepLocal.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep this device'**
+  String get keepLocal;
+
+  /// No description provided for @keepCloud.
+  ///
+  /// In en, this message translates to:
+  /// **'Use cloud version'**
+  String get keepCloud;
+
+  /// No description provided for @sharedListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared grocery list'**
+  String get sharedListTitle;
+
+  /// No description provided for @createSharedList.
+  ///
+  /// In en, this message translates to:
+  /// **'Create shared list'**
+  String get createSharedList;
+
+  /// No description provided for @joinSharedList.
+  ///
+  /// In en, this message translates to:
+  /// **'Join with invitation code'**
+  String get joinSharedList;
+
+  /// No description provided for @invitationCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation code'**
+  String get invitationCode;
+
+  /// No description provided for @sharedListNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Members can edit this list. Share the invitation only with people you trust.'**
+  String get sharedListNote;
+
+  /// No description provided for @copyInvitation.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy invitation'**
+  String get copyInvitation;
+
+  /// No description provided for @leaveSharedList.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave shared list'**
+  String get leaveSharedList;
+
+  /// No description provided for @cloudUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud services are not configured yet. Your local data is safe.'**
+  String get cloudUnavailable;
+
+  /// No description provided for @restorePurchases.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore purchases'**
+  String get restorePurchases;
+
+  /// No description provided for @manageSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage subscription'**
+  String get manageSubscription;
+
+  /// No description provided for @subscriptionUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions are not available yet. No payment will be taken.'**
+  String get subscriptionUnavailable;
+
+  /// No description provided for @proToolsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Planning tools available now'**
+  String get proToolsTitle;
+
+  /// No description provided for @proToolsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Try weekly planning, pantry-based suggestions and spending history while Miga Pro is being prepared.'**
+  String get proToolsNote;
+
+  /// No description provided for @sharedListDeleteWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Leaving as the owner deletes the shared list for every member. Other members only remove their own access. Continue?'**
+  String get sharedListDeleteWarning;
+
+  /// No description provided for @sharedDraftSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Your edits are kept on this screen until you retry or choose the cloud version.'**
+  String get sharedDraftSaved;
+
+  /// No description provided for @savingsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No cheaper alternatives with complete prices yet. Add reference prices or plan a recipe first.'**
+  String get savingsEmpty;
+
+  /// No description provided for @perServingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'per serving'**
+  String get perServingLabel;
+
+  /// No description provided for @subscriptionActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Miga Pro active until'**
+  String get subscriptionActive;
+
+  /// No description provided for @groceryNothingNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'No ingredients to add. Check your pantry and make sure planned meals are catalog recipes.'**
+  String get groceryNothingNeeded;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -1599,25 +2197,26 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'es'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return AppLocalizationsEn();
-    case 'es': return AppLocalizationsEs();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'es':
+      return AppLocalizationsEs();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

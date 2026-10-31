@@ -17,5 +17,10 @@ Future<void> main() async {
     publishableKey: supabasePublishableKey,
   );
 
-  runApp(MigaApp(authService: SupabaseAuthService(Supabase.instance.client)));
+  runApp(
+    MigaApp(
+      authService: SupabaseAuthService(Supabase.instance.client),
+      client: Supabase.instance.client,
+    ),
+  );
 }

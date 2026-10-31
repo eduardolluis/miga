@@ -1,0 +1,11 @@
+project_id = "miga"
+
+[functions.delete-account]
+verify_jwt = true
+
+[functions.verify-purchase]
+verify_jwt = true
+
+# The scheduled job uses its own server-only bearer secret.
+[functions.refresh-subscriptions]
+verify_jwt = false

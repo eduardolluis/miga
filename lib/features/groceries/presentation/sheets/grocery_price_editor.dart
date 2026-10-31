@@ -1,3 +1,4 @@
+import 'package:miga/core/region/supported_regions.dart';
 import 'package:flutter/material.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
 import 'package:miga/features/groceries/domain/grocery_price_reference.dart';
@@ -82,6 +83,11 @@ class _GroceryPriceEditorState extends State<GroceryPriceEditor> {
           checked: widget.item.checked,
           currency: widget.item.currency,
           quantity: widget.item.quantity,
+          ingredientId: widget.item.ingredientId,
+          requiredAmount: widget.item.requiredAmount,
+          requiredUnit: widget.item.requiredUnit,
+          manualQuantity: widget.item.manualQuantity,
+          planGenerated: widget.item.planGenerated,
         ),
       );
       return;
@@ -96,6 +102,11 @@ class _GroceryPriceEditorState extends State<GroceryPriceEditor> {
         unitPriceCents: removePrice ? null : _cents,
         reference: _reference,
         offer: _offer,
+        ingredientId: widget.item.ingredientId,
+        requiredAmount: widget.item.requiredAmount,
+        requiredUnit: widget.item.requiredUnit,
+        manualQuantity: true,
+        planGenerated: widget.item.planGenerated,
       ),
     );
   }
@@ -170,9 +181,12 @@ class _GroceryPriceEditorState extends State<GroceryPriceEditor> {
                 key: ValueKey('grocery-currency-$_currency'),
                 initialValue: _currency,
                 decoration: InputDecoration(labelText: l10n.homeCurrency),
-                items: const [
-                  DropdownMenuItem(value: 'DOP', child: Text('DOP · RD\$')),
-                  DropdownMenuItem(value: 'USD', child: Text('USD · US\$')),
+                items: [
+                  for (final code in SupportedRegions.currencies)
+                    DropdownMenuItem(
+                      value: code,
+                      child: Text('$code · ${SupportedRegions.symbol(code)}'),
+                    ),
                 ],
                 onChanged: (value) => setState(() {
                   if (value != _currency) _price.clear();

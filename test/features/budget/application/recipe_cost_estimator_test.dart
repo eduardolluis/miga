@@ -122,6 +122,8 @@ void main() {
 
   test('Weekly allowance responds to remaining money, day and time', () {
     const budget = WeeklyBudget(limit: 2100, spent: 0, currency: 'DOP');
+    expect(remainingMealSlots(DateTime(2026, 10, 26, 8)), 21);
+    expect(remainingMealSlots(DateTime(2026, 11, 1, 20)), 1);
     expect(mealAllowanceCents(budget, DateTime(2026, 10, 26, 8)), 10000);
     expect(mealAllowanceCents(budget, DateTime(2026, 11, 1, 20)), 210000);
     expect(

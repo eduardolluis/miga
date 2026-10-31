@@ -11,10 +11,16 @@ class RecipeCard extends StatelessWidget {
     required this.recipe,
     required this.onTap,
     this.ingredientSummary,
+    this.costLabel,
+    this.favorite = false,
+    this.onFavorite,
   });
   final Recipe recipe;
   final VoidCallback? onTap;
   final String? ingredientSummary;
+  final String? costLabel;
+  final bool favorite;
+  final VoidCallback? onFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -68,20 +74,41 @@ class RecipeCard extends StatelessWidget {
                           ingredientSummary!,
                           style: const TextStyle(
                             color: AppColors.olive,
-                            fontSize: 12,
+                            fontSize: 13,
                             height: 1.4,
                           ),
                         ),
                       ] else if (recipe.nutrition != null) ...[
                         const SizedBox(height: 6),
                         Text(
-                          '${recipe.nutrition!.calories} kcal · ${recipe.nutrition!.proteinGrams}g prot',
+                          '${recipe.nutrition!.calories} kcal · ${recipe.nutrition!.proteinGrams}g prot · ${l10n.perServingLabel}',
                           style: const TextStyle(
                             color: AppColors.muted,
-                            fontSize: 12,
+                            fontSize: 13,
                           ),
                         ),
                       ],
+                      if (costLabel != null) ...[
+                        const SizedBox(height: 8),
+                        Text(
+                          costLabel!,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            color: AppColors.olive,
+                          ),
+                        ),
+                      ],
+                      if (onFavorite != null)
+                        IconButton(
+                          onPressed: onFavorite,
+                          tooltip: favorite
+                              ? l10n.favoriteRemove
+                              : l10n.favoriteAdd,
+                          icon: Icon(
+                            favorite ? Icons.favorite : Icons.favorite_border,
+                            color: AppColors.olive,
+                          ),
+                        ),
                     ],
                   ),
                 ),
