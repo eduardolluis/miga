@@ -237,6 +237,7 @@
   "groceryAddPrice": "Añadir precio",
   "groceryEstimate": "Estimado de la lista: {amount}",
   "groceryPricesNeeded": "Añade precios para estimar tu compra",
+  "groceryPricesMissing": "A {count} productos todavía les falta precio",
   "groceryPriceCoverage": "{count} productos no tienen precio en {currency} y no se incluyen en el estimado.",
   "groceryCartProgress": "{checked} de {total} productos en el carrito",
   "groceryReferences": "Consultar reportes de precios en RD",

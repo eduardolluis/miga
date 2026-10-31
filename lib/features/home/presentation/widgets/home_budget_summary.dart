@@ -10,10 +10,12 @@ class HomeBudgetSummary extends StatelessWidget {
     super.key,
     required this.budget,
     required this.onTap,
+    this.onAddPrices,
     this.groceries = const [],
   });
   final WeeklyBudget? budget;
   final VoidCallback? onTap;
+  final VoidCallback? onAddPrices;
   final List<GroceryItem> groceries;
 
   @override
@@ -51,8 +53,10 @@ class HomeBudgetSummary extends StatelessWidget {
                         Text(
                           l10n.homeBudget,
                           style: const TextStyle(
+                            fontFamily: 'LiberationSerif',
+                            fontSize: 21,
+                            height: 1.12,
                             fontWeight: FontWeight.w600,
-                            fontSize: 15,
                           ),
                         ),
                         const SizedBox(height: 5),
@@ -60,11 +64,7 @@ class HomeBudgetSummary extends StatelessWidget {
                           value == null
                               ? l10n.homeSetBudget
                               : '${value.format(value.spent)} / ${value.format(value.limit)}',
-                          style: const TextStyle(
-                            color: AppColors.muted,
-                            fontSize: 14,
-                            height: 1.4,
-                          ),
+                          style: const TextStyle(color: AppColors.muted, fontSize: 14, height: 1.4),
                         ),
                       ],
                     ),
@@ -73,46 +73,32 @@ class HomeBudgetSummary extends StatelessWidget {
                   const Icon(Icons.chevron_right, color: AppColors.olive),
                 ],
               ),
-              const SizedBox(height: 12),
-              Text(
-                l10n.budgetPurpose,
-                style: const TextStyle(
-                  color: AppColors.muted,
-                  fontSize: 12,
-                  height: 1.5,
-                ),
-              ),
               if (totals.priced > 0 && value != null) ...[
                 const SizedBox(height: 12),
                 Text(
-                  l10n.groceryEstimate(
-                    value.format(totals.subtotalCents / 100),
-                  ),
+                  l10n.groceryEstimate(value.format(totals.subtotalCents / 100)),
                   style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 5),
                 Text(
                   projected > value.limit
-                      ? l10n.budgetShoppingOver(
-                          value.format(projected - value.limit),
-                        )
-                      : l10n.budgetAfterShopping(
-                          value.format(value.limit - projected),
-                        ),
+                      ? l10n.budgetShoppingOver(value.format(projected - value.limit))
+                      : l10n.budgetAfterShopping(value.format(value.limit - projected)),
                   style: const TextStyle(color: AppColors.olive, height: 1.5),
                 ),
               ],
               if (totals.missing > 0) ...[
                 const SizedBox(height: 8),
                 Text(
-                  l10n.groceryPriceCoverage(
-                    totals.missing,
-                    value?.currency ?? 'DOP',
-                  ),
-                  style: const TextStyle(
-                    color: AppColors.muted,
-                    fontSize: 12,
-                    height: 1.4,
+                  l10n.groceryPricesMissing(totals.missing),
+                  style: const TextStyle(color: AppColors.muted, height: 1.4),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton.icon(
+                    onPressed: onAddPrices,
+                    icon: const Icon(Icons.add, size: 18),
+                    label: Text(l10n.groceryAddPrice),
                   ),
                 ),
               ],
@@ -122,9 +108,7 @@ class HomeBudgetSummary extends StatelessWidget {
                   value: (projected / value.limit).clamp(0.0, 1.0),
                   minHeight: 6,
                   borderRadius: BorderRadius.circular(6),
-                  color: projected > value.limit
-                      ? const Color(0xFFA34F36)
-                      : AppColors.olive,
+                  color: projected > value.limit ? const Color(0xFFA34F36) : AppColors.olive,
                   backgroundColor: const Color(0xFFE5E9DD),
                 ),
                 const SizedBox(height: 9),

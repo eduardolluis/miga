@@ -61,11 +61,7 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
-                style: const TextStyle(
-                  fontFamily: 'LiberationSerif',
-                  fontSize: 25,
-                  height: 1.1,
-                ),
+                style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 25, height: 1.1),
               ),
             ),
             PopupMenuButton<String>(
@@ -76,31 +72,19 @@ class HomeScreen extends StatelessWidget {
               itemBuilder: (_) => [
                 PopupMenuItem(value: 'auto', child: Text(l10n.homeUseTime)),
                 for (final slot in MealSlot.values)
-                  PopupMenuItem(
-                    value: slot.name,
-                    child: Text(slot.label(l10n)),
-                  ),
+                  PopupMenuItem(value: slot.name, child: Text(slot.label(l10n))),
               ],
-              icon: const Icon(
-                Icons.tune_rounded,
-                size: 20,
-                color: AppColors.olive,
-              ),
+              icon: const Icon(Icons.tune_rounded, size: 20, color: AppColors.olive),
             ),
           ],
         ),
         const SizedBox(height: 4),
         Text(
           controller.automaticSlot ? l10n.homeIdeasNow : l10n.homeIdeasManual,
-          style: const TextStyle(
-            color: AppColors.muted,
-            fontSize: 13,
-            height: 1.4,
-          ),
+          style: const TextStyle(color: AppColors.muted, fontSize: 13, height: 1.4),
         ),
         const SizedBox(height: 18),
-        if (controller.loading || controller.saving)
-          const LinearProgressIndicator(),
+        if (controller.loading || controller.saving) const LinearProgressIndicator(),
         if (controller.loadFailed) ...[
           Text(l10n.homeLoadError, textAlign: TextAlign.center),
           TextButton(onPressed: controller.load, child: Text(l10n.homeRetry)),
@@ -117,10 +101,7 @@ class HomeScreen extends StatelessWidget {
           onSelected: controller.selectDate,
           hasMeals: controller.hasMeals,
           onViewPlan: onPlan,
-          meal: controller.mealFor(
-            controller.selectedDate,
-            controller.selectedSlot,
-          ),
+          meal: controller.mealFor(controller.selectedDate, controller.selectedSlot),
           slotLabel: controller.selectedSlot.label(l10n),
           onEditMeal: enabled ? onEditMeal : null,
         ),
@@ -129,6 +110,7 @@ class HomeScreen extends StatelessWidget {
           budget: controller.budget,
           groceries: controller.details.groceries,
           onTap: enabled ? onBudget : null,
+          onAddPrices: enabled ? onGroceries : null,
         ),
         const SizedBox(height: 16),
         HomeQuickActions(

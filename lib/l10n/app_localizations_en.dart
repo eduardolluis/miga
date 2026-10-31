@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -20,19 +21,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcomeTitle => 'Your week, your way.';
 
   @override
-  String get welcomeDescription => 'Plan your meals and organize your groceries with ease.';
+  String get welcomeDescription =>
+      'Plan your meals and organize your groceries with ease.';
 
   @override
   String get planTitle => 'Plan your week.';
 
   @override
-  String get planDescription => 'Build a menu that fits your tastes and routine.';
+  String get planDescription =>
+      'Build a menu that fits your tastes and routine.';
 
   @override
   String get shoppingTitle => 'Organize your groceries.';
 
   @override
-  String get shoppingDescription => 'Keep everything you need for your recipes in one list.';
+  String get shoppingDescription =>
+      'Keep everything you need for your recipes in one list.';
 
   @override
   String get storesTitle => 'Explore nearby stores.';
@@ -95,7 +99,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authTitle => 'Your table starts here.';
 
   @override
-  String get authSubtitle => 'Sign in or create an account your way. No password.';
+  String get authSubtitle =>
+      'Sign in or create an account your way. No password.';
 
   @override
   String get continueWithGoogle => 'Continue with Google';
@@ -138,13 +143,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get codeRequired => 'Enter the complete code from your email.';
 
   @override
-  String get invalidCode => 'The code is invalid or expired. Request a new one.';
+  String get invalidCode =>
+      'The code is invalid or expired. Request a new one.';
 
   @override
-  String get authError => 'We couldn’t complete sign-in. Check your connection and try again.';
+  String get authError =>
+      'We couldn’t complete sign-in. Check your connection and try again.';
 
   @override
-  String get authRateLimited => 'Please wait a moment before requesting another code.';
+  String get authRateLimited =>
+      'Please wait a moment before requesting another code.';
 
   @override
   String get authUnavailable => 'Sign-in has not been configured yet.';
@@ -156,10 +164,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signOut => 'Sign out';
 
   @override
-  String get authBrowserError => 'We couldn’t open the browser to sign in. Check that Safari is available and try again.';
+  String get authBrowserError =>
+      'We couldn’t open the browser to sign in. Check that Safari is available and try again.';
 
   @override
-  String get appleSignInUnavailable => 'Sign in with Apple is not available yet.';
+  String get appleSignInUnavailable =>
+      'Sign in with Apple is not available yet.';
 
   @override
   String get homeGreeting => 'Make yourself at home.';
@@ -251,13 +261,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeIngredients => 'Ingredients';
 
   @override
-  String get homeRecipeIngredients => '2 salmon fillets\n300 g baby potatoes\n2 cups broccoli\n1 lemon\n1 tablespoon olive oil\nHerbs, salt and pepper to taste';
+  String get homeRecipeIngredients =>
+      '2 salmon fillets\n300 g baby potatoes\n2 cups broccoli\n1 lemon\n1 tablespoon olive oil\nHerbs, salt and pepper to taste';
 
   @override
   String get homePreparation => 'Method';
 
   @override
-  String get homeRecipeSteps => '1. Preheat the oven to 200 °C. Cut the potatoes, toss with some of the oil and roast until starting to soften.\n\n2. Add the salmon and broccoli to the tray. Drizzle with the remaining oil, lemon and herbs.\n\n3. Bake until the fish is cooked through and the potatoes are tender. Serve with fresh lemon.';
+  String get homeRecipeSteps =>
+      '1. Preheat the oven to 200 °C. Cut the potatoes, toss with some of the oil and roast until starting to soften.\n\n2. Add the salmon and broccoli to the tray. Drizzle with the remaining oil, lemon and herbs.\n\n3. Bake until the fish is cooked through and the potatoes are tender. Serve with fresh lemon.';
 
   @override
   String get homeUseRecipe => 'Add to my plan';
@@ -296,7 +308,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeBudgetEmptyTitle => 'Good food.\nA budget that fits.';
 
   @override
-  String get homeBudgetEmptyDescription => 'Set an amount for this week and track your grocery spending.';
+  String get homeBudgetEmptyDescription =>
+      'Set an amount for this week and track your grocery spending.';
 
   @override
   String get homeSetBudget => 'Set a budget';
@@ -314,7 +327,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeCurrency => 'Currency';
 
   @override
-  String get homeBudgetValidation => 'Enter valid amounts. The budget must be greater than zero.';
+  String get homeBudgetValidation =>
+      'Enter valid amounts. The budget must be greater than zero.';
 
   @override
   String get homeBudgetOnTrack => 'Within your budget.';
@@ -332,7 +346,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeGroceryEmpty => 'Your list starts here.';
 
   @override
-  String get homeGroceryDescription => 'Add products, enter prices and check items as you put them in your cart.';
+  String get homeGroceryDescription =>
+      'Add products, enter prices and check items as you put them in your cart.';
 
   @override
   String get homeGroceryHint => 'E.g. tomatoes, 4';
@@ -364,7 +379,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeStoresEmpty => 'No stores to show yet.';
 
   @override
-  String get homeStoresDescription => 'Get your list ready so you have everything at hand when you head out to shop.';
+  String get homeStoresDescription =>
+      'Get your list ready so you have everything at hand when you head out to shop.';
 
   @override
   String get homeProfileTitle => 'Your space in Miga';
@@ -373,7 +389,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeCalendarTitle => 'Your whole week.';
 
   @override
-  String get homeCalendarSubtitle => 'Breakfast, lunch and dinner, one day at a time.';
+  String get homeCalendarSubtitle =>
+      'Breakfast, lunch and dinner, one day at a time.';
 
   @override
   String get homePlannedDay => 'Has planned meals';
@@ -409,7 +426,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeIdeasNow => 'Swipe through recipes for this time of day.';
 
   @override
-  String get homeIdeasManual => 'Swipe through recipes for your selected mealtime.';
+  String get homeIdeasManual =>
+      'Swipe through recipes for your selected mealtime.';
 
   @override
   String get homeChangeMeal => 'Choose a mealtime';
@@ -461,7 +479,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get recipeHaveIngredients => 'What do you have at home?';
 
   @override
-  String get recipeIngredientsHint => 'Select ingredients. Recipes using at least one appear first, with the best matches at the top.';
+  String get recipeIngredientsHint =>
+      'Select ingredients. Recipes using at least one appear first, with the best matches at the top.';
 
   @override
   String get recipeClearIngredients => 'Clear';
@@ -481,7 +500,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proDiscover => 'Discover Miga Pro';
 
   @override
-  String get proIntroduction => 'Your everyday essentials stay free. We’re building Pro to take more of the planning off your plate.';
+  String get proIntroduction =>
+      'Your everyday essentials stay free. We’re building Pro to take more of the planning off your plate.';
 
   @override
   String get proFreePlan => 'Miga Free';
@@ -493,7 +513,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proFreePlanning => 'Plan your meals and edit your weekly budget';
 
   @override
-  String get proFreeRecipes => 'Browse recipes and filter by ingredients you have';
+  String get proFreeRecipes =>
+      'Browse recipes and filter by ingredients you have';
 
   @override
   String get proFreeShopping => 'Build and check off your grocery list';
@@ -505,22 +526,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proAutomaticPlans => 'A week planned for you';
 
   @override
-  String get proAutomaticPlansDescription => 'Automatic weekly menus based on your preferences and household size.';
+  String get proAutomaticPlansDescription =>
+      'Automatic weekly menus based on your preferences and household size.';
 
   @override
   String get proPantryPlans => 'Make the most of what you have';
 
   @override
-  String get proPantryPlansDescription => 'Build an entire menu around your available ingredients, beyond the free recipe filters.';
+  String get proPantryPlansDescription =>
+      'Build an entire menu around your available ingredients, beyond the free recipe filters.';
 
   @override
   String get proSharedLists => 'A grocery list for your household';
 
   @override
-  String get proSharedListsDescription => 'Share a list and keep everyone’s shopping updates in sync.';
+  String get proSharedListsDescription =>
+      'Share a list and keep everyone’s shopping updates in sync.';
 
   @override
-  String get proLaunchNote => 'Pro subscriptions are not available yet. We’ll share pricing at launch. Your free tools remain available.';
+  String get proLaunchNote =>
+      'Pro subscriptions are not available yet. We’ll share pricing at launch. Your free tools remain available.';
 
   @override
   String get proKeepPlanning => 'Keep using Miga Free';
@@ -537,7 +562,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get groceryManualPrice => 'Prices entered by you, not verified store prices.';
+  String get groceryManualPrice =>
+      'Prices entered by you, not verified store prices.';
 
   @override
   String get groceryUnitPrice => 'Price per item';
@@ -546,7 +572,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get groceryQuantity => 'Number of items';
 
   @override
-  String get groceryPriceInvalid => 'Enter a price with up to 2 decimal places.';
+  String get groceryPriceInvalid =>
+      'Enter a price with up to 2 decimal places.';
 
   @override
   String get groceryQuantityInvalid => 'Enter a whole number from 1 to 999.';
@@ -569,6 +596,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get groceryPricesNeeded => 'Add prices to estimate your shop';
 
   @override
+  String groceryPricesMissing(Object count) {
+    return '$count products still need a price';
+  }
+
+  @override
   String groceryPriceCoverage(int count, String currency) {
     return '$count products have no price in $currency and are excluded from the estimate.';
   }
@@ -582,13 +614,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get groceryReferences => 'Check Dominican price reports';
 
   @override
-  String get groceryReferenceNote => 'Pro Consumidor reports are dated reference data. Check the product, package size and report date; they are not a live quote from your store.';
+  String get groceryReferenceNote =>
+      'Pro Consumidor reports are dated reference data. Check the product, package size and report date; they are not a live quote from your store.';
 
   @override
-  String get groceryReferenceError => 'We couldn’t open the price reports. Please try again.';
+  String get groceryReferenceError =>
+      'We couldn’t open the price reports. Please try again.';
 
   @override
-  String get budgetPurpose => 'Recorded spending + this list’s entered prices. Cart checkmarks do not record spending.';
+  String get budgetPurpose =>
+      'Recorded spending + this list’s entered prices. Cart checkmarks do not record spending.';
 
   @override
   String budgetShoppingOver(String amount) {
@@ -601,34 +636,40 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get budgetIncomplete => 'Add the missing prices before relying on this estimate.';
+  String get budgetIncomplete =>
+      'Add the missing prices before relying on this estimate.';
 
   @override
   String get groceryReferenceTitle => 'Official reference prices';
 
   @override
-  String get groceryReferenceDisclaimer => 'Periodic observations by type of supermarket, not live store quotes. Check the package size and period before using an estimate.';
+  String get groceryReferenceDisclaimer =>
+      'Periodic observations by type of supermarket, not live store quotes. Check the package size and period before using an estimate.';
 
   @override
   String get groceryReferenceSearch => 'Search products in Spanish, e.g. arroz';
 
   @override
-  String get groceryReferenceUnavailable => 'Reference prices are unavailable right now. You can still enter your own price.';
+  String get groceryReferenceUnavailable =>
+      'Reference prices are unavailable right now. You can still enter your own price.';
 
   @override
   String get groceryUseReference => 'Tap to use this dated estimate';
 
   @override
-  String get groceryReferenceAttribution => 'Source: Pro Consumidor / Datos Abiertos · ODbL 1.0';
+  String get groceryReferenceAttribution =>
+      'Source: Pro Consumidor / Datos Abiertos · ODbL 1.0';
 
   @override
-  String get groceryReferencePrice => 'Dated reference estimate, not a verified current store price.';
+  String get groceryReferencePrice =>
+      'Dated reference estimate, not a verified current store price.';
 
   @override
   String get groceryFindReference => 'Find an official reference price';
 
   @override
-  String get groceryEstimateNote => 'Based on your prices and any dated references you chose. Actual checkout prices may differ.';
+  String get groceryEstimateNote =>
+      'Based on your prices and any dated references you chose. Actual checkout prices may differ.';
 
   @override
   String get storeCompare => 'Compare supermarket prices';
@@ -637,16 +678,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeSearch => 'Search prices';
 
   @override
-  String get storeCompareNote => 'Online catalog prices by supermarket. Choose the exact brand and package size; different products are not a like-for-like comparison. Physical-store prices, offers and stock may differ.';
+  String get storeCompareNote =>
+      'Online catalog prices by supermarket. Choose the exact brand and package size; different products are not a like-for-like comparison. Physical-store prices, offers and stock may differ.';
 
   @override
   String get storeNearby => 'See nearby stores';
 
   @override
-  String get storeUnavailable => 'Live prices are unavailable for this store. You can still see its nearby locations.';
+  String get storeUnavailable =>
+      'Live prices are unavailable for this store. You can still see its nearby locations.';
 
   @override
-  String get storeSearchHelp => 'Search using at least 2 characters. Store catalogs use Spanish product names.';
+  String get storeSearchHelp =>
+      'Search using at least 2 characters. Store catalogs use Spanish product names.';
 
   @override
   String storeObserved(String when) {
@@ -660,7 +704,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeViewProduct => 'View product at the supermarket';
 
   @override
-  String get storeOnlinePrice => 'Price consulted in the supermarket’s online catalog. Check the brand, package and date.';
+  String get storeOnlinePrice =>
+      'Price consulted in the supermarket’s online catalog. Check the brand, package and date.';
 
   @override
   String get storeChooseItem => 'Which product do you want to compare?';

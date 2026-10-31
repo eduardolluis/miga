@@ -237,6 +237,7 @@
   "groceryAddPrice": "Add price",
   "groceryEstimate": "Shopping list estimate: {amount}",
   "groceryPricesNeeded": "Add prices to estimate your shop",
+  "groceryPricesMissing": "{count} products still need a price",
   "groceryPriceCoverage": "{count} products have no price in {currency} and are excluded from the estimate.",
   "groceryCartProgress": "{checked} of {total} items in your cart",
   "groceryReferences": "Check Dominican price reports",
