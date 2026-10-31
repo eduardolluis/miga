@@ -30,12 +30,107 @@ class SupermarketPriceSource {
       final offers = store == Supermarket.sirena
           ? await _sirena(httpClient, query)
           : await _nacional(httpClient, query);
-      return StoreSearchResult(store, offers: offers);
+      return StoreSearchResult(
+        store,
+        offers: offers.where((offer) => _matchesQuery(offer, query)).toList(),
+      );
     } catch (_) {
       return StoreSearchResult(store, unavailable: true);
     } finally {
       if (client == null) httpClient.close();
     }
+  }
+
+  bool _matchesQuery(SupermarketOffer offer, String query) {
+    final terms = _searchTerms(query);
+    if (terms.isEmpty) return false;
+    final productTerms = _searchTerms('${offer.product} ${offer.presentation}');
+    return terms.every(
+      (term) => productTerms.any((candidate) => _sameTerm(candidate, term)),
+    );
+  }
+
+  List<String> _searchTerms(String value) => _normalize(value)
+      .split(' ')
+      .where(
+        (term) =>
+            term.length > 1 &&
+            !const {
+              'a',
+              'an',
+              'and',
+              'by',
+              'de',
+              'del',
+              'el',
+              'en',
+              'for',
+              'la',
+              'las',
+              'large',
+              'medium',
+              'of',
+              'para',
+              'por',
+              'small',
+              'sweet',
+              'the',
+              'to',
+              'un',
+              'una',
+              'y',
+            }.contains(term) &&
+            !RegExp(r'^\d+(?:[.,]\d+)?$').hasMatch(term),
+      )
+      .toList();
+
+  bool _sameTerm(String candidate, String query) {
+    final candidates = _variants(candidate);
+    return _variants(query).any(
+      (term) => candidates.any(
+        (candidateTerm) =>
+            candidateTerm == term ||
+            candidateTerm.length >= 4 && candidateTerm.startsWith(term) ||
+            term.length >= 4 && term.startsWith(candidateTerm),
+      ),
+    );
+  }
+
+  Set<String> _variants(String value) {
+    final root = value.endsWith('es')
+        ? value.substring(0, value.length - 2)
+        : value.endsWith('s')
+        ? value.substring(0, value.length - 1)
+        : value;
+    const equivalents = {
+      'arroz': {'rice'},
+      'batata': {'potato', 'potatoes', 'papa'},
+      'egg': {'huevo', 'huevos'},
+      'espinaca': {'spinach'},
+      'huevo': {'egg', 'eggs'},
+      'oil': {'aceite'},
+      'oliva': {'olive'},
+      'papa': {'potato', 'potatoes', 'batata'},
+      'rice': {'arroz'},
+      'spinach': {'espinaca'},
+    };
+    return {value, root, ...?equivalents[value], ...?equivalents[root]};
+  }
+
+  String _normalize(String value) {
+    var normalized = value.toLowerCase();
+    for (final entry in {
+      'á': 'a',
+      'é': 'e',
+      'í': 'i',
+      'ó': 'o',
+      'ú': 'u',
+      'ü': 'u',
+      'ñ': 'n',
+    }.entries) {
+      normalized = normalized.replaceAll(entry.key, entry.value);
+    }
+    return normalized.replaceAll(RegExp(r'[^a-z0-9]+'), ' ').trim();
   }
 
   Future<dynamic> _get(http.Client client, Uri uri) async {

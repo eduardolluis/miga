@@ -68,21 +68,11 @@ class _GroceryListState extends State<_GroceryList> {
   }
 
   Future<void> _comparePrices() async {
-    final l10n = AppLocalizations.of(context)!;
     final index = _items.length == 1
         ? 0
         : await showDialog<int>(
             context: context,
-            builder: (context) => SimpleDialog(
-              title: Text(l10n.storeChooseItem),
-              children: [
-                for (var i = 0; i < _items.length; i++)
-                  SimpleDialogOption(
-                    onPressed: () => Navigator.of(context).pop(i),
-                    child: Text(_items[i].name),
-                  ),
-              ],
-            ),
+            builder: (_) => _GroceryCompareItemDialog(items: _items),
           );
     if (!mounted || index == null) return;
     final offer = await showDialog<SupermarketOffer>(
@@ -357,4 +347,88 @@ class _GroceryListState extends State<_GroceryList> {
               : '${item.reference!.presentation} · ${item.reference!.month} ${item.reference!.year} · Pro Consumidor'}',
           style: const TextStyle(color: AppColors.muted, fontSize: 12),
         );
+}
+
+class _GroceryCompareItemDialog extends StatelessWidget {
+  const _GroceryCompareItemDialog({required this.items});
+
+  final List<GroceryItem> items;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return AlertDialog(
+      title: Text(l10n.storeChooseItem),
+      content: SizedBox(
+        width: 420,
+        child: ListView.separated(
+          shrinkWrap: true,
+          itemCount: items.length,
+          separatorBuilder: (_, _) => const SizedBox(height: 8),
+          itemBuilder: (context, index) {
+            final item = items[index];
+            final price = item.unitPriceCents == null
+                ? l10n.groceryAddPrice
+                : item.formatCents(item.unitPriceCents!);
+            return Material(
+              color: const Color(0xFFF3F4EC),
+              borderRadius: BorderRadius.circular(14),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(14),
+                onTap: () => Navigator.of(context).pop(index),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 12,
+                  ),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 16,
+                        backgroundColor: AppColors.olive,
+                        foregroundColor: Colors.white,
+                        child: Text('${index + 1}'),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              item.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Text(
+                              price,
+                              style: const TextStyle(
+                                color: AppColors.muted,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Icon(
+                        Icons.chevron_right_rounded,
+                        color: AppColors.olive,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(MaterialLocalizations.of(context).cancelButtonLabel),
+        ),
+      ],
+    );
+  }
 }

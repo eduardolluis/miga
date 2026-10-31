@@ -10,6 +10,7 @@ Map<String, dynamic> national({
   String currency = 'DOP',
   String host = 'supermercadosnacional.com',
   String stock = 'IN_STOCK',
+  String name = 'Arroz Líder 10 Lb',
 }) => {
   'data': {
     'storeConfig': {'base_url': 'https://$host/'},
@@ -18,7 +19,7 @@ Map<String, dynamic> national({
         {
           '__typename': 'SimpleProduct',
           'sku': 'sku-1',
-          'name': 'Arroz Líder 10 Lb',
+          'name': name,
           'url_key': 'arroz-lider',
           'stock_status': stock,
           'price_range': {
@@ -36,9 +37,10 @@ List<Map<String, dynamic>> sirena({
   num amount = 169,
   num stock = 10,
   String seller = '1',
+  String productName = 'Arroz Wala 5 Lb',
 }) => [
   {
-    'productName': 'Arroz Wala 5 Lb',
+    'productName': productName,
     'link': 'https://nuevo.sirena.do/arroz-wala/p',
     'items': [
       {
@@ -92,6 +94,31 @@ void main() {
     expect(results[2].unavailable, isTrue);
     expect(results[2].offers, isEmpty);
   });
+
+  test(
+    'Drops fuzzy results that do not match the requested ingredient',
+    () async {
+      final source = SupermarketPriceSource(
+        client: MockClient(
+          (request) async => http.Response(
+            jsonEncode(
+              request.url.host == 'supermercadosnacional.com'
+                  ? national(name: 'Batata dulce fresca')
+                  : sirena(productName: 'Ají dulce rojo'),
+            ),
+            200,
+            headers: {'content-type': 'application/json; charset=utf-8'},
+          ),
+        ),
+      );
+
+      final results = await source.search('2 medium sweet potatoes');
+
+      expect(results.first.offers, hasLength(1));
+      expect(results.first.offers.single.product, 'Batata dulce fresca');
+      expect(results[1].offers, isEmpty);
+    },
+  );
 
   test('Never rebrands another store response as Nacional; other stores still work', () async {
     final source = SupermarketPriceSource(
