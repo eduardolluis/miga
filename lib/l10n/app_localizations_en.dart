@@ -693,6 +693,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Search using at least 2 characters. Store catalogs use Spanish product names.';
 
   @override
+  String get storeNoProducts => 'No matching products found in this catalog.';
+
+  @override
   String storeObserved(String when) {
     return 'Consulted: $when';
   }

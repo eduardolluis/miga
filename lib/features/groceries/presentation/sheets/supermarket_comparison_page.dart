@@ -8,27 +8,20 @@ import 'package:miga/features/stores/data/nearby_stores.dart';
 import 'package:miga/l10n/app_localizations.dart';
 
 class SupermarketComparisonPage extends StatefulWidget {
-  const SupermarketComparisonPage({
-    super.key,
-    required this.query,
-    this.search,
-    this.openMaps,
-  });
+  const SupermarketComparisonPage({super.key, required this.query, this.search, this.openMaps});
   final String query;
   final Future<List<StoreSearchResult>> Function(String)? search;
   final Future<bool> Function(Supermarket, String)? openMaps;
 
   @override
-  State<SupermarketComparisonPage> createState() =>
-      _SupermarketComparisonPageState();
+  State<SupermarketComparisonPage> createState() => _SupermarketComparisonPageState();
 }
 
 class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
   late final _input = TextEditingController(text: widget.query);
   final _source = SupermarketPriceSource();
   late Future<List<StoreSearchResult>> _request = _search();
-  Future<List<StoreSearchResult>> _search() =>
-      (widget.search ?? _source.search)(_input.text);
+  Future<List<StoreSearchResult>> _search() => (widget.search ?? _source.search)(_input.text);
 
   @override
   void dispose() {
@@ -45,28 +38,20 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
               NearbyStores.openForStore(store.mapsQuery, language));
     } catch (_) {}
     if (!opened && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context)!.homeMapsUnavailable),
-        ),
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.homeMapsUnavailable)));
     }
   }
 
   Future<void> _product(SupermarketOffer offer) async {
     var opened = false;
     try {
-      opened = await launchUrl(
-        Uri.parse(offer.sourceUrl),
-        mode: LaunchMode.externalApplication,
-      );
+      opened = await launchUrl(Uri.parse(offer.sourceUrl), mode: LaunchMode.externalApplication);
     } catch (_) {}
     if (!opened && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context)!.groceryReferenceError),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.groceryReferenceError)));
     }
   }
 
@@ -75,17 +60,14 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
     final l10n = AppLocalizations.of(context)!;
     final dates = MaterialLocalizations.of(context);
     return Dialog.fullscreen(
-      child: Scaffold(
-        backgroundColor: AppColors.cream,
-        appBar: AppBar(
-          title: Text(l10n.storeCompare),
+      child: SafeArea(
+        child: Scaffold(
           backgroundColor: AppColors.cream,
-        ),
-        body: SafeArea(
-          child: FutureBuilder<List<StoreSearchResult>>(
+          appBar: AppBar(title: Text(l10n.storeCompare), backgroundColor: AppColors.cream),
+          body: FutureBuilder<List<StoreSearchResult>>(
             future: _request,
             builder: (context, snapshot) => ListView(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
               children: [
                 TextField(
                   controller: _input,
@@ -123,33 +105,24 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
                         Expanded(
                           child: Text(
                             result.store.label,
-                            style: const TextStyle(
-                              fontFamily: 'LiberationSerif',
-                              fontSize: 27,
-                            ),
+                            style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 27),
                           ),
                         ),
                         IconButton(
                           key: ValueKey('store-map-${result.store.name}'),
                           tooltip: l10n.storeNearby,
                           onPressed: () => _maps(result.store),
-                          icon: const Icon(
-                            Icons.map_outlined,
-                            color: AppColors.olive,
-                          ),
+                          icon: const Icon(Icons.map_outlined, color: AppColors.olive),
                         ),
                       ],
                     ),
                     if (result.unavailable)
                       Text(
                         l10n.storeUnavailable,
-                        style: const TextStyle(
-                          color: AppColors.muted,
-                          height: 1.5,
-                        ),
+                        style: const TextStyle(color: AppColors.muted, height: 1.5),
                       )
                     else if (result.offers.isEmpty)
-                      Text(l10n.recipeNoResults),
+                      Text(l10n.storeNoProducts),
                     for (final offer in result.offers)
                       Container(
                         margin: const EdgeInsets.only(top: 12),
@@ -174,10 +147,7 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
                             if (offer.presentation != offer.product)
                               Text(
                                 offer.presentation,
-                                style: const TextStyle(
-                                  color: AppColors.muted,
-                                  height: 1.4,
-                                ),
+                                style: const TextStyle(color: AppColors.muted, height: 1.4),
                               ),
                             const SizedBox(height: 12),
                             Text(

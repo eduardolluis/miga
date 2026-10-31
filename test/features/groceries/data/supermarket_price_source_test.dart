@@ -69,10 +69,7 @@ void main() {
       client: MockClient((request) async {
         requests++;
         if (request.url.host == 'supermercadosnacional.com') {
-          expect(
-            jsonDecode(request.url.queryParameters['variables']!)['term'],
-            'arroz',
-          );
+          expect(jsonDecode(request.url.queryParameters['variables']!)['term'], 'arroz');
           return http.Response(
             jsonEncode(national()),
             200,
@@ -95,30 +92,49 @@ void main() {
     expect(results[2].offers, isEmpty);
   });
 
-  test(
-    'Drops fuzzy results that do not match the requested ingredient',
-    () async {
-      final source = SupermarketPriceSource(
-        client: MockClient(
-          (request) async => http.Response(
-            jsonEncode(
-              request.url.host == 'supermercadosnacional.com'
-                  ? national(name: 'Batata dulce fresca')
-                  : sirena(productName: 'Ají dulce rojo'),
-            ),
+  test('Removes recipe quantities and translates ingredients for store search', () async {
+    final source = SupermarketPriceSource(
+      client: MockClient((request) async {
+        if (request.url.host == 'supermercadosnacional.com') {
+          expect(jsonDecode(request.url.queryParameters['variables']!)['term'], 'huevo');
+          return http.Response(
+            jsonEncode(national(name: 'Huevos Blancos 12 Und')),
             200,
             headers: {'content-type': 'application/json; charset=utf-8'},
+          );
+        }
+        expect(request.url.pathSegments.last, 'huevo');
+        return http.Response(jsonEncode(sirena(productName: 'Huevos Blancos 12 Und')), 206);
+      }),
+    );
+
+    final results = await source.search('2 eggs');
+
+    expect(results[0].offers, hasLength(1));
+    expect(results[1].offers, hasLength(1));
+  });
+
+  test('Drops fuzzy results that do not match the requested ingredient', () async {
+    final source = SupermarketPriceSource(
+      client: MockClient(
+        (request) async => http.Response(
+          jsonEncode(
+            request.url.host == 'supermercadosnacional.com'
+                ? national(name: 'Batata dulce fresca')
+                : sirena(productName: 'Ají dulce rojo'),
           ),
+          200,
+          headers: {'content-type': 'application/json; charset=utf-8'},
         ),
-      );
+      ),
+    );
 
-      final results = await source.search('2 medium sweet potatoes');
+    final results = await source.search('2 medium sweet potatoes');
 
-      expect(results.first.offers, hasLength(1));
-      expect(results.first.offers.single.product, 'Batata dulce fresca');
-      expect(results[1].offers, isEmpty);
-    },
-  );
+    expect(results.first.offers, hasLength(1));
+    expect(results.first.offers.single.product, 'Batata dulce fresca');
+    expect(results[1].offers, isEmpty);
+  });
 
   test('Never rebrands another store response as Nacional; other stores still work', () async {
     final source = SupermarketPriceSource(
@@ -172,14 +188,11 @@ void main() {
     expect((await unavailable.search('rice')).expand((r) => r.offers), isEmpty);
   });
 
-  test(
-    'Failed store requests never become zero-priced or historical live offers',
-    () async {
-      final source = SupermarketPriceSource(
-        client: MockClient((_) async => http.Response('unavailable', 503)),
-      );
-      final results = await source.search('rice');
-      expect(results.every((r) => r.unavailable && r.offers.isEmpty), isTrue);
-    },
-  );
+  test('Failed store requests never become zero-priced or historical live offers', () async {
+    final source = SupermarketPriceSource(
+      client: MockClient((_) async => http.Response('unavailable', 503)),
+    );
+    final results = await source.search('rice');
+    expect(results.every((r) => r.unavailable && r.offers.isEmpty), isTrue);
+  });
 }

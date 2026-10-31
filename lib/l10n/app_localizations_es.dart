@@ -701,6 +701,10 @@ class AppLocalizationsEs extends AppLocalizations {
       'Busca con al menos 2 caracteres. Los catálogos usan nombres de productos en español.';
 
   @override
+  String get storeNoProducts =>
+      'No encontramos productos coincidentes en este catálogo.';
+
+  @override
   String storeObserved(String when) {
     return 'Consultado: $when';
   }

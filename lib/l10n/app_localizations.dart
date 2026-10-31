@@ -1304,6 +1304,12 @@ abstract class AppLocalizations {
   /// **'Search using at least 2 characters. Store catalogs use Spanish product names.'**
   String get storeSearchHelp;
 
+  /// No description provided for @storeNoProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching products found in this catalog.'**
+  String get storeNoProducts;
+
   /// No description provided for @storeObserved.
   ///
   /// In en, this message translates to:

@@ -313,6 +313,7 @@
   "storeNearby": "See nearby stores",
   "storeUnavailable": "Live prices are unavailable for this store. You can still see its nearby locations.",
   "storeSearchHelp": "Search using at least 2 characters. Store catalogs use Spanish product names.",
+  "storeNoProducts": "No matching products found in this catalog.",
   "storeObserved": "Consulted: {when}",
   "storeUsePrice": "Use this product and price",
   "storeViewProduct": "View product at the supermarket",

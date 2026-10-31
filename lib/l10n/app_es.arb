@@ -313,6 +313,7 @@
   "storeNearby": "Ver tiendas cercanas",
   "storeUnavailable": "No hay precios en vivo disponibles para esta tienda. Puedes ver sus ubicaciones cercanas.",
   "storeSearchHelp": "Busca con al menos 2 caracteres. Los catálogos usan nombres de productos en español.",
+  "storeNoProducts": "No encontramos productos coincidentes en este catálogo.",
   "storeObserved": "Consultado: {when}",
   "storeUsePrice": "Usar este producto y precio",
   "storeViewProduct": "Ver producto en el supermercado",
