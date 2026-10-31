@@ -27,30 +27,43 @@ class ProOfferCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.auto_awesome_outlined, color: AppColors.olive, size: 20),
+                  const Icon(
+                    Icons.auto_awesome_outlined,
+                    color: AppColors.olive,
+                    size: 20,
+                  ),
                   const SizedBox(width: 8),
                   const Expanded(
                     child: Text(
                       'Miga Pro',
-                      style: TextStyle(color: AppColors.olive, fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                        color: AppColors.olive,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                   Flexible(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
+                    child: Align(
                       alignment: Alignment.centerRight,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFDDE3D1),
-                          borderRadius: BorderRadius.circular(999),
-                        ),
-                        child: Text(
-                          l10n.proComingSoon,
-                          style: const TextStyle(
-                            color: AppColors.olive,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 9,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFDDE3D1),
+                            borderRadius: BorderRadius.circular(999),
+                          ),
+                          child: Text(
+                            l10n.proComingSoon,
+                            style: const TextStyle(
+                              color: AppColors.olive,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
@@ -74,11 +87,18 @@ class ProOfferCard extends StatelessWidget {
                   Flexible(
                     child: Text(
                       l10n.proDiscover,
-                      style: const TextStyle(color: AppColors.olive, fontWeight: FontWeight.w600),
+                      style: const TextStyle(
+                        color: AppColors.olive,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 6),
-                  const Icon(Icons.arrow_forward_rounded, size: 17, color: AppColors.olive),
+                  const Icon(
+                    Icons.arrow_forward_rounded,
+                    size: 17,
+                    color: AppColors.olive,
+                  ),
                 ],
               ),
             ],

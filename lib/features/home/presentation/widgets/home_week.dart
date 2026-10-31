@@ -76,25 +76,39 @@ class _HomeWeekState extends State<HomeWeek> {
               Expanded(
                 child: Text(
                   l10n.homeWeek,
-                  style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 25),
+                  style: const TextStyle(
+                    fontFamily: 'LiberationSerif',
+                    fontSize: 25,
+                  ),
                 ),
               ),
-              TextButton(onPressed: widget.onViewPlan, child: Text(l10n.homeViewPlan)),
+              TextButton(
+                onPressed: widget.onViewPlan,
+                child: Text(l10n.homeViewPlan),
+              ),
             ],
           ),
           const SizedBox(height: 14),
-          Scrollbar(
+          SingleChildScrollView(
             controller: _scroll,
-            thumbVisibility: true,
-            child: SingleChildScrollView(
-              controller: _scroll,
-              padding: const EdgeInsets.symmetric(horizontal: 2),
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(7, (index) {
-                  final dayWidth = math.max(62.0, MediaQuery.textScalerOf(context).scale(18) + 24);
-                  final date = DateTime(monday.year, monday.month, monday.day + index);
-                  final selected = DateUtils.isSameDay(widget.selectedDate, date);
+            padding: const EdgeInsets.symmetric(horizontal: 2),
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                ...List.generate(7, (index) {
+                  final dayWidth = math.max(
+                    62.0,
+                    MediaQuery.textScalerOf(context).scale(18) + 24,
+                  );
+                  final date = DateTime(
+                    monday.year,
+                    monday.month,
+                    monday.day + index,
+                  );
+                  final selected = DateUtils.isSameDay(
+                    widget.selectedDate,
+                    date,
+                  );
                   final planned = widget.hasMeals(date);
                   return Padding(
                     padding: EdgeInsets.only(right: index == 6 ? 0 : 12),
@@ -107,7 +121,9 @@ class _HomeWeekState extends State<HomeWeek> {
                       excludeSemantics: true,
                       child: Material(
                         key: selected ? _selectedDay : null,
-                        color: selected ? AppColors.olive : const Color(0xFFF3F4EC),
+                        color: selected
+                            ? AppColors.olive
+                            : const Color(0xFFF3F4EC),
                         borderRadius: BorderRadius.circular(14),
                         child: InkWell(
                           key: ValueKey('home-day-${date.weekday}'),
@@ -123,7 +139,9 @@ class _HomeWeekState extends State<HomeWeek> {
                                     DateFormat.E(l10n.localeName).format(date),
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: selected ? Colors.white70 : AppColors.muted,
+                                      color: selected
+                                          ? Colors.white70
+                                          : AppColors.muted,
                                     ),
                                   ),
                                   const SizedBox(height: 6),
@@ -132,7 +150,9 @@ class _HomeWeekState extends State<HomeWeek> {
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600,
-                                      color: selected ? Colors.white : AppColors.ink,
+                                      color: selected
+                                          ? Colors.white
+                                          : AppColors.ink,
                                     ),
                                   ),
                                   const SizedBox(height: 7),
@@ -157,7 +177,8 @@ class _HomeWeekState extends State<HomeWeek> {
                     ),
                   );
                 }),
-              ),
+                const SizedBox(width: 20),
+              ],
             ),
           ),
           const SizedBox(height: 20),
@@ -165,7 +186,11 @@ class _HomeWeekState extends State<HomeWeek> {
           const SizedBox(height: 16),
           Text(
             '${widget.slotLabel} · ${dates.formatMediumDate(widget.selectedDate)}',
-            style: const TextStyle(fontSize: 12, color: AppColors.muted, height: 1.5),
+            style: const TextStyle(
+              fontSize: 12,
+              color: AppColors.muted,
+              height: 1.5,
+            ),
           ),
           const SizedBox(height: 7),
           Text(
@@ -173,9 +198,12 @@ class _HomeWeekState extends State<HomeWeek> {
             style: TextStyle(
               fontSize: 16,
               height: 1.4,
-              fontWeight: widget.meal == null ? FontWeight.w400 : FontWeight.w600,
+              fontWeight: widget.meal == null
+                  ? FontWeight.w400
+                  : FontWeight.w600,
             ),
           ),
+          const SizedBox(height: 10),
           Align(
             alignment: Alignment.centerLeft,
             child: FilledButton.tonalIcon(
@@ -183,10 +211,18 @@ class _HomeWeekState extends State<HomeWeek> {
               style: FilledButton.styleFrom(
                 foregroundColor: AppColors.olive,
                 backgroundColor: const Color(0xFFE8EBDF),
-                padding: const EdgeInsets.symmetric(horizontal: 14),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 10,
+                ),
               ),
-              icon: Icon(widget.meal == null ? Icons.add : Icons.edit_outlined, size: 18),
-              label: Text(widget.meal == null ? l10n.homeAddMeal : l10n.homeEditMeal),
+              icon: Icon(
+                widget.meal == null ? Icons.add : Icons.edit_outlined,
+                size: 18,
+              ),
+              label: Text(
+                widget.meal == null ? l10n.homeAddMeal : l10n.homeEditMeal,
+              ),
             ),
           ),
         ],
