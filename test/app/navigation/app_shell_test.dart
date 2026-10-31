@@ -6,6 +6,9 @@ import 'package:miga/app/navigation/app_shell.dart';
 import 'package:miga/features/auth/domain/auth_service.dart';
 import 'package:miga/features/home/data/local_home_details_store.dart';
 import 'package:miga/features/home/presentation/widgets/home_quick_actions.dart';
+import 'package:miga/features/home/presentation/widgets/meal_hero_card.dart';
+import 'package:miga/features/meal_plan/domain/meal_slot.dart';
+import 'package:miga/features/profile/presentation/profile_page.dart';
 import 'package:miga/features/meal_plan/data/local_meal_plan_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_plan_store.dart';
 import 'package:miga/l10n/app_localizations.dart';
@@ -55,6 +58,48 @@ Future<void> reveal(
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
+  for (final language in ['en', 'es']) {
+    testWidgets('Pro opens voluntarily from home and profile in $language', (
+      tester,
+    ) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.pumpWidget(
+        appShellTestApp(locale: Locale(language), scale: 2),
+      );
+      await tester.pumpAndSettle();
+      final discover = language == 'en'
+          ? 'Discover Miga Pro'
+          : 'Descubre Miga Pro';
+      final continueFree = language == 'en'
+          ? 'Keep using Miga Free'
+          : 'Seguir usando Miga Gratis';
+      final comingSoon = language == 'en'
+          ? 'Coming soon · Features in development'
+          : 'Próximamente · Funciones en desarrollo';
+      expect(find.text(comingSoon), findsNothing);
+      await reveal(tester, find.text(discover));
+      await tester.tap(find.text(discover));
+      await tester.pumpAndSettle();
+      await reveal(tester, find.text(comingSoon));
+      expect(find.text(comingSoon), findsOneWidget);
+      await reveal(tester, find.text(continueFree));
+      await tester.tap(find.text(continueFree));
+      await tester.pumpAndSettle();
+      expect(find.text(continueFree), findsNothing);
+      await tester.tap(find.text(language == 'en' ? 'Profile' : 'Perfil'));
+      await tester.pumpAndSettle();
+      await reveal(tester, find.text(discover));
+      await tester.tap(find.text(discover));
+      await tester.pumpAndSettle();
+      expect(find.text('Miga Pro'), findsOneWidget);
+      await tester.tap(find.byType(BackButton));
+      await tester.pumpAndSettle();
+      expect(find.byType(ProfilePage), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+  }
+
   testWidgets('Carousel swipes between distinct dishes, never the budget', (
     tester,
   ) async {
@@ -84,6 +129,19 @@ void main() {
       findsOneWidget,
     );
     expect(find.text('Presupuesto semanal').hitTestable(), findsNothing);
+    final pages = tester.widget<PageView>(find.byType(PageView)).controller!;
+    pages.jumpToPage(pages.initialPage + 2);
+    await tester.pumpAndSettle();
+    await tester.drag(find.byType(PageView), const Offset(-320, 0));
+    await tester.pumpAndSettle();
+    expect(
+      find.text('Salmón al limón y hierbas').hitTestable(),
+      findsOneWidget,
+    );
+    expect(find.text('1 de 3 recetas'), findsOneWidget);
+    await tester.drag(find.byType(PageView), const Offset(320, 0));
+    await tester.pumpAndSettle();
+    expect(find.text('3 de 3 recetas'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 
@@ -100,6 +158,18 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(find.text(entry.$2), findsOneWidget);
+      expect(find.text(entry.$3), findsOneWidget);
+      for (var swipe = 0; swipe < 6; swipe++) {
+        final card = tester.widget<MealHeroCard>(
+          find.byType(MealHeroCard).hitTestable(),
+        );
+        expect(
+          card.recipe.slot,
+          MealSlot.forTime(DateTime(2026, 10, 30, entry.$1)),
+        );
+        await tester.drag(find.byType(PageView), const Offset(-700, 0));
+        await tester.pumpAndSettle();
+      }
       expect(find.text(entry.$3), findsOneWidget);
     });
   }
@@ -235,6 +305,17 @@ void main() {
         await tester.tap(find.byTooltip('Añadir producto'));
         await tester.pumpAndSettle();
       }
+      await tester.scrollUntilVisible(
+        find.widgetWithText(CheckboxListTile, 'Tomates'),
+        150,
+        scrollable: find
+            .descendant(
+              of: find.byType(DraggableScrollableSheet),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      await tester.pumpAndSettle();
       await tester.tap(find.widgetWithText(CheckboxListTile, 'Tomates'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Guardar cambios'));

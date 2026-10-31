@@ -135,7 +135,7 @@
   "homeSave": "Save changes",
   "homeGroceryList": "Grocery list",
   "homeGroceryEmpty": "Your list starts here.",
-  "homeGroceryDescription": "Add what you need and check it off as you shop.",
+  "homeGroceryDescription": "Add products, enter prices and check items as you put them in your cart.",
   "homeGroceryHint": "E.g. tomatoes, 4",
   "homeGroceryAdd": "Add item",
   "homeGroceryRemove": "Remove item",
@@ -164,8 +164,8 @@
   "homeIdeasBreakfast": "Breakfast ideas",
   "homeIdeasLunch": "Lunch ideas",
   "homeIdeasDinner": "Dinner ideas",
-  "homeIdeasNow": "Ideas for this time of day.",
-  "homeIdeasManual": "Find something you’d like to cook.",
+  "homeIdeasNow": "Swipe through recipes for this time of day.",
+  "homeIdeasManual": "Swipe through recipes for your selected mealtime.",
   "homeChangeMeal": "Choose a mealtime",
   "homeUseTime": "Use the current time",
   "recipeMinutes": "{minutes} min",
@@ -190,5 +190,139 @@
         "type": "int"
       }
     }
-  }
+  },
+  "homeGoodNight": "Good night",
+  "recipeHaveIngredients": "What do you have at home?",
+  "recipeIngredientsHint": "Select ingredients. Recipes using at least one appear first, with the best matches at the top.",
+  "recipeClearIngredients": "Clear",
+  "recipeIngredientMatch": "{have} ingredients you have · {missing} still needed",
+  "@recipeIngredientMatch": {
+    "placeholders": {
+      "have": {
+        "type": "int"
+      },
+      "missing": {
+        "type": "int"
+      }
+    }
+  },
+  "proComingSoon": "Coming soon",
+  "proOfferTitle": "Less planning. More time for you.",
+  "proDiscover": "Discover Miga Pro",
+  "proIntroduction": "Your everyday essentials stay free. We’re building Pro to take more of the planning off your plate.",
+  "proFreePlan": "Miga Free",
+  "proFreeDescription": "Everything you can use today, at no cost.",
+  "proFreePlanning": "Plan your meals and edit your weekly budget",
+  "proFreeRecipes": "Browse recipes and filter by ingredients you have",
+  "proFreeShopping": "Build and check off your grocery list",
+  "proInDevelopment": "Coming soon · Features in development",
+  "proAutomaticPlans": "A week planned for you",
+  "proAutomaticPlansDescription": "Automatic weekly menus based on your preferences and household size.",
+  "proPantryPlans": "Make the most of what you have",
+  "proPantryPlansDescription": "Build an entire menu around your available ingredients, beyond the free recipe filters.",
+  "proSharedLists": "A grocery list for your household",
+  "proSharedListsDescription": "Share a list and keep everyone’s shopping updates in sync.",
+  "proLaunchNote": "Pro subscriptions are not available yet. We’ll share pricing at launch. Your free tools remain available.",
+  "proKeepPlanning": "Keep using Miga Free",
+  "carouselPrevious": "Previous recipe",
+  "carouselNext": "Next recipe",
+  "carouselPosition": "{current} of {total} recipes",
+  "groceryManualPrice": "Prices entered by you, not verified store prices.",
+  "groceryUnitPrice": "Price per item",
+  "groceryQuantity": "Number of items",
+  "groceryPriceInvalid": "Enter a price with up to 2 decimal places.",
+  "groceryQuantityInvalid": "Enter a whole number from 1 to 999.",
+  "groceryRemovePrice": "Remove price",
+  "groceryYourPrice": "Your price",
+  "groceryAddPrice": "Add price",
+  "groceryEstimate": "Shopping list estimate: {amount}",
+  "groceryPricesNeeded": "Add prices to estimate your shop",
+  "groceryPriceCoverage": "{count} products have no price in {currency} and are excluded from the estimate.",
+  "groceryCartProgress": "{checked} of {total} items in your cart",
+  "groceryReferences": "Check Dominican price reports",
+  "groceryReferenceNote": "Pro Consumidor reports are dated reference data. Check the product, package size and report date; they are not a live quote from your store.",
+  "groceryReferenceError": "We couldn’t open the price reports. Please try again.",
+  "budgetPurpose": "Recorded spending + this list’s entered prices. Cart checkmarks do not record spending.",
+  "budgetShoppingOver": "Known prices put you {amount} over budget.",
+  "budgetAfterShopping": "{amount} left after known shopping costs.",
+  "budgetIncomplete": "Add the missing prices before relying on this estimate.",
+  "@carouselPosition": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@groceryEstimate": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@groceryPriceCoverage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "@groceryCartProgress": {
+    "placeholders": {
+      "checked": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@budgetShoppingOver": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@budgetAfterShopping": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryReferenceTitle": "Official reference prices",
+  "groceryReferenceDisclaimer": "Periodic observations by type of supermarket, not live store quotes. Check the package size and period before using an estimate.",
+  "groceryReferenceSearch": "Search products in Spanish, e.g. arroz",
+  "groceryReferenceUnavailable": "Reference prices are unavailable right now. You can still enter your own price.",
+  "groceryUseReference": "Tap to use this dated estimate",
+  "groceryReferenceAttribution": "Source: Pro Consumidor / Datos Abiertos · ODbL 1.0",
+  "groceryReferencePrice": "Dated reference estimate, not a verified current store price.",
+  "groceryFindReference": "Find an official reference price",
+  "groceryEstimateNote": "Based on your prices and any dated references you chose. Actual checkout prices may differ.",
+  "storeCompare": "Compare supermarket prices",
+  "storeSearch": "Search prices",
+  "storeCompareNote": "Online catalog prices by supermarket. Choose the exact brand and package size; different products are not a like-for-like comparison. Physical-store prices, offers and stock may differ.",
+  "storeNearby": "See nearby stores",
+  "storeUnavailable": "Live prices are unavailable for this store. You can still see its nearby locations.",
+  "storeSearchHelp": "Search using at least 2 characters. Store catalogs use Spanish product names.",
+  "storeObserved": "Consulted: {when}",
+  "storeUsePrice": "Use this product and price",
+  "storeViewProduct": "View product at the supermarket",
+  "storeOnlinePrice": "Price consulted in the supermarket’s online catalog. Check the brand, package and date.",
+  "storeChooseItem": "Which product do you want to compare?",
+  "@storeObserved": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "storeRefreshPrice": "Refresh price"
 }

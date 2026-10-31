@@ -32,9 +32,18 @@ class HomeWeek extends StatefulWidget {
 }
 
 class _HomeWeekState extends State<HomeWeek> {
-  late final _scroll = ScrollController(
-    initialScrollOffset: math.max(0, (widget.selectedDate.weekday - 3) * 74.0),
-  );
+  final _scroll = ScrollController(keepScrollOffset: false);
+  final _selectedDay = GlobalKey();
+
+  void _revealSelectedDay() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_scroll.hasClients) return;
+      final target = _selectedDay.currentContext?.findRenderObject();
+      if (target != null) {
+        _scroll.position.ensureVisible(target, alignment: 0.5);
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -55,6 +64,7 @@ class _HomeWeekState extends State<HomeWeek> {
       62.0,
       MediaQuery.textScalerOf(context).scale(18) + 24,
     );
+    _revealSelectedDay();
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -105,6 +115,7 @@ class _HomeWeekState extends State<HomeWeek> {
                     onTap: () => widget.onSelected(date),
                     excludeSemantics: true,
                     child: Material(
+                      key: selected ? _selectedDay : null,
                       color: selected
                           ? AppColors.olive
                           : const Color(0xFFF3F4EC),

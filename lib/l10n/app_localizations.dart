@@ -728,7 +728,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeGroceryDescription.
   ///
   /// In en, this message translates to:
-  /// **'Add what you need and check it off as you shop.'**
+  /// **'Add products, enter prices and check items as you put them in your cart.'**
   String get homeGroceryDescription;
 
   /// No description provided for @homeGroceryHint.
@@ -860,13 +860,13 @@ abstract class AppLocalizations {
   /// No description provided for @homeIdeasNow.
   ///
   /// In en, this message translates to:
-  /// **'Ideas for this time of day.'**
+  /// **'Swipe through recipes for this time of day.'**
   String get homeIdeasNow;
 
   /// No description provided for @homeIdeasManual.
   ///
   /// In en, this message translates to:
-  /// **'Find something you’d like to cook.'**
+  /// **'Swipe through recipes for your selected mealtime.'**
   String get homeIdeasManual;
 
   /// No description provided for @homeChangeMeal.
@@ -934,6 +934,402 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We couldn’t open maps. Please try again.'**
   String get homeMapsUnavailable;
+
+  /// No description provided for @homeGoodNight.
+  ///
+  /// In en, this message translates to:
+  /// **'Good night'**
+  String get homeGoodNight;
+
+  /// No description provided for @recipeHaveIngredients.
+  ///
+  /// In en, this message translates to:
+  /// **'What do you have at home?'**
+  String get recipeHaveIngredients;
+
+  /// No description provided for @recipeIngredientsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select ingredients. Recipes using at least one appear first, with the best matches at the top.'**
+  String get recipeIngredientsHint;
+
+  /// No description provided for @recipeClearIngredients.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get recipeClearIngredients;
+
+  /// No description provided for @recipeIngredientMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'{have} ingredients you have · {missing} still needed'**
+  String recipeIngredientMatch(int have, int missing);
+
+  /// No description provided for @proComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon'**
+  String get proComingSoon;
+
+  /// No description provided for @proOfferTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Less planning. More time for you.'**
+  String get proOfferTitle;
+
+  /// No description provided for @proDiscover.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover Miga Pro'**
+  String get proDiscover;
+
+  /// No description provided for @proIntroduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Your everyday essentials stay free. We’re building Pro to take more of the planning off your plate.'**
+  String get proIntroduction;
+
+  /// No description provided for @proFreePlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Miga Free'**
+  String get proFreePlan;
+
+  /// No description provided for @proFreeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything you can use today, at no cost.'**
+  String get proFreeDescription;
+
+  /// No description provided for @proFreePlanning.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan your meals and edit your weekly budget'**
+  String get proFreePlanning;
+
+  /// No description provided for @proFreeRecipes.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse recipes and filter by ingredients you have'**
+  String get proFreeRecipes;
+
+  /// No description provided for @proFreeShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Build and check off your grocery list'**
+  String get proFreeShopping;
+
+  /// No description provided for @proInDevelopment.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon · Features in development'**
+  String get proInDevelopment;
+
+  /// No description provided for @proAutomaticPlans.
+  ///
+  /// In en, this message translates to:
+  /// **'A week planned for you'**
+  String get proAutomaticPlans;
+
+  /// No description provided for @proAutomaticPlansDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic weekly menus based on your preferences and household size.'**
+  String get proAutomaticPlansDescription;
+
+  /// No description provided for @proPantryPlans.
+  ///
+  /// In en, this message translates to:
+  /// **'Make the most of what you have'**
+  String get proPantryPlans;
+
+  /// No description provided for @proPantryPlansDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Build an entire menu around your available ingredients, beyond the free recipe filters.'**
+  String get proPantryPlansDescription;
+
+  /// No description provided for @proSharedLists.
+  ///
+  /// In en, this message translates to:
+  /// **'A grocery list for your household'**
+  String get proSharedLists;
+
+  /// No description provided for @proSharedListsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Share a list and keep everyone’s shopping updates in sync.'**
+  String get proSharedListsDescription;
+
+  /// No description provided for @proLaunchNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro subscriptions are not available yet. We’ll share pricing at launch. Your free tools remain available.'**
+  String get proLaunchNote;
+
+  /// No description provided for @proKeepPlanning.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep using Miga Free'**
+  String get proKeepPlanning;
+
+  /// No description provided for @carouselPrevious.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous recipe'**
+  String get carouselPrevious;
+
+  /// No description provided for @carouselNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next recipe'**
+  String get carouselNext;
+
+  /// No description provided for @carouselPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'{current} of {total} recipes'**
+  String carouselPosition(int current, int total);
+
+  /// No description provided for @groceryManualPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Prices entered by you, not verified store prices.'**
+  String get groceryManualPrice;
+
+  /// No description provided for @groceryUnitPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price per item'**
+  String get groceryUnitPrice;
+
+  /// No description provided for @groceryQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of items'**
+  String get groceryQuantity;
+
+  /// No description provided for @groceryPriceInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a price with up to 2 decimal places.'**
+  String get groceryPriceInvalid;
+
+  /// No description provided for @groceryQuantityInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole number from 1 to 999.'**
+  String get groceryQuantityInvalid;
+
+  /// No description provided for @groceryRemovePrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove price'**
+  String get groceryRemovePrice;
+
+  /// No description provided for @groceryYourPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Your price'**
+  String get groceryYourPrice;
+
+  /// No description provided for @groceryAddPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Add price'**
+  String get groceryAddPrice;
+
+  /// No description provided for @groceryEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping list estimate: {amount}'**
+  String groceryEstimate(String amount);
+
+  /// No description provided for @groceryPricesNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Add prices to estimate your shop'**
+  String get groceryPricesNeeded;
+
+  /// No description provided for @groceryPriceCoverage.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} products have no price in {currency} and are excluded from the estimate.'**
+  String groceryPriceCoverage(int count, String currency);
+
+  /// No description provided for @groceryCartProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{checked} of {total} items in your cart'**
+  String groceryCartProgress(int checked, int total);
+
+  /// No description provided for @groceryReferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Dominican price reports'**
+  String get groceryReferences;
+
+  /// No description provided for @groceryReferenceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro Consumidor reports are dated reference data. Check the product, package size and report date; they are not a live quote from your store.'**
+  String get groceryReferenceNote;
+
+  /// No description provided for @groceryReferenceError.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn’t open the price reports. Please try again.'**
+  String get groceryReferenceError;
+
+  /// No description provided for @budgetPurpose.
+  ///
+  /// In en, this message translates to:
+  /// **'Recorded spending + this list’s entered prices. Cart checkmarks do not record spending.'**
+  String get budgetPurpose;
+
+  /// No description provided for @budgetShoppingOver.
+  ///
+  /// In en, this message translates to:
+  /// **'Known prices put you {amount} over budget.'**
+  String budgetShoppingOver(String amount);
+
+  /// No description provided for @budgetAfterShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} left after known shopping costs.'**
+  String budgetAfterShopping(String amount);
+
+  /// No description provided for @budgetIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the missing prices before relying on this estimate.'**
+  String get budgetIncomplete;
+
+  /// No description provided for @groceryReferenceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Official reference prices'**
+  String get groceryReferenceTitle;
+
+  /// No description provided for @groceryReferenceDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Periodic observations by type of supermarket, not live store quotes. Check the package size and period before using an estimate.'**
+  String get groceryReferenceDisclaimer;
+
+  /// No description provided for @groceryReferenceSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search products in Spanish, e.g. arroz'**
+  String get groceryReferenceSearch;
+
+  /// No description provided for @groceryReferenceUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference prices are unavailable right now. You can still enter your own price.'**
+  String get groceryReferenceUnavailable;
+
+  /// No description provided for @groceryUseReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to use this dated estimate'**
+  String get groceryUseReference;
+
+  /// No description provided for @groceryReferenceAttribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Source: Pro Consumidor / Datos Abiertos · ODbL 1.0'**
+  String get groceryReferenceAttribution;
+
+  /// No description provided for @groceryReferencePrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Dated reference estimate, not a verified current store price.'**
+  String get groceryReferencePrice;
+
+  /// No description provided for @groceryFindReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Find an official reference price'**
+  String get groceryFindReference;
+
+  /// No description provided for @groceryEstimateNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on your prices and any dated references you chose. Actual checkout prices may differ.'**
+  String get groceryEstimateNote;
+
+  /// No description provided for @storeCompare.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare supermarket prices'**
+  String get storeCompare;
+
+  /// No description provided for @storeSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search prices'**
+  String get storeSearch;
+
+  /// No description provided for @storeCompareNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Online catalog prices by supermarket. Choose the exact brand and package size; different products are not a like-for-like comparison. Physical-store prices, offers and stock may differ.'**
+  String get storeCompareNote;
+
+  /// No description provided for @storeNearby.
+  ///
+  /// In en, this message translates to:
+  /// **'See nearby stores'**
+  String get storeNearby;
+
+  /// No description provided for @storeUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Live prices are unavailable for this store. You can still see its nearby locations.'**
+  String get storeUnavailable;
+
+  /// No description provided for @storeSearchHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Search using at least 2 characters. Store catalogs use Spanish product names.'**
+  String get storeSearchHelp;
+
+  /// No description provided for @storeObserved.
+  ///
+  /// In en, this message translates to:
+  /// **'Consulted: {when}'**
+  String storeObserved(String when);
+
+  /// No description provided for @storeUsePrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Use this product and price'**
+  String get storeUsePrice;
+
+  /// No description provided for @storeViewProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'View product at the supermarket'**
+  String get storeViewProduct;
+
+  /// No description provided for @storeOnlinePrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price consulted in the supermarket’s online catalog. Check the brand, package and date.'**
+  String get storeOnlinePrice;
+
+  /// No description provided for @storeChooseItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Which product do you want to compare?'**
+  String get storeChooseItem;
+
+  /// No description provided for @storeRefreshPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh price'**
+  String get storeRefreshPrice;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

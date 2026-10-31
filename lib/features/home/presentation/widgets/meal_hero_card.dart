@@ -19,7 +19,7 @@ class MealHeroCard extends StatelessWidget {
 
   static const titleStyle = TextStyle(
     fontFamily: 'LiberationSerif',
-    fontSize: 26,
+    fontSize: 24,
     height: 1.12,
     color: AppColors.ink,
   );
@@ -35,8 +35,6 @@ class MealHeroCard extends StatelessWidget {
     final content = recipe.contentFor(
       Localizations.localeOf(context).languageCode,
     );
-    final titleHeight =
-        MediaQuery.textScalerOf(context).scale(26) * 1.12 * 2 + 2;
     return Material(
       color: const Color(0xFFFEFDF9),
       shape: RoundedRectangleBorder(
@@ -48,7 +46,7 @@ class MealHeroCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(
-            height: 206,
+            height: 190,
             child: Stack(
               fit: StackFit.expand,
               children: [
@@ -98,26 +96,18 @@ class MealHeroCard extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(
-                    height: titleHeight,
-                    child: Text(
-                      content.title,
-                      style: titleStyle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
+                  Text(content.title, style: titleStyle),
+                  const SizedBox(height: 8),
                   Text(
                     '${l10n.recipeMinutes(recipe.minutes)}  ·  ${l10n.recipeServings(recipe.servings)}',
                     style: metaStyle,
                   ),
                   const Spacer(),
-                  const SizedBox(height: 18),
+                  const SizedBox(height: 14),
                   FilledButton(
                     style: FilledButton.styleFrom(
                       backgroundColor: AppColors.olive,

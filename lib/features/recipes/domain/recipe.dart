@@ -1,4 +1,5 @@
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
+import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 
 class RecipeContent {
   const RecipeContent({
@@ -16,6 +17,7 @@ class RecipeContent {
 class Recipe {
   const Recipe({
     required this.id,
+    required this.ingredients,
     required this.slot,
     required this.minutes,
     required this.servings,
@@ -24,6 +26,10 @@ class Recipe {
     required this.en,
   });
   final String id;
+  final Set<RecipeIngredient> ingredients;
+
+  int matchingIngredients(Set<RecipeIngredient> available) =>
+      ingredients.intersection(available).length;
   final MealSlot slot;
   final int minutes;
   final int servings;

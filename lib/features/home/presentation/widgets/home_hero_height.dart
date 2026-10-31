@@ -38,7 +38,7 @@ double homeHeroHeight(
       )
       .reduce(math.max);
   final buttonHeight = math.max(
-    48.0,
+    52.0,
     measure(
           l10n.homeViewRecipe,
           Theme.of(context).textTheme.labelLarge!,
@@ -46,13 +46,14 @@ double homeHeroHeight(
         ) +
         28,
   );
-  return 206 +
-      40 +
-      scaler.scale(26) * 1.12 * 2 +
-      2 +
-      12 +
-      metaHeight +
-      18 +
-      buttonHeight +
-      8;
+  final titleHeight = recipes
+      .map(
+        (recipe) => measure(
+          recipe.contentFor(l10n.localeName).title,
+          MealHeroCard.titleStyle,
+          width - 36,
+        ),
+      )
+      .reduce(math.max);
+  return 190 + 36 + titleHeight + 8 + metaHeight + 14 + buttonHeight + 4;
 }

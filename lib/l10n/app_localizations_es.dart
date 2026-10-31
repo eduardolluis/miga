@@ -332,7 +332,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeGroceryEmpty => 'Tu lista empieza aquí.';
 
   @override
-  String get homeGroceryDescription => 'Añade lo que necesitas y márcalo al comprarlo.';
+  String get homeGroceryDescription => 'Añade productos, introduce precios y marca lo que vas poniendo en el carrito.';
 
   @override
   String get homeGroceryHint => 'Ej. tomates, 4 unidades';
@@ -406,10 +406,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeIdeasDinner => 'Para tu cena';
 
   @override
-  String get homeIdeasNow => 'Ideas para este momento del día.';
+  String get homeIdeasNow => 'Desliza entre las recetas para este momento del día.';
 
   @override
-  String get homeIdeasManual => 'Elige lo que te apetezca preparar.';
+  String get homeIdeasManual => 'Desliza entre las recetas del momento que elegiste.';
 
   @override
   String get homeChangeMeal => 'Cambiar momento del día';
@@ -453,4 +453,218 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get homeMapsUnavailable => 'No pudimos abrir los mapas. Inténtalo de nuevo.';
+
+  @override
+  String get homeGoodNight => 'Buenas noches';
+
+  @override
+  String get recipeHaveIngredients => '¿Qué tienes en casa?';
+
+  @override
+  String get recipeIngredientsHint => 'Marca tus ingredientes. Verás recetas que usen al menos uno, con las mejores coincidencias primero.';
+
+  @override
+  String get recipeClearIngredients => 'Limpiar';
+
+  @override
+  String recipeIngredientMatch(int have, int missing) {
+    return '$have ingredientes disponibles · $missing por conseguir';
+  }
+
+  @override
+  String get proComingSoon => 'Próximamente';
+
+  @override
+  String get proOfferTitle => 'Menos planificación. Más tiempo para ti.';
+
+  @override
+  String get proDiscover => 'Descubre Miga Pro';
+
+  @override
+  String get proIntroduction => 'Tus herramientas de cada día siguen siendo gratis. Estamos preparando Pro para ayudarte con más de la planificación.';
+
+  @override
+  String get proFreePlan => 'Miga Gratis';
+
+  @override
+  String get proFreeDescription => 'Todo lo que puedes usar hoy, sin costo.';
+
+  @override
+  String get proFreePlanning => 'Planifica tus comidas y edita tu presupuesto semanal';
+
+  @override
+  String get proFreeRecipes => 'Explora recetas y filtra por los ingredientes que tienes';
+
+  @override
+  String get proFreeShopping => 'Crea tu lista y marca lo que vas comprando';
+
+  @override
+  String get proInDevelopment => 'Próximamente · Funciones en desarrollo';
+
+  @override
+  String get proAutomaticPlans => 'Tu semana planificada';
+
+  @override
+  String get proAutomaticPlansDescription => 'Menús semanales automáticos según tus preferencias y la cantidad de personas en casa.';
+
+  @override
+  String get proPantryPlans => 'Aprovecha lo que ya tienes';
+
+  @override
+  String get proPantryPlansDescription => 'Crea un menú completo con tus ingredientes disponibles, más allá del filtro gratuito de recetas.';
+
+  @override
+  String get proSharedLists => 'Una lista para toda la casa';
+
+  @override
+  String get proSharedListsDescription => 'Comparte una lista y mantén sincronizadas las compras de todos.';
+
+  @override
+  String get proLaunchNote => 'Las suscripciones Pro todavía no están disponibles. Anunciaremos el precio al lanzar. Tus herramientas gratuitas siguen disponibles.';
+
+  @override
+  String get proKeepPlanning => 'Seguir usando Miga Gratis';
+
+  @override
+  String get carouselPrevious => 'Receta anterior';
+
+  @override
+  String get carouselNext => 'Siguiente receta';
+
+  @override
+  String carouselPosition(int current, int total) {
+    return '$current de $total recetas';
+  }
+
+  @override
+  String get groceryManualPrice => 'Precios introducidos por ti, no verificados por una tienda.';
+
+  @override
+  String get groceryUnitPrice => 'Precio por producto';
+
+  @override
+  String get groceryQuantity => 'Cantidad de productos';
+
+  @override
+  String get groceryPriceInvalid => 'Introduce un precio con hasta 2 decimales.';
+
+  @override
+  String get groceryQuantityInvalid => 'Introduce un número entero entre 1 y 999.';
+
+  @override
+  String get groceryRemovePrice => 'Quitar precio';
+
+  @override
+  String get groceryYourPrice => 'Tu precio';
+
+  @override
+  String get groceryAddPrice => 'Añadir precio';
+
+  @override
+  String groceryEstimate(String amount) {
+    return 'Estimado de la lista: $amount';
+  }
+
+  @override
+  String get groceryPricesNeeded => 'Añade precios para estimar tu compra';
+
+  @override
+  String groceryPriceCoverage(int count, String currency) {
+    return '$count productos no tienen precio en $currency y no se incluyen en el estimado.';
+  }
+
+  @override
+  String groceryCartProgress(int checked, int total) {
+    return '$checked de $total productos en el carrito';
+  }
+
+  @override
+  String get groceryReferences => 'Consultar reportes de precios en RD';
+
+  @override
+  String get groceryReferenceNote => 'Los reportes de Pro Consumidor son referencias fechadas. Revisa el producto, la presentación y la fecha; no son una cotización actual de tu tienda.';
+
+  @override
+  String get groceryReferenceError => 'No pudimos abrir los reportes de precios. Inténtalo de nuevo.';
+
+  @override
+  String get budgetPurpose => 'Gasto registrado + precios introducidos en esta lista. Marcar el carrito no registra un gasto.';
+
+  @override
+  String budgetShoppingOver(String amount) {
+    return 'Con los precios conocidos te pasas $amount del presupuesto.';
+  }
+
+  @override
+  String budgetAfterShopping(String amount) {
+    return 'Te quedan $amount tras las compras con precio conocido.';
+  }
+
+  @override
+  String get budgetIncomplete => 'Añade los precios que faltan antes de basarte en este estimado.';
+
+  @override
+  String get groceryReferenceTitle => 'Precios oficiales de referencia';
+
+  @override
+  String get groceryReferenceDisclaimer => 'Observaciones periódicas por tipo de supermercado, no cotizaciones en vivo. Revisa la presentación y el período antes de usar un estimado.';
+
+  @override
+  String get groceryReferenceSearch => 'Busca productos, por ejemplo arroz';
+
+  @override
+  String get groceryReferenceUnavailable => 'Las referencias no están disponibles ahora. Puedes introducir tu propio precio.';
+
+  @override
+  String get groceryUseReference => 'Toca para usar este estimado fechado';
+
+  @override
+  String get groceryReferenceAttribution => 'Fuente: Pro Consumidor / Datos Abiertos · ODbL 1.0';
+
+  @override
+  String get groceryReferencePrice => 'Estimado de referencia fechado, no un precio actual verificado de tu tienda.';
+
+  @override
+  String get groceryFindReference => 'Buscar un precio oficial de referencia';
+
+  @override
+  String get groceryEstimateNote => 'Basado en tus precios y las referencias fechadas que elegiste. El precio al pagar puede cambiar.';
+
+  @override
+  String get storeCompare => 'Comparar precios de supermercados';
+
+  @override
+  String get storeSearch => 'Buscar precios';
+
+  @override
+  String get storeCompareNote => 'Precios del catálogo online por supermercado. Elige la marca y presentación exactas; productos distintos no son una comparación equivalente. Los precios, ofertas y existencias en tienda física pueden variar.';
+
+  @override
+  String get storeNearby => 'Ver tiendas cercanas';
+
+  @override
+  String get storeUnavailable => 'No hay precios en vivo disponibles para esta tienda. Puedes ver sus ubicaciones cercanas.';
+
+  @override
+  String get storeSearchHelp => 'Busca con al menos 2 caracteres. Los catálogos usan nombres de productos en español.';
+
+  @override
+  String storeObserved(String when) {
+    return 'Consultado: $when';
+  }
+
+  @override
+  String get storeUsePrice => 'Usar este producto y precio';
+
+  @override
+  String get storeViewProduct => 'Ver producto en el supermercado';
+
+  @override
+  String get storeOnlinePrice => 'Precio consultado en el catálogo online del supermercado. Revisa marca, presentación y fecha.';
+
+  @override
+  String get storeChooseItem => '¿Qué producto quieres comparar?';
+
+  @override
+  String get storeRefreshPrice => 'Actualizar precio';
 }

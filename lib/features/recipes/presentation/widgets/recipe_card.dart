@@ -6,9 +6,15 @@ import 'package:miga/features/recipes/presentation/widgets/recipe_image.dart';
 import 'package:miga/l10n/app_localizations.dart';
 
 class RecipeCard extends StatelessWidget {
-  const RecipeCard({super.key, required this.recipe, required this.onTap});
+  const RecipeCard({
+    super.key,
+    required this.recipe,
+    required this.onTap,
+    this.ingredientSummary,
+  });
   final Recipe recipe;
   final VoidCallback? onTap;
+  final String? ingredientSummary;
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +62,17 @@ class RecipeCard extends StatelessWidget {
                           fontSize: 13,
                         ),
                       ),
+                      if (ingredientSummary != null) ...[
+                        const SizedBox(height: 6),
+                        Text(
+                          ingredientSummary!,
+                          style: const TextStyle(
+                            color: AppColors.olive,
+                            fontSize: 12,
+                            height: 1.4,
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                 ),

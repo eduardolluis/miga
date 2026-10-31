@@ -332,7 +332,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeGroceryEmpty => 'Your list starts here.';
 
   @override
-  String get homeGroceryDescription => 'Add what you need and check it off as you shop.';
+  String get homeGroceryDescription => 'Add products, enter prices and check items as you put them in your cart.';
 
   @override
   String get homeGroceryHint => 'E.g. tomatoes, 4';
@@ -406,10 +406,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeIdeasDinner => 'Dinner ideas';
 
   @override
-  String get homeIdeasNow => 'Ideas for this time of day.';
+  String get homeIdeasNow => 'Swipe through recipes for this time of day.';
 
   @override
-  String get homeIdeasManual => 'Find something you’d like to cook.';
+  String get homeIdeasManual => 'Swipe through recipes for your selected mealtime.';
 
   @override
   String get homeChangeMeal => 'Choose a mealtime';
@@ -453,4 +453,218 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeMapsUnavailable => 'We couldn’t open maps. Please try again.';
+
+  @override
+  String get homeGoodNight => 'Good night';
+
+  @override
+  String get recipeHaveIngredients => 'What do you have at home?';
+
+  @override
+  String get recipeIngredientsHint => 'Select ingredients. Recipes using at least one appear first, with the best matches at the top.';
+
+  @override
+  String get recipeClearIngredients => 'Clear';
+
+  @override
+  String recipeIngredientMatch(int have, int missing) {
+    return '$have ingredients you have · $missing still needed';
+  }
+
+  @override
+  String get proComingSoon => 'Coming soon';
+
+  @override
+  String get proOfferTitle => 'Less planning. More time for you.';
+
+  @override
+  String get proDiscover => 'Discover Miga Pro';
+
+  @override
+  String get proIntroduction => 'Your everyday essentials stay free. We’re building Pro to take more of the planning off your plate.';
+
+  @override
+  String get proFreePlan => 'Miga Free';
+
+  @override
+  String get proFreeDescription => 'Everything you can use today, at no cost.';
+
+  @override
+  String get proFreePlanning => 'Plan your meals and edit your weekly budget';
+
+  @override
+  String get proFreeRecipes => 'Browse recipes and filter by ingredients you have';
+
+  @override
+  String get proFreeShopping => 'Build and check off your grocery list';
+
+  @override
+  String get proInDevelopment => 'Coming soon · Features in development';
+
+  @override
+  String get proAutomaticPlans => 'A week planned for you';
+
+  @override
+  String get proAutomaticPlansDescription => 'Automatic weekly menus based on your preferences and household size.';
+
+  @override
+  String get proPantryPlans => 'Make the most of what you have';
+
+  @override
+  String get proPantryPlansDescription => 'Build an entire menu around your available ingredients, beyond the free recipe filters.';
+
+  @override
+  String get proSharedLists => 'A grocery list for your household';
+
+  @override
+  String get proSharedListsDescription => 'Share a list and keep everyone’s shopping updates in sync.';
+
+  @override
+  String get proLaunchNote => 'Pro subscriptions are not available yet. We’ll share pricing at launch. Your free tools remain available.';
+
+  @override
+  String get proKeepPlanning => 'Keep using Miga Free';
+
+  @override
+  String get carouselPrevious => 'Previous recipe';
+
+  @override
+  String get carouselNext => 'Next recipe';
+
+  @override
+  String carouselPosition(int current, int total) {
+    return '$current of $total recipes';
+  }
+
+  @override
+  String get groceryManualPrice => 'Prices entered by you, not verified store prices.';
+
+  @override
+  String get groceryUnitPrice => 'Price per item';
+
+  @override
+  String get groceryQuantity => 'Number of items';
+
+  @override
+  String get groceryPriceInvalid => 'Enter a price with up to 2 decimal places.';
+
+  @override
+  String get groceryQuantityInvalid => 'Enter a whole number from 1 to 999.';
+
+  @override
+  String get groceryRemovePrice => 'Remove price';
+
+  @override
+  String get groceryYourPrice => 'Your price';
+
+  @override
+  String get groceryAddPrice => 'Add price';
+
+  @override
+  String groceryEstimate(String amount) {
+    return 'Shopping list estimate: $amount';
+  }
+
+  @override
+  String get groceryPricesNeeded => 'Add prices to estimate your shop';
+
+  @override
+  String groceryPriceCoverage(int count, String currency) {
+    return '$count products have no price in $currency and are excluded from the estimate.';
+  }
+
+  @override
+  String groceryCartProgress(int checked, int total) {
+    return '$checked of $total items in your cart';
+  }
+
+  @override
+  String get groceryReferences => 'Check Dominican price reports';
+
+  @override
+  String get groceryReferenceNote => 'Pro Consumidor reports are dated reference data. Check the product, package size and report date; they are not a live quote from your store.';
+
+  @override
+  String get groceryReferenceError => 'We couldn’t open the price reports. Please try again.';
+
+  @override
+  String get budgetPurpose => 'Recorded spending + this list’s entered prices. Cart checkmarks do not record spending.';
+
+  @override
+  String budgetShoppingOver(String amount) {
+    return 'Known prices put you $amount over budget.';
+  }
+
+  @override
+  String budgetAfterShopping(String amount) {
+    return '$amount left after known shopping costs.';
+  }
+
+  @override
+  String get budgetIncomplete => 'Add the missing prices before relying on this estimate.';
+
+  @override
+  String get groceryReferenceTitle => 'Official reference prices';
+
+  @override
+  String get groceryReferenceDisclaimer => 'Periodic observations by type of supermarket, not live store quotes. Check the package size and period before using an estimate.';
+
+  @override
+  String get groceryReferenceSearch => 'Search products in Spanish, e.g. arroz';
+
+  @override
+  String get groceryReferenceUnavailable => 'Reference prices are unavailable right now. You can still enter your own price.';
+
+  @override
+  String get groceryUseReference => 'Tap to use this dated estimate';
+
+  @override
+  String get groceryReferenceAttribution => 'Source: Pro Consumidor / Datos Abiertos · ODbL 1.0';
+
+  @override
+  String get groceryReferencePrice => 'Dated reference estimate, not a verified current store price.';
+
+  @override
+  String get groceryFindReference => 'Find an official reference price';
+
+  @override
+  String get groceryEstimateNote => 'Based on your prices and any dated references you chose. Actual checkout prices may differ.';
+
+  @override
+  String get storeCompare => 'Compare supermarket prices';
+
+  @override
+  String get storeSearch => 'Search prices';
+
+  @override
+  String get storeCompareNote => 'Online catalog prices by supermarket. Choose the exact brand and package size; different products are not a like-for-like comparison. Physical-store prices, offers and stock may differ.';
+
+  @override
+  String get storeNearby => 'See nearby stores';
+
+  @override
+  String get storeUnavailable => 'Live prices are unavailable for this store. You can still see its nearby locations.';
+
+  @override
+  String get storeSearchHelp => 'Search using at least 2 characters. Store catalogs use Spanish product names.';
+
+  @override
+  String storeObserved(String when) {
+    return 'Consulted: $when';
+  }
+
+  @override
+  String get storeUsePrice => 'Use this product and price';
+
+  @override
+  String get storeViewProduct => 'View product at the supermarket';
+
+  @override
+  String get storeOnlinePrice => 'Price consulted in the supermarket’s online catalog. Check the brand, package and date.';
+
+  @override
+  String get storeChooseItem => 'Which product do you want to compare?';
+
+  @override
+  String get storeRefreshPrice => 'Refresh price';
 }

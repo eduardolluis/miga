@@ -4,6 +4,7 @@ import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/home/presentation/widgets/home_hero_height.dart';
 import 'package:miga/features/home/presentation/widgets/meal_hero_card.dart';
 import 'package:miga/features/recipes/domain/recipe.dart';
+import 'package:miga/l10n/app_localizations.dart';
 
 class HomeHeroCarousel extends StatefulWidget {
   const HomeHeroCarousel({
@@ -21,15 +22,19 @@ class HomeHeroCarousel extends StatefulWidget {
 }
 
 class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
-  final _controller = PageController(keepPage: false);
-  int _page = 0;
+  late final _controller = PageController(
+    keepPage: false,
+    initialPage: widget.recipes.length * 1000,
+  );
+  late int _page = widget.recipes.length * 1000;
 
   @override
   void didUpdateWidget(HomeHeroCarousel oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.recipes.first.id != widget.recipes.first.id) {
-      _page = 0;
-      if (_controller.hasClients) _controller.jumpToPage(0);
+    if (oldWidget.recipes.map((r) => r.id).join(',') !=
+        widget.recipes.map((r) => r.id).join(',')) {
+      _page = widget.recipes.length * 1000;
+      if (_controller.hasClients) _controller.jumpToPage(_page);
     }
   }
 
@@ -41,7 +46,14 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final locale = Localizations.localeOf(context).languageCode;
+    if (widget.recipes.isEmpty) return const SizedBox.shrink();
+    final l10n = AppLocalizations.of(context)!;
+    final active = _page % widget.recipes.length;
+    void move(int delta) => _controller.animateToPage(
+      _page + delta,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.easeOut,
+    );
     return Column(
       children: [
         LayoutBuilder(
@@ -54,10 +66,9 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
             child: PageView.builder(
               key: const ValueKey('home-hero-carousel'),
               controller: _controller,
-              itemCount: widget.recipes.length,
               onPageChanged: (value) => setState(() => _page = value),
               itemBuilder: (context, index) {
-                final recipe = widget.recipes[index];
+                final recipe = widget.recipes[index % widget.recipes.length];
                 return MealHeroCard(
                   recipe: recipe,
                   onOpen: widget.onOpenRecipe == null
@@ -71,34 +82,28 @@ class _HomeHeroCarouselState extends State<HomeHeroCarousel> {
             ),
           ),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            widget.recipes.length,
-            (index) => Semantics(
-              selected: _page == index,
-              child: IconButton(
-                tooltip: widget.recipes[index].contentFor(locale).title,
-                onPressed: () => _controller.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 250),
-                  curve: Curves.easeOut,
-                ),
-                icon: AnimatedContainer(
-                  duration: const Duration(milliseconds: 180),
-                  width: index == _page ? 22 : 6,
-                  height: 5,
-                  decoration: BoxDecoration(
-                    color: index == _page
-                        ? AppColors.olive
-                        : const Color(0xFFD5D7CA),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
+          children: [
+            IconButton(
+              tooltip: l10n.carouselPrevious,
+              onPressed: _page > 0 ? () => move(-1) : null,
+              icon: const Icon(Icons.arrow_back_rounded, size: 19),
+            ),
+            Expanded(
+              child: Text(
+                l10n.carouselPosition(active + 1, widget.recipes.length),
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: AppColors.muted, fontSize: 12),
               ),
             ),
-          ),
+            IconButton(
+              tooltip: l10n.carouselNext,
+              onPressed: () => move(1),
+              icon: const Icon(Icons.arrow_forward_rounded, size: 19),
+            ),
+          ],
         ),
       ],
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/l10n/app_localizations.dart';
+import 'package:miga/features/pro/presentation/widgets/pro_offer_card.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
@@ -11,6 +12,7 @@ class ProfilePage extends StatelessWidget {
     required this.onBudget,
     required this.onSignOut,
     required this.signingOut,
+    required this.onPro,
   });
 
   final String? name;
@@ -18,6 +20,7 @@ class ProfilePage extends StatelessWidget {
   final VoidCallback? onBudget;
   final VoidCallback? onSignOut;
   final bool signingOut;
+  final VoidCallback onPro;
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +77,16 @@ class ProfilePage extends StatelessWidget {
             label: Text(l10n.signOut),
           ),
         if (signingOut) const Center(child: CircularProgressIndicator()),
+        const SizedBox(height: 24),
+        Text(
+          l10n.proFreePlan,
+          style: const TextStyle(
+            color: AppColors.olive,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: 16),
+        ProOfferCard(onOpen: onPro),
       ],
     );
   }

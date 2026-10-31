@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:miga/core/theme/app_colors.dart';
+import 'package:miga/core/theme/app_theme.dart';
 import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/l10n/app_localizations.dart';
 
@@ -14,7 +15,10 @@ Future<WeeklyBudget?> showBudgetEditor(
   useSafeArea: true,
   showDragHandle: true,
   backgroundColor: AppColors.cream,
-  builder: (_) => _BudgetEditor(budget: budget),
+  builder: (context) => Theme(
+    data: AppTheme.household(Theme.of(context)),
+    child: _BudgetEditor(budget: budget),
+  ),
 );
 
 class _BudgetEditor extends StatefulWidget {
@@ -81,7 +85,6 @@ class _BudgetEditorState extends State<_BudgetEditor> {
                     labelText: isLimit
                         ? l10n.homeBudgetLimit
                         : l10n.homeBudgetSpent,
-                    border: const OutlineInputBorder(),
                   ),
                   validator: (text) {
                     final amount = _amount(text);
@@ -97,10 +100,7 @@ class _BudgetEditorState extends State<_BudgetEditor> {
               ],
               DropdownButtonFormField<String>(
                 initialValue: _currency,
-                decoration: InputDecoration(
-                  labelText: l10n.homeCurrency,
-                  border: const OutlineInputBorder(),
-                ),
+                decoration: InputDecoration(labelText: l10n.homeCurrency),
                 items: const [
                   DropdownMenuItem(value: 'DOP', child: Text('DOP · RD\$')),
                   DropdownMenuItem(value: 'USD', child: Text('USD · \$')),

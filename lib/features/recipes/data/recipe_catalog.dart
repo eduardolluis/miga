@@ -1,5 +1,6 @@
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
 import 'package:miga/features/recipes/domain/recipe.dart';
+import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 
 abstract final class RecipeCatalog {
   static List<Recipe> forSlot(MealSlot slot) =>
@@ -8,6 +9,13 @@ abstract final class RecipeCatalog {
   static const all = [
     Recipe(
       id: 'banana-oats',
+      ingredients: {
+        RecipeIngredient.oats,
+        RecipeIngredient.milk,
+        RecipeIngredient.banana,
+        RecipeIngredient.walnuts,
+        RecipeIngredient.cinnamon,
+      },
       slot: MealSlot.breakfast,
       minutes: 10,
       servings: 2,
@@ -47,6 +55,15 @@ abstract final class RecipeCatalog {
     ),
     Recipe(
       id: 'avocado-toast',
+      ingredients: {
+        RecipeIngredient.bread,
+        RecipeIngredient.avocado,
+        RecipeIngredient.eggs,
+        RecipeIngredient.tomatoes,
+        RecipeIngredient.oliveOil,
+        RecipeIngredient.salt,
+        RecipeIngredient.pepper,
+      },
       slot: MealSlot.breakfast,
       minutes: 15,
       servings: 2,
@@ -88,6 +105,12 @@ abstract final class RecipeCatalog {
     ),
     Recipe(
       id: 'yogurt-fruit',
+      ingredients: {
+        RecipeIngredient.yogurt,
+        RecipeIngredient.mango,
+        RecipeIngredient.strawberries,
+        RecipeIngredient.granola,
+      },
       slot: MealSlot.breakfast,
       minutes: 5,
       servings: 2,
@@ -126,6 +149,16 @@ abstract final class RecipeCatalog {
     ),
     Recipe(
       id: 'lemon-salmon',
+      ingredients: {
+        RecipeIngredient.salmon,
+        RecipeIngredient.potatoes,
+        RecipeIngredient.broccoli,
+        RecipeIngredient.lemon,
+        RecipeIngredient.oliveOil,
+        RecipeIngredient.herbs,
+        RecipeIngredient.salt,
+        RecipeIngredient.pepper,
+      },
       slot: MealSlot.lunch,
       minutes: 30,
       servings: 2,
@@ -167,6 +200,16 @@ abstract final class RecipeCatalog {
     ),
     Recipe(
       id: 'chicken-rice',
+      ingredients: {
+        RecipeIngredient.chicken,
+        RecipeIngredient.rice,
+        RecipeIngredient.carrot,
+        RecipeIngredient.broccoli,
+        RecipeIngredient.oliveOil,
+        RecipeIngredient.garlic,
+        RecipeIngredient.salt,
+        RecipeIngredient.pepper,
+      },
       slot: MealSlot.lunch,
       minutes: 30,
       servings: 2,
@@ -208,6 +251,15 @@ abstract final class RecipeCatalog {
     ),
     Recipe(
       id: 'chickpea-salad',
+      ingredients: {
+        RecipeIngredient.chickpeas,
+        RecipeIngredient.avocado,
+        RecipeIngredient.tomatoes,
+        RecipeIngredient.cucumber,
+        RecipeIngredient.onion,
+        RecipeIngredient.lemon,
+        RecipeIngredient.oliveOil,
+      },
       slot: MealSlot.lunch,
       minutes: 15,
       servings: 2,
@@ -251,6 +303,14 @@ abstract final class RecipeCatalog {
     ),
     Recipe(
       id: 'tomato-pasta',
+      ingredients: {
+        RecipeIngredient.pasta,
+        RecipeIngredient.tomatoes,
+        RecipeIngredient.garlic,
+        RecipeIngredient.oliveOil,
+        RecipeIngredient.basil,
+        RecipeIngredient.cheese,
+      },
       slot: MealSlot.dinner,
       minutes: 25,
       servings: 2,
@@ -292,6 +352,14 @@ abstract final class RecipeCatalog {
     ),
     Recipe(
       id: 'sweet-potato-egg',
+      ingredients: {
+        RecipeIngredient.sweetPotato,
+        RecipeIngredient.eggs,
+        RecipeIngredient.spinach,
+        RecipeIngredient.oliveOil,
+        RecipeIngredient.salt,
+        RecipeIngredient.pepper,
+      },
       slot: MealSlot.dinner,
       minutes: 25,
       servings: 2,
@@ -331,6 +399,15 @@ abstract final class RecipeCatalog {
     ),
     Recipe(
       id: 'lentil-soup',
+      ingredients: {
+        RecipeIngredient.lentils,
+        RecipeIngredient.carrot,
+        RecipeIngredient.celery,
+        RecipeIngredient.onion,
+        RecipeIngredient.tomatoes,
+        RecipeIngredient.vegetableStock,
+        RecipeIngredient.oliveOil,
+      },
       slot: MealSlot.dinner,
       minutes: 35,
       servings: 2,

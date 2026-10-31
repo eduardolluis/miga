@@ -1,0 +1,44 @@
+enum RecipeIngredient {
+  oats('Oats', 'Avena'),
+  milk('Milk / plant milk', 'Leche / bebida vegetal'),
+  banana('Banana', 'Banana'),
+  walnuts('Walnuts', 'Nueces'),
+  cinnamon('Cinnamon', 'Canela'),
+  bread('Bread', 'Pan'),
+  avocado('Avocado', 'Aguacate'),
+  eggs('Eggs', 'Huevos'),
+  tomatoes('Tomatoes', 'Tomates'),
+  oliveOil('Olive oil', 'Aceite de oliva'),
+  salt('Salt', 'Sal'),
+  pepper('Pepper', 'Pimienta'),
+  yogurt('Yogurt', 'Yogur'),
+  mango('Mango', 'Mango'),
+  strawberries('Strawberries', 'Fresas'),
+  granola('Granola', 'Granola'),
+  salmon('Salmon', 'Salmón'),
+  potatoes('Potatoes', 'Papas'),
+  broccoli('Broccoli', 'Brócoli'),
+  lemon('Lemon', 'Limón'),
+  herbs('Herbs', 'Hierbas'),
+  chicken('Chicken', 'Pollo'),
+  rice('Rice', 'Arroz'),
+  carrot('Carrot', 'Zanahoria'),
+  garlic('Garlic', 'Ajo'),
+  chickpeas('Chickpeas', 'Garbanzos'),
+  cucumber('Cucumber', 'Pepino'),
+  onion('Onion', 'Cebolla'),
+  pasta('Pasta', 'Pasta'),
+  basil('Basil', 'Albahaca'),
+  cheese('Cheese', 'Queso'),
+  sweetPotato('Sweet potato', 'Batata'),
+  spinach('Spinach', 'Espinaca'),
+  lentils('Lentils', 'Lentejas'),
+  celery('Celery', 'Apio'),
+  vegetableStock('Vegetable stock', 'Caldo de vegetales');
+
+  const RecipeIngredient(this.en, this.es);
+  final String en;
+  final String es;
+
+  String label(String languageCode) => languageCode == 'es' ? es : en;
+}

@@ -20,7 +20,8 @@ class HomeHeader extends StatelessWidget {
     final greeting = switch (now.hour) {
       >= 5 && < 12 => l10n.homeGoodMorning,
       >= 12 && < 18 => l10n.homeGoodAfternoon,
-      _ => l10n.homeGoodEvening,
+      >= 18 && < 21 => l10n.homeGoodEvening,
+      _ => l10n.homeGoodNight,
     };
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,23 +53,32 @@ class HomeHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 16),
-        IconButton(
-          tooltip: l10n.homeAccount,
-          onPressed: onProfile,
-          style: IconButton.styleFrom(
-            backgroundColor: const Color(0xFFE8EBDF),
-            padding: const EdgeInsets.all(14),
+        SizedBox.square(
+          key: const ValueKey('home-profile-avatar'),
+          dimension: 52,
+          child: Material(
+            color: const Color(0xFFE8EBDF),
+            shape: const CircleBorder(),
+            clipBehavior: Clip.antiAlias,
+            child: IconButton(
+              tooltip: l10n.homeAccount,
+              onPressed: onProfile,
+              padding: EdgeInsets.zero,
+              icon: name == null
+                  ? const Icon(
+                      Icons.person_outline_rounded,
+                      color: AppColors.olive,
+                    )
+                  : Text(
+                      name!.characters.first.toUpperCase(),
+                      style: const TextStyle(
+                        color: AppColors.olive,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20,
+                      ),
+                    ),
+            ),
           ),
-          icon: name == null
-              ? const Icon(Icons.person_outline_rounded, color: AppColors.olive)
-              : Text(
-                  name!.characters.first.toUpperCase(),
-                  style: const TextStyle(
-                    color: AppColors.olive,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                  ),
-                ),
         ),
       ],
     );

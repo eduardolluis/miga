@@ -20,6 +20,7 @@ import 'package:miga/features/meal_plan/domain/meal_slot.dart';
 import 'package:miga/features/meal_plan/presentation/meal_plan_page.dart';
 import 'package:miga/features/meal_plan/presentation/sheets/meal_editor_sheet.dart';
 import 'package:miga/features/profile/presentation/profile_page.dart';
+import 'package:miga/features/pro/presentation/pro_page.dart';
 import 'package:miga/features/recipes/presentation/recipes_page.dart';
 import 'package:miga/features/recipes/domain/recipe.dart';
 import 'package:miga/features/recipes/presentation/sheets/recipe_details_sheet.dart';
@@ -168,7 +169,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   Future<void> _openGroceries() async {
     if (!_controller.canEdit) return;
-    final items = await showGroceryList(context, _controller.details.groceries);
+    final items = await showGroceryList(
+      context,
+      _controller.details.groceries,
+      currency: _controller.budget?.currency ?? 'DOP',
+    );
     if (!mounted || items == null) return;
     await _save(() => _controller.saveGroceries(items));
   }
@@ -214,6 +219,17 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     );
   }
 
+  void _openPro() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (context) => Theme(
+          data: AppTheme.household(Theme.of(context)),
+          child: const ProPage(),
+        ),
+      ),
+    );
+  }
+
   Future<void> _signOut() async {
     if (_signingOut) return;
     setState(() => _signingOut = true);
@@ -242,6 +258,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       onBudget: _editBudget,
       onGroceries: _openGroceries,
       onStores: _openStores,
+      onPro: _openPro,
     ),
     AppTab.plan => MealPlanPage(
       week: _controller.week,
@@ -262,6 +279,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       onBudget: _controller.canEdit ? _editBudget : null,
       onSignOut: widget.authService == null ? null : _signOut,
       signingOut: _signingOut,
+      onPro: _openPro,
     ),
   };
 

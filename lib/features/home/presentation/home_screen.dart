@@ -12,6 +12,7 @@ import 'package:miga/features/meal_plan/presentation/meal_slot_presentation.dart
 import 'package:miga/features/recipes/data/recipe_catalog.dart';
 import 'package:miga/features/recipes/domain/recipe.dart';
 import 'package:miga/l10n/app_localizations.dart';
+import 'package:miga/features/pro/presentation/widgets/pro_offer_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -26,6 +27,7 @@ class HomeScreen extends StatelessWidget {
     required this.onBudget,
     required this.onGroceries,
     required this.onStores,
+    required this.onPro,
   });
   final HomeController controller;
   final String? userName;
@@ -37,6 +39,7 @@ class HomeScreen extends StatelessWidget {
   final VoidCallback onBudget;
   final VoidCallback onGroceries;
   final VoidCallback onStores;
+  final VoidCallback onPro;
 
   @override
   Widget build(BuildContext context) {
@@ -124,6 +127,7 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(height: 16),
         HomeBudgetSummary(
           budget: controller.budget,
+          groceries: controller.details.groceries,
           onTap: enabled ? onBudget : null,
         ),
         const SizedBox(height: 16),
@@ -132,6 +136,8 @@ class HomeScreen extends StatelessWidget {
           onGroceries: enabled ? onGroceries : null,
           onStores: onStores,
         ),
+        const SizedBox(height: 24),
+        ProOfferCard(onOpen: onPro),
       ],
     );
   }

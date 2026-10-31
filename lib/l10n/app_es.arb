@@ -135,7 +135,7 @@
   "homeSave": "Guardar cambios",
   "homeGroceryList": "Lista de compras",
   "homeGroceryEmpty": "Tu lista empieza aquí.",
-  "homeGroceryDescription": "Añade lo que necesitas y márcalo al comprarlo.",
+  "homeGroceryDescription": "Añade productos, introduce precios y marca lo que vas poniendo en el carrito.",
   "homeGroceryHint": "Ej. tomates, 4 unidades",
   "homeGroceryAdd": "Añadir producto",
   "homeGroceryRemove": "Quitar producto",
@@ -164,8 +164,8 @@
   "homeIdeasBreakfast": "Para tu desayuno",
   "homeIdeasLunch": "Para tu almuerzo",
   "homeIdeasDinner": "Para tu cena",
-  "homeIdeasNow": "Ideas para este momento del día.",
-  "homeIdeasManual": "Elige lo que te apetezca preparar.",
+  "homeIdeasNow": "Desliza entre las recetas para este momento del día.",
+  "homeIdeasManual": "Desliza entre las recetas del momento que elegiste.",
   "homeChangeMeal": "Cambiar momento del día",
   "homeUseTime": "Según la hora actual",
   "recipeMinutes": "{minutes} min",
@@ -190,5 +190,139 @@
         "type": "int"
       }
     }
-  }
+  },
+  "homeGoodNight": "Buenas noches",
+  "recipeHaveIngredients": "¿Qué tienes en casa?",
+  "recipeIngredientsHint": "Marca tus ingredientes. Verás recetas que usen al menos uno, con las mejores coincidencias primero.",
+  "recipeClearIngredients": "Limpiar",
+  "recipeIngredientMatch": "{have} ingredientes disponibles · {missing} por conseguir",
+  "@recipeIngredientMatch": {
+    "placeholders": {
+      "have": {
+        "type": "int"
+      },
+      "missing": {
+        "type": "int"
+      }
+    }
+  },
+  "proComingSoon": "Próximamente",
+  "proOfferTitle": "Menos planificación. Más tiempo para ti.",
+  "proDiscover": "Descubre Miga Pro",
+  "proIntroduction": "Tus herramientas de cada día siguen siendo gratis. Estamos preparando Pro para ayudarte con más de la planificación.",
+  "proFreePlan": "Miga Gratis",
+  "proFreeDescription": "Todo lo que puedes usar hoy, sin costo.",
+  "proFreePlanning": "Planifica tus comidas y edita tu presupuesto semanal",
+  "proFreeRecipes": "Explora recetas y filtra por los ingredientes que tienes",
+  "proFreeShopping": "Crea tu lista y marca lo que vas comprando",
+  "proInDevelopment": "Próximamente · Funciones en desarrollo",
+  "proAutomaticPlans": "Tu semana planificada",
+  "proAutomaticPlansDescription": "Menús semanales automáticos según tus preferencias y la cantidad de personas en casa.",
+  "proPantryPlans": "Aprovecha lo que ya tienes",
+  "proPantryPlansDescription": "Crea un menú completo con tus ingredientes disponibles, más allá del filtro gratuito de recetas.",
+  "proSharedLists": "Una lista para toda la casa",
+  "proSharedListsDescription": "Comparte una lista y mantén sincronizadas las compras de todos.",
+  "proLaunchNote": "Las suscripciones Pro todavía no están disponibles. Anunciaremos el precio al lanzar. Tus herramientas gratuitas siguen disponibles.",
+  "proKeepPlanning": "Seguir usando Miga Gratis",
+  "carouselPrevious": "Receta anterior",
+  "carouselNext": "Siguiente receta",
+  "carouselPosition": "{current} de {total} recetas",
+  "groceryManualPrice": "Precios introducidos por ti, no verificados por una tienda.",
+  "groceryUnitPrice": "Precio por producto",
+  "groceryQuantity": "Cantidad de productos",
+  "groceryPriceInvalid": "Introduce un precio con hasta 2 decimales.",
+  "groceryQuantityInvalid": "Introduce un número entero entre 1 y 999.",
+  "groceryRemovePrice": "Quitar precio",
+  "groceryYourPrice": "Tu precio",
+  "groceryAddPrice": "Añadir precio",
+  "groceryEstimate": "Estimado de la lista: {amount}",
+  "groceryPricesNeeded": "Añade precios para estimar tu compra",
+  "groceryPriceCoverage": "{count} productos no tienen precio en {currency} y no se incluyen en el estimado.",
+  "groceryCartProgress": "{checked} de {total} productos en el carrito",
+  "groceryReferences": "Consultar reportes de precios en RD",
+  "groceryReferenceNote": "Los reportes de Pro Consumidor son referencias fechadas. Revisa el producto, la presentación y la fecha; no son una cotización actual de tu tienda.",
+  "groceryReferenceError": "No pudimos abrir los reportes de precios. Inténtalo de nuevo.",
+  "budgetPurpose": "Gasto registrado + precios introducidos en esta lista. Marcar el carrito no registra un gasto.",
+  "budgetShoppingOver": "Con los precios conocidos te pasas {amount} del presupuesto.",
+  "budgetAfterShopping": "Te quedan {amount} tras las compras con precio conocido.",
+  "budgetIncomplete": "Añade los precios que faltan antes de basarte en este estimado.",
+  "@carouselPosition": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@groceryEstimate": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@groceryPriceCoverage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "@groceryCartProgress": {
+    "placeholders": {
+      "checked": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@budgetShoppingOver": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@budgetAfterShopping": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryReferenceTitle": "Precios oficiales de referencia",
+  "groceryReferenceDisclaimer": "Observaciones periódicas por tipo de supermercado, no cotizaciones en vivo. Revisa la presentación y el período antes de usar un estimado.",
+  "groceryReferenceSearch": "Busca productos, por ejemplo arroz",
+  "groceryReferenceUnavailable": "Las referencias no están disponibles ahora. Puedes introducir tu propio precio.",
+  "groceryUseReference": "Toca para usar este estimado fechado",
+  "groceryReferenceAttribution": "Fuente: Pro Consumidor / Datos Abiertos · ODbL 1.0",
+  "groceryReferencePrice": "Estimado de referencia fechado, no un precio actual verificado de tu tienda.",
+  "groceryFindReference": "Buscar un precio oficial de referencia",
+  "groceryEstimateNote": "Basado en tus precios y las referencias fechadas que elegiste. El precio al pagar puede cambiar.",
+  "storeCompare": "Comparar precios de supermercados",
+  "storeSearch": "Buscar precios",
+  "storeCompareNote": "Precios del catálogo online por supermercado. Elige la marca y presentación exactas; productos distintos no son una comparación equivalente. Los precios, ofertas y existencias en tienda física pueden variar.",
+  "storeNearby": "Ver tiendas cercanas",
+  "storeUnavailable": "No hay precios en vivo disponibles para esta tienda. Puedes ver sus ubicaciones cercanas.",
+  "storeSearchHelp": "Busca con al menos 2 caracteres. Los catálogos usan nombres de productos en español.",
+  "storeObserved": "Consultado: {when}",
+  "storeUsePrice": "Usar este producto y precio",
+  "storeViewProduct": "Ver producto en el supermercado",
+  "storeOnlinePrice": "Precio consultado en el catálogo online del supermercado. Revisa marca, presentación y fecha.",
+  "storeChooseItem": "¿Qué producto quieres comparar?",
+  "@storeObserved": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "storeRefreshPrice": "Actualizar precio"
 }
