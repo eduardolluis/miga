@@ -60,11 +60,16 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
     final l10n = AppLocalizations.of(context)!;
     final dates = MaterialLocalizations.of(context);
     return Dialog.fullscreen(
-      child: SafeArea(
-        child: Scaffold(
+      child: Scaffold(
+        backgroundColor: AppColors.cream,
+        appBar: AppBar(
+          title: Text(l10n.storeCompare),
           backgroundColor: AppColors.cream,
-          appBar: AppBar(title: Text(l10n.storeCompare), backgroundColor: AppColors.cream),
-          body: FutureBuilder<List<StoreSearchResult>>(
+          surfaceTintColor: Colors.transparent,
+        ),
+        body: SafeArea(
+          top: false,
+          child: FutureBuilder<List<StoreSearchResult>>(
             future: _request,
             builder: (context, snapshot) => ListView(
               padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
