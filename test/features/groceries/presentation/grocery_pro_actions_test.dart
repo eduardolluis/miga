@@ -1,3 +1,5 @@
+import '../../../support/recipe_catalog.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -22,7 +24,14 @@ void main() {
       'Groceries shows $action outside the editor and gates Free users',
       (tester) async {
         SharedPreferences.setMockInitialValues({});
-        await tester.pumpWidget(app(AppShell(today: DateTime(2026, 10, 31))));
+        await tester.pumpWidget(
+          app(
+            AppShell(
+              recipeRepository: RecipeCatalog.repository(),
+              today: DateTime(2026, 10, 31),
+            ),
+          ),
+        );
         await tester.pumpAndSettle();
         await tester.tap(find.text('Groceries'));
         await tester.pumpAndSettle();

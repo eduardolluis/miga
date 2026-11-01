@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 
 import 'package:miga/features/onboarding/presentation/models/onboarding_page_data.dart';
 
@@ -14,6 +15,7 @@ class OnboardingBackground extends StatelessWidget {
       children: [
         Image.asset(
           page.imagePath,
+          frameBuilder: skeletonImageFrame,
           fit: BoxFit.cover,
           alignment: page.imageAlignment,
           excludeFromSemantics: true,

@@ -7,7 +7,9 @@ import 'package:miga/features/groceries/presentation/sheets/grocery_list_sheet.d
 import 'package:miga/features/home/application/home_controller.dart';
 import 'package:miga/features/home/data/local_home_details_store.dart';
 import 'package:miga/features/meal_plan/data/local_meal_plan_store.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+
+import '../../../support/recipe_catalog.dart';
+
 import 'package:miga/l10n/app_localizations.dart';
 
 void main() {
@@ -17,6 +19,7 @@ void main() {
       (tester) async {
         SharedPreferences.setMockInitialValues({});
         final controller = HomeController(
+          recipeRepository: RecipeCatalog.repository(),
           today: DateTime(2026, 10, 30),
           planStore: LocalMealPlanStore('guest'),
           detailsStore: LocalHomeDetailsStore('guest'),

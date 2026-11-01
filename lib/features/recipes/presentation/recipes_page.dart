@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:miga/core/theme/app_colors.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 import 'package:miga/core/ui/miga_ui_copy.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
 import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
 import 'package:miga/features/meal_plan/presentation/meal_slot_presentation.dart';
 import 'package:miga/features/profile/domain/household_preferences.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+import 'package:miga/features/recipes/data/recipe_repository.dart';
 import 'package:miga/features/recipes/domain/recipe.dart';
 import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 import 'package:miga/features/recipes/presentation/widgets/recipe_card.dart';
@@ -23,6 +24,7 @@ class RecipesPage extends StatefulWidget {
   const RecipesPage({
     super.key,
     required this.onOpenRecipe,
+    required this.repository,
     this.onBack,
     this.preferences = const HouseholdPreferences(),
     this.pantry = const {},
@@ -38,6 +40,7 @@ class RecipesPage extends StatefulWidget {
   });
 
   final ValueChanged<Recipe>? onOpenRecipe;
+  final RecipeRepository repository;
   final VoidCallback? onBack;
   final HouseholdPreferences preferences;
   final Set<RecipeIngredient> pantry;
@@ -186,18 +189,18 @@ class _RecipesPageState extends State<RecipesPage> {
     });
   }
 
-  List<Recipe> _filtered(String language) {
+  List<Recipe> _filtered(String language, {bool includeSearch = true}) {
     final available = {..._available, if (_pantry) ...widget.pantry};
     final allowance = _allowance;
     final query = _query.toLowerCase().trim();
-    final recipes = RecipeCatalog.all
+    final recipes = widget.repository.all
         .where(widget.preferences.allows)
         .map((r) => widget.portionFor?.call(r) ?? r)
         .where((r) {
           if (_quick && r.minutes > 20) return false;
           if (_protein && (r.nutrition?.proteinGrams ?? 0) < 25) return false;
           if (_favorites && !widget.favorites.contains(r.id)) return false;
-          if (_slot != null && r.slot != _slot) return false;
+          if (includeSearch && _slot != null && r.slot != _slot) return false;
           if (available.isNotEmpty && r.matchingIngredients(available) == 0) {
             return false;
           }
@@ -206,12 +209,13 @@ class _RecipesPageState extends State<RecipesPage> {
                   !(widget.costFor?.call(r).fits(allowance) ?? false))) {
             return false;
           }
-          return r.contentFor(language).title.toLowerCase().contains(query);
+          return !includeSearch ||
+              r.contentFor(language).title.toLowerCase().contains(query);
         })
         .toList();
     recipes.sort((a, b) {
       if (_sort == _RecipeSort.newest) {
-        return b.imageIndex.compareTo(a.imageIndex);
+        return b.sortOrder.compareTo(a.sortOrder);
       }
       if (_sort == _RecipeSort.quickest) {
         return a.minutes.compareTo(b.minutes);
@@ -227,20 +231,56 @@ class _RecipesPageState extends State<RecipesPage> {
           widget.costFor!(b).subtotalCents,
         );
       }
-      return a.imageIndex.compareTo(b.imageIndex);
+      return a.sortOrder.compareTo(b.sortOrder);
     });
     return recipes;
   }
 
+  String? _requestKey;
+  Future<RecipePage>? _request;
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => ListenableBuilder(
+    listenable: widget.repository,
+    builder: (context, _) => _buildCatalog(context),
+  );
+
+  Widget _buildCatalog(BuildContext context) {
+    final language = Localizations.localeOf(context).languageCode;
+    final eligible = _filtered(language, includeSearch: false);
+    final key =
+        '${widget.repository.revision}|${widget.repository.offline}|$_page|$_query|$_slot|$language|${eligible.map((r) => '${r.id}:${r.servings}').join(',')}';
+    if (_requestKey != key) {
+      _requestKey = key;
+      _request = widget.repository.search(
+        eligible: eligible,
+        query: _query,
+        language: language,
+        slot: _slot,
+        page: _page,
+        pageSize: _pageSize,
+      );
+    }
+    return FutureBuilder<RecipePage>(
+      key: ValueKey(key),
+      future: _request,
+      builder: (context, snapshot) => _buildPage(context, snapshot),
+    );
+  }
+
+  Widget _buildPage(BuildContext context, AsyncSnapshot<RecipePage> snapshot) {
     final l = AppLocalizations.of(context)!;
     final language = Localizations.localeOf(context).languageCode;
-    final recipes = _filtered(language);
-    final pages = (recipes.length / _pageSize).ceil();
+    final loading =
+        snapshot.connectionState != ConnectionState.done ||
+        (widget.repository.loading && widget.repository.all.isEmpty);
+    final result = snapshot.data ?? const RecipePage([], 0);
+    final recipes = result.recipes;
+    final total = result.total;
+    final pages = (total / _pageSize).ceil();
     final page = pages == 0 ? 0 : _page.clamp(0, pages - 1);
     final start = page * _pageSize;
-    final visibleRecipes = recipes.skip(start).take(_pageSize).toList();
+    final visibleRecipes = recipes;
     final onPrevious = page > 0 ? () => _goToPage(page - 1) : null;
     final onNext = page + 1 < pages ? () => _goToPage(page + 1) : null;
     final activeExtras =
@@ -400,12 +440,33 @@ class _RecipesPageState extends State<RecipesPage> {
                       ],
                     ),
                   ),
+                if (result.offline || widget.repository.error != null) ...[
+                  const SizedBox(height: 12),
+                  Text(
+                    MigaUiCopy.choose(
+                      context,
+                      widget.repository.all.isEmpty
+                          ? 'No pudimos cargar las recetas.'
+                          : 'Mostrando recetas guardadas sin conexión.',
+                      widget.repository.all.isEmpty
+                          ? 'Could not load recipes.'
+                          : 'Showing saved recipes offline.',
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      await widget.repository.refresh();
+                      if (mounted) setState(() => _requestKey = null);
+                    },
+                    child: Text(l.homeRetry),
+                  ),
+                ],
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      MigaUiCopy.totalRecipes(context, recipes.length),
+                      MigaUiCopy.totalRecipes(context, total),
                       style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w700,
@@ -454,7 +515,7 @@ class _RecipesPageState extends State<RecipesPage> {
                     l.recipePageRange(
                       start + 1,
                       start + visibleRecipes.length,
-                      recipes.length,
+                      total,
                     ),
                     style: const TextStyle(
                       color: AppColors.muted,
@@ -466,7 +527,20 @@ class _RecipesPageState extends State<RecipesPage> {
             ),
           ),
         ),
-        if (recipes.isEmpty)
+        if (loading)
+          const SliverPadding(
+            padding: EdgeInsets.fromLTRB(22, 6, 22, 18),
+            sliver: SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  SkeletonRecipeCards(),
+                  SizedBox(height: 12),
+                  SkeletonRecipeCards(),
+                ],
+              ),
+            ),
+          )
+        else if (recipes.isEmpty)
           SliverFillRemaining(
             hasScrollBody: false,
             child: Padding(

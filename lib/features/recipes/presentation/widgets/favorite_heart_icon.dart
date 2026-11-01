@@ -20,10 +20,8 @@ class FavoriteHeartIcon extends StatelessWidget {
     reverseDuration: const Duration(milliseconds: 140),
     switchInCurve: Curves.easeOutBack,
     switchOutCurve: Curves.easeIn,
-    transitionBuilder: (child, animation) => ScaleTransition(
-      scale: animation,
-      child: child,
-    ),
+    transitionBuilder: (child, animation) =>
+        ScaleTransition(scale: animation, child: child),
     child: Icon(
       favorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
       key: ValueKey(favorite),

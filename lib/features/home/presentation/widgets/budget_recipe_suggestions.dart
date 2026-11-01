@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/core/ui/miga_ui_copy.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
@@ -149,36 +150,9 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
                 widget.recipes.map(widget.costFor!).toList(),
               );
             }
-            if (snapshot.connectionState != ConnectionState.done) {
-              // Two photo-sized skeletons keep the page stable while fetching.
-              return Row(
-                children: [
-                  for (var i = 0; i < 2; i++) ...[
-                    if (i > 0) const SizedBox(width: 12),
-                    Expanded(
-                      child: AspectRatio(
-                        aspectRatio: .88,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFE6ECD9),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          child: const Center(
-                            child: SizedBox(
-                              width: 26,
-                              height: 26,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: AppColors.olive,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
-              );
+            if (snapshot.connectionState != ConnectionState.done &&
+                !snapshot.hasData) {
+              return const SkeletonRecipeCards();
             }
             if (snapshot.hasError) {
               return Text(l.groceryEstimateUnavailable);
@@ -218,7 +192,7 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
               final amount = a.subtotalCents.compareTo(b.subtotalCents);
               return amount != 0
                   ? amount
-                  : a.recipe.imageIndex.compareTo(b.recipe.imageIndex);
+                  : a.recipe.sortOrder.compareTo(b.recipe.sortOrder);
             });
             final fits = allowance == null
                 ? <RecipeCost>[]
@@ -335,7 +309,7 @@ class _BudgetRecipeTile extends StatelessWidget {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                RecipeImage(index: cost.recipe.imageIndex),
+                RecipeImage(photo: cost.recipe.photo),
                 const DecoratedBox(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(

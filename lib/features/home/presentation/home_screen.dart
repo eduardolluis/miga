@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/core/ui/miga_ui_copy.dart';
 import 'package:miga/features/home/application/home_controller.dart';
 import 'package:miga/features/home/presentation/widgets/budget_recipe_suggestions.dart';
 import 'package:miga/features/home/presentation/widgets/home_dashboard_quick_actions.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
 import 'package:miga/features/meal_plan/presentation/meal_slot_presentation.dart';
 import 'package:miga/features/recipes/domain/recipe.dart';
 import 'package:miga/features/recipes/presentation/widgets/recipe_image.dart';
@@ -132,6 +132,7 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(height: 5),
         _TodayMealCard(
           meal: currentMeal,
+          recipes: controller.recipes.all,
           slot: controller.selectedSlot.label(l),
           onTap: enabled ? onEditMeal : onPlan,
         ),
@@ -143,16 +144,39 @@ class HomeScreen extends StatelessWidget {
         // configured a weekly budget yet. Show two recipe ideas in that case;
         // budget-fit claims are made only when a valid budget exists.
         const SizedBox(height: 26),
+        if (controller.recipes.error != null)
+          Column(
+            children: [
+              Text(
+                MigaUiCopy.choose(
+                  context,
+                  controller.recipes.all.isEmpty
+                      ? 'No pudimos cargar las recetas.'
+                      : 'Mostrando recetas guardadas sin conexión.',
+                  controller.recipes.all.isEmpty
+                      ? 'Could not load recipes.'
+                      : 'Showing saved recipes offline.',
+                ),
+              ),
+              TextButton(
+                onPressed: controller.recipes.refresh,
+                child: Text(l.homeRetry),
+              ),
+            ],
+          ),
         BudgetRecipeSuggestions(
           budget: controller.budgetCurrencyMatches ? controller.budget : null,
           currency: controller.preferences.currency,
           now: controller.now,
-          recipes: RecipeCatalog.all
+          recipes: controller.recipes.all
               .where(controller.preferences.allows)
               .map(controller.portionFor)
               .toList(),
           costFor: controller.costFor,
-          pricing: controller.pricing || controller.loading,
+          pricing:
+              controller.pricing ||
+              controller.loading ||
+              controller.recipes.loading,
           onRecipe: onRecipe,
           onSeeAll: onViewBudgetRecipes,
           favorites: controller.details.favorites,
@@ -243,6 +267,7 @@ class _BrandBannerState extends State<_BrandBanner> {
                       Positioned.fill(
                         child: Image.asset(
                           slide.image,
+                          frameBuilder: skeletonImageFrame,
                           fit: BoxFit.cover,
                           filterQuality: FilterQuality.high,
                           gaplessPlayback: true,
@@ -310,11 +335,13 @@ class _BrandBannerState extends State<_BrandBanner> {
 class _TodayMealCard extends StatelessWidget {
   const _TodayMealCard({
     required this.meal,
+    required this.recipes,
     required this.slot,
     required this.onTap,
   });
 
   final String? meal;
+  final List<Recipe> recipes;
   final String slot;
   final VoidCallback onTap;
 
@@ -322,7 +349,7 @@ class _TodayMealCard extends StatelessWidget {
     if (meal == null) return null;
     final language = Localizations.localeOf(context).languageCode;
     final target = meal!.trim().toLowerCase();
-    for (final recipe in RecipeCatalog.all) {
+    for (final recipe in recipes) {
       if (recipe.contentFor(language).title.toLowerCase() == target ||
           recipe
                   .contentFor(language == 'es' ? 'en' : 'es')
@@ -369,7 +396,7 @@ class _TodayMealCard extends StatelessWidget {
                   child: SizedBox(
                     height: 62,
                     width: 64,
-                    child: RecipeImage(index: photo.imageIndex),
+                    child: RecipeImage(photo: photo.photo),
                   ),
                 ),
                 const SizedBox(width: 10),

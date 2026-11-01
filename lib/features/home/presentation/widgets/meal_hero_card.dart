@@ -59,7 +59,7 @@ class MealHeroCard extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: onOpen,
-                  child: RecipeImage(index: recipe.imageIndex),
+                  child: RecipeImage(photo: recipe.photo),
                 ),
                 Positioned(
                   left: 16,
@@ -115,10 +115,7 @@ class MealHeroCard extends StatelessWidget {
                   ),
                   if (recipe.nutrition != null) ...[
                     const SizedBox(height: 6),
-                    Text(
-                      nutritionLabel(l10n, recipe),
-                      style: nutritionStyle,
-                    ),
+                    Text(nutritionLabel(l10n, recipe), style: nutritionStyle),
                   ],
                   const Spacer(),
                   const SizedBox(height: 14),

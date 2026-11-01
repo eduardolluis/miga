@@ -5,7 +5,9 @@ import 'package:miga/features/budget/domain/recipe_amount.dart';
 import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/features/home/presentation/widgets/budget_recipe_suggestions.dart';
 import 'package:miga/features/home/presentation/widgets/recipe_cost_sheet.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+
+import '../../../support/recipe_catalog.dart';
+
 import 'package:miga/l10n/app_localizations.dart';
 
 void main() {
@@ -178,7 +180,7 @@ void main() {
         addTearDown(() => tester.binding.setSurfaceSize(null));
         final recipe = RecipeCatalog.all.first;
         final cost = RecipeCost(recipe, [
-          for (final amount in RecipeAmounts.values[recipe.id]!)
+          for (final amount in recipe.amounts)
             IngredientCost(amount, cents: 1000),
         ]);
         await tester.pumpWidget(
@@ -219,13 +221,12 @@ void main() {
     (tester) async {
       final recipe = RecipeCatalog.all.first;
       final priced = RecipeCost(recipe, [
-        for (final amount in RecipeAmounts.values[recipe.id]!)
+        for (final amount in recipe.amounts)
           IngredientCost(amount, cents: 1000),
       ]);
       final other = RecipeCatalog.all[1];
       final partial = RecipeCost(other, [
-        for (final amount in RecipeAmounts.values[other.id]!)
-          IngredientCost(amount),
+        for (final amount in other.amounts) IngredientCost(amount),
       ]);
       Widget app(double limit) => MaterialApp(
         localizationsDelegates: AppLocalizations.localizationsDelegates,

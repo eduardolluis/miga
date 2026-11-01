@@ -185,9 +185,11 @@ class RecipeCostEstimator {
         cached.any((o) => matchesOffer(ingredient, o))) {
       return;
     }
-    final reference = RecipeAmounts.values.values
-        .expand((v) => v)
-        .firstWhere((a) => a.ingredient == ingredient);
+    final reference = RecipeAmount(
+      ingredient,
+      1,
+      RecipeAmounts.unitFor(ingredient),
+    );
     final offers = <SupermarketOffer>[];
     for (final term in queriesFor(ingredient)) {
       try {

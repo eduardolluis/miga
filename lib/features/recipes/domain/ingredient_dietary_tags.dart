@@ -5,24 +5,41 @@ import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 /// generic name cannot guarantee the allergen is absent (e.g. granola).
 /// Packaging, substitutions, cross-contact and preparation still require a
 /// separate user check. Never describe this as an allergy-safety certification.
-enum IngredientDietaryTag { meat, fish, dairy, eggs, gluten, treeNuts, peanuts, soy }
+enum IngredientDietaryTag {
+  meat,
+  fish,
+  dairy,
+  eggs,
+  gluten,
+  treeNuts,
+  peanuts,
+  soy,
+}
 
 extension IngredientDietaryClassification on RecipeIngredient {
   Set<IngredientDietaryTag> get dietaryTags => switch (this) {
-    RecipeIngredient.chicken || RecipeIngredient.groundBeef => const {IngredientDietaryTag.meat},
-    RecipeIngredient.salmon || RecipeIngredient.tuna => const {IngredientDietaryTag.fish},
+    RecipeIngredient.chicken ||
+    RecipeIngredient.groundBeef => const {IngredientDietaryTag.meat},
+    RecipeIngredient.salmon ||
+    RecipeIngredient.tuna => const {IngredientDietaryTag.fish},
     RecipeIngredient.eggs => const {IngredientDietaryTag.eggs},
-    RecipeIngredient.yogurt || RecipeIngredient.cheese => const {IngredientDietaryTag.dairy},
+    RecipeIngredient.yogurt ||
+    RecipeIngredient.cheese => const {IngredientDietaryTag.dairy},
     // "Milk / plant milk" is not guaranteed dairy free without a choice.
     RecipeIngredient.milk => const {IngredientDietaryTag.dairy},
     RecipeIngredient.walnuts => const {IngredientDietaryTag.treeNuts},
-    RecipeIngredient.bread || RecipeIngredient.pasta || RecipeIngredient.tortilla => const {IngredientDietaryTag.gluten},
+    RecipeIngredient.bread ||
+    RecipeIngredient.pasta ||
+    RecipeIngredient.tortilla => const {IngredientDietaryTag.gluten},
     // Generic oats/granola do not guarantee gluten-free certification;
     // granola can also contain nuts. Treat both conservatively.
     RecipeIngredient.oats => const {IngredientDietaryTag.gluten},
     RecipeIngredient.peanutButter => const {IngredientDietaryTag.peanuts},
     RecipeIngredient.tofu => const {IngredientDietaryTag.soy},
-    RecipeIngredient.granola => const {IngredientDietaryTag.gluten, IngredientDietaryTag.treeNuts},
+    RecipeIngredient.granola => const {
+      IngredientDietaryTag.gluten,
+      IngredientDietaryTag.treeNuts,
+    },
     // All remaining catalogue ingredients are whole foods or clearly named
     // single ingredients. Product labels must still be checked.
     RecipeIngredient.banana ||

@@ -1,3 +1,5 @@
+import '../../../support/recipe_catalog.dart';
+
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -19,13 +21,15 @@ void main() {
           MaterialApp(
             home: Scaffold(
               body: SingleChildScrollView(
-                child: RecipeDetailPhoto(index: index),
+                child: RecipeDetailPhoto(photo: RecipeCatalog.all[index].photo),
               ),
             ),
           ),
         );
         await tester.runAsync(() async {
-          final data = await rootBundle.load(RecipeImage.localAssetFor(index)!);
+          final data = await rootBundle.load(
+            RecipeCatalog.all[index].photo.path,
+          );
           final codec = await ui.instantiateImageCodec(
             data.buffer.asUint8List(),
           );
@@ -33,7 +37,7 @@ void main() {
           frame.image.dispose();
           codec.dispose();
           await precacheImage(
-            RecipeImage.providerFor(index)!,
+            RecipeImage.providerFor(RecipeCatalog.all[index].photo),
             tester.element(find.byType(RecipeDetailPhoto)),
           );
         });
@@ -46,7 +50,7 @@ void main() {
         expect(size.width, 390);
         expect(
           size.height,
-          closeTo(390 / RecipeImage.aspectRatioFor(index)!, 1),
+          closeTo(390 / RecipeCatalog.all[index].photo.aspectRatio, 1),
         );
         expect(tester.takeException(), isNull);
       },
@@ -57,14 +61,19 @@ void main() {
   ) async {
     Widget frame(int index) => MaterialApp(
       home: Scaffold(
-        body: SingleChildScrollView(child: RecipeDetailPhoto(index: index)),
+        body: SingleChildScrollView(
+          child: RecipeDetailPhoto(photo: RecipeCatalog.all[index].photo),
+        ),
       ),
     );
     await tester.pumpWidget(frame(49));
     await tester.pumpAndSettle();
     await tester.pumpWidget(frame(50));
     await tester.pumpAndSettle();
-    expect(tester.widget<RecipeImage>(find.byType(RecipeImage)).index, 50);
+    expect(
+      tester.widget<RecipeImage>(find.byType(RecipeImage)).photo.path,
+      RecipeCatalog.all[50].photo.path,
+    );
     expect(tester.takeException(), isNull);
   });
 }

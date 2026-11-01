@@ -1,3 +1,5 @@
+import '../../../support/recipe_catalog.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,6 +28,7 @@ void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
   test('Checkout saves items and actual paid amount separately from a partial estimate', () async {
     final controller = HomeController(
+      recipeRepository: RecipeCatalog.repository(),
       today: DateTime(2026, 10, 31),
       planStore: LocalMealPlanStore('checkout'),
       detailsStore: LocalHomeDetailsStore('checkout'),
@@ -59,6 +62,7 @@ void main() {
   test('Failed checkout preserves the cart; undo restores cart and removes the record', () async {
     final store = MemoryStore();
     final controller = HomeController(
+      recipeRepository: RecipeCatalog.repository(),
       today: DateTime(2026, 10, 31),
       planStore: LocalMealPlanStore('checkout'),
       detailsStore: store,
@@ -98,7 +102,10 @@ void main() {
           locale: const Locale('en'),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          home: AppShell(today: DateTime(2026, 10, 31)),
+          home: AppShell(
+            recipeRepository: RecipeCatalog.repository(),
+            today: DateTime(2026, 10, 31),
+          ),
         ),
       );
       await tester.pumpAndSettle();

@@ -18,7 +18,7 @@ import 'package:miga/features/home/domain/home_details.dart';
 import 'package:miga/features/home/domain/home_details_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_plan_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+import 'package:miga/features/recipes/data/recipe_repository.dart';
 import 'package:miga/features/recipes/domain/recipe.dart';
 import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 
@@ -28,9 +28,29 @@ class HomeController extends ChangeNotifier {
     required this.planStore,
     required this.detailsStore,
     this.costEstimator,
-  }) : _now = today,
+    RecipeRepository? recipeRepository,
+  }) : recipes = recipeRepository ?? RecipeRepository.memory(const []),
+       _now = today,
        selectedSlot = MealSlot.forTime(today),
-       selectedDate = DateTime(today.year, today.month, today.day);
+       selectedDate = DateTime(today.year, today.month, today.day) {
+    recipes.addListener(_catalogChanged);
+  }
+  final RecipeRepository recipes;
+  int _catalogRevision = -1;
+  void _catalogChanged() {
+    if (_catalogRevision != recipes.revision) {
+      _catalogRevision = recipes.revision;
+      _costs.clear();
+      _priceRevision++;
+      if (!loading) unawaited(refreshPrices());
+    }
+    _emit();
+  }
+
+  Recipe? resolveMeal(String? value) => PlannedRecipe.parse(
+    value,
+    recipes: recipes.known,
+  )?.resolve(recipes.known);
 
   DateTime _now;
   DateTime get now => _now;
@@ -64,7 +84,7 @@ class HomeController extends ChangeNotifier {
   }
 
   Recipe? recipeFor(DateTime date, MealSlot slot) =>
-      PlannedRecipe.parse(_meals[slot.keyFor(date)])?.recipe;
+      resolveMeal(_meals[slot.keyFor(date)]);
   Recipe portionFor(Recipe recipe) =>
       recipe.withServings(details.servings[recipe.id] ?? preferences.members);
 
@@ -136,7 +156,7 @@ class HomeController extends ChangeNotifier {
     _emit();
     try {
       for (final cost in await costEstimator!.estimate(
-        RecipeCatalog.all,
+        recipes.all,
         onProgress: () {
           _priceRevision++;
           _emit();
@@ -175,14 +195,15 @@ class HomeController extends ChangeNotifier {
   }
 
   List<Recipe> recommendations(MealSlot slot) {
-    final recipes = RecipeCatalog.forSlot(slot)
+    final recommendations = recipes
+        .forSlot(slot)
         .where(preferences.allows)
         .map(portionFor)
         .toList();
     final allowance = budget == null || !budgetCurrencyMatches
         ? null
         : mealAllowanceCents(budget!, now);
-    recipes.sort((a, b) {
+    recommendations.sort((a, b) {
       final ac = costFor(a), bc = costFor(b);
       if (allowance != null) {
         final fit = (bc.fits(allowance) ? 1 : 0).compareTo(
@@ -197,9 +218,9 @@ class HomeController extends ChangeNotifier {
       final favorite = (details.favorites.contains(b.id) ? 1 : 0).compareTo(
         details.favorites.contains(a.id) ? 1 : 0,
       );
-      return favorite != 0 ? favorite : a.imageIndex.compareTo(b.imageIndex);
+      return favorite != 0 ? favorite : a.sortOrder.compareTo(b.sortOrder);
     });
-    return recipes;
+    return recommendations;
   }
 
   DateTime selectedDate;
@@ -234,8 +255,12 @@ class HomeController extends ChangeNotifier {
 
   String? mealFor(DateTime date, MealSlot slot) {
     final value = _meals[slot.keyFor(date)];
-    return PlannedRecipe.parse(value)?.recipe?.contentFor(languageCode).title ??
-        value;
+    return resolveMeal(value)?.contentFor(languageCode).title ??
+        (value?.startsWith('@miga:') == true
+            ? (languageCode == 'es'
+                  ? 'Receta no disponible'
+                  : 'Recipe unavailable')
+            : value);
   }
 
   bool hasMeals(DateTime date) =>
@@ -272,6 +297,7 @@ class HomeController extends ChangeNotifier {
     loadFailed = false;
     _emit();
     try {
+      await recipes.initialize();
       final (meals, homeDetails) = detailsStore is HouseholdStateStore
           ? await (detailsStore as HouseholdStateStore).loadState()
           : (await planStore.load(), await detailsStore.load());
@@ -354,8 +380,7 @@ class HomeController extends ChangeNotifier {
     recipes: [
       for (final day in week)
         for (final slot in MealSlot.values)
-          if (PlannedRecipe.parse(meals[slot.keyFor(day)])?.recipe
-              case final Recipe recipe)
+          if (resolveMeal(meals[slot.keyFor(day)]) case final Recipe recipe)
             recipe,
     ],
     existing: existingItems ?? source.groceries,
@@ -523,7 +548,8 @@ class HomeController extends ChangeNotifier {
   List<Recipe> cheaperAlternatives(Recipe recipe) {
     final current = costFor(recipe);
     if (!current.complete) return [];
-    final choices = RecipeCatalog.forSlot(recipe.slot)
+    final choices = recipes
+        .forSlot(recipe.slot)
         .where(preferences.allows)
         .where((r) => r.id != recipe.id)
         .map((r) => r.withServings(recipe.servings))
@@ -646,6 +672,7 @@ class HomeController extends ChangeNotifier {
   @override
   void dispose() {
     _disposed = true;
+    recipes.removeListener(_catalogChanged);
     super.dispose();
   }
 }

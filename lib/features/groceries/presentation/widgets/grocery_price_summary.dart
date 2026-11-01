@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
 import 'package:miga/features/budget/domain/recipe_amount.dart';
@@ -62,19 +63,28 @@ class GroceryPriceSummary extends StatelessWidget {
             style: const TextStyle(fontSize: 12, color: AppColors.muted),
           ),
           const SizedBox(height: 5),
-          Text(
-            totals.priced == 0
-                ? (loading ? l.groceryEstimating : '—')
-                : GroceryItem(
-                    '',
-                    currency: currency,
-                  ).formatCents(totals.subtotalCents),
-            style: const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
-              color: AppColors.ink,
+          if (loading && totals.priced == 0)
+            Semantics(
+              label: l.groceryEstimating,
+              child: const Align(
+                alignment: Alignment.centerLeft,
+                child: MigaSkeleton(child: SkeletonBox(width: 150, height: 34)),
+              ),
+            )
+          else
+            Text(
+              totals.priced == 0
+                  ? '—'
+                  : GroceryItem(
+                      '',
+                      currency: currency,
+                    ).formatCents(totals.subtotalCents),
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+                color: AppColors.ink,
+              ),
             ),
-          ),
           if (totals.missing > 0) ...[
             const SizedBox(height: 5),
             Text(

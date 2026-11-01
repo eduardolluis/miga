@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
@@ -266,7 +267,6 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
                   ),
                 ),
               ),
-              if (loading) _spinner(),
               IconButton(
                 key: ValueKey('store-map-${store.name}'),
                 tooltip: l.storeNearby,
@@ -305,9 +305,10 @@ class _SupermarketComparisonPageState extends State<SupermarketComparisonPage> {
               ),
             ),
           if (loading)
-            Text(
-              l.storeLoading,
-              style: const TextStyle(fontSize: 12, color: AppColors.muted),
+            Semantics(
+              label: l.storeLoading,
+              liveRegion: true,
+              child: const SkeletonRows(count: 2),
             )
           else if (result?.unavailable == true) ...[
             Text(

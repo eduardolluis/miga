@@ -91,10 +91,7 @@ class _HomeWeekState extends State<HomeWeek> {
               Expanded(
                 child: Text(
                   l10n.homeWeek,
-                  style: const TextStyle(
-                    fontFamily: 'Georgia',
-                    fontSize: 25,
-                  ),
+                  style: const TextStyle(fontFamily: 'Georgia', fontSize: 25),
                 ),
               ),
               TextButton(

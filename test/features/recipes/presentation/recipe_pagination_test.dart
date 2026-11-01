@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+
+import '../../../support/recipe_catalog.dart';
+
 import 'package:miga/features/recipes/presentation/recipes_page.dart';
 import 'package:miga/features/recipes/presentation/widgets/recipe_card.dart';
 import 'package:miga/features/recipes/presentation/widgets/recipe_pagination.dart';
@@ -9,7 +11,12 @@ import 'package:miga/l10n/app_localizations.dart';
 Widget catalog() => MaterialApp(
   localizationsDelegates: AppLocalizations.localizationsDelegates,
   supportedLocales: AppLocalizations.supportedLocales,
-  home: Scaffold(body: RecipesPage(onOpenRecipe: (_) {})),
+  home: Scaffold(
+    body: RecipesPage(
+      repository: RecipeCatalog.repository(),
+      onOpenRecipe: (_) {},
+    ),
+  ),
 );
 
 void main() {

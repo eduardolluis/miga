@@ -1,3 +1,5 @@
+import '../../../support/recipe_catalog.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -26,7 +28,9 @@ Widget onboarding({Locale locale = const Locale('es'), double textScale = 1}) {
 
 void main() {
   testWidgets('App opens on the onboarding carousel', (tester) async {
-    await tester.pumpWidget(const MigaApp());
+    await tester.pumpWidget(
+      MigaApp(recipeRepository: RecipeCatalog.repository()),
+    );
     await tester.pumpAndSettle();
 
     expect(find.byType(OnboardingScreen), findsOneWidget);

@@ -23,12 +23,17 @@ void main() {
       'pro': true,
     });
     expect(pro.isPro, true);
-    expect(SurpriseAllowance.fromRpc({
-      'allowed': false,
-      'remaining': 0,
-      'pro': false,
-    }).allowed, false);
-    expect(() => SurpriseAllowance.fromRpc({'remaining': 3}),
-        throwsFormatException);
+    expect(
+      SurpriseAllowance.fromRpc({
+        'allowed': false,
+        'remaining': 0,
+        'pro': false,
+      }).allowed,
+      false,
+    );
+    expect(
+      () => SurpriseAllowance.fromRpc({'remaining': 3}),
+      throwsFormatException,
+    );
   });
 }

@@ -3,8 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:miga/features/recipes/presentation/widgets/favorite_heart_icon.dart';
 
 void main() {
-  testWidgets('Favorite heart becomes red with an animated transition',
-      (tester) async {
+  testWidgets('Favorite heart becomes red with an animated transition', (
+    tester,
+  ) async {
     Widget frame(bool favorite) => MaterialApp(
       home: Scaffold(
         body: FavoriteHeartIcon(

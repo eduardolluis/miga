@@ -1,3 +1,5 @@
+import '../../../support/recipe_catalog.dart';
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -611,7 +613,12 @@ void main() {
     'Restores session at startup and returns to onboarding on signout',
     (tester) async {
       await service.verifyCode('person@example.com', '123456');
-      await tester.pumpWidget(MigaApp(authService: service));
+      await tester.pumpWidget(
+        MigaApp(
+          recipeRepository: RecipeCatalog.repository(),
+          authService: service,
+        ),
+      );
       await tester.pumpAndSettle();
       expect(find.byType(AppShell), findsOneWidget);
       expect(find.byType(AuthScreen), findsNothing);
@@ -638,7 +645,12 @@ void main() {
     tester,
   ) async {
     addTearDown(() => tester.pumpWidget(const SizedBox()));
-    await tester.pumpWidget(MigaApp(authService: service));
+    await tester.pumpWidget(
+      MigaApp(
+        recipeRepository: RecipeCatalog.repository(),
+        authService: service,
+      ),
+    );
     await tester.pumpAndSettle();
     await tester.tap(find.text('Skip'));
     await tester.pumpAndSettle();

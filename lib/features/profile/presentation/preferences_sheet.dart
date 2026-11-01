@@ -50,7 +50,10 @@ class _PreferencesSheetState extends State<_PreferencesSheet> {
             decoration: InputDecoration(labelText: l.countryLabel),
             items: [
               for (final region in SupportedRegions.all)
-                DropdownMenuItem(value: region.countryCode, child: Text(region.name)),
+                DropdownMenuItem(
+                  value: region.countryCode,
+                  child: Text(region.name),
+                ),
             ],
             onChanged: (v) => setState(() {
               if (v == null) return;
@@ -65,7 +68,10 @@ class _PreferencesSheetState extends State<_PreferencesSheet> {
             decoration: InputDecoration(labelText: l.currencyLabel),
             items: [
               for (final code in SupportedRegions.currencies)
-                DropdownMenuItem(value: code, child: Text('$code · ${SupportedRegions.symbol(code)}')),
+                DropdownMenuItem(
+                  value: code,
+                  child: Text('$code · ${SupportedRegions.symbol(code)}'),
+                ),
             ],
             onChanged: (v) => setState(() => _currency = v!),
           ),

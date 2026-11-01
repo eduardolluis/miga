@@ -27,7 +27,9 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final title = recipe.contentFor(Localizations.localeOf(context).languageCode).title;
+    final title = recipe
+        .contentFor(Localizations.localeOf(context).languageCode)
+        .title;
     return ClipRRect(
       key: ValueKey('recipe-card-${recipe.id}'),
       borderRadius: BorderRadius.circular(18),
@@ -38,14 +40,18 @@ class RecipeCard extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              RecipeImage(index: recipe.imageIndex),
+              RecipeImage(photo: recipe.photo),
               const DecoratedBox(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     stops: [0, .48, 1],
-                    colors: [Color(0x3F000000), Colors.transparent, Color(0xDD101B0E)],
+                    colors: [
+                      Color(0x3F000000),
+                      Colors.transparent,
+                      Color(0xDD101B0E),
+                    ],
                   ),
                 ),
               ),
@@ -57,7 +63,10 @@ class RecipeCard extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 9,
+                        vertical: 5,
+                      ),
                       decoration: BoxDecoration(
                         color: const Color(0xFFE8F3DD),
                         borderRadius: BorderRadius.circular(30),
@@ -99,7 +108,8 @@ class RecipeCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(title,
+                    Text(
+                      title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -111,10 +121,20 @@ class RecipeCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 7),
-                    Wrap(spacing: 9, runSpacing: 2, children: [
-                      _Metadata(icon: Icons.schedule_rounded, label: l.recipeMinutes(recipe.minutes)),
-                      _Metadata(icon: Icons.restaurant_outlined, label: '${recipe.servings}'),
-                    ]),
+                    Wrap(
+                      spacing: 9,
+                      runSpacing: 2,
+                      children: [
+                        _Metadata(
+                          icon: Icons.schedule_rounded,
+                          label: l.recipeMinutes(recipe.minutes),
+                        ),
+                        _Metadata(
+                          icon: Icons.restaurant_outlined,
+                          label: '${recipe.servings}',
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

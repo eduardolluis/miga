@@ -16,7 +16,6 @@ import 'package:miga/features/budget/presentation/spending_page.dart';
 import 'package:miga/features/pantry/presentation/pantry_sheet.dart';
 import 'package:miga/features/profile/presentation/preferences_sheet.dart';
 import 'package:miga/features/meal_plan/presentation/sheets/plan_recipe_sheet.dart';
-import 'package:miga/features/meal_plan/domain/planned_recipe.dart';
 
 import 'package:flutter/material.dart';
 import 'package:miga/features/budget/data/recipe_price_store.dart';
@@ -27,6 +26,8 @@ import 'package:miga/app/navigation/widgets/app_bottom_navigation.dart';
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/core/theme/app_theme.dart';
 import 'package:miga/core/ui/deferred_progress.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
+import 'package:miga/app/navigation/widgets/app_page_skeleton.dart';
 import 'package:miga/core/ui/miga_notice.dart';
 import 'package:miga/features/notifications/presentation/notifications_page.dart';
 import 'package:miga/features/pantry/presentation/pantry_empty_sheet.dart';
@@ -36,7 +37,7 @@ import 'package:miga/features/budget/presentation/sheets/budget_editor_sheet.dar
 import 'package:miga/features/groceries/presentation/sheets/grocery_list_sheet.dart';
 import 'package:miga/features/home/application/home_controller.dart';
 import 'package:miga/features/home/application/surprise_quota_service.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+import 'package:miga/features/recipes/data/recipe_repository.dart';
 import 'package:miga/features/home/data/local_home_details_store.dart';
 import 'package:miga/features/home/domain/home_details_store.dart';
 import 'package:miga/features/home/presentation/home_screen.dart';
@@ -66,10 +67,12 @@ class AppShell extends StatefulWidget {
     this.onLanguageChanged,
     this.client,
     this.enablePriceEstimates = false,
+    this.recipeRepository,
   });
 
   final void Function(String?)? onLanguageChanged;
   final bool enablePriceEstimates;
+  final RecipeRepository? recipeRepository;
   final SupabaseClient? client;
   final AuthService? authService;
   final MealPlanStore? planStore;
@@ -89,6 +92,7 @@ class _AppShellState extends State<AppShell>
     value: 1,
   );
   late final HomeController _controller;
+  late final RecipeRepository _recipes;
   AppTab _tab = AppTab.home;
   int _budgetRecipeFilterRequest = 0;
   int _pantryRecipeFilterRequest = 0;
@@ -152,7 +156,17 @@ class _AppShellState extends State<AppShell>
         ..addListener(_cloudChanged);
       unawaited(_purchases!.initialize());
     }
+    final source = widget.client == null
+        ? null
+        : SupabaseRecipeSource(widget.client!);
+    _recipes =
+        widget.recipeRepository ??
+        RecipeRepository(
+          source: source,
+          cache: source == null ? null : LocalRecipeCache(source.imageBaseUrl),
+        );
     _controller = HomeController(
+      recipeRepository: _recipes,
       today: widget.today ?? DateTime.now(),
       planStore:
           widget.planStore ??
@@ -203,6 +217,7 @@ class _AppShellState extends State<AppShell>
     _purchases?.dispose();
     WidgetsBinding.instance.removeObserver(this);
     _controller.dispose();
+    if (widget.recipeRepository == null) _recipes.dispose();
     super.dispose();
   }
 
@@ -211,6 +226,7 @@ class _AppShellState extends State<AppShell>
     if (state == AppLifecycleState.resumed && widget.today == null) {
       _controller.syncTime(DateTime.now());
       unawaited(_syncNow());
+      unawaited(_recipes.refresh());
       unawaited(_purchases?.refreshEntitlement());
       unawaited(_refreshSurpriseQuota());
     }
@@ -615,9 +631,7 @@ class _AppShellState extends State<AppShell>
 
   Future<void> _surpriseMe() async {
     if (_surpriseBusy || !_controller.canEdit) return;
-    final recipes = RecipeCatalog.all
-        .where(_controller.preferences.allows)
-        .toList();
+    final recipes = _recipes.all.where(_controller.preferences.allows).toList();
     if (recipes.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('No recipes match your preferences.')),
@@ -710,7 +724,7 @@ class _AppShellState extends State<AppShell>
                   Padding(
                     padding: const EdgeInsets.only(top: 12),
                     child: Text(
-                      '${entry.key.split(':').first} · ${PlannedRecipe.parse(entry.value)!.recipe!.contentFor(l.localeName).title}',
+                      '${entry.key.split(':').first} · ${_controller.resolveMeal(entry.value)!.contentFor(l.localeName).title}',
                     ),
                   ),
               ],
@@ -1083,6 +1097,7 @@ class _AppShellState extends State<AppShell>
       currency: _controller.costCurrency,
     ),
     AppTab.recipes => RecipesPage(
+      repository: _recipes,
       onBack: () => setState(() => _tab = AppTab.home),
       budgetFilterRequest: _budgetRecipeFilterRequest,
       pantryFilterRequest: _pantryRecipeFilterRequest,
@@ -1195,7 +1210,18 @@ class _AppShellState extends State<AppShell>
                           child: IndexedStack(
                             index: _tab.index,
                             children: [
-                              for (final tab in AppTab.values) _body(tab),
+                              for (final tab in AppTab.values)
+                                TickerMode(
+                                  enabled: tab == _tab,
+                                  child: SkeletonContent(
+                                    loading: _controller.loading,
+                                    skeleton: AppPageSkeleton(tab: tab),
+                                    child: TickerMode(
+                                      enabled: !_controller.loading,
+                                      child: _body(tab),
+                                    ),
+                                  ),
+                                ),
                             ],
                           ),
                         ),

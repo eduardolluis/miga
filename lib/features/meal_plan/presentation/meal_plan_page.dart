@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
@@ -78,7 +79,7 @@ class MealPlanPage extends StatelessWidget {
         if (pricing) const LinearProgressIndicator(),
         if (estimateFor != null && mealCount > 0)
           _estimate(context, estimateFor!()),
-        if (loading) const Center(child: CircularProgressIndicator()),
+        if (loading) const SkeletonRows(count: 6),
         if (loadFailed) ...[
           Text(l10n.homeLoadError),
           TextButton(onPressed: onRetry, child: Text(l10n.homeRetry)),

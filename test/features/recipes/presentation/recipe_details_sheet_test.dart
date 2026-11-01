@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
 import 'package:miga/features/budget/domain/recipe_amount.dart';
 
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+import '../../../support/recipe_catalog.dart';
+
 import 'package:miga/features/recipes/presentation/sheets/recipe_details_sheet.dart';
 import 'package:miga/features/recipes/presentation/widgets/recipe_nutrition_panel.dart';
 import 'package:miga/l10n/app_localizations.dart';

@@ -2,6 +2,10 @@
   "name": "miga-database-tests",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node tests/rls.mjs" },
-  "devDependencies": { "@electric-sql/pglite": "0.5.14" }
+  "scripts": {
+    "test": "node tests/rls.mjs && node ../tool/import_recipes.test.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.14"
+  }
 }

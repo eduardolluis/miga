@@ -4,7 +4,9 @@ import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
 import 'package:miga/features/budget/domain/recipe_amount.dart';
 import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/features/home/presentation/widgets/budget_recipe_suggestions.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+
+import '../../../support/recipe_catalog.dart';
+
 import 'package:miga/l10n/app_localizations.dart';
 
 void main() {

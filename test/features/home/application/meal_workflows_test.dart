@@ -4,7 +4,9 @@ import 'package:miga/features/home/application/home_controller.dart';
 import 'package:miga/features/home/data/local_home_details_store.dart';
 import 'package:miga/features/meal_plan/data/local_meal_plan_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+
+import '../../../support/recipe_catalog.dart';
+
 import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 import 'package:miga/features/pantry/domain/pantry_item.dart';
 import 'package:miga/features/profile/domain/household_preferences.dart';
@@ -17,6 +19,7 @@ void main() {
   setUp(() async {
     SharedPreferences.setMockInitialValues({});
     controller = HomeController(
+      recipeRepository: RecipeCatalog.repository(),
       today: DateTime(2026, 10, 30, 8),
       planStore: LocalMealPlanStore('workflow'),
       detailsStore: LocalHomeDetailsStore('workflow'),

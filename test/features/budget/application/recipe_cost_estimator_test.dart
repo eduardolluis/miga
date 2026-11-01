@@ -3,7 +3,9 @@ import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
 import 'package:miga/features/budget/domain/recipe_amount.dart';
 import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/features/groceries/domain/supermarket_offer.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+
+import '../../../support/recipe_catalog.dart';
+
 import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 
 void main() {
@@ -204,7 +206,7 @@ void main() {
 
   test('Every recipe has explicit quantities for all of its ingredients', () {
     for (final recipe in RecipeCatalog.all) {
-      final amounts = RecipeAmounts.values[recipe.id]!;
+      final amounts = recipe.amounts;
       expect(amounts.map((a) => a.ingredient).toSet(), recipe.ingredients);
       expect(amounts.every((a) => a.amount > 0), isTrue);
     }

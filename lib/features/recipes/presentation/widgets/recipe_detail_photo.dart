@@ -1,12 +1,13 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:miga/features/recipes/domain/recipe_photo.dart';
 import 'package:miga/features/recipes/presentation/widgets/recipe_image.dart';
 
-/// Source dimensions reserve the correct space before the local photo decodes.
+/// Source dimensions reserve the correct space before the photo decodes.
 class RecipeDetailPhoto extends StatelessWidget {
-  const RecipeDetailPhoto({super.key, required this.index});
-  final int index;
+  const RecipeDetailPhoto({super.key, required this.photo});
+  final RecipePhoto photo;
 
   @override
   Widget build(BuildContext context) => LayoutBuilder(
@@ -15,8 +16,7 @@ class RecipeDetailPhoto extends StatelessWidget {
         140.0,
         math.min(380.0, MediaQuery.sizeOf(context).height * .48),
       );
-      final naturalHeight =
-          constraints.maxWidth / (RecipeImage.aspectRatioFor(index) ?? 4 / 3);
+      final naturalHeight = constraints.maxWidth / photo.aspectRatio;
       return AnimatedSize(
         duration: MediaQuery.disableAnimationsOf(context)
             ? Duration.zero
@@ -27,7 +27,7 @@ class RecipeDetailPhoto extends StatelessWidget {
           key: const ValueKey('recipe-detail-photo-frame'),
           width: double.infinity,
           height: naturalHeight.clamp(140.0, maxHeight),
-          child: RecipeImage(index: index, fit: BoxFit.contain),
+          child: RecipeImage(photo: photo, fit: BoxFit.contain),
         ),
       );
     },

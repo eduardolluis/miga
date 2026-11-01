@@ -5,7 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
 import 'package:miga/features/budget/data/recipe_price_store.dart';
 import 'package:miga/features/groceries/domain/supermarket_offer.dart';
-import 'package:miga/features/recipes/data/recipe_catalog.dart';
+
+import '../../../support/recipe_catalog.dart';
 
 List<StoreSearchResult> catalog(String query) {
   final title = switch (query.toLowerCase()) {

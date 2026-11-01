@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
@@ -332,7 +333,10 @@ class _SharedGroceryPageState extends State<SharedGroceryPage> {
           children: [
             Text(l.sharedListNote),
             const SizedBox(height: 20),
-            if (_busy) const LinearProgressIndicator(),
+            if (_busy && _selected == null && _lists.isEmpty)
+              const SkeletonRows()
+            else if (_busy)
+              const LinearProgressIndicator(),
             if (_failed) Text(_conflict ? l.syncConflict : l.cloudUnavailable),
             if (_selected == null) ...[
               FilledButton(

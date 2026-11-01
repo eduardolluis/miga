@@ -12,8 +12,17 @@ void main() {
     }
   });
   test('Manual amounts show the right currency without implied conversion', () {
-    expect(const WeeklyBudget(limit: 100, spent: 0, currency: 'MXN').format(100), 'MX\$100');
-    expect(const WeeklyBudget(limit: 100, spent: 0, currency: 'EUR').format(100), '€100');
-    expect(const GroceryItem('Bread', currency: 'COP').formatCents(12345), 'COP\$123.45');
+    expect(
+      const WeeklyBudget(limit: 100, spent: 0, currency: 'MXN').format(100),
+      'MX\$100',
+    );
+    expect(
+      const WeeklyBudget(limit: 100, spent: 0, currency: 'EUR').format(100),
+      '€100',
+    );
+    expect(
+      const GroceryItem('Bread', currency: 'COP').formatCents(12345),
+      'COP\$123.45',
+    );
   });
 }

@@ -49,3 +49,9 @@ app.*.map.json
 .widget_preview/
 
 supabase.env.json
+
+# Supabase CLI cache and project link metadata
+supabase/.temp/
+.kotlin/
+*.log
+

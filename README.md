@@ -15,10 +15,10 @@ real con Apple/Google y validación en servidor.
 
 ## Recetas y recursos
 
-El catálogo integrado contiene **54 recetas (18 desayunos, 18 almuerzos y
-18 cenas)** con nombres, pasos e ingredientes en español e inglés. Todas usan
-fotografías individuales locales de alta resolución y funcionan sin conexión.
-Consulta el [reporte de fotos](reports/recipe-photo-quality-2026-11-01.md).
+El catálogo inicial migra **54 recetas (18 desayunos, 18 almuerzos y 18 cenas)**
+a Supabase, con nombres, pasos e ingredientes en español e inglés. Las recetas
+y las fotografías descargadas usan caché local; las nuevas publicaciones no
+requieren actualizar la app. Consulta la [guía del catálogo](docs/recipe-catalog.md).
 
 ## Organización del código
 
@@ -238,3 +238,10 @@ npm --prefix supabase test
 ## Quick Actions (31 Oct 2026)
 
 Las acciones rápidas incluyen recetas según la despensa, alternativas económicas, Surprise me y generación del plan semanal. La cuota gratuita requiere aplicar `supabase/migrations/202610310002_surprise_quota.sql`.
+
+## Catálogo remoto de recetas
+
+El catálogo, sus cantidades y fotos se administran en Supabase. La app conserva
+una caché de datos reales para uso sin conexión; las recetas no se compilan en Dart.
+La importación inicial conserva los IDs de las 54 recetas existentes.
+Consulta [la guía de publicación e importación](docs/recipe-catalog.md).

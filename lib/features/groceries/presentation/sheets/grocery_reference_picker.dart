@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/groceries/data/dominican_price_source.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
@@ -73,7 +74,7 @@ class _GroceryReferencePickerState extends State<GroceryReferencePicker> {
               builder: (context, snapshot) {
                 if (snapshot.connectionState != ConnectionState.done) {
                   return const SliverToBoxAdapter(
-                    child: Center(child: CircularProgressIndicator()),
+                    child: SkeletonRows(count: 4),
                   );
                 }
                 if (snapshot.hasError) {

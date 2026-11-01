@@ -1,3 +1,5 @@
+import '../../support/recipe_catalog.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,7 +15,10 @@ Widget frame() => MaterialApp(
   locale: const Locale('en'),
   localizationsDelegates: AppLocalizations.localizationsDelegates,
   supportedLocales: AppLocalizations.supportedLocales,
-  home: AppShell(today: DateTime(2026, 10, 31)),
+  home: AppShell(
+    recipeRepository: RecipeCatalog.repository(),
+    today: DateTime(2026, 10, 31),
+  ),
 );
 
 void main() {

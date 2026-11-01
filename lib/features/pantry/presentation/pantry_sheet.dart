@@ -42,10 +42,7 @@ class _PantrySheetState extends State<_PantrySheet> {
               .where((p) => p.ingredient == ingredient)
               .firstOrNull
               ?.unit ??
-          RecipeAmounts.values.values
-              .expand((a) => a)
-              .firstWhere((a) => a.ingredient == ingredient)
-              .unit,
+          RecipeAmounts.unitFor(ingredient),
   };
   bool _invalid = false;
 

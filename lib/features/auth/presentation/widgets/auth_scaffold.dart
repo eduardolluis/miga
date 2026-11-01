@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 import 'package:flutter/services.dart';
 
 import 'package:miga/features/auth/presentation/theme/auth_form_theme.dart';
@@ -34,6 +35,7 @@ class AuthScaffold extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/onboarding/welcome.png',
+              frameBuilder: skeletonImageFrame,
               fit: BoxFit.cover,
               alignment: const Alignment(-0.1, 0.35),
               excludeFromSemantics: true,

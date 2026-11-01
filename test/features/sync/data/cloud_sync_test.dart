@@ -183,11 +183,17 @@ void main() {
   test('A stale editor cannot overwrite cloud data before reload', () async {
     remote = {'data': state('Other device'), 'revision': 4};
     await sync.sync();
-    expect(() => sync.writeState({'2026-10-30:lunch': 'Stale editor'}, const HomeDetails()), throwsStateError);
+    expect(
+      () => sync.writeState({
+        '2026-10-30:lunch': 'Stale editor',
+      }, const HomeDetails()),
+      throwsStateError,
+    );
     await sync.readState();
-    await sync.writeState({'2026-10-30:lunch': 'Reviewed edit'}, const HomeDetails());
+    await sync.writeState({
+      '2026-10-30:lunch': 'Reviewed edit',
+    }, const HomeDetails());
     await idle();
     expect(remote!['data']['plan']['2026-10-30:lunch'], 'Reviewed edit');
   });
-
 }

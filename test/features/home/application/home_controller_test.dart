@@ -1,3 +1,5 @@
+import '../../../support/recipe_catalog.dart';
+
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -18,6 +20,7 @@ void main() {
         'miga.home.v1.user': '{"budgets":{"2026-2-2":{"limit":4000,"spent":500,"currency":"DOP"}},"groceries":[{"name":"Pan","checked":false}]}',
       });
       final controller = HomeController(
+        recipeRepository: RecipeCatalog.repository(),
         today: DateTime(2026, 2, 4),
         planStore: LocalMealPlanStore('user'),
         detailsStore: LocalHomeDetailsStore('user'),
@@ -55,6 +58,7 @@ void main() {
     () async {
       SharedPreferences.setMockInitialValues({});
       final controller = HomeController(
+        recipeRepository: RecipeCatalog.repository(),
         today: DateTime(2026, 10, 30, 10, 59),
         planStore: LocalMealPlanStore('clock'),
         detailsStore: LocalHomeDetailsStore('clock'),

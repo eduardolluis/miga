@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miga/features/recipes/data/recipe_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:miga/app/navigation/app_shell.dart';
@@ -8,10 +9,16 @@ import 'package:miga/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:miga/l10n/app_localizations.dart';
 
 class MigaApp extends StatefulWidget {
-  const MigaApp({super.key, this.authService, this.client});
+  const MigaApp({
+    super.key,
+    this.authService,
+    this.client,
+    this.recipeRepository,
+  });
 
   final AuthService? authService;
   final SupabaseClient? client;
+  final RecipeRepository? recipeRepository;
   @override
   State<MigaApp> createState() => _MigaAppState();
 }
@@ -35,6 +42,7 @@ class _MigaAppState extends State<MigaApp> {
                 key: ValueKey(widget.authService!.session!.user.id),
                 authService: widget.authService,
                 client: widget.client,
+                recipeRepository: widget.recipeRepository,
                 enablePriceEstimates: true,
                 onLanguageChanged: (language) {
                   final locale = language == null ? null : Locale(language);

@@ -33,7 +33,10 @@ class SurpriseAllowance {
 }
 
 class SurpriseQuotaService {
-  SurpriseQuotaService({this.client, this.guestKey = 'miga_surprise_guest_used'});
+  SurpriseQuotaService({
+    this.client,
+    this.guestKey = 'miga_surprise_guest_used',
+  });
 
   final SupabaseClient? client;
   final String guestKey;

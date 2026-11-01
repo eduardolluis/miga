@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 import 'package:miga/features/home/application/home_controller.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
 import 'package:miga/features/meal_plan/presentation/meal_slot_presentation.dart';
@@ -43,8 +44,13 @@ class SavingsPage extends StatelessWidget {
             children: [
               Text(l.substitutionsNote),
               const SizedBox(height: 20),
-              if (alternatives.isEmpty) Text(l.savingsEmpty),
-              if (controller.pricing) const LinearProgressIndicator(),
+              if (alternatives.isEmpty)
+                if (controller.pricing || controller.loading)
+                  const SkeletonRows()
+                else
+                  Text(l.savingsEmpty)
+              else if (controller.pricing)
+                const LinearProgressIndicator(),
               for (final (date, slot, original, candidate) in alternatives)
                 Card(
                   child: Padding(

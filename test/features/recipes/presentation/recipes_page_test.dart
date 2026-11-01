@@ -1,3 +1,5 @@
+import '../../../support/recipe_catalog.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
@@ -20,6 +22,7 @@ Widget frame(
   supportedLocales: AppLocalizations.supportedLocales,
   home: Scaffold(
     body: RecipesPage(
+      repository: RecipeCatalog.repository(),
       onOpenRecipe: (_) {},
       budgetFilterRequest: request,
       pantryFilterRequest: pantryRequest,
@@ -45,6 +48,7 @@ void main() {
         supportedLocales: AppLocalizations.supportedLocales,
         home: Scaffold(
           body: RecipesPage(
+            repository: RecipeCatalog.repository(),
             onOpenRecipe: (_) {},
             onBack: () => returned = true,
           ),

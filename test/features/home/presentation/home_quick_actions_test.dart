@@ -13,15 +13,19 @@ Widget frame({
   locale: Locale(language),
   localizationsDelegates: AppLocalizations.localizationsDelegates,
   supportedLocales: AppLocalizations.supportedLocales,
-  home: Scaffold(body: SingleChildScrollView(child: HomeDashboardQuickActions(
-    onCookWithPantry: () => opened.add('pantry'),
-    onFindCheaper: () => opened.add('cheaper'),
-    onSurprise: () => opened.add('surprise'),
-    onGenerateWeek: () => opened.add('generate'),
-    surpriseRemaining: remaining,
-    surpriseBusy: busy,
-    isPro: isPro,
-  ))),
+  home: Scaffold(
+    body: SingleChildScrollView(
+      child: HomeDashboardQuickActions(
+        onCookWithPantry: () => opened.add('pantry'),
+        onFindCheaper: () => opened.add('cheaper'),
+        onSurprise: () => opened.add('surprise'),
+        onGenerateWeek: () => opened.add('generate'),
+        surpriseRemaining: remaining,
+        surpriseBusy: busy,
+        isPro: isPro,
+      ),
+    ),
+  ),
 );
 
 void main() {
@@ -43,8 +47,9 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('Three free uses then Pro; subscribers are unlimited',
-      (tester) async {
+  testWidgets('Three free uses then Pro; subscribers are unlimited', (
+    tester,
+  ) async {
     final opened = <String>[];
     await tester.pumpWidget(frame(opened: opened, remaining: 0));
     expect(find.text('0 of 3 free uses left'), findsOneWidget);

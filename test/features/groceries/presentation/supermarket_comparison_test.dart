@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:miga/core/ui/miga_skeleton.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
 import 'package:miga/features/groceries/domain/supermarket_offer.dart';
 import 'package:miga/features/groceries/presentation/sheets/supermarket_comparison_page.dart';
@@ -59,11 +60,12 @@ void main() {
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 350));
       expect(searched, 'Huevos');
-      expect(find.byType(CircularProgressIndicator), findsNWidgets(4));
+      expect(find.byType(SkeletonRows), findsWidgets);
       request.complete([
         StoreSearchResult(Supermarket.sirena, offers: [offer]),
       ]);
       await tester.pumpAndSettle();
+      expect(find.byType(SkeletonRows), findsNothing);
       expect(find.byType(CircularProgressIndicator), findsNothing);
       expect(find.text('RD\$10.83 per egg'), findsOneWidget);
       await tester.scrollUntilVisible(

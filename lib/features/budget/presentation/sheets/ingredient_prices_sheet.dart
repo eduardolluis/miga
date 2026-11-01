@@ -96,13 +96,15 @@ class _PricesSheetState extends State<_PricesSheet> {
                           labelText: ingredient.label(l.localeName),
                           prefixIcon: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 6),
-                            child: IngredientImage(ingredient: ingredient, size: 38),
+                            child: IngredientImage(
+                              ingredient: ingredient,
+                              size: 38,
+                            ),
                           ),
                           prefixText: '${widget.currency} ',
-                          suffixText: switch (RecipeAmounts.values.values
-                              .expand((a) => a)
-                              .firstWhere((a) => a.ingredient == ingredient)
-                              .unit) {
+                          suffixText: switch (RecipeAmounts.unitFor(
+                            ingredient,
+                          )) {
                             CostUnit.grams => '/ kg',
                             CostUnit.milliliters => '/ L',
                             CostUnit.pieces => '/ ${l.budgetPieces}',

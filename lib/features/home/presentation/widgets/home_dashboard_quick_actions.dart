@@ -41,54 +41,60 @@ class HomeDashboardQuickActions extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 14),
-        LayoutBuilder(builder: (context, constraints) => GridView.count(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          crossAxisCount: 2,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
-          // Keep each action around 134 logical px high on both phones
-          // and tablets, while allowing two-line translated labels.
-          childAspectRatio: (constraints.maxWidth - 12) / (2 * 134),
-          children: [
-            _ShortcutCard(
-              key: const ValueKey('home-quick-pantry'),
-              icon: Icons.kitchen_outlined,
-              title: spanish ? '¿Qué puedo cocinar?' : 'What can I cook?',
-              subtitle: spanish ? 'Con lo que ya tienes' : 'Use your pantry',
-              onTap: onCookWithPantry,
-            ),
-            _ShortcutCard(
-              key: const ValueKey('home-quick-cheaper'),
-              icon: Icons.savings_outlined,
-              title: spanish ? 'Alternativas económicas' : 'Find cheaper alternatives',
-              subtitle: spanish ? 'Sustituye ingredientes' : 'Save on ingredients',
-              proBadge: !isPro,
-              onTap: onFindCheaper,
-            ),
-            _ShortcutCard(
-              key: const ValueKey('home-quick-surprise'),
-              icon: Icons.casino_outlined,
-              title: spanish ? 'Sorpréndeme' : 'Surprise me',
-              subtitle: isPro
-                  ? (spanish ? 'Sin límites' : 'Unlimited')
-                  : (spanish
-                      ? '$surpriseRemaining de 3 usos gratis'
-                      : '$surpriseRemaining of 3 free uses left'),
-              proBadge: !isPro && surpriseRemaining == 0,
-              busy: surpriseBusy,
-              onTap: onSurprise,
-            ),
-            _ShortcutCard(
-              key: const ValueKey('home-quick-generate'),
-              icon: Icons.auto_awesome_outlined,
-              title: spanish ? 'Generar mi semana' : 'Generate my week',
-              subtitle: spanish ? 'Menú automático' : 'Automatic meal plan',
-              proBadge: !isPro,
-              onTap: onGenerateWeek,
-            ),
-          ],
-        )),
+        LayoutBuilder(
+          builder: (context, constraints) => GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            // Keep each action around 134 logical px high on both phones
+            // and tablets, while allowing two-line translated labels.
+            childAspectRatio: (constraints.maxWidth - 12) / (2 * 134),
+            children: [
+              _ShortcutCard(
+                key: const ValueKey('home-quick-pantry'),
+                icon: Icons.kitchen_outlined,
+                title: spanish ? '¿Qué puedo cocinar?' : 'What can I cook?',
+                subtitle: spanish ? 'Con lo que ya tienes' : 'Use your pantry',
+                onTap: onCookWithPantry,
+              ),
+              _ShortcutCard(
+                key: const ValueKey('home-quick-cheaper'),
+                icon: Icons.savings_outlined,
+                title: spanish
+                    ? 'Alternativas económicas'
+                    : 'Find cheaper alternatives',
+                subtitle: spanish
+                    ? 'Sustituye ingredientes'
+                    : 'Save on ingredients',
+                proBadge: !isPro,
+                onTap: onFindCheaper,
+              ),
+              _ShortcutCard(
+                key: const ValueKey('home-quick-surprise'),
+                icon: Icons.casino_outlined,
+                title: spanish ? 'Sorpréndeme' : 'Surprise me',
+                subtitle: isPro
+                    ? (spanish ? 'Sin límites' : 'Unlimited')
+                    : (spanish
+                          ? '$surpriseRemaining de 3 usos gratis'
+                          : '$surpriseRemaining of 3 free uses left'),
+                proBadge: !isPro && surpriseRemaining == 0,
+                busy: surpriseBusy,
+                onTap: onSurprise,
+              ),
+              _ShortcutCard(
+                key: const ValueKey('home-quick-generate'),
+                icon: Icons.auto_awesome_outlined,
+                title: spanish ? 'Generar mi semana' : 'Generate my week',
+                subtitle: spanish ? 'Menú automático' : 'Automatic meal plan',
+                proBadge: !isPro,
+                onTap: onGenerateWeek,
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -171,11 +177,14 @@ class _ShortcutCard extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-                      child: Text('PRO', style: TextStyle(
-                        color: Color(0xFF754D04),
-                        fontSize: 9,
-                        fontWeight: FontWeight.w800,
-                      )),
+                      child: Text(
+                        'PRO',
+                        style: TextStyle(
+                          color: Color(0xFF754D04),
+                          fontSize: 9,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
                     ),
                   ),
                 ),

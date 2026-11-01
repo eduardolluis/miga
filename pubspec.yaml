@@ -25,6 +25,7 @@ dependencies:
   http: ^1.6.0
   in_app_purchase: ^3.3.1
   sign_in_with_apple: ^8.2.0
+  cached_network_image: ^4.0.6
 
 dev_dependencies:
   flutter_test:
@@ -44,6 +45,7 @@ flutter:
   assets:
     - assets/google.svg
     - assets/images/onboarding/
-    - assets/images/home/
-    - assets/images/recipes/v2/
+    - assets/images/home/banner-plan.webp
+    - assets/images/home/banner-recipes.webp
+    - assets/images/home/banner-shop.webp
     - assets/images/ingredients/

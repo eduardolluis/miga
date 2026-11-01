@@ -336,7 +336,7 @@ class _RecipeDetailsState extends State<_RecipeDetails> {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(20),
-                          child: RecipeDetailPhoto(index: recipe.imageIndex),
+                          child: RecipeDetailPhoto(photo: recipe.photo),
                         ),
                         if (widget.onToggleFavorite != null)
                           Positioned(

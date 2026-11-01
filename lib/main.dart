@@ -5,7 +5,9 @@ import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/auth/data/supabase_auth_service.dart';
 
 const supabaseUrl = String.fromEnvironment('SUPABASE_URL');
-const supabasePublishableKey = String.fromEnvironment('SUPABASE_PUBLISHABLE_KEY');
+const supabasePublishableKey = String.fromEnvironment(
+  'SUPABASE_PUBLISHABLE_KEY',
+);
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -81,7 +83,9 @@ class _MigaBootstrapState extends State<_MigaBootstrap> {
                       ),
                       const SizedBox(height: 12),
                       OutlinedButton.icon(
-                        onPressed: () => setState(() { _loading = _initialize(); }),
+                        onPressed: () => setState(() {
+                          _loading = _initialize();
+                        }),
                         icon: const Icon(Icons.refresh_rounded),
                         label: const Text('Retry'),
                       ),

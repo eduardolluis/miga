@@ -17,21 +17,15 @@ abstract final class MigaUiCopy {
     'Ideas ordenadas según tu presupuesto. Los precios son estimados.',
     'Ideas ranked by your budget. Prices are estimates.',
   );
-  static String hero(BuildContext context) => choose(
-    context,
-    'Planifica,\ncocina y\nahorra.',
-    'Plan,\ncook &\nsave.',
-  );
-  static String today(BuildContext context) =>
-      choose(context, 'Hoy', 'Today');
-  static String ingredientCost(BuildContext context) => choose(
-    context, 'Costo de ingredientes', 'Ingredient cost',
-  );
+  static String hero(BuildContext context) =>
+      choose(context, 'Planifica,\ncocina y\nahorra.', 'Plan,\ncook &\nsave.');
+  static String today(BuildContext context) => choose(context, 'Hoy', 'Today');
+  static String ingredientCost(BuildContext context) =>
+      choose(context, 'Costo de ingredientes', 'Ingredient cost');
   static String incompletePrices(BuildContext context, int known, int total) =>
       choose(context, '$known/$total precios', '$known/$total prices');
-  static String withinBudget(BuildContext context) => choose(
-    context, 'Dentro de tu presupuesto', 'Within budget',
-  );
+  static String withinBudget(BuildContext context) =>
+      choose(context, 'Dentro de tu presupuesto', 'Within budget');
   static String filters(BuildContext context) =>
       choose(context, 'Filtros', 'Filters');
   static String sort(BuildContext context) =>
@@ -42,12 +36,11 @@ abstract final class MigaUiCopy {
       choose(context, 'Más rápidas', 'Quickest');
   static String newest(BuildContext context) =>
       choose(context, 'Más nuevas', 'Newest');
-  static String totalRecipes(BuildContext context, int count) =>
-      choose(
-        context,
-        '$count ${count == 1 ? 'receta' : 'recetas'}',
-        '$count ${count == 1 ? 'recipe' : 'recipes'}',
-      );
+  static String totalRecipes(BuildContext context, int count) => choose(
+    context,
+    '$count ${count == 1 ? 'receta' : 'recetas'}',
+    '$count ${count == 1 ? 'recipe' : 'recipes'}',
+  );
   static String shopping(BuildContext context) =>
       choose(context, 'Compras', 'Groceries');
   static String openShopping(BuildContext context) =>
