@@ -45,8 +45,5 @@ flutter:
     - assets/google.svg
     - assets/images/onboarding/
     - assets/images/home/
-    - assets/fonts/OFL.txt
-  fonts:
-    - family: LiberationSerif
-      fonts:
-        - asset: assets/fonts/LiberationSerif-Regular.ttf
+    - assets/images/recipes/v2/
+    - assets/images/ingredients/

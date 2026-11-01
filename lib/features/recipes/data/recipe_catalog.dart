@@ -1,6 +1,7 @@
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
 import 'package:miga/features/recipes/domain/recipe.dart';
 import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
+import 'package:miga/features/recipes/data/recipe_catalog_extra.dart';
 
 abstract final class RecipeCatalog {
   static List<Recipe> forSlot(MealSlot slot) =>
@@ -504,5 +505,6 @@ abstract final class RecipeCatalog {
         ],
       ),
     ),
+    ...RecipeCatalogExtra.all,
   ];
 }

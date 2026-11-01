@@ -1,0 +1,70 @@
+import 'dart:ui' as ui;
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:miga/features/recipes/presentation/widgets/recipe_detail_photo.dart';
+import 'package:miga/features/recipes/presentation/widgets/recipe_image.dart';
+
+void main() {
+  for (final index in [0, 49, 50]) {
+    testWidgets(
+      'Detail photo $index uses its natural aspect ratio without cropping',
+      (tester) async {
+        tester.view.devicePixelRatio = 1;
+        tester.view.physicalSize = const Size(390, 850);
+        addTearDown(tester.view.resetDevicePixelRatio);
+        addTearDown(tester.view.resetPhysicalSize);
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: SingleChildScrollView(
+                child: RecipeDetailPhoto(index: index),
+              ),
+            ),
+          ),
+        );
+        await tester.runAsync(() async {
+          final data = await rootBundle.load(RecipeImage.localAssetFor(index)!);
+          final codec = await ui.instantiateImageCodec(
+            data.buffer.asUint8List(),
+          );
+          final frame = await codec.getNextFrame();
+          frame.image.dispose();
+          codec.dispose();
+          await precacheImage(
+            RecipeImage.providerFor(index)!,
+            tester.element(find.byType(RecipeDetailPhoto)),
+          );
+        });
+        await tester.pumpAndSettle();
+        final image = tester.widget<RecipeImage>(find.byType(RecipeImage));
+        expect(image.fit, BoxFit.contain);
+        final size = tester.getSize(
+          find.byKey(const ValueKey('recipe-detail-photo-frame')),
+        );
+        expect(size.width, 390);
+        expect(
+          size.height,
+          closeTo(390 / RecipeImage.aspectRatioFor(index)!, 1),
+        );
+        expect(tester.takeException(), isNull);
+      },
+    );
+  }
+  testWidgets('Detail photo responds when a different recipe is opened', (
+    tester,
+  ) async {
+    Widget frame(int index) => MaterialApp(
+      home: Scaffold(
+        body: SingleChildScrollView(child: RecipeDetailPhoto(index: index)),
+      ),
+    );
+    await tester.pumpWidget(frame(49));
+    await tester.pumpAndSettle();
+    await tester.pumpWidget(frame(50));
+    await tester.pumpAndSettle();
+    expect(tester.widget<RecipeImage>(find.byType(RecipeImage)).index, 50);
+    expect(tester.takeException(), isNull);
+  });
+}
