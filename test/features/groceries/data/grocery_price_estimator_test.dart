@@ -20,6 +20,72 @@ SupermarketOffer offer(
 );
 
 void main() {
+  test('Previously saved wrong automatic estimates are excluded and can be cleared', () {
+    final dried = SupermarketOffer(
+      store: Supermarket.nacional,
+      product: 'Mango Deshidratado 50 Gr',
+      sku: 'wrong',
+      presentation: '50 Gr',
+      priceCents: 11995,
+      sourceUrl: 'https://supermercadosnacional.com/mango',
+      observedAt: DateTime.now(),
+    );
+    final item = const GroceryItem(
+      'Mango',
+      checked: true,
+      ingredientId: 'mango',
+      quantity: 6,
+    ).withOffer(dried, estimated: true);
+    expect(item.hasInvalidEstimate, isTrue);
+    expect(item.totalCents, isNull);
+    final cleared = item.withoutPrice();
+    expect(cleared.checked, isTrue);
+    expect(cleared.quantity, 6);
+    expect(cleared.ingredientId, 'mango');
+    expect(cleared.offer, isNull);
+    expect(cleared.unitPriceCents, isNull);
+  });
+
+  test(
+    'Grocery estimates apply the same fresh-product matching as recipes',
+    () async {
+      SupermarketOffer mango(String title, int cents) => SupermarketOffer(
+        store: Supermarket.nacional,
+        product: title,
+        sku: title,
+        presentation: title,
+        priceCents: cents,
+        sourceUrl: 'https://supermercadosnacional.com/mango',
+        observedAt: DateTime.now(),
+        categories: ['Frutas y Vegetales'],
+      );
+      final source = GroceryPriceEstimator(
+        search: (_) async => [
+          StoreSearchResult(
+            Supermarket.nacional,
+            offers: [
+              mango('Mango Deshidratado 50 Gr', 1000),
+              mango('Mango Grano De Oro, Und', 3900),
+            ],
+          ),
+        ],
+      );
+      expect(
+        (await source.estimate('Mango'))!.product,
+        'Mango Grano De Oro, Und',
+      );
+      final missing = GroceryPriceEstimator(
+        search: (_) async => [
+          StoreSearchResult(
+            Supermarket.nacional,
+            offers: [mango('Mango Deshidratado 50 Gr', 1000)],
+          ),
+        ],
+      );
+      expect(await missing.estimate('Mango'), isNull);
+    },
+  );
+
   test('Estimates an actual package and caches without treating club bulk as equivalent', () async {
     var calls = 0;
     final estimator = GroceryPriceEstimator(

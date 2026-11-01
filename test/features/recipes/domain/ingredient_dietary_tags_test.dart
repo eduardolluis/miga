@@ -7,13 +7,10 @@ void main() {
     for (final ingredient in RecipeIngredient.values) {
       expect(ingredient.dietaryTags, isA<Set<IngredientDietaryTag>>());
     }
-    expect(
-      RecipeIngredient.salmon.dietaryTags,
-      contains(IngredientDietaryTag.fish),
-    );
-    expect(
-      RecipeIngredient.granola.dietaryTags,
-      containsAll([IngredientDietaryTag.gluten, IngredientDietaryTag.treeNuts]),
-    );
+    expect(RecipeIngredient.salmon.dietaryTags, contains(IngredientDietaryTag.fish));
+    expect(RecipeIngredient.granola.dietaryTags, containsAll([
+      IngredientDietaryTag.gluten,
+      IngredientDietaryTag.treeNuts,
+    ]));
   });
 }

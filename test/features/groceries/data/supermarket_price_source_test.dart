@@ -62,6 +62,31 @@ List<Map<String, dynamic>> sirena({
 
 void main() {
   test(
+    'Sirena weighted offers preserve the actual purchasable quantity and price',
+    () async {
+      final product = sirena(amount: 30, productName: 'Zanahoria Fresca Lb');
+      final item =
+          (product.single['items'] as List).single as Map<String, dynamic>;
+      item['measurementUnit'] = 'lb';
+      item['unitMultiplier'] = 0.5;
+      final source = SupermarketPriceSource(
+        client: MockClient(
+          (request) async => request.url.host == 'nuevo.sirena.do'
+              ? http.Response(jsonEncode(product), 200)
+              : http.Response('', 503),
+        ),
+      );
+      final offer = (await source.search('zanahoria'))[1].offers.single;
+      expect(offer.priceCents, 1500);
+      expect(offer.measurementUnit, 'g');
+      expect(offer.purchaseQuantity, closeTo(226.796185, 0.0001));
+      final saved = SupermarketOffer.fromJson(offer.toJson());
+      expect(saved.purchaseQuantity, offer.purchaseQuantity);
+      expect(saved.measurementUnit, 'g');
+    },
+  );
+
+  test(
     'Jumbo uses its own store header and rejects Nacional context',
     () async {
       var wrongContext = false;

@@ -64,7 +64,7 @@ List<GroceryItem> groceriesForPlan({
     if (previous?.manualQuantity != true) {
       final pack = previous?.offer == null
           ? null
-          : RecipeCostEstimator.packageAmount(previous!.offer!.product);
+          : RecipeCostEstimator.packageForOffer(previous!.offer!);
       if (pack != null && pack.$2 == amount.unit) {
         quantity = math.max(1, (missing / pack.$1).ceil());
       } else if (amount.unit == CostUnit.pieces) {

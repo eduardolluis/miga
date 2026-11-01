@@ -185,7 +185,7 @@ class SupermarketPriceSource {
         '''query Products(\$term: String!) {
       storeConfig {base_url}
       products(search: \$term, pageSize: ${resultLimit.clamp(1, 48)}) {items {
-        __typename sku name url_key stock_status
+        __typename sku name url_key stock_status categories {name}
         price_range {minimum_price {final_price {value currency}}}
       }}
     }''';
@@ -233,6 +233,10 @@ class SupermarketPriceSource {
       offers.add(
         SupermarketOffer(
           store: store,
+          categories: [
+            for (final category in item['categories'] as List? ?? const [])
+              if (category['name'] is String) category['name'] as String,
+          ],
           product: title,
           sku: sku,
           presentation: title,
@@ -358,9 +362,29 @@ class SupermarketPriceSource {
       }
       for (final rawItem in product['items'] as List<dynamic>) {
         final item = rawItem as Map<String, dynamic>;
-        if (item['measurementUnit'] != 'un' || item['unitMultiplier'] != 1) {
+        final unit = item['measurementUnit'] as String?;
+        final multiplier = item['unitMultiplier'] as num?;
+        const factors = {
+          'lb': 453.59237,
+          'kg': 1000.0,
+          'g': 1.0,
+          'l': 1000.0,
+          'ml': 1.0,
+          'un': 1.0,
+        };
+        if (!factors.containsKey(unit) ||
+            multiplier == null ||
+            !multiplier.isFinite ||
+            multiplier <= 0 ||
+            (unit == 'un' && multiplier != 1)) {
           continue;
         }
+        final weighted = unit != 'un';
+        final baseUnit = unit == 'l' || unit == 'ml'
+            ? 'ml'
+            : unit == 'un'
+            ? 'un'
+            : 'g';
         final sku = item['itemId'] as String?;
         if (sku == null) continue;
         for (final rawSeller in item['sellers'] as List<dynamic>) {
@@ -379,11 +403,19 @@ class SupermarketPriceSource {
           offers.add(
             SupermarketOffer(
               store: Supermarket.sirena,
+              categories:
+                  (product['categories'] as List?)?.cast<String>() ?? const [],
               product: title,
               sku: sku,
-              presentation: '$title · ${item['name'] ?? ''}',
+              presentation: weighted
+                  ? '$title · $multiplier $unit'
+                  : '$title · ${item['name'] ?? ''}',
+              purchaseQuantity: weighted
+                  ? (multiplier * factors[unit]!).toDouble()
+                  : null,
+              measurementUnit: weighted ? baseUnit : null,
               ean: item['ean'] as String?,
-              priceCents: (amount * 100).round(),
+              priceCents: (amount * multiplier * 100).round(),
               sourceUrl: link,
               observedAt: _now(),
             ),

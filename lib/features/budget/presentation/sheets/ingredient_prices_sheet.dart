@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:miga/features/budget/domain/recipe_amount.dart';
 import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
+import 'package:miga/features/recipes/presentation/widgets/ingredient_image.dart';
 import 'package:miga/l10n/app_localizations.dart';
 
 Future<Map<String, int>?> showIngredientPrices(
@@ -93,6 +94,10 @@ class _PricesSheetState extends State<_PricesSheet> {
                         ),
                         decoration: InputDecoration(
                           labelText: ingredient.label(l.localeName),
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 6),
+                            child: IngredientImage(ingredient: ingredient, size: 38),
+                          ),
                           prefixText: '${widget.currency} ',
                           suffixText: switch (RecipeAmounts.values.values
                               .expand((a) => a)

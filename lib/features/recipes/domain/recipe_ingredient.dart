@@ -34,7 +34,19 @@ enum RecipeIngredient {
   spinach('Spinach', 'Espinaca'),
   lentils('Lentils', 'Lentejas'),
   celery('Celery', 'Apio'),
-  vegetableStock('Vegetable stock', 'Caldo de vegetales');
+  vegetableStock('Vegetable stock', 'Caldo de vegetales'),
+  apple('Apple', 'Manzana'),
+  peanutButter('Peanut butter', 'Mantequilla de maní'),
+  tortilla('Wheat tortilla', 'Tortilla de trigo'),
+  blackBeans('Black beans', 'Habichuelas negras'),
+  tuna('Tuna', 'Atún'),
+  groundBeef('Ground beef', 'Carne molida'),
+  bellPepper('Bell pepper', 'Pimiento'),
+  mushrooms('Mushrooms', 'Champiñones'),
+  zucchini('Zucchini', 'Calabacín'),
+  pineapple('Pineapple', 'Piña'),
+  tofu('Tofu', 'Tofu'),
+  quinoa('Quinoa', 'Quinoa');
 
   const RecipeIngredient(this.en, this.es);
   final String en;

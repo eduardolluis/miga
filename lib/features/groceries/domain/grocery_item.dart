@@ -1,5 +1,7 @@
 import 'package:miga/core/region/supported_regions.dart';
+import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 import 'package:miga/features/groceries/domain/grocery_price_reference.dart';
+import 'package:miga/features/groceries/domain/grocery_product.dart';
 import 'package:miga/features/groceries/domain/supermarket_offer.dart';
 import 'package:miga/features/budget/domain/recipe_amount.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
@@ -38,6 +40,58 @@ class GroceryItem {
   final bool planGenerated;
   bool get fromPlan => planGenerated;
 
+  RecipeIngredient? get ingredientForPricing {
+    return RecipeIngredient.values
+            .where((v) => v.name == ingredientId)
+            .firstOrNull ??
+        GroceryProduct.ingredient(name);
+  }
+
+  GroceryItem normalizedForPricing() {
+    final ingredient = ingredientForPricing;
+    if (ingredient == null) return this;
+    final count = RegExp(r'^(\d+(?:[.,]\d+)?)\s+').firstMatch(name.trim());
+    final pieces = ingredient == RecipeIngredient.eggs && count != null
+        ? double.tryParse(count[1]!.replaceAll(',', '.'))
+        : null;
+    final normalized = GroceryItem(
+      name,
+      checked: checked,
+      quantity: quantity,
+      currency: currency,
+      unitPriceCents: unitPriceCents,
+      reference: reference,
+      offer: offer,
+      isEstimated: isEstimated,
+      ingredientId: ingredient.name,
+      requiredAmount: requiredAmount ?? pieces,
+      requiredUnit: requiredUnit ?? (pieces != null ? CostUnit.pieces : null),
+      manualQuantity: manualQuantity,
+      planGenerated: planGenerated,
+    );
+    return offer != null && !manualQuantity
+        ? normalized.withOffer(offer!, estimated: isEstimated)
+        : normalized;
+  }
+
+  bool get hasInvalidEstimate =>
+      isEstimated &&
+      offer != null &&
+      ingredientForPricing != null &&
+      !RecipeCostEstimator.matchesOffer(ingredientForPricing!, offer!);
+
+  GroceryItem withoutPrice() => GroceryItem(
+    name,
+    checked: checked,
+    quantity: quantity,
+    currency: currency,
+    ingredientId: ingredientId,
+    requiredAmount: requiredAmount,
+    requiredUnit: requiredUnit,
+    manualQuantity: manualQuantity,
+    planGenerated: planGenerated,
+  );
+
   GroceryItem copyWith({
     bool? checked,
     int? quantity,
@@ -62,14 +116,14 @@ class GroceryItem {
   );
   int? get totalCents =>
       unitPriceCents == null ||
+          hasInvalidEstimate ||
           unitPriceCents! < 0 ||
           quantity <= 0 ||
           (offer?.isStale ?? false) ||
           (requiredAmount != null &&
               !manualQuantity &&
               offer != null &&
-              RecipeCostEstimator.packageAmount(offer!.product)?.$2 !=
-                  requiredUnit)
+              RecipeCostEstimator.packageForOffer(offer!)?.$2 != requiredUnit)
       ? null
       : unitPriceCents! * quantity;
 
@@ -98,7 +152,7 @@ class GroceryItem {
 
   int _packagesFor(SupermarketOffer value) {
     if (requiredAmount == null || manualQuantity) return quantity;
-    final pack = RecipeCostEstimator.packageAmount(value.product);
+    final pack = RecipeCostEstimator.packageForOffer(value);
     if (pack == null || pack.$2 != requiredUnit) return quantity;
     return math.max(1, (requiredAmount! / pack.$1).ceil());
   }
@@ -144,7 +198,7 @@ class GroceryItem {
     offer: json['offer'] == null
         ? null
         : SupermarketOffer.fromJson(json['offer'] as Map<String, dynamic>),
-  );
+  ).normalizedForPricing();
 }
 
 class GroceryTotals {

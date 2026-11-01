@@ -20,6 +20,9 @@ class SupermarketOffer {
     required this.observedAt,
     this.currency = 'DOP',
     this.ean,
+    this.purchaseQuantity,
+    this.measurementUnit,
+    this.categories = const [],
   });
   final Supermarket store;
   final String product;
@@ -30,6 +33,9 @@ class SupermarketOffer {
   final DateTime observedAt;
   final String currency;
   final String? ean;
+  final double? purchaseQuantity;
+  final String? measurementUnit;
+  final List<String> categories;
   bool get isStale => isStaleAt(DateTime.now());
   bool isStaleAt(DateTime now) {
     final age = now.toUtc().difference(observedAt.toUtc());
@@ -46,6 +52,9 @@ class SupermarketOffer {
     'observedAt': observedAt.toUtc().toIso8601String(),
     'currency': currency,
     'ean': ?ean,
+    'purchaseQuantity': ?purchaseQuantity,
+    'measurementUnit': ?measurementUnit,
+    if (categories.isNotEmpty) 'categories': categories,
   };
 
   factory SupermarketOffer.fromJson(Map<String, dynamic> json) =>
@@ -59,6 +68,9 @@ class SupermarketOffer {
         observedAt: DateTime.parse(json['observedAt'] as String),
         currency: json['currency'] as String,
         ean: json['ean'] as String?,
+        purchaseQuantity: (json['purchaseQuantity'] as num?)?.toDouble(),
+        measurementUnit: json['measurementUnit'] as String?,
+        categories: (json['categories'] as List?)?.cast<String>() ?? const [],
       );
 }
 

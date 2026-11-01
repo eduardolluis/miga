@@ -66,7 +66,7 @@ class _BudgetEditorState extends State<_BudgetEditor> {
               Text(
                 l10n.homeBudget,
                 style: const TextStyle(
-                  fontFamily: 'LiberationSerif',
+                  fontFamily: 'Georgia',
                   fontSize: 28,
                 ),
               ),
@@ -142,10 +142,7 @@ class _BudgetEditorState extends State<_BudgetEditor> {
                 decoration: InputDecoration(labelText: l10n.homeCurrency),
                 items: [
                   for (final code in SupportedRegions.currencies)
-                    DropdownMenuItem(
-                      value: code,
-                      child: Text('$code · ${SupportedRegions.symbol(code)}'),
-                    ),
+                    DropdownMenuItem(value: code, child: Text('$code · ${SupportedRegions.symbol(code)}')),
                 ],
                 onChanged: (value) => _currency = value!,
               ),

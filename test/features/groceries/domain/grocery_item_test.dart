@@ -2,8 +2,71 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
 import 'package:miga/features/groceries/domain/grocery_price_reference.dart';
 import 'package:miga/features/groceries/domain/supermarket_offer.dart';
+import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
+import 'package:miga/features/budget/domain/recipe_amount.dart';
+import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 
 void main() {
+  test(
+    'Egg carton notation keeps six eggs separate from one purchase package',
+    () {
+      final offer = SupermarketOffer(
+        store: Supermarket.sirena,
+        product: 'Huevos Extra Grandes Blanco 6/1 Endy',
+        sku: 'eggs',
+        presentation: '1 Und.',
+        priceCents: 6500,
+        sourceUrl: 'https://nuevo.sirena.do/huevos/p',
+        observedAt: DateTime.now(),
+      );
+      expect(RecipeCostEstimator.packageForOffer(offer), (
+        6.0,
+        CostUnit.pieces,
+      ));
+      expect(RecipeCostEstimator.packageAmount('Huevos Endy 30/1'), (
+        30.0,
+        CostUnit.pieces,
+      ));
+      final item = const GroceryItem('2 eggs')
+          .normalizedForPricing()
+          .withOffer(offer, estimated: true);
+      expect(item.requiredAmount, 2);
+      expect(item.ingredientForPricing, RecipeIngredient.eggs);
+      expect(item.quantity, 1);
+      expect(item.totalCents, 6500);
+      final restored = GroceryItem.fromJson({...item.toJson(), 'quantity': 2});
+      expect(restored.quantity, 1);
+      expect(restored.totalCents, 6500);
+      expect(
+        GroceryItem.fromJson({
+          ...item.toJson(),
+          'quantity': 2,
+          'manualQuantity': true,
+        }).quantity,
+        2,
+      );
+    },
+  );
+
+  test('Recipe shopping text resolves its ingredient without matching arbitrary prose', () {
+    expect(
+      const GroceryItem('2 cups spinach').ingredientForPricing,
+      RecipeIngredient.spinach,
+    );
+    expect(
+      const GroceryItem('1 tablespoon olive oil').ingredientForPricing,
+      RecipeIngredient.oliveOil,
+    );
+    expect(
+      const GroceryItem('2 medium sweet potatoes').ingredientForPricing,
+      RecipeIngredient.sweetPotato,
+    );
+    expect(
+      const GroceryItem('1 taza leche').ingredientForPricing,
+      RecipeIngredient.milk,
+    );
+    expect(const GroceryItem('egg shampoo').ingredientForPricing, isNull);
+  });
   test(
     'Expired online prices remain auditable but cannot silently enter totals',
     () {
