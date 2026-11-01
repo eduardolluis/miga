@@ -13,6 +13,10 @@ import 'package:miga/features/groceries/domain/supermarket_offer.dart';
 import 'package:miga/features/stores/data/nearby_stores.dart';
 import 'package:miga/l10n/app_localizations.dart';
 import 'package:miga/features/budget/domain/recipe_amount.dart';
+import 'package:miga/features/groceries/domain/grocery_product.dart';
+import 'package:miga/features/groceries/presentation/widgets/grocery_pro_actions.dart';
+import 'package:miga/features/groceries/presentation/widgets/grocery_price_summary.dart';
+import 'package:miga/features/recipes/presentation/widgets/ingredient_image.dart';
 
 Future<List<GroceryItem>?> showGroceryList(
   BuildContext context,
@@ -22,6 +26,9 @@ Future<List<GroceryItem>?> showGroceryList(
   List<GroceryItem> Function(List<GroceryItem>)? onGenerateFromPlan,
   bool syncWithPlan = false,
   bool allowEstimates = true,
+  bool isPro = false,
+  VoidCallback? onUpgrade,
+  Future<bool> Function(List<GroceryItem>)? onComplete,
   ValueChanged<bool>? onSyncChanged,
 }) => showModalBottomSheet<List<GroceryItem>>(
   context: context,
@@ -38,6 +45,9 @@ Future<List<GroceryItem>?> showGroceryList(
       onGenerateFromPlan: onGenerateFromPlan,
       syncWithPlan: syncWithPlan,
       allowEstimates: allowEstimates,
+      isPro: isPro,
+      onUpgrade: onUpgrade,
+      onComplete: onComplete,
       onSyncChanged: onSyncChanged,
     ),
   ),
@@ -51,6 +61,9 @@ class _GroceryList extends StatefulWidget {
     this.onGenerateFromPlan,
     this.syncWithPlan = false,
     this.allowEstimates = true,
+    this.isPro = false,
+    this.onUpgrade,
+    this.onComplete,
     this.onSyncChanged,
   });
   final List<GroceryItem> items;
@@ -59,6 +72,9 @@ class _GroceryList extends StatefulWidget {
   final List<GroceryItem> Function(List<GroceryItem>)? onGenerateFromPlan;
   final bool syncWithPlan;
   final bool allowEstimates;
+  final bool isPro;
+  final VoidCallback? onUpgrade;
+  final Future<bool> Function(List<GroceryItem>)? onComplete;
   final ValueChanged<bool>? onSyncChanged;
 
   @override
@@ -67,7 +83,9 @@ class _GroceryList extends StatefulWidget {
 
 class _GroceryListState extends State<_GroceryList> {
   final _input = TextEditingController();
-  late final _items = List<GroceryItem>.of(widget.items);
+  late final _items = widget.items
+      .map((item) => item.normalizedForPricing())
+      .toList();
 
   final _estimator = GroceryPriceEstimator();
   final _loading = <String>{};
@@ -76,7 +94,7 @@ class _GroceryListState extends State<_GroceryList> {
   final _requests = <String, Future<void>>{};
   bool _saving = false;
   bool _added = false;
-  late bool _syncPlan = widget.syncWithPlan;
+  late bool _syncPlan = widget.isPro && widget.syncWithPlan;
 
   @override
   void initState() {
@@ -108,17 +126,27 @@ class _GroceryListState extends State<_GroceryList> {
         _attempted.contains(name)) {
       return;
     }
-    final original = _items[index];
+    var original = _items[index];
     if (original.currency != 'DOP' ||
         (original.unitPriceCents != null &&
-            !(original.offer?.isStale ?? false))) {
+            !(original.offer?.isStale ?? false) &&
+            !original.hasInvalidEstimate)) {
       return;
+    }
+    if (original.hasInvalidEstimate) {
+      original = original.withoutPrice();
+      setState(() => _items[index] = original);
     }
     _attempted.add(name);
     setState(() => _loading.add(name));
     SupermarketOffer? offer;
     try {
-      offer = await (widget.estimate ?? _estimator.estimate)(name);
+      offer = widget.estimate != null
+          ? await widget.estimate!(name)
+          : await _estimator.estimate(
+              name,
+              ingredient: original.ingredientForPricing,
+            );
     } catch (_) {}
     if (!mounted) return;
     setState(() {
@@ -153,7 +181,9 @@ class _GroceryListState extends State<_GroceryList> {
       if (!_items.any(
         (item) => item.name.toLowerCase() == name.toLowerCase(),
       )) {
-        _items.add(GroceryItem(name, currency: widget.currency));
+        _items.add(
+          GroceryItem(name, currency: widget.currency).normalizedForPricing(),
+        );
         added = true;
       }
       _input.clear();
@@ -162,7 +192,11 @@ class _GroceryListState extends State<_GroceryList> {
     unawaited(_estimate(name));
   }
 
-  void _generateFromPlan() {
+  Future<void> _generateFromPlan() async {
+    if (!widget.isPro) {
+      widget.onUpgrade?.call();
+      return;
+    }
     if (widget.onGenerateFromPlan == null || _saving) return;
     final items = widget.onGenerateFromPlan!(List<GroceryItem>.of(_items));
     final l10n = AppLocalizations.of(context)!;
@@ -173,7 +207,8 @@ class _GroceryListState extends State<_GroceryList> {
         ..addAll(items);
     });
     widget.onSyncChanged?.call(_syncPlan);
-    unawaited(_estimateExisting());
+    await _estimateExisting();
+    if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
@@ -198,6 +233,18 @@ class _GroceryListState extends State<_GroceryList> {
     if (mounted) Navigator.of(context).pop(List<GroceryItem>.of(_items));
   }
 
+  Future<void> _complete() async {
+    if (_saving || widget.onComplete == null) return;
+    setState(() => _saving = true);
+    final success = await widget.onComplete!(List.of(_items));
+    if (!mounted) return;
+    if (success) {
+      Navigator.pop(context);
+    } else {
+      setState(() => _saving = false);
+    }
+  }
+
   Future<void> _editPrice(int index) async {
     final name = _items[index].name;
     _manual.add(name);
@@ -210,23 +257,20 @@ class _GroceryListState extends State<_GroceryList> {
   }
 
   Future<void> _comparePrices() async {
-    final index = _items.length == 1
-        ? 0
-        : await showDialog<int>(
-            context: context,
-            builder: (_) => _GroceryCompareItemDialog(items: _items),
-          );
-    if (!mounted || index == null) return;
-    final offer = await showDialog<SupermarketOffer>(
-      context: context,
-      builder: (_) => SupermarketComparisonPage(
-        query: _items[index].offer?.product ?? _items[index].name,
-      ),
-    );
-    if (!mounted || offer == null) return;
+    if (!widget.isPro) {
+      widget.onUpgrade?.call();
+      return;
+    }
+    final updated = await compareGroceryItems(context, List.of(_items));
+    if (!mounted || updated == null) return;
     setState(() {
-      _manual.add(_items[index].name);
-      _items[index] = _items[index].withOffer(offer);
+      for (final item in updated) {
+        final index = _items.indexWhere((old) => old.name == item.name);
+        if (index >= 0 && !identical(_items[index].offer, item.offer)) {
+          _manual.add(item.name);
+          _items[index] = item;
+        }
+      }
     });
   }
 
@@ -268,55 +312,43 @@ class _GroceryListState extends State<_GroceryList> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final totals = GroceryTotals(_items, widget.currency);
-    final money = GroceryItem('', currency: widget.currency);
-    final checked = _items.where((item) => item.checked).length;
+    final l = AppLocalizations.of(context)!;
+    final complete =
+        _items.isNotEmpty &&
+        _items.every((item) => item.checked) &&
+        widget.onComplete != null;
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
       child: DraggableScrollableSheet(
         expand: false,
-        initialChildSize: 0.75,
-        maxChildSize: 0.95,
-        minChildSize: 0.4,
+        initialChildSize: .85,
+        maxChildSize: .95,
+        minChildSize: .4,
         builder: (context, controller) => Column(
           children: [
             Expanded(
               child: ListView(
                 controller: controller,
-                padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                 children: [
                   Text(
-                    l10n.homeGroceryList,
+                    l.homeGroceryList,
                     style: const TextStyle(
-                      fontFamily: 'LiberationSerif',
+                      fontFamily: 'Georgia',
                       fontSize: 28,
+                      color: AppColors.ink,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 6),
                   Text(
-                    l10n.homeGroceryDescription,
-                    style: const TextStyle(color: AppColors.muted, height: 1.5),
+                    l.groceryEditorIntro,
+                    style: const TextStyle(
+                      color: AppColors.muted,
+                      fontSize: 13,
+                      height: 1.4,
+                    ),
                   ),
-                  const SizedBox(height: 12),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      if (widget.onGenerateFromPlan != null)
-                        FilledButton.tonalIcon(
-                          onPressed: _generateFromPlan,
-                          icon: const Icon(Icons.auto_awesome, size: 18),
-                          label: Text(l10n.groceryGenerateFromPlan),
-                        ),
-                      OutlinedButton.icon(
-                        onPressed: _items.isEmpty ? null : _comparePrices,
-                        icon: const Icon(Icons.compare_arrows_rounded),
-                        label: Text(l10n.storeCompare),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 18),
                   TextField(
                     controller: _input,
                     maxLength: 100,
@@ -325,11 +357,11 @@ class _GroceryListState extends State<_GroceryList> {
                     onChanged: (_) => setState(() => _added = false),
                     onSubmitted: (_) => _add(),
                     decoration: InputDecoration(
-                      labelText: l10n.homeGroceryAdd,
-                      hintText: l10n.homeGroceryHint,
+                      counterText: '',
+                      hintText: l.homeGroceryAdd,
                       suffixIcon: IconButton(
-                        tooltip: l10n.homeGroceryAdd,
-                        onPressed: _add,
+                        tooltip: l.homeGroceryAdd,
+                        onPressed: _saving ? null : _add,
                         icon: const Icon(Icons.add),
                       ),
                     ),
@@ -340,252 +372,131 @@ class _GroceryListState extends State<_GroceryList> {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 8),
                         child: Text(
-                          l10n.groceryItemAdded,
-                          style: const TextStyle(color: AppColors.olive),
+                          l.groceryItemAdded,
+                          style: const TextStyle(
+                            color: AppColors.olive,
+                            fontSize: 12,
+                          ),
                         ),
                       ),
                     ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 16),
                   if (_items.isNotEmpty) ...[
-                    Container(
-                      padding: const EdgeInsets.all(18),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFEBEDDF),
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            totals.priced > 0
-                                ? l10n.groceryEstimate(
-                                    money.formatCents(totals.subtotalCents),
-                                  )
-                                : l10n.groceryPricesNeeded,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 17,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            totals.missing > 0
-                                ? l10n.groceryPriceCoverage(
-                                    totals.missing,
-                                    widget.currency,
-                                  )
-                                : l10n.groceryEstimateNote,
-                            style: const TextStyle(
-                              color: AppColors.muted,
-                              height: 1.4,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          Text(
-                            l10n.groceryCartProgress(checked, _items.length),
-                          ),
-                          const SizedBox(height: 8),
-                          TweenAnimationBuilder<double>(
-                            tween: Tween(end: checked / _items.length),
-                            duration: MediaQuery.disableAnimationsOf(context)
-                                ? Duration.zero
-                                : const Duration(milliseconds: 220),
-                            builder: (_, value, _) => LinearProgressIndicator(
-                              value: value,
-                              color: AppColors.olive,
-                              backgroundColor: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              minHeight: 6,
-                            ),
-                          ),
-                        ],
-                      ),
+                    GroceryPriceSummary(
+                      items: _items,
+                      currency: widget.currency,
+                      loading: _loading.isNotEmpty,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 18),
                   ],
+                  GroceryProActions(
+                    isPro: widget.isPro,
+                    onUpgrade: widget.onUpgrade,
+                    onGenerate: widget.onGenerateFromPlan == null
+                        ? null
+                        : _generateFromPlan,
+                    onCompare: _items.isEmpty ? null : _comparePrices,
+                  ),
+                  const SizedBox(height: 20),
                   if (_items.isEmpty)
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 28),
                       child: Text(
-                        l10n.homeGroceryEmpty,
+                        l.homeGroceryEmpty,
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: AppColors.muted),
                       ),
                     ),
-                  for (var index = 0; index < _items.length; index++) ...[
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CheckboxListTile(
-                            contentPadding: EdgeInsets.zero,
-                            controlAffinity: ListTileControlAffinity.leading,
-                            value: _items[index].checked,
-                            title: Text(
-                              _items[index].name,
-                              style: TextStyle(
-                                decoration: _items[index].checked
-                                    ? TextDecoration.lineThrough
-                                    : null,
-                              ),
-                            ),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                if (_items[index].requiredAmount != null)
-                                  Text(
-                                    '${l10n.requiredAmountLabel}: ${_items[index].requiredAmount!.toStringAsFixed(1).replaceFirst(RegExp(r'\.0$'), '')} ${switch (_items[index].requiredUnit) {
-                                      CostUnit.grams => 'g',
-                                      CostUnit.milliliters => 'ml',
-                                      _ => l10n.budgetPieces,
-                                    }}',
-                                  ),
-                                if (itemPriceLabel(_items[index], l10n)
-                                    case final Widget price)
-                                  price,
-                              ],
-                            ),
-                            onChanged: (value) => setState(
-                              () => _items[index] = _items[index].withChecked(
-                                value!,
-                              ),
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          tooltip: l10n.homeGroceryRemove,
-                          onPressed: () =>
-                              setState(() => _items.removeAt(index)),
-                          icon: const Icon(Icons.close, size: 19),
-                        ),
-                      ],
-                    ),
-                    Wrap(
-                      spacing: 12,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(
-                                Icons.remove_circle_outline,
-                                size: 18,
-                              ),
-                              visualDensity: VisualDensity.compact,
-                              padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(
-                                minWidth: 26,
-                                minHeight: 26,
-                              ),
-                              onPressed: _items[index].quantity > 1
-                                  ? () => setState(
-                                      () => _items[index] = _items[index]
-                                          .withQuantity(
-                                            _items[index].quantity - 1,
-                                          ),
-                                    )
-                                  : null,
-                            ),
-                            Text(
-                              '${_items[index].quantity}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 13,
-                              ),
-                            ),
-                            IconButton(
-                              icon: const Icon(
-                                Icons.add_circle_outline,
-                                size: 18,
-                              ),
-                              visualDensity: VisualDensity.compact,
-                              padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(
-                                minWidth: 26,
-                                minHeight: 26,
-                              ),
-                              onPressed: _items[index].quantity >= 9999
-                                  ? null
-                                  : () => setState(
-                                      () => _items[index] = _items[index]
-                                          .withQuantity(
-                                            _items[index].quantity + 1,
-                                          ),
-                                    ),
-                            ),
-                          ],
-                        ),
-                        TextButton(
-                          key: ValueKey('grocery-price-$index'),
-                          onPressed: () => _editPrice(index),
-                          child: Text(
-                            _loading.contains(_items[index].name)
-                                ? l10n.groceryEstimating
-                                : (_items[index].offer?.isStale ?? false)
-                                ? l10n.storeRefreshPrice
-                                : _items[index].totalCents == null
-                                ? l10n.groceryEstimateUnavailable
-                                : '${_items[index].isEstimated ? '≈ ' : ''}${_items[index].formatCents(_items[index].totalCents!)}',
-                          ),
-                        ),
-                      ],
-                    ),
-                    if (_items[index].offer != null)
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextButton.icon(
-                          onPressed: () =>
-                              _storeMap(_items[index].offer!.store),
-                          icon: const Icon(Icons.map_outlined, size: 18),
-                          label: Text(
-                            '${_items[index].offer!.store.label} · ${l10n.storeNearby}',
-                          ),
-                        ),
-                      ),
-                  ],
-                  if (widget.onSyncChanged != null)
+                  for (var index = 0; index < _items.length; index++)
+                    _itemCard(index, l),
+                  if (widget.isPro && widget.onSyncChanged != null)
                     SwitchListTile(
                       contentPadding: EdgeInsets.zero,
-                      title: Text(l10n.syncGroceriesLabel),
-                      subtitle: Text(l10n.syncGroceriesNote),
+                      title: Text(
+                        l.syncGroceriesLabel,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      subtitle: Text(
+                        l.syncGroceriesNote,
+                        style: const TextStyle(fontSize: 12),
+                      ),
                       value: _syncPlan,
                       onChanged: _saving
                           ? null
                           : (value) {
                               setState(() => _syncPlan = value);
                               widget.onSyncChanged!(value);
-                              if (value) _generateFromPlan();
+                              if (value) unawaited(_generateFromPlan());
                             },
                     ),
-                  TextButton.icon(
-                    onPressed: _openReferences,
-                    icon: const Icon(Icons.open_in_new_rounded, size: 18),
-                    label: Text(l10n.groceryReferences),
-                  ),
-                  Text(
-                    l10n.groceryReferenceNote,
-                    style: const TextStyle(
-                      color: AppColors.muted,
-                      fontSize: 13,
-                      height: 1.4,
+                  ExpansionTile(
+                    tilePadding: EdgeInsets.zero,
+                    title: Text(
+                      l.groceryDetails,
+                      style: const TextStyle(fontSize: 13),
                     ),
+                    children: [
+                      Text(
+                        l.groceryEstimateNote,
+                        style: const TextStyle(
+                          color: AppColors.muted,
+                          fontSize: 12,
+                          height: 1.4,
+                        ),
+                      ),
+                      TextButton.icon(
+                        onPressed: _openReferences,
+                        icon: const Icon(Icons.open_in_new_rounded, size: 16),
+                        label: Text(
+                          l.groceryReferences,
+                          style: const TextStyle(fontSize: 12),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
-              child: SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  onPressed: _saving ? null : _save,
-                  child: Text(
-                    _saving
-                        ? l10n.groceryEstimating
-                        : _input.text.trim().isNotEmpty
-                        ? l10n.homeGroceryAdd
-                        : l10n.homeSave,
+            SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 12),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: _saving
+                        ? null
+                        : complete
+                        ? _complete
+                        : _save,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (_saving &&
+                            ModalRoute.of(context)?.isCurrent != false) ...[
+                          const SizedBox(
+                            width: 18,
+                            height: 18,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                        ],
+                        Flexible(
+                          child: Text(
+                            _saving
+                                ? l.groceryEstimating
+                                : complete
+                                ? l.groceryComplete
+                                : _input.text.trim().isNotEmpty
+                                ? l.homeGroceryAdd
+                                : l.homeSave,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -596,17 +507,231 @@ class _GroceryListState extends State<_GroceryList> {
     );
   }
 
-  Widget? itemPriceLabel(GroceryItem item, AppLocalizations l10n) =>
-      item.unitPriceCents == null
-      ? null
-      : Text(
-          '${item.isEstimated ? '${l10n.groceryAutoEstimate}\n' : ''}${item.quantity} × ${item.formatCents(item.unitPriceCents!)} · ${item.offer != null
-              ? '${item.offer!.presentation}\n${item.offer!.store.label} · ${item.offer!.observedAt.toLocal().toIso8601String().substring(0, 10)}'
-              : item.reference == null
-              ? l10n.groceryYourPrice
-              : '${item.reference!.presentation} · ${item.reference!.month} ${item.reference!.year} · Pro Consumidor'}',
-          style: const TextStyle(color: AppColors.muted, fontSize: 13),
+  Widget _itemCard(int index, AppLocalizations l) {
+    final item = _items[index];
+    final ingredient = item.ingredientForPricing;
+    final eggPrice = groceryEggUnitPrice(item, l);
+    final price = _loading.contains(item.name)
+        ? l.groceryEstimating
+        : item.totalCents == null
+        ? l.groceryEstimateUnavailable
+        : '${item.isEstimated ? '≈ ' : ''}${item.formatCents(item.totalCents!)}';
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFEFDF9),
+        border: Border.all(color: AppColors.line),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Checkbox(
+                key: ValueKey('grocery-check-$index'),
+                value: item.checked,
+                onChanged: _saving
+                    ? null
+                    : (value) => setState(
+                        () => _items[index] = _items[index].withChecked(value!),
+                      ),
+              ),
+              if (ingredient != null) ...[
+                IngredientImage(ingredient: ingredient, size: 40),
+                const SizedBox(width: 10),
+              ],
+              Expanded(
+                child: Text(
+                  ingredient?.label(l.localeName) ?? item.name,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    decoration: item.checked
+                        ? TextDecoration.lineThrough
+                        : null,
+                  ),
+                ),
+              ),
+              IconButton(
+                tooltip: l.homeGroceryRemove,
+                onPressed: _saving
+                    ? null
+                    : () => setState(() => _items.removeAt(index)),
+                icon: const Icon(
+                  Icons.close_rounded,
+                  size: 18,
+                  color: AppColors.muted,
+                ),
+              ),
+            ],
+          ),
+          if (item.requiredAmount != null)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 6, 12, 0),
+              child: Text(
+                '${l.requiredAmountLabel}: ${item.requiredAmount!.toStringAsFixed(1).replaceFirst(RegExp(r'\.0$'), '')} ${switch (item.requiredUnit) {
+                  CostUnit.grams => 'g',
+                  CostUnit.milliliters => 'ml',
+                  _ => l.budgetPieces,
+                }}',
+                style: const TextStyle(fontSize: 12, color: AppColors.muted),
+              ),
+            ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+            child: Text(
+              '${groceryPackageLabel(item, l)}${item.offer == null ? '' : ' · ${item.offer!.store.label}'}',
+              style: const TextStyle(fontSize: 12, color: AppColors.muted),
+            ),
+          ),
+          if (eggPrice != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Text(
+                eggPrice,
+                style: const TextStyle(fontSize: 12, color: AppColors.olive),
+              ),
+            ),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final controls = Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    tooltip: l.groceryDecrease,
+                    icon: const Icon(Icons.remove_circle_outline, size: 21),
+                    onPressed: _saving || item.quantity <= 1
+                        ? null
+                        : () => setState(
+                            () => _items[index] = _items[index].withQuantity(
+                              _items[index].quantity - 1,
+                            ),
+                          ),
+                  ),
+                  Text(
+                    '${item.quantity}',
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  IconButton(
+                    tooltip: l.groceryIncrease,
+                    icon: const Icon(Icons.add_circle_outline, size: 21),
+                    onPressed: _saving || item.quantity >= 9999
+                        ? null
+                        : () => setState(
+                            () => _items[index] = _items[index].withQuantity(
+                              _items[index].quantity + 1,
+                            ),
+                          ),
+                  ),
+                ],
+              );
+              final amount = TextButton(
+                key: ValueKey('grocery-price-$index'),
+                onPressed: _saving ? null : () => _editPrice(index),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (_loading.contains(item.name)) ...[
+                      const SizedBox(
+                        width: 14,
+                        height: 14,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                      const SizedBox(width: 6),
+                    ],
+                    Flexible(
+                      child: Text(
+                        price,
+                        textAlign: TextAlign.end,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+              if (constraints.maxWidth < 280 ||
+                  MediaQuery.textScalerOf(context).scale(14) > 21) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [controls, amount],
+                );
+              }
+              return Row(
+                children: [
+                  controls,
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: amount,
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+          if (item.offer != null)
+            Material(
+              color: Colors.transparent,
+              child: ExpansionTile(
+                tilePadding: const EdgeInsets.symmetric(horizontal: 12),
+                title: Text(
+                  l.groceryDetails,
+                  style: const TextStyle(fontSize: 12, color: AppColors.muted),
+                ),
+                childrenPadding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                children: [
+                  Text(
+                    item.offer!.product,
+                    style: const TextStyle(fontSize: 12, height: 1.4),
+                  ),
+                  TextButton.icon(
+                    onPressed: () => _storeMap(item.offer!.store),
+                    icon: const Icon(Icons.map_outlined, size: 17),
+                    label: Text(l.storeNearby),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+Future<List<GroceryItem>?> compareGroceryItems(
+  BuildContext context,
+  List<GroceryItem> items, {
+  Future<List<StoreSearchResult>> Function(String)? search,
+}) async {
+  final index = items.length == 1
+      ? 0
+      : await showDialog<int>(
+          context: context,
+          builder: (_) => _GroceryCompareItemDialog(items: items),
         );
+  if (!context.mounted || index == null) return null;
+  final item = items[index].normalizedForPricing();
+  final ingredient = item.ingredientForPricing;
+  final offer = await showDialog<SupermarketOffer>(
+    context: context,
+    builder: (_) => SupermarketComparisonPage(
+      query: ingredient?.es ?? GroceryProduct.name(item.name),
+      ingredient: ingredient,
+      search: search,
+    ),
+  );
+  if (offer == null) return null;
+  final updated = List<GroceryItem>.of(items);
+  updated[index] = item.withOffer(offer);
+  return updated;
 }
 
 class _GroceryCompareItemDialog extends StatelessWidget {

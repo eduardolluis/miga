@@ -104,18 +104,15 @@ void main() {
     expect(controller.budget!.spent, 250);
   });
 
-  test(
-    'Manual ingredient prices scale costs and per-serving cost stays stable',
-    () async {
-      await controller.saveIngredientPrice(RecipeIngredient.oats, 10000);
-      final two = controller.costFor(oats),
-          four = controller.costFor(oats.withServings(4));
-      expect(two.subtotalCents, 800);
-      expect(four.subtotalCents, 1600);
-      expect(four.perServingCents, two.perServingCents);
-      expect(four.complete, isFalse);
-    },
-  );
+  test('Manual ingredient prices buy complete reference units', () async {
+    await controller.saveIngredientPrice(RecipeIngredient.oats, 10000);
+    final two = controller.costFor(oats),
+        four = controller.costFor(oats.withServings(4));
+    expect(two.subtotalCents, 10000);
+    expect(four.subtotalCents, 10000);
+    expect(four.perServingCents, 2500);
+    expect(four.complete, isFalse);
+  });
 
   test('Automatic plan respects budget, household size, restrictions and existing meals', () async {
     await controller.saveBudget(

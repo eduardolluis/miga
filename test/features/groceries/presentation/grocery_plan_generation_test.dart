@@ -51,6 +51,7 @@ void main() {
                     saved = await showGroceryList(
                       context,
                       controller.details.groceries,
+                      isPro: true,
                       estimate: (_) async => null,
                       onGenerateFromPlan: (items) =>
                           controller.generateGroceriesFromPlannedMeals(
@@ -67,7 +68,7 @@ void main() {
         await tester.tap(find.text('Open'));
         await tester.pumpAndSettle();
         await tester.tap(find.byIcon(Icons.add_circle_outline).first);
-        await tester.tap(find.widgetWithText(CheckboxListTile, 'Bread'));
+        await tester.tap(find.byKey(const ValueKey('grocery-check-0')));
         await tester.tap(find.byTooltip('Remove item').last);
         await tester.enterText(find.byType(TextField), 'Coffee');
         await tester.pump();

@@ -13,6 +13,7 @@ import 'package:miga/features/pantry/domain/pantry_item.dart';
 import 'package:miga/features/profile/domain/household_preferences.dart';
 import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
+import 'package:miga/features/groceries/domain/grocery_purchase.dart';
 import 'package:miga/features/home/domain/home_details.dart';
 import 'package:miga/features/home/domain/home_details_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_plan_store.dart';
@@ -38,6 +39,14 @@ class HomeController extends ChangeNotifier {
   final HomeDetailsStore detailsStore;
   final RecipeCostEstimator? costEstimator;
   final Map<String, RecipeCost> _costs = {};
+  // Favoriting is a lightweight action: never trigger the global saving UI.
+  Future<void> _favoriteWrites = Future<void>.value();
+  int _pendingFavoriteWrites = 0;
+  int _favoriteRevision = 0;
+  Set<String> _confirmedFavorites = {};
+  bool get favoriteSaving => _pendingFavoriteWrites > 0;
+  int _priceRevision = 0;
+  int get priceRevision => _priceRevision;
   bool pricing = false;
   String languageCode = 'es';
   Map<String, String>? _undoMeals;
@@ -60,7 +69,11 @@ class HomeController extends ChangeNotifier {
       recipe.withServings(details.servings[recipe.id] ?? preferences.members);
 
   RecipeCost costFor(Recipe recipe) {
-    final base = _costs[recipe.id];
+    final cached = costEstimator?.costFromCache(recipe);
+    final base =
+        cached != null && cached.ingredients.any((line) => line.offer != null)
+        ? cached
+        : _costs[recipe.id];
     return RecipeCost(recipe, [
       for (final amount in RecipeAmounts.forRecipe(recipe))
         _ingredientCost(amount, base),
@@ -74,9 +87,11 @@ class HomeController extends ChangeNotifier {
       return IngredientCost(
         amount,
         cents:
-            (manual *
-                    amount.amount /
-                    (amount.unit == CostUnit.pieces ? 1 : 1000))
+            manual *
+            (amount.amount / (amount.unit == CostUnit.pieces ? 1 : 1000))
+                .ceil(),
+        purchaseCount:
+            (amount.amount / (amount.unit == CostUnit.pieces ? 1 : 1000))
                 .ceil(),
       );
     }
@@ -87,14 +102,27 @@ class HomeController extends ChangeNotifier {
       if (line.amount.ingredient == amount.ingredient &&
           line.cents != null &&
           line.offer?.isStale == false) {
-        return IngredientCost(
-          amount,
-          cents: (line.cents! * amount.amount / line.amount.amount).ceil(),
-          offer: line.offer,
-        );
+        return RecipeCostEstimator.purchaseCost(amount, line.offer!);
       }
     }
     return IngredientCost(amount);
+  }
+
+  Future<void> refreshRecipePrices(Recipe recipe) async {
+    if (costEstimator == null ||
+        preferences.currency != 'DOP' ||
+        preferences.country != 'DO') {
+      return;
+    }
+    try {
+      for (final cost in await costEstimator!.estimate([recipe])) {
+        _costs[cost.recipe.id] = cost;
+      }
+      _priceRevision++;
+      _emit();
+    } catch (_) {
+      // Missing catalog prices stay unknown; never invent a fallback amount.
+    }
   }
 
   Future<void> refreshPrices() async {
@@ -107,13 +135,20 @@ class HomeController extends ChangeNotifier {
     pricing = true;
     _emit();
     try {
-      for (final cost in await costEstimator!.estimate(RecipeCatalog.all)) {
+      for (final cost in await costEstimator!.estimate(
+        RecipeCatalog.all,
+        onProgress: () {
+          _priceRevision++;
+          _emit();
+        },
+      )) {
         _costs[cost.recipe.id] = cost;
       }
     } catch (_) {
       // Unknown prices stay explicitly incomplete and remain editable offline.
     } finally {
       pricing = false;
+      _priceRevision++;
       _emit();
     }
   }
@@ -242,6 +277,7 @@ class HomeController extends ChangeNotifier {
           : (await planStore.load(), await detailsStore.load());
       _meals = meals;
       details = homeDetails;
+      await costEstimator?.restorePrices();
       unawaited(refreshPrices());
     } catch (_) {
       loadFailed = true;
@@ -347,6 +383,38 @@ class HomeController extends ChangeNotifier {
     );
   }
 
+  Future<bool> completeGroceries(
+    List<GroceryItem> items, {
+    int? paidTotalCents,
+  }) {
+    if (!canEdit ||
+        items.isEmpty ||
+        items.any((item) => !item.checked) ||
+        (paidTotalCents != null && paidTotalCents < 0)) {
+      return Future.value(false);
+    }
+    final totals = GroceryTotals(items, preferences.currency);
+    final completedAt = DateTime.now();
+    final purchase = GroceryPurchase(
+      id: 'purchase-${completedAt.microsecondsSinceEpoch}',
+      completedAt: completedAt,
+      items: List.unmodifiable(items),
+      currency: preferences.currency,
+      estimatedTotalCents: totals.subtotalCents,
+      missingPrices: totals.missing,
+      paidTotalCents: paidTotalCents,
+    );
+    return _commit(
+      _meals,
+      details.copyWith(
+        groceries: [],
+        syncGroceries: false,
+        purchases: [...details.purchases, purchase],
+      ),
+      regenerate: false,
+    );
+  }
+
   Future<bool> saveGroceries(List<GroceryItem> items) =>
       _commit(_meals, details.withGroceries(items), regenerate: false);
   Future<bool> setGrocerySync(bool value, {List<GroceryItem>? items}) =>
@@ -386,10 +454,48 @@ class HomeController extends ChangeNotifier {
     _meals,
     details.copyWith(servings: {...details.servings, id: servings}),
   );
+
+  /// Update the heart immediately, then persist in tap order. A favorite does
+  /// not affect the meal plan, grocery calculations or the global saving flag.
   Future<bool> toggleFavorite(String id) {
-    final favorites = {...details.favorites};
+    if (!canEdit) return Future.value(false);
+    if (_pendingFavoriteWrites == 0) {
+      _confirmedFavorites = {...details.favorites};
+    }
+    final revision = ++_favoriteRevision;
+    final previous = details;
+    final favorites = {...previous.favorites};
     if (!favorites.add(id)) favorites.remove(id);
-    return _commit(_meals, details.copyWith(favorites: favorites));
+    final updated = previous.copyWith(favorites: favorites);
+    details = updated;
+    _pendingFavoriteWrites++;
+    _emit();
+
+    final save = _favoriteWrites.then((_) async {
+      try {
+        // Preserve newer edits to unrelated fields while serializing taps.
+        final snapshot = details.copyWith(favorites: updated.favorites);
+        if (detailsStore case final HouseholdStateStore atomic) {
+          await atomic.saveState(Map<String, String>.of(_meals), snapshot);
+        } else {
+          await detailsStore.save(snapshot);
+        }
+        _confirmedFavorites = {...snapshot.favorites};
+        return true;
+      } catch (_) {
+        // Only the newest tap may roll back to the last confirmed state.
+        if (revision == _favoriteRevision) {
+          details = details.copyWith(favorites: {..._confirmedFavorites});
+          _emit();
+        }
+        return false;
+      } finally {
+        _pendingFavoriteWrites--;
+      }
+    });
+    // The queue never rejects, even if a storage write fails.
+    _favoriteWrites = save.then((_) {});
+    return save;
   }
 
   Future<bool> savePrices(Map<String, int> prices) =>
@@ -505,6 +611,8 @@ class HomeController extends ChangeNotifier {
     saving = true;
     _emit();
     try {
+      // Keep a normal save from racing a pending optimistic favorite write.
+      await _favoriteWrites;
       if (detailsStore case final HouseholdStateStore atomic) {
         await atomic.saveState(meals, next);
       } else {

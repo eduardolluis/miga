@@ -238,6 +238,7 @@ class CloudSync extends ChangeNotifier {
   bool _emptyHome(Map<String, dynamic> data) =>
       (data['budgets'] as Map? ?? {}).isEmpty &&
       (data['groceries'] as List? ?? []).isEmpty &&
+      (data['purchases'] as List? ?? []).isEmpty &&
       (data['pantry'] as List? ?? []).isEmpty &&
       (data['favorites'] as List? ?? []).isEmpty &&
       (data['servings'] as Map? ?? {}).isEmpty &&
