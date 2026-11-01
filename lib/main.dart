@@ -4,13 +4,9 @@ import 'package:miga/app/miga_app.dart';
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/features/auth/data/supabase_auth_service.dart';
 
-const supabaseUrl = String.fromEnvironment(
-  'SUPABASE_URL',
-  defaultValue: 'https://qythwojltifyhlkarzdh.supabase.co',
-);
+const supabaseUrl = String.fromEnvironment('SUPABASE_URL');
 const supabasePublishableKey = String.fromEnvironment(
   'SUPABASE_PUBLISHABLE_KEY',
-  defaultValue: 'sb_publishable_5rrxJIpJKNdm9hZiU9B9Cg_yN-RyZ73',
 );
 
 void main() {
