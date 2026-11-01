@@ -31,6 +31,8 @@ try {
   `);
   const migration = await readFile(new URL('../migrations/202610310001_miga_data.sql', import.meta.url), 'utf8');
   await pg.exec(migration);
+  const surpriseMigration = await readFile(new URL('../migrations/202610310002_surprise_quota.sql', import.meta.url), 'utf8');
+  await pg.exec(surpriseMigration);
   for (const id of users) await pg.query('insert into auth.users values ($1)', [id]);
   await asUser(users[0]);
   await check('Owner creates and reads their complete state', async () => {
@@ -102,6 +104,41 @@ try {
     await pg.query("update public.miga_entitlements set expires_at = now() - interval '1 second'");
     await asUser(users[1]);
     await denied(() => pg.query('select public.miga_update_list($1, 2, $2::jsonb)', [invitation.id, '[]']));
+  });
+  await asUser(users[2]);
+  await check('Surprise me uses three free credits per account', async () => {
+    assert.equal((await value('select public.miga_surprise_remaining() as value')).remaining, 3);
+    for (const remaining of [2, 1, 0]) {
+      const result = await value('select public.miga_consume_surprise() as value');
+      assert.equal(result.allowed, true);
+      assert.equal(result.remaining, remaining);
+    }
+    const blocked = await value('select public.miga_consume_surprise() as value');
+    assert.equal(blocked.allowed, false);
+    assert.equal(blocked.remaining, 0);
+    await denied(() => pg.query('update public.miga_surprise_uses set used=0'));
+    await denied(() => pg.query('delete from public.miga_surprise_uses'));
+  });
+  await asUser(users[1]);
+  await check('Another account gets its own three Surprise credits', async () => {
+    assert.equal((await value('select public.miga_surprise_remaining() as value')).remaining, 3);
+    assert.equal((await value('select public.miga_consume_surprise() as value')).remaining, 2);
+  });
+  await asUser(null, 'anon');
+  await check('Anonymous users cannot call Surprise RPCs', async () => {
+    await denied(() => pg.query('select public.miga_consume_surprise()'));
+    await denied(() => pg.query('select public.miga_surprise_remaining()'));
+  });
+  await pg.exec('reset role');
+  await pg.query("update public.miga_entitlements set expires_at = now() + interval '1 day' where user_id = $1", [users[0]]);
+  await asUser(users[0]);
+  await check('Server-verified Pro gets unlimited Surprise use', async () => {
+    for (let i = 0; i < 5; i++) {
+      const result = await value('select public.miga_consume_surprise() as value');
+      assert.equal(result.allowed, true);
+      assert.equal(result.pro, true);
+      assert.equal(result.remaining, 3);
+    }
   });
   await pg.exec('reset role');
   await check('Account deletion cascades to owned state, shared lists and memberships', async () => {

@@ -1,1 +1,1 @@
-enum AppTab { home, plan, recipes, profile }
+enum AppTab { home, recipes, plan, groceries, profile }

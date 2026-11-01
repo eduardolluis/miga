@@ -4,11 +4,18 @@ import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
 import 'package:miga/features/budget/domain/recipe_amount.dart';
 import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/l10n/app_localizations.dart';
+import 'package:miga/features/recipes/presentation/widgets/ingredient_image.dart';
 
 class RecipeCostSheet extends StatelessWidget {
-  const RecipeCostSheet({super.key, required this.cost, required this.budget});
+  const RecipeCostSheet({
+    super.key,
+    required this.cost,
+    required this.budget,
+    this.manualPrices = const {},
+  });
   final RecipeCost cost;
   final WeeklyBudget budget;
+  final Map<String, int> manualPrices;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +36,7 @@ class RecipeCostSheet extends StatelessWidget {
               Expanded(
                 child: Text(
                   l10n.budgetCostDetails,
-                  style: const TextStyle(
-                    fontFamily: 'LiberationSerif',
-                    fontSize: 28,
-                  ),
+                  style: const TextStyle(fontFamily: 'Georgia', fontSize: 28),
                 ),
               ),
               IconButton(
@@ -82,9 +86,7 @@ class RecipeCostSheet extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  cost.complete
-                      ? '${l10n.recipeServings(cost.recipe.servings)}  ·  ${l10n.recipeCostPerServing(budget.format(cost.perServingCents / 100))}'
-                      : l10n.recipeServings(cost.recipe.servings),
+                  l10n.recipeServings(cost.recipe.servings),
                   style: const TextStyle(
                     color: AppColors.ink,
                     fontWeight: FontWeight.w600,
@@ -153,11 +155,15 @@ class RecipeCostSheet extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             l10n.homeIngredients,
-            style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 23),
+            style: const TextStyle(fontFamily: 'Georgia', fontSize: 23),
           ),
           const SizedBox(height: 14),
           for (final line in cost.ingredients)
-            _IngredientRow(line: line, budget: budget),
+            _IngredientRow(
+              line: line,
+              budget: budget,
+              manualPrices: manualPrices,
+            ),
         ],
       ),
     );
@@ -165,9 +171,14 @@ class RecipeCostSheet extends StatelessWidget {
 }
 
 class _IngredientRow extends StatelessWidget {
-  const _IngredientRow({required this.line, required this.budget});
+  const _IngredientRow({
+    required this.line,
+    required this.budget,
+    required this.manualPrices,
+  });
   final IngredientCost line;
   final WeeklyBudget budget;
+  final Map<String, int> manualPrices;
 
   @override
   Widget build(BuildContext context) {
@@ -183,6 +194,12 @@ class _IngredientRow extends StatelessWidget {
       CostUnit.pieces => l10n.budgetPieces,
     };
     final offer = line.offer;
+
+    final referenceUnit = switch (line.amount.unit) {
+      CostUnit.grams => 'kg',
+      CostUnit.milliliters => 'L',
+      CostUnit.pieces => l10n.budgetPieces,
+    };
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
@@ -202,6 +219,10 @@ class _IngredientRow extends StatelessWidget {
               vertical: 5,
             ),
             childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            leading: IngredientImage(
+              ingredient: line.amount.ingredient,
+              size: 42,
+            ),
             title: Text(
               line.amount.ingredient.label(language),
               style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
@@ -221,9 +242,9 @@ class _IngredientRow extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    line.cents == null
-                        ? l10n.groceryEstimateUnavailable
-                        : '≈ ${budget.format(line.cents! / 100)}',
+                    line.cents != null
+                        ? '${budget.format(line.cents! / 100)} · ${line.purchaseCount ?? 1} × ${offer?.presentation ?? referenceUnit}'
+                        : l10n.groceryEstimateUnavailable,
                     style: TextStyle(
                       color: line.cents == null
                           ? AppColors.muted

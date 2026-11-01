@@ -92,7 +92,7 @@ class _HomeWeekState extends State<HomeWeek> {
                 child: Text(
                   l10n.homeWeek,
                   style: const TextStyle(
-                    fontFamily: 'LiberationSerif',
+                    fontFamily: 'Georgia',
                     fontSize: 25,
                   ),
                 ),

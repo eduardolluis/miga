@@ -44,7 +44,7 @@ class ProPage extends StatelessWidget {
                   l10n.proOfferTitle,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontFamily: 'LiberationSerif',
+                    fontFamily: 'Georgia',
                     fontSize: 36,
                     height: 1.1,
                     color: AppColors.ink,
@@ -63,7 +63,9 @@ class ProPage extends StatelessWidget {
                   children: [
                     _Benefit(
                       icon: Icons.calendar_today_outlined,
-                      title: l10n.proFreePlanning,
+                      title: l10n.localeName.startsWith('es')
+                          ? 'Explora comidas sin plan semanal'
+                          : 'Explore meals without a weekly plan',
                     ),
                     _Benefit(
                       icon: Icons.restaurant_menu_rounded,
@@ -110,6 +112,14 @@ class ProPage extends StatelessWidget {
                       icon: Icons.people_outline_rounded,
                       title: l10n.proSharedLists,
                       description: l10n.proSharedListsDescription,
+                    ),
+                    _Benefit(
+                      icon: Icons.playlist_add_rounded,
+                      title: l10n.groceryGenerateFromPlan,
+                    ),
+                    _Benefit(
+                      icon: Icons.compare_arrows_rounded,
+                      title: l10n.storeCompare,
                     ),
                     _Benefit(
                       icon: Icons.insights_outlined,
@@ -244,7 +254,7 @@ class _PlanSection extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 26),
+          style: const TextStyle(fontFamily: 'Georgia', fontSize: 26),
         ),
         const SizedBox(height: 8),
         Text(

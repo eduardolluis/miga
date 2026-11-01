@@ -93,7 +93,7 @@ class _ActionCard extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                fontFamily: 'LiberationSerif',
+                fontFamily: 'Georgia',
                 fontSize: 21,
                 height: 1.12,
               ),

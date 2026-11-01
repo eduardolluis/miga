@@ -33,7 +33,7 @@ class HomeHeader extends StatelessWidget {
               Text(
                 name == null ? '$greeting.' : '$greeting,\n$name.',
                 style: const TextStyle(
-                  fontFamily: 'LiberationSerif',
+                  fontFamily: 'Georgia',
                   color: AppColors.ink,
                   fontSize: 26,
                   height: 1.08,

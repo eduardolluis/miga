@@ -1,3 +1,5 @@
+> **Corrección de fuentes (2026-10-31):** Este proyecto no necesita `assets/fonts/`. Usa Georgia (fuente serif del sistema en iOS).
+
 # Miga 💚
 
 **Planifica qué cocinar, organiza tu compra y controla tu presupuesto semanal.**
@@ -9,28 +11,20 @@ La identidad visual original de Miga utiliza crema, verde oliva y tipografía
 serif. Los servicios de pago se mantienen desactivados hasta su configuración
 real con Apple/Google y validación en servidor.
 
-**Revisión de esta entrega:** [Cambios y pruebas](docs/CAMBIOS_MIGA_2026-10-31.md).
 
 
-## Getting Started
+## Recetas y recursos
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+El catálogo integrado contiene **54 recetas (18 desayunos, 18 almuerzos y
+18 cenas)** con nombres, pasos e ingredientes en español e inglés. Todas usan
+fotografías individuales locales de alta resolución y funcionan sin conexión.
+Consulta el [reporte de fotos](reports/recipe-photo-quality-2026-11-01.md).
 
 ## Organización del código
 
 La aplicación se organiza por funcionalidades en `lib/features/`, con la composición
 y navegación en `lib/app/` y los temas compartidos en `lib/core/`. Las pruebas reflejan
-esa estructura. Consulta [la arquitectura](docs/ARCHITECTURE.md) para ubicar pantallas,
+esa estructura. Consulta la arquitectura para ubicar pantallas,
 modelos, contratos y almacenamiento, y conocer las reglas para añadir código.
 
 ## Acceso sin contraseña (Supabase)
@@ -68,7 +62,7 @@ flutter run --dart-define-from-file=supabase.env.json
    Apple Developer, actualiza la firma y habilita el proveedor Apple de Supabase.
    El entitlement está incluido. El acceso nativo envía un nonce SHA-256 a Apple
    y el original a Supabase; la sesión se publica solo tras el intercambio válido.
-   Consulta [la configuración de servicios](docs/SERVICES_SETUP.md).
+   Consulta la configuración de servicios.
 4. **Enlaces de correo al móvil:** en Supabase Authentication → URL Configuration → Redirect
    URLs, añade exactamente `com.eduardodelacruz.miga://login-callback`. El scheme ya
    está registrado en `ios/Runner/Info.plist` y en el manifest de Android. El manejo
@@ -86,7 +80,7 @@ El plan de comidas, el presupuesto semanal y la lista de compras se guardan en e
 dispositivo con `shared_preferences`, separados por cuenta. La planificación y el
 registro de gastos son manuales. El Home propone recetas distintas según la hora
 local, y permite añadir sus ingredientes a la lista. Tiendas abre una búsqueda real
-en mapas. Consulta [el diseño del Home](docs/home-design.md)
+en mapas. Consulta el diseño del Home
 para ver capturas, alcance y recursos gráficos.
 
 ### Validación pendiente con cuentas reales
@@ -220,7 +214,7 @@ idiomas tras guardar las plantillas y las URLs.
 
 ## Planificación, compras y servicios
 
-El [checklist de implementación](docs/IMPLEMENTATION_CHECKLIST.md) detalla las
+El checklist de implementación detalla las
 funciones disponibles y las comprobaciones que requieren servicios/dispositivos
 reales. Porciones, favoritas, preferencias, despensa, plan automático y cantidades
 comparten los mismos modelos. El historial usa gastos registrados por el usuario,
@@ -229,9 +223,9 @@ separados de las estimaciones. Los precios sin cobertura permanecen incompletos.
 La copia local funciona sin conexión. La sincronización y las listas compartidas
 necesitan aplicar la migración de Supabase y desplegar sus funciones; el código
 no las despliega automáticamente. Los cobros están desactivados por defecto.
-Consulta [SERVICES_SETUP.md](docs/SERVICES_SETUP.md) antes de activar servicios,
+Consulta SERVICES_SETUP.md antes de activar servicios,
 suscripciones o publicación. La información de privacidad tiene un
-[borrador pendiente de completar](docs/PRIVACY_DRAFT.md).
+borrador pendiente de completar.
 
 Además de `flutter analyze` y `flutter test`, se comprueba SQL/RLS con:
 
@@ -239,3 +233,8 @@ Además de `flutter analyze` y `flutter test`, se comprueba SQL/RLS con:
 npm --prefix supabase ci
 npm --prefix supabase test
 ```
+
+
+## Quick Actions (31 Oct 2026)
+
+Las acciones rápidas incluyen recetas según la despensa, alternativas económicas, Surprise me y generación del plan semanal. La cuota gratuita requiere aplicar `supabase/migrations/202610310002_surprise_quota.sql`.

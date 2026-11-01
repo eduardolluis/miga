@@ -62,8 +62,7 @@ import 'app_localizations_es.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -71,8 +70,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -84,18 +82,17 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('es'),
+    Locale('es')
   ];
 
   /// No description provided for @onboardingIntro.
@@ -1157,8 +1154,8 @@ abstract class AppLocalizations {
   /// No description provided for @groceryPricesMissing.
   ///
   /// In en, this message translates to:
-  /// **'{count} products still need a price'**
-  String groceryPricesMissing(Object count);
+  /// **'{count, plural, =1{1 product has no price} other{{count} products have no price}}'**
+  String groceryPricesMissing(num count);
 
   /// No description provided for @groceryPriceCoverage.
   ///
@@ -1397,7 +1394,7 @@ abstract class AppLocalizations {
   /// No description provided for @budgetCostNote.
   ///
   /// In en, this message translates to:
-  /// **'Estimated ingredients consumed, not full shopping packages. Kitchen quantities and produce weights are approximate. Prices may combine stores; buying all packages can cost more.'**
+  /// **'Estimated purchase of whole packages or individually sold units. Package counts round up to cover the recipe quantities. Prices may combine stores; existing pantry supplies are not deducted from this recipe estimate.'**
   String get budgetCostNote;
 
   /// No description provided for @budgetNoConfirmedFit.
@@ -1481,7 +1478,7 @@ abstract class AppLocalizations {
   /// No description provided for @budgetRecipeEstimate.
   ///
   /// In en, this message translates to:
-  /// **'Estimated recipe total'**
+  /// **'Estimated ingredient purchase'**
   String get budgetRecipeEstimate;
 
   /// No description provided for @homeWeekEmpty.
@@ -1555,6 +1552,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Generate from weekly plan'**
   String get groceryGenerateFromPlan;
+
+  /// No description provided for @groceryEstimatedTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated checkout total'**
+  String get groceryEstimatedTotal;
+
+  /// No description provided for @groceryPackages.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 package} other{{count} packages}}'**
+  String groceryPackages(int count);
+
+  /// No description provided for @groceryPerEgg.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} per egg'**
+  String groceryPerEgg(String price);
+
+  /// No description provided for @groceryDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Product details'**
+  String get groceryDetails;
+
+  /// No description provided for @groceryCompareIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare available packages and choose your supermarket.'**
+  String get groceryCompareIntro;
+
+  /// No description provided for @groceryCompareEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another product or a shorter search.'**
+  String get groceryCompareEmpty;
+
+  /// No description provided for @groceryCompareSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search a product'**
+  String get groceryCompareSearch;
+
+  /// No description provided for @groceryEditorIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Add what you need and check it off as you shop.'**
+  String get groceryEditorIntro;
+
+  /// No description provided for @groceryComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete purchase'**
+  String get groceryComplete;
+
+  /// No description provided for @groceryCompleteNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Save this purchase and clear your shopping list.'**
+  String get groceryCompleteNote;
+
+  /// No description provided for @groceryPaidTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total paid (optional)'**
+  String get groceryPaidTotal;
+
+  /// No description provided for @groceryPaidTotalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your receipt total. Leave blank to keep only the estimate.'**
+  String get groceryPaidTotalHint;
+
+  /// No description provided for @groceryCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase saved'**
+  String get groceryCompleted;
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @notificationsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'You’re all caught up'**
+  String get notificationsEmpty;
+
+  /// No description provided for @notificationsEmptyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your reminders will appear here.'**
+  String get notificationsEmptyNote;
+
+  /// No description provided for @pantryEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What’s in your kitchen?'**
+  String get pantryEmptyTitle;
+
+  /// No description provided for @pantryEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a few ingredients you have. We’ll help you find what to cook.'**
+  String get pantryEmptyMessage;
+
+  /// No description provided for @pantryAddIngredients.
+  ///
+  /// In en, this message translates to:
+  /// **'Add ingredients'**
+  String get pantryAddIngredients;
+
+  /// No description provided for @groceryDecrease.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove a package'**
+  String get groceryDecrease;
+
+  /// No description provided for @groceryIncrease.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a package'**
+  String get groceryIncrease;
+
+  /// No description provided for @storeLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking this supermarket…'**
+  String get storeLoading;
 
   /// No description provided for @groceryGeneratedCount.
   ///
@@ -1775,14 +1904,44 @@ abstract class AppLocalizations {
   /// No description provided for @nutritionPerServing.
   ///
   /// In en, this message translates to:
-  /// **'Approximate nutrition per serving'**
+  /// **'Per serving'**
   String get nutritionPerServing;
 
   /// No description provided for @nutritionTotal.
   ///
   /// In en, this message translates to:
-  /// **'Approximate nutrition for the whole recipe'**
+  /// **'Whole recipe'**
   String get nutritionTotal;
+
+  /// No description provided for @nutritionCalories.
+  ///
+  /// In en, this message translates to:
+  /// **'Calories'**
+  String get nutritionCalories;
+
+  /// No description provided for @nutritionProtein.
+  ///
+  /// In en, this message translates to:
+  /// **'Protein'**
+  String get nutritionProtein;
+
+  /// No description provided for @nutritionCarbs.
+  ///
+  /// In en, this message translates to:
+  /// **'Carbs'**
+  String get nutritionCarbs;
+
+  /// No description provided for @nutritionEstimateNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated nutritional values.'**
+  String get nutritionEstimateNote;
+
+  /// No description provided for @nutritionUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Nutrition information unavailable.'**
+  String get nutritionUnavailable;
 
   /// No description provided for @planRecipe.
   ///
@@ -2185,10 +2344,69 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No ingredients to add. Check your pantry and make sure planned meals are catalog recipes.'**
   String get groceryNothingNeeded;
+
+  /// No description provided for @recipeFiltersIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Make room for meals that suit your day.'**
+  String get recipeFiltersIntro;
+
+  /// No description provided for @recipeFilterPreferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Your preferences'**
+  String get recipeFilterPreferences;
+
+  /// No description provided for @recipeIngredientSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search ingredients'**
+  String get recipeIngredientSearch;
+
+  /// No description provided for @recipeNoIngredients.
+  ///
+  /// In en, this message translates to:
+  /// **'No ingredients found.'**
+  String get recipeNoIngredients;
+
+  /// No description provided for @recipeShowResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Show recipes'**
+  String get recipeShowResults;
+
+  /// No description provided for @recipeResetFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset filters'**
+  String get recipeResetFilters;
+
+  /// No description provided for @recipePagePosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {page} of {pages}'**
+  String recipePagePosition(Object page, Object pages);
+
+  /// No description provided for @recipePageRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing {start}–{end} of {total} recipes'**
+  String recipePageRange(Object end, Object start, Object total);
+
+  /// No description provided for @recipePreviousPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous'**
+  String get recipePreviousPage;
+
+  /// No description provided for @recipeNextPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get recipeNextPage;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -2197,26 +2415,25 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'es'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'es':
-      return AppLocalizationsEs();
+    case 'en': return AppLocalizationsEn();
+    case 'es': return AppLocalizationsEs();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

@@ -53,7 +53,7 @@ class MealPlanPage extends StatelessWidget {
       children: [
         Text(
           l10n.homeCalendarTitle,
-          style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 32),
+          style: const TextStyle(fontFamily: 'Georgia', fontSize: 32),
         ),
         const SizedBox(height: 8),
         Text(
@@ -125,7 +125,7 @@ class MealPlanPage extends StatelessWidget {
                     child: Text(
                       MaterialLocalizations.of(context).formatFullDate(date),
                       style: const TextStyle(
-                        fontFamily: 'LiberationSerif',
+                        fontFamily: 'Georgia',
                         fontSize: 22,
                       ),
                     ),

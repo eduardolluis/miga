@@ -5,7 +5,7 @@ import 'package:miga/core/theme/app_colors.dart';
 abstract final class AppTheme {
   static ThemeData get light => ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF6B8E72)),
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.olive),
   );
 
   static ThemeData household(ThemeData base) => base.copyWith(
@@ -46,6 +46,18 @@ abstract final class AppTheme {
       backgroundColor: AppColors.cream,
       indicatorColor: Color(0xFFE4E8D8),
       elevation: 0,
+    ),
+    snackBarTheme: SnackBarThemeData(
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: const Color(0xFFEAF1E3),
+      contentTextStyle: const TextStyle(
+        color: AppColors.ink,
+        fontSize: 13,
+        height: 1.35,
+      ),
+      actionTextColor: AppColors.olive,
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
     ),
   );
 }

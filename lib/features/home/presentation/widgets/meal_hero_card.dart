@@ -18,7 +18,7 @@ class MealHeroCard extends StatelessWidget {
   final VoidCallback? onPlan;
 
   static const titleStyle = TextStyle(
-    fontFamily: 'LiberationSerif',
+    fontFamily: 'Georgia',
     fontSize: 24,
     height: 1.12,
     color: AppColors.ink,
@@ -115,7 +115,10 @@ class MealHeroCard extends StatelessWidget {
                   ),
                   if (recipe.nutrition != null) ...[
                     const SizedBox(height: 6),
-                    Text(nutritionLabel(l10n, recipe), style: nutritionStyle),
+                    Text(
+                      nutritionLabel(l10n, recipe),
+                      style: nutritionStyle,
+                    ),
                   ],
                   const Spacer(),
                   const SizedBox(height: 14),

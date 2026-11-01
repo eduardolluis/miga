@@ -22,8 +22,10 @@ abstract final class SupportedRegions {
 
   static bool validCurrency(String value) => currencies.contains(value);
 
-  static SupportedRegion forCountry(String? value) =>
-      all.firstWhere((r) => r.countryCode == value, orElse: () => all.first);
+  static SupportedRegion forCountry(String? value) => all.firstWhere(
+    (r) => r.countryCode == value,
+    orElse: () => all.first,
+  );
 
   static String symbol(String value) => switch (value) {
     'DOP' => 'RD\$',
@@ -35,10 +37,6 @@ abstract final class SupportedRegions {
     _ => '$value ',
   };
 
-  static String format(
-    String currency,
-    double amount, {
-    bool compact = false,
-  }) =>
+  static String format(String currency, double amount, {bool compact = false}) =>
       '${symbol(currency)}${amount.toStringAsFixed(compact && amount == amount.roundToDouble() ? 0 : 2)}';
 }

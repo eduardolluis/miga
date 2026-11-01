@@ -35,7 +35,7 @@ class _MigaAppState extends State<MigaApp> {
                 key: ValueKey(widget.authService!.session!.user.id),
                 authService: widget.authService,
                 client: widget.client,
-                enablePriceEstimates: widget.client != null,
+                enablePriceEstimates: true,
                 onLanguageChanged: (language) {
                   final locale = language == null ? null : Locale(language);
                   if (_locale != locale) setState(() => _locale = locale);

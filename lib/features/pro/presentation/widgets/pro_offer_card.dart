@@ -75,7 +75,7 @@ class ProOfferCard extends StatelessWidget {
               Text(
                 l10n.proOfferTitle,
                 style: const TextStyle(
-                  fontFamily: 'LiberationSerif',
+                  fontFamily: 'Georgia',
                   color: AppColors.ink,
                   fontSize: 23,
                   height: 1.15,

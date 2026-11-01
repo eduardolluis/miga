@@ -29,15 +29,14 @@ class HouseholdPreferences {
   final int members;
   final Set<DietaryRestriction> restrictions;
   final Set<RecipeIngredient> disliked;
-  HouseholdPreferences copyWith({String? currency, String? country}) =>
-      HouseholdPreferences(
-        country: country ?? this.country,
-        currency: currency ?? this.currency,
-        language: language,
-        members: members,
-        restrictions: restrictions,
-        disliked: disliked,
-      );
+  HouseholdPreferences copyWith({String? currency, String? country}) => HouseholdPreferences(
+    country: country ?? this.country,
+    currency: currency ?? this.currency,
+    language: language,
+    members: members,
+    restrictions: restrictions,
+    disliked: disliked,
+  );
 
   /// Filters recommendations conservatively. NOT a guarantee against allergy
   /// exposure: packaged ingredients, substitutions and cross-contact still
@@ -51,19 +50,11 @@ class HouseholdPreferences {
     final tags = ingredients.expand((i) => i.dietaryTags).toSet();
     for (final restriction in restrictions) {
       final blocked = switch (restriction) {
-        DietaryRestriction.vegetarian => const {
-          IngredientDietaryTag.meat,
-          IngredientDietaryTag.fish,
-        },
-        DietaryRestriction.vegan => const {
-          IngredientDietaryTag.meat,
-          IngredientDietaryTag.fish,
-          IngredientDietaryTag.dairy,
-          IngredientDietaryTag.eggs,
-        },
+        DietaryRestriction.vegetarian => const {IngredientDietaryTag.meat, IngredientDietaryTag.fish},
+        DietaryRestriction.vegan => const {IngredientDietaryTag.meat, IngredientDietaryTag.fish, IngredientDietaryTag.dairy, IngredientDietaryTag.eggs},
         DietaryRestriction.dairyFree => const {IngredientDietaryTag.dairy},
         DietaryRestriction.glutenFree => const {IngredientDietaryTag.gluten},
-        DietaryRestriction.nutFree => const {IngredientDietaryTag.treeNuts},
+        DietaryRestriction.nutFree => const {IngredientDietaryTag.treeNuts, IngredientDietaryTag.peanuts},
         DietaryRestriction.eggFree => const {IngredientDietaryTag.eggs},
         DietaryRestriction.fishFree => const {IngredientDietaryTag.fish},
       };
@@ -81,23 +72,23 @@ class HouseholdPreferences {
     'disliked': disliked.map((i) => i.name).toList(),
   };
 
-  factory HouseholdPreferences.fromJson(
-    Map<String, dynamic> json,
-  ) => HouseholdPreferences(
-    country: SupportedRegions.forCountry(json['country'] as String?)
-        .countryCode,
-    currency: SupportedRegions.validCurrency(json['currency'] as String? ?? '')
-        ? json['currency'] as String
-        : SupportedRegions.forCountry(json['country'] as String?).currencyCode,
-    language: ['es', 'en'].contains(json['language'])
-        ? json['language'] as String
-        : null,
-    members: ((json['members'] as num?)?.toInt() ?? 2).clamp(1, 12),
-    restrictions: DietaryRestriction.values
-        .where((r) => (json['restrictions'] as List? ?? []).contains(r.name))
-        .toSet(),
-    disliked: RecipeIngredient.values
-        .where((i) => (json['disliked'] as List? ?? []).contains(i.name))
-        .toSet(),
-  );
+  factory HouseholdPreferences.fromJson(Map<String, dynamic> json) =>
+      HouseholdPreferences(
+        country: SupportedRegions.forCountry(json['country'] as String?).countryCode,
+        currency: SupportedRegions.validCurrency(json['currency'] as String? ?? '')
+            ? json['currency'] as String
+            : SupportedRegions.forCountry(json['country'] as String?).currencyCode,
+        language: ['es', 'en'].contains(json['language'])
+            ? json['language'] as String
+            : null,
+        members: ((json['members'] as num?)?.toInt() ?? 2).clamp(1, 12),
+        restrictions: DietaryRestriction.values
+            .where(
+              (r) => (json['restrictions'] as List? ?? []).contains(r.name),
+            )
+            .toSet(),
+        disliked: RecipeIngredient.values
+            .where((i) => (json['disliked'] as List? ?? []).contains(i.name))
+            .toSet(),
+      );
 }

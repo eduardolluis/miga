@@ -22,11 +22,7 @@ class HomeBudgetSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final value = budget;
-    final totals = GroceryTotals(
-      groceries,
-      value?.currency ?? 'DOP',
-      includeChecked: false,
-    );
+    final totals = GroceryTotals(groceries, value?.currency ?? 'DOP', includeChecked: false);
     final projected = (value?.spent ?? 0) + totals.subtotalCents / 100;
     return Material(
       color: const Color(0xFFFEFDF9),
@@ -57,7 +53,7 @@ class HomeBudgetSummary extends StatelessWidget {
                         Text(
                           l10n.homeBudget,
                           style: const TextStyle(
-                            fontFamily: 'LiberationSerif',
+                            fontFamily: 'Georgia',
                             fontSize: 21,
                             height: 1.12,
                             fontWeight: FontWeight.w600,

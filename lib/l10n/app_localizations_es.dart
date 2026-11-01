@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -21,22 +20,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get welcomeTitle => 'Tu semana, a tu gusto.';
 
   @override
-  String get welcomeDescription =>
-      'Planea tus comidas y organiza tus compras fácilmente.';
+  String get welcomeDescription => 'Planea tus comidas y organiza tus compras fácilmente.';
 
   @override
   String get planTitle => 'Planifica tu semana.';
 
   @override
-  String get planDescription =>
-      'Arma un menú que se adapte a tus gustos y a tu rutina.';
+  String get planDescription => 'Arma un menú que se adapte a tus gustos y a tu rutina.';
 
   @override
   String get shoppingTitle => 'Organiza tus compras.';
 
   @override
-  String get shoppingDescription =>
-      'Reúne en una lista todo lo que necesitas para tus recetas.';
+  String get shoppingDescription => 'Reúne en una lista todo lo que necesitas para tus recetas.';
 
   @override
   String get storesTitle => 'Explora tiendas cercanas.';
@@ -81,8 +77,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get passwordRequired => 'Introduce tu contraseña';
 
   @override
-  String get passwordMinLength =>
-      'La contraseña debe tener al menos 8 caracteres';
+  String get passwordMinLength => 'La contraseña debe tener al menos 8 caracteres';
 
   @override
   String get passwordMismatch => 'Las contraseñas no coinciden';
@@ -100,8 +95,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get authTitle => 'Tu mesa empieza aquí.';
 
   @override
-  String get authSubtitle =>
-      'Entra o crea tu cuenta con tu opción favorita. Sin contraseña.';
+  String get authSubtitle => 'Entra o crea tu cuenta con tu opción favorita. Sin contraseña.';
 
   @override
   String get continueWithGoogle => 'Continuar con Google';
@@ -144,16 +138,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get codeRequired => 'Introduce el código completo de tu correo.';
 
   @override
-  String get invalidCode =>
-      'El código no es válido o ha expirado. Solicita uno nuevo.';
+  String get invalidCode => 'El código no es válido o ha expirado. Solicita uno nuevo.';
 
   @override
-  String get authError =>
-      'No pudimos completar el acceso. Comprueba tu conexión e inténtalo de nuevo.';
+  String get authError => 'No pudimos completar el acceso. Comprueba tu conexión e inténtalo de nuevo.';
 
   @override
-  String get authRateLimited =>
-      'Espera un momento antes de solicitar otro código.';
+  String get authRateLimited => 'Espera un momento antes de solicitar otro código.';
 
   @override
   String get authUnavailable => 'El acceso todavía no está configurado.';
@@ -165,12 +156,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get signOut => 'Cerrar sesión';
 
   @override
-  String get authBrowserError =>
-      'No pudimos abrir el navegador para iniciar sesión. Comprueba que Safari esté disponible e inténtalo de nuevo.';
+  String get authBrowserError => 'No pudimos abrir el navegador para iniciar sesión. Comprueba que Safari esté disponible e inténtalo de nuevo.';
 
   @override
-  String get appleSignInUnavailable =>
-      'El inicio de sesión con Apple todavía no está disponible.';
+  String get appleSignInUnavailable => 'El inicio de sesión con Apple todavía no está disponible.';
 
   @override
   String get homeGreeting => 'Un gusto tenerte aquí.';
@@ -232,8 +221,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeLoadError => 'No pudimos cargar tu plan.';
 
   @override
-  String get homeSaveError =>
-      'No pudimos guardar el cambio. Inténtalo de nuevo.';
+  String get homeSaveError => 'No pudimos guardar el cambio. Inténtalo de nuevo.';
 
   @override
   String get homeRetry => 'Reintentar';
@@ -242,8 +230,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeAccount => 'Tu cuenta';
 
   @override
-  String get homeSignOutError =>
-      'No pudimos cerrar la sesión. Inténtalo de nuevo.';
+  String get homeSignOutError => 'No pudimos cerrar la sesión. Inténtalo de nuevo.';
 
   @override
   String get homeInspiration => 'Una idea para tu mesa';
@@ -264,15 +251,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeIngredients => 'Ingredientes';
 
   @override
-  String get homeRecipeIngredients =>
-      '2 filetes de salmón\n300 g de papas pequeñas\n2 tazas de brócoli\n1 limón\n1 cucharada de aceite de oliva\nHierbas, sal y pimienta al gusto';
+  String get homeRecipeIngredients => '2 filetes de salmón\n300 g de papas pequeñas\n2 tazas de brócoli\n1 limón\n1 cucharada de aceite de oliva\nHierbas, sal y pimienta al gusto';
 
   @override
   String get homePreparation => 'Preparación';
 
   @override
-  String get homeRecipeSteps =>
-      '1. Precalienta el horno a 200 °C. Corta las papas, mézclalas con parte del aceite y ásalas hasta que empiecen a ablandarse.\n\n2. Añade el salmón y el brócoli a la bandeja. Agrega el aceite restante, el limón y las hierbas.\n\n3. Hornea hasta que el pescado esté cocido y las papas tiernas. Sirve con limón fresco.';
+  String get homeRecipeSteps => '1. Precalienta el horno a 200 °C. Corta las papas, mézclalas con parte del aceite y ásalas hasta que empiecen a ablandarse.\n\n2. Añade el salmón y el brócoli a la bandeja. Agrega el aceite restante, el limón y las hierbas.\n\n3. Hornea hasta que el pescado esté cocido y las papas tiernas. Sirve con limón fresco.';
 
   @override
   String get homeUseRecipe => 'Añadir a mi plan';
@@ -296,8 +281,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeEmptyHeroTitle => 'Tu próxima comida,\na tu gusto.';
 
   @override
-  String get homeEmptyHeroDescription =>
-      'Aún no tienes una comida planificada.';
+  String get homeEmptyHeroDescription => 'Aún no tienes una comida planificada.';
 
   @override
   String get homeRecipeIdea => 'Ver una idea';
@@ -312,8 +296,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeBudgetEmptyTitle => 'Un plan que cuide\ntu bolsillo.';
 
   @override
-  String get homeBudgetEmptyDescription =>
-      'Define cuánto quieres gastar esta semana y registra tus compras.';
+  String get homeBudgetEmptyDescription => 'Define cuánto quieres gastar esta semana y registra tus compras.';
 
   @override
   String get homeSetBudget => 'Definir presupuesto';
@@ -331,8 +314,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeCurrency => 'Moneda';
 
   @override
-  String get homeBudgetValidation =>
-      'Introduce un importe válido. El presupuesto debe ser mayor que cero.';
+  String get homeBudgetValidation => 'Introduce un importe válido. El presupuesto debe ser mayor que cero.';
 
   @override
   String get homeBudgetOnTrack => 'Dentro de tu presupuesto.';
@@ -350,8 +332,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeGroceryEmpty => 'Tu lista empieza aquí.';
 
   @override
-  String get homeGroceryDescription =>
-      'Añade productos, introduce precios y marca lo que vas poniendo en el carrito.';
+  String get homeGroceryDescription => 'Añade productos, introduce precios y marca lo que vas poniendo en el carrito.';
 
   @override
   String get homeGroceryHint => 'Ej. tomates, 4 unidades';
@@ -383,8 +364,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeStoresEmpty => 'Aún no hay tiendas para mostrar.';
 
   @override
-  String get homeStoresDescription =>
-      'Mientras tanto, prepara tu lista para tener todo a mano cuando salgas a comprar.';
+  String get homeStoresDescription => 'Mientras tanto, prepara tu lista para tener todo a mano cuando salgas a comprar.';
 
   @override
   String get homeProfileTitle => 'Tu espacio en Miga';
@@ -393,8 +373,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeCalendarTitle => 'Tu semana, completa.';
 
   @override
-  String get homeCalendarSubtitle =>
-      'Desayunos, almuerzos y cenas, un día a la vez.';
+  String get homeCalendarSubtitle => 'Desayunos, almuerzos y cenas, un día a la vez.';
 
   @override
   String get homePlannedDay => 'Tiene comidas planificadas';
@@ -427,12 +406,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeIdeasDinner => 'Para tu cena';
 
   @override
-  String get homeIdeasNow =>
-      'Desliza entre las recetas para este momento del día.';
+  String get homeIdeasNow => 'Desliza entre las recetas para este momento del día.';
 
   @override
-  String get homeIdeasManual =>
-      'Desliza entre las recetas del momento que elegiste.';
+  String get homeIdeasManual => 'Desliza entre las recetas del momento que elegiste.';
 
   @override
   String get homeChangeMeal => 'Cambiar momento del día';
@@ -475,8 +452,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeOpenMaps => 'Abrir en mapas';
 
   @override
-  String get homeMapsUnavailable =>
-      'No pudimos abrir los mapas. Inténtalo de nuevo.';
+  String get homeMapsUnavailable => 'No pudimos abrir los mapas. Inténtalo de nuevo.';
 
   @override
   String get homeGoodNight => 'Buenas noches';
@@ -485,8 +461,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get recipeHaveIngredients => '¿Qué tienes en casa?';
 
   @override
-  String get recipeIngredientsHint =>
-      'Marca tus ingredientes. Verás recetas que usen al menos uno, con las mejores coincidencias primero.';
+  String get recipeIngredientsHint => 'Marca tus ingredientes. Verás recetas que usen al menos uno, con las mejores coincidencias primero.';
 
   @override
   String get recipeClearIngredients => 'Limpiar';
@@ -506,8 +481,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get proDiscover => 'Descubre Miga Pro';
 
   @override
-  String get proIntroduction =>
-      'Tus herramientas de cada día siguen siendo gratis. Estamos preparando Pro para ayudarte con más de la planificación.';
+  String get proIntroduction => 'Tus herramientas de cada día siguen siendo gratis. Estamos preparando Pro para ayudarte con más de la planificación.';
 
   @override
   String get proFreePlan => 'Miga Gratis';
@@ -516,12 +490,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get proFreeDescription => 'Todo lo que puedes usar hoy, sin costo.';
 
   @override
-  String get proFreePlanning =>
-      'Planifica tus comidas y edita tu presupuesto semanal';
+  String get proFreePlanning => 'Planifica tus comidas y edita tu presupuesto semanal';
 
   @override
-  String get proFreeRecipes =>
-      'Explora recetas y filtra por los ingredientes que tienes';
+  String get proFreeRecipes => 'Explora recetas y filtra por los ingredientes que tienes';
 
   @override
   String get proFreeShopping => 'Crea tu lista y marca lo que vas comprando';
@@ -533,26 +505,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get proAutomaticPlans => 'Tu semana planificada';
 
   @override
-  String get proAutomaticPlansDescription =>
-      'Menús semanales automáticos según tus preferencias y la cantidad de personas en casa.';
+  String get proAutomaticPlansDescription => 'Menús semanales automáticos según tus preferencias y la cantidad de personas en casa.';
 
   @override
   String get proPantryPlans => 'Aprovecha lo que ya tienes';
 
   @override
-  String get proPantryPlansDescription =>
-      'Crea un menú completo con tus ingredientes disponibles, más allá del filtro gratuito de recetas.';
+  String get proPantryPlansDescription => 'Crea un menú completo con tus ingredientes disponibles, más allá del filtro gratuito de recetas.';
 
   @override
   String get proSharedLists => 'Una lista para toda la casa';
 
   @override
-  String get proSharedListsDescription =>
-      'Comparte una lista y mantén sincronizadas las compras de todos.';
+  String get proSharedListsDescription => 'Comparte una lista y mantén sincronizadas las compras de todos.';
 
   @override
-  String get proLaunchNote =>
-      'Las suscripciones Pro todavía no están disponibles. Anunciaremos el precio al lanzar. Tus herramientas gratuitas siguen disponibles.';
+  String get proLaunchNote => 'Las suscripciones Pro todavía no están disponibles. Anunciaremos el precio al lanzar. Tus herramientas gratuitas siguen disponibles.';
 
   @override
   String get proKeepPlanning => 'Seguir usando Miga Gratis';
@@ -569,8 +537,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get groceryManualPrice =>
-      'Precios introducidos por ti, no verificados por una tienda.';
+  String get groceryManualPrice => 'Precios introducidos por ti, no verificados por una tienda.';
 
   @override
   String get groceryUnitPrice => 'Precio por producto';
@@ -579,12 +546,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get groceryQuantity => 'Cantidad de productos';
 
   @override
-  String get groceryPriceInvalid =>
-      'Introduce un precio con hasta 2 decimales.';
+  String get groceryPriceInvalid => 'Introduce un precio con hasta 2 decimales.';
 
   @override
-  String get groceryQuantityInvalid =>
-      'Introduce un número entero entre 1 y 999.';
+  String get groceryQuantityInvalid => 'Introduce un número entero entre 1 y 999.';
 
   @override
   String get groceryRemovePrice => 'Quitar precio';
@@ -604,8 +569,14 @@ class AppLocalizationsEs extends AppLocalizations {
   String get groceryPricesNeeded => 'Añade precios para estimar tu compra';
 
   @override
-  String groceryPricesMissing(Object count) {
-    return 'A $count productos todavía les falta precio';
+  String groceryPricesMissing(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count productos sin precio',
+      one: '1 producto sin precio',
+    );
+    return '$_temp0';
   }
 
   @override
@@ -622,16 +593,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get groceryReferences => 'Consultar reportes de precios en RD';
 
   @override
-  String get groceryReferenceNote =>
-      'Los reportes de Pro Consumidor son referencias fechadas. Revisa el producto, la presentación y la fecha; no son una cotización actual de tu tienda.';
+  String get groceryReferenceNote => 'Los reportes de Pro Consumidor son referencias fechadas. Revisa el producto, la presentación y la fecha; no son una cotización actual de tu tienda.';
 
   @override
-  String get groceryReferenceError =>
-      'No pudimos abrir los reportes de precios. Inténtalo de nuevo.';
+  String get groceryReferenceError => 'No pudimos abrir los reportes de precios. Inténtalo de nuevo.';
 
   @override
-  String get budgetPurpose =>
-      'Gasto registrado + precios introducidos en esta lista. Marcar el carrito no registra un gasto.';
+  String get budgetPurpose => 'Gasto registrado + precios introducidos en esta lista. Marcar el carrito no registra un gasto.';
 
   @override
   String budgetShoppingOver(String amount) {
@@ -644,40 +612,34 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get budgetIncomplete =>
-      'Añade los precios que faltan antes de basarte en este estimado.';
+  String get budgetIncomplete => 'Añade los precios que faltan antes de basarte en este estimado.';
 
   @override
   String get groceryReferenceTitle => 'Precios oficiales de referencia';
 
   @override
-  String get groceryReferenceDisclaimer =>
-      'Observaciones periódicas por tipo de supermercado, no cotizaciones en vivo. Revisa la presentación y el período antes de usar un estimado.';
+  String get groceryReferenceDisclaimer => 'Observaciones periódicas por tipo de supermercado, no cotizaciones en vivo. Revisa la presentación y el período antes de usar un estimado.';
 
   @override
   String get groceryReferenceSearch => 'Busca productos, por ejemplo arroz';
 
   @override
-  String get groceryReferenceUnavailable =>
-      'Las referencias no están disponibles ahora. Puedes introducir tu propio precio.';
+  String get groceryReferenceUnavailable => 'Las referencias no están disponibles ahora. Puedes introducir tu propio precio.';
 
   @override
   String get groceryUseReference => 'Toca para usar este estimado fechado';
 
   @override
-  String get groceryReferenceAttribution =>
-      'Fuente: Pro Consumidor / Datos Abiertos · ODbL 1.0';
+  String get groceryReferenceAttribution => 'Fuente: Pro Consumidor / Datos Abiertos · ODbL 1.0';
 
   @override
-  String get groceryReferencePrice =>
-      'Estimado de referencia fechado, no un precio actual verificado de tu tienda.';
+  String get groceryReferencePrice => 'Estimado de referencia fechado, no un precio actual verificado de tu tienda.';
 
   @override
   String get groceryFindReference => 'Buscar un precio oficial de referencia';
 
   @override
-  String get groceryEstimateNote =>
-      'Basado en tus precios y las referencias fechadas que elegiste. El precio al pagar puede cambiar.';
+  String get groceryEstimateNote => 'Basado en tus precios y las referencias fechadas que elegiste. El precio al pagar puede cambiar.';
 
   @override
   String get storeCompare => 'Comparar precios de supermercados';
@@ -686,27 +648,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get storeSearch => 'Buscar precios';
 
   @override
-  String get storePriceSmartNote =>
-      'PriceSmart: club Los Prados (6801), requiere membresía. Precios por empaque; pueden variar en otros clubes.';
+  String get storePriceSmartNote => 'PriceSmart: club Los Prados (6801), requiere membresía. Precios por empaque; pueden variar en otros clubes.';
 
   @override
-  String get storeCompareNote =>
-      'Precios del catálogo online por supermercado. Elige la marca y presentación exactas; productos distintos no son una comparación equivalente. Los precios, ofertas y existencias en tienda física pueden variar.';
+  String get storeCompareNote => 'Precios del catálogo online por supermercado. Elige la marca y presentación exactas; productos distintos no son una comparación equivalente. Los precios, ofertas y existencias en tienda física pueden variar.';
 
   @override
   String get storeNearby => 'Ver tiendas cercanas';
 
   @override
-  String get storeUnavailable =>
-      'No hay precios en vivo disponibles para esta tienda. Puedes ver sus ubicaciones cercanas.';
+  String get storeUnavailable => 'No hay precios en vivo disponibles para esta tienda. Puedes ver sus ubicaciones cercanas.';
 
   @override
-  String get storeSearchHelp =>
-      'Busca con al menos 2 caracteres. Los catálogos usan nombres de productos en español.';
+  String get storeSearchHelp => 'Busca con al menos 2 caracteres. Los catálogos usan nombres de productos en español.';
 
   @override
-  String get storeNoProducts =>
-      'No encontramos productos coincidentes en este catálogo.';
+  String get storeNoProducts => 'No encontramos productos coincidentes en este catálogo.';
 
   @override
   String storeObserved(String when) {
@@ -720,8 +677,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get storeViewProduct => 'Ver producto en el supermercado';
 
   @override
-  String get storeOnlinePrice =>
-      'Precio consultado en el catálogo online del supermercado. Revisa marca, presentación y fecha.';
+  String get storeOnlinePrice => 'Precio consultado en el catálogo online del supermercado. Revisa marca, presentación y fecha.';
 
   @override
   String get storeChooseItem => '¿Qué producto quieres comparar?';
@@ -736,8 +692,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get groceryEstimateUnavailable => 'Sin estimación';
 
   @override
-  String get groceryAutoEstimate =>
-      'Compra estimada: un empaque por cantidad. Revisa tamaño y marca.';
+  String get groceryAutoEstimate => 'Compra estimada: un empaque por cantidad. Revisa tamaño y marca.';
 
   @override
   String get groceryItemAdded => 'Producto añadido correctamente';
@@ -746,8 +701,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get budgetRecipeTitle => 'Platos para tu presupuesto';
 
   @override
-  String get budgetRecipeCurrency =>
-      'Los precios de recetas están en pesos dominicanos. Usa DOP para compararlos.';
+  String get budgetRecipeCurrency => 'Los precios de recetas están en pesos dominicanos. Usa DOP para compararlos.';
 
   @override
   String budgetMealAllowance(Object amount) {
@@ -755,12 +709,10 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get budgetCostNote =>
-      'Estimación de ingredientes consumidos, no de empaques completos. Cantidades de cocina y pesos de vegetales aproximados. Puede combinar tiendas; comprar todos los empaques puede costar más.';
+  String get budgetCostNote => 'Compra estimada de empaques completos o unidades vendidas individualmente. Se redondea hacia arriba para cubrir las cantidades de la receta. Puede combinar tiendas; esta estimación no descuenta lo que ya tienes en casa.';
 
   @override
-  String get budgetNoConfirmedFit =>
-      'Todavía no hay un plato con todos los precios que encaje en este objetivo. Revisa los costos o ajusta el presupuesto.';
+  String get budgetNoConfirmedFit => 'Todavía no hay un plato con todos los precios que encaje en este objetivo. Revisa los costos o ajusta el presupuesto.';
 
   @override
   String budgetRecipeTotal(Object amount, Object servings) {
@@ -788,12 +740,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get budgetMealTarget => 'Presupuesto sugerido por comida';
 
   @override
-  String get budgetTargetNote =>
-      'Presupuesto semanal restante dividido entre los horarios de comida que quedan (3 por día; hoy depende de la hora actual). El costo de la receta incluye todas sus porciones.';
+  String get budgetTargetNote => 'Presupuesto semanal restante dividido entre los horarios de comida que quedan (3 por día; hoy depende de la hora actual). El costo de la receta incluye todas sus porciones.';
 
   @override
-  String get budgetKnownSubtotal =>
-      'Subtotal de ingredientes con precio · incompleto';
+  String get budgetKnownSubtotal => 'Subtotal de ingredientes con precio · incompleto';
 
   @override
   String budgetPriceCoverage(Object priced, Object total) {
@@ -809,11 +759,10 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get budgetRecipeEstimate => 'Total estimado de la receta';
+  String get budgetRecipeEstimate => 'Compra estimada de ingredientes';
 
   @override
-  String get homeWeekEmpty =>
-      'Tu semana está vacía. Añade tu primera comida para empezar a planificar.';
+  String get homeWeekEmpty => 'Tu semana está vacía. Añade tu primera comida para empezar a planificar.';
 
   @override
   String recipeNutrition(int calories, int protein, int carbs) {
@@ -861,13 +810,88 @@ class AppLocalizationsEs extends AppLocalizations {
   String get groceryGenerateFromPlan => 'Generar desde el menú semanal';
 
   @override
+  String get groceryEstimatedTotal => 'Total estimado de compra';
+
+  @override
+  String groceryPackages(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count empaques',
+      one: '1 empaque',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String groceryPerEgg(String price) {
+    return '$price por huevo';
+  }
+
+  @override
+  String get groceryDetails => 'Detalles del producto';
+
+  @override
+  String get groceryCompareIntro => 'Compara los empaques disponibles y elige tu supermercado.';
+
+  @override
+  String get groceryCompareEmpty => 'Prueba con otro producto o una búsqueda más corta.';
+
+  @override
+  String get groceryCompareSearch => 'Buscar un producto';
+
+  @override
+  String get groceryEditorIntro => 'Agrega lo que necesitas y márcalo al comprar.';
+
+  @override
+  String get groceryComplete => 'Completar compra';
+
+  @override
+  String get groceryCompleteNote => 'Guarda esta compra y vacía tu lista de compras.';
+
+  @override
+  String get groceryPaidTotal => 'Total pagado (opcional)';
+
+  @override
+  String get groceryPaidTotalHint => 'Escribe el total del recibo. Déjalo vacío para guardar solo el estimado.';
+
+  @override
+  String get groceryCompleted => 'Compra guardada';
+
+  @override
+  String get notificationsTitle => 'Notificaciones';
+
+  @override
+  String get notificationsEmpty => 'Estás al día';
+
+  @override
+  String get notificationsEmptyNote => 'Tus recordatorios aparecerán aquí.';
+
+  @override
+  String get pantryEmptyTitle => '¿Qué tienes en tu cocina?';
+
+  @override
+  String get pantryEmptyMessage => 'Agrega algunos ingredientes que tengas y te ayudamos a elegir qué cocinar.';
+
+  @override
+  String get pantryAddIngredients => 'Agregar ingredientes';
+
+  @override
+  String get groceryDecrease => 'Quitar un empaque';
+
+  @override
+  String get groceryIncrease => 'Agregar un empaque';
+
+  @override
+  String get storeLoading => 'Consultando este supermercado…';
+
+  @override
   String groceryGeneratedCount(int count) {
     return 'Lista actualizada con $count ingredientes de tu plan';
   }
 
   @override
-  String get groceryNoPlannedMeals =>
-      'No tienes comidas planificadas aún. Añade comidas para generar tu lista.';
+  String get groceryNoPlannedMeals => 'No tienes comidas planificadas aún. Añade comidas para generar tu lista.';
 
   @override
   String get budgetThreeLimit => 'Presupuesto semanal: Cuánto quiero gastar';
@@ -876,12 +900,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get budgetThreeSpent => 'Gasto real: Cuánto he gastado realmente';
 
   @override
-  String get budgetThreeEstimated =>
-      'Costos estimados: Estimación de ingredientes';
+  String get budgetThreeEstimated => 'Costos estimados: Estimación de ingredientes';
 
   @override
-  String get budgetDistinctionTip =>
-      'El gasto real se mantiene separado de los costos estimados.';
+  String get budgetDistinctionTip => 'El gasto real se mantiene separado de los costos estimados.';
 
   @override
   String get preferencesTitle => 'Preferencias del hogar';
@@ -905,8 +927,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get restrictionsTitle => 'Alergias y restricciones alimentarias';
 
   @override
-  String get restrictionsNote =>
-      'Ocultamos las recetas con los alérgenos seleccionados. Revisa siempre las etiquetas y las advertencias de contaminación cruzada.';
+  String get restrictionsNote => 'Ocultamos las recetas con los alérgenos seleccionados. Revisa siempre las etiquetas y las advertencias de contaminación cruzada.';
 
   @override
   String get vegetarian => 'Vegetariano';
@@ -936,8 +957,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get pantryTitle => 'Mi despensa';
 
   @override
-  String get pantryEmpty =>
-      'Añade lo que tienes en casa para comprar solo lo que necesitas.';
+  String get pantryEmpty => 'Añade lo que tienes en casa para comprar solo lo que necesitas.';
 
   @override
   String get ingredientLabel => 'Ingrediente';
@@ -976,10 +996,25 @@ class AppLocalizationsEs extends AppLocalizations {
   String get servingsLabel => 'Porciones';
 
   @override
-  String get nutritionPerServing => 'Nutrición aproximada por porción';
+  String get nutritionPerServing => 'Por porción';
 
   @override
-  String get nutritionTotal => 'Nutrición aproximada de la receta completa';
+  String get nutritionTotal => 'Receta completa';
+
+  @override
+  String get nutritionCalories => 'Calorías';
+
+  @override
+  String get nutritionProtein => 'Proteínas';
+
+  @override
+  String get nutritionCarbs => 'Carbohidratos';
+
+  @override
+  String get nutritionEstimateNote => 'Valores nutricionales estimados.';
+
+  @override
+  String get nutritionUnavailable => 'Información nutricional no disponible.';
 
   @override
   String get planRecipe => 'Añadir receta';
@@ -1006,8 +1041,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get mealActions => 'Opciones de comida';
 
   @override
-  String get overwriteWarning =>
-      'Esto reemplaza la comida guardada en ese horario.';
+  String get overwriteWarning => 'Esto reemplaza la comida guardada en ese horario.';
 
   @override
   String get confirmReplace => '¿Reemplazar comida?';
@@ -1034,15 +1068,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get planEstimateTitle => 'Costo estimado del plan';
 
   @override
-  String get incompleteEstimate =>
-      'Estimación parcial · faltan precios o hay comidas personalizadas';
+  String get incompleteEstimate => 'Estimación parcial · faltan precios o hay comidas personalizadas';
 
   @override
   String get priceSettingsTitle => 'Precios de ingredientes';
 
   @override
-  String get priceSettingsNote =>
-      'Tu precio por kg, litro o unidad tiene prioridad sobre las estimaciones. No convertimos precios entre monedas.';
+  String get priceSettingsNote => 'Tu precio por kg, litro o unidad tiene prioridad sobre las estimaciones. No convertimos precios entre monedas.';
 
   @override
   String get manualPriceSource => 'Tu precio de referencia';
@@ -1057,16 +1089,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get autoPlanPreview => 'Revisa tu semana propuesta';
 
   @override
-  String get autoPlanNote =>
-      'Completa espacios vacíos según tu hogar, restricciones, despensa y presupuesto. Conserva las comidas existentes.';
+  String get autoPlanNote => 'Completa espacios vacíos según tu hogar, restricciones, despensa y presupuesto. Conserva las comidas existentes.';
 
   @override
-  String get autoPlanMissing =>
-      'No se pudieron completar algunos espacios con precios confirmados dentro del presupuesto. Añade precios o ajusta tu presupuesto.';
+  String get autoPlanMissing => 'No se pudieron completar algunos espacios con precios confirmados dentro del presupuesto. Añade precios o ajusta tu presupuesto.';
 
   @override
-  String get autoPlanNoBudget =>
-      'Configura tu presupuesto semanal antes de generar un plan ajustado a él.';
+  String get autoPlanNoBudget => 'Configura tu presupuesto semanal antes de generar un plan ajustado a él.';
 
   @override
   String get applyPlan => 'Aplicar plan y actualizar compras';
@@ -1075,22 +1104,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get syncGroceriesLabel => 'Sincronizar compras con mi plan';
 
   @override
-  String get syncGroceriesNote =>
-      'Actualiza cantidades y quita ingredientes de comidas eliminadas. Conserva tus productos manuales, precios y marcas de compra.';
+  String get syncGroceriesNote => 'Actualiza cantidades y quita ingredientes de comidas eliminadas. Conserva tus productos manuales, precios y marcas de compra.';
 
   @override
   String get requiredAmountLabel => 'Necesario';
 
   @override
-  String get estimatedTotalNote =>
-      'Estimación de empaques; el gasto real se registra por separado en el presupuesto.';
+  String get estimatedTotalNote => 'Estimación de empaques; el gasto real se registra por separado en el presupuesto.';
 
   @override
   String get spendingTitle => 'Historial de gastos';
 
   @override
-  String get spendingEmpty =>
-      'Guarda presupuestos y gastos reales semanales para ver tu historial.';
+  String get spendingEmpty => 'Guarda presupuestos y gastos reales semanales para ver tu historial.';
 
   @override
   String get actualSpending => 'Gasto real';
@@ -1102,8 +1128,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get substitutionsTitle => 'Opciones para ahorrar';
 
   @override
-  String get substitutionsNote =>
-      'Compara estimaciones completas con las mismas porciones. Revisa los ingredientes antes de reemplazar una comida.';
+  String get substitutionsNote => 'Compara estimaciones completas con las mismas porciones. Revisa los ingredientes antes de reemplazar una comida.';
 
   @override
   String get privacyTitle => 'Privacidad y tus datos';
@@ -1112,8 +1137,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get deleteAccount => 'Eliminar cuenta y datos';
 
   @override
-  String get deleteAccountPrompt =>
-      '¿Eliminar definitivamente tu cuenta, planes, preferencias y compras? Esta acción no se puede deshacer.';
+  String get deleteAccountPrompt => '¿Eliminar definitivamente tu cuenta, planes, preferencias y compras? Esta acción no se puede deshacer.';
 
   @override
   String get syncTitle => 'Sincronización en la nube';
@@ -1122,12 +1146,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get syncSaved => 'Sincronizado con tu cuenta';
 
   @override
-  String get syncPending =>
-      'Guardado en este dispositivo · pendiente de sincronizar';
+  String get syncPending => 'Guardado en este dispositivo · pendiente de sincronizar';
 
   @override
-  String get syncConflict =>
-      'Otro dispositivo tiene cambios. Elige qué versión conservar antes de sincronizar.';
+  String get syncConflict => 'Otro dispositivo tiene cambios. Elige qué versión conservar antes de sincronizar.';
 
   @override
   String get syncRetry => 'Sincronizar ahora';
@@ -1151,8 +1173,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get invitationCode => 'Código de invitación';
 
   @override
-  String get sharedListNote =>
-      'Los integrantes pueden editar esta lista. Comparte la invitación solo con personas de confianza.';
+  String get sharedListNote => 'Los integrantes pueden editar esta lista. Comparte la invitación solo con personas de confianza.';
 
   @override
   String get copyInvitation => 'Copiar invitación';
@@ -1161,8 +1182,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get leaveSharedList => 'Salir de la lista compartida';
 
   @override
-  String get cloudUnavailable =>
-      'Los servicios en la nube aún no están configurados. Tus datos locales están guardados.';
+  String get cloudUnavailable => 'Los servicios en la nube aún no están configurados. Tus datos locales están guardados.';
 
   @override
   String get restorePurchases => 'Restaurar compras';
@@ -1171,27 +1191,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get manageSubscription => 'Gestionar suscripción';
 
   @override
-  String get subscriptionUnavailable =>
-      'Las suscripciones todavía no están disponibles. No se realizará ningún cobro.';
+  String get subscriptionUnavailable => 'Las suscripciones todavía no están disponibles. No se realizará ningún cobro.';
 
   @override
   String get proToolsTitle => 'Herramientas de planificación disponibles';
 
   @override
-  String get proToolsNote =>
-      'Prueba la planificación semanal, sugerencias con tu despensa e historial de gastos mientras preparamos Miga Pro.';
+  String get proToolsNote => 'Prueba la planificación semanal, sugerencias con tu despensa e historial de gastos mientras preparamos Miga Pro.';
 
   @override
-  String get sharedListDeleteWarning =>
-      'Si eres el propietario, salir elimina la lista para todos. Los demás integrantes solo pierden su propio acceso. ¿Continuar?';
+  String get sharedListDeleteWarning => 'Si eres el propietario, salir elimina la lista para todos. Los demás integrantes solo pierden su propio acceso. ¿Continuar?';
 
   @override
-  String get sharedDraftSaved =>
-      'Tus cambios permanecen en esta pantalla hasta que reintentes o elijas la versión de la nube.';
+  String get sharedDraftSaved => 'Tus cambios permanecen en esta pantalla hasta que reintentes o elijas la versión de la nube.';
 
   @override
-  String get savingsEmpty =>
-      'Todavía no hay alternativas más económicas con precios completos. Añade precios de referencia o planifica una receta.';
+  String get savingsEmpty => 'Todavía no hay alternativas más económicas con precios completos. Añade precios de referencia o planifica una receta.';
 
   @override
   String get perServingLabel => 'por porción';
@@ -1200,6 +1215,39 @@ class AppLocalizationsEs extends AppLocalizations {
   String get subscriptionActive => 'Miga Pro activo hasta';
 
   @override
-  String get groceryNothingNeeded =>
-      'No hay ingredientes por añadir. Revisa tu despensa y comprueba que las comidas del plan sean recetas del catálogo.';
+  String get groceryNothingNeeded => 'No hay ingredientes por añadir. Revisa tu despensa y comprueba que las comidas del plan sean recetas del catálogo.';
+
+  @override
+  String get recipeFiltersIntro => 'Encuentra platos que se adapten a tu día.';
+
+  @override
+  String get recipeFilterPreferences => 'Tus preferencias';
+
+  @override
+  String get recipeIngredientSearch => 'Buscar ingredientes';
+
+  @override
+  String get recipeNoIngredients => 'No encontramos ingredientes.';
+
+  @override
+  String get recipeShowResults => 'Mostrar recetas';
+
+  @override
+  String get recipeResetFilters => 'Restablecer filtros';
+
+  @override
+  String recipePagePosition(Object page, Object pages) {
+    return 'Página $page de $pages';
+  }
+
+  @override
+  String recipePageRange(Object end, Object start, Object total) {
+    return 'Mostrando $start–$end de $total recetas';
+  }
+
+  @override
+  String get recipePreviousPage => 'Anterior';
+
+  @override
+  String get recipeNextPage => 'Siguiente';
 }

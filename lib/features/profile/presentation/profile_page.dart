@@ -52,7 +52,7 @@ class ProfilePage extends StatelessWidget {
       children: [
         Text(
           l10n.homeProfileTitle,
-          style: const TextStyle(fontFamily: 'LiberationSerif', fontSize: 32),
+          style: const TextStyle(fontFamily: 'Georgia', fontSize: 32),
         ),
         const SizedBox(height: 32),
         const Align(

@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:miga/features/budget/presentation/savings_page.dart';
 import 'package:miga/features/groceries/presentation/shared_grocery_page.dart';
+import 'package:miga/features/groceries/presentation/groceries_tab_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:miga/features/sync/data/cloud_sync.dart';
@@ -17,16 +19,24 @@ import 'package:miga/features/meal_plan/presentation/sheets/plan_recipe_sheet.da
 import 'package:miga/features/meal_plan/domain/planned_recipe.dart';
 
 import 'package:flutter/material.dart';
+import 'package:miga/features/budget/data/recipe_price_store.dart';
 import 'package:flutter/services.dart';
 
 import 'package:miga/app/navigation/app_tab.dart';
 import 'package:miga/app/navigation/widgets/app_bottom_navigation.dart';
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/core/theme/app_theme.dart';
+import 'package:miga/core/ui/deferred_progress.dart';
+import 'package:miga/core/ui/miga_notice.dart';
+import 'package:miga/features/notifications/presentation/notifications_page.dart';
+import 'package:miga/features/pantry/presentation/pantry_empty_sheet.dart';
+import 'package:miga/features/groceries/presentation/sheets/grocery_checkout_sheet.dart';
 import 'package:miga/features/auth/domain/auth_service.dart';
 import 'package:miga/features/budget/presentation/sheets/budget_editor_sheet.dart';
 import 'package:miga/features/groceries/presentation/sheets/grocery_list_sheet.dart';
 import 'package:miga/features/home/application/home_controller.dart';
+import 'package:miga/features/home/application/surprise_quota_service.dart';
+import 'package:miga/features/recipes/data/recipe_catalog.dart';
 import 'package:miga/features/home/data/local_home_details_store.dart';
 import 'package:miga/features/home/domain/home_details_store.dart';
 import 'package:miga/features/home/presentation/home_screen.dart';
@@ -71,9 +81,56 @@ class AppShell extends StatefulWidget {
   State<AppShell> createState() => _AppShellState();
 }
 
-class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
+class _AppShellState extends State<AppShell>
+    with WidgetsBindingObserver, SingleTickerProviderStateMixin {
+  late final _tabAnimation = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 170),
+    value: 1,
+  );
   late final HomeController _controller;
   AppTab _tab = AppTab.home;
+  int _budgetRecipeFilterRequest = 0;
+  int _pantryRecipeFilterRequest = 0;
+  late final SurpriseQuotaService _surpriseQuota;
+  int _surpriseRemaining = 3;
+  bool _surpriseBusy = false;
+  String? _lastSurpriseRecipe;
+
+  void _selectTab(AppTab tab) {
+    final changed = tab != _tab;
+    if (tab == AppTab.plan && _purchases?.active != true) {
+      _openPro();
+      return;
+    }
+    setState(() {
+      _tab = tab;
+      // The normal Recipes tab opens the catalog without retaining a
+      // Home shortcut's budget/pantry filter.
+      if (tab == AppTab.recipes) {
+        _budgetRecipeFilterRequest = 0;
+        _pantryRecipeFilterRequest = 0;
+      }
+    });
+    if (changed && !MediaQuery.disableAnimationsOf(context)) {
+      _tabAnimation.forward(from: 0);
+    }
+  }
+
+  void _viewBudgetRecipes() {
+    final hasBudget =
+        _controller.budget != null && _controller.budgetCurrencyMatches;
+    setState(() {
+      _tab = AppTab.recipes;
+      _pantryRecipeFilterRequest = 0;
+      // Positive request activates Within budget; negative request opens the
+      // regular catalog when no matching budget exists (no empty filter).
+      _budgetRecipeFilterRequest = hasBudget
+          ? _budgetRecipeFilterRequest.abs() + 1
+          : -(_budgetRecipeFilterRequest.abs() + 1);
+    });
+  }
+
   bool _signingOut = false;
   Timer? _clockTimer, _syncTimer;
   CloudSync? _cloud;
@@ -85,6 +142,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    _surpriseQuota = SurpriseQuotaService(client: widget.client);
+    unawaited(_refreshSurpriseQuota());
     final userId = widget.authService?.session?.user.id ?? 'guest';
     if (widget.client != null &&
         widget.client!.auth.currentUser?.id == userId) {
@@ -105,7 +164,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           (_cloud == null
               ? LocalHomeDetailsStore(userId)
               : SyncedHomeDetailsStore(_cloud!)),
-      costEstimator: widget.enablePriceEstimates ? RecipeCostEstimator() : null,
+      costEstimator: widget.enablePriceEstimates
+          ? RecipeCostEstimator(priceStore: LocalRecipePriceStore())
+          : null,
     );
     unawaited(
       _controller.load().then((_) {
@@ -133,6 +194,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   @override
   void dispose() {
+    _tabAnimation.dispose();
     _clockTimer?.cancel();
     _syncTimer?.cancel();
     _cloud?.removeListener(_cloudChanged);
@@ -150,6 +212,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       _controller.syncTime(DateTime.now());
       unawaited(_syncNow());
       unawaited(_purchases?.refreshEntitlement());
+      unawaited(_refreshSurpriseQuota());
     }
   }
 
@@ -209,32 +272,44 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     if (!mounted) return success;
     if (success) {
       final l = AppLocalizations.of(context)!;
-      ScaffoldMessenger.of(context)
-        ..hideCurrentSnackBar()
-        ..showSnackBar(
-          SnackBar(
-            content: Text(message ?? l.savedSuccess),
-            action: _controller.canUndo
-                ? SnackBarAction(
-                    label: l.undoAction,
-                    onPressed: () => _save(_controller.undo),
-                  )
-                : null,
-          ),
-        );
+      showMigaNotice(
+        context,
+        message ?? l.savedSuccess,
+        action: _controller.canUndo
+            ? SnackBarAction(
+                label: l.undoAction,
+                onPressed: () => _save(_controller.undo),
+              )
+            : null,
+      );
     } else {
       final l10n = AppLocalizations.of(context)!;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l10n.homeSaveError),
-          action: SnackBarAction(
-            label: l10n.homeRetry,
-            onPressed: () => _save(action),
-          ),
+      showMigaNotice(
+        context,
+        l10n.homeSaveError,
+        error: true,
+        action: SnackBarAction(
+          label: l10n.homeRetry,
+          onPressed: () => _save(action),
         ),
       );
     }
     return success;
+  }
+
+  /// Favorites should feel like an instant toggle, not a full save workflow.
+  void _toggleFavorite(String id) {
+    unawaited(
+      _controller.toggleFavorite(id).then((saved) {
+        if (!saved && mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(AppLocalizations.of(context)!.homeSaveError),
+            ),
+          );
+        }
+      }),
+    );
   }
 
   Future<void> _editMeal(
@@ -242,6 +317,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     MealSlot slot, {
     String? suggestion,
   }) async {
+    if (_requiresPro) {
+      _openPro();
+      return;
+    }
     if (!_controller.canEdit) return;
     final planned = _controller.recipeFor(date, slot);
     if (planned != null && suggestion == null) {
@@ -286,6 +365,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           return saved ? _controller.details.pantry : null;
         },
         costFor: _controller.costFor,
+        onRefreshPrices: _controller.refreshRecipePrices,
+        manualPrices: _controller.details.ingredientPrices,
         budget: _controller.budget,
         currency: _controller.costCurrency,
         now: _controller.now,
@@ -330,6 +411,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         _controller.details.groceries,
         syncWithPlan: syncWithPlan,
         allowEstimates: _controller.preferences.country == 'DO',
+        isPro: !_requiresPro,
+        onUpgrade: _openPro,
+        onComplete: _completeGroceryPurchase,
         onSyncChanged: (value) => syncWithPlan = value,
         currency: _controller.preferences.currency,
         onGenerateFromPlan: (items) =>
@@ -342,6 +426,73 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     );
     if (!mounted || items == null) return;
     await _save(() => _controller.setGrocerySync(syncWithPlan, items: items));
+  }
+
+  Future<bool> _completeGroceryPurchase(List<GroceryItem> items) async {
+    if (!_controller.canEdit) return false;
+    final checkout = await showGroceryCheckout(
+      context,
+      items,
+      _controller.preferences.currency,
+    );
+    if (!mounted || checkout == null) return false;
+    return _save(
+      () => _controller.completeGroceries(
+        items,
+        paidTotalCents: checkout.paidTotalCents,
+      ),
+      message: AppLocalizations.of(context)!.groceryCompleted,
+    );
+  }
+
+  Future<void> _openNotifications() async {
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => Theme(
+          data: AppTheme.household(Theme.of(context)),
+          child: NotificationsPage(
+            controller: _controller,
+            onGroceries: () {
+              Navigator.of(context).pop();
+              _selectTab(AppTab.groceries);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _generateGroceryPlan() async {
+    if (_requiresPro) {
+      _openPro();
+      return;
+    }
+    if (!_controller.canEdit) return;
+    final items = _controller.generateGroceriesFromPlannedMeals(
+      existingItems: _controller.details.groceries,
+      languageCode: Localizations.localeOf(context).languageCode,
+      currency: _controller.preferences.currency,
+    );
+    await _save(() => _controller.setGrocerySync(true, items: items));
+    if (mounted) await _openGroceries();
+  }
+
+  Future<void> _compareGroceryPrices() async {
+    if (_requiresPro) {
+      _openPro();
+      return;
+    }
+    if (!_controller.canEdit) return;
+    if (_controller.details.groceries.isEmpty) {
+      await _openGroceries();
+      return;
+    }
+    final items = await compareGroceryItems(
+      context,
+      _controller.details.groceries,
+    );
+    if (!mounted || items == null) return;
+    await _save(() => _controller.saveGroceries(items));
   }
 
   Future<bool> _addAmounts(Recipe recipe, List<RecipeAmount> amounts) async {
@@ -375,6 +526,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   Future<void> _planRecipe(Recipe recipe) async {
+    if (_requiresPro) {
+      _openPro();
+      return;
+    }
     if (!_controller.canEdit) return;
     final target = await showPlanRecipe(
       context,
@@ -430,11 +585,80 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     ),
   );
 
-  bool get _requiresPro =>
-      StoreSubscriptionService.enabled &&
-      _purchases?.available == true &&
-      _purchases!.products.isNotEmpty &&
-      !_purchases!.active;
+  // The Pro gate must work even before App Store products are configured.
+  // The entitlement is checked against server-verified subscription state.
+  bool get _requiresPro => _purchases?.active != true;
+
+  Future<void> _refreshSurpriseQuota() async {
+    try {
+      final allowance = await _surpriseQuota.remaining();
+      if (mounted) setState(() => _surpriseRemaining = allowance.remaining);
+    } catch (_) {
+      // A missing migration or network error must never reset the quota.
+      // Consumption will fail closed and display a retry message.
+    }
+  }
+
+  Future<void> _cookWithPantry() async {
+    if (_controller.availableIngredients.isEmpty) {
+      final add = await showPantryEmptySheet(context);
+      if (!mounted || add != true) return;
+      await _editPantry();
+      if (!mounted || _controller.availableIngredients.isEmpty) return;
+    }
+    setState(() {
+      _tab = AppTab.recipes;
+      _budgetRecipeFilterRequest = 0;
+      _pantryRecipeFilterRequest++;
+    });
+  }
+
+  Future<void> _surpriseMe() async {
+    if (_surpriseBusy || !_controller.canEdit) return;
+    final recipes = RecipeCatalog.all
+        .where(_controller.preferences.allows)
+        .toList();
+    if (recipes.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('No recipes match your preferences.')),
+      );
+      return;
+    }
+    setState(() => _surpriseBusy = true);
+    SurpriseAllowance? allowance;
+    try {
+      // Always consult the server for a signed-in account, even if local Pro
+      // entitlement was not refreshed. A failed RPC cannot grant free uses.
+      allowance = await _surpriseQuota.consume();
+      if (!mounted) return;
+      setState(() => _surpriseRemaining = allowance!.remaining);
+    } catch (_) {
+      if (!mounted) return;
+      final spanish = Localizations.localeOf(context).languageCode == 'es';
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            spanish
+                ? 'No pudimos verificar tus usos. Intenta de nuevo.'
+                : 'Could not verify your free uses. Please retry.',
+          ),
+        ),
+      );
+      return;
+    } finally {
+      if (mounted) setState(() => _surpriseBusy = false);
+    }
+    if (!mounted) return;
+    if (!allowance.allowed) {
+      _openPro();
+      return;
+    }
+    final choices = recipes.where((r) => r.id != _lastSurpriseRecipe).toList();
+    final pool = choices.isEmpty ? recipes : choices;
+    final chosen = pool[Random().nextInt(pool.length)];
+    _lastSurpriseRecipe = chosen.id;
+    await _openRecipe(chosen);
+  }
 
   void _openSavings() {
     if (_requiresPro) {
@@ -594,6 +818,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   Future<void> _chooseRecipe(DateTime date, MealSlot slot) async {
+    if (_requiresPro) {
+      _openPro();
+      return;
+    }
     final l = AppLocalizations.of(context)!;
     final choices = _controller.recommendations(slot);
     final recipe = await showDialog<Recipe>(
@@ -690,6 +918,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     if (_cloud == null ||
         _syncing ||
         _controller.saving ||
+        _controller.favoriteSaving ||
         _editorDepth > 0 ||
         _deleting) {
       return;
@@ -812,16 +1041,28 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     AppTab.home => HomeScreen(
       controller: _controller,
       userName: _userName,
-      onProfile: () => setState(() => _tab = AppTab.profile),
-      onPlan: () => setState(() => _tab = AppTab.plan),
+      onProfile: () => _selectTab(AppTab.profile),
+      onNotifications: _openNotifications,
+      onPlan: () => _selectTab(AppTab.plan),
       onEditMeal: () =>
           _editMeal(_controller.selectedDate, _controller.selectedSlot),
       onRecipe: _openRecipe,
+      onViewBudgetRecipes: _viewBudgetRecipes,
+      onBrowseRecipes: () => _selectTab(AppTab.recipes),
+      onPreferences: _editPreferences,
+      onToggleFavorite: _toggleFavorite,
       onPlanRecipe: _planRecipe,
       onBudget: _editBudget,
       onGroceries: _openGroceries,
       onStores: _openStores,
       onPro: _openPro,
+      onCookWithPantry: _cookWithPantry,
+      onFindCheaper: _openSavings,
+      onSurprise: _surpriseMe,
+      onGenerateWeek: _autoPlan,
+      surpriseRemaining: _surpriseRemaining,
+      surpriseBusy: _surpriseBusy,
+      isPro: !_requiresPro,
     ),
     AppTab.plan => MealPlanPage(
       week: _controller.week,
@@ -842,16 +1083,47 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       currency: _controller.costCurrency,
     ),
     AppTab.recipes => RecipesPage(
+      onBack: () => setState(() => _tab = AppTab.home),
+      budgetFilterRequest: _budgetRecipeFilterRequest,
+      pantryFilterRequest: _pantryRecipeFilterRequest,
       onOpenRecipe: _controller.canEdit ? _openRecipe : null,
       preferences: _controller.preferences,
       pantry: _controller.availableIngredients,
       favorites: _controller.details.favorites,
       costFor: _controller.costFor,
-      onFavorite: (id) => _save(() => _controller.toggleFavorite(id)),
+      onFavorite: _toggleFavorite,
       budget: _controller.budget,
       now: _controller.now,
       portionFor: _controller.portionFor,
       onPantry: _editPantry,
+    ),
+    AppTab.groceries => GroceriesTabPage(
+      items: _controller.details.groceries,
+      isPro: !_requiresPro,
+      onUpgrade: _openPro,
+      currency: _controller.preferences.currency,
+      onGenerate: _controller.canEdit ? _generateGroceryPlan : null,
+      onCompare: _controller.canEdit ? _compareGroceryPrices : null,
+      onComplete: _controller.canEdit
+          ? () async {
+              await _completeGroceryPurchase(_controller.details.groceries);
+            }
+          : null,
+      onEdit: _controller.canEdit ? _openGroceries : null,
+      onToggle: _controller.canEdit
+          ? (changed) async {
+              final items = List<GroceryItem>.of(_controller.details.groceries);
+              final index = items.indexWhere(
+                (item) =>
+                    item.ingredientId != null && changed.ingredientId != null
+                    ? item.ingredientId == changed.ingredientId
+                    : item.name == changed.name,
+              );
+              if (index < 0) return false;
+              items[index] = changed;
+              return _controller.saveGroceries(items);
+            }
+          : null,
     ),
     AppTab.profile => ProfilePage(
       name: _userName,
@@ -914,9 +1186,30 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                     _controller.setLanguage(
                       Localizations.localeOf(context).languageCode,
                     );
-                    return IndexedStack(
-                      index: _tab.index,
-                      children: [for (final tab in AppTab.values) _body(tab)],
+                    return Stack(
+                      children: [
+                        FadeTransition(
+                          opacity: Tween<double>(begin: .84, end: 1)
+                              .chain(CurveTween(curve: Curves.easeOut))
+                              .animate(_tabAnimation),
+                          child: IndexedStack(
+                            index: _tab.index,
+                            children: [
+                              for (final tab in AppTab.values) _body(tab),
+                            ],
+                          ),
+                        ),
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          child: IgnorePointer(
+                            child: DeferredProgress(
+                              active: _controller.saving || _controller.loading,
+                            ),
+                          ),
+                        ),
+                      ],
                     );
                   },
                 ),
@@ -925,7 +1218,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           ),
           bottomNavigationBar: AppBottomNavigation(
             selectedTab: _tab,
-            onSelected: (tab) => setState(() => _tab = tab),
+            onSelected: _selectTab,
           ),
         ),
       ),
