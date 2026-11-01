@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:miga/core/ui/miga_skeleton.dart';
@@ -10,9 +11,17 @@ class RecipeImage extends StatelessWidget {
   const RecipeImage({super.key, required this.photo, this.fit = BoxFit.cover});
   final RecipePhoto photo;
   final BoxFit fit;
-  static ImageProvider providerFor(RecipePhoto photo) => photo.isRemote
-      ? CachedNetworkImageProvider(photo.path)
-      : AssetImage(photo.path);
+  static ImageProvider providerFor(RecipePhoto photo) {
+    if (!photo.isRemote) {
+      return AssetImage(photo.path);
+    }
+    if (kIsWeb ||
+        (defaultTargetPlatform != TargetPlatform.android &&
+            defaultTargetPlatform != TargetPlatform.iOS)) {
+      return NetworkImage(photo.path);
+    }
+    return CachedNetworkImageProvider(photo.path);
+  }
   @override
   Widget build(BuildContext context) => ClipRect(
     child: LayoutBuilder(
