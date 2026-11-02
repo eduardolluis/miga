@@ -34,6 +34,7 @@ try {
   const surpriseMigration = await readFile(new URL('../migrations/202610310002_surprise_quota.sql', import.meta.url), 'utf8');
   await pg.exec(surpriseMigration);
   await pg.exec(await readFile(new URL('../migrations/202611010001_recipe_catalog.sql', import.meta.url), 'utf8'));
+  await pg.exec(await readFile(new URL('../migrations/202611010002_recipe_photo_bucket_public.sql', import.meta.url), 'utf8'));
   for (const id of users) await pg.query('insert into auth.users values ($1)', [id]);
   await asUser(users[0]);
   await check('Owner creates and reads their complete state', async () => {

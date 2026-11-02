@@ -201,6 +201,24 @@ void main() {
     expect(roundTrip.baseServings, 3);
     expect(roundTrip.amounts.first.amount, recipe.amounts.first.amount);
   });
+  test('Relative Storage photo paths resolve to the public bucket, not assets', () {
+    final raw = jsonDecode(
+      jsonEncode(RecipeCatalog.all.first.toJson()),
+    ) as Map<String, dynamic>;
+    (raw['photo'] as Map<String, dynamic>)['path'] = 'recipes/banana-oats-123abc.jpg';
+    final recipe = Recipe.fromJson(
+      raw,
+      imageBaseUrl: 'https://example.test/storage/v1/object/public/recipe-photos/',
+    );
+    expect(recipe.photo.isRemote, isTrue);
+    expect(
+      recipe.photo.path,
+      'https://example.test/storage/v1/object/public/recipe-photos/recipes/banana-oats-123abc.jpg',
+    );
+    (raw['photo'] as Map<String, dynamic>)['path'] = 'assets/images/recipes/banana-oats.jpg';
+    expect(() => Recipe.fromJson(raw), throwsFormatException);
+  });
+
   test('Unknown ingredients and duplicate IDs fail instead of weakening restrictions', () async {
     final bad = jsonDecode(
       jsonEncode(RecipeCatalog.all.first.toJson()),

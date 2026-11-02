@@ -15,7 +15,7 @@
         "cinnamon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A warm bowl of creamy rolled oats made with milk, topped with banana slices, chopped walnuts and a light dusting of cinnamon.",
-      "asset": "assets/images/recipes/v2/banana-oats.jpg",
+      "asset": "supabase/catalog/photos/banana-oats.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 621223,
@@ -35,7 +35,7 @@
         "pepper"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Two slices of toasted wholegrain bread with mashed avocado, softly scrambled eggs and fresh tomato pieces on a cream plate.",
-      "asset": "assets/images/recipes/v2/avocado-toast.jpg",
+      "asset": "supabase/catalog/photos/avocado-toast.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 589995,
@@ -52,7 +52,7 @@
         "granola"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A bowl of thick plain yogurt with fresh mango cubes, sliced strawberries and crisp granola.",
-      "asset": "assets/images/recipes/v2/yogurt-fruit.jpg",
+      "asset": "supabase/catalog/photos/yogurt-fruit.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 589651,
@@ -73,7 +73,7 @@
         "pepper"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A baked salmon fillet with roasted baby potatoes, broccoli and lemon slices on a cream plate.",
-      "asset": "assets/images/recipes/v2/lemon-salmon.jpg",
+      "asset": "supabase/catalog/photos/lemon-salmon.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 683202,
@@ -94,7 +94,7 @@
         "pepper"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A bowl of white rice with grilled boneless chicken breast pieces, cooked carrot coins and broccoli.",
-      "asset": "assets/images/recipes/v2/chicken-rice.jpg",
+      "asset": "supabase/catalog/photos/chicken-rice.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 629485,
@@ -114,7 +114,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A fresh chickpea salad with avocado cubes, chopped tomato, cucumber and red onion, dressed with lemon and olive oil. No cheese.",
-      "asset": "assets/images/recipes/v2/chickpea-salad.jpg",
+      "asset": "supabase/catalog/photos/chickpea-salad.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 591734,
@@ -133,7 +133,7 @@
         "cheese"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A plate of spaghetti coated with fresh tomato and garlic sauce, basil leaves and a little grated cheese.",
-      "asset": "assets/images/recipes/v2/tomato-pasta.jpg",
+      "asset": "supabase/catalog/photos/tomato-pasta.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 631320,
@@ -152,7 +152,7 @@
         "pepper"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A bowl of golden roasted orange sweet potato cubes and sauteed spinach, topped with a fried egg.",
-      "asset": "assets/images/recipes/v2/sweet-potato-egg.jpg",
+      "asset": "supabase/catalog/photos/sweet-potato-egg.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 660371,
@@ -172,7 +172,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A rustic bowl of lentil vegetable soup with small flat brown lentils, diced carrot, celery, onion and tomato in a visible light broth.",
-      "asset": "assets/images/recipes/v2/lentil-soup.jpg",
+      "asset": "supabase/catalog/photos/lentil-soup.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 647215,
@@ -190,7 +190,7 @@
         "walnuts"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A bowl of warm creamy oatmeal topped with diced apple, cinnamon and walnut pieces. No banana.",
-      "asset": "assets/images/recipes/v2/apple-cinnamon-oats.jpg",
+      "asset": "supabase/catalog/photos/apple-cinnamon-oats.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 580049,
@@ -207,7 +207,7 @@
         "cinnamon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Wholegrain toast topped with peanut butter, banana slices and cinnamon, on a cream ceramic plate.",
-      "asset": "assets/images/recipes/v2/peanut-banana-toast.jpg",
+      "asset": "supabase/catalog/photos/peanut-banana-toast.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 585269,
@@ -226,7 +226,7 @@
         "pepper"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A golden folded spinach and cheese omelet, cut once to show the soft egg and green spinach filling, on a cream plate.",
-      "asset": "assets/images/recipes/v2/spinach-cheese-omelet.jpg",
+      "asset": "supabase/catalog/photos/spinach-cheese-omelet.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 573482,
@@ -243,7 +243,7 @@
         "cinnamon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A glass of creamy ripe mango and oat smoothie, with a subtle cinnamon dusting and a small mango wedge nearby. No other fruit.",
-      "asset": "assets/images/recipes/v2/mango-oat-smoothie.jpg",
+      "asset": "supabase/catalog/photos/mango-oat-smoothie.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 567688,
@@ -260,7 +260,7 @@
         "cinnamon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A bowl of thick plain yogurt topped with fresh apple cubes, chopped walnuts and cinnamon.",
-      "asset": "assets/images/recipes/v2/apple-yogurt-bowl.jpg",
+      "asset": "supabase/catalog/photos/apple-yogurt-bowl.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 552971,
@@ -280,7 +280,7 @@
         "pepper"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A small rustic skillet of golden potato cubes, onions and bell peppers, topped with two fried eggs.",
-      "asset": "assets/images/recipes/v2/breakfast-potato-hash.jpg",
+      "asset": "supabase/catalog/photos/breakfast-potato-hash.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 715729,
@@ -298,7 +298,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A soft wheat tortilla wrap cut into two halves, showing scrambled egg, diced tomato and spinach filling. No meat.",
-      "asset": "assets/images/recipes/v2/egg-tomato-wrap.jpg",
+      "asset": "supabase/catalog/photos/egg-tomato-wrap.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 467164,
@@ -317,7 +317,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A small stack of homemade oat pancakes with fresh sliced strawberries and a little cinnamon. No syrup, no honey, no banana.",
-      "asset": "assets/images/recipes/v2/strawberry-oat-pancakes.jpg",
+      "asset": "supabase/catalog/photos/strawberry-oat-pancakes.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 623337,
@@ -335,7 +335,7 @@
         "pepper"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Slices of wholegrain toast topped with lightly mashed cooked chickpeas, lemon zest, olive oil and cracked pepper. No avocado.",
-      "asset": "assets/images/recipes/v2/savory-chickpea-toast.jpg",
+      "asset": "supabase/catalog/photos/savory-chickpea-toast.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 660573,
@@ -353,7 +353,7 @@
         "salt"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Soft scrambled eggs mixed with sauteed zucchini pieces and onions, on a cream plate.",
-      "asset": "assets/images/recipes/v2/zucchini-egg-scramble.jpg",
+      "asset": "supabase/catalog/photos/zucchini-egg-scramble.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 598597,
@@ -369,7 +369,7 @@
         "granola"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A bowl of plain yogurt with fresh pineapple pieces and granola.",
-      "asset": "assets/images/recipes/v2/pineapple-granola-yogurt.jpg",
+      "asset": "supabase/catalog/photos/pineapple-granola-yogurt.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 612280,
@@ -386,7 +386,7 @@
         "walnuts"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A cream bowl of warm roasted orange sweet potato cubes, topped with thick plain yogurt, walnut pieces and cinnamon.",
-      "asset": "assets/images/recipes/v2/sweet-potato-yogurt-bowl.jpg",
+      "asset": "supabase/catalog/photos/sweet-potato-yogurt-bowl.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 631434,
@@ -404,7 +404,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Two soft wheat tortilla breakfast tacos filled with cooked black beans, scrambled eggs and diced tomato. No avocado, no cheese.",
-      "asset": "assets/images/recipes/v2/black-bean-breakfast-tacos.jpg",
+      "asset": "supabase/catalog/photos/black-bean-breakfast-tacos.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 585424,
@@ -422,7 +422,7 @@
         "lemon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A wholegrain sandwich sliced into two halves, showing avocado, fresh spinach and tomato. No meat, no eggs, no cheese.",
-      "asset": "assets/images/recipes/v2/avocado-spinach-sandwich.jpg",
+      "asset": "supabase/catalog/photos/avocado-spinach-sandwich.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 652234,
@@ -441,7 +441,7 @@
         "pepper"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Two slices of toasted bread with golden sauteed mushrooms and soft fried eggs, seasoned with garlic and black pepper.",
-      "asset": "assets/images/recipes/v2/mushroom-egg-toast.jpg",
+      "asset": "supabase/catalog/photos/mushroom-egg-toast.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 634764,
@@ -460,7 +460,7 @@
         "garlic"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A rice bowl with browned ground beef, sauteed bell pepper strips and onion pieces. Use minced beef, not steak.",
-      "asset": "assets/images/recipes/v2/beef-pepper-rice.jpg",
+      "asset": "supabase/catalog/photos/beef-pepper-rice.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 595676,
@@ -479,7 +479,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A fresh salad of flaked canned tuna, cooked chickpeas, cucumber and tomato, with lemon and olive oil. No mayonnaise.",
-      "asset": "assets/images/recipes/v2/tuna-chickpea-salad.jpg",
+      "asset": "supabase/catalog/photos/tuna-chickpea-salad.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 724127,
@@ -498,7 +498,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A soft wheat tortilla chicken avocado wrap, cut in two, showing grilled boneless chicken breast, avocado, tomatoes and spinach.",
-      "asset": "assets/images/recipes/v2/chicken-avocado-wrap.jpg",
+      "asset": "supabase/catalog/photos/chicken-avocado-wrap.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 597693,
@@ -517,7 +517,7 @@
         "lemon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A cream bowl of cooked quinoa with broccoli florets, roasted carrot and fresh cucumber, dressed with lemon and olive oil.",
-      "asset": "assets/images/recipes/v2/quinoa-veggie-bowl.jpg",
+      "asset": "supabase/catalog/photos/quinoa-veggie-bowl.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 669019,
@@ -536,7 +536,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A plate of white rice and cooked black beans with sauteed onions, bell peppers and garlic. The beans are black, not red.",
-      "asset": "assets/images/recipes/v2/black-beans-rice.jpg",
+      "asset": "supabase/catalog/photos/black-beans-rice.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 591029,
@@ -556,7 +556,7 @@
         "basil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A plate of spaghetti with hearty lentil tomato bolognese sauce, showing small cooked brown lentils, tomato, onion and basil. No meat.",
-      "asset": "assets/images/recipes/v2/lentil-bolognese.jpg",
+      "asset": "supabase/catalog/photos/lentil-bolognese.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 640124,
@@ -575,7 +575,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A cream bowl of white rice with a golden cooked salmon fillet, cucumber slices and carrot, with lemon.",
-      "asset": "assets/images/recipes/v2/salmon-rice-bowl.jpg",
+      "asset": "supabase/catalog/photos/salmon-rice-bowl.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 613295,
@@ -594,7 +594,7 @@
         "garlic"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Golden firm tofu cubes stir-fried with broccoli and carrot, served with white rice in a shallow bowl.",
-      "asset": "assets/images/recipes/v2/tofu-broccoli-stirfry.jpg",
+      "asset": "supabase/catalog/photos/tofu-broccoli-stirfry.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 723092,
@@ -613,7 +613,7 @@
         "garlic"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A rustic skillet with browned ground beef, golden potato cubes, cooked onion and tomato. Use minced meat, not steak.",
-      "asset": "assets/images/recipes/v2/beef-potato-skillet.jpg",
+      "asset": "supabase/catalog/photos/beef-potato-skillet.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 679633,
@@ -632,7 +632,7 @@
         "lemon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A fresh short-pasta salad with grilled chicken breast pieces, cucumber and tomato, dressed with lemon and olive oil. No mayonnaise.",
-      "asset": "assets/images/recipes/v2/chicken-pasta-salad.jpg",
+      "asset": "supabase/catalog/photos/chicken-pasta-salad.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 658703,
@@ -651,7 +651,7 @@
         "lemon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A Mediterranean bowl of cooked chickpeas, tomato, cucumber and a little crumbly white cheese, with lemon and olive oil. No avocado.",
-      "asset": "assets/images/recipes/v2/mediterranean-chickpeas.jpg",
+      "asset": "supabase/catalog/photos/mediterranean-chickpeas.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 667615,
@@ -670,7 +670,7 @@
         "lemon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A cream bowl of tuna potato salad with flaked canned tuna, boiled potato chunks, hard-boiled egg wedges and cucumber, dressed with lemon and olive oil. No mayonnaise.",
-      "asset": "assets/images/recipes/v2/tuna-potato-salad.jpg",
+      "asset": "supabase/catalog/photos/tuna-potato-salad.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 619158,
@@ -690,7 +690,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Roasted red bell pepper halves stuffed with black beans, rice, tomato and onion, with a small melted cheese topping, on a cream plate.",
-      "asset": "assets/images/recipes/v2/stuffed-peppers-beans.jpg",
+      "asset": "supabase/catalog/photos/stuffed-peppers-beans.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 644050,
@@ -709,7 +709,7 @@
         "garlic"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A rustic skillet of golden boneless chicken pieces, sauteed zucchini, tomato and onion, with garlic and olive oil.",
-      "asset": "assets/images/recipes/v2/zucchini-chicken-skillet.jpg",
+      "asset": "supabase/catalog/photos/zucchini-chicken-skillet.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 730263,
@@ -728,7 +728,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A fresh bowl of cooked brown lentils and quinoa, with cucumber and tomato, dressed with lemon and olive oil.",
-      "asset": "assets/images/recipes/v2/lentil-quinoa-salad.jpg",
+      "asset": "supabase/catalog/photos/lentil-quinoa-salad.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 673592,
@@ -747,7 +747,7 @@
         "cheese"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A plate of pasta with sauteed mushrooms, wilted spinach, garlic, olive oil and a little grated cheese. No heavy cream sauce.",
-      "asset": "assets/images/recipes/v2/mushroom-spinach-pasta.jpg",
+      "asset": "supabase/catalog/photos/mushroom-spinach-pasta.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 650770,
@@ -767,7 +767,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A bowl of clear chicken vegetable soup with boneless chicken pieces, potato, carrot, celery and onion. No tomato.",
-      "asset": "assets/images/recipes/v2/chicken-vegetable-soup.jpg",
+      "asset": "supabase/catalog/photos/chicken-vegetable-soup.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 634317,
@@ -786,7 +786,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Golden wheat tortilla quesadillas cut into triangles, showing melted cheese, bell pepper, onion and spinach.",
-      "asset": "assets/images/recipes/v2/vegetable-quesadillas.jpg",
+      "asset": "supabase/catalog/photos/vegetable-quesadillas.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 659816,
@@ -804,7 +804,7 @@
         "lemon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Two soft wheat tortilla tacos filled with cooked black beans, sliced ripe avocado and chopped fresh tomato, with lemon nearby. No cheese, no meat, no egg. Show both whole tacos and the entire plate.",
-      "asset": "assets/images/recipes/v2/black-bean-tacos.jpg",
+      "asset": "supabase/catalog/photos/black-bean-tacos.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 668863,
@@ -822,7 +822,7 @@
         "lemon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A baked salmon fillet with roasted orange sweet potato cubes and broccoli, with lemon and olive oil.",
-      "asset": "assets/images/recipes/v2/salmon-sweet-potato.jpg",
+      "asset": "supabase/catalog/photos/salmon-sweet-potato.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 624688,
@@ -841,7 +841,7 @@
         "bread"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A rustic small skillet with two eggs gently cooked in chunky tomato, bell pepper and onion sauce, with toasted bread beside it.",
-      "asset": "assets/images/recipes/v2/tomato-egg-skillet.jpg",
+      "asset": "supabase/catalog/photos/tomato-egg-skillet.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 714108,
@@ -860,7 +860,7 @@
         "pepper"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A smooth orange soup made from sweet potato, carrot and onion, seasoned with pepper, in a cream bowl. No dairy or cream garnish.",
-      "asset": "assets/images/recipes/v2/creamy-sweet-potato-soup.jpg",
+      "asset": "supabase/catalog/photos/creamy-sweet-potato-soup.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 590199,
@@ -879,7 +879,7 @@
         "lemon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A cream bowl of white rice with golden firm tofu cubes, broccoli and garlic, dressed with olive oil and lemon. No carrots.",
-      "asset": "assets/images/recipes/v2/tofu-broccoli-rice.jpg",
+      "asset": "supabase/catalog/photos/tofu-broccoli-rice.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 679202,
@@ -898,7 +898,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: Two roasted zucchini boats stuffed with quinoa, tomato, onion and a little melted cheese, on a cream plate.",
-      "asset": "assets/images/recipes/v2/quinoa-stuffed-zucchini.jpg",
+      "asset": "supabase/catalog/photos/quinoa-stuffed-zucchini.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 679880,
@@ -917,7 +917,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A plate of spaghetti with browned ground beef and tomato sauce, with onion, garlic and olive oil. No meatballs.",
-      "asset": "assets/images/recipes/v2/beef-tomato-pasta.jpg",
+      "asset": "supabase/catalog/photos/beef-tomato-pasta.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 639970,
@@ -927,7 +927,7 @@
       "id": "lentil-tomato-stew",
       "prompt_reference": "recipe-photo-refresh-2026-11-01.md",
       "index": 49,
-      "asset": "assets/images/recipes/v2/lentil-tomato-stew.jpg",
+      "asset": "supabase/catalog/photos/lentil-tomato-stew.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 679631,
@@ -937,7 +937,7 @@
       "id": "chicken-potato-tray",
       "prompt_reference": "recipe-photo-refresh-2026-11-01.md",
       "index": 50,
-      "asset": "assets/images/recipes/v2/chicken-potato-tray.jpg",
+      "asset": "supabase/catalog/photos/chicken-potato-tray.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 783944,
@@ -956,7 +956,7 @@
         "oliveOil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A rustic bowl of chickpea and spinach stew in a light chunky tomato sauce with onion and garlic. Clearly round chickpeas, not lentils.",
-      "asset": "assets/images/recipes/v2/chickpea-spinach-stew.jpg",
+      "asset": "supabase/catalog/photos/chickpea-spinach-stew.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 639639,
@@ -975,7 +975,7 @@
         "basil"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A plate of pasta with flaked canned tuna in tomato and garlic sauce, finished with fresh basil and olive oil. No meat.",
-      "asset": "assets/images/recipes/v2/tuna-tomato-pasta.jpg",
+      "asset": "supabase/catalog/photos/tuna-tomato-pasta.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 614038,
@@ -994,7 +994,7 @@
         "lemon"
       ],
       "prompt": "Use case: photorealistic-natural. Create ONE individual food photograph for Miga, a warm meal-planning mobile app. Landscape 4:3, high resolution at least 1440 pixels wide and 1024 pixels high, genuinely sharp photographic food textures. Natural editorial food photography, soft side daylight, warm cream ceramics on simple wood and neutral linen, natural colors, no extreme blur. Camera slightly overhead at 45 degrees. FRAMING IS ESSENTIAL: zoomed out enough that the ENTIRE serving dish and ALL of its edges are inside the image. Leave at least 18 percent clear tabletop margin around the dish on every side. Center the food horizontally and vertically; keep all main ingredients in the central 60 percent of the frame for both wide and tall mobile crops. No extreme close-up, no edge-cropped plate or bowl. No text, labels, logos, watermarks, people, hands or collage. No ingredients or garnishes that are not described. Dish: A cream bowl of quinoa mixed with roasted zucchini, bell peppers and carrots, with lemon and olive oil.",
-      "asset": "assets/images/recipes/v2/roasted-vegetable-quinoa.jpg",
+      "asset": "supabase/catalog/photos/roasted-vegetable-quinoa.jpg",
       "width": 1448,
       "height": 1086,
       "bytes": 673457,

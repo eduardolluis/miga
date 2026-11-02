@@ -1,0 +1,1407 @@
+﻿recipe_id,recipe_es,ingredient_key,ingredient_es,quantity,unit,estimated_unit_price_DOP,estimated_line_cost_DOP
+banana-oats,Avena con banana y canela,oats,avena,80.0,grams,0.180,14.40
+banana-oats,Avena con banana y canela,milk,leche,480.0,milliliters,0.085,40.80
+banana-oats,Avena con banana y canela,banana,banana,1.0,pieces,13.000,13.00
+banana-oats,Avena con banana y canela,walnuts,nueces,14.0,grams,1.600,22.40
+banana-oats,Avena con banana y canela,cinnamon,canela,1.0,grams,1.200,1.20
+avocado-toast,Tostadas de aguacate y huevo,bread,pan,60.0,grams,0.200,12.00
+avocado-toast,Tostadas de aguacate y huevo,avocado,aguacate,1.0,pieces,65.000,65.00
+avocado-toast,Tostadas de aguacate y huevo,eggs,huevos,2.0,pieces,10.000,20.00
+avocado-toast,Tostadas de aguacate y huevo,tomatoes,tomate,100.0,grams,0.120,12.00
+avocado-toast,Tostadas de aguacate y huevo,oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+avocado-toast,Tostadas de aguacate y huevo,salt,sal,1.0,grams,0.120,0.12
+avocado-toast,Tostadas de aguacate y huevo,pepper,pimienta,0.5,grams,2.100,1.05
+yogurt-fruit,Yogur con fruta y granola,yogurt,yogur natural,480.0,grams,0.420,201.60
+yogurt-fruit,Yogur con fruta y granola,mango,mango,1.0,pieces,55.000,55.00
+yogurt-fruit,Yogur con fruta y granola,strawberries,fresas,90.0,grams,0.680,61.20
+yogurt-fruit,Yogur con fruta y granola,granola,granola,60.0,grams,0.470,28.20
+lemon-salmon,Salmón al limón y hierbas,salmon,salmón,300.0,grams,1.750,525.00
+lemon-salmon,Salmón al limón y hierbas,potatoes,papa,300.0,grams,0.105,31.50
+lemon-salmon,Salmón al limón y hierbas,broccoli,brócoli,180.0,grams,0.300,54.00
+lemon-salmon,Salmón al limón y hierbas,lemon,limón,1.0,pieces,16.000,16.00
+lemon-salmon,Salmón al limón y hierbas,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+lemon-salmon,Salmón al limón y hierbas,herbs,hierbas frescas,2.0,grams,1.300,2.60
+lemon-salmon,Salmón al limón y hierbas,salt,sal,1.0,grams,0.120,0.12
+lemon-salmon,Salmón al limón y hierbas,pepper,pimienta,0.5,grams,2.100,1.05
+chicken-rice,Pollo con arroz y vegetales,chicken,pechuga de pollo,250.0,grams,0.460,115.00
+chicken-rice,Pollo con arroz y vegetales,rice,arroz crudo,140.0,grams,0.082,11.48
+chicken-rice,Pollo con arroz y vegetales,carrot,zanahoria,80.0,grams,0.090,7.20
+chicken-rice,Pollo con arroz y vegetales,broccoli,brócoli,90.0,grams,0.300,27.00
+chicken-rice,Pollo con arroz y vegetales,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+chicken-rice,Pollo con arroz y vegetales,garlic,ajo,3.0,grams,0.400,1.20
+chicken-rice,Pollo con arroz y vegetales,salt,sal,1.0,grams,0.120,0.12
+chicken-rice,Pollo con arroz y vegetales,pepper,pimienta,0.5,grams,2.100,1.05
+chickpea-salad,Ensalada de garbanzos y aguacate,chickpeas,garbanzos cocidos,320.0,grams,0.220,70.40
+chickpea-salad,Ensalada de garbanzos y aguacate,avocado,aguacate,1.0,pieces,65.000,65.00
+chickpea-salad,Ensalada de garbanzos y aguacate,tomatoes,tomate,120.0,grams,0.120,14.40
+chickpea-salad,Ensalada de garbanzos y aguacate,cucumber,pepino,150.0,grams,0.150,22.50
+chickpea-salad,Ensalada de garbanzos y aguacate,onion,cebolla,40.0,grams,0.125,5.00
+chickpea-salad,Ensalada de garbanzos y aguacate,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-salad,Ensalada de garbanzos y aguacate,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+tomato-pasta,Pasta con tomate y albahaca,pasta,pasta seca,180.0,grams,0.130,23.40
+tomato-pasta,Pasta con tomate y albahaca,tomatoes,tomate,240.0,grams,0.120,28.80
+tomato-pasta,Pasta con tomate y albahaca,garlic,ajo,3.0,grams,0.400,1.20
+tomato-pasta,Pasta con tomate y albahaca,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+tomato-pasta,Pasta con tomate y albahaca,basil,albahaca,5.0,grams,2.000,10.00
+tomato-pasta,Pasta con tomate y albahaca,cheese,queso,20.0,grams,0.750,15.00
+sweet-potato-egg,Batata con espinaca y huevo,sweetPotato,batata,400.0,grams,0.140,56.00
+sweet-potato-egg,Batata con espinaca y huevo,eggs,huevos,2.0,pieces,10.000,20.00
+sweet-potato-egg,Batata con espinaca y huevo,spinach,espinaca,60.0,grams,0.330,19.80
+sweet-potato-egg,Batata con espinaca y huevo,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+sweet-potato-egg,Batata con espinaca y huevo,salt,sal,1.0,grams,0.120,0.12
+sweet-potato-egg,Batata con espinaca y huevo,pepper,pimienta,0.5,grams,2.100,1.05
+lentil-soup,Sopa de lentejas y vegetales,lentils,lentejas cocidas,400.0,grams,0.210,84.00
+lentil-soup,Sopa de lentejas y vegetales,carrot,zanahoria,80.0,grams,0.090,7.20
+lentil-soup,Sopa de lentejas y vegetales,celery,apio,40.0,grams,0.180,7.20
+lentil-soup,Sopa de lentejas y vegetales,onion,cebolla,80.0,grams,0.125,10.00
+lentil-soup,Sopa de lentejas y vegetales,tomatoes,tomate,120.0,grams,0.120,14.40
+lentil-soup,Sopa de lentejas y vegetales,vegetableStock,caldo de vegetales,480.0,milliliters,0.055,26.40
+lentil-soup,Sopa de lentejas y vegetales,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+apple-cinnamon-oats,Avena con manzana y canela,oats,avena,90.0,grams,0.180,16.20
+apple-cinnamon-oats,Avena con manzana y canela,milk,leche,360.0,milliliters,0.085,30.60
+apple-cinnamon-oats,Avena con manzana y canela,apple,manzana,1.0,pieces,32.000,32.00
+apple-cinnamon-oats,Avena con manzana y canela,cinnamon,canela,2.0,grams,1.200,2.40
+apple-cinnamon-oats,Avena con manzana y canela,walnuts,nueces,20.0,grams,1.600,32.00
+peanut-banana-toast,Tostadas de banana y maní,bread,pan,90.0,grams,0.200,18.00
+peanut-banana-toast,Tostadas de banana y maní,peanutButter,mantequilla de maní,35.0,grams,0.900,31.50
+peanut-banana-toast,Tostadas de banana y maní,banana,banana,1.0,pieces,13.000,13.00
+peanut-banana-toast,Tostadas de banana y maní,cinnamon,canela,1.0,grams,1.200,1.20
+spinach-cheese-omelet,Omelette de espinaca y queso,eggs,huevos,4.0,pieces,10.000,40.00
+spinach-cheese-omelet,Omelette de espinaca y queso,spinach,espinaca,60.0,grams,0.330,19.80
+spinach-cheese-omelet,Omelette de espinaca y queso,cheese,queso,40.0,grams,0.750,30.00
+spinach-cheese-omelet,Omelette de espinaca y queso,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+spinach-cheese-omelet,Omelette de espinaca y queso,salt,sal,1.0,grams,0.120,0.12
+spinach-cheese-omelet,Omelette de espinaca y queso,pepper,pimienta,1.0,grams,2.100,2.10
+mango-oat-smoothie,Batido de mango y avena,mango,mango,1.0,pieces,55.000,55.00
+mango-oat-smoothie,Batido de mango y avena,oats,avena,55.0,grams,0.180,9.90
+mango-oat-smoothie,Batido de mango y avena,milk,leche,400.0,milliliters,0.085,34.00
+mango-oat-smoothie,Batido de mango y avena,cinnamon,canela,1.0,grams,1.200,1.20
+apple-yogurt-bowl,Yogur con manzana y nueces,yogurt,yogur natural,400.0,grams,0.420,168.00
+apple-yogurt-bowl,Yogur con manzana y nueces,apple,manzana,1.0,pieces,32.000,32.00
+apple-yogurt-bowl,Yogur con manzana y nueces,walnuts,nueces,25.0,grams,1.600,40.00
+apple-yogurt-bowl,Yogur con manzana y nueces,cinnamon,canela,1.0,grams,1.200,1.20
+breakfast-potato-hash,Papas salteadas con huevo,potatoes,papa,350.0,grams,0.105,36.75
+breakfast-potato-hash,Papas salteadas con huevo,eggs,huevos,3.0,pieces,10.000,30.00
+breakfast-potato-hash,Papas salteadas con huevo,onion,cebolla,50.0,grams,0.125,6.25
+breakfast-potato-hash,Papas salteadas con huevo,bellPepper,pimiento,90.0,grams,0.220,19.80
+breakfast-potato-hash,Papas salteadas con huevo,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+breakfast-potato-hash,Papas salteadas con huevo,salt,sal,1.0,grams,0.120,0.12
+breakfast-potato-hash,Papas salteadas con huevo,pepper,pimienta,1.0,grams,2.100,2.10
+egg-tomato-wrap,Wrap de huevo y tomate,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+egg-tomato-wrap,Wrap de huevo y tomate,eggs,huevos,3.0,pieces,10.000,30.00
+egg-tomato-wrap,Wrap de huevo y tomate,tomatoes,tomate,120.0,grams,0.120,14.40
+egg-tomato-wrap,Wrap de huevo y tomate,spinach,espinaca,35.0,grams,0.330,11.55
+egg-tomato-wrap,Wrap de huevo y tomate,oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+strawberry-oat-pancakes,Panquecas de avena y fresa,oats,avena,90.0,grams,0.180,16.20
+strawberry-oat-pancakes,Panquecas de avena y fresa,eggs,huevos,2.0,pieces,10.000,20.00
+strawberry-oat-pancakes,Panquecas de avena y fresa,milk,leche,120.0,milliliters,0.085,10.20
+strawberry-oat-pancakes,Panquecas de avena y fresa,strawberries,fresas,120.0,grams,0.680,81.60
+strawberry-oat-pancakes,Panquecas de avena y fresa,cinnamon,canela,1.0,grams,1.200,1.20
+strawberry-oat-pancakes,Panquecas de avena y fresa,oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+savory-chickpea-toast,Tostada de garbanzos y limón,chickpeas,garbanzos cocidos,220.0,grams,0.220,48.40
+savory-chickpea-toast,Tostada de garbanzos y limón,bread,pan,90.0,grams,0.200,18.00
+savory-chickpea-toast,Tostada de garbanzos y limón,lemon,limón,1.0,pieces,16.000,16.00
+savory-chickpea-toast,Tostada de garbanzos y limón,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+savory-chickpea-toast,Tostada de garbanzos y limón,pepper,pimienta,1.0,grams,2.100,2.10
+zucchini-egg-scramble,Revuelto de huevo y calabacín,eggs,huevos,4.0,pieces,10.000,40.00
+zucchini-egg-scramble,Revuelto de huevo y calabacín,zucchini,calabacín,180.0,grams,0.240,43.20
+zucchini-egg-scramble,Revuelto de huevo y calabacín,onion,cebolla,40.0,grams,0.125,5.00
+zucchini-egg-scramble,Revuelto de huevo y calabacín,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+zucchini-egg-scramble,Revuelto de huevo y calabacín,salt,sal,1.0,grams,0.120,0.12
+pineapple-granola-yogurt,Yogur con piña y granola,yogurt,yogur natural,400.0,grams,0.420,168.00
+pineapple-granola-yogurt,Yogur con piña y granola,pineapple,piña,240.0,grams,0.180,43.20
+pineapple-granola-yogurt,Yogur con piña y granola,granola,granola,70.0,grams,0.470,32.90
+sweet-potato-yogurt-bowl,Batata dulce con yogur,sweetPotato,batata,350.0,grams,0.140,49.00
+sweet-potato-yogurt-bowl,Batata dulce con yogur,yogurt,yogur natural,300.0,grams,0.420,126.00
+sweet-potato-yogurt-bowl,Batata dulce con yogur,cinnamon,canela,2.0,grams,1.200,2.40
+sweet-potato-yogurt-bowl,Batata dulce con yogur,walnuts,nueces,15.0,grams,1.600,24.00
+black-bean-breakfast-tacos,Tacos de frijoles y huevo,blackBeans,habichuelas negras cocidas,240.0,grams,0.180,43.20
+black-bean-breakfast-tacos,Tacos de frijoles y huevo,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+black-bean-breakfast-tacos,Tacos de frijoles y huevo,eggs,huevos,2.0,pieces,10.000,20.00
+black-bean-breakfast-tacos,Tacos de frijoles y huevo,tomatoes,tomate,100.0,grams,0.120,12.00
+black-bean-breakfast-tacos,Tacos de frijoles y huevo,oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+avocado-spinach-sandwich,Sándwich de aguacate y espinaca,bread,pan,120.0,grams,0.200,24.00
+avocado-spinach-sandwich,Sándwich de aguacate y espinaca,avocado,aguacate,1.0,pieces,65.000,65.00
+avocado-spinach-sandwich,Sándwich de aguacate y espinaca,spinach,espinaca,40.0,grams,0.330,13.20
+avocado-spinach-sandwich,Sándwich de aguacate y espinaca,tomatoes,tomate,100.0,grams,0.120,12.00
+avocado-spinach-sandwich,Sándwich de aguacate y espinaca,lemon,limón,1.0,pieces,16.000,16.00
+mushroom-egg-toast,Tostadas con hongos y huevo,bread,pan,90.0,grams,0.200,18.00
+mushroom-egg-toast,Tostadas con hongos y huevo,mushrooms,champiñones,160.0,grams,0.680,108.80
+mushroom-egg-toast,Tostadas con hongos y huevo,eggs,huevos,3.0,pieces,10.000,30.00
+mushroom-egg-toast,Tostadas con hongos y huevo,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+mushroom-egg-toast,Tostadas con hongos y huevo,garlic,ajo,3.0,grams,0.400,1.20
+mushroom-egg-toast,Tostadas con hongos y huevo,pepper,pimienta,1.0,grams,2.100,2.10
+beef-pepper-rice,Carne salteada con pimientos y arroz,groundBeef,carne molida,250.0,grams,0.700,175.00
+beef-pepper-rice,Carne salteada con pimientos y arroz,rice,arroz crudo,140.0,grams,0.082,11.48
+beef-pepper-rice,Carne salteada con pimientos y arroz,bellPepper,pimiento,160.0,grams,0.220,35.20
+beef-pepper-rice,Carne salteada con pimientos y arroz,onion,cebolla,80.0,grams,0.125,10.00
+beef-pepper-rice,Carne salteada con pimientos y arroz,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+beef-pepper-rice,Carne salteada con pimientos y arroz,garlic,ajo,5.0,grams,0.400,2.00
+tuna-chickpea-salad,Ensalada de atún y garbanzos,tuna,atún escurrido,220.0,grams,0.840,184.80
+tuna-chickpea-salad,Ensalada de atún y garbanzos,chickpeas,garbanzos cocidos,220.0,grams,0.220,48.40
+tuna-chickpea-salad,Ensalada de atún y garbanzos,cucumber,pepino,130.0,grams,0.150,19.50
+tuna-chickpea-salad,Ensalada de atún y garbanzos,tomatoes,tomate,140.0,grams,0.120,16.80
+tuna-chickpea-salad,Ensalada de atún y garbanzos,lemon,limón,1.0,pieces,16.000,16.00
+tuna-chickpea-salad,Ensalada de atún y garbanzos,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-avocado-wrap,Wrap de pollo y aguacate,chicken,pechuga de pollo,280.0,grams,0.460,128.80
+chicken-avocado-wrap,Wrap de pollo y aguacate,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+chicken-avocado-wrap,Wrap de pollo y aguacate,avocado,aguacate,1.0,pieces,65.000,65.00
+chicken-avocado-wrap,Wrap de pollo y aguacate,tomatoes,tomate,100.0,grams,0.120,12.00
+chicken-avocado-wrap,Wrap de pollo y aguacate,spinach,espinaca,40.0,grams,0.330,13.20
+chicken-avocado-wrap,Wrap de pollo y aguacate,oliveOil,aceite de oliva,7.0,milliliters,1.150,8.05
+quinoa-veggie-bowl,Bowl de quinoa y vegetales,quinoa,quinoa cruda,140.0,grams,0.480,67.20
+quinoa-veggie-bowl,Bowl de quinoa y vegetales,broccoli,brócoli,160.0,grams,0.300,48.00
+quinoa-veggie-bowl,Bowl de quinoa y vegetales,carrot,zanahoria,90.0,grams,0.090,8.10
+quinoa-veggie-bowl,Bowl de quinoa y vegetales,cucumber,pepino,130.0,grams,0.150,19.50
+quinoa-veggie-bowl,Bowl de quinoa y vegetales,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+quinoa-veggie-bowl,Bowl de quinoa y vegetales,lemon,limón,1.0,pieces,16.000,16.00
+black-beans-rice,Arroz con habichuelas negras,blackBeans,habichuelas negras cocidas,360.0,grams,0.180,64.80
+black-beans-rice,Arroz con habichuelas negras,rice,arroz crudo,140.0,grams,0.082,11.48
+black-beans-rice,Arroz con habichuelas negras,onion,cebolla,70.0,grams,0.125,8.75
+black-beans-rice,Arroz con habichuelas negras,bellPepper,pimiento,80.0,grams,0.220,17.60
+black-beans-rice,Arroz con habichuelas negras,garlic,ajo,4.0,grams,0.400,1.60
+black-beans-rice,Arroz con habichuelas negras,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+lentil-bolognese,Pasta con salsa de lentejas,pasta,pasta seca,170.0,grams,0.130,22.10
+lentil-bolognese,Pasta con salsa de lentejas,lentils,lentejas cocidas,260.0,grams,0.210,54.60
+lentil-bolognese,Pasta con salsa de lentejas,tomatoes,tomate,260.0,grams,0.120,31.20
+lentil-bolognese,Pasta con salsa de lentejas,onion,cebolla,70.0,grams,0.125,8.75
+lentil-bolognese,Pasta con salsa de lentejas,garlic,ajo,5.0,grams,0.400,2.00
+lentil-bolognese,Pasta con salsa de lentejas,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+lentil-bolognese,Pasta con salsa de lentejas,basil,albahaca,5.0,grams,2.000,10.00
+salmon-rice-bowl,Bowl de salmón y arroz,salmon,salmón,300.0,grams,1.750,525.00
+salmon-rice-bowl,Bowl de salmón y arroz,rice,arroz crudo,140.0,grams,0.082,11.48
+salmon-rice-bowl,Bowl de salmón y arroz,cucumber,pepino,130.0,grams,0.150,19.50
+salmon-rice-bowl,Bowl de salmón y arroz,carrot,zanahoria,90.0,grams,0.090,8.10
+salmon-rice-bowl,Bowl de salmón y arroz,lemon,limón,1.0,pieces,16.000,16.00
+salmon-rice-bowl,Bowl de salmón y arroz,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+tofu-broccoli-stirfry,Tofu salteado con brócoli,tofu,tofu firme,300.0,grams,0.750,225.00
+tofu-broccoli-stirfry,Tofu salteado con brócoli,broccoli,brócoli,220.0,grams,0.300,66.00
+tofu-broccoli-stirfry,Tofu salteado con brócoli,carrot,zanahoria,100.0,grams,0.090,9.00
+tofu-broccoli-stirfry,Tofu salteado con brócoli,rice,arroz crudo,120.0,grams,0.082,9.84
+tofu-broccoli-stirfry,Tofu salteado con brócoli,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+tofu-broccoli-stirfry,Tofu salteado con brócoli,garlic,ajo,5.0,grams,0.400,2.00
+beef-potato-skillet,Carne molida con papas,groundBeef,carne molida,300.0,grams,0.700,210.00
+beef-potato-skillet,Carne molida con papas,potatoes,papa,400.0,grams,0.105,42.00
+beef-potato-skillet,Carne molida con papas,onion,cebolla,80.0,grams,0.125,10.00
+beef-potato-skillet,Carne molida con papas,tomatoes,tomate,140.0,grams,0.120,16.80
+beef-potato-skillet,Carne molida con papas,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+beef-potato-skillet,Carne molida con papas,garlic,ajo,4.0,grams,0.400,1.60
+chicken-pasta-salad,Ensalada de pasta con pollo,chicken,pechuga de pollo,260.0,grams,0.460,119.60
+chicken-pasta-salad,Ensalada de pasta con pollo,pasta,pasta seca,160.0,grams,0.130,20.80
+chicken-pasta-salad,Ensalada de pasta con pollo,cucumber,pepino,120.0,grams,0.150,18.00
+chicken-pasta-salad,Ensalada de pasta con pollo,tomatoes,tomate,140.0,grams,0.120,16.80
+chicken-pasta-salad,Ensalada de pasta con pollo,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+chicken-pasta-salad,Ensalada de pasta con pollo,lemon,limón,1.0,pieces,16.000,16.00
+mediterranean-chickpeas,Garbanzos mediterráneos,chickpeas,garbanzos cocidos,350.0,grams,0.220,77.00
+mediterranean-chickpeas,Garbanzos mediterráneos,tomatoes,tomate,180.0,grams,0.120,21.60
+mediterranean-chickpeas,Garbanzos mediterráneos,cucumber,pepino,160.0,grams,0.150,24.00
+mediterranean-chickpeas,Garbanzos mediterráneos,cheese,queso,60.0,grams,0.750,45.00
+mediterranean-chickpeas,Garbanzos mediterráneos,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+mediterranean-chickpeas,Garbanzos mediterráneos,lemon,limón,1.0,pieces,16.000,16.00
+tuna-potato-salad,Ensalada de papa y atún,tuna,atún escurrido,240.0,grams,0.840,201.60
+tuna-potato-salad,Ensalada de papa y atún,potatoes,papa,450.0,grams,0.105,47.25
+tuna-potato-salad,Ensalada de papa y atún,eggs,huevos,2.0,pieces,10.000,20.00
+tuna-potato-salad,Ensalada de papa y atún,cucumber,pepino,130.0,grams,0.150,19.50
+tuna-potato-salad,Ensalada de papa y atún,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+tuna-potato-salad,Ensalada de papa y atún,lemon,limón,1.0,pieces,16.000,16.00
+stuffed-peppers-beans,Pimientos rellenos de frijoles,bellPepper,pimiento,2.0,pieces,35.200,70.40
+stuffed-peppers-beans,Pimientos rellenos de frijoles,blackBeans,habichuelas negras cocidas,320.0,grams,0.180,57.60
+stuffed-peppers-beans,Pimientos rellenos de frijoles,rice,arroz crudo,110.0,grams,0.082,9.02
+stuffed-peppers-beans,Pimientos rellenos de frijoles,tomatoes,tomate,160.0,grams,0.120,19.20
+stuffed-peppers-beans,Pimientos rellenos de frijoles,onion,cebolla,60.0,grams,0.125,7.50
+stuffed-peppers-beans,Pimientos rellenos de frijoles,cheese,queso,35.0,grams,0.750,26.25
+stuffed-peppers-beans,Pimientos rellenos de frijoles,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+zucchini-chicken-skillet,Pollo con calabacín y tomate,chicken,pechuga de pollo,320.0,grams,0.460,147.20
+zucchini-chicken-skillet,Pollo con calabacín y tomate,zucchini,calabacín,260.0,grams,0.240,62.40
+zucchini-chicken-skillet,Pollo con calabacín y tomate,tomatoes,tomate,200.0,grams,0.120,24.00
+zucchini-chicken-skillet,Pollo con calabacín y tomate,onion,cebolla,80.0,grams,0.125,10.00
+zucchini-chicken-skillet,Pollo con calabacín y tomate,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+zucchini-chicken-skillet,Pollo con calabacín y tomate,garlic,ajo,5.0,grams,0.400,2.00
+lentil-quinoa-salad,Ensalada de lentejas y quinoa,lentils,lentejas cocidas,300.0,grams,0.210,63.00
+lentil-quinoa-salad,Ensalada de lentejas y quinoa,quinoa,quinoa cruda,110.0,grams,0.480,52.80
+lentil-quinoa-salad,Ensalada de lentejas y quinoa,cucumber,pepino,160.0,grams,0.150,24.00
+lentil-quinoa-salad,Ensalada de lentejas y quinoa,tomatoes,tomate,150.0,grams,0.120,18.00
+lentil-quinoa-salad,Ensalada de lentejas y quinoa,lemon,limón,1.0,pieces,16.000,16.00
+lentil-quinoa-salad,Ensalada de lentejas y quinoa,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+mushroom-spinach-pasta,Pasta con hongos y espinaca,pasta,pasta seca,180.0,grams,0.130,23.40
+mushroom-spinach-pasta,Pasta con hongos y espinaca,mushrooms,champiñones,200.0,grams,0.680,136.00
+mushroom-spinach-pasta,Pasta con hongos y espinaca,spinach,espinaca,90.0,grams,0.330,29.70
+mushroom-spinach-pasta,Pasta con hongos y espinaca,garlic,ajo,5.0,grams,0.400,2.00
+mushroom-spinach-pasta,Pasta con hongos y espinaca,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+mushroom-spinach-pasta,Pasta con hongos y espinaca,cheese,queso,25.0,grams,0.750,18.75
+chicken-vegetable-soup,Sopa de pollo y vegetales,chicken,pechuga de pollo,260.0,grams,0.460,119.60
+chicken-vegetable-soup,Sopa de pollo y vegetales,potatoes,papa,220.0,grams,0.105,23.10
+chicken-vegetable-soup,Sopa de pollo y vegetales,carrot,zanahoria,110.0,grams,0.090,9.90
+chicken-vegetable-soup,Sopa de pollo y vegetales,celery,apio,60.0,grams,0.180,10.80
+chicken-vegetable-soup,Sopa de pollo y vegetales,onion,cebolla,70.0,grams,0.125,8.75
+chicken-vegetable-soup,Sopa de pollo y vegetales,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+chicken-vegetable-soup,Sopa de pollo y vegetales,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+vegetable-quesadillas,Quesadillas de vegetales,tortilla,tortilla de trigo,4.0,pieces,22.000,88.00
+vegetable-quesadillas,Quesadillas de vegetales,cheese,queso,100.0,grams,0.750,75.00
+vegetable-quesadillas,Quesadillas de vegetales,bellPepper,pimiento,120.0,grams,0.220,26.40
+vegetable-quesadillas,Quesadillas de vegetales,onion,cebolla,80.0,grams,0.125,10.00
+vegetable-quesadillas,Quesadillas de vegetales,spinach,espinaca,50.0,grams,0.330,16.50
+vegetable-quesadillas,Quesadillas de vegetales,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+black-bean-tacos,Tacos de frijoles con aguacate,blackBeans,habichuelas negras cocidas,320.0,grams,0.180,57.60
+black-bean-tacos,Tacos de frijoles con aguacate,tortilla,tortilla de trigo,4.0,pieces,22.000,88.00
+black-bean-tacos,Tacos de frijoles con aguacate,avocado,aguacate,1.0,pieces,65.000,65.00
+black-bean-tacos,Tacos de frijoles con aguacate,tomatoes,tomate,140.0,grams,0.120,16.80
+black-bean-tacos,Tacos de frijoles con aguacate,lemon,limón,1.0,pieces,16.000,16.00
+salmon-sweet-potato,Salmón con batata al horno,salmon,salmón,300.0,grams,1.750,525.00
+salmon-sweet-potato,Salmón con batata al horno,sweetPotato,batata,400.0,grams,0.140,56.00
+salmon-sweet-potato,Salmón con batata al horno,broccoli,brócoli,160.0,grams,0.300,48.00
+salmon-sweet-potato,Salmón con batata al horno,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+salmon-sweet-potato,Salmón con batata al horno,lemon,limón,1.0,pieces,16.000,16.00
+tomato-egg-skillet,Huevos en salsa de tomate,eggs,huevos,4.0,pieces,10.000,40.00
+tomato-egg-skillet,Huevos en salsa de tomate,tomatoes,tomate,350.0,grams,0.120,42.00
+tomato-egg-skillet,Huevos en salsa de tomate,bellPepper,pimiento,100.0,grams,0.220,22.00
+tomato-egg-skillet,Huevos en salsa de tomate,onion,cebolla,80.0,grams,0.125,10.00
+tomato-egg-skillet,Huevos en salsa de tomate,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+tomato-egg-skillet,Huevos en salsa de tomate,bread,pan,70.0,grams,0.200,14.00
+creamy-sweet-potato-soup,Crema de batata y zanahoria,sweetPotato,batata,420.0,grams,0.140,58.80
+creamy-sweet-potato-soup,Crema de batata y zanahoria,carrot,zanahoria,180.0,grams,0.090,16.20
+creamy-sweet-potato-soup,Crema de batata y zanahoria,onion,cebolla,75.0,grams,0.125,9.38
+creamy-sweet-potato-soup,Crema de batata y zanahoria,vegetableStock,caldo de vegetales,650.0,milliliters,0.055,35.75
+creamy-sweet-potato-soup,Crema de batata y zanahoria,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+creamy-sweet-potato-soup,Crema de batata y zanahoria,pepper,pimienta,1.0,grams,2.100,2.10
+tofu-broccoli-rice,Arroz con tofu y brócoli,tofu,tofu firme,300.0,grams,0.750,225.00
+tofu-broccoli-rice,Arroz con tofu y brócoli,rice,arroz crudo,140.0,grams,0.082,11.48
+tofu-broccoli-rice,Arroz con tofu y brócoli,broccoli,brócoli,220.0,grams,0.300,66.00
+tofu-broccoli-rice,Arroz con tofu y brócoli,garlic,ajo,4.0,grams,0.400,1.60
+tofu-broccoli-rice,Arroz con tofu y brócoli,oliveOil,aceite de oliva,14.0,milliliters,1.150,16.10
+tofu-broccoli-rice,Arroz con tofu y brócoli,lemon,limón,1.0,pieces,16.000,16.00
+quinoa-stuffed-zucchini,Calabacines rellenos de quinoa,zucchini,calabacín,2.0,pieces,55.200,110.40
+quinoa-stuffed-zucchini,Calabacines rellenos de quinoa,quinoa,quinoa cruda,110.0,grams,0.480,52.80
+quinoa-stuffed-zucchini,Calabacines rellenos de quinoa,tomatoes,tomate,180.0,grams,0.120,21.60
+quinoa-stuffed-zucchini,Calabacines rellenos de quinoa,cheese,queso,50.0,grams,0.750,37.50
+quinoa-stuffed-zucchini,Calabacines rellenos de quinoa,onion,cebolla,60.0,grams,0.125,7.50
+quinoa-stuffed-zucchini,Calabacines rellenos de quinoa,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+beef-tomato-pasta,Pasta con carne y tomate,groundBeef,carne molida,240.0,grams,0.700,168.00
+beef-tomato-pasta,Pasta con carne y tomate,pasta,pasta seca,180.0,grams,0.130,23.40
+beef-tomato-pasta,Pasta con carne y tomate,tomatoes,tomate,260.0,grams,0.120,31.20
+beef-tomato-pasta,Pasta con carne y tomate,onion,cebolla,80.0,grams,0.125,10.00
+beef-tomato-pasta,Pasta con carne y tomate,garlic,ajo,5.0,grams,0.400,2.00
+beef-tomato-pasta,Pasta con carne y tomate,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+lentil-tomato-stew,Guiso de lentejas con tomate,lentils,lentejas cocidas,400.0,grams,0.210,84.00
+lentil-tomato-stew,Guiso de lentejas con tomate,tomatoes,tomate,220.0,grams,0.120,26.40
+lentil-tomato-stew,Guiso de lentejas con tomate,carrot,zanahoria,120.0,grams,0.090,10.80
+lentil-tomato-stew,Guiso de lentejas con tomate,onion,cebolla,75.0,grams,0.125,9.38
+lentil-tomato-stew,Guiso de lentejas con tomate,vegetableStock,caldo de vegetales,300.0,milliliters,0.055,16.50
+lentil-tomato-stew,Guiso de lentejas con tomate,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+chicken-potato-tray,Pollo y papas al horno,chicken,pechuga de pollo,300.0,grams,0.460,138.00
+chicken-potato-tray,Pollo y papas al horno,potatoes,papa,450.0,grams,0.105,47.25
+chicken-potato-tray,Pollo y papas al horno,carrot,zanahoria,120.0,grams,0.090,10.80
+chicken-potato-tray,Pollo y papas al horno,onion,cebolla,90.0,grams,0.125,11.25
+chicken-potato-tray,Pollo y papas al horno,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+chicken-potato-tray,Pollo y papas al horno,herbs,hierbas frescas,3.0,grams,1.300,3.90
+chickpea-spinach-stew,Garbanzos guisados con espinaca,chickpeas,garbanzos cocidos,360.0,grams,0.220,79.20
+chickpea-spinach-stew,Garbanzos guisados con espinaca,spinach,espinaca,120.0,grams,0.330,39.60
+chickpea-spinach-stew,Garbanzos guisados con espinaca,tomatoes,tomate,220.0,grams,0.120,26.40
+chickpea-spinach-stew,Garbanzos guisados con espinaca,onion,cebolla,80.0,grams,0.125,10.00
+chickpea-spinach-stew,Garbanzos guisados con espinaca,garlic,ajo,5.0,grams,0.400,2.00
+chickpea-spinach-stew,Garbanzos guisados con espinaca,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+tuna-tomato-pasta,Pasta rápida con atún,tuna,atún escurrido,220.0,grams,0.840,184.80
+tuna-tomato-pasta,Pasta rápida con atún,pasta,pasta seca,170.0,grams,0.130,22.10
+tuna-tomato-pasta,Pasta rápida con atún,tomatoes,tomate,220.0,grams,0.120,26.40
+tuna-tomato-pasta,Pasta rápida con atún,garlic,ajo,4.0,grams,0.400,1.60
+tuna-tomato-pasta,Pasta rápida con atún,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+tuna-tomato-pasta,Pasta rápida con atún,basil,albahaca,5.0,grams,2.000,10.00
+roasted-vegetable-quinoa,Quinoa con vegetales al horno,quinoa,quinoa cruda,130.0,grams,0.480,62.40
+roasted-vegetable-quinoa,Quinoa con vegetales al horno,zucchini,calabacín,200.0,grams,0.240,48.00
+roasted-vegetable-quinoa,Quinoa con vegetales al horno,bellPepper,pimiento,140.0,grams,0.220,30.80
+roasted-vegetable-quinoa,Quinoa con vegetales al horno,carrot,zanahoria,110.0,grams,0.090,9.90
+roasted-vegetable-quinoa,Quinoa con vegetales al horno,oliveOil,aceite de oliva,15.0,milliliters,1.150,17.25
+roasted-vegetable-quinoa,Quinoa con vegetales al horno,lemon,limón,1.0,pieces,16.000,16.00
+apple-walnut-cinnamon-oatmeal,"Avena con manzana, nueces y canela",oats,avena,90.0,grams,0.180,16.20
+apple-walnut-cinnamon-oatmeal,"Avena con manzana, nueces y canela",milk,leche,380.0,milliliters,0.085,32.30
+apple-walnut-cinnamon-oatmeal,"Avena con manzana, nueces y canela",cinnamon,canela,1.0,grams,1.200,1.20
+apple-walnut-cinnamon-oatmeal,"Avena con manzana, nueces y canela",apple,manzana,1.0,pieces,32.000,32.00
+apple-walnut-cinnamon-oatmeal,"Avena con manzana, nueces y canela",walnuts,nueces,22.0,grams,1.600,35.20
+mango-granola-oatmeal,Avena de mango y granola,oats,avena,90.0,grams,0.180,16.20
+mango-granola-oatmeal,Avena de mango y granola,milk,leche,380.0,milliliters,0.085,32.30
+mango-granola-oatmeal,Avena de mango y granola,cinnamon,canela,1.0,grams,1.200,1.20
+mango-granola-oatmeal,Avena de mango y granola,mango,mango,1.0,pieces,55.000,55.00
+mango-granola-oatmeal,Avena de mango y granola,granola,granola,45.0,grams,0.470,21.15
+strawberry-peanut-butter-oatmeal,Avena con fresas y crema de maní,oats,avena,90.0,grams,0.180,16.20
+strawberry-peanut-butter-oatmeal,Avena con fresas y crema de maní,milk,leche,380.0,milliliters,0.085,32.30
+strawberry-peanut-butter-oatmeal,Avena con fresas y crema de maní,cinnamon,canela,1.0,grams,1.200,1.20
+strawberry-peanut-butter-oatmeal,Avena con fresas y crema de maní,strawberries,fresas,140.0,grams,0.680,95.20
+strawberry-peanut-butter-oatmeal,Avena con fresas y crema de maní,peanutButter,mantequilla de maní,25.0,grams,0.900,22.50
+banana-pineapple-oatmeal,Avena con banana y piña,oats,avena,90.0,grams,0.180,16.20
+banana-pineapple-oatmeal,Avena con banana y piña,milk,leche,380.0,milliliters,0.085,32.30
+banana-pineapple-oatmeal,Avena con banana y piña,cinnamon,canela,1.0,grams,1.200,1.20
+banana-pineapple-oatmeal,Avena con banana y piña,banana,banana,1.0,pieces,13.000,13.00
+banana-pineapple-oatmeal,Avena con banana y piña,pineapple,piña,140.0,grams,0.180,25.20
+apple-yogurt-oatmeal,Avena con manzana y yogur,oats,avena,90.0,grams,0.180,16.20
+apple-yogurt-oatmeal,Avena con manzana y yogur,milk,leche,380.0,milliliters,0.085,32.30
+apple-yogurt-oatmeal,Avena con manzana y yogur,cinnamon,canela,1.0,grams,1.200,1.20
+apple-yogurt-oatmeal,Avena con manzana y yogur,apple,manzana,1.0,pieces,32.000,32.00
+apple-yogurt-oatmeal,Avena con manzana y yogur,yogurt,yogur natural,130.0,grams,0.420,54.60
+mango-walnut-oatmeal,Avena con mango y nueces,oats,avena,90.0,grams,0.180,16.20
+mango-walnut-oatmeal,Avena con mango y nueces,milk,leche,380.0,milliliters,0.085,32.30
+mango-walnut-oatmeal,Avena con mango y nueces,cinnamon,canela,1.0,grams,1.200,1.20
+mango-walnut-oatmeal,Avena con mango y nueces,mango,mango,1.0,pieces,55.000,55.00
+mango-walnut-oatmeal,Avena con mango y nueces,walnuts,nueces,25.0,grams,1.600,40.00
+strawberry-banana-overnight-oats,Avena nocturna de fresa y banana,oats,avena,90.0,grams,0.180,16.20
+strawberry-banana-overnight-oats,Avena nocturna de fresa y banana,milk,leche,250.0,milliliters,0.085,21.25
+strawberry-banana-overnight-oats,Avena nocturna de fresa y banana,yogurt,yogur natural,160.0,grams,0.420,67.20
+strawberry-banana-overnight-oats,Avena nocturna de fresa y banana,strawberries,fresas,120.0,grams,0.680,81.60
+strawberry-banana-overnight-oats,Avena nocturna de fresa y banana,banana,banana,1.0,pieces,13.000,13.00
+apple-cinnamon-overnight-oats,Avena nocturna de manzana y canela,oats,avena,90.0,grams,0.180,16.20
+apple-cinnamon-overnight-oats,Avena nocturna de manzana y canela,milk,leche,250.0,milliliters,0.085,21.25
+apple-cinnamon-overnight-oats,Avena nocturna de manzana y canela,yogurt,yogur natural,160.0,grams,0.420,67.20
+apple-cinnamon-overnight-oats,Avena nocturna de manzana y canela,apple,manzana,1.0,pieces,32.000,32.00
+apple-cinnamon-overnight-oats,Avena nocturna de manzana y canela,cinnamon,canela,2.0,grams,1.200,2.40
+mango-pineapple-overnight-oats,Avena nocturna de mango y piña,oats,avena,90.0,grams,0.180,16.20
+mango-pineapple-overnight-oats,Avena nocturna de mango y piña,milk,leche,250.0,milliliters,0.085,21.25
+mango-pineapple-overnight-oats,Avena nocturna de mango y piña,yogurt,yogur natural,160.0,grams,0.420,67.20
+mango-pineapple-overnight-oats,Avena nocturna de mango y piña,mango,mango,1.0,pieces,55.000,55.00
+mango-pineapple-overnight-oats,Avena nocturna de mango y piña,pineapple,piña,120.0,grams,0.180,21.60
+peanut-banana-overnight-oats,Avena nocturna con mantequilla de maní y banana,oats,avena,90.0,grams,0.180,16.20
+peanut-banana-overnight-oats,Avena nocturna con mantequilla de maní y banana,milk,leche,250.0,milliliters,0.085,21.25
+peanut-banana-overnight-oats,Avena nocturna con mantequilla de maní y banana,yogurt,yogur natural,160.0,grams,0.420,67.20
+peanut-banana-overnight-oats,Avena nocturna con mantequilla de maní y banana,peanutButter,mantequilla de maní,30.0,grams,0.900,27.00
+peanut-banana-overnight-oats,Avena nocturna con mantequilla de maní y banana,banana,banana,1.0,pieces,13.000,13.00
+strawberry-walnut-overnight-oats,Avena nocturna de fresa y nueces,oats,avena,90.0,grams,0.180,16.20
+strawberry-walnut-overnight-oats,Avena nocturna de fresa y nueces,milk,leche,250.0,milliliters,0.085,21.25
+strawberry-walnut-overnight-oats,Avena nocturna de fresa y nueces,yogurt,yogur natural,160.0,grams,0.420,67.20
+strawberry-walnut-overnight-oats,Avena nocturna de fresa y nueces,strawberries,fresas,150.0,grams,0.680,102.00
+strawberry-walnut-overnight-oats,Avena nocturna de fresa y nueces,walnuts,nueces,20.0,grams,1.600,32.00
+apple-granola-overnight-oats,Avena nocturna de manzana y granola,oats,avena,90.0,grams,0.180,16.20
+apple-granola-overnight-oats,Avena nocturna de manzana y granola,milk,leche,250.0,milliliters,0.085,21.25
+apple-granola-overnight-oats,Avena nocturna de manzana y granola,yogurt,yogur natural,160.0,grams,0.420,67.20
+apple-granola-overnight-oats,Avena nocturna de manzana y granola,apple,manzana,1.0,pieces,32.000,32.00
+apple-granola-overnight-oats,Avena nocturna de manzana y granola,granola,granola,40.0,grams,0.470,18.80
+mango-banana-yogurt-bowl,Yogur con mango y banana,yogurt,yogur natural,300.0,grams,0.420,126.00
+mango-banana-yogurt-bowl,Yogur con mango y banana,granola,granola,40.0,grams,0.470,18.80
+mango-banana-yogurt-bowl,Yogur con mango y banana,mango,mango,1.0,pieces,55.000,55.00
+mango-banana-yogurt-bowl,Yogur con mango y banana,banana,banana,1.0,pieces,13.000,13.00
+apple-cinnamon-yogurt-bowl,Yogur con manzana y canela,yogurt,yogur natural,300.0,grams,0.420,126.00
+apple-cinnamon-yogurt-bowl,Yogur con manzana y canela,granola,granola,40.0,grams,0.470,18.80
+apple-cinnamon-yogurt-bowl,Yogur con manzana y canela,apple,manzana,1.0,pieces,32.000,32.00
+apple-cinnamon-yogurt-bowl,Yogur con manzana y canela,cinnamon,canela,2.0,grams,1.200,2.40
+strawberry-walnut-yogurt-bowl,Yogur con fresa y nueces,yogurt,yogur natural,300.0,grams,0.420,126.00
+strawberry-walnut-yogurt-bowl,Yogur con fresa y nueces,granola,granola,40.0,grams,0.470,18.80
+strawberry-walnut-yogurt-bowl,Yogur con fresa y nueces,strawberries,fresas,200.0,grams,0.680,136.00
+strawberry-walnut-yogurt-bowl,Yogur con fresa y nueces,walnuts,nueces,24.0,grams,1.600,38.40
+pineapple-mango-yogurt-bowl,Yogur tropical de piña y mango,yogurt,yogur natural,300.0,grams,0.420,126.00
+pineapple-mango-yogurt-bowl,Yogur tropical de piña y mango,granola,granola,40.0,grams,0.470,18.80
+pineapple-mango-yogurt-bowl,Yogur tropical de piña y mango,pineapple,piña,170.0,grams,0.180,30.60
+pineapple-mango-yogurt-bowl,Yogur tropical de piña y mango,mango,mango,1.0,pieces,55.000,55.00
+peanut-banana-yogurt-bowl,Yogur con banana y mantequilla de maní,yogurt,yogur natural,300.0,grams,0.420,126.00
+peanut-banana-yogurt-bowl,Yogur con banana y mantequilla de maní,granola,granola,40.0,grams,0.470,18.80
+peanut-banana-yogurt-bowl,Yogur con banana y mantequilla de maní,banana,banana,1.0,pieces,13.000,13.00
+peanut-banana-yogurt-bowl,Yogur con banana y mantequilla de maní,peanutButter,mantequilla de maní,32.0,grams,0.900,28.80
+strawberry-pineapple-walnut-yogurt-bowl,"Yogur de fresa, piña y nueces",yogurt,yogur natural,300.0,grams,0.420,126.00
+strawberry-pineapple-walnut-yogurt-bowl,"Yogur de fresa, piña y nueces",granola,granola,40.0,grams,0.470,18.80
+strawberry-pineapple-walnut-yogurt-bowl,"Yogur de fresa, piña y nueces",strawberries,fresas,110.0,grams,0.680,74.80
+strawberry-pineapple-walnut-yogurt-bowl,"Yogur de fresa, piña y nueces",pineapple,piña,110.0,grams,0.180,19.80
+strawberry-pineapple-walnut-yogurt-bowl,"Yogur de fresa, piña y nueces",walnuts,nueces,20.0,grams,1.600,32.00
+mango-oat-yogurt-smoothie,"Batido de mango, avena y yogur",milk,leche,330.0,milliliters,0.085,28.05
+mango-oat-yogurt-smoothie,"Batido de mango, avena y yogur",yogurt,yogur natural,130.0,grams,0.420,54.60
+mango-oat-yogurt-smoothie,"Batido de mango, avena y yogur",mango,mango,1.0,pieces,55.000,55.00
+mango-oat-yogurt-smoothie,"Batido de mango, avena y yogur",oats,avena,45.0,grams,0.180,8.10
+peanut-banana-smoothie,Batido de banana y maní,milk,leche,330.0,milliliters,0.085,28.05
+peanut-banana-smoothie,Batido de banana y maní,yogurt,yogur natural,130.0,grams,0.420,54.60
+peanut-banana-smoothie,Batido de banana y maní,banana,banana,2.0,pieces,13.000,26.00
+peanut-banana-smoothie,Batido de banana y maní,peanutButter,mantequilla de maní,28.0,grams,0.900,25.20
+strawberry-banana-smoothie,Batido de fresa y banana,milk,leche,330.0,milliliters,0.085,28.05
+strawberry-banana-smoothie,Batido de fresa y banana,yogurt,yogur natural,130.0,grams,0.420,54.60
+strawberry-banana-smoothie,Batido de fresa y banana,strawberries,fresas,190.0,grams,0.680,129.20
+strawberry-banana-smoothie,Batido de fresa y banana,banana,banana,1.0,pieces,13.000,13.00
+pineapple-spinach-smoothie,Batido verde de piña y espinaca,milk,leche,330.0,milliliters,0.085,28.05
+pineapple-spinach-smoothie,Batido verde de piña y espinaca,yogurt,yogur natural,130.0,grams,0.420,54.60
+pineapple-spinach-smoothie,Batido verde de piña y espinaca,pineapple,piña,200.0,grams,0.180,36.00
+pineapple-spinach-smoothie,Batido verde de piña y espinaca,spinach,espinaca,45.0,grams,0.330,14.85
+apple-cinnamon-smoothie,Batido de manzana y canela,milk,leche,330.0,milliliters,0.085,28.05
+apple-cinnamon-smoothie,Batido de manzana y canela,yogurt,yogur natural,130.0,grams,0.420,54.60
+apple-cinnamon-smoothie,Batido de manzana y canela,apple,manzana,2.0,pieces,32.000,64.00
+apple-cinnamon-smoothie,Batido de manzana y canela,cinnamon,canela,2.0,grams,1.200,2.40
+mango-pineapple-smoothie,Batido tropical de mango y piña,milk,leche,330.0,milliliters,0.085,28.05
+mango-pineapple-smoothie,Batido tropical de mango y piña,yogurt,yogur natural,130.0,grams,0.420,54.60
+mango-pineapple-smoothie,Batido tropical de mango y piña,mango,mango,1.0,pieces,55.000,55.00
+mango-pineapple-smoothie,Batido tropical de mango y piña,pineapple,piña,180.0,grams,0.180,32.40
+tomato-spinach-scrambled-eggs,Revoltillo de tomate y espinaca,eggs,huevos,4.0,pieces,10.000,40.00
+tomato-spinach-scrambled-eggs,Revoltillo de tomate y espinaca,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+tomato-spinach-scrambled-eggs,Revoltillo de tomate y espinaca,salt,sal,2.0,grams,0.120,0.24
+tomato-spinach-scrambled-eggs,Revoltillo de tomate y espinaca,tomatoes,tomate,170.0,grams,0.120,20.40
+tomato-spinach-scrambled-eggs,Revoltillo de tomate y espinaca,spinach,espinaca,80.0,grams,0.330,26.40
+mushroom-onion-scrambled-eggs,Revoltillo de champiñones y cebolla,eggs,huevos,4.0,pieces,10.000,40.00
+mushroom-onion-scrambled-eggs,Revoltillo de champiñones y cebolla,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+mushroom-onion-scrambled-eggs,Revoltillo de champiñones y cebolla,salt,sal,2.0,grams,0.120,0.24
+mushroom-onion-scrambled-eggs,Revoltillo de champiñones y cebolla,mushrooms,champiñones,150.0,grams,0.680,102.00
+mushroom-onion-scrambled-eggs,Revoltillo de champiñones y cebolla,onion,cebolla,90.0,grams,0.125,11.25
+broccoli-cheese-scrambled-eggs,Revoltillo de brócoli y queso,eggs,huevos,4.0,pieces,10.000,40.00
+broccoli-cheese-scrambled-eggs,Revoltillo de brócoli y queso,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+broccoli-cheese-scrambled-eggs,Revoltillo de brócoli y queso,salt,sal,2.0,grams,0.120,0.24
+broccoli-cheese-scrambled-eggs,Revoltillo de brócoli y queso,broccoli,brócoli,130.0,grams,0.300,39.00
+broccoli-cheese-scrambled-eggs,Revoltillo de brócoli y queso,cheese,queso,55.0,grams,0.750,41.25
+pepper-tomato-scrambled-eggs,Revoltillo de pimiento y tomate,eggs,huevos,4.0,pieces,10.000,40.00
+pepper-tomato-scrambled-eggs,Revoltillo de pimiento y tomate,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+pepper-tomato-scrambled-eggs,Revoltillo de pimiento y tomate,salt,sal,2.0,grams,0.120,0.24
+pepper-tomato-scrambled-eggs,Revoltillo de pimiento y tomate,bellPepper,pimiento,125.0,grams,0.220,27.50
+pepper-tomato-scrambled-eggs,Revoltillo de pimiento y tomate,tomatoes,tomate,135.0,grams,0.120,16.20
+zucchini-herb-scrambled-eggs,Revoltillo de calabacín y hierbas,eggs,huevos,4.0,pieces,10.000,40.00
+zucchini-herb-scrambled-eggs,Revoltillo de calabacín y hierbas,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+zucchini-herb-scrambled-eggs,Revoltillo de calabacín y hierbas,salt,sal,2.0,grams,0.120,0.24
+zucchini-herb-scrambled-eggs,Revoltillo de calabacín y hierbas,zucchini,calabacín,180.0,grams,0.240,43.20
+zucchini-herb-scrambled-eggs,Revoltillo de calabacín y hierbas,herbs,hierbas frescas,8.0,grams,1.300,10.40
+spinach-black-bean-scrambled-eggs,Revoltillo de espinaca y habichuelas negras,eggs,huevos,4.0,pieces,10.000,40.00
+spinach-black-bean-scrambled-eggs,Revoltillo de espinaca y habichuelas negras,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+spinach-black-bean-scrambled-eggs,Revoltillo de espinaca y habichuelas negras,salt,sal,2.0,grams,0.120,0.24
+spinach-black-bean-scrambled-eggs,Revoltillo de espinaca y habichuelas negras,spinach,espinaca,80.0,grams,0.330,26.40
+spinach-black-bean-scrambled-eggs,Revoltillo de espinaca y habichuelas negras,blackBeans,habichuelas negras cocidas,125.0,grams,0.180,22.50
+spinach-mushroom-cheese-omelet,"Omelette de espinaca, champiñones y queso",eggs,huevos,4.0,pieces,10.000,40.00
+spinach-mushroom-cheese-omelet,"Omelette de espinaca, champiñones y queso",oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+spinach-mushroom-cheese-omelet,"Omelette de espinaca, champiñones y queso",salt,sal,2.0,grams,0.120,0.24
+spinach-mushroom-cheese-omelet,"Omelette de espinaca, champiñones y queso",spinach,espinaca,100.0,grams,0.330,33.00
+spinach-mushroom-cheese-omelet,"Omelette de espinaca, champiñones y queso",cheese,queso,50.0,grams,0.750,37.50
+spinach-mushroom-cheese-omelet,"Omelette de espinaca, champiñones y queso",mushrooms,champiñones,105.0,grams,0.680,71.40
+tomato-basil-omelet,Omelette de tomate y albahaca,eggs,huevos,4.0,pieces,10.000,40.00
+tomato-basil-omelet,Omelette de tomate y albahaca,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+tomato-basil-omelet,Omelette de tomate y albahaca,salt,sal,2.0,grams,0.120,0.24
+tomato-basil-omelet,Omelette de tomate y albahaca,tomatoes,tomate,160.0,grams,0.120,19.20
+tomato-basil-omelet,Omelette de tomate y albahaca,basil,albahaca,9.0,grams,2.000,18.00
+mushroom-broccoli-omelet,Omelette de champiñones y brócoli,eggs,huevos,4.0,pieces,10.000,40.00
+mushroom-broccoli-omelet,Omelette de champiñones y brócoli,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+mushroom-broccoli-omelet,Omelette de champiñones y brócoli,salt,sal,2.0,grams,0.120,0.24
+mushroom-broccoli-omelet,Omelette de champiñones y brócoli,mushrooms,champiñones,125.0,grams,0.680,85.00
+mushroom-broccoli-omelet,Omelette de champiñones y brócoli,broccoli,brócoli,100.0,grams,0.300,30.00
+pepper-onion-omelet,Omelette de pimiento y cebolla,eggs,huevos,4.0,pieces,10.000,40.00
+pepper-onion-omelet,Omelette de pimiento y cebolla,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+pepper-onion-omelet,Omelette de pimiento y cebolla,salt,sal,2.0,grams,0.120,0.24
+pepper-onion-omelet,Omelette de pimiento y cebolla,bellPepper,pimiento,130.0,grams,0.220,28.60
+pepper-onion-omelet,Omelette de pimiento y cebolla,onion,cebolla,100.0,grams,0.125,12.50
+zucchini-cheese-omelet,Omelette de calabacín y queso,eggs,huevos,4.0,pieces,10.000,40.00
+zucchini-cheese-omelet,Omelette de calabacín y queso,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+zucchini-cheese-omelet,Omelette de calabacín y queso,salt,sal,2.0,grams,0.120,0.24
+zucchini-cheese-omelet,Omelette de calabacín y queso,zucchini,calabacín,170.0,grams,0.240,40.80
+zucchini-cheese-omelet,Omelette de calabacín y queso,cheese,queso,45.0,grams,0.750,33.75
+avocado-tomato-omelet,Omelette de aguacate y tomate,eggs,huevos,4.0,pieces,10.000,40.00
+avocado-tomato-omelet,Omelette de aguacate y tomate,oliveOil,aceite de oliva,8.0,milliliters,1.150,9.20
+avocado-tomato-omelet,Omelette de aguacate y tomate,salt,sal,2.0,grams,0.120,0.24
+avocado-tomato-omelet,Omelette de aguacate y tomate,avocado,aguacate,1.0,pieces,65.000,65.00
+avocado-tomato-omelet,Omelette de aguacate y tomate,tomatoes,tomate,110.0,grams,0.120,13.20
+avocado-egg-tomato-toast,"Tostadas de aguacate, huevo y tomate",bread,pan,120.0,grams,0.200,24.00
+avocado-egg-tomato-toast,"Tostadas de aguacate, huevo y tomate",oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+avocado-egg-tomato-toast,"Tostadas de aguacate, huevo y tomate",avocado,aguacate,1.0,pieces,65.000,65.00
+avocado-egg-tomato-toast,"Tostadas de aguacate, huevo y tomate",eggs,huevos,2.0,pieces,10.000,20.00
+avocado-egg-tomato-toast,"Tostadas de aguacate, huevo y tomate",tomatoes,tomate,100.0,grams,0.120,12.00
+tuna-tomato-toast,Tostadas de atún y tomate,bread,pan,120.0,grams,0.200,24.00
+tuna-tomato-toast,Tostadas de atún y tomate,oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+tuna-tomato-toast,Tostadas de atún y tomate,tuna,atún escurrido,140.0,grams,0.840,117.60
+tuna-tomato-toast,Tostadas de atún y tomate,tomatoes,tomate,130.0,grams,0.120,15.60
+apple-peanut-toast,Tostadas con manzana y mantequilla de maní,bread,pan,120.0,grams,0.200,24.00
+apple-peanut-toast,Tostadas con manzana y mantequilla de maní,oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+apple-peanut-toast,Tostadas con manzana y mantequilla de maní,apple,manzana,1.0,pieces,32.000,32.00
+apple-peanut-toast,Tostadas con manzana y mantequilla de maní,peanutButter,mantequilla de maní,35.0,grams,0.900,31.50
+cheesy-mushroom-toast,Tostadas de queso y champiñones,bread,pan,120.0,grams,0.200,24.00
+cheesy-mushroom-toast,Tostadas de queso y champiñones,oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+cheesy-mushroom-toast,Tostadas de queso y champiñones,cheese,queso,75.0,grams,0.750,56.25
+cheesy-mushroom-toast,Tostadas de queso y champiñones,mushrooms,champiñones,130.0,grams,0.680,88.40
+egg-spinach-toast,Tostadas de huevo y espinaca,bread,pan,120.0,grams,0.200,24.00
+egg-spinach-toast,Tostadas de huevo y espinaca,oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+egg-spinach-toast,Tostadas de huevo y espinaca,eggs,huevos,3.0,pieces,10.000,30.00
+egg-spinach-toast,Tostadas de huevo y espinaca,spinach,espinaca,65.0,grams,0.330,21.45
+tomato-basil-toast,Tostadas de tomate y albahaca,bread,pan,120.0,grams,0.200,24.00
+tomato-basil-toast,Tostadas de tomate y albahaca,oliveOil,aceite de oliva,5.0,milliliters,1.150,5.75
+tomato-basil-toast,Tostadas de tomate y albahaca,tomatoes,tomate,190.0,grams,0.120,22.80
+tomato-basil-toast,Tostadas de tomate y albahaca,basil,albahaca,10.0,grams,2.000,20.00
+egg-tomato-sandwich,Sándwich de huevo y tomate,bread,pan,160.0,grams,0.200,32.00
+egg-tomato-sandwich,Sándwich de huevo y tomate,eggs,huevos,3.0,pieces,10.000,30.00
+egg-tomato-sandwich,Sándwich de huevo y tomate,tomatoes,tomate,150.0,grams,0.120,18.00
+chicken-avocado-sandwich,Sándwich de pollo y aguacate,bread,pan,160.0,grams,0.200,32.00
+chicken-avocado-sandwich,Sándwich de pollo y aguacate,chicken,pechuga de pollo,180.0,grams,0.460,82.80
+chicken-avocado-sandwich,Sándwich de pollo y aguacate,avocado,aguacate,1.0,pieces,65.000,65.00
+tuna-cucumber-sandwich,Sándwich de atún y pepino,bread,pan,160.0,grams,0.200,32.00
+tuna-cucumber-sandwich,Sándwich de atún y pepino,tuna,atún escurrido,150.0,grams,0.840,126.00
+tuna-cucumber-sandwich,Sándwich de atún y pepino,cucumber,pepino,140.0,grams,0.150,21.00
+cheese-spinach-sandwich,Sándwich de queso y espinaca,bread,pan,160.0,grams,0.200,32.00
+cheese-spinach-sandwich,Sándwich de queso y espinaca,cheese,queso,85.0,grams,0.750,63.75
+cheese-spinach-sandwich,Sándwich de queso y espinaca,spinach,espinaca,60.0,grams,0.330,19.80
+egg-pepper-sandwich,Sándwich de huevo y pimiento,bread,pan,160.0,grams,0.200,32.00
+egg-pepper-sandwich,Sándwich de huevo y pimiento,eggs,huevos,3.0,pieces,10.000,30.00
+egg-pepper-sandwich,Sándwich de huevo y pimiento,bellPepper,pimiento,120.0,grams,0.220,26.40
+chickpea-tomato-sandwich,Sándwich de garbanzos y tomate,bread,pan,160.0,grams,0.200,32.00
+chickpea-tomato-sandwich,Sándwich de garbanzos y tomate,chickpeas,garbanzos cocidos,185.0,grams,0.220,40.70
+chickpea-tomato-sandwich,Sándwich de garbanzos y tomate,tomatoes,tomate,120.0,grams,0.120,14.40
+egg-spinach-potato-hash,Papas salteadas con huevo y espinaca,potatoes,papa,360.0,grams,0.105,37.80
+egg-spinach-potato-hash,Papas salteadas con huevo y espinaca,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+egg-spinach-potato-hash,Papas salteadas con huevo y espinaca,onion,cebolla,80.0,grams,0.125,10.00
+egg-spinach-potato-hash,Papas salteadas con huevo y espinaca,salt,sal,3.0,grams,0.120,0.36
+egg-spinach-potato-hash,Papas salteadas con huevo y espinaca,eggs,huevos,3.0,pieces,10.000,30.00
+egg-spinach-potato-hash,Papas salteadas con huevo y espinaca,spinach,espinaca,80.0,grams,0.330,26.40
+chicken-pepper-potato-hash,Papas salteadas con pollo y pimiento,potatoes,papa,360.0,grams,0.105,37.80
+chicken-pepper-potato-hash,Papas salteadas con pollo y pimiento,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chicken-pepper-potato-hash,Papas salteadas con pollo y pimiento,onion,cebolla,80.0,grams,0.125,10.00
+chicken-pepper-potato-hash,Papas salteadas con pollo y pimiento,salt,sal,3.0,grams,0.120,0.36
+chicken-pepper-potato-hash,Papas salteadas con pollo y pimiento,chicken,pechuga de pollo,180.0,grams,0.460,82.80
+chicken-pepper-potato-hash,Papas salteadas con pollo y pimiento,bellPepper,pimiento,130.0,grams,0.220,28.60
+beef-tomato-potato-hash,Papas salteadas con carne y tomate,potatoes,papa,360.0,grams,0.105,37.80
+beef-tomato-potato-hash,Papas salteadas con carne y tomate,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+beef-tomato-potato-hash,Papas salteadas con carne y tomate,onion,cebolla,80.0,grams,0.125,10.00
+beef-tomato-potato-hash,Papas salteadas con carne y tomate,salt,sal,3.0,grams,0.120,0.36
+beef-tomato-potato-hash,Papas salteadas con carne y tomate,groundBeef,carne molida,180.0,grams,0.700,126.00
+beef-tomato-potato-hash,Papas salteadas con carne y tomate,tomatoes,tomate,150.0,grams,0.120,18.00
+mushroom-cheese-potato-hash,Papas salteadas con champiñones y queso,potatoes,papa,360.0,grams,0.105,37.80
+mushroom-cheese-potato-hash,Papas salteadas con champiñones y queso,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+mushroom-cheese-potato-hash,Papas salteadas con champiñones y queso,onion,cebolla,80.0,grams,0.125,10.00
+mushroom-cheese-potato-hash,Papas salteadas con champiñones y queso,salt,sal,3.0,grams,0.120,0.36
+mushroom-cheese-potato-hash,Papas salteadas con champiñones y queso,mushrooms,champiñones,150.0,grams,0.680,102.00
+mushroom-cheese-potato-hash,Papas salteadas con champiñones y queso,cheese,queso,50.0,grams,0.750,37.50
+broccoli-egg-potato-hash,Papas salteadas con brócoli y huevo,potatoes,papa,360.0,grams,0.105,37.80
+broccoli-egg-potato-hash,Papas salteadas con brócoli y huevo,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+broccoli-egg-potato-hash,Papas salteadas con brócoli y huevo,onion,cebolla,80.0,grams,0.125,10.00
+broccoli-egg-potato-hash,Papas salteadas con brócoli y huevo,salt,sal,3.0,grams,0.120,0.36
+broccoli-egg-potato-hash,Papas salteadas con brócoli y huevo,broccoli,brócoli,140.0,grams,0.300,42.00
+broccoli-egg-potato-hash,Papas salteadas con brócoli y huevo,eggs,huevos,3.0,pieces,10.000,30.00
+black-bean-potato-hash,Papas salteadas con habichuelas negras,potatoes,papa,360.0,grams,0.105,37.80
+black-bean-potato-hash,Papas salteadas con habichuelas negras,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+black-bean-potato-hash,Papas salteadas con habichuelas negras,onion,cebolla,80.0,grams,0.125,10.00
+black-bean-potato-hash,Papas salteadas con habichuelas negras,salt,sal,3.0,grams,0.120,0.36
+black-bean-potato-hash,Papas salteadas con habichuelas negras,blackBeans,habichuelas negras cocidas,190.0,grams,0.180,34.20
+black-bean-potato-hash,Papas salteadas con habichuelas negras,bellPepper,pimiento,110.0,grams,0.220,24.20
+spinach-tomato-quesadilla,Quesadilla de espinaca y tomate,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+spinach-tomato-quesadilla,Quesadilla de espinaca y tomate,cheese,queso,70.0,grams,0.750,52.50
+spinach-tomato-quesadilla,Quesadilla de espinaca y tomate,spinach,espinaca,100.0,grams,0.330,33.00
+spinach-tomato-quesadilla,Quesadilla de espinaca y tomate,tomatoes,tomate,120.0,grams,0.120,14.40
+egg-pepper-quesadilla,Quesadilla de huevo y pimiento,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+egg-pepper-quesadilla,Quesadilla de huevo y pimiento,cheese,queso,70.0,grams,0.750,52.50
+egg-pepper-quesadilla,Quesadilla de huevo y pimiento,eggs,huevos,2.0,pieces,10.000,20.00
+egg-pepper-quesadilla,Quesadilla de huevo y pimiento,bellPepper,pimiento,120.0,grams,0.220,26.40
+mushroom-onion-quesadilla,Quesadilla de champiñones y cebolla,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+mushroom-onion-quesadilla,Quesadilla de champiñones y cebolla,cheese,queso,70.0,grams,0.750,52.50
+mushroom-onion-quesadilla,Quesadilla de champiñones y cebolla,mushrooms,champiñones,150.0,grams,0.680,102.00
+mushroom-onion-quesadilla,Quesadilla de champiñones y cebolla,onion,cebolla,80.0,grams,0.125,10.00
+black-bean-quesadilla,Quesadilla de habichuelas negras,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+black-bean-quesadilla,Quesadilla de habichuelas negras,cheese,queso,70.0,grams,0.750,52.50
+black-bean-quesadilla,Quesadilla de habichuelas negras,blackBeans,habichuelas negras cocidas,190.0,grams,0.180,34.20
+black-bean-quesadilla,Quesadilla de habichuelas negras,tomatoes,tomate,90.0,grams,0.120,10.80
+chicken-spinach-quesadilla,Quesadilla de pollo y espinaca,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+chicken-spinach-quesadilla,Quesadilla de pollo y espinaca,cheese,queso,70.0,grams,0.750,52.50
+chicken-spinach-quesadilla,Quesadilla de pollo y espinaca,chicken,pechuga de pollo,180.0,grams,0.460,82.80
+chicken-spinach-quesadilla,Quesadilla de pollo y espinaca,spinach,espinaca,90.0,grams,0.330,29.70
+zucchini-herb-quesadilla,Quesadilla de calabacín y hierbas,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+zucchini-herb-quesadilla,Quesadilla de calabacín y hierbas,cheese,queso,70.0,grams,0.750,52.50
+zucchini-herb-quesadilla,Quesadilla de calabacín y hierbas,zucchini,calabacín,160.0,grams,0.240,38.40
+zucchini-herb-quesadilla,Quesadilla de calabacín y hierbas,herbs,hierbas frescas,8.0,grams,1.300,10.40
+chicken-broccoli-carrot-rice-bowl,Bowl de pollo con brócoli y zanahoria,rice,arroz crudo,145.0,grams,0.082,11.89
+chicken-broccoli-carrot-rice-bowl,Bowl de pollo con brócoli y zanahoria,chicken,pechuga de pollo,270.0,grams,0.460,124.20
+chicken-broccoli-carrot-rice-bowl,Bowl de pollo con brócoli y zanahoria,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-broccoli-carrot-rice-bowl,Bowl de pollo con brócoli y zanahoria,salt,sal,3.0,grams,0.120,0.36
+chicken-broccoli-carrot-rice-bowl,Bowl de pollo con brócoli y zanahoria,broccoli,brócoli,180.0,grams,0.300,54.00
+chicken-broccoli-carrot-rice-bowl,Bowl de pollo con brócoli y zanahoria,carrot,zanahoria,140.0,grams,0.090,12.60
+chicken-pepper-onion-rice-bowl,Bowl de pollo con pimiento y cebolla,rice,arroz crudo,145.0,grams,0.082,11.89
+chicken-pepper-onion-rice-bowl,Bowl de pollo con pimiento y cebolla,chicken,pechuga de pollo,270.0,grams,0.460,124.20
+chicken-pepper-onion-rice-bowl,Bowl de pollo con pimiento y cebolla,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-pepper-onion-rice-bowl,Bowl de pollo con pimiento y cebolla,salt,sal,3.0,grams,0.120,0.36
+chicken-pepper-onion-rice-bowl,Bowl de pollo con pimiento y cebolla,bellPepper,pimiento,160.0,grams,0.220,35.20
+chicken-pepper-onion-rice-bowl,Bowl de pollo con pimiento y cebolla,onion,cebolla,100.0,grams,0.125,12.50
+chicken-spinach-tomato-rice-bowl,Bowl de pollo con espinaca y tomate,rice,arroz crudo,145.0,grams,0.082,11.89
+chicken-spinach-tomato-rice-bowl,Bowl de pollo con espinaca y tomate,chicken,pechuga de pollo,270.0,grams,0.460,124.20
+chicken-spinach-tomato-rice-bowl,Bowl de pollo con espinaca y tomate,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-spinach-tomato-rice-bowl,Bowl de pollo con espinaca y tomate,salt,sal,3.0,grams,0.120,0.36
+chicken-spinach-tomato-rice-bowl,Bowl de pollo con espinaca y tomate,spinach,espinaca,110.0,grams,0.330,36.30
+chicken-spinach-tomato-rice-bowl,Bowl de pollo con espinaca y tomate,tomatoes,tomate,180.0,grams,0.120,21.60
+chicken-zucchini-garlic-rice-bowl,Bowl de pollo con calabacín y ajo,rice,arroz crudo,145.0,grams,0.082,11.89
+chicken-zucchini-garlic-rice-bowl,Bowl de pollo con calabacín y ajo,chicken,pechuga de pollo,270.0,grams,0.460,124.20
+chicken-zucchini-garlic-rice-bowl,Bowl de pollo con calabacín y ajo,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-zucchini-garlic-rice-bowl,Bowl de pollo con calabacín y ajo,salt,sal,3.0,grams,0.120,0.36
+chicken-zucchini-garlic-rice-bowl,Bowl de pollo con calabacín y ajo,zucchini,calabacín,210.0,grams,0.240,50.40
+chicken-zucchini-garlic-rice-bowl,Bowl de pollo con calabacín y ajo,garlic,ajo,11.0,grams,0.400,4.40
+chicken-mushroom-rice-bowl,Bowl de pollo con champiñones,rice,arroz crudo,145.0,grams,0.082,11.89
+chicken-mushroom-rice-bowl,Bowl de pollo con champiñones,chicken,pechuga de pollo,270.0,grams,0.460,124.20
+chicken-mushroom-rice-bowl,Bowl de pollo con champiñones,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-mushroom-rice-bowl,Bowl de pollo con champiñones,salt,sal,3.0,grams,0.120,0.36
+chicken-mushroom-rice-bowl,Bowl de pollo con champiñones,mushrooms,champiñones,180.0,grams,0.680,122.40
+chicken-mushroom-rice-bowl,Bowl de pollo con champiñones,onion,cebolla,90.0,grams,0.125,11.25
+pineapple-pepper-chicken-rice-bowl,Bowl de pollo con piña y pimiento,rice,arroz crudo,145.0,grams,0.082,11.89
+pineapple-pepper-chicken-rice-bowl,Bowl de pollo con piña y pimiento,chicken,pechuga de pollo,270.0,grams,0.460,124.20
+pineapple-pepper-chicken-rice-bowl,Bowl de pollo con piña y pimiento,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+pineapple-pepper-chicken-rice-bowl,Bowl de pollo con piña y pimiento,salt,sal,3.0,grams,0.120,0.36
+pineapple-pepper-chicken-rice-bowl,Bowl de pollo con piña y pimiento,pineapple,piña,140.0,grams,0.180,25.20
+pineapple-pepper-chicken-rice-bowl,Bowl de pollo con piña y pimiento,bellPepper,pimiento,130.0,grams,0.220,28.60
+chicken-avocado-tomato-rice-bowl,Bowl de pollo con aguacate y tomate,rice,arroz crudo,145.0,grams,0.082,11.89
+chicken-avocado-tomato-rice-bowl,Bowl de pollo con aguacate y tomate,chicken,pechuga de pollo,270.0,grams,0.460,124.20
+chicken-avocado-tomato-rice-bowl,Bowl de pollo con aguacate y tomate,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-avocado-tomato-rice-bowl,Bowl de pollo con aguacate y tomate,salt,sal,3.0,grams,0.120,0.36
+chicken-avocado-tomato-rice-bowl,Bowl de pollo con aguacate y tomate,avocado,aguacate,1.0,pieces,65.000,65.00
+chicken-avocado-tomato-rice-bowl,Bowl de pollo con aguacate y tomate,tomatoes,tomate,160.0,grams,0.120,19.20
+chicken-black-bean-rice-bowl,Bowl de pollo con habichuelas negras,rice,arroz crudo,145.0,grams,0.082,11.89
+chicken-black-bean-rice-bowl,Bowl de pollo con habichuelas negras,chicken,pechuga de pollo,270.0,grams,0.460,124.20
+chicken-black-bean-rice-bowl,Bowl de pollo con habichuelas negras,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-black-bean-rice-bowl,Bowl de pollo con habichuelas negras,salt,sal,3.0,grams,0.120,0.36
+chicken-black-bean-rice-bowl,Bowl de pollo con habichuelas negras,blackBeans,habichuelas negras cocidas,190.0,grams,0.180,34.20
+chicken-black-bean-rice-bowl,Bowl de pollo con habichuelas negras,bellPepper,pimiento,100.0,grams,0.220,22.00
+tuna-cucumber-tomato-quinoa,"Quinoa con atún, pepino y tomate",quinoa,quinoa cruda,125.0,grams,0.480,60.00
+tuna-cucumber-tomato-quinoa,"Quinoa con atún, pepino y tomate",tuna,atún escurrido,200.0,grams,0.840,168.00
+tuna-cucumber-tomato-quinoa,"Quinoa con atún, pepino y tomate",oliveOil,aceite de oliva,9.0,milliliters,1.150,10.35
+tuna-cucumber-tomato-quinoa,"Quinoa con atún, pepino y tomate",lemon,limón,1.0,pieces,16.000,16.00
+tuna-cucumber-tomato-quinoa,"Quinoa con atún, pepino y tomate",cucumber,pepino,150.0,grams,0.150,22.50
+tuna-cucumber-tomato-quinoa,"Quinoa con atún, pepino y tomate",tomatoes,tomate,180.0,grams,0.120,21.60
+tuna-avocado-quinoa,Quinoa con atún y aguacate,quinoa,quinoa cruda,125.0,grams,0.480,60.00
+tuna-avocado-quinoa,Quinoa con atún y aguacate,tuna,atún escurrido,200.0,grams,0.840,168.00
+tuna-avocado-quinoa,Quinoa con atún y aguacate,oliveOil,aceite de oliva,9.0,milliliters,1.150,10.35
+tuna-avocado-quinoa,Quinoa con atún y aguacate,lemon,limón,1.0,pieces,16.000,16.00
+tuna-avocado-quinoa,Quinoa con atún y aguacate,avocado,aguacate,1.0,pieces,65.000,65.00
+tuna-avocado-quinoa,Quinoa con atún y aguacate,tomatoes,tomate,140.0,grams,0.120,16.80
+tuna-spinach-quinoa,Quinoa con atún y espinaca,quinoa,quinoa cruda,125.0,grams,0.480,60.00
+tuna-spinach-quinoa,Quinoa con atún y espinaca,tuna,atún escurrido,200.0,grams,0.840,168.00
+tuna-spinach-quinoa,Quinoa con atún y espinaca,oliveOil,aceite de oliva,9.0,milliliters,1.150,10.35
+tuna-spinach-quinoa,Quinoa con atún y espinaca,lemon,limón,1.0,pieces,16.000,16.00
+tuna-spinach-quinoa,Quinoa con atún y espinaca,spinach,espinaca,110.0,grams,0.330,36.30
+tuna-spinach-quinoa,Quinoa con atún y espinaca,carrot,zanahoria,100.0,grams,0.090,9.00
+tuna-pepper-onion-quinoa,"Quinoa con atún, pimiento y cebolla",quinoa,quinoa cruda,125.0,grams,0.480,60.00
+tuna-pepper-onion-quinoa,"Quinoa con atún, pimiento y cebolla",tuna,atún escurrido,200.0,grams,0.840,168.00
+tuna-pepper-onion-quinoa,"Quinoa con atún, pimiento y cebolla",oliveOil,aceite de oliva,9.0,milliliters,1.150,10.35
+tuna-pepper-onion-quinoa,"Quinoa con atún, pimiento y cebolla",lemon,limón,1.0,pieces,16.000,16.00
+tuna-pepper-onion-quinoa,"Quinoa con atún, pimiento y cebolla",bellPepper,pimiento,160.0,grams,0.220,35.20
+tuna-pepper-onion-quinoa,"Quinoa con atún, pimiento y cebolla",onion,cebolla,80.0,grams,0.125,10.00
+tuna-chickpea-quinoa,Quinoa con atún y garbanzos,quinoa,quinoa cruda,125.0,grams,0.480,60.00
+tuna-chickpea-quinoa,Quinoa con atún y garbanzos,tuna,atún escurrido,200.0,grams,0.840,168.00
+tuna-chickpea-quinoa,Quinoa con atún y garbanzos,oliveOil,aceite de oliva,9.0,milliliters,1.150,10.35
+tuna-chickpea-quinoa,Quinoa con atún y garbanzos,lemon,limón,1.0,pieces,16.000,16.00
+tuna-chickpea-quinoa,Quinoa con atún y garbanzos,chickpeas,garbanzos cocidos,170.0,grams,0.220,37.40
+tuna-chickpea-quinoa,Quinoa con atún y garbanzos,cucumber,pepino,110.0,grams,0.150,16.50
+tuna-broccoli-lemon-quinoa,"Quinoa con atún, brócoli y limón",quinoa,quinoa cruda,125.0,grams,0.480,60.00
+tuna-broccoli-lemon-quinoa,"Quinoa con atún, brócoli y limón",tuna,atún escurrido,200.0,grams,0.840,168.00
+tuna-broccoli-lemon-quinoa,"Quinoa con atún, brócoli y limón",oliveOil,aceite de oliva,9.0,milliliters,1.150,10.35
+tuna-broccoli-lemon-quinoa,"Quinoa con atún, brócoli y limón",lemon,limón,1.0,pieces,16.000,16.00
+tuna-broccoli-lemon-quinoa,"Quinoa con atún, brócoli y limón",broccoli,brócoli,180.0,grams,0.300,54.00
+tuna-broccoli-lemon-quinoa,"Quinoa con atún, brócoli y limón",herbs,hierbas frescas,8.0,grams,1.300,10.40
+tuna-mushroom-quinoa,Quinoa con atún y champiñones,quinoa,quinoa cruda,125.0,grams,0.480,60.00
+tuna-mushroom-quinoa,Quinoa con atún y champiñones,tuna,atún escurrido,200.0,grams,0.840,168.00
+tuna-mushroom-quinoa,Quinoa con atún y champiñones,oliveOil,aceite de oliva,9.0,milliliters,1.150,10.35
+tuna-mushroom-quinoa,Quinoa con atún y champiñones,lemon,limón,1.0,pieces,16.000,16.00
+tuna-mushroom-quinoa,Quinoa con atún y champiñones,mushrooms,champiñones,160.0,grams,0.680,108.80
+tuna-mushroom-quinoa,Quinoa con atún y champiñones,onion,cebolla,90.0,grams,0.125,11.25
+pineapple-tuna-quinoa,Quinoa tropical con atún y piña,quinoa,quinoa cruda,125.0,grams,0.480,60.00
+pineapple-tuna-quinoa,Quinoa tropical con atún y piña,tuna,atún escurrido,200.0,grams,0.840,168.00
+pineapple-tuna-quinoa,Quinoa tropical con atún y piña,oliveOil,aceite de oliva,9.0,milliliters,1.150,10.35
+pineapple-tuna-quinoa,Quinoa tropical con atún y piña,lemon,limón,1.0,pieces,16.000,16.00
+pineapple-tuna-quinoa,Quinoa tropical con atún y piña,pineapple,piña,180.0,grams,0.180,32.40
+pineapple-tuna-quinoa,Quinoa tropical con atún y piña,cucumber,pepino,100.0,grams,0.150,15.00
+black-bean-pepper-rice,Arroz con habichuelas negras y pimiento,rice,arroz crudo,155.0,grams,0.082,12.71
+black-bean-pepper-rice,Arroz con habichuelas negras y pimiento,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+black-bean-pepper-rice,Arroz con habichuelas negras y pimiento,onion,cebolla,85.0,grams,0.125,10.63
+black-bean-pepper-rice,Arroz con habichuelas negras y pimiento,garlic,ajo,8.0,grams,0.400,3.20
+black-bean-pepper-rice,Arroz con habichuelas negras y pimiento,salt,sal,3.0,grams,0.120,0.36
+black-bean-pepper-rice,Arroz con habichuelas negras y pimiento,blackBeans,habichuelas negras cocidas,240.0,grams,0.180,43.20
+black-bean-pepper-rice,Arroz con habichuelas negras y pimiento,bellPepper,pimiento,140.0,grams,0.220,30.80
+chickpea-carrot-rice,Arroz con garbanzos y zanahoria,rice,arroz crudo,155.0,grams,0.082,12.71
+chickpea-carrot-rice,Arroz con garbanzos y zanahoria,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chickpea-carrot-rice,Arroz con garbanzos y zanahoria,onion,cebolla,85.0,grams,0.125,10.63
+chickpea-carrot-rice,Arroz con garbanzos y zanahoria,garlic,ajo,8.0,grams,0.400,3.20
+chickpea-carrot-rice,Arroz con garbanzos y zanahoria,salt,sal,3.0,grams,0.120,0.36
+chickpea-carrot-rice,Arroz con garbanzos y zanahoria,chickpeas,garbanzos cocidos,260.0,grams,0.220,57.20
+chickpea-carrot-rice,Arroz con garbanzos y zanahoria,carrot,zanahoria,140.0,grams,0.090,12.60
+tofu-broccoli-carrot-rice,"Arroz con tofu, brócoli y zanahoria",rice,arroz crudo,155.0,grams,0.082,12.71
+tofu-broccoli-carrot-rice,"Arroz con tofu, brócoli y zanahoria",oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+tofu-broccoli-carrot-rice,"Arroz con tofu, brócoli y zanahoria",onion,cebolla,85.0,grams,0.125,10.63
+tofu-broccoli-carrot-rice,"Arroz con tofu, brócoli y zanahoria",garlic,ajo,8.0,grams,0.400,3.20
+tofu-broccoli-carrot-rice,"Arroz con tofu, brócoli y zanahoria",salt,sal,3.0,grams,0.120,0.36
+tofu-broccoli-carrot-rice,"Arroz con tofu, brócoli y zanahoria",tofu,tofu firme,210.0,grams,0.750,157.50
+tofu-broccoli-carrot-rice,"Arroz con tofu, brócoli y zanahoria",broccoli,brócoli,170.0,grams,0.300,51.00
+tofu-broccoli-carrot-rice,"Arroz con tofu, brócoli y zanahoria",carrot,zanahoria,110.0,grams,0.090,9.90
+egg-spinach-rice,Arroz con huevo y espinaca,rice,arroz crudo,155.0,grams,0.082,12.71
+egg-spinach-rice,Arroz con huevo y espinaca,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+egg-spinach-rice,Arroz con huevo y espinaca,onion,cebolla,85.0,grams,0.125,10.63
+egg-spinach-rice,Arroz con huevo y espinaca,garlic,ajo,8.0,grams,0.400,3.20
+egg-spinach-rice,Arroz con huevo y espinaca,salt,sal,3.0,grams,0.120,0.36
+egg-spinach-rice,Arroz con huevo y espinaca,eggs,huevos,3.0,pieces,10.000,30.00
+egg-spinach-rice,Arroz con huevo y espinaca,spinach,espinaca,110.0,grams,0.330,36.30
+lentil-tomato-rice,Arroz con lentejas y tomate,rice,arroz crudo,155.0,grams,0.082,12.71
+lentil-tomato-rice,Arroz con lentejas y tomate,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+lentil-tomato-rice,Arroz con lentejas y tomate,onion,cebolla,85.0,grams,0.125,10.63
+lentil-tomato-rice,Arroz con lentejas y tomate,garlic,ajo,8.0,grams,0.400,3.20
+lentil-tomato-rice,Arroz con lentejas y tomate,salt,sal,3.0,grams,0.120,0.36
+lentil-tomato-rice,Arroz con lentejas y tomate,lentils,lentejas cocidas,250.0,grams,0.210,52.50
+lentil-tomato-rice,Arroz con lentejas y tomate,tomatoes,tomate,160.0,grams,0.120,19.20
+mushroom-zucchini-rice,Arroz con champiñones y calabacín,rice,arroz crudo,155.0,grams,0.082,12.71
+mushroom-zucchini-rice,Arroz con champiñones y calabacín,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+mushroom-zucchini-rice,Arroz con champiñones y calabacín,onion,cebolla,85.0,grams,0.125,10.63
+mushroom-zucchini-rice,Arroz con champiñones y calabacín,garlic,ajo,8.0,grams,0.400,3.20
+mushroom-zucchini-rice,Arroz con champiñones y calabacín,salt,sal,3.0,grams,0.120,0.36
+mushroom-zucchini-rice,Arroz con champiñones y calabacín,mushrooms,champiñones,160.0,grams,0.680,108.80
+mushroom-zucchini-rice,Arroz con champiñones y calabacín,zucchini,calabacín,180.0,grams,0.240,43.20
+tuna-carrot-rice,Arroz con atún y zanahoria,rice,arroz crudo,155.0,grams,0.082,12.71
+tuna-carrot-rice,Arroz con atún y zanahoria,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+tuna-carrot-rice,Arroz con atún y zanahoria,onion,cebolla,85.0,grams,0.125,10.63
+tuna-carrot-rice,Arroz con atún y zanahoria,garlic,ajo,8.0,grams,0.400,3.20
+tuna-carrot-rice,Arroz con atún y zanahoria,salt,sal,3.0,grams,0.120,0.36
+tuna-carrot-rice,Arroz con atún y zanahoria,tuna,atún escurrido,190.0,grams,0.840,159.60
+tuna-carrot-rice,Arroz con atún y zanahoria,carrot,zanahoria,150.0,grams,0.090,13.50
+chicken-green-veggie-rice,Arroz con pollo y vegetales verdes,rice,arroz crudo,155.0,grams,0.082,12.71
+chicken-green-veggie-rice,Arroz con pollo y vegetales verdes,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-green-veggie-rice,Arroz con pollo y vegetales verdes,onion,cebolla,85.0,grams,0.125,10.63
+chicken-green-veggie-rice,Arroz con pollo y vegetales verdes,garlic,ajo,8.0,grams,0.400,3.20
+chicken-green-veggie-rice,Arroz con pollo y vegetales verdes,salt,sal,3.0,grams,0.120,0.36
+chicken-green-veggie-rice,Arroz con pollo y vegetales verdes,chicken,pechuga de pollo,210.0,grams,0.460,96.60
+chicken-green-veggie-rice,Arroz con pollo y vegetales verdes,broccoli,brócoli,140.0,grams,0.300,42.00
+chicken-green-veggie-rice,Arroz con pollo y vegetales verdes,spinach,espinaca,80.0,grams,0.330,26.40
+tuna-cucumber-pasta-salad,Ensalada de pasta con atún y pepino,pasta,pasta seca,170.0,grams,0.130,22.10
+tuna-cucumber-pasta-salad,Ensalada de pasta con atún y pepino,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+tuna-cucumber-pasta-salad,Ensalada de pasta con atún y pepino,lemon,limón,1.0,pieces,16.000,16.00
+tuna-cucumber-pasta-salad,Ensalada de pasta con atún y pepino,tuna,atún escurrido,200.0,grams,0.840,168.00
+tuna-cucumber-pasta-salad,Ensalada de pasta con atún y pepino,cucumber,pepino,150.0,grams,0.150,22.50
+chicken-tomato-pasta-salad,Ensalada de pasta con pollo y tomate,pasta,pasta seca,170.0,grams,0.130,22.10
+chicken-tomato-pasta-salad,Ensalada de pasta con pollo y tomate,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-tomato-pasta-salad,Ensalada de pasta con pollo y tomate,lemon,limón,1.0,pieces,16.000,16.00
+chicken-tomato-pasta-salad,Ensalada de pasta con pollo y tomate,chicken,pechuga de pollo,230.0,grams,0.460,105.80
+chicken-tomato-pasta-salad,Ensalada de pasta con pollo y tomate,tomatoes,tomate,170.0,grams,0.120,20.40
+chickpea-pasta-salad,Ensalada de pasta con garbanzos,pasta,pasta seca,170.0,grams,0.130,22.10
+chickpea-pasta-salad,Ensalada de pasta con garbanzos,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chickpea-pasta-salad,Ensalada de pasta con garbanzos,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-pasta-salad,Ensalada de pasta con garbanzos,chickpeas,garbanzos cocidos,240.0,grams,0.220,52.80
+chickpea-pasta-salad,Ensalada de pasta con garbanzos,bellPepper,pimiento,140.0,grams,0.220,30.80
+cheese-basil-pasta-salad,Ensalada de pasta con queso y albahaca,pasta,pasta seca,170.0,grams,0.130,22.10
+cheese-basil-pasta-salad,Ensalada de pasta con queso y albahaca,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+cheese-basil-pasta-salad,Ensalada de pasta con queso y albahaca,lemon,limón,1.0,pieces,16.000,16.00
+cheese-basil-pasta-salad,Ensalada de pasta con queso y albahaca,cheese,queso,90.0,grams,0.750,67.50
+cheese-basil-pasta-salad,Ensalada de pasta con queso y albahaca,tomatoes,tomate,180.0,grams,0.120,21.60
+cheese-basil-pasta-salad,Ensalada de pasta con queso y albahaca,basil,albahaca,9.0,grams,2.000,18.00
+broccoli-pasta-salad,Ensalada de pasta con brócoli,pasta,pasta seca,170.0,grams,0.130,22.10
+broccoli-pasta-salad,Ensalada de pasta con brócoli,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+broccoli-pasta-salad,Ensalada de pasta con brócoli,lemon,limón,1.0,pieces,16.000,16.00
+broccoli-pasta-salad,Ensalada de pasta con brócoli,broccoli,brócoli,210.0,grams,0.300,63.00
+broccoli-pasta-salad,Ensalada de pasta con brócoli,carrot,zanahoria,130.0,grams,0.090,11.70
+spinach-mushroom-pasta-salad,Ensalada de pasta con espinaca y champiñones,pasta,pasta seca,170.0,grams,0.130,22.10
+spinach-mushroom-pasta-salad,Ensalada de pasta con espinaca y champiñones,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+spinach-mushroom-pasta-salad,Ensalada de pasta con espinaca y champiñones,lemon,limón,1.0,pieces,16.000,16.00
+spinach-mushroom-pasta-salad,Ensalada de pasta con espinaca y champiñones,spinach,espinaca,130.0,grams,0.330,42.90
+spinach-mushroom-pasta-salad,Ensalada de pasta con espinaca y champiñones,mushrooms,champiñones,155.0,grams,0.680,105.40
+avocado-tomato-pasta-salad,Ensalada de pasta con aguacate y tomate,pasta,pasta seca,170.0,grams,0.130,22.10
+avocado-tomato-pasta-salad,Ensalada de pasta con aguacate y tomate,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+avocado-tomato-pasta-salad,Ensalada de pasta con aguacate y tomate,lemon,limón,1.0,pieces,16.000,16.00
+avocado-tomato-pasta-salad,Ensalada de pasta con aguacate y tomate,avocado,aguacate,1.0,pieces,65.000,65.00
+avocado-tomato-pasta-salad,Ensalada de pasta con aguacate y tomate,tomatoes,tomate,180.0,grams,0.120,21.60
+pineapple-chicken-pasta-salad,Ensalada tropical de pasta con piña y pollo,pasta,pasta seca,170.0,grams,0.130,22.10
+pineapple-chicken-pasta-salad,Ensalada tropical de pasta con piña y pollo,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+pineapple-chicken-pasta-salad,Ensalada tropical de pasta con piña y pollo,lemon,limón,1.0,pieces,16.000,16.00
+pineapple-chicken-pasta-salad,Ensalada tropical de pasta con piña y pollo,pineapple,piña,180.0,grams,0.180,32.40
+pineapple-chicken-pasta-salad,Ensalada tropical de pasta con piña y pollo,chicken,pechuga de pollo,220.0,grams,0.460,101.20
+chicken-spinach-tomato-pasta,Pasta de pollo y espinaca,pasta,pasta seca,180.0,grams,0.130,23.40
+chicken-spinach-tomato-pasta,Pasta de pollo y espinaca,tomatoes,tomate,240.0,grams,0.120,28.80
+chicken-spinach-tomato-pasta,Pasta de pollo y espinaca,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chicken-spinach-tomato-pasta,Pasta de pollo y espinaca,garlic,ajo,9.0,grams,0.400,3.60
+chicken-spinach-tomato-pasta,Pasta de pollo y espinaca,salt,sal,3.0,grams,0.120,0.36
+chicken-spinach-tomato-pasta,Pasta de pollo y espinaca,chicken,pechuga de pollo,240.0,grams,0.460,110.40
+chicken-spinach-tomato-pasta,Pasta de pollo y espinaca,spinach,espinaca,110.0,grams,0.330,36.30
+tuna-basil-tomato-pasta,Pasta de atún y albahaca,pasta,pasta seca,180.0,grams,0.130,23.40
+tuna-basil-tomato-pasta,Pasta de atún y albahaca,tomatoes,tomate,240.0,grams,0.120,28.80
+tuna-basil-tomato-pasta,Pasta de atún y albahaca,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+tuna-basil-tomato-pasta,Pasta de atún y albahaca,garlic,ajo,9.0,grams,0.400,3.60
+tuna-basil-tomato-pasta,Pasta de atún y albahaca,salt,sal,3.0,grams,0.120,0.36
+tuna-basil-tomato-pasta,Pasta de atún y albahaca,tuna,atún escurrido,210.0,grams,0.840,176.40
+tuna-basil-tomato-pasta,Pasta de atún y albahaca,basil,albahaca,12.0,grams,2.000,24.00
+mushroom-cheese-tomato-pasta,Pasta de champiñones y queso,pasta,pasta seca,180.0,grams,0.130,23.40
+mushroom-cheese-tomato-pasta,Pasta de champiñones y queso,tomatoes,tomate,240.0,grams,0.120,28.80
+mushroom-cheese-tomato-pasta,Pasta de champiñones y queso,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+mushroom-cheese-tomato-pasta,Pasta de champiñones y queso,garlic,ajo,9.0,grams,0.400,3.60
+mushroom-cheese-tomato-pasta,Pasta de champiñones y queso,salt,sal,3.0,grams,0.120,0.36
+mushroom-cheese-tomato-pasta,Pasta de champiñones y queso,mushrooms,champiñones,175.0,grams,0.680,119.00
+mushroom-cheese-tomato-pasta,Pasta de champiñones y queso,cheese,queso,70.0,grams,0.750,52.50
+ground-beef-pepper-pasta,Pasta con carne molida y pimiento,pasta,pasta seca,180.0,grams,0.130,23.40
+ground-beef-pepper-pasta,Pasta con carne molida y pimiento,tomatoes,tomate,240.0,grams,0.120,28.80
+ground-beef-pepper-pasta,Pasta con carne molida y pimiento,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+ground-beef-pepper-pasta,Pasta con carne molida y pimiento,garlic,ajo,9.0,grams,0.400,3.60
+ground-beef-pepper-pasta,Pasta con carne molida y pimiento,salt,sal,3.0,grams,0.120,0.36
+ground-beef-pepper-pasta,Pasta con carne molida y pimiento,groundBeef,carne molida,230.0,grams,0.700,161.00
+ground-beef-pepper-pasta,Pasta con carne molida y pimiento,bellPepper,pimiento,140.0,grams,0.220,30.80
+chickpea-spinach-pasta,Pasta con garbanzos y espinaca,pasta,pasta seca,180.0,grams,0.130,23.40
+chickpea-spinach-pasta,Pasta con garbanzos y espinaca,tomatoes,tomate,240.0,grams,0.120,28.80
+chickpea-spinach-pasta,Pasta con garbanzos y espinaca,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+chickpea-spinach-pasta,Pasta con garbanzos y espinaca,garlic,ajo,9.0,grams,0.400,3.60
+chickpea-spinach-pasta,Pasta con garbanzos y espinaca,salt,sal,3.0,grams,0.120,0.36
+chickpea-spinach-pasta,Pasta con garbanzos y espinaca,chickpeas,garbanzos cocidos,220.0,grams,0.220,48.40
+chickpea-spinach-pasta,Pasta con garbanzos y espinaca,spinach,espinaca,100.0,grams,0.330,33.00
+zucchini-basil-tomato-pasta,Pasta de calabacín y albahaca,pasta,pasta seca,180.0,grams,0.130,23.40
+zucchini-basil-tomato-pasta,Pasta de calabacín y albahaca,tomatoes,tomate,240.0,grams,0.120,28.80
+zucchini-basil-tomato-pasta,Pasta de calabacín y albahaca,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+zucchini-basil-tomato-pasta,Pasta de calabacín y albahaca,garlic,ajo,9.0,grams,0.400,3.60
+zucchini-basil-tomato-pasta,Pasta de calabacín y albahaca,salt,sal,3.0,grams,0.120,0.36
+zucchini-basil-tomato-pasta,Pasta de calabacín y albahaca,zucchini,calabacín,200.0,grams,0.240,48.00
+zucchini-basil-tomato-pasta,Pasta de calabacín y albahaca,basil,albahaca,12.0,grams,2.000,24.00
+broccoli-chicken-tomato-pasta,Pasta con brócoli y pollo,pasta,pasta seca,180.0,grams,0.130,23.40
+broccoli-chicken-tomato-pasta,Pasta con brócoli y pollo,tomatoes,tomate,240.0,grams,0.120,28.80
+broccoli-chicken-tomato-pasta,Pasta con brócoli y pollo,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+broccoli-chicken-tomato-pasta,Pasta con brócoli y pollo,garlic,ajo,9.0,grams,0.400,3.60
+broccoli-chicken-tomato-pasta,Pasta con brócoli y pollo,salt,sal,3.0,grams,0.120,0.36
+broccoli-chicken-tomato-pasta,Pasta con brócoli y pollo,broccoli,brócoli,175.0,grams,0.300,52.50
+broccoli-chicken-tomato-pasta,Pasta con brócoli y pollo,chicken,pechuga de pollo,230.0,grams,0.460,105.80
+lentil-carrot-tomato-pasta,Pasta con lentejas y zanahoria,pasta,pasta seca,180.0,grams,0.130,23.40
+lentil-carrot-tomato-pasta,Pasta con lentejas y zanahoria,tomatoes,tomate,240.0,grams,0.120,28.80
+lentil-carrot-tomato-pasta,Pasta con lentejas y zanahoria,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+lentil-carrot-tomato-pasta,Pasta con lentejas y zanahoria,garlic,ajo,9.0,grams,0.400,3.60
+lentil-carrot-tomato-pasta,Pasta con lentejas y zanahoria,salt,sal,3.0,grams,0.120,0.36
+lentil-carrot-tomato-pasta,Pasta con lentejas y zanahoria,lentils,lentejas cocidas,260.0,grams,0.210,54.60
+lentil-carrot-tomato-pasta,Pasta con lentejas y zanahoria,carrot,zanahoria,130.0,grams,0.090,11.70
+chickpea-cucumber-tomato-salad,Ensalada de garbanzos con pepino y tomate,chickpeas,garbanzos cocidos,330.0,grams,0.220,72.60
+chickpea-cucumber-tomato-salad,Ensalada de garbanzos con pepino y tomate,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-cucumber-tomato-salad,Ensalada de garbanzos con pepino y tomate,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-cucumber-tomato-salad,Ensalada de garbanzos con pepino y tomate,cucumber,pepino,160.0,grams,0.150,24.00
+chickpea-cucumber-tomato-salad,Ensalada de garbanzos con pepino y tomate,tomatoes,tomate,170.0,grams,0.120,20.40
+chickpea-tuna-salad,Ensalada de garbanzos con atún,chickpeas,garbanzos cocidos,330.0,grams,0.220,72.60
+chickpea-tuna-salad,Ensalada de garbanzos con atún,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-tuna-salad,Ensalada de garbanzos con atún,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-tuna-salad,Ensalada de garbanzos con atún,tuna,atún escurrido,160.0,grams,0.840,134.40
+chickpea-tuna-salad,Ensalada de garbanzos con atún,onion,cebolla,70.0,grams,0.125,8.75
+chickpea-avocado-salad,Ensalada de garbanzos con aguacate,chickpeas,garbanzos cocidos,330.0,grams,0.220,72.60
+chickpea-avocado-salad,Ensalada de garbanzos con aguacate,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-avocado-salad,Ensalada de garbanzos con aguacate,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-avocado-salad,Ensalada de garbanzos con aguacate,avocado,aguacate,1.0,pieces,65.000,65.00
+chickpea-avocado-salad,Ensalada de garbanzos con aguacate,tomatoes,tomate,150.0,grams,0.120,18.00
+chickpea-spinach-salad,Ensalada de garbanzos con espinaca,chickpeas,garbanzos cocidos,330.0,grams,0.220,72.60
+chickpea-spinach-salad,Ensalada de garbanzos con espinaca,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-spinach-salad,Ensalada de garbanzos con espinaca,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-spinach-salad,Ensalada de garbanzos con espinaca,spinach,espinaca,130.0,grams,0.330,42.90
+chickpea-spinach-salad,Ensalada de garbanzos con espinaca,bellPepper,pimiento,120.0,grams,0.220,26.40
+chickpea-quinoa-salad,Ensalada de garbanzos y quinoa,chickpeas,garbanzos cocidos,330.0,grams,0.220,72.60
+chickpea-quinoa-salad,Ensalada de garbanzos y quinoa,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-quinoa-salad,Ensalada de garbanzos y quinoa,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-quinoa-salad,Ensalada de garbanzos y quinoa,quinoa,quinoa cruda,100.0,grams,0.480,48.00
+chickpea-quinoa-salad,Ensalada de garbanzos y quinoa,cucumber,pepino,130.0,grams,0.150,19.50
+chickpea-carrot-salad,Ensalada de garbanzos y zanahoria,chickpeas,garbanzos cocidos,330.0,grams,0.220,72.60
+chickpea-carrot-salad,Ensalada de garbanzos y zanahoria,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-carrot-salad,Ensalada de garbanzos y zanahoria,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-carrot-salad,Ensalada de garbanzos y zanahoria,carrot,zanahoria,170.0,grams,0.090,15.30
+chickpea-carrot-salad,Ensalada de garbanzos y zanahoria,herbs,hierbas frescas,8.0,grams,1.300,10.40
+chickpea-broccoli-salad,Ensalada de garbanzos con brócoli,chickpeas,garbanzos cocidos,330.0,grams,0.220,72.60
+chickpea-broccoli-salad,Ensalada de garbanzos con brócoli,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-broccoli-salad,Ensalada de garbanzos con brócoli,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-broccoli-salad,Ensalada de garbanzos con brócoli,broccoli,brócoli,200.0,grams,0.300,60.00
+chickpea-broccoli-salad,Ensalada de garbanzos con brócoli,garlic,ajo,8.0,grams,0.400,3.20
+chickpea-cheese-salad,Ensalada de garbanzos y queso,chickpeas,garbanzos cocidos,330.0,grams,0.220,72.60
+chickpea-cheese-salad,Ensalada de garbanzos y queso,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-cheese-salad,Ensalada de garbanzos y queso,lemon,limón,1.0,pieces,16.000,16.00
+chickpea-cheese-salad,Ensalada de garbanzos y queso,cheese,queso,85.0,grams,0.750,63.75
+chickpea-cheese-salad,Ensalada de garbanzos y queso,tomatoes,tomate,150.0,grams,0.120,18.00
+carrot-tomato-lentil-bowl,Lentejas con zanahoria y tomate,lentils,lentejas cocidas,370.0,grams,0.210,77.70
+carrot-tomato-lentil-bowl,Lentejas con zanahoria y tomate,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+carrot-tomato-lentil-bowl,Lentejas con zanahoria y tomate,onion,cebolla,90.0,grams,0.125,11.25
+carrot-tomato-lentil-bowl,Lentejas con zanahoria y tomate,garlic,ajo,8.0,grams,0.400,3.20
+carrot-tomato-lentil-bowl,Lentejas con zanahoria y tomate,carrot,zanahoria,160.0,grams,0.090,14.40
+carrot-tomato-lentil-bowl,Lentejas con zanahoria y tomate,tomatoes,tomate,180.0,grams,0.120,21.60
+broccoli-spinach-lentil-bowl,Lentejas con brócoli y espinaca,lentils,lentejas cocidas,370.0,grams,0.210,77.70
+broccoli-spinach-lentil-bowl,Lentejas con brócoli y espinaca,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+broccoli-spinach-lentil-bowl,Lentejas con brócoli y espinaca,onion,cebolla,90.0,grams,0.125,11.25
+broccoli-spinach-lentil-bowl,Lentejas con brócoli y espinaca,garlic,ajo,8.0,grams,0.400,3.20
+broccoli-spinach-lentil-bowl,Lentejas con brócoli y espinaca,broccoli,brócoli,160.0,grams,0.300,48.00
+broccoli-spinach-lentil-bowl,Lentejas con brócoli y espinaca,spinach,espinaca,105.0,grams,0.330,34.65
+zucchini-lentil-bowl,Lentejas con calabacín,lentils,lentejas cocidas,370.0,grams,0.210,77.70
+zucchini-lentil-bowl,Lentejas con calabacín,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+zucchini-lentil-bowl,Lentejas con calabacín,onion,cebolla,90.0,grams,0.125,11.25
+zucchini-lentil-bowl,Lentejas con calabacín,garlic,ajo,8.0,grams,0.400,3.20
+zucchini-lentil-bowl,Lentejas con calabacín,zucchini,calabacín,220.0,grams,0.240,52.80
+zucchini-lentil-bowl,Lentejas con calabacín,herbs,hierbas frescas,8.0,grams,1.300,10.40
+potato-carrot-lentil-bowl,Lentejas con papa y zanahoria,lentils,lentejas cocidas,370.0,grams,0.210,77.70
+potato-carrot-lentil-bowl,Lentejas con papa y zanahoria,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+potato-carrot-lentil-bowl,Lentejas con papa y zanahoria,onion,cebolla,90.0,grams,0.125,11.25
+potato-carrot-lentil-bowl,Lentejas con papa y zanahoria,garlic,ajo,8.0,grams,0.400,3.20
+potato-carrot-lentil-bowl,Lentejas con papa y zanahoria,potatoes,papa,270.0,grams,0.105,28.35
+potato-carrot-lentil-bowl,Lentejas con papa y zanahoria,carrot,zanahoria,120.0,grams,0.090,10.80
+quinoa-pepper-lentil-bowl,Lentejas con quinoa y pimiento,lentils,lentejas cocidas,370.0,grams,0.210,77.70
+quinoa-pepper-lentil-bowl,Lentejas con quinoa y pimiento,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+quinoa-pepper-lentil-bowl,Lentejas con quinoa y pimiento,onion,cebolla,90.0,grams,0.125,11.25
+quinoa-pepper-lentil-bowl,Lentejas con quinoa y pimiento,garlic,ajo,8.0,grams,0.400,3.20
+quinoa-pepper-lentil-bowl,Lentejas con quinoa y pimiento,quinoa,quinoa cruda,110.0,grams,0.480,52.80
+quinoa-pepper-lentil-bowl,Lentejas con quinoa y pimiento,bellPepper,pimiento,130.0,grams,0.220,28.60
+rice-tomato-lentil-bowl,Lentejas con arroz y tomate,lentils,lentejas cocidas,370.0,grams,0.210,77.70
+rice-tomato-lentil-bowl,Lentejas con arroz y tomate,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+rice-tomato-lentil-bowl,Lentejas con arroz y tomate,onion,cebolla,90.0,grams,0.125,11.25
+rice-tomato-lentil-bowl,Lentejas con arroz y tomate,garlic,ajo,8.0,grams,0.400,3.20
+rice-tomato-lentil-bowl,Lentejas con arroz y tomate,rice,arroz crudo,115.0,grams,0.082,9.43
+rice-tomato-lentil-bowl,Lentejas con arroz y tomate,tomatoes,tomate,160.0,grams,0.120,19.20
+tofu-broccoli-lentil-bowl,Lentejas con tofu y brócoli,lentils,lentejas cocidas,370.0,grams,0.210,77.70
+tofu-broccoli-lentil-bowl,Lentejas con tofu y brócoli,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+tofu-broccoli-lentil-bowl,Lentejas con tofu y brócoli,onion,cebolla,90.0,grams,0.125,11.25
+tofu-broccoli-lentil-bowl,Lentejas con tofu y brócoli,garlic,ajo,8.0,grams,0.400,3.20
+tofu-broccoli-lentil-bowl,Lentejas con tofu y brócoli,tofu,tofu firme,210.0,grams,0.750,157.50
+tofu-broccoli-lentil-bowl,Lentejas con tofu y brócoli,broccoli,brócoli,150.0,grams,0.300,45.00
+mushroom-spinach-lentil-bowl,Lentejas con champiñones y espinaca,lentils,lentejas cocidas,370.0,grams,0.210,77.70
+mushroom-spinach-lentil-bowl,Lentejas con champiñones y espinaca,oliveOil,aceite de oliva,12.0,milliliters,1.150,13.80
+mushroom-spinach-lentil-bowl,Lentejas con champiñones y espinaca,onion,cebolla,90.0,grams,0.125,11.25
+mushroom-spinach-lentil-bowl,Lentejas con champiñones y espinaca,garlic,ajo,8.0,grams,0.400,3.20
+mushroom-spinach-lentil-bowl,Lentejas con champiñones y espinaca,mushrooms,champiñones,165.0,grams,0.680,112.20
+mushroom-spinach-lentil-bowl,Lentejas con champiñones y espinaca,spinach,espinaca,95.0,grams,0.330,31.35
+chicken-avocado-tomato-wrap,"Wrap de pollo, aguacate y tomate",tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+chicken-avocado-tomato-wrap,"Wrap de pollo, aguacate y tomate",oliveOil,aceite de oliva,7.0,milliliters,1.150,8.05
+chicken-avocado-tomato-wrap,"Wrap de pollo, aguacate y tomate",chicken,pechuga de pollo,210.0,grams,0.460,96.60
+chicken-avocado-tomato-wrap,"Wrap de pollo, aguacate y tomate",avocado,aguacate,1.0,pieces,65.000,65.00
+chicken-avocado-tomato-wrap,"Wrap de pollo, aguacate y tomate",tomatoes,tomate,115.0,grams,0.120,13.80
+tuna-cucumber-wrap,Wrap de atún y pepino,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+tuna-cucumber-wrap,Wrap de atún y pepino,oliveOil,aceite de oliva,7.0,milliliters,1.150,8.05
+tuna-cucumber-wrap,Wrap de atún y pepino,tuna,atún escurrido,185.0,grams,0.840,155.40
+tuna-cucumber-wrap,Wrap de atún y pepino,cucumber,pepino,140.0,grams,0.150,21.00
+tuna-cucumber-wrap,Wrap de atún y pepino,yogurt,yogur natural,45.0,grams,0.420,18.90
+chickpea-spinach-wrap,Wrap de garbanzos y espinaca,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+chickpea-spinach-wrap,Wrap de garbanzos y espinaca,oliveOil,aceite de oliva,7.0,milliliters,1.150,8.05
+chickpea-spinach-wrap,Wrap de garbanzos y espinaca,chickpeas,garbanzos cocidos,230.0,grams,0.220,50.60
+chickpea-spinach-wrap,Wrap de garbanzos y espinaca,spinach,espinaca,100.0,grams,0.330,33.00
+chickpea-spinach-wrap,Wrap de garbanzos y espinaca,tomatoes,tomate,110.0,grams,0.120,13.20
+ground-beef-pepper-wrap,Wrap de carne molida y pimiento,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+ground-beef-pepper-wrap,Wrap de carne molida y pimiento,oliveOil,aceite de oliva,7.0,milliliters,1.150,8.05
+ground-beef-pepper-wrap,Wrap de carne molida y pimiento,groundBeef,carne molida,210.0,grams,0.700,147.00
+ground-beef-pepper-wrap,Wrap de carne molida y pimiento,bellPepper,pimiento,130.0,grams,0.220,28.60
+ground-beef-pepper-wrap,Wrap de carne molida y pimiento,onion,cebolla,85.0,grams,0.125,10.63
+egg-cheese-wrap,Wrap de huevo y queso,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+egg-cheese-wrap,Wrap de huevo y queso,oliveOil,aceite de oliva,7.0,milliliters,1.150,8.05
+egg-cheese-wrap,Wrap de huevo y queso,eggs,huevos,3.0,pieces,10.000,30.00
+egg-cheese-wrap,Wrap de huevo y queso,cheese,queso,65.0,grams,0.750,48.75
+egg-cheese-wrap,Wrap de huevo y queso,tomatoes,tomate,120.0,grams,0.120,14.40
+black-bean-avocado-wrap,Wrap de habichuelas negras y aguacate,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+black-bean-avocado-wrap,Wrap de habichuelas negras y aguacate,oliveOil,aceite de oliva,7.0,milliliters,1.150,8.05
+black-bean-avocado-wrap,Wrap de habichuelas negras y aguacate,blackBeans,habichuelas negras cocidas,240.0,grams,0.180,43.20
+black-bean-avocado-wrap,Wrap de habichuelas negras y aguacate,avocado,aguacate,1.0,pieces,65.000,65.00
+black-bean-avocado-wrap,Wrap de habichuelas negras y aguacate,tomatoes,tomate,100.0,grams,0.120,12.00
+tofu-broccoli-wrap,Wrap de tofu y brócoli,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+tofu-broccoli-wrap,Wrap de tofu y brócoli,oliveOil,aceite de oliva,7.0,milliliters,1.150,8.05
+tofu-broccoli-wrap,Wrap de tofu y brócoli,tofu,tofu firme,220.0,grams,0.750,165.00
+tofu-broccoli-wrap,Wrap de tofu y brócoli,broccoli,brócoli,130.0,grams,0.300,39.00
+tofu-broccoli-wrap,Wrap de tofu y brócoli,carrot,zanahoria,100.0,grams,0.090,9.00
+chicken-mushroom-wrap,Wrap de pollo con champiñones,tortilla,tortilla de trigo,2.0,pieces,22.000,44.00
+chicken-mushroom-wrap,Wrap de pollo con champiñones,oliveOil,aceite de oliva,7.0,milliliters,1.150,8.05
+chicken-mushroom-wrap,Wrap de pollo con champiñones,chicken,pechuga de pollo,210.0,grams,0.460,96.60
+chicken-mushroom-wrap,Wrap de pollo con champiñones,mushrooms,champiñones,140.0,grams,0.680,95.20
+chicken-mushroom-wrap,Wrap de pollo con champiñones,spinach,espinaca,60.0,grams,0.330,19.80
+chicken-potato-carrot-soup,Sopa de pollo con papa y zanahoria,chicken,pechuga de pollo,240.0,grams,0.460,110.40
+chicken-potato-carrot-soup,Sopa de pollo con papa y zanahoria,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+chicken-potato-carrot-soup,Sopa de pollo con papa y zanahoria,onion,cebolla,80.0,grams,0.125,10.00
+chicken-potato-carrot-soup,Sopa de pollo con papa y zanahoria,garlic,ajo,8.0,grams,0.400,3.20
+chicken-potato-carrot-soup,Sopa de pollo con papa y zanahoria,salt,sal,3.0,grams,0.120,0.36
+chicken-potato-carrot-soup,Sopa de pollo con papa y zanahoria,potatoes,papa,240.0,grams,0.105,25.20
+chicken-potato-carrot-soup,Sopa de pollo con papa y zanahoria,carrot,zanahoria,145.0,grams,0.090,13.05
+chicken-rice-spinach-soup,Sopa de pollo con arroz y espinaca,chicken,pechuga de pollo,240.0,grams,0.460,110.40
+chicken-rice-spinach-soup,Sopa de pollo con arroz y espinaca,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+chicken-rice-spinach-soup,Sopa de pollo con arroz y espinaca,onion,cebolla,80.0,grams,0.125,10.00
+chicken-rice-spinach-soup,Sopa de pollo con arroz y espinaca,garlic,ajo,8.0,grams,0.400,3.20
+chicken-rice-spinach-soup,Sopa de pollo con arroz y espinaca,salt,sal,3.0,grams,0.120,0.36
+chicken-rice-spinach-soup,Sopa de pollo con arroz y espinaca,rice,arroz crudo,100.0,grams,0.082,8.20
+chicken-rice-spinach-soup,Sopa de pollo con arroz y espinaca,spinach,espinaca,100.0,grams,0.330,33.00
+chicken-broccoli-soup,Sopa de pollo con brócoli,chicken,pechuga de pollo,240.0,grams,0.460,110.40
+chicken-broccoli-soup,Sopa de pollo con brócoli,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+chicken-broccoli-soup,Sopa de pollo con brócoli,onion,cebolla,80.0,grams,0.125,10.00
+chicken-broccoli-soup,Sopa de pollo con brócoli,garlic,ajo,8.0,grams,0.400,3.20
+chicken-broccoli-soup,Sopa de pollo con brócoli,salt,sal,3.0,grams,0.120,0.36
+chicken-broccoli-soup,Sopa de pollo con brócoli,broccoli,brócoli,210.0,grams,0.300,63.00
+chicken-broccoli-soup,Sopa de pollo con brócoli,carrot,zanahoria,105.0,grams,0.090,9.45
+chicken-lentil-soup,Sopa de pollo con lentejas,chicken,pechuga de pollo,240.0,grams,0.460,110.40
+chicken-lentil-soup,Sopa de pollo con lentejas,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+chicken-lentil-soup,Sopa de pollo con lentejas,onion,cebolla,80.0,grams,0.125,10.00
+chicken-lentil-soup,Sopa de pollo con lentejas,garlic,ajo,8.0,grams,0.400,3.20
+chicken-lentil-soup,Sopa de pollo con lentejas,salt,sal,3.0,grams,0.120,0.36
+chicken-lentil-soup,Sopa de pollo con lentejas,lentils,lentejas cocidas,240.0,grams,0.210,50.40
+chicken-lentil-soup,Sopa de pollo con lentejas,celery,apio,90.0,grams,0.180,16.20
+chicken-zucchini-soup,Sopa de pollo con calabacín,chicken,pechuga de pollo,240.0,grams,0.460,110.40
+chicken-zucchini-soup,Sopa de pollo con calabacín,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+chicken-zucchini-soup,Sopa de pollo con calabacín,onion,cebolla,80.0,grams,0.125,10.00
+chicken-zucchini-soup,Sopa de pollo con calabacín,garlic,ajo,8.0,grams,0.400,3.20
+chicken-zucchini-soup,Sopa de pollo con calabacín,salt,sal,3.0,grams,0.120,0.36
+chicken-zucchini-soup,Sopa de pollo con calabacín,zucchini,calabacín,220.0,grams,0.240,52.80
+chicken-zucchini-soup,Sopa de pollo con calabacín,tomatoes,tomate,120.0,grams,0.120,14.40
+chicken-quinoa-soup,Sopa de pollo con quinoa,chicken,pechuga de pollo,240.0,grams,0.460,110.40
+chicken-quinoa-soup,Sopa de pollo con quinoa,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+chicken-quinoa-soup,Sopa de pollo con quinoa,onion,cebolla,80.0,grams,0.125,10.00
+chicken-quinoa-soup,Sopa de pollo con quinoa,garlic,ajo,8.0,grams,0.400,3.20
+chicken-quinoa-soup,Sopa de pollo con quinoa,salt,sal,3.0,grams,0.120,0.36
+chicken-quinoa-soup,Sopa de pollo con quinoa,quinoa,quinoa cruda,90.0,grams,0.480,43.20
+chicken-quinoa-soup,Sopa de pollo con quinoa,spinach,espinaca,80.0,grams,0.330,26.40
+chicken-mushroom-soup,Sopa de pollo con champiñones,chicken,pechuga de pollo,240.0,grams,0.460,110.40
+chicken-mushroom-soup,Sopa de pollo con champiñones,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+chicken-mushroom-soup,Sopa de pollo con champiñones,onion,cebolla,80.0,grams,0.125,10.00
+chicken-mushroom-soup,Sopa de pollo con champiñones,garlic,ajo,8.0,grams,0.400,3.20
+chicken-mushroom-soup,Sopa de pollo con champiñones,salt,sal,3.0,grams,0.120,0.36
+chicken-mushroom-soup,Sopa de pollo con champiñones,mushrooms,champiñones,190.0,grams,0.680,129.20
+chicken-mushroom-soup,Sopa de pollo con champiñones,carrot,zanahoria,115.0,grams,0.090,10.35
+chicken-chickpea-soup,Sopa de pollo con garbanzos,chicken,pechuga de pollo,240.0,grams,0.460,110.40
+chicken-chickpea-soup,Sopa de pollo con garbanzos,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+chicken-chickpea-soup,Sopa de pollo con garbanzos,onion,cebolla,80.0,grams,0.125,10.00
+chicken-chickpea-soup,Sopa de pollo con garbanzos,garlic,ajo,8.0,grams,0.400,3.20
+chicken-chickpea-soup,Sopa de pollo con garbanzos,salt,sal,3.0,grams,0.120,0.36
+chicken-chickpea-soup,Sopa de pollo con garbanzos,chickpeas,garbanzos cocidos,200.0,grams,0.220,44.00
+chicken-chickpea-soup,Sopa de pollo con garbanzos,tomatoes,tomate,155.0,grams,0.120,18.60
+tofu-broccoli-carrot-stir-fry,Tofu salteado con brócoli y zanahoria,tofu,tofu firme,290.0,grams,0.750,217.50
+tofu-broccoli-carrot-stir-fry,Tofu salteado con brócoli y zanahoria,oliveOil,aceite de oliva,14.0,milliliters,1.150,16.10
+tofu-broccoli-carrot-stir-fry,Tofu salteado con brócoli y zanahoria,garlic,ajo,10.0,grams,0.400,4.00
+tofu-broccoli-carrot-stir-fry,Tofu salteado con brócoli y zanahoria,onion,cebolla,90.0,grams,0.125,11.25
+tofu-broccoli-carrot-stir-fry,Tofu salteado con brócoli y zanahoria,broccoli,brócoli,220.0,grams,0.300,66.00
+tofu-broccoli-carrot-stir-fry,Tofu salteado con brócoli y zanahoria,carrot,zanahoria,160.0,grams,0.090,14.40
+tofu-pepper-mushroom-stir-fry,Tofu salteado con pimiento y champiñones,tofu,tofu firme,290.0,grams,0.750,217.50
+tofu-pepper-mushroom-stir-fry,Tofu salteado con pimiento y champiñones,oliveOil,aceite de oliva,14.0,milliliters,1.150,16.10
+tofu-pepper-mushroom-stir-fry,Tofu salteado con pimiento y champiñones,garlic,ajo,10.0,grams,0.400,4.00
+tofu-pepper-mushroom-stir-fry,Tofu salteado con pimiento y champiñones,onion,cebolla,90.0,grams,0.125,11.25
+tofu-pepper-mushroom-stir-fry,Tofu salteado con pimiento y champiñones,bellPepper,pimiento,170.0,grams,0.220,37.40
+tofu-pepper-mushroom-stir-fry,Tofu salteado con pimiento y champiñones,mushrooms,champiñones,170.0,grams,0.680,115.60
+tofu-zucchini-tomato-stir-fry,Tofu salteado con calabacín y tomate,tofu,tofu firme,290.0,grams,0.750,217.50
+tofu-zucchini-tomato-stir-fry,Tofu salteado con calabacín y tomate,oliveOil,aceite de oliva,14.0,milliliters,1.150,16.10
+tofu-zucchini-tomato-stir-fry,Tofu salteado con calabacín y tomate,garlic,ajo,10.0,grams,0.400,4.00
+tofu-zucchini-tomato-stir-fry,Tofu salteado con calabacín y tomate,onion,cebolla,90.0,grams,0.125,11.25
+tofu-zucchini-tomato-stir-fry,Tofu salteado con calabacín y tomate,zucchini,calabacín,220.0,grams,0.240,52.80
+tofu-zucchini-tomato-stir-fry,Tofu salteado con calabacín y tomate,tomatoes,tomate,160.0,grams,0.120,19.20
+tofu-rice-spinach-stir-fry,Tofu salteado con arroz y espinaca,tofu,tofu firme,290.0,grams,0.750,217.50
+tofu-rice-spinach-stir-fry,Tofu salteado con arroz y espinaca,oliveOil,aceite de oliva,14.0,milliliters,1.150,16.10
+tofu-rice-spinach-stir-fry,Tofu salteado con arroz y espinaca,garlic,ajo,10.0,grams,0.400,4.00
+tofu-rice-spinach-stir-fry,Tofu salteado con arroz y espinaca,onion,cebolla,90.0,grams,0.125,11.25
+tofu-rice-spinach-stir-fry,Tofu salteado con arroz y espinaca,rice,arroz crudo,130.0,grams,0.082,10.66
+tofu-rice-spinach-stir-fry,Tofu salteado con arroz y espinaca,spinach,espinaca,110.0,grams,0.330,36.30
+tofu-quinoa-broccoli-stir-fry,Tofu salteado con quinoa y brócoli,tofu,tofu firme,290.0,grams,0.750,217.50
+tofu-quinoa-broccoli-stir-fry,Tofu salteado con quinoa y brócoli,oliveOil,aceite de oliva,14.0,milliliters,1.150,16.10
+tofu-quinoa-broccoli-stir-fry,Tofu salteado con quinoa y brócoli,garlic,ajo,10.0,grams,0.400,4.00
+tofu-quinoa-broccoli-stir-fry,Tofu salteado con quinoa y brócoli,onion,cebolla,90.0,grams,0.125,11.25
+tofu-quinoa-broccoli-stir-fry,Tofu salteado con quinoa y brócoli,quinoa,quinoa cruda,115.0,grams,0.480,55.20
+tofu-quinoa-broccoli-stir-fry,Tofu salteado con quinoa y brócoli,broccoli,brócoli,190.0,grams,0.300,57.00
+tofu-pineapple-pepper-stir-fry,Tofu salteado con piña y pimiento,tofu,tofu firme,290.0,grams,0.750,217.50
+tofu-pineapple-pepper-stir-fry,Tofu salteado con piña y pimiento,oliveOil,aceite de oliva,14.0,milliliters,1.150,16.10
+tofu-pineapple-pepper-stir-fry,Tofu salteado con piña y pimiento,garlic,ajo,10.0,grams,0.400,4.00
+tofu-pineapple-pepper-stir-fry,Tofu salteado con piña y pimiento,onion,cebolla,90.0,grams,0.125,11.25
+tofu-pineapple-pepper-stir-fry,Tofu salteado con piña y pimiento,pineapple,piña,175.0,grams,0.180,31.50
+tofu-pineapple-pepper-stir-fry,Tofu salteado con piña y pimiento,bellPepper,pimiento,155.0,grams,0.220,34.10
+tofu-black-bean-stir-fry,Tofu salteado con habichuelas negras,tofu,tofu firme,290.0,grams,0.750,217.50
+tofu-black-bean-stir-fry,Tofu salteado con habichuelas negras,oliveOil,aceite de oliva,14.0,milliliters,1.150,16.10
+tofu-black-bean-stir-fry,Tofu salteado con habichuelas negras,garlic,ajo,10.0,grams,0.400,4.00
+tofu-black-bean-stir-fry,Tofu salteado con habichuelas negras,onion,cebolla,90.0,grams,0.125,11.25
+tofu-black-bean-stir-fry,Tofu salteado con habichuelas negras,blackBeans,habichuelas negras cocidas,200.0,grams,0.180,36.00
+tofu-black-bean-stir-fry,Tofu salteado con habichuelas negras,carrot,zanahoria,110.0,grams,0.090,9.90
+tofu-potato-mushroom-stir-fry,Tofu salteado con papa y champiñones,tofu,tofu firme,290.0,grams,0.750,217.50
+tofu-potato-mushroom-stir-fry,Tofu salteado con papa y champiñones,oliveOil,aceite de oliva,14.0,milliliters,1.150,16.10
+tofu-potato-mushroom-stir-fry,Tofu salteado con papa y champiñones,garlic,ajo,10.0,grams,0.400,4.00
+tofu-potato-mushroom-stir-fry,Tofu salteado con papa y champiñones,onion,cebolla,90.0,grams,0.125,11.25
+tofu-potato-mushroom-stir-fry,Tofu salteado con papa y champiñones,potatoes,papa,260.0,grams,0.105,27.30
+tofu-potato-mushroom-stir-fry,Tofu salteado con papa y champiñones,mushrooms,champiñones,150.0,grams,0.680,102.00
+salmon-potato-broccoli-traybake,Salmón al horno con papa y brócoli,salmon,salmón,290.0,grams,1.750,507.50
+salmon-potato-broccoli-traybake,Salmón al horno con papa y brócoli,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+salmon-potato-broccoli-traybake,Salmón al horno con papa y brócoli,lemon,limón,1.0,pieces,16.000,16.00
+salmon-potato-broccoli-traybake,Salmón al horno con papa y brócoli,salt,sal,3.0,grams,0.120,0.36
+salmon-potato-broccoli-traybake,Salmón al horno con papa y brócoli,potatoes,papa,330.0,grams,0.105,34.65
+salmon-potato-broccoli-traybake,Salmón al horno con papa y brócoli,broccoli,brócoli,200.0,grams,0.300,60.00
+salmon-sweet-potato-spinach-traybake,Salmón al horno con batata y espinaca,salmon,salmón,290.0,grams,1.750,507.50
+salmon-sweet-potato-spinach-traybake,Salmón al horno con batata y espinaca,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+salmon-sweet-potato-spinach-traybake,Salmón al horno con batata y espinaca,lemon,limón,1.0,pieces,16.000,16.00
+salmon-sweet-potato-spinach-traybake,Salmón al horno con batata y espinaca,salt,sal,3.0,grams,0.120,0.36
+salmon-sweet-potato-spinach-traybake,Salmón al horno con batata y espinaca,sweetPotato,batata,330.0,grams,0.140,46.20
+salmon-sweet-potato-spinach-traybake,Salmón al horno con batata y espinaca,spinach,espinaca,110.0,grams,0.330,36.30
+salmon-carrot-zucchini-traybake,Salmón al horno con zanahoria y calabacín,salmon,salmón,290.0,grams,1.750,507.50
+salmon-carrot-zucchini-traybake,Salmón al horno con zanahoria y calabacín,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+salmon-carrot-zucchini-traybake,Salmón al horno con zanahoria y calabacín,lemon,limón,1.0,pieces,16.000,16.00
+salmon-carrot-zucchini-traybake,Salmón al horno con zanahoria y calabacín,salt,sal,3.0,grams,0.120,0.36
+salmon-carrot-zucchini-traybake,Salmón al horno con zanahoria y calabacín,carrot,zanahoria,195.0,grams,0.090,17.55
+salmon-carrot-zucchini-traybake,Salmón al horno con zanahoria y calabacín,zucchini,calabacín,190.0,grams,0.240,45.60
+salmon-quinoa-tomato-traybake,Salmón al horno con quinoa y tomate,salmon,salmón,290.0,grams,1.750,507.50
+salmon-quinoa-tomato-traybake,Salmón al horno con quinoa y tomate,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+salmon-quinoa-tomato-traybake,Salmón al horno con quinoa y tomate,lemon,limón,1.0,pieces,16.000,16.00
+salmon-quinoa-tomato-traybake,Salmón al horno con quinoa y tomate,salt,sal,3.0,grams,0.120,0.36
+salmon-quinoa-tomato-traybake,Salmón al horno con quinoa y tomate,quinoa,quinoa cruda,120.0,grams,0.480,57.60
+salmon-quinoa-tomato-traybake,Salmón al horno con quinoa y tomate,tomatoes,tomate,180.0,grams,0.120,21.60
+salmon-mushroom-garlic-traybake,Salmón con champiñones y ajo,salmon,salmón,290.0,grams,1.750,507.50
+salmon-mushroom-garlic-traybake,Salmón con champiñones y ajo,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+salmon-mushroom-garlic-traybake,Salmón con champiñones y ajo,lemon,limón,1.0,pieces,16.000,16.00
+salmon-mushroom-garlic-traybake,Salmón con champiñones y ajo,salt,sal,3.0,grams,0.120,0.36
+salmon-mushroom-garlic-traybake,Salmón con champiñones y ajo,mushrooms,champiñones,215.0,grams,0.680,146.20
+salmon-mushroom-garlic-traybake,Salmón con champiñones y ajo,garlic,ajo,10.0,grams,0.400,4.00
+salmon-pepper-onion-traybake,Salmón con pimientos y cebolla,salmon,salmón,290.0,grams,1.750,507.50
+salmon-pepper-onion-traybake,Salmón con pimientos y cebolla,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+salmon-pepper-onion-traybake,Salmón con pimientos y cebolla,lemon,limón,1.0,pieces,16.000,16.00
+salmon-pepper-onion-traybake,Salmón con pimientos y cebolla,salt,sal,3.0,grams,0.120,0.36
+salmon-pepper-onion-traybake,Salmón con pimientos y cebolla,bellPepper,pimiento,210.0,grams,0.220,46.20
+salmon-pepper-onion-traybake,Salmón con pimientos y cebolla,onion,cebolla,130.0,grams,0.125,16.25
+salmon-broccoli-chickpea-traybake,Salmón con brócoli y garbanzos,salmon,salmón,290.0,grams,1.750,507.50
+salmon-broccoli-chickpea-traybake,Salmón con brócoli y garbanzos,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+salmon-broccoli-chickpea-traybake,Salmón con brócoli y garbanzos,lemon,limón,1.0,pieces,16.000,16.00
+salmon-broccoli-chickpea-traybake,Salmón con brócoli y garbanzos,salt,sal,3.0,grams,0.120,0.36
+salmon-broccoli-chickpea-traybake,Salmón con brócoli y garbanzos,broccoli,brócoli,175.0,grams,0.300,52.50
+salmon-broccoli-chickpea-traybake,Salmón con brócoli y garbanzos,chickpeas,garbanzos cocidos,220.0,grams,0.220,48.40
+beef-potato-carrot-skillet,Carne molida con papa y zanahoria,groundBeef,carne molida,280.0,grams,0.700,196.00
+beef-potato-carrot-skillet,Carne molida con papa y zanahoria,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+beef-potato-carrot-skillet,Carne molida con papa y zanahoria,onion,cebolla,90.0,grams,0.125,11.25
+beef-potato-carrot-skillet,Carne molida con papa y zanahoria,garlic,ajo,9.0,grams,0.400,3.60
+beef-potato-carrot-skillet,Carne molida con papa y zanahoria,salt,sal,3.0,grams,0.120,0.36
+beef-potato-carrot-skillet,Carne molida con papa y zanahoria,potatoes,papa,310.0,grams,0.105,32.55
+beef-potato-carrot-skillet,Carne molida con papa y zanahoria,carrot,zanahoria,145.0,grams,0.090,13.05
+beef-rice-pepper-skillet,Carne molida con arroz y pimiento,groundBeef,carne molida,280.0,grams,0.700,196.00
+beef-rice-pepper-skillet,Carne molida con arroz y pimiento,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+beef-rice-pepper-skillet,Carne molida con arroz y pimiento,onion,cebolla,90.0,grams,0.125,11.25
+beef-rice-pepper-skillet,Carne molida con arroz y pimiento,garlic,ajo,9.0,grams,0.400,3.60
+beef-rice-pepper-skillet,Carne molida con arroz y pimiento,salt,sal,3.0,grams,0.120,0.36
+beef-rice-pepper-skillet,Carne molida con arroz y pimiento,rice,arroz crudo,135.0,grams,0.082,11.07
+beef-rice-pepper-skillet,Carne molida con arroz y pimiento,bellPepper,pimiento,160.0,grams,0.220,35.20
+beef-zucchini-tomato-skillet,Carne molida con calabacín y tomate,groundBeef,carne molida,280.0,grams,0.700,196.00
+beef-zucchini-tomato-skillet,Carne molida con calabacín y tomate,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+beef-zucchini-tomato-skillet,Carne molida con calabacín y tomate,onion,cebolla,90.0,grams,0.125,11.25
+beef-zucchini-tomato-skillet,Carne molida con calabacín y tomate,garlic,ajo,9.0,grams,0.400,3.60
+beef-zucchini-tomato-skillet,Carne molida con calabacín y tomate,salt,sal,3.0,grams,0.120,0.36
+beef-zucchini-tomato-skillet,Carne molida con calabacín y tomate,zucchini,calabacín,230.0,grams,0.240,55.20
+beef-zucchini-tomato-skillet,Carne molida con calabacín y tomate,tomatoes,tomate,200.0,grams,0.120,24.00
+beef-black-bean-skillet,Carne molida con habichuelas negras,groundBeef,carne molida,280.0,grams,0.700,196.00
+beef-black-bean-skillet,Carne molida con habichuelas negras,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+beef-black-bean-skillet,Carne molida con habichuelas negras,onion,cebolla,90.0,grams,0.125,11.25
+beef-black-bean-skillet,Carne molida con habichuelas negras,garlic,ajo,9.0,grams,0.400,3.60
+beef-black-bean-skillet,Carne molida con habichuelas negras,salt,sal,3.0,grams,0.120,0.36
+beef-black-bean-skillet,Carne molida con habichuelas negras,blackBeans,habichuelas negras cocidas,240.0,grams,0.180,43.20
+beef-black-bean-skillet,Carne molida con habichuelas negras,bellPepper,pimiento,120.0,grams,0.220,26.40
+beef-mushroom-spinach-skillet,Carne molida con champiñones y espinaca,groundBeef,carne molida,280.0,grams,0.700,196.00
+beef-mushroom-spinach-skillet,Carne molida con champiñones y espinaca,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+beef-mushroom-spinach-skillet,Carne molida con champiñones y espinaca,onion,cebolla,90.0,grams,0.125,11.25
+beef-mushroom-spinach-skillet,Carne molida con champiñones y espinaca,garlic,ajo,9.0,grams,0.400,3.60
+beef-mushroom-spinach-skillet,Carne molida con champiñones y espinaca,salt,sal,3.0,grams,0.120,0.36
+beef-mushroom-spinach-skillet,Carne molida con champiñones y espinaca,mushrooms,champiñones,190.0,grams,0.680,129.20
+beef-mushroom-spinach-skillet,Carne molida con champiñones y espinaca,spinach,espinaca,125.0,grams,0.330,41.25
+beef-sweet-potato-broccoli-skillet,Carne molida con batata y brócoli,groundBeef,carne molida,280.0,grams,0.700,196.00
+beef-sweet-potato-broccoli-skillet,Carne molida con batata y brócoli,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+beef-sweet-potato-broccoli-skillet,Carne molida con batata y brócoli,onion,cebolla,90.0,grams,0.125,11.25
+beef-sweet-potato-broccoli-skillet,Carne molida con batata y brócoli,garlic,ajo,9.0,grams,0.400,3.60
+beef-sweet-potato-broccoli-skillet,Carne molida con batata y brócoli,salt,sal,3.0,grams,0.120,0.36
+beef-sweet-potato-broccoli-skillet,Carne molida con batata y brócoli,sweetPotato,batata,300.0,grams,0.140,42.00
+beef-sweet-potato-broccoli-skillet,Carne molida con batata y brócoli,broccoli,brócoli,155.0,grams,0.300,46.50
+beef-quinoa-tomato-skillet,Carne molida con quinoa y tomate,groundBeef,carne molida,280.0,grams,0.700,196.00
+beef-quinoa-tomato-skillet,Carne molida con quinoa y tomate,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+beef-quinoa-tomato-skillet,Carne molida con quinoa y tomate,onion,cebolla,90.0,grams,0.125,11.25
+beef-quinoa-tomato-skillet,Carne molida con quinoa y tomate,garlic,ajo,9.0,grams,0.400,3.60
+beef-quinoa-tomato-skillet,Carne molida con quinoa y tomate,salt,sal,3.0,grams,0.120,0.36
+beef-quinoa-tomato-skillet,Carne molida con quinoa y tomate,quinoa,quinoa cruda,135.0,grams,0.480,64.80
+beef-quinoa-tomato-skillet,Carne molida con quinoa y tomate,tomatoes,tomate,160.0,grams,0.120,19.20
+quinoa-chickpea-stuffed-peppers,Pimientos rellenos de quinoa y garbanzos,bellPepper,pimiento,330.0,grams,0.220,72.60
+quinoa-chickpea-stuffed-peppers,Pimientos rellenos de quinoa y garbanzos,tomatoes,tomate,125.0,grams,0.120,15.00
+quinoa-chickpea-stuffed-peppers,Pimientos rellenos de quinoa y garbanzos,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+quinoa-chickpea-stuffed-peppers,Pimientos rellenos de quinoa y garbanzos,onion,cebolla,70.0,grams,0.125,8.75
+quinoa-chickpea-stuffed-peppers,Pimientos rellenos de quinoa y garbanzos,quinoa,quinoa cruda,120.0,grams,0.480,57.60
+quinoa-chickpea-stuffed-peppers,Pimientos rellenos de quinoa y garbanzos,chickpeas,garbanzos cocidos,175.0,grams,0.220,38.50
+chicken-rice-stuffed-peppers,Pimientos rellenos de arroz y pollo,bellPepper,pimiento,330.0,grams,0.220,72.60
+chicken-rice-stuffed-peppers,Pimientos rellenos de arroz y pollo,tomatoes,tomate,125.0,grams,0.120,15.00
+chicken-rice-stuffed-peppers,Pimientos rellenos de arroz y pollo,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+chicken-rice-stuffed-peppers,Pimientos rellenos de arroz y pollo,onion,cebolla,70.0,grams,0.125,8.75
+chicken-rice-stuffed-peppers,Pimientos rellenos de arroz y pollo,rice,arroz crudo,125.0,grams,0.082,10.25
+chicken-rice-stuffed-peppers,Pimientos rellenos de arroz y pollo,chicken,pechuga de pollo,190.0,grams,0.460,87.40
+beef-lentil-stuffed-peppers,Pimientos rellenos de carne y lentejas,bellPepper,pimiento,330.0,grams,0.220,72.60
+beef-lentil-stuffed-peppers,Pimientos rellenos de carne y lentejas,tomatoes,tomate,125.0,grams,0.120,15.00
+beef-lentil-stuffed-peppers,Pimientos rellenos de carne y lentejas,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+beef-lentil-stuffed-peppers,Pimientos rellenos de carne y lentejas,onion,cebolla,70.0,grams,0.125,8.75
+beef-lentil-stuffed-peppers,Pimientos rellenos de carne y lentejas,groundBeef,carne molida,180.0,grams,0.700,126.00
+beef-lentil-stuffed-peppers,Pimientos rellenos de carne y lentejas,lentils,lentejas cocidas,175.0,grams,0.210,36.75
+tuna-potato-stuffed-peppers,Pimientos rellenos de atún y papa,bellPepper,pimiento,330.0,grams,0.220,72.60
+tuna-potato-stuffed-peppers,Pimientos rellenos de atún y papa,tomatoes,tomate,125.0,grams,0.120,15.00
+tuna-potato-stuffed-peppers,Pimientos rellenos de atún y papa,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+tuna-potato-stuffed-peppers,Pimientos rellenos de atún y papa,onion,cebolla,70.0,grams,0.125,8.75
+tuna-potato-stuffed-peppers,Pimientos rellenos de atún y papa,tuna,atún escurrido,180.0,grams,0.840,151.20
+tuna-potato-stuffed-peppers,Pimientos rellenos de atún y papa,potatoes,papa,245.0,grams,0.105,25.73
+tofu-mushroom-stuffed-peppers,Pimientos rellenos de tofu y champiñones,bellPepper,pimiento,330.0,grams,0.220,72.60
+tofu-mushroom-stuffed-peppers,Pimientos rellenos de tofu y champiñones,tomatoes,tomate,125.0,grams,0.120,15.00
+tofu-mushroom-stuffed-peppers,Pimientos rellenos de tofu y champiñones,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+tofu-mushroom-stuffed-peppers,Pimientos rellenos de tofu y champiñones,onion,cebolla,70.0,grams,0.125,8.75
+tofu-mushroom-stuffed-peppers,Pimientos rellenos de tofu y champiñones,tofu,tofu firme,190.0,grams,0.750,142.50
+tofu-mushroom-stuffed-peppers,Pimientos rellenos de tofu y champiñones,mushrooms,champiñones,160.0,grams,0.680,108.80
+black-bean-cheese-stuffed-peppers,Pimientos rellenos de habichuelas y queso,bellPepper,pimiento,330.0,grams,0.220,72.60
+black-bean-cheese-stuffed-peppers,Pimientos rellenos de habichuelas y queso,tomatoes,tomate,125.0,grams,0.120,15.00
+black-bean-cheese-stuffed-peppers,Pimientos rellenos de habichuelas y queso,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+black-bean-cheese-stuffed-peppers,Pimientos rellenos de habichuelas y queso,onion,cebolla,70.0,grams,0.125,8.75
+black-bean-cheese-stuffed-peppers,Pimientos rellenos de habichuelas y queso,blackBeans,habichuelas negras cocidas,220.0,grams,0.180,39.60
+black-bean-cheese-stuffed-peppers,Pimientos rellenos de habichuelas y queso,cheese,queso,65.0,grams,0.750,48.75
+rice-spinach-stuffed-peppers,Pimientos rellenos de arroz y espinaca,bellPepper,pimiento,330.0,grams,0.220,72.60
+rice-spinach-stuffed-peppers,Pimientos rellenos de arroz y espinaca,tomatoes,tomate,125.0,grams,0.120,15.00
+rice-spinach-stuffed-peppers,Pimientos rellenos de arroz y espinaca,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+rice-spinach-stuffed-peppers,Pimientos rellenos de arroz y espinaca,onion,cebolla,70.0,grams,0.125,8.75
+rice-spinach-stuffed-peppers,Pimientos rellenos de arroz y espinaca,rice,arroz crudo,130.0,grams,0.082,10.66
+rice-spinach-stuffed-peppers,Pimientos rellenos de arroz y espinaca,spinach,espinaca,125.0,grams,0.330,41.25
+tuna-yogurt-baked-potatoes,Papa asada con atún y yogur,potatoes,papa,520.0,grams,0.105,54.60
+tuna-yogurt-baked-potatoes,Papa asada con atún y yogur,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+tuna-yogurt-baked-potatoes,Papa asada con atún y yogur,salt,sal,3.0,grams,0.120,0.36
+tuna-yogurt-baked-potatoes,Papa asada con atún y yogur,tuna,atún escurrido,190.0,grams,0.840,159.60
+tuna-yogurt-baked-potatoes,Papa asada con atún y yogur,yogurt,yogur natural,90.0,grams,0.420,37.80
+tuna-yogurt-baked-potatoes,Papa asada con atún y yogur,cucumber,pepino,100.0,grams,0.150,15.00
+chicken-broccoli-baked-potatoes,Papa asada con pollo y brócoli,potatoes,papa,520.0,grams,0.105,54.60
+chicken-broccoli-baked-potatoes,Papa asada con pollo y brócoli,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+chicken-broccoli-baked-potatoes,Papa asada con pollo y brócoli,salt,sal,3.0,grams,0.120,0.36
+chicken-broccoli-baked-potatoes,Papa asada con pollo y brócoli,chicken,pechuga de pollo,220.0,grams,0.460,101.20
+chicken-broccoli-baked-potatoes,Papa asada con pollo y brócoli,broccoli,brócoli,180.0,grams,0.300,54.00
+black-bean-baked-potatoes,Papa asada con habichuelas negras,potatoes,papa,520.0,grams,0.105,54.60
+black-bean-baked-potatoes,Papa asada con habichuelas negras,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+black-bean-baked-potatoes,Papa asada con habichuelas negras,salt,sal,3.0,grams,0.120,0.36
+black-bean-baked-potatoes,Papa asada con habichuelas negras,blackBeans,habichuelas negras cocidas,250.0,grams,0.180,45.00
+black-bean-baked-potatoes,Papa asada con habichuelas negras,tomatoes,tomate,125.0,grams,0.120,15.00
+mushroom-cheese-baked-potatoes,Papa asada con queso y champiñones,potatoes,papa,520.0,grams,0.105,54.60
+mushroom-cheese-baked-potatoes,Papa asada con queso y champiñones,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+mushroom-cheese-baked-potatoes,Papa asada con queso y champiñones,salt,sal,3.0,grams,0.120,0.36
+mushroom-cheese-baked-potatoes,Papa asada con queso y champiñones,cheese,queso,85.0,grams,0.750,63.75
+mushroom-cheese-baked-potatoes,Papa asada con queso y champiñones,mushrooms,champiñones,170.0,grams,0.680,115.60
+chickpea-spinach-baked-potatoes,Papa asada con garbanzos y espinaca,potatoes,papa,520.0,grams,0.105,54.60
+chickpea-spinach-baked-potatoes,Papa asada con garbanzos y espinaca,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+chickpea-spinach-baked-potatoes,Papa asada con garbanzos y espinaca,salt,sal,3.0,grams,0.120,0.36
+chickpea-spinach-baked-potatoes,Papa asada con garbanzos y espinaca,chickpeas,garbanzos cocidos,210.0,grams,0.220,46.20
+chickpea-spinach-baked-potatoes,Papa asada con garbanzos y espinaca,spinach,espinaca,115.0,grams,0.330,37.95
+beef-tomato-baked-potatoes,Papa asada con carne molida y tomate,potatoes,papa,520.0,grams,0.105,54.60
+beef-tomato-baked-potatoes,Papa asada con carne molida y tomate,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+beef-tomato-baked-potatoes,Papa asada con carne molida y tomate,salt,sal,3.0,grams,0.120,0.36
+beef-tomato-baked-potatoes,Papa asada con carne molida y tomate,groundBeef,carne molida,220.0,grams,0.700,154.00
+beef-tomato-baked-potatoes,Papa asada con carne molida y tomate,tomatoes,tomate,170.0,grams,0.120,20.40
+egg-pepper-baked-potatoes,Papa asada con huevo y pimiento,potatoes,papa,520.0,grams,0.105,54.60
+egg-pepper-baked-potatoes,Papa asada con huevo y pimiento,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+egg-pepper-baked-potatoes,Papa asada con huevo y pimiento,salt,sal,3.0,grams,0.120,0.36
+egg-pepper-baked-potatoes,Papa asada con huevo y pimiento,eggs,huevos,3.0,pieces,10.000,30.00
+egg-pepper-baked-potatoes,Papa asada con huevo y pimiento,bellPepper,pimiento,155.0,grams,0.220,34.10
+chicken-spinach-sweet-potato-bowl,Batata con pollo y espinaca,sweetPotato,batata,420.0,grams,0.140,58.80
+chicken-spinach-sweet-potato-bowl,Batata con pollo y espinaca,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+chicken-spinach-sweet-potato-bowl,Batata con pollo y espinaca,onion,cebolla,75.0,grams,0.125,9.38
+chicken-spinach-sweet-potato-bowl,Batata con pollo y espinaca,chicken,pechuga de pollo,220.0,grams,0.460,101.20
+chicken-spinach-sweet-potato-bowl,Batata con pollo y espinaca,spinach,espinaca,120.0,grams,0.330,39.60
+tofu-broccoli-sweet-potato-bowl,Batata con tofu y brócoli,sweetPotato,batata,420.0,grams,0.140,58.80
+tofu-broccoli-sweet-potato-bowl,Batata con tofu y brócoli,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+tofu-broccoli-sweet-potato-bowl,Batata con tofu y brócoli,onion,cebolla,75.0,grams,0.125,9.38
+tofu-broccoli-sweet-potato-bowl,Batata con tofu y brócoli,tofu,tofu firme,230.0,grams,0.750,172.50
+tofu-broccoli-sweet-potato-bowl,Batata con tofu y brócoli,broccoli,brócoli,185.0,grams,0.300,55.50
+chickpea-tomato-sweet-potato-bowl,Batata con garbanzos y tomate,sweetPotato,batata,420.0,grams,0.140,58.80
+chickpea-tomato-sweet-potato-bowl,Batata con garbanzos y tomate,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+chickpea-tomato-sweet-potato-bowl,Batata con garbanzos y tomate,onion,cebolla,75.0,grams,0.125,9.38
+chickpea-tomato-sweet-potato-bowl,Batata con garbanzos y tomate,chickpeas,garbanzos cocidos,235.0,grams,0.220,51.70
+chickpea-tomato-sweet-potato-bowl,Batata con garbanzos y tomate,tomatoes,tomate,170.0,grams,0.120,20.40
+beef-pepper-sweet-potato-bowl,Batata con carne molida y pimiento,sweetPotato,batata,420.0,grams,0.140,58.80
+beef-pepper-sweet-potato-bowl,Batata con carne molida y pimiento,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+beef-pepper-sweet-potato-bowl,Batata con carne molida y pimiento,onion,cebolla,75.0,grams,0.125,9.38
+beef-pepper-sweet-potato-bowl,Batata con carne molida y pimiento,groundBeef,carne molida,225.0,grams,0.700,157.50
+beef-pepper-sweet-potato-bowl,Batata con carne molida y pimiento,bellPepper,pimiento,155.0,grams,0.220,34.10
+egg-avocado-sweet-potato-bowl,Batata con huevo y aguacate,sweetPotato,batata,420.0,grams,0.140,58.80
+egg-avocado-sweet-potato-bowl,Batata con huevo y aguacate,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+egg-avocado-sweet-potato-bowl,Batata con huevo y aguacate,onion,cebolla,75.0,grams,0.125,9.38
+egg-avocado-sweet-potato-bowl,Batata con huevo y aguacate,eggs,huevos,3.0,pieces,10.000,30.00
+egg-avocado-sweet-potato-bowl,Batata con huevo y aguacate,avocado,aguacate,1.0,pieces,65.000,65.00
+lentil-mushroom-sweet-potato-bowl,Batata con lentejas y champiñones,sweetPotato,batata,420.0,grams,0.140,58.80
+lentil-mushroom-sweet-potato-bowl,Batata con lentejas y champiñones,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+lentil-mushroom-sweet-potato-bowl,Batata con lentejas y champiñones,onion,cebolla,75.0,grams,0.125,9.38
+lentil-mushroom-sweet-potato-bowl,Batata con lentejas y champiñones,lentils,lentejas cocidas,235.0,grams,0.210,49.35
+lentil-mushroom-sweet-potato-bowl,Batata con lentejas y champiñones,mushrooms,champiñones,155.0,grams,0.680,105.40
+tuna-cucumber-sweet-potato-bowl,Batata con atún y pepino,sweetPotato,batata,420.0,grams,0.140,58.80
+tuna-cucumber-sweet-potato-bowl,Batata con atún y pepino,oliveOil,aceite de oliva,11.0,milliliters,1.150,12.65
+tuna-cucumber-sweet-potato-bowl,Batata con atún y pepino,onion,cebolla,75.0,grams,0.125,9.38
+tuna-cucumber-sweet-potato-bowl,Batata con atún y pepino,tuna,atún escurrido,185.0,grams,0.840,155.40
+tuna-cucumber-sweet-potato-bowl,Batata con atún y pepino,cucumber,pepino,140.0,grams,0.150,21.00
+spinach-tomato-skillet-eggs,Huevos en tomate con espinaca,eggs,huevos,4.0,pieces,10.000,40.00
+spinach-tomato-skillet-eggs,Huevos en tomate con espinaca,tomatoes,tomate,350.0,grams,0.120,42.00
+spinach-tomato-skillet-eggs,Huevos en tomate con espinaca,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+spinach-tomato-skillet-eggs,Huevos en tomate con espinaca,onion,cebolla,100.0,grams,0.125,12.50
+spinach-tomato-skillet-eggs,Huevos en tomate con espinaca,garlic,ajo,7.0,grams,0.400,2.80
+spinach-tomato-skillet-eggs,Huevos en tomate con espinaca,spinach,espinaca,140.0,grams,0.330,46.20
+pepper-tomato-skillet-eggs,Huevos en tomate con pimiento,eggs,huevos,4.0,pieces,10.000,40.00
+pepper-tomato-skillet-eggs,Huevos en tomate con pimiento,tomatoes,tomate,350.0,grams,0.120,42.00
+pepper-tomato-skillet-eggs,Huevos en tomate con pimiento,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+pepper-tomato-skillet-eggs,Huevos en tomate con pimiento,onion,cebolla,100.0,grams,0.125,12.50
+pepper-tomato-skillet-eggs,Huevos en tomate con pimiento,garlic,ajo,7.0,grams,0.400,2.80
+pepper-tomato-skillet-eggs,Huevos en tomate con pimiento,bellPepper,pimiento,185.0,grams,0.220,40.70
+chickpea-tomato-skillet-eggs,Huevos en tomate con garbanzos,eggs,huevos,4.0,pieces,10.000,40.00
+chickpea-tomato-skillet-eggs,Huevos en tomate con garbanzos,tomatoes,tomate,350.0,grams,0.120,42.00
+chickpea-tomato-skillet-eggs,Huevos en tomate con garbanzos,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-tomato-skillet-eggs,Huevos en tomate con garbanzos,onion,cebolla,100.0,grams,0.125,12.50
+chickpea-tomato-skillet-eggs,Huevos en tomate con garbanzos,garlic,ajo,7.0,grams,0.400,2.80
+chickpea-tomato-skillet-eggs,Huevos en tomate con garbanzos,chickpeas,garbanzos cocidos,230.0,grams,0.220,50.60
+mushroom-tomato-skillet-eggs,Huevos en tomate con champiñones,eggs,huevos,4.0,pieces,10.000,40.00
+mushroom-tomato-skillet-eggs,Huevos en tomate con champiñones,tomatoes,tomate,350.0,grams,0.120,42.00
+mushroom-tomato-skillet-eggs,Huevos en tomate con champiñones,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+mushroom-tomato-skillet-eggs,Huevos en tomate con champiñones,onion,cebolla,100.0,grams,0.125,12.50
+mushroom-tomato-skillet-eggs,Huevos en tomate con champiñones,garlic,ajo,7.0,grams,0.400,2.80
+mushroom-tomato-skillet-eggs,Huevos en tomate con champiñones,mushrooms,champiñones,200.0,grams,0.680,136.00
+cheese-tomato-skillet-eggs,Huevos en tomate con queso,eggs,huevos,4.0,pieces,10.000,40.00
+cheese-tomato-skillet-eggs,Huevos en tomate con queso,tomatoes,tomate,350.0,grams,0.120,42.00
+cheese-tomato-skillet-eggs,Huevos en tomate con queso,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+cheese-tomato-skillet-eggs,Huevos en tomate con queso,onion,cebolla,100.0,grams,0.125,12.50
+cheese-tomato-skillet-eggs,Huevos en tomate con queso,garlic,ajo,7.0,grams,0.400,2.80
+cheese-tomato-skillet-eggs,Huevos en tomate con queso,cheese,queso,75.0,grams,0.750,56.25
+black-bean-tomato-skillet-eggs,Huevos en tomate con habichuelas negras,eggs,huevos,4.0,pieces,10.000,40.00
+black-bean-tomato-skillet-eggs,Huevos en tomate con habichuelas negras,tomatoes,tomate,350.0,grams,0.120,42.00
+black-bean-tomato-skillet-eggs,Huevos en tomate con habichuelas negras,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+black-bean-tomato-skillet-eggs,Huevos en tomate con habichuelas negras,onion,cebolla,100.0,grams,0.125,12.50
+black-bean-tomato-skillet-eggs,Huevos en tomate con habichuelas negras,garlic,ajo,7.0,grams,0.400,2.80
+black-bean-tomato-skillet-eggs,Huevos en tomate con habichuelas negras,blackBeans,habichuelas negras cocidas,230.0,grams,0.180,41.40
+zucchini-tomato-skillet-eggs,Huevos en tomate con calabacín,eggs,huevos,4.0,pieces,10.000,40.00
+zucchini-tomato-skillet-eggs,Huevos en tomate con calabacín,tomatoes,tomate,350.0,grams,0.120,42.00
+zucchini-tomato-skillet-eggs,Huevos en tomate con calabacín,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+zucchini-tomato-skillet-eggs,Huevos en tomate con calabacín,onion,cebolla,100.0,grams,0.125,12.50
+zucchini-tomato-skillet-eggs,Huevos en tomate con calabacín,garlic,ajo,7.0,grams,0.400,2.80
+zucchini-tomato-skillet-eggs,Huevos en tomate con calabacín,zucchini,calabacín,205.0,grams,0.240,49.20
+chicken-broccoli-quinoa-skillet,Quinoa con pollo y brócoli,quinoa,quinoa cruda,140.0,grams,0.480,67.20
+chicken-broccoli-quinoa-skillet,Quinoa con pollo y brócoli,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chicken-broccoli-quinoa-skillet,Quinoa con pollo y brócoli,onion,cebolla,80.0,grams,0.125,10.00
+chicken-broccoli-quinoa-skillet,Quinoa con pollo y brócoli,garlic,ajo,8.0,grams,0.400,3.20
+chicken-broccoli-quinoa-skillet,Quinoa con pollo y brócoli,chicken,pechuga de pollo,230.0,grams,0.460,105.80
+chicken-broccoli-quinoa-skillet,Quinoa con pollo y brócoli,broccoli,brócoli,180.0,grams,0.300,54.00
+tofu-spinach-quinoa-skillet,Quinoa con tofu y espinaca,quinoa,quinoa cruda,140.0,grams,0.480,67.20
+tofu-spinach-quinoa-skillet,Quinoa con tofu y espinaca,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+tofu-spinach-quinoa-skillet,Quinoa con tofu y espinaca,onion,cebolla,80.0,grams,0.125,10.00
+tofu-spinach-quinoa-skillet,Quinoa con tofu y espinaca,garlic,ajo,8.0,grams,0.400,3.20
+tofu-spinach-quinoa-skillet,Quinoa con tofu y espinaca,tofu,tofu firme,240.0,grams,0.750,180.00
+tofu-spinach-quinoa-skillet,Quinoa con tofu y espinaca,spinach,espinaca,125.0,grams,0.330,41.25
+tuna-tomato-quinoa-skillet,Quinoa con atún y tomate,quinoa,quinoa cruda,140.0,grams,0.480,67.20
+tuna-tomato-quinoa-skillet,Quinoa con atún y tomate,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+tuna-tomato-quinoa-skillet,Quinoa con atún y tomate,onion,cebolla,80.0,grams,0.125,10.00
+tuna-tomato-quinoa-skillet,Quinoa con atún y tomate,garlic,ajo,8.0,grams,0.400,3.20
+tuna-tomato-quinoa-skillet,Quinoa con atún y tomate,tuna,atún escurrido,200.0,grams,0.840,168.00
+tuna-tomato-quinoa-skillet,Quinoa con atún y tomate,tomatoes,tomate,195.0,grams,0.120,23.40
+chickpea-zucchini-quinoa-skillet,Quinoa con garbanzos y calabacín,quinoa,quinoa cruda,140.0,grams,0.480,67.20
+chickpea-zucchini-quinoa-skillet,Quinoa con garbanzos y calabacín,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+chickpea-zucchini-quinoa-skillet,Quinoa con garbanzos y calabacín,onion,cebolla,80.0,grams,0.125,10.00
+chickpea-zucchini-quinoa-skillet,Quinoa con garbanzos y calabacín,garlic,ajo,8.0,grams,0.400,3.20
+chickpea-zucchini-quinoa-skillet,Quinoa con garbanzos y calabacín,chickpeas,garbanzos cocidos,240.0,grams,0.220,52.80
+chickpea-zucchini-quinoa-skillet,Quinoa con garbanzos y calabacín,zucchini,calabacín,180.0,grams,0.240,43.20
+beef-pepper-quinoa-skillet,Quinoa con carne y pimiento,quinoa,quinoa cruda,140.0,grams,0.480,67.20
+beef-pepper-quinoa-skillet,Quinoa con carne y pimiento,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+beef-pepper-quinoa-skillet,Quinoa con carne y pimiento,onion,cebolla,80.0,grams,0.125,10.00
+beef-pepper-quinoa-skillet,Quinoa con carne y pimiento,garlic,ajo,8.0,grams,0.400,3.20
+beef-pepper-quinoa-skillet,Quinoa con carne y pimiento,groundBeef,carne molida,220.0,grams,0.700,154.00
+beef-pepper-quinoa-skillet,Quinoa con carne y pimiento,bellPepper,pimiento,155.0,grams,0.220,34.10
+lentil-carrot-quinoa-skillet,Quinoa con lentejas y zanahoria,quinoa,quinoa cruda,140.0,grams,0.480,67.20
+lentil-carrot-quinoa-skillet,Quinoa con lentejas y zanahoria,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+lentil-carrot-quinoa-skillet,Quinoa con lentejas y zanahoria,onion,cebolla,80.0,grams,0.125,10.00
+lentil-carrot-quinoa-skillet,Quinoa con lentejas y zanahoria,garlic,ajo,8.0,grams,0.400,3.20
+lentil-carrot-quinoa-skillet,Quinoa con lentejas y zanahoria,lentils,lentejas cocidas,250.0,grams,0.210,52.50
+lentil-carrot-quinoa-skillet,Quinoa con lentejas y zanahoria,carrot,zanahoria,145.0,grams,0.090,13.05
+mushroom-cheese-quinoa-skillet,Quinoa con champiñones y queso,quinoa,quinoa cruda,140.0,grams,0.480,67.20
+mushroom-cheese-quinoa-skillet,Quinoa con champiñones y queso,oliveOil,aceite de oliva,13.0,milliliters,1.150,14.95
+mushroom-cheese-quinoa-skillet,Quinoa con champiñones y queso,onion,cebolla,80.0,grams,0.125,10.00
+mushroom-cheese-quinoa-skillet,Quinoa con champiñones y queso,garlic,ajo,8.0,grams,0.400,3.20
+mushroom-cheese-quinoa-skillet,Quinoa con champiñones y queso,mushrooms,champiñones,205.0,grams,0.680,139.40
+mushroom-cheese-quinoa-skillet,Quinoa con champiñones y queso,cheese,queso,75.0,grams,0.750,56.25
+potato-lentil-soup,Sopa de lentejas con papa,lentils,lentejas cocidas,390.0,grams,0.210,81.90
+potato-lentil-soup,Sopa de lentejas con papa,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+potato-lentil-soup,Sopa de lentejas con papa,onion,cebolla,85.0,grams,0.125,10.63
+potato-lentil-soup,Sopa de lentejas con papa,carrot,zanahoria,125.0,grams,0.090,11.25
+potato-lentil-soup,Sopa de lentejas con papa,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+potato-lentil-soup,Sopa de lentejas con papa,potatoes,papa,270.0,grams,0.105,28.35
+potato-lentil-soup,Sopa de lentejas con papa,garlic,ajo,8.0,grams,0.400,3.20
+spinach-lentil-soup,Sopa de lentejas con espinaca,lentils,lentejas cocidas,390.0,grams,0.210,81.90
+spinach-lentil-soup,Sopa de lentejas con espinaca,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+spinach-lentil-soup,Sopa de lentejas con espinaca,onion,cebolla,85.0,grams,0.125,10.63
+spinach-lentil-soup,Sopa de lentejas con espinaca,carrot,zanahoria,125.0,grams,0.090,11.25
+spinach-lentil-soup,Sopa de lentejas con espinaca,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+spinach-lentil-soup,Sopa de lentejas con espinaca,spinach,espinaca,150.0,grams,0.330,49.50
+spinach-lentil-soup,Sopa de lentejas con espinaca,tomatoes,tomate,130.0,grams,0.120,15.60
+broccoli-lentil-soup,Sopa de lentejas con brócoli,lentils,lentejas cocidas,390.0,grams,0.210,81.90
+broccoli-lentil-soup,Sopa de lentejas con brócoli,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+broccoli-lentil-soup,Sopa de lentejas con brócoli,onion,cebolla,85.0,grams,0.125,10.63
+broccoli-lentil-soup,Sopa de lentejas con brócoli,carrot,zanahoria,125.0,grams,0.090,11.25
+broccoli-lentil-soup,Sopa de lentejas con brócoli,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+broccoli-lentil-soup,Sopa de lentejas con brócoli,broccoli,brócoli,200.0,grams,0.300,60.00
+broccoli-lentil-soup,Sopa de lentejas con brócoli,garlic,ajo,9.0,grams,0.400,3.60
+sweet-potato-lentil-soup,Sopa de lentejas con batata,lentils,lentejas cocidas,390.0,grams,0.210,81.90
+sweet-potato-lentil-soup,Sopa de lentejas con batata,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+sweet-potato-lentil-soup,Sopa de lentejas con batata,onion,cebolla,85.0,grams,0.125,10.63
+sweet-potato-lentil-soup,Sopa de lentejas con batata,carrot,zanahoria,125.0,grams,0.090,11.25
+sweet-potato-lentil-soup,Sopa de lentejas con batata,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+sweet-potato-lentil-soup,Sopa de lentejas con batata,sweetPotato,batata,260.0,grams,0.140,36.40
+sweet-potato-lentil-soup,Sopa de lentejas con batata,celery,apio,100.0,grams,0.180,18.00
+zucchini-lentil-soup,Sopa de lentejas con calabacín,lentils,lentejas cocidas,390.0,grams,0.210,81.90
+zucchini-lentil-soup,Sopa de lentejas con calabacín,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+zucchini-lentil-soup,Sopa de lentejas con calabacín,onion,cebolla,85.0,grams,0.125,10.63
+zucchini-lentil-soup,Sopa de lentejas con calabacín,carrot,zanahoria,125.0,grams,0.090,11.25
+zucchini-lentil-soup,Sopa de lentejas con calabacín,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+zucchini-lentil-soup,Sopa de lentejas con calabacín,zucchini,calabacín,225.0,grams,0.240,54.00
+zucchini-lentil-soup,Sopa de lentejas con calabacín,tomatoes,tomate,140.0,grams,0.120,16.80
+mushroom-lentil-soup,Sopa de lentejas con champiñones,lentils,lentejas cocidas,390.0,grams,0.210,81.90
+mushroom-lentil-soup,Sopa de lentejas con champiñones,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+mushroom-lentil-soup,Sopa de lentejas con champiñones,onion,cebolla,85.0,grams,0.125,10.63
+mushroom-lentil-soup,Sopa de lentejas con champiñones,carrot,zanahoria,125.0,grams,0.090,11.25
+mushroom-lentil-soup,Sopa de lentejas con champiñones,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+mushroom-lentil-soup,Sopa de lentejas con champiñones,mushrooms,champiñones,200.0,grams,0.680,136.00
+mushroom-lentil-soup,Sopa de lentejas con champiñones,herbs,hierbas frescas,9.0,grams,1.300,11.70
+quinoa-lentil-soup,Sopa de lentejas con quinoa,lentils,lentejas cocidas,390.0,grams,0.210,81.90
+quinoa-lentil-soup,Sopa de lentejas con quinoa,vegetableStock,caldo de vegetales,700.0,milliliters,0.055,38.50
+quinoa-lentil-soup,Sopa de lentejas con quinoa,onion,cebolla,85.0,grams,0.125,10.63
+quinoa-lentil-soup,Sopa de lentejas con quinoa,carrot,zanahoria,125.0,grams,0.090,11.25
+quinoa-lentil-soup,Sopa de lentejas con quinoa,oliveOil,aceite de oliva,10.0,milliliters,1.150,11.50
+quinoa-lentil-soup,Sopa de lentejas con quinoa,quinoa,quinoa cruda,100.0,grams,0.480,48.00
+quinoa-lentil-soup,Sopa de lentejas con quinoa,spinach,espinaca,85.0,grams,0.330,28.05

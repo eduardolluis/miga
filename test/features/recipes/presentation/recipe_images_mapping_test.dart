@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'dart:ui' as ui;
 
+import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,8 +11,17 @@ import '../../../support/recipe_catalog.dart';
 import 'package:miga/features/recipes/presentation/widgets/recipe_image.dart';
 
 void main() {
+  test('iOS recipe photos bypass the native file-cache bridge', () {
+    debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+    addTearDown(() => debugDefaultTargetPlatformOverride = null);
+    expect(
+      RecipeImage.providerFor(RecipeCatalog.all.first.photo),
+      isA<NetworkImage>(),
+    );
+  });
+
   test(
-    'Every catalog recipe has its own full-resolution offline photo',
+    'Every catalog photo is available for remote upload with its expected dimensions',
     () async {
       expect(RecipeCatalog.all.length, 54);
       final assets = <String>{};
@@ -19,7 +30,7 @@ void main() {
         expect(assets.add(photo.path), isTrue, reason: recipe.id);
         expect(photo.width, greaterThanOrEqualTo(1400), reason: recipe.id);
         expect(photo.height, greaterThanOrEqualTo(1024), reason: recipe.id);
-        final bytes = await File(photo.path).readAsBytes();
+        final bytes = await File('supabase/catalog/photos/${recipe.id}.jpg').readAsBytes();
         final codec = await ui.instantiateImageCodec(bytes);
         final frame = await codec.getNextFrame();
         expect(frame.image.width, photo.width, reason: recipe.id);

@@ -158,6 +158,9 @@ class Recipe {
     var path = photo['path'] as String;
     final width = photo['width'] as int;
     final height = photo['height'] as int;
+    final thumbnailPath = photo['thumbnail_path'] as String?;
+    final thumbnailWidth = photo['thumbnail_width'] as int?;
+    final thumbnailHeight = photo['thumbnail_height'] as int?;
     if (!RegExp(r'^[a-z0-9]+(?:-[a-z0-9]+)*$').hasMatch(id) ||
         servings < 1 ||
         servings > 24 ||
@@ -166,10 +169,30 @@ class Recipe {
         width < 1 ||
         height < 1 ||
         path.isEmpty ||
-        path.contains('..')) {
+        path.contains('..') ||
+        (thumbnailPath == null &&
+            (thumbnailWidth != null || thumbnailHeight != null)) ||
+        (thumbnailPath != null &&
+            (thumbnailWidth == null || thumbnailHeight == null)) ||
+        (thumbnailPath != null &&
+            (!RegExp(r'^[a-zA-Z0-9_/-]+[.](jpg|jpeg|webp|png)$')
+                    .hasMatch(thumbnailPath) ||
+                thumbnailPath.startsWith('/') ||
+                thumbnailPath.contains('..') ||
+                (thumbnailWidth ?? 0) < 1 ||
+                (thumbnailHeight ?? 0) < 1))) {
       throw const FormatException('Invalid recipe metadata');
     }
-    if (!path.startsWith('https://') && !path.startsWith('assets/')) {
+    if (!path.startsWith('https://')) {
+      // Photo paths in Supabase are relative to the recipe-photos bucket.
+      // Reject old bundled asset references rather than silently reintroducing
+      // mocks when a stale local catalog is read.
+      if (path.startsWith('assets/') ||
+          path.startsWith('http://') ||
+          path.startsWith('/') ||
+          !RegExp(r'^[a-zA-Z0-9_/-]+[.](jpg|jpeg|webp|png)$').hasMatch(path)) {
+        throw const FormatException('Unsupported recipe photo path');
+      }
       path = '$imageBaseUrl$path';
     }
     final amounts = [
@@ -198,7 +221,18 @@ class Recipe {
       servings: servings,
       baseServings: servings,
       sortOrder: json['sort_order'] as int,
-      photo: RecipePhoto(path, width, height),
+      photo: RecipePhoto(
+        path,
+        width,
+        height,
+        thumbnailPath: thumbnailPath == null
+            ? null
+            : thumbnailPath.startsWith('https://')
+            ? thumbnailPath
+            : '$imageBaseUrl$thumbnailPath',
+        thumbnailWidth: thumbnailWidth,
+        thumbnailHeight: thumbnailHeight,
+      ),
       amounts: List.unmodifiable(amounts),
       es: RecipeContent.fromJson(json['es'] as Map<String, dynamic>),
       en: RecipeContent.fromJson(json['en'] as Map<String, dynamic>),

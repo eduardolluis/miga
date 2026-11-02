@@ -1,0 +1,251 @@
+﻿id,category,title_es,title_en,servings,minutes,estimated_cost_total_DOP,estimated_cost_per_serving_DOP,photo_status,ingredient_count
+banana-oats,breakfast,Avena con banana y canela,Banana & cinnamon oats,2,10,91.80,45.90,ready,5
+avocado-toast,breakfast,Tostadas de aguacate y huevo,Avocado & egg toast,2,15,115.92,57.96,ready,7
+yogurt-fruit,breakfast,Yogur con fruta y granola,Fruit & granola yogurt bowl,2,5,346.00,173.00,ready,4
+lemon-salmon,lunch,Salmón al limón y hierbas,Lemon & herb salmon,2,30,647.52,323.76,ready,8
+chicken-rice,lunch,Pollo con arroz y vegetales,"Chicken, rice & vegetables",2,30,180.30,90.15,ready,8
+chickpea-salad,lunch,Ensalada de garbanzos y aguacate,Chickpea & avocado salad,2,15,210.55,105.28,ready,7
+tomato-pasta,dinner,Pasta con tomate y albahaca,Tomato & basil pasta,2,25,95.65,47.83,ready,6
+sweet-potato-egg,dinner,Batata con espinaca y huevo,"Sweet potato, spinach & egg",2,25,114.22,57.11,ready,6
+lentil-soup,dinner,Sopa de lentejas y vegetales,Lentil & vegetable soup,2,35,166.45,83.23,ready,7
+apple-cinnamon-oats,breakfast,Avena con manzana y canela,Apple cinnamon oatmeal,2,15,113.20,56.60,ready,5
+peanut-banana-toast,breakfast,Tostadas de banana y maní,Banana peanut butter toast,2,8,63.70,31.85,ready,4
+spinach-cheese-omelet,breakfast,Omelette de espinaca y queso,Spinach and cheese omelet,2,15,101.22,50.61,ready,6
+mango-oat-smoothie,breakfast,Batido de mango y avena,Mango oat smoothie,2,5,100.10,50.05,ready,4
+apple-yogurt-bowl,breakfast,Yogur con manzana y nueces,Apple walnut yogurt bowl,2,5,241.20,120.60,ready,4
+breakfast-potato-hash,breakfast,Papas salteadas con huevo,Breakfast potato and eggs,2,25,108.82,54.41,ready,7
+egg-tomato-wrap,breakfast,Wrap de huevo y tomate,Egg and tomato wrap,2,12,105.70,52.85,ready,5
+strawberry-oat-pancakes,breakfast,Panquecas de avena y fresa,Strawberry oat pancakes,2,20,134.95,67.48,ready,6
+savory-chickpea-toast,breakfast,Tostada de garbanzos y limón,Lemony chickpea toast,2,12,93.70,46.85,ready,5
+zucchini-egg-scramble,breakfast,Revuelto de huevo y calabacín,Zucchini egg scramble,2,15,97.52,48.76,ready,5
+pineapple-granola-yogurt,breakfast,Yogur con piña y granola,Pineapple granola yogurt,2,5,244.10,122.05,ready,3
+sweet-potato-yogurt-bowl,breakfast,Batata dulce con yogur,Warm sweet potato yogurt bowl,2,25,201.40,100.70,ready,4
+black-bean-breakfast-tacos,breakfast,Tacos de frijoles y huevo,Black bean breakfast tacos,2,20,124.95,62.48,ready,5
+avocado-spinach-sandwich,breakfast,Sándwich de aguacate y espinaca,Avocado spinach sandwich,2,10,130.20,65.10,ready,5
+mushroom-egg-toast,breakfast,Tostadas con hongos y huevo,Mushroom and egg toast,2,18,169.30,84.65,ready,6
+beef-pepper-rice,lunch,Carne salteada con pimientos y arroz,Beef pepper rice bowl,2,30,245.18,122.59,ready,6
+tuna-chickpea-salad,lunch,Ensalada de atún y garbanzos,Tuna and chickpea salad,2,15,299.30,149.65,ready,6
+chicken-avocado-wrap,lunch,Wrap de pollo y aguacate,Chicken avocado wrap,2,30,271.05,135.53,ready,6
+quinoa-veggie-bowl,lunch,Bowl de quinoa y vegetales,Quinoa vegetable bowl,2,25,176.05,88.03,ready,6
+black-beans-rice,lunch,Arroz con habichuelas negras,Rice and black beans,2,30,115.73,57.87,ready,6
+lentil-bolognese,lunch,Pasta con salsa de lentejas,Lentil bolognese pasta,2,35,140.15,70.08,ready,7
+salmon-rice-bowl,lunch,Bowl de salmón y arroz,Salmon rice bowl,2,30,589.28,294.64,ready,6
+tofu-broccoli-stirfry,lunch,Tofu salteado con brócoli,Tofu broccoli stir-fry,2,25,329.09,164.55,ready,6
+beef-potato-skillet,lunch,Carne molida con papas,Ground beef and potatoes,2,35,291.90,145.95,ready,6
+chicken-pasta-salad,lunch,Ensalada de pasta con pollo,Chicken pasta salad,2,30,208.45,104.23,ready,6
+mediterranean-chickpeas,lunch,Garbanzos mediterráneos,Mediterranean chickpea bowl,2,15,200.85,100.43,ready,6
+tuna-potato-salad,lunch,Ensalada de papa y atún,Tuna potato salad,2,30,315.85,157.93,ready,6
+stuffed-peppers-beans,lunch,Pimientos rellenos de frijoles,Black bean stuffed peppers,2,40,199.17,99.59,ready,7
+zucchini-chicken-skillet,lunch,Pollo con calabacín y tomate,Chicken zucchini skillet,2,25,262.85,131.43,ready,6
+lentil-quinoa-salad,lunch,Ensalada de lentejas y quinoa,Lentil quinoa salad,2,25,187.60,93.80,ready,6
+mushroom-spinach-pasta,dinner,Pasta con hongos y espinaca,Mushroom spinach pasta,2,25,227.10,113.55,ready,6
+chicken-vegetable-soup,dinner,Sopa de pollo y vegetales,Chicken vegetable soup,2,40,219.85,109.93,ready,7
+vegetable-quesadillas,dinner,Quesadillas de vegetales,Vegetable quesadillas,2,20,225.10,112.55,ready,6
+black-bean-tacos,dinner,Tacos de frijoles con aguacate,Black bean avocado tacos,2,20,243.40,121.70,ready,5
+salmon-sweet-potato,dinner,Salmón con batata al horno,Baked salmon and sweet potato,2,35,658.80,329.40,ready,5
+tomato-egg-skillet,dinner,Huevos en salsa de tomate,Eggs in tomato skillet,2,25,141.80,70.90,ready,6
+creamy-sweet-potato-soup,dinner,Crema de batata y zanahoria,Sweet potato carrot soup,2,35,139.48,69.74,ready,6
+tofu-broccoli-rice,dinner,Arroz con tofu y brócoli,Tofu and broccoli rice,2,25,336.18,168.09,ready,6
+quinoa-stuffed-zucchini,dinner,Calabacines rellenos de quinoa,Quinoa stuffed zucchini,2,40,241.30,120.65,ready,6
+beef-tomato-pasta,dinner,Pasta con carne y tomate,Beef tomato pasta,2,30,246.10,123.05,ready,6
+lentil-tomato-stew,dinner,Guiso de lentejas con tomate,Tomato lentil stew,2,30,158.58,79.29,ready,6
+chicken-potato-tray,dinner,Pollo y papas al horno,Oven baked chicken and potatoes,2,40,228.45,114.23,ready,6
+chickpea-spinach-stew,dinner,Garbanzos guisados con espinaca,Chickpea spinach stew,2,25,171.00,85.50,ready,6
+tuna-tomato-pasta,dinner,Pasta rápida con atún,Quick tuna tomato pasta,2,20,258.70,129.35,ready,6
+roasted-vegetable-quinoa,dinner,Quinoa con vegetales al horno,Roasted vegetable quinoa,2,35,184.35,92.18,ready,6
+apple-walnut-cinnamon-oatmeal,breakfast,"Avena con manzana, nueces y canela",Apple walnut cinnamon oatmeal,2,25,116.90,58.45,pending,5
+mango-granola-oatmeal,breakfast,Avena de mango y granola,Mango granola oatmeal,2,25,125.85,62.93,pending,5
+strawberry-peanut-butter-oatmeal,breakfast,Avena con fresas y crema de maní,Strawberry peanut butter oatmeal,2,25,167.40,83.70,pending,5
+banana-pineapple-oatmeal,breakfast,Avena con banana y piña,Banana pineapple oatmeal,2,25,87.90,43.95,pending,5
+apple-yogurt-oatmeal,breakfast,Avena con manzana y yogur,Apple yogurt oatmeal,2,25,136.30,68.15,pending,5
+mango-walnut-oatmeal,breakfast,Avena con mango y nueces,Mango walnut oatmeal,2,25,144.70,72.35,pending,5
+strawberry-banana-overnight-oats,breakfast,Avena nocturna de fresa y banana,Strawberry banana overnight oats,2,10,199.25,99.63,pending,5
+apple-cinnamon-overnight-oats,breakfast,Avena nocturna de manzana y canela,Apple cinnamon overnight oats,2,10,139.05,69.53,pending,5
+mango-pineapple-overnight-oats,breakfast,Avena nocturna de mango y piña,Mango pineapple overnight oats,2,10,181.25,90.63,pending,5
+peanut-banana-overnight-oats,breakfast,Avena nocturna con mantequilla de maní y banana,Peanut banana overnight oats,2,10,144.65,72.33,pending,5
+strawberry-walnut-overnight-oats,breakfast,Avena nocturna de fresa y nueces,Strawberry walnut overnight oats,2,10,238.65,119.33,pending,5
+apple-granola-overnight-oats,breakfast,Avena nocturna de manzana y granola,Apple granola overnight oats,2,10,155.45,77.73,pending,5
+mango-banana-yogurt-bowl,breakfast,Yogur con mango y banana,Mango banana yogurt bowl,2,10,212.80,106.40,pending,4
+apple-cinnamon-yogurt-bowl,breakfast,Yogur con manzana y canela,Apple cinnamon yogurt bowl,2,10,179.20,89.60,pending,4
+strawberry-walnut-yogurt-bowl,breakfast,Yogur con fresa y nueces,Strawberry walnut yogurt bowl,2,10,319.20,159.60,pending,4
+pineapple-mango-yogurt-bowl,breakfast,Yogur tropical de piña y mango,Pineapple mango yogurt bowl,2,10,230.40,115.20,pending,4
+peanut-banana-yogurt-bowl,breakfast,Yogur con banana y mantequilla de maní,Peanut banana yogurt bowl,2,10,186.60,93.30,pending,4
+strawberry-pineapple-walnut-yogurt-bowl,breakfast,"Yogur de fresa, piña y nueces",Strawberry pineapple walnut yogurt bowl,2,10,271.40,135.70,pending,5
+mango-oat-yogurt-smoothie,breakfast,"Batido de mango, avena y yogur",Mango oat yogurt smoothie,2,10,145.75,72.88,pending,4
+peanut-banana-smoothie,breakfast,Batido de banana y maní,Peanut banana smoothie,2,10,133.85,66.93,pending,4
+strawberry-banana-smoothie,breakfast,Batido de fresa y banana,Strawberry banana smoothie,2,10,224.85,112.43,pending,4
+pineapple-spinach-smoothie,breakfast,Batido verde de piña y espinaca,Pineapple spinach smoothie,2,10,133.50,66.75,pending,4
+apple-cinnamon-smoothie,breakfast,Batido de manzana y canela,Apple cinnamon smoothie,2,10,149.05,74.53,pending,4
+mango-pineapple-smoothie,breakfast,Batido tropical de mango y piña,Mango pineapple smoothie,2,10,170.05,85.03,pending,4
+tomato-spinach-scrambled-eggs,breakfast,Revoltillo de tomate y espinaca,Tomato spinach scrambled eggs,2,15,96.24,48.12,pending,5
+mushroom-onion-scrambled-eggs,breakfast,Revoltillo de champiñones y cebolla,Mushroom onion scrambled eggs,2,15,162.69,81.35,pending,5
+broccoli-cheese-scrambled-eggs,breakfast,Revoltillo de brócoli y queso,Broccoli cheese scrambled eggs,2,15,129.69,64.85,pending,5
+pepper-tomato-scrambled-eggs,breakfast,Revoltillo de pimiento y tomate,Pepper tomato scrambled eggs,2,15,93.14,46.57,pending,5
+zucchini-herb-scrambled-eggs,breakfast,Revoltillo de calabacín y hierbas,Zucchini herb scrambled eggs,2,15,103.04,51.52,pending,5
+spinach-black-bean-scrambled-eggs,breakfast,Revoltillo de espinaca y habichuelas negras,Spinach black bean scrambled eggs,2,15,98.34,49.17,pending,5
+spinach-mushroom-cheese-omelet,breakfast,"Omelette de espinaca, champiñones y queso",Spinach mushroom cheese omelet,2,15,191.34,95.67,pending,6
+tomato-basil-omelet,breakfast,Omelette de tomate y albahaca,Tomato basil omelet,2,15,86.64,43.32,pending,5
+mushroom-broccoli-omelet,breakfast,Omelette de champiñones y brócoli,Mushroom broccoli omelet,2,15,164.44,82.22,pending,5
+pepper-onion-omelet,breakfast,Omelette de pimiento y cebolla,Pepper onion omelet,2,15,90.54,45.27,pending,5
+zucchini-cheese-omelet,breakfast,Omelette de calabacín y queso,Zucchini cheese omelet,2,15,123.99,62.00,pending,5
+avocado-tomato-omelet,breakfast,Omelette de aguacate y tomate,Avocado tomato omelet,2,15,127.64,63.82,pending,5
+avocado-egg-tomato-toast,breakfast,"Tostadas de aguacate, huevo y tomate",Avocado egg tomato toast,2,10,126.75,63.38,pending,5
+tuna-tomato-toast,breakfast,Tostadas de atún y tomate,Tuna tomato toast,2,10,162.95,81.48,pending,4
+apple-peanut-toast,breakfast,Tostadas con manzana y mantequilla de maní,Apple peanut toast,2,10,93.25,46.63,pending,4
+cheesy-mushroom-toast,breakfast,Tostadas de queso y champiñones,Cheesy mushroom toast,2,10,174.40,87.20,pending,4
+egg-spinach-toast,breakfast,Tostadas de huevo y espinaca,Egg spinach toast,2,10,81.20,40.60,pending,4
+tomato-basil-toast,breakfast,Tostadas de tomate y albahaca,Tomato basil toast,2,10,72.55,36.28,pending,4
+egg-tomato-sandwich,breakfast,Sándwich de huevo y tomate,Egg tomato sandwich,2,15,80.00,40.00,pending,3
+chicken-avocado-sandwich,breakfast,Sándwich de pollo y aguacate,Chicken avocado sandwich,2,15,179.80,89.90,pending,3
+tuna-cucumber-sandwich,breakfast,Sándwich de atún y pepino,Tuna cucumber sandwich,2,15,179.00,89.50,pending,3
+cheese-spinach-sandwich,breakfast,Sándwich de queso y espinaca,Cheese spinach sandwich,2,15,115.55,57.78,pending,3
+egg-pepper-sandwich,breakfast,Sándwich de huevo y pimiento,Egg pepper sandwich,2,15,88.40,44.20,pending,3
+chickpea-tomato-sandwich,breakfast,Sándwich de garbanzos y tomate,Chickpea tomato sandwich,2,15,87.10,43.55,pending,3
+egg-spinach-potato-hash,breakfast,Papas salteadas con huevo y espinaca,Egg spinach potato hash,2,30,119.51,59.76,pending,6
+chicken-pepper-potato-hash,breakfast,Papas salteadas con pollo y pimiento,Chicken pepper potato hash,2,30,174.51,87.26,pending,6
+beef-tomato-potato-hash,breakfast,Papas salteadas con carne y tomate,Beef tomato potato hash,2,30,207.11,103.56,pending,6
+mushroom-cheese-potato-hash,breakfast,Papas salteadas con champiñones y queso,Mushroom cheese potato hash,2,30,202.61,101.31,pending,6
+broccoli-egg-potato-hash,breakfast,Papas salteadas con brócoli y huevo,Broccoli egg potato hash,2,30,135.11,67.56,pending,6
+black-bean-potato-hash,breakfast,Papas salteadas con habichuelas negras,Black bean potato hash,2,30,121.51,60.76,pending,6
+spinach-tomato-quesadilla,breakfast,Quesadilla de espinaca y tomate,Spinach tomato quesadilla,2,15,143.90,71.95,pending,4
+egg-pepper-quesadilla,breakfast,Quesadilla de huevo y pimiento,Egg pepper quesadilla,2,15,142.90,71.45,pending,4
+mushroom-onion-quesadilla,breakfast,Quesadilla de champiñones y cebolla,Mushroom onion quesadilla,2,15,208.50,104.25,pending,4
+black-bean-quesadilla,breakfast,Quesadilla de habichuelas negras,Black bean quesadilla,2,15,141.50,70.75,pending,4
+chicken-spinach-quesadilla,breakfast,Quesadilla de pollo y espinaca,Chicken spinach quesadilla,2,15,209.00,104.50,pending,4
+zucchini-herb-quesadilla,breakfast,Quesadilla de calabacín y hierbas,Zucchini herb quesadilla,2,15,145.30,72.65,pending,4
+chicken-broccoli-carrot-rice-bowl,lunch,Bowl de pollo con brócoli y zanahoria,Chicken broccoli carrot rice bowl,2,30,216.85,108.43,pending,6
+chicken-pepper-onion-rice-bowl,lunch,Bowl de pollo con pimiento y cebolla,Chicken pepper onion rice bowl,2,30,197.95,98.98,pending,6
+chicken-spinach-tomato-rice-bowl,lunch,Bowl de pollo con espinaca y tomate,Chicken spinach tomato rice bowl,2,30,208.15,104.08,pending,6
+chicken-zucchini-garlic-rice-bowl,lunch,Bowl de pollo con calabacín y ajo,Chicken zucchini garlic rice bowl,2,30,205.05,102.53,pending,6
+chicken-mushroom-rice-bowl,lunch,Bowl de pollo con champiñones,Chicken mushroom rice bowl,2,30,283.90,141.95,pending,6
+pineapple-pepper-chicken-rice-bowl,lunch,Bowl de pollo con piña y pimiento,Pineapple pepper chicken rice bowl,2,30,204.05,102.03,pending,6
+chicken-avocado-tomato-rice-bowl,lunch,Bowl de pollo con aguacate y tomate,Chicken avocado tomato rice bowl,2,30,234.45,117.23,pending,6
+chicken-black-bean-rice-bowl,lunch,Bowl de pollo con habichuelas negras,Chicken black bean rice bowl,2,30,206.45,103.23,pending,6
+tuna-cucumber-tomato-quinoa,lunch,"Quinoa con atún, pepino y tomate",Tuna cucumber tomato quinoa,2,30,298.45,149.23,pending,6
+tuna-avocado-quinoa,lunch,Quinoa con atún y aguacate,Tuna avocado quinoa,2,30,336.15,168.08,pending,6
+tuna-spinach-quinoa,lunch,Quinoa con atún y espinaca,Tuna spinach quinoa,2,30,299.65,149.83,pending,6
+tuna-pepper-onion-quinoa,lunch,"Quinoa con atún, pimiento y cebolla",Tuna pepper onion quinoa,2,30,299.55,149.78,pending,6
+tuna-chickpea-quinoa,lunch,Quinoa con atún y garbanzos,Tuna chickpea quinoa,2,30,308.25,154.13,pending,6
+tuna-broccoli-lemon-quinoa,lunch,"Quinoa con atún, brócoli y limón",Tuna broccoli lemon quinoa,2,30,318.75,159.38,pending,6
+tuna-mushroom-quinoa,lunch,Quinoa con atún y champiñones,Tuna mushroom quinoa,2,30,374.40,187.20,pending,6
+pineapple-tuna-quinoa,lunch,Quinoa tropical con atún y piña,Pineapple tuna quinoa,2,30,301.75,150.88,pending,6
+black-bean-pepper-rice,lunch,Arroz con habichuelas negras y pimiento,Black bean pepper rice,2,30,114.70,57.35,pending,7
+chickpea-carrot-rice,lunch,Arroz con garbanzos y zanahoria,Chickpea carrot rice,2,30,110.50,55.25,pending,7
+tofu-broccoli-carrot-rice,lunch,"Arroz con tofu, brócoli y zanahoria",Tofu broccoli carrot rice,2,30,259.10,129.55,pending,8
+egg-spinach-rice,lunch,Arroz con huevo y espinaca,Egg spinach rice,2,30,107.00,53.50,pending,7
+lentil-tomato-rice,lunch,Arroz con lentejas y tomate,Lentil tomato rice,2,30,112.40,56.20,pending,7
+mushroom-zucchini-rice,lunch,Arroz con champiñones y calabacín,Mushroom zucchini rice,2,30,192.70,96.35,pending,7
+tuna-carrot-rice,lunch,Arroz con atún y zanahoria,Tuna carrot rice,2,30,213.80,106.90,pending,7
+chicken-green-veggie-rice,lunch,Arroz con pollo y vegetales verdes,Chicken green veggie rice,2,30,205.70,102.85,pending,8
+tuna-cucumber-pasta-salad,lunch,Ensalada de pasta con atún y pepino,Tuna cucumber pasta salad,2,25,242.40,121.20,pending,5
+chicken-tomato-pasta-salad,lunch,Ensalada de pasta con pollo y tomate,Chicken tomato pasta salad,2,25,178.10,89.05,pending,5
+chickpea-pasta-salad,lunch,Ensalada de pasta con garbanzos,Chickpea pasta salad,2,25,135.50,67.75,pending,5
+cheese-basil-pasta-salad,lunch,Ensalada de pasta con queso y albahaca,Cheese basil pasta salad,2,25,159.00,79.50,pending,6
+broccoli-pasta-salad,lunch,Ensalada de pasta con brócoli,Broccoli pasta salad,2,25,126.60,63.30,pending,5
+spinach-mushroom-pasta-salad,lunch,Ensalada de pasta con espinaca y champiñones,Spinach mushroom pasta salad,2,25,200.20,100.10,pending,5
+avocado-tomato-pasta-salad,lunch,Ensalada de pasta con aguacate y tomate,Avocado tomato pasta salad,2,25,138.50,69.25,pending,5
+pineapple-chicken-pasta-salad,lunch,Ensalada tropical de pasta con piña y pollo,Pineapple chicken pasta salad,2,25,185.50,92.75,pending,5
+chicken-spinach-tomato-pasta,lunch,Pasta de pollo y espinaca,Chicken spinach tomato pasta,2,30,216.66,108.33,pending,7
+tuna-basil-tomato-pasta,lunch,Pasta de atún y albahaca,Tuna basil tomato pasta,2,30,270.36,135.18,pending,7
+mushroom-cheese-tomato-pasta,lunch,Pasta de champiñones y queso,Mushroom cheese tomato pasta,2,30,241.46,120.73,pending,7
+ground-beef-pepper-pasta,lunch,Pasta con carne molida y pimiento,Ground beef pepper pasta,2,30,261.76,130.88,pending,7
+chickpea-spinach-pasta,lunch,Pasta con garbanzos y espinaca,Chickpea spinach pasta,2,30,151.36,75.68,pending,7
+zucchini-basil-tomato-pasta,lunch,Pasta de calabacín y albahaca,Zucchini basil tomato pasta,2,30,141.96,70.98,pending,7
+broccoli-chicken-tomato-pasta,lunch,Pasta con brócoli y pollo,Broccoli chicken tomato pasta,2,30,228.26,114.13,pending,7
+lentil-carrot-tomato-pasta,lunch,Pasta con lentejas y zanahoria,Lentil carrot tomato pasta,2,30,136.26,68.13,pending,7
+chickpea-cucumber-tomato-salad,lunch,Ensalada de garbanzos con pepino y tomate,Chickpea cucumber tomato salad,2,15,147.95,73.98,pending,5
+chickpea-tuna-salad,lunch,Ensalada de garbanzos con atún,Chickpea tuna salad,2,15,246.70,123.35,pending,5
+chickpea-avocado-salad,lunch,Ensalada de garbanzos con aguacate,Chickpea avocado salad,2,15,186.55,93.28,pending,5
+chickpea-spinach-salad,lunch,Ensalada de garbanzos con espinaca,Chickpea spinach salad,2,15,172.85,86.43,pending,5
+chickpea-quinoa-salad,lunch,Ensalada de garbanzos y quinoa,Chickpea quinoa salad,2,15,171.05,85.53,pending,5
+chickpea-carrot-salad,lunch,Ensalada de garbanzos y zanahoria,Chickpea carrot salad,2,15,129.25,64.63,pending,5
+chickpea-broccoli-salad,lunch,Ensalada de garbanzos con brócoli,Chickpea broccoli salad,2,15,166.75,83.38,pending,5
+chickpea-cheese-salad,lunch,Ensalada de garbanzos y queso,Chickpea cheese salad,2,15,185.30,92.65,pending,5
+carrot-tomato-lentil-bowl,lunch,Lentejas con zanahoria y tomate,Carrot tomato lentil bowl,2,30,141.95,70.98,pending,6
+broccoli-spinach-lentil-bowl,lunch,Lentejas con brócoli y espinaca,Broccoli spinach lentil bowl,2,30,188.60,94.30,pending,6
+zucchini-lentil-bowl,lunch,Lentejas con calabacín,Zucchini lentil bowl,2,30,169.15,84.58,pending,6
+potato-carrot-lentil-bowl,lunch,Lentejas con papa y zanahoria,Potato carrot lentil bowl,2,30,145.10,72.55,pending,6
+quinoa-pepper-lentil-bowl,lunch,Lentejas con quinoa y pimiento,Quinoa pepper lentil bowl,2,30,187.35,93.68,pending,6
+rice-tomato-lentil-bowl,lunch,Lentejas con arroz y tomate,Rice tomato lentil bowl,2,30,134.58,67.29,pending,6
+tofu-broccoli-lentil-bowl,lunch,Lentejas con tofu y brócoli,Tofu broccoli lentil bowl,2,30,308.45,154.23,pending,6
+mushroom-spinach-lentil-bowl,lunch,Lentejas con champiñones y espinaca,Mushroom spinach lentil bowl,2,30,249.50,124.75,pending,6
+chicken-avocado-tomato-wrap,lunch,"Wrap de pollo, aguacate y tomate",Chicken avocado tomato wrap,2,15,227.45,113.73,pending,5
+tuna-cucumber-wrap,lunch,Wrap de atún y pepino,Tuna cucumber wrap,2,15,247.35,123.68,pending,5
+chickpea-spinach-wrap,lunch,Wrap de garbanzos y espinaca,Chickpea spinach wrap,2,15,148.85,74.43,pending,5
+ground-beef-pepper-wrap,lunch,Wrap de carne molida y pimiento,Ground beef pepper wrap,2,15,238.28,119.14,pending,5
+egg-cheese-wrap,lunch,Wrap de huevo y queso,Egg cheese wrap,2,15,145.20,72.60,pending,5
+black-bean-avocado-wrap,lunch,Wrap de habichuelas negras y aguacate,Black bean avocado wrap,2,15,172.25,86.13,pending,5
+tofu-broccoli-wrap,lunch,Wrap de tofu y brócoli,Tofu broccoli wrap,2,15,265.05,132.53,pending,5
+chicken-mushroom-wrap,lunch,Wrap de pollo con champiñones,Chicken mushroom wrap,2,15,263.65,131.83,pending,5
+chicken-potato-carrot-soup,lunch,Sopa de pollo con papa y zanahoria,Chicken potato carrot soup,2,40,200.71,100.36,pending,7
+chicken-rice-spinach-soup,lunch,Sopa de pollo con arroz y espinaca,Chicken rice spinach soup,2,40,203.66,101.83,pending,7
+chicken-broccoli-soup,lunch,Sopa de pollo con brócoli,Chicken broccoli soup,2,40,234.91,117.46,pending,7
+chicken-lentil-soup,lunch,Sopa de pollo con lentejas,Chicken lentil soup,2,40,229.06,114.53,pending,7
+chicken-zucchini-soup,lunch,Sopa de pollo con calabacín,Chicken zucchini soup,2,40,229.66,114.83,pending,7
+chicken-quinoa-soup,lunch,Sopa de pollo con quinoa,Chicken quinoa soup,2,40,232.06,116.03,pending,7
+chicken-mushroom-soup,lunch,Sopa de pollo con champiñones,Chicken mushroom soup,2,40,302.01,151.01,pending,7
+chicken-chickpea-soup,lunch,Sopa de pollo con garbanzos,Chicken chickpea soup,2,40,225.06,112.53,pending,7
+tofu-broccoli-carrot-stir-fry,lunch,Tofu salteado con brócoli y zanahoria,Tofu broccoli carrot stir-fry,2,25,329.25,164.63,pending,6
+tofu-pepper-mushroom-stir-fry,lunch,Tofu salteado con pimiento y champiñones,Tofu pepper mushroom stir-fry,2,25,401.85,200.93,pending,6
+tofu-zucchini-tomato-stir-fry,lunch,Tofu salteado con calabacín y tomate,Tofu zucchini tomato stir-fry,2,25,320.85,160.43,pending,6
+tofu-rice-spinach-stir-fry,lunch,Tofu salteado con arroz y espinaca,Tofu rice spinach stir-fry,2,25,295.81,147.91,pending,6
+tofu-quinoa-broccoli-stir-fry,lunch,Tofu salteado con quinoa y brócoli,Tofu quinoa broccoli stir-fry,2,25,361.05,180.53,pending,6
+tofu-pineapple-pepper-stir-fry,lunch,Tofu salteado con piña y pimiento,Tofu pineapple pepper stir-fry,2,25,314.45,157.23,pending,6
+tofu-black-bean-stir-fry,lunch,Tofu salteado con habichuelas negras,Tofu black bean stir-fry,2,25,294.75,147.38,pending,6
+tofu-potato-mushroom-stir-fry,lunch,Tofu salteado con papa y champiñones,Tofu potato mushroom stir-fry,2,25,378.15,189.08,pending,6
+salmon-potato-broccoli-traybake,dinner,Salmón al horno con papa y brócoli,Salmon potato broccoli traybake,2,50,633.46,316.73,pending,6
+salmon-sweet-potato-spinach-traybake,dinner,Salmón al horno con batata y espinaca,Salmon sweet potato spinach traybake,2,50,621.31,310.66,pending,6
+salmon-carrot-zucchini-traybake,dinner,Salmón al horno con zanahoria y calabacín,Salmon carrot zucchini traybake,2,50,601.96,300.98,pending,6
+salmon-quinoa-tomato-traybake,dinner,Salmón al horno con quinoa y tomate,Salmon quinoa tomato traybake,2,50,618.01,309.01,pending,6
+salmon-mushroom-garlic-traybake,dinner,Salmón con champiñones y ajo,Salmon mushroom garlic traybake,2,50,689.01,344.51,pending,6
+salmon-pepper-onion-traybake,dinner,Salmón con pimientos y cebolla,Salmon pepper onion traybake,2,50,601.26,300.63,pending,6
+salmon-broccoli-chickpea-traybake,dinner,Salmón con brócoli y garbanzos,Salmon broccoli chickpea traybake,2,50,639.71,319.86,pending,6
+beef-potato-carrot-skillet,dinner,Carne molida con papa y zanahoria,Beef potato carrot skillet,2,30,269.46,134.73,pending,7
+beef-rice-pepper-skillet,dinner,Carne molida con arroz y pimiento,Beef rice pepper skillet,2,30,270.13,135.07,pending,7
+beef-zucchini-tomato-skillet,dinner,Carne molida con calabacín y tomate,Beef zucchini tomato skillet,2,30,303.06,151.53,pending,7
+beef-black-bean-skillet,dinner,Carne molida con habichuelas negras,Beef black bean skillet,2,30,293.46,146.73,pending,7
+beef-mushroom-spinach-skillet,dinner,Carne molida con champiñones y espinaca,Beef mushroom spinach skillet,2,30,394.31,197.16,pending,7
+beef-sweet-potato-broccoli-skillet,dinner,Carne molida con batata y brócoli,Beef sweet potato broccoli skillet,2,30,312.36,156.18,pending,7
+beef-quinoa-tomato-skillet,dinner,Carne molida con quinoa y tomate,Beef quinoa tomato skillet,2,30,307.86,153.93,pending,7
+quinoa-chickpea-stuffed-peppers,dinner,Pimientos rellenos de quinoa y garbanzos,Quinoa chickpea stuffed peppers,2,50,203.95,101.98,pending,6
+chicken-rice-stuffed-peppers,dinner,Pimientos rellenos de arroz y pollo,Chicken rice stuffed peppers,2,50,205.50,102.75,pending,6
+beef-lentil-stuffed-peppers,dinner,Pimientos rellenos de carne y lentejas,Beef lentil stuffed peppers,2,50,270.60,135.30,pending,6
+tuna-potato-stuffed-peppers,dinner,Pimientos rellenos de atún y papa,Tuna potato stuffed peppers,2,50,284.78,142.39,pending,6
+tofu-mushroom-stuffed-peppers,dinner,Pimientos rellenos de tofu y champiñones,Tofu mushroom stuffed peppers,2,50,359.15,179.58,pending,6
+black-bean-cheese-stuffed-peppers,dinner,Pimientos rellenos de habichuelas y queso,Black bean cheese stuffed peppers,2,50,196.20,98.10,pending,6
+rice-spinach-stuffed-peppers,dinner,Pimientos rellenos de arroz y espinaca,Rice spinach stuffed peppers,2,50,159.76,79.88,pending,6
+tuna-yogurt-baked-potatoes,dinner,Papa asada con atún y yogur,Tuna yogurt baked potatoes,2,70,278.86,139.43,pending,6
+chicken-broccoli-baked-potatoes,dinner,Papa asada con pollo y brócoli,Chicken broccoli baked potatoes,2,70,221.66,110.83,pending,5
+black-bean-baked-potatoes,dinner,Papa asada con habichuelas negras,Black bean baked potatoes,2,70,126.46,63.23,pending,5
+mushroom-cheese-baked-potatoes,dinner,Papa asada con queso y champiñones,Mushroom cheese baked potatoes,2,70,245.81,122.91,pending,5
+chickpea-spinach-baked-potatoes,dinner,Papa asada con garbanzos y espinaca,Chickpea spinach baked potatoes,2,70,150.61,75.31,pending,5
+beef-tomato-baked-potatoes,dinner,Papa asada con carne molida y tomate,Beef tomato baked potatoes,2,70,240.86,120.43,pending,5
+egg-pepper-baked-potatoes,dinner,Papa asada con huevo y pimiento,Egg pepper baked potatoes,2,70,130.56,65.28,pending,5
+chicken-spinach-sweet-potato-bowl,dinner,Batata con pollo y espinaca,Chicken spinach sweet potato bowl,2,40,221.63,110.82,pending,5
+tofu-broccoli-sweet-potato-bowl,dinner,Batata con tofu y brócoli,Tofu broccoli sweet potato bowl,2,40,308.83,154.42,pending,5
+chickpea-tomato-sweet-potato-bowl,dinner,Batata con garbanzos y tomate,Chickpea tomato sweet potato bowl,2,40,152.93,76.47,pending,5
+beef-pepper-sweet-potato-bowl,dinner,Batata con carne molida y pimiento,Beef pepper sweet potato bowl,2,40,272.43,136.22,pending,5
+egg-avocado-sweet-potato-bowl,dinner,Batata con huevo y aguacate,Egg avocado sweet potato bowl,2,40,175.83,87.92,pending,5
+lentil-mushroom-sweet-potato-bowl,dinner,Batata con lentejas y champiñones,Lentil mushroom sweet potato bowl,2,40,235.58,117.79,pending,5
+tuna-cucumber-sweet-potato-bowl,dinner,Batata con atún y pepino,Tuna cucumber sweet potato bowl,2,40,257.23,128.62,pending,5
+spinach-tomato-skillet-eggs,dinner,Huevos en tomate con espinaca,Spinach tomato skillet eggs,2,25,158.45,79.23,pending,6
+pepper-tomato-skillet-eggs,dinner,Huevos en tomate con pimiento,Pepper tomato skillet eggs,2,25,152.95,76.48,pending,6
+chickpea-tomato-skillet-eggs,dinner,Huevos en tomate con garbanzos,Chickpea tomato skillet eggs,2,25,162.85,81.43,pending,6
+mushroom-tomato-skillet-eggs,dinner,Huevos en tomate con champiñones,Mushroom tomato skillet eggs,2,25,248.25,124.13,pending,6
+cheese-tomato-skillet-eggs,dinner,Huevos en tomate con queso,Cheese tomato skillet eggs,2,25,168.50,84.25,pending,6
+black-bean-tomato-skillet-eggs,dinner,Huevos en tomate con habichuelas negras,Black bean tomato skillet eggs,2,25,153.65,76.83,pending,6
+zucchini-tomato-skillet-eggs,dinner,Huevos en tomate con calabacín,Zucchini tomato skillet eggs,2,25,161.45,80.73,pending,6
+chicken-broccoli-quinoa-skillet,dinner,Quinoa con pollo y brócoli,Chicken broccoli quinoa skillet,2,30,255.15,127.58,pending,6
+tofu-spinach-quinoa-skillet,dinner,Quinoa con tofu y espinaca,Tofu spinach quinoa skillet,2,30,316.60,158.30,pending,6
+tuna-tomato-quinoa-skillet,dinner,Quinoa con atún y tomate,Tuna tomato quinoa skillet,2,30,286.75,143.38,pending,6
+chickpea-zucchini-quinoa-skillet,dinner,Quinoa con garbanzos y calabacín,Chickpea zucchini quinoa skillet,2,30,191.35,95.68,pending,6
+beef-pepper-quinoa-skillet,dinner,Quinoa con carne y pimiento,Beef pepper quinoa skillet,2,30,283.45,141.73,pending,6
+lentil-carrot-quinoa-skillet,dinner,Quinoa con lentejas y zanahoria,Lentil carrot quinoa skillet,2,30,160.90,80.45,pending,6
+mushroom-cheese-quinoa-skillet,dinner,Quinoa con champiñones y queso,Mushroom cheese quinoa skillet,2,30,291.00,145.50,pending,6
+potato-lentil-soup,dinner,Sopa de lentejas con papa,Potato lentil soup,2,40,185.33,92.67,pending,7
+spinach-lentil-soup,dinner,Sopa de lentejas con espinaca,Spinach lentil soup,2,40,218.88,109.44,pending,7
+broccoli-lentil-soup,dinner,Sopa de lentejas con brócoli,Broccoli lentil soup,2,40,217.38,108.69,pending,7
+sweet-potato-lentil-soup,dinner,Sopa de lentejas con batata,Sweet potato lentil soup,2,40,208.18,104.09,pending,7
+zucchini-lentil-soup,dinner,Sopa de lentejas con calabacín,Zucchini lentil soup,2,40,224.58,112.29,pending,7
+mushroom-lentil-soup,dinner,Sopa de lentejas con champiñones,Mushroom lentil soup,2,40,301.48,150.74,pending,7
+quinoa-lentil-soup,dinner,Sopa de lentejas con quinoa,Quinoa lentil soup,2,40,229.83,114.92,pending,7

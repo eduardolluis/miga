@@ -18,7 +18,11 @@ real con Apple/Google y validación en servidor.
 El catálogo inicial migra **54 recetas (18 desayunos, 18 almuerzos y 18 cenas)**
 a Supabase, con nombres, pasos e ingredientes en español e inglés. Las recetas
 y las fotografías descargadas usan caché local; las nuevas publicaciones no
-requieren actualizar la app. Consulta la [guía del catálogo](docs/recipe-catalog.md).
+requieren actualizar la app. **Es obligatorio publicar primero las recetas y
+las fotografías en Supabase Storage**; Flutter solo carga las URLs públicas y
+no sube los archivos automáticamente. Las fotos fuente se mantienen fuera de
+Git para evitar inflar el repositorio.
+Consulta la [guía de despliegue y verificación](docs/recipe-catalog.md).
 
 ## Organización del código
 

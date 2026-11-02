@@ -1,9 +1,9 @@
-import '../../../support/recipe_catalog.dart';
-
+import 'dart:io';
 import 'dart:ui' as ui;
 
+import '../../../support/recipe_catalog.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:miga/features/recipes/presentation/widgets/recipe_detail_photo.dart';
 import 'package:miga/features/recipes/presentation/widgets/recipe_image.dart';
@@ -27,19 +27,15 @@ void main() {
           ),
         );
         await tester.runAsync(() async {
-          final data = await rootBundle.load(
-            RecipeCatalog.all[index].photo.path,
-          );
-          final codec = await ui.instantiateImageCodec(
-            data.buffer.asUint8List(),
-          );
+          final photo = await File(
+            'supabase/catalog/photos/${RecipeCatalog.all[index].id}.jpg',
+          ).readAsBytes();
+          final codec = await ui.instantiateImageCodec(photo);
           final frame = await codec.getNextFrame();
           frame.image.dispose();
           codec.dispose();
-          await precacheImage(
-            RecipeImage.providerFor(RecipeCatalog.all[index].photo),
-            tester.element(find.byType(RecipeDetailPhoto)),
-          );
+          // Network images are not a dependency of the aspect-ratio test.
+          // A missing remote response is handled by RecipeImage.errorBuilder.
         });
         await tester.pumpAndSettle();
         final image = tester.widget<RecipeImage>(find.byType(RecipeImage));

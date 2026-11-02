@@ -27,6 +27,13 @@ dependencies:
   sign_in_with_apple: ^8.2.0
   cached_network_image: ^4.0.6
 
+# path_provider_foundation 2.6.0 uses objective_c FFI, which can fail to
+# resolve its native library on iOS simulators and real devices. The older
+# method-channel implementation avoids that native-assets regression.
+# Remove this override only after verifying a fixed release on iOS.
+dependency_overrides:
+  path_provider_foundation: 2.5.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

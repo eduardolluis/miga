@@ -50,6 +50,13 @@ app.*.map.json
 
 supabase.env.json
 
+# Recipe source photos are already published to Supabase Storage. Keep generated
+# originals and review contact sheets out of Git and the Flutter app bundle.
+/supabase/catalog/photos/
+/reports/recipe-expansion-photo-review/
+/reports/Miga_Catalogo_250_Revision.html
+devtools_options.yaml
+
 # Supabase CLI cache and project link metadata
 supabase/.temp/
 .kotlin/

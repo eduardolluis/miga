@@ -5,7 +5,7 @@ las cantidades por receta ni una tabla que asigne números a fotografías.
 
 ## Datos y publicación
 
-- Migración: `supabase/migrations/202611010001_recipe_catalog.sql`.
+- Migraciones: `supabase/migrations/202611010001_recipe_catalog.sql` y `202611010002_recipe_photo_bucket_public.sql` (asegura que el bucket sea público).
 - Tabla: `public.miga_recipes`; el ID estable es el mismo que usan favoritos y planes.
 - Contenido: JSON con traducciones `es`/`en`, pasos, porciones base, cantidades,
   unidades, nutrición opcional, etiquetas, procedencia y foto con dimensiones.
@@ -19,8 +19,7 @@ las cantidades por receta ni una tabla que asigne números a fotografías.
 
 El manifiesto `supabase/catalog/recipes.json` conserva las 54 recetas existentes
 como entrada de migración/importación. **No se incluye en el binario Flutter.**
-Los archivos de `assets/images/recipes/v2/` también son entradas del importador y
-fixtures de pruebas, excluidos de los assets de producción.
+Los archivos locales de `supabase/catalog/photos/` son recursos temporales del operador para subir a Storage; se excluyen de Git porque las fotografías publicadas ya viven en Supabase. **No pertenecen a `assets/` ni se empaquetan en la app**.
 
 ## Añadir y actualizar recetas
 
@@ -48,54 +47,74 @@ Las instrucciones, alérgenos, procedencia/licencias de fotos y nutrición deben
 revisarse editorialmente antes de publicar; esas revisiones no se pueden deducir
 solo de que un JSON tenga el formato correcto.
 
-La opción recomendada es usar la sesión autenticada de la CLI de Supabase,
-sin extraer ni guardar claves administrativas:
+## Poner el catálogo en producción (necesario para ver las fotos)
 
-```sh
-node tool/import_recipes.mjs --file /ruta/recetas.json --photos-dir /ruta/fotos --cli --project-ref TU_PROJECT_REF --apply
-node tool/import_recipes.mjs --file /ruta/recetas.json --photos-dir /ruta/fotos --cli --project-ref TU_PROJECT_REF --status published --apply
-```
+La migración y la importación son **dos acciones distintas**. El código Flutter
+no puede publicar fotos ni recetas por sí solo. Un `flutter run` sin estos pasos
+mostrará un catálogo vacío o fotos faltantes. Las 54 fotos originales están en
+`supabase/catalog/photos/` para subirlas; **no se empaquetan en la app móvil**.
 
-El proyecto de esta app es `qythwojltifyhlkarzdh`; comprueba siempre el destino.
-La herramienta usa `supabase storage cp` y `supabase db query` con la sesión de la
-CLI. Los archivos temporales solo contienen fotos y el JSON público del catálogo.
+1. Desde el proyecto, autentica y enlaza la CLI con el proyecto de Supabase
+   correcto; revisa el destino antes de aplicar cambios:
 
-Para automatizaciones que ya tengan `SUPABASE_URL` y
-`SUPABASE_SERVICE_ROLE_KEY` disponibles **solo en el entorno del operador**,
-también se admite la API directa. Importar inicialmente como borradores:
+   ```sh
+   supabase login
+   supabase link --project-ref qythwojltifyhlkarzdh
+   supabase db push --linked
+   ```
 
-```sh
-node tool/import_recipes.mjs --file /ruta/recetas.json --photos-dir /ruta/fotos --apply
-```
+   `db push` aplica las migraciones pendientes en orden. No uses `db reset`
+   remoto: borraría datos. `supabase db query` no es un comando soportado de la CLI.
 
-Después de revisar, publicar exactamente ese archivo:
+2. Consigue la clave **service_role** en el dashboard de Supabase de ese proyecto.
+   Es exclusivamente para el terminal del operador: **nunca** en Flutter,
+   `supabase.env.json`, Git, capturas ni el ZIP compartido. Configura las dos
+   variables de entorno en tu sesión de terminal (sin pegarlas en el chat):
 
-```sh
-node tool/import_recipes.mjs --file /ruta/recetas.json --photos-dir /ruta/fotos --status published --apply
-```
+   ```sh
+   export SUPABASE_URL='https://qythwojltifyhlkarzdh.supabase.co'
+   read -rs 'SUPABASE_SERVICE_ROLE_KEY?Clave service_role: '
+   echo
+   export SUPABASE_SERVICE_ROLE_KEY
+   ```
 
-También se admiten `--status review` y `--status archived`. Para actualizar una
-receta publicada se conserva su ID y se especifica `--status published`;
-el estado predeterminado es siempre `draft`. No se borra el resto del catálogo.
-No se deben guardar claves de administración en `supabase.env.json`, Dart,
-archivos versionados ni parámetros visibles en la línea de comandos.
+   Si usas Bash en vez de Zsh, utiliza `read -rs -p 'Clave service_role: ' SUPABASE_SERVICE_ROLE_KEY`.
 
-Primera importación de las 54 recetas migradas:
+3. Valida y publica las recetas y sus fotos originales. El importador sube
+   primero los archivos con un nombre inmutable basado en su hash, y solo
+   después publica el catálogo. Nunca lo ejecutes dentro de la app:
 
-```sh
-node tool/import_recipes.mjs --status published
-node tool/import_recipes.mjs --status published --cli --project-ref qythwojltifyhlkarzdh --apply
-```
+   ```sh
+   node tool/import_recipes.mjs --status published
+   node tool/import_recipes.mjs --status published --apply
+   unset SUPABASE_SERVICE_ROLE_KEY
+   ```
 
-Aplicar primero la migración SQL al proyecto previsto. En instalaciones ya
-existentes puede ejecutarse con `supabase db query --linked --project-ref
-TU_PROJECT_REF --file supabase/migrations/202611010001_recipe_catalog.sql`.
+   El estado por defecto es `draft`; **usa `--status published`** para que el
+   catálogo sea visible a los usuarios. El importador necesita `service_role`
+   solo cuando lleva `--apply` y no expone la clave en los logs.
 
-Las fotos se suben primero. Si falla una subida, no se escriben metadatos.
-Los 54 documentos se guardan en una única operación transaccional. Reintentar
-una importación es seguro: los archivos son inmutables por hash y el upsert usa
-el ID estable. Un fallo final puede dejar fotos sin referencias, pero no un
-catálogo parcialmente actualizado.
+4. Comprueba la API pública y **cada foto** usando la publishable key que ya
+   usa Flutter (sin permisos administrativos):
+
+   ```sh
+   node tool/verify_recipe_backend.mjs --env supabase.env.json
+   flutter run --dart-define-from-file=supabase.env.json
+   ```
+
+   El verificador detecta migraciones ausentes, un catálogo en borrador,
+   rutas incorrectas y fotos que devuelven 403/404. Si falla, publica primero el
+   backend; las modificaciones de Dart no solucionan un objeto inexistente en
+   Storage. Puedes volver a ejecutar el importador de forma segura.
+
+## Añadir, editar o retirar recetas
+
+Prepara otro JSON con `schema_version: 1` y un array `recipes`; conserva los IDs
+estables para favoritos, planes y compras. Revisa ingredientes, fotos,
+alérgenos y datos nutricionales antes de publicar. Ejecuta el importador con
+`--file` y `--photos-dir` para fotos nuevas; sin `--apply` valida sin conexión.
+`--status draft`, `review`, `published` y `archived` controlan qué ven los
+usuarios. Las recetas nuevas **no requieren actualizar Flutter**.
 
 ## Funcionamiento de la app
 
@@ -138,3 +157,34 @@ Las pruebas cubren caché, reinicios sin conexión, respuestas inválidas, porci
 base distintas de dos, planes históricos, búsqueda y paginación remotas,
 publicación, permisos de lectura/escritura e importaciones sin cambios parciales.
 Los fixtures y repositorios en memoria se inyectan exclusivamente desde `test/`.
+
+## Expansión de 196 recetas
+
+Las fotografías individuales nuevas se guardan en
+`supabase/catalog/photos/new/<id-de-receta>.jpg`. El registro de prompts y
+destinos está en `reports/recipe-expansion-photo-prompts-2026-11-01.json`;
+son imágenes ilustrativas generadas con la herramienta integrada `image_gen`.
+
+El siguiente comando exige que estén las 196 fotografías, comprueba sus
+dimensiones y valida las recetas con el mismo importador del catálogo original:
+
+```sh
+node tool/publish_recipe_expansion.mjs
+```
+
+Produce los manifiestos `recipes-250-import-ready.json` y
+`recipes-196-import-ready.json` dentro de `supabase/catalog/`. No publica nada
+sin `--apply`. Para publicar, carga la clave administrativa en el entorno del
+terminal del operador y ejecuta:
+
+```sh
+source /private/tmp/miga-supabase-admin.env
+node tool/publish_recipe_expansion.mjs --apply
+```
+
+El proyecto de destino se toma de `supabase.env.json`; la clave administrativa
+solo se lee del entorno. Se suben las 196 fotos y se actualizan únicamente los
+196 IDs nuevos. Después se verifica la instantánea pública que consume Flutter,
+el contenido de cada receta importada, la conservación de las 54 originales y
+el acceso público a todas las fotografías. Una publicación verificada genera
+`reports/recipe-expansion-publication.json` sin credenciales.

@@ -51,8 +51,13 @@ class SupabaseRecipeSource implements RecipeSource {
   SupabaseRecipeSource(this.client);
   final SupabaseClient client;
   @override
-  String get imageBaseUrl =>
-      client.storage.from('recipe-photos').getPublicUrl('');
+  String get imageBaseUrl {
+    // Using an explicit object name avoids assumptions about the separator
+    // returned by future versions of the Supabase Storage SDK.
+    const probe = '__miga_public_photo_base__';
+    final url = client.storage.from('recipe-photos').getPublicUrl(probe);
+    return url.substring(0, url.length - probe.length);
+  }
   @override
   Future<List<Map<String, dynamic>>> snapshot() async {
     // One SQL snapshot avoids mixing pages from different catalog revisions.

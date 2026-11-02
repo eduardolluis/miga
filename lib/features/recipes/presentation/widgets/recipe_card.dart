@@ -40,7 +40,7 @@ class RecipeCard extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              RecipeImage(photo: recipe.photo),
+              RecipeImage(photo: recipe.photo, useThumbnail: true),
               const DecoratedBox(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(

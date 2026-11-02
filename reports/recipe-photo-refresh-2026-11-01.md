@@ -1,11 +1,11 @@
 # Recipe photo refresh
 
-Generated with the built-in `image_gen` tool. These are illustrative recipe photos. Original generated PNGs remain in the Codex generated-images directory; optimized JPEG copies are bundled with the app.
+Generated with the built-in `image_gen` tool. These are illustrative recipe photos. The optimized final JPEG sources are now in the Supabase catalog import folder, not bundled in the app. Earlier local duplicates were removed.
 
 Final assets:
 
-- `assets/images/home/recipe_lentil-tomato-stew-v2.jpg` — 1448 × 1086, recipe image 49.
-- `assets/images/home/recipe_chicken-potato-tray-v2.jpg` — 1448 × 1086, recipe image 50.
+- `supabase/catalog/photos/lentil-tomato-stew.jpg` — 1448 × 1086, recipe image 49.
+- `supabase/catalog/photos/chicken-potato-tray.jpg` — 1448 × 1086, recipe image 50.
 
 The detail view uses the image proportions and `BoxFit.contain`, with a height limit for small screens. Recipe cards retain `BoxFit.cover`.
 

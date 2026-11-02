@@ -1,0 +1,1186 @@
+{
+  "generator": "built-in image_gen",
+  "requested_images": 196,
+  "format": "JPEG",
+  "composition": "landscape 4:3",
+  "recipes": [
+    {
+      "id": "apple-walnut-cinnamon-oatmeal",
+      "title_es": "Avena con manzana, nueces y canela",
+      "file": "supabase/catalog/photos/new/apple-walnut-cinnamon-oatmeal.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga recipe photograph. Create ONE landscape 4:3 editorial food photograph of apple walnut cinnamon oatmeal: creamy cooked rolled oats with milk, apple pieces, chopped walnuts and a light dusting of cinnamon. Only these food ingredients. A single cream ceramic bowl centered on warm wood and cream linen, soft side daylight, natural realistic appetizing home cooking. Slightly overhead 45 degree view, entire bowl visible with 12 percent margin all sides, food central 65 percent for safe card crops. No text, no watermark, no people, no collage. This image will be saved as apple-walnut-cinnamon-oatmeal.jpg."
+    },
+    {
+      "id": "mango-granola-oatmeal",
+      "title_es": "Avena de mango y granola",
+      "file": "supabase/catalog/photos/new/mango-granola-oatmeal.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mango granola oatmeal. Recipe food ingredients: oats, milk, cinnamon, mango, granola. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "strawberry-peanut-butter-oatmeal",
+      "title_es": "Avena con fresas y crema de maní",
+      "file": "supabase/catalog/photos/new/strawberry-peanut-butter-oatmeal.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Strawberry peanut butter oatmeal. Recipe food ingredients: oats, milk, cinnamon, strawberries, peanutButter. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "banana-pineapple-oatmeal",
+      "title_es": "Avena con banana y piña",
+      "file": "supabase/catalog/photos/new/banana-pineapple-oatmeal.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Banana pineapple oatmeal. Recipe food ingredients: oats, milk, cinnamon, banana, pineapple. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "apple-yogurt-oatmeal",
+      "title_es": "Avena con manzana y yogur",
+      "file": "supabase/catalog/photos/new/apple-yogurt-oatmeal.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Apple yogurt oatmeal. Recipe food ingredients: oats, milk, cinnamon, apple, yogurt. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mango-walnut-oatmeal",
+      "title_es": "Avena con mango y nueces",
+      "file": "supabase/catalog/photos/new/mango-walnut-oatmeal.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mango walnut oatmeal. Recipe food ingredients: oats, milk, cinnamon, mango, walnuts. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "strawberry-banana-overnight-oats",
+      "title_es": "Avena nocturna de fresa y banana",
+      "file": "supabase/catalog/photos/new/strawberry-banana-overnight-oats.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Strawberry banana overnight oats. Recipe food ingredients: oats, milk, yogurt, strawberries, banana. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "apple-cinnamon-overnight-oats",
+      "title_es": "Avena nocturna de manzana y canela",
+      "file": "supabase/catalog/photos/new/apple-cinnamon-overnight-oats.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Apple cinnamon overnight oats. Recipe food ingredients: oats, milk, yogurt, apple, cinnamon. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mango-pineapple-overnight-oats",
+      "title_es": "Avena nocturna de mango y piña",
+      "file": "supabase/catalog/photos/new/mango-pineapple-overnight-oats.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mango pineapple overnight oats. Recipe food ingredients: oats, milk, yogurt, mango, pineapple. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "peanut-banana-overnight-oats",
+      "title_es": "Avena nocturna con mantequilla de maní y banana",
+      "file": "supabase/catalog/photos/new/peanut-banana-overnight-oats.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Peanut banana overnight oats. Recipe food ingredients: oats, milk, yogurt, peanutButter, banana. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "strawberry-walnut-overnight-oats",
+      "title_es": "Avena nocturna de fresa y nueces",
+      "file": "supabase/catalog/photos/new/strawberry-walnut-overnight-oats.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Strawberry walnut overnight oats. Recipe food ingredients: oats, milk, yogurt, strawberries, walnuts. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "apple-granola-overnight-oats",
+      "title_es": "Avena nocturna de manzana y granola",
+      "file": "supabase/catalog/photos/new/apple-granola-overnight-oats.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Apple granola overnight oats. Recipe food ingredients: oats, milk, yogurt, apple, granola. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mango-banana-yogurt-bowl",
+      "title_es": "Yogur con mango y banana",
+      "file": "supabase/catalog/photos/new/mango-banana-yogurt-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mango banana yogurt bowl. Recipe food ingredients: yogurt, granola, mango, banana. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "apple-cinnamon-yogurt-bowl",
+      "title_es": "Yogur con manzana y canela",
+      "file": "supabase/catalog/photos/new/apple-cinnamon-yogurt-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Apple cinnamon yogurt bowl. Recipe food ingredients: yogurt, granola, apple, cinnamon. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "strawberry-walnut-yogurt-bowl",
+      "title_es": "Yogur con fresa y nueces",
+      "file": "supabase/catalog/photos/new/strawberry-walnut-yogurt-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Strawberry walnut yogurt bowl. Recipe food ingredients: yogurt, granola, strawberries, walnuts. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "pineapple-mango-yogurt-bowl",
+      "title_es": "Yogur tropical de piña y mango",
+      "file": "supabase/catalog/photos/new/pineapple-mango-yogurt-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Pineapple mango yogurt bowl. Recipe food ingredients: yogurt, granola, pineapple, mango. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "peanut-banana-yogurt-bowl",
+      "title_es": "Yogur con banana y mantequilla de maní",
+      "file": "supabase/catalog/photos/new/peanut-banana-yogurt-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Peanut banana yogurt bowl. Recipe food ingredients: yogurt, granola, banana, peanutButter. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "strawberry-pineapple-walnut-yogurt-bowl",
+      "title_es": "Yogur de fresa, piña y nueces",
+      "file": "supabase/catalog/photos/new/strawberry-pineapple-walnut-yogurt-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Strawberry pineapple walnut yogurt bowl. Recipe food ingredients: yogurt, granola, strawberries, pineapple, walnuts. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mango-oat-yogurt-smoothie",
+      "title_es": "Batido de mango, avena y yogur",
+      "file": "supabase/catalog/photos/new/mango-oat-yogurt-smoothie.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. ONE landscape 4:3 realistic editorial food photograph of Mango oat yogurt smoothie. Ingredients: milk, yogurt, mango, oats. The ingredients are blended into a smooth DRINK served in ONE clear drinking GLASS on a cream saucer, NOT a bowl, not oatmeal. The glass contains a homogeneous creamy liquid smoothie with believable color and texture. Only listed ingredients, a tiny appropriate fruit topping allowed. Centered glass fully visible, 12 percent margin all sides, warm wood tabletop and cream linen, soft natural side daylight, slightly overhead 45-degree view, restrained styling. No text, no people, no watermark, no collage.",
+      "generated_source": "/Users/daniel/.codex/generated_images/01a1988b-dd72-7dc2-af55-acc8f23596ca/exec-95447bf6-b60d-44f9-98eb-c43a25ea1887.png"
+    },
+    {
+      "id": "peanut-banana-smoothie",
+      "title_es": "Batido de banana y maní",
+      "file": "supabase/catalog/photos/new/peanut-banana-smoothie.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. ONE landscape 4:3 realistic editorial food photograph of Peanut banana smoothie. Ingredients: milk, yogurt, banana, peanutButter. The ingredients are blended into a smooth DRINK served in ONE clear drinking GLASS on a cream saucer, NOT a bowl, not oatmeal. The glass contains a homogeneous creamy liquid smoothie with believable color and texture. Only listed ingredients, a tiny appropriate fruit topping allowed. Centered glass fully visible, 12 percent margin all sides, warm wood tabletop and cream linen, soft natural side daylight, slightly overhead 45-degree view, restrained styling. No text, no people, no watermark, no collage.",
+      "generated_source": "/Users/daniel/.codex/generated_images/01a1988b-dd72-7dc2-af55-acc8f23596ca/exec-b05bbc89-25ea-41e8-97a0-5efd43e82582.png"
+    },
+    {
+      "id": "strawberry-banana-smoothie",
+      "title_es": "Batido de fresa y banana",
+      "file": "supabase/catalog/photos/new/strawberry-banana-smoothie.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Strawberry banana smoothie. Recipe food ingredients: milk, yogurt, strawberries, banana. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "pineapple-spinach-smoothie",
+      "title_es": "Batido verde de piña y espinaca",
+      "file": "supabase/catalog/photos/new/pineapple-spinach-smoothie.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Pineapple spinach smoothie. Recipe food ingredients: milk, yogurt, pineapple, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "apple-cinnamon-smoothie",
+      "title_es": "Batido de manzana y canela",
+      "file": "supabase/catalog/photos/new/apple-cinnamon-smoothie.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Apple cinnamon smoothie. Recipe food ingredients: milk, yogurt, apple, cinnamon. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mango-pineapple-smoothie",
+      "title_es": "Batido tropical de mango y piña",
+      "file": "supabase/catalog/photos/new/mango-pineapple-smoothie.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mango pineapple smoothie. Recipe food ingredients: milk, yogurt, mango, pineapple. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tomato-spinach-scrambled-eggs",
+      "title_es": "Revoltillo de tomate y espinaca",
+      "file": "supabase/catalog/photos/new/tomato-spinach-scrambled-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tomato spinach scrambled eggs. Recipe food ingredients: eggs, oliveOil, salt, tomatoes, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-onion-scrambled-eggs",
+      "title_es": "Revoltillo de champiñones y cebolla",
+      "file": "supabase/catalog/photos/new/mushroom-onion-scrambled-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom onion scrambled eggs. Recipe food ingredients: eggs, oliveOil, salt, mushrooms, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "broccoli-cheese-scrambled-eggs",
+      "title_es": "Revoltillo de brócoli y queso",
+      "file": "supabase/catalog/photos/new/broccoli-cheese-scrambled-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Broccoli cheese scrambled eggs. Recipe food ingredients: eggs, oliveOil, salt, broccoli, cheese. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "pepper-tomato-scrambled-eggs",
+      "title_es": "Revoltillo de pimiento y tomate",
+      "file": "supabase/catalog/photos/new/pepper-tomato-scrambled-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Pepper tomato scrambled eggs. Recipe food ingredients: eggs, oliveOil, salt, bellPepper, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "zucchini-herb-scrambled-eggs",
+      "title_es": "Revoltillo de calabacín y hierbas",
+      "file": "supabase/catalog/photos/new/zucchini-herb-scrambled-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Zucchini herb scrambled eggs. Recipe food ingredients: eggs, oliveOil, salt, zucchini, herbs. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "spinach-black-bean-scrambled-eggs",
+      "title_es": "Revoltillo de espinaca y habichuelas negras",
+      "file": "supabase/catalog/photos/new/spinach-black-bean-scrambled-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Spinach black bean scrambled eggs. Recipe food ingredients: eggs, oliveOil, salt, spinach, blackBeans. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "spinach-mushroom-cheese-omelet",
+      "title_es": "Omelette de espinaca, champiñones y queso",
+      "file": "supabase/catalog/photos/new/spinach-mushroom-cheese-omelet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Spinach mushroom cheese omelet. Recipe food ingredients: eggs, oliveOil, salt, spinach, cheese, mushrooms. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tomato-basil-omelet",
+      "title_es": "Omelette de tomate y albahaca",
+      "file": "supabase/catalog/photos/new/tomato-basil-omelet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tomato basil omelet. Recipe food ingredients: eggs, oliveOil, salt, tomatoes, basil. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-broccoli-omelet",
+      "title_es": "Omelette de champiñones y brócoli",
+      "file": "supabase/catalog/photos/new/mushroom-broccoli-omelet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom broccoli omelet. Recipe food ingredients: eggs, oliveOil, salt, mushrooms, broccoli. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "pepper-onion-omelet",
+      "title_es": "Omelette de pimiento y cebolla",
+      "file": "supabase/catalog/photos/new/pepper-onion-omelet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Pepper onion omelet. Recipe food ingredients: eggs, oliveOil, salt, bellPepper, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "zucchini-cheese-omelet",
+      "title_es": "Omelette de calabacín y queso",
+      "file": "supabase/catalog/photos/new/zucchini-cheese-omelet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Zucchini cheese omelet. Recipe food ingredients: eggs, oliveOil, salt, zucchini, cheese. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "avocado-tomato-omelet",
+      "title_es": "Omelette de aguacate y tomate",
+      "file": "supabase/catalog/photos/new/avocado-tomato-omelet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Avocado tomato omelet. Recipe food ingredients: eggs, oliveOil, salt, avocado, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "avocado-egg-tomato-toast",
+      "title_es": "Tostadas de aguacate, huevo y tomate",
+      "file": "supabase/catalog/photos/new/avocado-egg-tomato-toast.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Avocado egg tomato toast. Recipe food ingredients: bread, oliveOil, avocado, eggs, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-tomato-toast",
+      "title_es": "Tostadas de atún y tomate",
+      "file": "supabase/catalog/photos/new/tuna-tomato-toast.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna tomato toast. Recipe food ingredients: bread, oliveOil, tuna, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "apple-peanut-toast",
+      "title_es": "Tostadas con manzana y mantequilla de maní",
+      "file": "supabase/catalog/photos/new/apple-peanut-toast.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Apple peanut toast. Recipe food ingredients: bread, oliveOil, apple, peanutButter. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "cheesy-mushroom-toast",
+      "title_es": "Tostadas de queso y champiñones",
+      "file": "supabase/catalog/photos/new/cheesy-mushroom-toast.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Cheesy mushroom toast. Recipe food ingredients: bread, oliveOil, cheese, mushrooms. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "egg-spinach-toast",
+      "title_es": "Tostadas de huevo y espinaca",
+      "file": "supabase/catalog/photos/new/egg-spinach-toast.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Egg spinach toast. Recipe food ingredients: bread, oliveOil, eggs, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tomato-basil-toast",
+      "title_es": "Tostadas de tomate y albahaca",
+      "file": "supabase/catalog/photos/new/tomato-basil-toast.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tomato basil toast. Recipe food ingredients: bread, oliveOil, tomatoes, basil. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "egg-tomato-sandwich",
+      "title_es": "Sándwich de huevo y tomate",
+      "file": "supabase/catalog/photos/new/egg-tomato-sandwich.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Egg tomato sandwich. Recipe food ingredients: bread, eggs, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-avocado-sandwich",
+      "title_es": "Sándwich de pollo y aguacate",
+      "file": "supabase/catalog/photos/new/chicken-avocado-sandwich.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken avocado sandwich. Recipe food ingredients: bread, chicken, avocado. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-cucumber-sandwich",
+      "title_es": "Sándwich de atún y pepino",
+      "file": "supabase/catalog/photos/new/tuna-cucumber-sandwich.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna cucumber sandwich. Recipe food ingredients: bread, tuna, cucumber. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "cheese-spinach-sandwich",
+      "title_es": "Sándwich de queso y espinaca",
+      "file": "supabase/catalog/photos/new/cheese-spinach-sandwich.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Cheese spinach sandwich. Recipe food ingredients: bread, cheese, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "egg-pepper-sandwich",
+      "title_es": "Sándwich de huevo y pimiento",
+      "file": "supabase/catalog/photos/new/egg-pepper-sandwich.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Egg pepper sandwich. Recipe food ingredients: bread, eggs, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-tomato-sandwich",
+      "title_es": "Sándwich de garbanzos y tomate",
+      "file": "supabase/catalog/photos/new/chickpea-tomato-sandwich.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea tomato sandwich. Recipe food ingredients: bread, chickpeas, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "egg-spinach-potato-hash",
+      "title_es": "Papas salteadas con huevo y espinaca",
+      "file": "supabase/catalog/photos/new/egg-spinach-potato-hash.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Egg spinach potato hash. Recipe food ingredients: potatoes, oliveOil, onion, salt, eggs, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-pepper-potato-hash",
+      "title_es": "Papas salteadas con pollo y pimiento",
+      "file": "supabase/catalog/photos/new/chicken-pepper-potato-hash.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken pepper potato hash. Recipe food ingredients: potatoes, oliveOil, onion, salt, chicken, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-tomato-potato-hash",
+      "title_es": "Papas salteadas con carne y tomate",
+      "file": "supabase/catalog/photos/new/beef-tomato-potato-hash.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef tomato potato hash. Recipe food ingredients: potatoes, oliveOil, onion, salt, groundBeef, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-cheese-potato-hash",
+      "title_es": "Papas salteadas con champiñones y queso",
+      "file": "supabase/catalog/photos/new/mushroom-cheese-potato-hash.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom cheese potato hash. Recipe food ingredients: potatoes, oliveOil, onion, salt, mushrooms, cheese. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "broccoli-egg-potato-hash",
+      "title_es": "Papas salteadas con brócoli y huevo",
+      "file": "supabase/catalog/photos/new/broccoli-egg-potato-hash.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Broccoli egg potato hash. Recipe food ingredients: potatoes, oliveOil, onion, salt, broccoli, eggs. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "black-bean-potato-hash",
+      "title_es": "Papas salteadas con habichuelas negras",
+      "file": "supabase/catalog/photos/new/black-bean-potato-hash.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Black bean potato hash. Recipe food ingredients: potatoes, oliveOil, onion, salt, blackBeans, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "spinach-tomato-quesadilla",
+      "title_es": "Quesadilla de espinaca y tomate",
+      "file": "supabase/catalog/photos/new/spinach-tomato-quesadilla.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Spinach tomato quesadilla. Recipe food ingredients: tortilla, cheese, spinach, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "egg-pepper-quesadilla",
+      "title_es": "Quesadilla de huevo y pimiento",
+      "file": "supabase/catalog/photos/new/egg-pepper-quesadilla.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Egg pepper quesadilla. Recipe food ingredients: tortilla, cheese, eggs, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-onion-quesadilla",
+      "title_es": "Quesadilla de champiñones y cebolla",
+      "file": "supabase/catalog/photos/new/mushroom-onion-quesadilla.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom onion quesadilla. Recipe food ingredients: tortilla, cheese, mushrooms, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "black-bean-quesadilla",
+      "title_es": "Quesadilla de habichuelas negras",
+      "file": "supabase/catalog/photos/new/black-bean-quesadilla.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Black bean quesadilla. Recipe food ingredients: tortilla, cheese, blackBeans, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-spinach-quesadilla",
+      "title_es": "Quesadilla de pollo y espinaca",
+      "file": "supabase/catalog/photos/new/chicken-spinach-quesadilla.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken spinach quesadilla. Recipe food ingredients: tortilla, cheese, chicken, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "zucchini-herb-quesadilla",
+      "title_es": "Quesadilla de calabacín y hierbas",
+      "file": "supabase/catalog/photos/new/zucchini-herb-quesadilla.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Zucchini herb quesadilla. Recipe food ingredients: tortilla, cheese, zucchini, herbs. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-broccoli-carrot-rice-bowl",
+      "title_es": "Bowl de pollo con brócoli y zanahoria",
+      "file": "supabase/catalog/photos/new/chicken-broccoli-carrot-rice-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken broccoli carrot rice bowl. Recipe food ingredients: rice, chicken, oliveOil, salt, broccoli, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-pepper-onion-rice-bowl",
+      "title_es": "Bowl de pollo con pimiento y cebolla",
+      "file": "supabase/catalog/photos/new/chicken-pepper-onion-rice-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken pepper onion rice bowl. Recipe food ingredients: rice, chicken, oliveOil, salt, bellPepper, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-spinach-tomato-rice-bowl",
+      "title_es": "Bowl de pollo con espinaca y tomate",
+      "file": "supabase/catalog/photos/new/chicken-spinach-tomato-rice-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken spinach tomato rice bowl. Recipe food ingredients: rice, chicken, oliveOil, salt, spinach, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-zucchini-garlic-rice-bowl",
+      "title_es": "Bowl de pollo con calabacín y ajo",
+      "file": "supabase/catalog/photos/new/chicken-zucchini-garlic-rice-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken zucchini garlic rice bowl. Recipe food ingredients: rice, chicken, oliveOil, salt, zucchini, garlic. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-mushroom-rice-bowl",
+      "title_es": "Bowl de pollo con champiñones",
+      "file": "supabase/catalog/photos/new/chicken-mushroom-rice-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken mushroom rice bowl. Recipe food ingredients: rice, chicken, oliveOil, salt, mushrooms, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "pineapple-pepper-chicken-rice-bowl",
+      "title_es": "Bowl de pollo con piña y pimiento",
+      "file": "supabase/catalog/photos/new/pineapple-pepper-chicken-rice-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Pineapple pepper chicken rice bowl. Recipe food ingredients: rice, chicken, oliveOil, salt, pineapple, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-avocado-tomato-rice-bowl",
+      "title_es": "Bowl de pollo con aguacate y tomate",
+      "file": "supabase/catalog/photos/new/chicken-avocado-tomato-rice-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken avocado tomato rice bowl. Recipe food ingredients: rice, chicken, oliveOil, salt, avocado, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-black-bean-rice-bowl",
+      "title_es": "Bowl de pollo con habichuelas negras",
+      "file": "supabase/catalog/photos/new/chicken-black-bean-rice-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken black bean rice bowl. Recipe food ingredients: rice, chicken, oliveOil, salt, blackBeans, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-cucumber-tomato-quinoa",
+      "title_es": "Quinoa con atún, pepino y tomate",
+      "file": "supabase/catalog/photos/new/tuna-cucumber-tomato-quinoa.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna cucumber tomato quinoa. Recipe food ingredients: quinoa, tuna, oliveOil, lemon, cucumber, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-avocado-quinoa",
+      "title_es": "Quinoa con atún y aguacate",
+      "file": "supabase/catalog/photos/new/tuna-avocado-quinoa.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna avocado quinoa. Recipe food ingredients: quinoa, tuna, oliveOil, lemon, avocado, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-spinach-quinoa",
+      "title_es": "Quinoa con atún y espinaca",
+      "file": "supabase/catalog/photos/new/tuna-spinach-quinoa.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna spinach quinoa. Recipe food ingredients: quinoa, tuna, oliveOil, lemon, spinach, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-pepper-onion-quinoa",
+      "title_es": "Quinoa con atún, pimiento y cebolla",
+      "file": "supabase/catalog/photos/new/tuna-pepper-onion-quinoa.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna pepper onion quinoa. Recipe food ingredients: quinoa, tuna, oliveOil, lemon, bellPepper, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-chickpea-quinoa",
+      "title_es": "Quinoa con atún y garbanzos",
+      "file": "supabase/catalog/photos/new/tuna-chickpea-quinoa.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna chickpea quinoa. Recipe food ingredients: quinoa, tuna, oliveOil, lemon, chickpeas, cucumber. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-broccoli-lemon-quinoa",
+      "title_es": "Quinoa con atún, brócoli y limón",
+      "file": "supabase/catalog/photos/new/tuna-broccoli-lemon-quinoa.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna broccoli lemon quinoa. Recipe food ingredients: quinoa, tuna, oliveOil, lemon, broccoli, herbs. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-mushroom-quinoa",
+      "title_es": "Quinoa con atún y champiñones",
+      "file": "supabase/catalog/photos/new/tuna-mushroom-quinoa.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna mushroom quinoa. Recipe food ingredients: quinoa, tuna, oliveOil, lemon, mushrooms, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "pineapple-tuna-quinoa",
+      "title_es": "Quinoa tropical con atún y piña",
+      "file": "supabase/catalog/photos/new/pineapple-tuna-quinoa.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Pineapple tuna quinoa. Recipe food ingredients: quinoa, tuna, oliveOil, lemon, pineapple, cucumber. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "black-bean-pepper-rice",
+      "title_es": "Arroz con habichuelas negras y pimiento",
+      "file": "supabase/catalog/photos/new/black-bean-pepper-rice.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Black bean pepper rice. Recipe food ingredients: rice, oliveOil, onion, garlic, salt, blackBeans, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-carrot-rice",
+      "title_es": "Arroz con garbanzos y zanahoria",
+      "file": "supabase/catalog/photos/new/chickpea-carrot-rice.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea carrot rice. Recipe food ingredients: rice, oliveOil, onion, garlic, salt, chickpeas, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-broccoli-carrot-rice",
+      "title_es": "Arroz con tofu, brócoli y zanahoria",
+      "file": "supabase/catalog/photos/new/tofu-broccoli-carrot-rice.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu broccoli carrot rice. Recipe food ingredients: rice, oliveOil, onion, garlic, salt, tofu, broccoli, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "egg-spinach-rice",
+      "title_es": "Arroz con huevo y espinaca",
+      "file": "supabase/catalog/photos/new/egg-spinach-rice.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Egg spinach rice. Recipe food ingredients: rice, oliveOil, onion, garlic, salt, eggs, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "lentil-tomato-rice",
+      "title_es": "Arroz con lentejas y tomate",
+      "file": "supabase/catalog/photos/new/lentil-tomato-rice.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Lentil tomato rice. Recipe food ingredients: rice, oliveOil, onion, garlic, salt, lentils, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-zucchini-rice",
+      "title_es": "Arroz con champiñones y calabacín",
+      "file": "supabase/catalog/photos/new/mushroom-zucchini-rice.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom zucchini rice. Recipe food ingredients: rice, oliveOil, onion, garlic, salt, mushrooms, zucchini. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-carrot-rice",
+      "title_es": "Arroz con atún y zanahoria",
+      "file": "supabase/catalog/photos/new/tuna-carrot-rice.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna carrot rice. Recipe food ingredients: rice, oliveOil, onion, garlic, salt, tuna, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-green-veggie-rice",
+      "title_es": "Arroz con pollo y vegetales verdes",
+      "file": "supabase/catalog/photos/new/chicken-green-veggie-rice.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken green veggie rice. Recipe food ingredients: rice, oliveOil, onion, garlic, salt, chicken, broccoli, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-cucumber-pasta-salad",
+      "title_es": "Ensalada de pasta con atún y pepino",
+      "file": "supabase/catalog/photos/new/tuna-cucumber-pasta-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna cucumber pasta salad. Recipe food ingredients: pasta, oliveOil, lemon, tuna, cucumber. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-tomato-pasta-salad",
+      "title_es": "Ensalada de pasta con pollo y tomate",
+      "file": "supabase/catalog/photos/new/chicken-tomato-pasta-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken tomato pasta salad. Recipe food ingredients: pasta, oliveOil, lemon, chicken, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-pasta-salad",
+      "title_es": "Ensalada de pasta con garbanzos",
+      "file": "supabase/catalog/photos/new/chickpea-pasta-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea pasta salad. Recipe food ingredients: pasta, oliveOil, lemon, chickpeas, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "cheese-basil-pasta-salad",
+      "title_es": "Ensalada de pasta con queso y albahaca",
+      "file": "supabase/catalog/photos/new/cheese-basil-pasta-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Cheese basil pasta salad. Recipe food ingredients: pasta, oliveOil, lemon, cheese, tomatoes, basil. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "broccoli-pasta-salad",
+      "title_es": "Ensalada de pasta con brócoli",
+      "file": "supabase/catalog/photos/new/broccoli-pasta-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Broccoli pasta salad. Recipe food ingredients: pasta, oliveOil, lemon, broccoli, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "spinach-mushroom-pasta-salad",
+      "title_es": "Ensalada de pasta con espinaca y champiñones",
+      "file": "supabase/catalog/photos/new/spinach-mushroom-pasta-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Spinach mushroom pasta salad. Recipe food ingredients: pasta, oliveOil, lemon, spinach, mushrooms. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "avocado-tomato-pasta-salad",
+      "title_es": "Ensalada de pasta con aguacate y tomate",
+      "file": "supabase/catalog/photos/new/avocado-tomato-pasta-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Avocado tomato pasta salad. Recipe food ingredients: pasta, oliveOil, lemon, avocado, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "pineapple-chicken-pasta-salad",
+      "title_es": "Ensalada tropical de pasta con piña y pollo",
+      "file": "supabase/catalog/photos/new/pineapple-chicken-pasta-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Pineapple chicken pasta salad. Recipe food ingredients: pasta, oliveOil, lemon, pineapple, chicken. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-spinach-tomato-pasta",
+      "title_es": "Pasta de pollo y espinaca",
+      "file": "supabase/catalog/photos/new/chicken-spinach-tomato-pasta.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken spinach tomato pasta. Recipe food ingredients: pasta, tomatoes, oliveOil, garlic, salt, chicken, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-basil-tomato-pasta",
+      "title_es": "Pasta de atún y albahaca",
+      "file": "supabase/catalog/photos/new/tuna-basil-tomato-pasta.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna basil tomato pasta. Recipe food ingredients: pasta, tomatoes, oliveOil, garlic, salt, tuna, basil. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-cheese-tomato-pasta",
+      "title_es": "Pasta de champiñones y queso",
+      "file": "supabase/catalog/photos/new/mushroom-cheese-tomato-pasta.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom cheese tomato pasta. Recipe food ingredients: pasta, tomatoes, oliveOil, garlic, salt, mushrooms, cheese. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "ground-beef-pepper-pasta",
+      "title_es": "Pasta con carne molida y pimiento",
+      "file": "supabase/catalog/photos/new/ground-beef-pepper-pasta.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Ground beef pepper pasta. Recipe food ingredients: pasta, tomatoes, oliveOil, garlic, salt, groundBeef, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-spinach-pasta",
+      "title_es": "Pasta con garbanzos y espinaca",
+      "file": "supabase/catalog/photos/new/chickpea-spinach-pasta.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea spinach pasta. Recipe food ingredients: pasta, tomatoes, oliveOil, garlic, salt, chickpeas, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "zucchini-basil-tomato-pasta",
+      "title_es": "Pasta de calabacín y albahaca",
+      "file": "supabase/catalog/photos/new/zucchini-basil-tomato-pasta.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Zucchini basil tomato pasta. Recipe food ingredients: pasta, tomatoes, oliveOil, garlic, salt, zucchini, basil. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "broccoli-chicken-tomato-pasta",
+      "title_es": "Pasta con brócoli y pollo",
+      "file": "supabase/catalog/photos/new/broccoli-chicken-tomato-pasta.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Broccoli chicken tomato pasta. Recipe food ingredients: pasta, tomatoes, oliveOil, garlic, salt, broccoli, chicken. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "lentil-carrot-tomato-pasta",
+      "title_es": "Pasta con lentejas y zanahoria",
+      "file": "supabase/catalog/photos/new/lentil-carrot-tomato-pasta.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Lentil carrot tomato pasta. Recipe food ingredients: pasta, tomatoes, oliveOil, garlic, salt, lentils, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-cucumber-tomato-salad",
+      "title_es": "Ensalada de garbanzos con pepino y tomate",
+      "file": "supabase/catalog/photos/new/chickpea-cucumber-tomato-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea cucumber tomato salad. Recipe food ingredients: chickpeas, oliveOil, lemon, cucumber, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-tuna-salad",
+      "title_es": "Ensalada de garbanzos con atún",
+      "file": "supabase/catalog/photos/new/chickpea-tuna-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea tuna salad. Recipe food ingredients: chickpeas, oliveOil, lemon, tuna, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-avocado-salad",
+      "title_es": "Ensalada de garbanzos con aguacate",
+      "file": "supabase/catalog/photos/new/chickpea-avocado-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea avocado salad. Recipe food ingredients: chickpeas, oliveOil, lemon, avocado, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-spinach-salad",
+      "title_es": "Ensalada de garbanzos con espinaca",
+      "file": "supabase/catalog/photos/new/chickpea-spinach-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea spinach salad. Recipe food ingredients: chickpeas, oliveOil, lemon, spinach, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-quinoa-salad",
+      "title_es": "Ensalada de garbanzos y quinoa",
+      "file": "supabase/catalog/photos/new/chickpea-quinoa-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea quinoa salad. Recipe food ingredients: chickpeas, oliveOil, lemon, quinoa, cucumber. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-carrot-salad",
+      "title_es": "Ensalada de garbanzos y zanahoria",
+      "file": "supabase/catalog/photos/new/chickpea-carrot-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea carrot salad. Recipe food ingredients: chickpeas, oliveOil, lemon, carrot, herbs. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-broccoli-salad",
+      "title_es": "Ensalada de garbanzos con brócoli",
+      "file": "supabase/catalog/photos/new/chickpea-broccoli-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea broccoli salad. Recipe food ingredients: chickpeas, oliveOil, lemon, broccoli, garlic. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-cheese-salad",
+      "title_es": "Ensalada de garbanzos y queso",
+      "file": "supabase/catalog/photos/new/chickpea-cheese-salad.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea cheese salad. Recipe food ingredients: chickpeas, oliveOil, lemon, cheese, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "carrot-tomato-lentil-bowl",
+      "title_es": "Lentejas con zanahoria y tomate",
+      "file": "supabase/catalog/photos/new/carrot-tomato-lentil-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Carrot tomato lentil bowl. Recipe food ingredients: lentils, oliveOil, onion, garlic, carrot, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "broccoli-spinach-lentil-bowl",
+      "title_es": "Lentejas con brócoli y espinaca",
+      "file": "supabase/catalog/photos/new/broccoli-spinach-lentil-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Broccoli spinach lentil bowl. Recipe food ingredients: lentils, oliveOil, onion, garlic, broccoli, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "zucchini-lentil-bowl",
+      "title_es": "Lentejas con calabacín",
+      "file": "supabase/catalog/photos/new/zucchini-lentil-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Zucchini lentil bowl. Recipe food ingredients: lentils, oliveOil, onion, garlic, zucchini, herbs. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "potato-carrot-lentil-bowl",
+      "title_es": "Lentejas con papa y zanahoria",
+      "file": "supabase/catalog/photos/new/potato-carrot-lentil-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Potato carrot lentil bowl. Recipe food ingredients: lentils, oliveOil, onion, garlic, potatoes, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "quinoa-pepper-lentil-bowl",
+      "title_es": "Lentejas con quinoa y pimiento",
+      "file": "supabase/catalog/photos/new/quinoa-pepper-lentil-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Quinoa pepper lentil bowl. Recipe food ingredients: lentils, oliveOil, onion, garlic, quinoa, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "rice-tomato-lentil-bowl",
+      "title_es": "Lentejas con arroz y tomate",
+      "file": "supabase/catalog/photos/new/rice-tomato-lentil-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Rice tomato lentil bowl. Recipe food ingredients: lentils, oliveOil, onion, garlic, rice, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-broccoli-lentil-bowl",
+      "title_es": "Lentejas con tofu y brócoli",
+      "file": "supabase/catalog/photos/new/tofu-broccoli-lentil-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu broccoli lentil bowl. Recipe food ingredients: lentils, oliveOil, onion, garlic, tofu, broccoli. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-spinach-lentil-bowl",
+      "title_es": "Lentejas con champiñones y espinaca",
+      "file": "supabase/catalog/photos/new/mushroom-spinach-lentil-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom spinach lentil bowl. Recipe food ingredients: lentils, oliveOil, onion, garlic, mushrooms, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-avocado-tomato-wrap",
+      "title_es": "Wrap de pollo, aguacate y tomate",
+      "file": "supabase/catalog/photos/new/chicken-avocado-tomato-wrap.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken avocado tomato wrap. Recipe food ingredients: tortilla, oliveOil, chicken, avocado, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-cucumber-wrap",
+      "title_es": "Wrap de atún y pepino",
+      "file": "supabase/catalog/photos/new/tuna-cucumber-wrap.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna cucumber wrap. Recipe food ingredients: tortilla, oliveOil, tuna, cucumber, yogurt. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-spinach-wrap",
+      "title_es": "Wrap de garbanzos y espinaca",
+      "file": "supabase/catalog/photos/new/chickpea-spinach-wrap.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea spinach wrap. Recipe food ingredients: tortilla, oliveOil, chickpeas, spinach, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "ground-beef-pepper-wrap",
+      "title_es": "Wrap de carne molida y pimiento",
+      "file": "supabase/catalog/photos/new/ground-beef-pepper-wrap.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Ground beef pepper wrap. Recipe food ingredients: tortilla, oliveOil, groundBeef, bellPepper, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "egg-cheese-wrap",
+      "title_es": "Wrap de huevo y queso",
+      "file": "supabase/catalog/photos/new/egg-cheese-wrap.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Egg cheese wrap. Recipe food ingredients: tortilla, oliveOil, eggs, cheese, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "black-bean-avocado-wrap",
+      "title_es": "Wrap de habichuelas negras y aguacate",
+      "file": "supabase/catalog/photos/new/black-bean-avocado-wrap.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Black bean avocado wrap. Recipe food ingredients: tortilla, oliveOil, blackBeans, avocado, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-broccoli-wrap",
+      "title_es": "Wrap de tofu y brócoli",
+      "file": "supabase/catalog/photos/new/tofu-broccoli-wrap.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu broccoli wrap. Recipe food ingredients: tortilla, oliveOil, tofu, broccoli, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-mushroom-wrap",
+      "title_es": "Wrap de pollo con champiñones",
+      "file": "supabase/catalog/photos/new/chicken-mushroom-wrap.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken mushroom wrap. Recipe food ingredients: tortilla, oliveOil, chicken, mushrooms, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-potato-carrot-soup",
+      "title_es": "Sopa de pollo con papa y zanahoria",
+      "file": "supabase/catalog/photos/new/chicken-potato-carrot-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken potato carrot soup. Recipe food ingredients: chicken, vegetableStock, onion, garlic, salt, potatoes, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-rice-spinach-soup",
+      "title_es": "Sopa de pollo con arroz y espinaca",
+      "file": "supabase/catalog/photos/new/chicken-rice-spinach-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken rice spinach soup. Recipe food ingredients: chicken, vegetableStock, onion, garlic, salt, rice, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-broccoli-soup",
+      "title_es": "Sopa de pollo con brócoli",
+      "file": "supabase/catalog/photos/new/chicken-broccoli-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken broccoli soup. Recipe food ingredients: chicken, vegetableStock, onion, garlic, salt, broccoli, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-lentil-soup",
+      "title_es": "Sopa de pollo con lentejas",
+      "file": "supabase/catalog/photos/new/chicken-lentil-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken lentil soup. Recipe food ingredients: chicken, vegetableStock, onion, garlic, salt, lentils, celery. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-zucchini-soup",
+      "title_es": "Sopa de pollo con calabacín",
+      "file": "supabase/catalog/photos/new/chicken-zucchini-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken zucchini soup. Recipe food ingredients: chicken, vegetableStock, onion, garlic, salt, zucchini, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-quinoa-soup",
+      "title_es": "Sopa de pollo con quinoa",
+      "file": "supabase/catalog/photos/new/chicken-quinoa-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken quinoa soup. Recipe food ingredients: chicken, vegetableStock, onion, garlic, salt, quinoa, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-mushroom-soup",
+      "title_es": "Sopa de pollo con champiñones",
+      "file": "supabase/catalog/photos/new/chicken-mushroom-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken mushroom soup. Recipe food ingredients: chicken, vegetableStock, onion, garlic, salt, mushrooms, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-chickpea-soup",
+      "title_es": "Sopa de pollo con garbanzos",
+      "file": "supabase/catalog/photos/new/chicken-chickpea-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken chickpea soup. Recipe food ingredients: chicken, vegetableStock, onion, garlic, salt, chickpeas, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-broccoli-carrot-stir-fry",
+      "title_es": "Tofu salteado con brócoli y zanahoria",
+      "file": "supabase/catalog/photos/new/tofu-broccoli-carrot-stir-fry.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu broccoli carrot stir-fry. Recipe food ingredients: tofu, oliveOil, garlic, onion, broccoli, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-pepper-mushroom-stir-fry",
+      "title_es": "Tofu salteado con pimiento y champiñones",
+      "file": "supabase/catalog/photos/new/tofu-pepper-mushroom-stir-fry.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu pepper mushroom stir-fry. Recipe food ingredients: tofu, oliveOil, garlic, onion, bellPepper, mushrooms. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-zucchini-tomato-stir-fry",
+      "title_es": "Tofu salteado con calabacín y tomate",
+      "file": "supabase/catalog/photos/new/tofu-zucchini-tomato-stir-fry.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu zucchini tomato stir-fry. Recipe food ingredients: tofu, oliveOil, garlic, onion, zucchini, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-rice-spinach-stir-fry",
+      "title_es": "Tofu salteado con arroz y espinaca",
+      "file": "supabase/catalog/photos/new/tofu-rice-spinach-stir-fry.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu rice spinach stir-fry. Recipe food ingredients: tofu, oliveOil, garlic, onion, rice, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-quinoa-broccoli-stir-fry",
+      "title_es": "Tofu salteado con quinoa y brócoli",
+      "file": "supabase/catalog/photos/new/tofu-quinoa-broccoli-stir-fry.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu quinoa broccoli stir-fry. Recipe food ingredients: tofu, oliveOil, garlic, onion, quinoa, broccoli. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-pineapple-pepper-stir-fry",
+      "title_es": "Tofu salteado con piña y pimiento",
+      "file": "supabase/catalog/photos/new/tofu-pineapple-pepper-stir-fry.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu pineapple pepper stir-fry. Recipe food ingredients: tofu, oliveOil, garlic, onion, pineapple, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-black-bean-stir-fry",
+      "title_es": "Tofu salteado con habichuelas negras",
+      "file": "supabase/catalog/photos/new/tofu-black-bean-stir-fry.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu black bean stir-fry. Recipe food ingredients: tofu, oliveOil, garlic, onion, blackBeans, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-potato-mushroom-stir-fry",
+      "title_es": "Tofu salteado con papa y champiñones",
+      "file": "supabase/catalog/photos/new/tofu-potato-mushroom-stir-fry.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu potato mushroom stir-fry. Recipe food ingredients: tofu, oliveOil, garlic, onion, potatoes, mushrooms. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "salmon-potato-broccoli-traybake",
+      "title_es": "Salmón al horno con papa y brócoli",
+      "file": "supabase/catalog/photos/new/salmon-potato-broccoli-traybake.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Salmon potato broccoli traybake. Recipe food ingredients: salmon, oliveOil, lemon, salt, potatoes, broccoli. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "salmon-sweet-potato-spinach-traybake",
+      "title_es": "Salmón al horno con batata y espinaca",
+      "file": "supabase/catalog/photos/new/salmon-sweet-potato-spinach-traybake.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Salmon sweet potato spinach traybake. Recipe food ingredients: salmon, oliveOil, lemon, salt, sweetPotato, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "salmon-carrot-zucchini-traybake",
+      "title_es": "Salmón al horno con zanahoria y calabacín",
+      "file": "supabase/catalog/photos/new/salmon-carrot-zucchini-traybake.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Salmon carrot zucchini traybake. Recipe food ingredients: salmon, oliveOil, lemon, salt, carrot, zucchini. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "salmon-quinoa-tomato-traybake",
+      "title_es": "Salmón al horno con quinoa y tomate",
+      "file": "supabase/catalog/photos/new/salmon-quinoa-tomato-traybake.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Salmon quinoa tomato traybake. Recipe food ingredients: salmon, oliveOil, lemon, salt, quinoa, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "salmon-mushroom-garlic-traybake",
+      "title_es": "Salmón con champiñones y ajo",
+      "file": "supabase/catalog/photos/new/salmon-mushroom-garlic-traybake.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Salmon mushroom garlic traybake. Recipe food ingredients: salmon, oliveOil, lemon, salt, mushrooms, garlic. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "salmon-pepper-onion-traybake",
+      "title_es": "Salmón con pimientos y cebolla",
+      "file": "supabase/catalog/photos/new/salmon-pepper-onion-traybake.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Salmon pepper onion traybake. Recipe food ingredients: salmon, oliveOil, lemon, salt, bellPepper, onion. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "salmon-broccoli-chickpea-traybake",
+      "title_es": "Salmón con brócoli y garbanzos",
+      "file": "supabase/catalog/photos/new/salmon-broccoli-chickpea-traybake.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Salmon broccoli chickpea traybake. Recipe food ingredients: salmon, oliveOil, lemon, salt, broccoli, chickpeas. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-potato-carrot-skillet",
+      "title_es": "Carne molida con papa y zanahoria",
+      "file": "supabase/catalog/photos/new/beef-potato-carrot-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef potato carrot skillet. Recipe food ingredients: groundBeef, oliveOil, onion, garlic, salt, potatoes, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-rice-pepper-skillet",
+      "title_es": "Carne molida con arroz y pimiento",
+      "file": "supabase/catalog/photos/new/beef-rice-pepper-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef rice pepper skillet. Recipe food ingredients: groundBeef, oliveOil, onion, garlic, salt, rice, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-zucchini-tomato-skillet",
+      "title_es": "Carne molida con calabacín y tomate",
+      "file": "supabase/catalog/photos/new/beef-zucchini-tomato-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef zucchini tomato skillet. Recipe food ingredients: groundBeef, oliveOil, onion, garlic, salt, zucchini, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-black-bean-skillet",
+      "title_es": "Carne molida con habichuelas negras",
+      "file": "supabase/catalog/photos/new/beef-black-bean-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef black bean skillet. Recipe food ingredients: groundBeef, oliveOil, onion, garlic, salt, blackBeans, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-mushroom-spinach-skillet",
+      "title_es": "Carne molida con champiñones y espinaca",
+      "file": "supabase/catalog/photos/new/beef-mushroom-spinach-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef mushroom spinach skillet. Recipe food ingredients: groundBeef, oliveOil, onion, garlic, salt, mushrooms, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-sweet-potato-broccoli-skillet",
+      "title_es": "Carne molida con batata y brócoli",
+      "file": "supabase/catalog/photos/new/beef-sweet-potato-broccoli-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef sweet potato broccoli skillet. Recipe food ingredients: groundBeef, oliveOil, onion, garlic, salt, sweetPotato, broccoli. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-quinoa-tomato-skillet",
+      "title_es": "Carne molida con quinoa y tomate",
+      "file": "supabase/catalog/photos/new/beef-quinoa-tomato-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef quinoa tomato skillet. Recipe food ingredients: groundBeef, oliveOil, onion, garlic, salt, quinoa, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "quinoa-chickpea-stuffed-peppers",
+      "title_es": "Pimientos rellenos de quinoa y garbanzos",
+      "file": "supabase/catalog/photos/new/quinoa-chickpea-stuffed-peppers.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Quinoa chickpea stuffed peppers. Recipe food ingredients: bellPepper, tomatoes, oliveOil, onion, quinoa, chickpeas. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-rice-stuffed-peppers",
+      "title_es": "Pimientos rellenos de arroz y pollo",
+      "file": "supabase/catalog/photos/new/chicken-rice-stuffed-peppers.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken rice stuffed peppers. Recipe food ingredients: bellPepper, tomatoes, oliveOil, onion, rice, chicken. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-lentil-stuffed-peppers",
+      "title_es": "Pimientos rellenos de carne y lentejas",
+      "file": "supabase/catalog/photos/new/beef-lentil-stuffed-peppers.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef lentil stuffed peppers. Recipe food ingredients: bellPepper, tomatoes, oliveOil, onion, groundBeef, lentils. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-potato-stuffed-peppers",
+      "title_es": "Pimientos rellenos de atún y papa",
+      "file": "supabase/catalog/photos/new/tuna-potato-stuffed-peppers.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna potato stuffed peppers. Recipe food ingredients: bellPepper, tomatoes, oliveOil, onion, tuna, potatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-mushroom-stuffed-peppers",
+      "title_es": "Pimientos rellenos de tofu y champiñones",
+      "file": "supabase/catalog/photos/new/tofu-mushroom-stuffed-peppers.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu mushroom stuffed peppers. Recipe food ingredients: bellPepper, tomatoes, oliveOil, onion, tofu, mushrooms. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "black-bean-cheese-stuffed-peppers",
+      "title_es": "Pimientos rellenos de habichuelas y queso",
+      "file": "supabase/catalog/photos/new/black-bean-cheese-stuffed-peppers.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Black bean cheese stuffed peppers. Recipe food ingredients: bellPepper, tomatoes, oliveOil, onion, blackBeans, cheese. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "rice-spinach-stuffed-peppers",
+      "title_es": "Pimientos rellenos de arroz y espinaca",
+      "file": "supabase/catalog/photos/new/rice-spinach-stuffed-peppers.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Rice spinach stuffed peppers. Recipe food ingredients: bellPepper, tomatoes, oliveOil, onion, rice, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-yogurt-baked-potatoes",
+      "title_es": "Papa asada con atún y yogur",
+      "file": "supabase/catalog/photos/new/tuna-yogurt-baked-potatoes.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna yogurt baked potatoes. Recipe food ingredients: potatoes, oliveOil, salt, tuna, yogurt, cucumber. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-broccoli-baked-potatoes",
+      "title_es": "Papa asada con pollo y brócoli",
+      "file": "supabase/catalog/photos/new/chicken-broccoli-baked-potatoes.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken broccoli baked potatoes. Recipe food ingredients: potatoes, oliveOil, salt, chicken, broccoli. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "black-bean-baked-potatoes",
+      "title_es": "Papa asada con habichuelas negras",
+      "file": "supabase/catalog/photos/new/black-bean-baked-potatoes.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Black bean baked potatoes. Recipe food ingredients: potatoes, oliveOil, salt, blackBeans, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-cheese-baked-potatoes",
+      "title_es": "Papa asada con queso y champiñones",
+      "file": "supabase/catalog/photos/new/mushroom-cheese-baked-potatoes.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom cheese baked potatoes. Recipe food ingredients: potatoes, oliveOil, salt, cheese, mushrooms. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-spinach-baked-potatoes",
+      "title_es": "Papa asada con garbanzos y espinaca",
+      "file": "supabase/catalog/photos/new/chickpea-spinach-baked-potatoes.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea spinach baked potatoes. Recipe food ingredients: potatoes, oliveOil, salt, chickpeas, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-tomato-baked-potatoes",
+      "title_es": "Papa asada con carne molida y tomate",
+      "file": "supabase/catalog/photos/new/beef-tomato-baked-potatoes.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef tomato baked potatoes. Recipe food ingredients: potatoes, oliveOil, salt, groundBeef, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "egg-pepper-baked-potatoes",
+      "title_es": "Papa asada con huevo y pimiento",
+      "file": "supabase/catalog/photos/new/egg-pepper-baked-potatoes.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Egg pepper baked potatoes. Recipe food ingredients: potatoes, oliveOil, salt, eggs, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-spinach-sweet-potato-bowl",
+      "title_es": "Batata con pollo y espinaca",
+      "file": "supabase/catalog/photos/new/chicken-spinach-sweet-potato-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken spinach sweet potato bowl. Recipe food ingredients: sweetPotato, oliveOil, onion, chicken, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-broccoli-sweet-potato-bowl",
+      "title_es": "Batata con tofu y brócoli",
+      "file": "supabase/catalog/photos/new/tofu-broccoli-sweet-potato-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu broccoli sweet potato bowl. Recipe food ingredients: sweetPotato, oliveOil, onion, tofu, broccoli. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-tomato-sweet-potato-bowl",
+      "title_es": "Batata con garbanzos y tomate",
+      "file": "supabase/catalog/photos/new/chickpea-tomato-sweet-potato-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea tomato sweet potato bowl. Recipe food ingredients: sweetPotato, oliveOil, onion, chickpeas, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-pepper-sweet-potato-bowl",
+      "title_es": "Batata con carne molida y pimiento",
+      "file": "supabase/catalog/photos/new/beef-pepper-sweet-potato-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef pepper sweet potato bowl. Recipe food ingredients: sweetPotato, oliveOil, onion, groundBeef, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "egg-avocado-sweet-potato-bowl",
+      "title_es": "Batata con huevo y aguacate",
+      "file": "supabase/catalog/photos/new/egg-avocado-sweet-potato-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Egg avocado sweet potato bowl. Recipe food ingredients: sweetPotato, oliveOil, onion, eggs, avocado. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "lentil-mushroom-sweet-potato-bowl",
+      "title_es": "Batata con lentejas y champiñones",
+      "file": "supabase/catalog/photos/new/lentil-mushroom-sweet-potato-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Lentil mushroom sweet potato bowl. Recipe food ingredients: sweetPotato, oliveOil, onion, lentils, mushrooms. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-cucumber-sweet-potato-bowl",
+      "title_es": "Batata con atún y pepino",
+      "file": "supabase/catalog/photos/new/tuna-cucumber-sweet-potato-bowl.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna cucumber sweet potato bowl. Recipe food ingredients: sweetPotato, oliveOil, onion, tuna, cucumber. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "spinach-tomato-skillet-eggs",
+      "title_es": "Huevos en tomate con espinaca",
+      "file": "supabase/catalog/photos/new/spinach-tomato-skillet-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Spinach tomato skillet eggs. Recipe food ingredients: eggs, tomatoes, oliveOil, onion, garlic, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "pepper-tomato-skillet-eggs",
+      "title_es": "Huevos en tomate con pimiento",
+      "file": "supabase/catalog/photos/new/pepper-tomato-skillet-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Pepper tomato skillet eggs. Recipe food ingredients: eggs, tomatoes, oliveOil, onion, garlic, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-tomato-skillet-eggs",
+      "title_es": "Huevos en tomate con garbanzos",
+      "file": "supabase/catalog/photos/new/chickpea-tomato-skillet-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea tomato skillet eggs. Recipe food ingredients: eggs, tomatoes, oliveOil, onion, garlic, chickpeas. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-tomato-skillet-eggs",
+      "title_es": "Huevos en tomate con champiñones",
+      "file": "supabase/catalog/photos/new/mushroom-tomato-skillet-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom tomato skillet eggs. Recipe food ingredients: eggs, tomatoes, oliveOil, onion, garlic, mushrooms. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "cheese-tomato-skillet-eggs",
+      "title_es": "Huevos en tomate con queso",
+      "file": "supabase/catalog/photos/new/cheese-tomato-skillet-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Cheese tomato skillet eggs. Recipe food ingredients: eggs, tomatoes, oliveOil, onion, garlic, cheese. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "black-bean-tomato-skillet-eggs",
+      "title_es": "Huevos en tomate con habichuelas negras",
+      "file": "supabase/catalog/photos/new/black-bean-tomato-skillet-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Black bean tomato skillet eggs. Recipe food ingredients: eggs, tomatoes, oliveOil, onion, garlic, blackBeans. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "zucchini-tomato-skillet-eggs",
+      "title_es": "Huevos en tomate con calabacín",
+      "file": "supabase/catalog/photos/new/zucchini-tomato-skillet-eggs.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Zucchini tomato skillet eggs. Recipe food ingredients: eggs, tomatoes, oliveOil, onion, garlic, zucchini. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chicken-broccoli-quinoa-skillet",
+      "title_es": "Quinoa con pollo y brócoli",
+      "file": "supabase/catalog/photos/new/chicken-broccoli-quinoa-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chicken broccoli quinoa skillet. Recipe food ingredients: quinoa, oliveOil, onion, garlic, chicken, broccoli. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tofu-spinach-quinoa-skillet",
+      "title_es": "Quinoa con tofu y espinaca",
+      "file": "supabase/catalog/photos/new/tofu-spinach-quinoa-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tofu spinach quinoa skillet. Recipe food ingredients: quinoa, oliveOil, onion, garlic, tofu, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "tuna-tomato-quinoa-skillet",
+      "title_es": "Quinoa con atún y tomate",
+      "file": "supabase/catalog/photos/new/tuna-tomato-quinoa-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Tuna tomato quinoa skillet. Recipe food ingredients: quinoa, oliveOil, onion, garlic, tuna, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "chickpea-zucchini-quinoa-skillet",
+      "title_es": "Quinoa con garbanzos y calabacín",
+      "file": "supabase/catalog/photos/new/chickpea-zucchini-quinoa-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Chickpea zucchini quinoa skillet. Recipe food ingredients: quinoa, oliveOil, onion, garlic, chickpeas, zucchini. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "beef-pepper-quinoa-skillet",
+      "title_es": "Quinoa con carne y pimiento",
+      "file": "supabase/catalog/photos/new/beef-pepper-quinoa-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Beef pepper quinoa skillet. Recipe food ingredients: quinoa, oliveOil, onion, garlic, groundBeef, bellPepper. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "lentil-carrot-quinoa-skillet",
+      "title_es": "Quinoa con lentejas y zanahoria",
+      "file": "supabase/catalog/photos/new/lentil-carrot-quinoa-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Lentil carrot quinoa skillet. Recipe food ingredients: quinoa, oliveOil, onion, garlic, lentils, carrot. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-cheese-quinoa-skillet",
+      "title_es": "Quinoa con champiñones y queso",
+      "file": "supabase/catalog/photos/new/mushroom-cheese-quinoa-skillet.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom cheese quinoa skillet. Recipe food ingredients: quinoa, oliveOil, onion, garlic, mushrooms, cheese. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "potato-lentil-soup",
+      "title_es": "Sopa de lentejas con papa",
+      "file": "supabase/catalog/photos/new/potato-lentil-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Potato lentil soup. Recipe food ingredients: lentils, vegetableStock, onion, carrot, oliveOil, potatoes, garlic. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "spinach-lentil-soup",
+      "title_es": "Sopa de lentejas con espinaca",
+      "file": "supabase/catalog/photos/new/spinach-lentil-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Spinach lentil soup. Recipe food ingredients: lentils, vegetableStock, onion, carrot, oliveOil, spinach, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "broccoli-lentil-soup",
+      "title_es": "Sopa de lentejas con brócoli",
+      "file": "supabase/catalog/photos/new/broccoli-lentil-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Broccoli lentil soup. Recipe food ingredients: lentils, vegetableStock, onion, carrot, oliveOil, broccoli, garlic. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "sweet-potato-lentil-soup",
+      "title_es": "Sopa de lentejas con batata",
+      "file": "supabase/catalog/photos/new/sweet-potato-lentil-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Sweet potato lentil soup. Recipe food ingredients: lentils, vegetableStock, onion, carrot, oliveOil, sweetPotato, celery. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "zucchini-lentil-soup",
+      "title_es": "Sopa de lentejas con calabacín",
+      "file": "supabase/catalog/photos/new/zucchini-lentil-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Zucchini lentil soup. Recipe food ingredients: lentils, vegetableStock, onion, carrot, oliveOil, zucchini, tomatoes. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "mushroom-lentil-soup",
+      "title_es": "Sopa de lentejas con champiñones",
+      "file": "supabase/catalog/photos/new/mushroom-lentil-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Mushroom lentil soup. Recipe food ingredients: lentils, vegetableStock, onion, carrot, oliveOil, mushrooms, herbs. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    },
+    {
+      "id": "quinoa-lentil-soup",
+      "title_es": "Sopa de lentejas con quinoa",
+      "file": "supabase/catalog/photos/new/quinoa-lentil-soup.jpg",
+      "prompt": "Use case: photorealistic-natural. Asset type: Miga mobile recipe photograph. Create ONE realistic landscape 4:3 editorial food photo. Subject: Quinoa lentil soup. Recipe food ingredients: lentils, vegetableStock, onion, carrot, oliveOil, quinoa, spinach. Show the finished cooked meal accurately, using only the listed food ingredients, with natural appetizing textures. Single cream ceramic bowl or plate appropriate to the dish, centered on warm wood with cream linen, soft natural side daylight, slightly overhead 45-degree angle. Entire dish visible with generous margin on all sides, food within central 65 percent for safe card crops. Same warm restrained styling across this recipe catalog. No text, no logo, no watermark, no people, no hands, no collage."
+    }
+  ]
+}

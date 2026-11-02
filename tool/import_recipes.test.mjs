@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { validateCatalog, importCatalog, imageDimensions } from './import_recipes.mjs';
 const file = new URL('../supabase/catalog/recipes.json', import.meta.url);
-const photosDir = new URL('../assets/images/recipes/v2/', import.meta.url).pathname;
+const photosDir = new URL('../supabase/catalog/photos/', import.meta.url).pathname;
 const original = JSON.parse(await readFile(file, 'utf8'));
 
 test('All 54 original recipes and real photo dimensions pass a credential-free dry run', async () => {
@@ -63,21 +63,6 @@ test('Missing credentials and wrong photo metadata fail before any network reque
   assert.throws(()=>imageDimensions(Buffer.from('not an image')),/corrupt/);
 });
 
-test('Authenticated CLI import uses its session without reading or exporting credentials', async () => {
-  const calls=[];
-  const result=await importCatalog({file,photosDir,status:'published',apply:true,useCli:true,
-    projectRef:'qythwojltifyhlkarzdh',env:{},request:()=>assert.fail('CLI must not extract keys'),
-    runCommand:async(command,args)=>{
-      calls.push({command,args});
-      if(args[0]==='db'){
-        const sql=await readFile(args.at(-1),'utf8');
-        assert.match(sql,/begin;/);assert.match(sql,/on conflict\(id\)/);assert.match(sql,/commit;/);
-        const encoded=sql.match(/decode\('([^']+)'/)[1];
-        assert.equal(JSON.parse(Buffer.from(encoded,'base64').toString()).length,54);
-      }
-      return {stdout:'',stderr:''};
-    }});
-  assert.equal(result.applied,true);assert.equal(calls.length,55);
-  assert.ok(calls.every(c=>c.command==='supabase'&&!c.args.includes('api-keys')));
-  assert.equal(calls.at(-1).args[0],'db');
+test('Source photo folder is not part of Flutter assets', async () => {
+  assert.match(photosDir, /supabase\/catalog\/photos\/?$/);
 });

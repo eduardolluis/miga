@@ -1,10 +1,7 @@
-import { readFile, stat, mkdtemp, writeFile, rm } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import { resolve, extname, basename, dirname, sep } from 'node:path';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
-import { tmpdir } from 'node:os';
-import { execFile } from 'node:child_process';
-import { promisify } from 'node:util';
 
 const ingredientUnits = JSON.parse(await readFile(new URL('../supabase/catalog/ingredients.json', import.meta.url), 'utf8'));
 const integer = (n, min, max) => Number.isSafeInteger(n) && n >= min && n <= max;
@@ -53,6 +50,13 @@ export function validateCatalog(catalog) {
     if (!['breakfast','lunch','dinner'].includes(r.slot) || !integer(r.minutes, 1, 1440) ||
         !integer(r.servings, 1, 24) || !integer(r.sort_order, 0, 2147483647) || !text(r.source)) fail(`${at}: invalid metadata`);
     const photo = r.photo;
+    if (photo?.thumbnail_path != null &&
+        (typeof photo.thumbnail_path !== 'string' ||
+         !/^[a-zA-Z0-9_/-]+\.(jpg|jpeg|webp|png)$/.test(photo.thumbnail_path) ||
+         photo.thumbnail_path.startsWith('/') || photo.thumbnail_path.includes('..') ||
+         !integer(photo.thumbnail_width,1,10000) || !integer(photo.thumbnail_height,1,10000))) {
+      fail('Invalid photo thumbnail for ' + r.id);
+    }
     if (!photo || !/^[a-zA-Z0-9_/-]+\.(jpg|jpeg|webp|png)$/.test(photo.path ?? '') || photo.path.startsWith('/') || photo.path.includes('..') ||
         !integer(photo.width,1,10000) || !integer(photo.height,1,10000)) fail(`${at}: invalid photo`);
     if (!Array.isArray(r.amounts) || !r.amounts.length || r.amounts.length > 100) fail(`${at}: missing ingredient quantities`);
@@ -78,8 +82,7 @@ export function validateCatalog(catalog) {
 }
 
 export async function importCatalog({file, photosDir, status = 'draft', apply = false,
-  env = process.env, request = fetch, useCli = false, projectRef,
-  runCommand = promisify(execFile)}) {
+  env = process.env, request = fetch}) {
   if (!['draft','review','published','archived'].includes(status)) fail('Unknown publication status');
   const recipes = validateCatalog(JSON.parse(await readFile(file, 'utf8')));
   const root = resolve(photosDir);
@@ -100,42 +103,24 @@ export async function importCatalog({file, photosDir, status = 'draft', apply = 
     const target = `${folder === '.' ? '' : folder + '/'}${basename(path,extension)}-${hash}${extension}`;
     files.set(target, {bytes, type: extension === '.png' ? 'image/png' : extension === '.webp' ? 'image/webp' : 'image/jpeg'});
     recipe.photo.path = target;
+    if (recipe.photo.thumbnail_path != null) {
+      const thumbnailPath = resolve(root,recipe.photo.thumbnail_path);
+      if (!thumbnailPath.startsWith(root + sep)) fail('Photo thumbnail escapes the source directory');
+      const thumbnailInfo = await stat(thumbnailPath);
+      if (!thumbnailInfo.isFile() || thumbnailInfo.size > 8388608 || thumbnailInfo.size === 0) fail('Invalid thumbnail for ' + recipe.id);
+      const thumbnailBytes = await readFile(thumbnailPath);
+      const [thumbnailWidth,thumbnailHeight] = imageDimensions(thumbnailBytes);
+      if (thumbnailWidth !== recipe.photo.thumbnail_width || thumbnailHeight !== recipe.photo.thumbnail_height) fail('Photo thumbnail dimensions do not match ' + recipe.id);
+      const thumbnailHash = createHash('sha256').update(thumbnailBytes).digest('hex').slice(0,16);
+      const thumbnailExtension = extname(thumbnailPath).toLowerCase();
+      const thumbnailTarget = dirname(recipe.photo.thumbnail_path) + '/' +
+        basename(thumbnailPath,thumbnailExtension) + '-' + thumbnailHash + thumbnailExtension;
+      files.set(thumbnailTarget,{bytes:thumbnailBytes,type:thumbnailExtension === '.png' ? 'image/png' : thumbnailExtension === '.webp' ? 'image/webp' : 'image/jpeg'});
+      recipe.photo.thumbnail_path = thumbnailTarget;
+    }
     rows.push({id: recipe.id, data: recipe, status});
   }
   if (!apply) return {recipes: rows.length, photos: files.size, status, applied: false};
-  if (useCli) {
-    if (!/^[a-z]{20}$/.test(projectRef ?? '')) fail('CLI imports require --project-ref for the intended project');
-    const staging = await mkdtemp(resolve(tmpdir(), 'miga-catalog-'));
-    try {
-      // Keep existing CLI authentication inside the CLI. Never extract keys.
-      const uploads = [...files];
-      for (let start = 0; start < uploads.length; start += 4) {
-        const batch = uploads.slice(start, start + 4);
-        const settled = await Promise.allSettled(batch.map(async ([path, photo], index) => {
-          const source = resolve(staging, `${start + index}${extname(path)}`);
-          await writeFile(source, photo.bytes);
-          await runCommand('supabase', ['storage', 'cp', '--experimental', '--linked', '--project-ref', projectRef,
-            '--cache-control', 'max-age=31536000', '--content-type', photo.type,
-            source, `ss:///recipe-photos/${path}`]);
-        }));
-        if (settled.some(r => r.status === 'rejected')) fail('Authenticated CLI photo upload failed; recipe metadata was not written');
-      }
-      // Base64 carries JSON as SQL data without interpolating recipe text.
-      const encoded = Buffer.from(JSON.stringify(rows)).toString('base64');
-      const sql = `begin;
-insert into public.miga_recipes(id,data,status)
-select item->>'id', item->'data', item->>'status'
-from jsonb_array_elements(convert_from(decode('${encoded}','base64'),'utf8')::jsonb) item
-on conflict(id) do update set data=excluded.data, status=excluded.status;
-commit;`;
-      const sqlFile = resolve(staging, 'catalog.sql');
-      await writeFile(sqlFile, sql);
-      try {
-        await runCommand('supabase', ['db', 'query', '--linked', '--project-ref', projectRef, '--file', sqlFile]);
-      } catch (_) { fail('Authenticated CLI catalog upsert failed; no recipe metadata was partially changed'); }
-      return {recipes:rows.length, photos:files.size, status, applied:true};
-    } finally { await rm(staging, {recursive:true,force:true}); }
-  }
   const url = env.SUPABASE_URL?.replace(/\/$/,'');
   const key = env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) fail('Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in the operator environment');
@@ -143,16 +128,21 @@ commit;`;
   if (parsed.protocol !== 'https:' && !(parsed.protocol === 'http:' && ['127.0.0.1','localhost'].includes(parsed.hostname))) fail('Supabase requires HTTPS');
   const headers = {apikey:key, Authorization:`Bearer ${key}`};
   // Immutable hashed filenames prevent stale photos and make retries safe.
-  for (const [path, photo] of files) {
-    const response = await request(`${url}/storage/v1/object/recipe-photos/${path}`, {
-      method:'POST', headers:{...headers,'Content-Type':photo.type,'Cache-Control':'max-age=31536000','x-upsert':'false'}, body:photo.bytes,
-    });
-    if (!response.ok && response.status !== 409) {
-      const problem = await response.json().catch(() => ({}));
-      const duplicate = response.status === 400 &&
-        (String(problem.statusCode) === '409' || problem.error === 'Duplicate');
-      if (!duplicate) fail(`Photo upload failed (${response.status}); recipe metadata was not written`);
-    }
+  const uploads = [...files];
+  for (let offset = 0; offset < uploads.length; offset += 8) {
+    await Promise.all(uploads.slice(offset, offset + 8).map(async ([path, photo]) => {
+      const response = await request(`${url}/storage/v1/object/recipe-photos/${path}`, {
+        method:'POST', headers:{...headers,'Content-Type':photo.type,'Cache-Control':'max-age=31536000','x-upsert':'false'}, body:photo.bytes,
+        signal:AbortSignal.timeout(30000),
+      });
+      if (!response.ok && response.status !== 409) {
+        const problem = await response.json().catch(() => ({}));
+        const duplicate = response.status === 400 &&
+          (String(problem.statusCode) === '409' || problem.error === 'Duplicate');
+        if (!duplicate) fail(`Photo upload failed (${response.status}); recipe metadata was not written`);
+      }
+    }));
+    if (uploads.length > 8) console.log(`Uploaded photos ${Math.min(offset + 8, uploads.length)}/${uploads.length}`);
   }
   // One upsert request is one database transaction. created_at/published_at are
   // managed by the DB, so rerunning an import preserves first-publication dates.
@@ -172,11 +162,11 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
       if (!args[index + 1] || args[index + 1].startsWith('--')) fail(`Missing value for ${key}`);
       return args[index + 1];
     };
-    const known = new Set(['--file','--photos-dir','--status','--apply','--cli','--project-ref']);
-    for (let i=0;i<args.length;i++) { if (!known.has(args[i])) fail(`Unknown option ${args[i]}`); if (!['--apply','--cli'].includes(args[i])) i++; }
+    const known = new Set(['--file','--photos-dir','--status','--apply']);
+    for (let i=0;i<args.length;i++) { if (!known.has(args[i])) fail(`Unknown option ${args[i]}`); if (args[i] !== '--apply') i++; }
     const result = await importCatalog({file:option('--file','supabase/catalog/recipes.json'),
-      photosDir:option('--photos-dir','assets/images/recipes/v2'),status:option('--status','draft'),
-      apply:args.includes('--apply'),useCli:args.includes('--cli'),projectRef:option('--project-ref',undefined)});
+      photosDir:option('--photos-dir','supabase/catalog/photos'),status:option('--status','draft'),
+      apply:args.includes('--apply')});
     console.log(JSON.stringify(result));
   } catch (error) { console.error(error.message); process.exitCode=1; }
 }

@@ -1,0 +1,1579 @@
+{
+  "images": 196,
+  "distinct_images": 196,
+  "format": "JPEG",
+  "total_bytes": 115998095,
+  "dimensions": {
+    "1448x1086": 196
+  },
+  "files": [
+    {
+      "id": "apple-walnut-cinnamon-oatmeal",
+      "path": "supabase/catalog/photos/new/apple-walnut-cinnamon-oatmeal.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 651340,
+      "sha256": "0cd53b0d38e7055ee3128cca51654171c716655fef030bcf28cca955dcd1442b"
+    },
+    {
+      "id": "mango-granola-oatmeal",
+      "path": "supabase/catalog/photos/new/mango-granola-oatmeal.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 599459,
+      "sha256": "600457468559b803001a1376ada8e3a8fa024591c2ddda00fbce8991842056eb"
+    },
+    {
+      "id": "strawberry-peanut-butter-oatmeal",
+      "path": "supabase/catalog/photos/new/strawberry-peanut-butter-oatmeal.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 606654,
+      "sha256": "9eff9dddee0e405039d52faa481213ae5b04e7a8ad1cf71a862a148e4352fdc0"
+    },
+    {
+      "id": "banana-pineapple-oatmeal",
+      "path": "supabase/catalog/photos/new/banana-pineapple-oatmeal.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 585582,
+      "sha256": "88da93caa9051a3539038d9e9536deca864f9329ff58387768d45222dd6ff9cc"
+    },
+    {
+      "id": "apple-yogurt-oatmeal",
+      "path": "supabase/catalog/photos/new/apple-yogurt-oatmeal.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 566762,
+      "sha256": "72283b3423df306404f84909c9c2f61714527590e66b53d66ef234f16b4dafba"
+    },
+    {
+      "id": "mango-walnut-oatmeal",
+      "path": "supabase/catalog/photos/new/mango-walnut-oatmeal.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 572824,
+      "sha256": "e2c369e786ab7a622109c0c2d317ccbc7d9baccfede305abb8cc62c6898361a2"
+    },
+    {
+      "id": "strawberry-banana-overnight-oats",
+      "path": "supabase/catalog/photos/new/strawberry-banana-overnight-oats.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 478135,
+      "sha256": "024a6b5354a2fb0d6a47298ec142c501c4d1cdbf0564e34016ee8024ef79b81f"
+    },
+    {
+      "id": "apple-cinnamon-overnight-oats",
+      "path": "supabase/catalog/photos/new/apple-cinnamon-overnight-oats.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 545809,
+      "sha256": "de6ab3081029206dd3004e3378116b6710c086b958d02e0db9b91d6a432ab7e6"
+    },
+    {
+      "id": "mango-pineapple-overnight-oats",
+      "path": "supabase/catalog/photos/new/mango-pineapple-overnight-oats.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 498552,
+      "sha256": "009d270c0b1bb5e303ab632dbdef589c6182afe29564c6fb0705f71f71497e89"
+    },
+    {
+      "id": "peanut-banana-overnight-oats",
+      "path": "supabase/catalog/photos/new/peanut-banana-overnight-oats.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 501656,
+      "sha256": "b1a9ab2b7e6a1f834183d9c5bb2b2aeff74ccc86c0b0719fb39506fc6882bf9f"
+    },
+    {
+      "id": "strawberry-walnut-overnight-oats",
+      "path": "supabase/catalog/photos/new/strawberry-walnut-overnight-oats.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 527337,
+      "sha256": "70d64c81b1b29364125f4335b80ef9eb6eaa50c3b612e4ce0685f4923f3f2c4e"
+    },
+    {
+      "id": "apple-granola-overnight-oats",
+      "path": "supabase/catalog/photos/new/apple-granola-overnight-oats.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 531043,
+      "sha256": "ee0bae725e92743455cd6efeb9c36319b596e3ec6c9e2b95d9484dd162e7b8e1"
+    },
+    {
+      "id": "mango-banana-yogurt-bowl",
+      "path": "supabase/catalog/photos/new/mango-banana-yogurt-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 535145,
+      "sha256": "6df49e3c2f8eccb0e61df130108f4a08b8f2c5f3f4f7a56931819edd19fbe064"
+    },
+    {
+      "id": "apple-cinnamon-yogurt-bowl",
+      "path": "supabase/catalog/photos/new/apple-cinnamon-yogurt-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 547525,
+      "sha256": "eedfd4a486672f572a4f05ba2dd12d1134f164e4bcc101975af4ecc301f8b73b"
+    },
+    {
+      "id": "strawberry-walnut-yogurt-bowl",
+      "path": "supabase/catalog/photos/new/strawberry-walnut-yogurt-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 587696,
+      "sha256": "4b5699a12e030d1d532371f8879512a394b233311cb0b86adfd14cf5ae3d2793"
+    },
+    {
+      "id": "pineapple-mango-yogurt-bowl",
+      "path": "supabase/catalog/photos/new/pineapple-mango-yogurt-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 553704,
+      "sha256": "1522c006aeb68d4418ff6cc73db2b6e3a35b5d8f0790662b61a4647cffb5d3e1"
+    },
+    {
+      "id": "peanut-banana-yogurt-bowl",
+      "path": "supabase/catalog/photos/new/peanut-banana-yogurt-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 554803,
+      "sha256": "51eaa509b4a3571b2d54896de3bef30215e182f16e0e672c1743cf5db8665ca4"
+    },
+    {
+      "id": "strawberry-pineapple-walnut-yogurt-bowl",
+      "path": "supabase/catalog/photos/new/strawberry-pineapple-walnut-yogurt-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 554139,
+      "sha256": "1ec8df16790a5f0b207f861ec45dc3b4065a3964bcbcf2522d94a1e23bba99d9"
+    },
+    {
+      "id": "mango-oat-yogurt-smoothie",
+      "path": "supabase/catalog/photos/new/mango-oat-yogurt-smoothie.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 437081,
+      "sha256": "ce4107b5a4a4e2a58ca23a25281fef0dc4ad63ac0472eba425a7d37c820b51c8"
+    },
+    {
+      "id": "peanut-banana-smoothie",
+      "path": "supabase/catalog/photos/new/peanut-banana-smoothie.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 470185,
+      "sha256": "21528a82ea672bbb47549a495ea4c0ec36a3b922a4d8a19ed4ef1bb30935ece7"
+    },
+    {
+      "id": "strawberry-banana-smoothie",
+      "path": "supabase/catalog/photos/new/strawberry-banana-smoothie.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 520145,
+      "sha256": "b6330d5c6f983f4d8fdc108a4f35bc9ba9070b75259ea0bc8384082f6c9eae36"
+    },
+    {
+      "id": "pineapple-spinach-smoothie",
+      "path": "supabase/catalog/photos/new/pineapple-spinach-smoothie.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 488854,
+      "sha256": "9fd3b98d2338283090efee1dd23a4b23134f4f956919a13cbaeaef57c8086128"
+    },
+    {
+      "id": "apple-cinnamon-smoothie",
+      "path": "supabase/catalog/photos/new/apple-cinnamon-smoothie.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 453636,
+      "sha256": "b6769688b092cc3586f9078d666135e412378bcb0dedf520129f49400dcda42e"
+    },
+    {
+      "id": "mango-pineapple-smoothie",
+      "path": "supabase/catalog/photos/new/mango-pineapple-smoothie.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 529597,
+      "sha256": "04f678199e757ea92ea328ea1e60075f7c3fbbb9f63e85f03917363d78f0a5c4"
+    },
+    {
+      "id": "tomato-spinach-scrambled-eggs",
+      "path": "supabase/catalog/photos/new/tomato-spinach-scrambled-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 643175,
+      "sha256": "175fe0b26a5d5f93eea6c2d65b44603a5be93ee690fcb2b72b8239fdc856ec4b"
+    },
+    {
+      "id": "mushroom-onion-scrambled-eggs",
+      "path": "supabase/catalog/photos/new/mushroom-onion-scrambled-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 572004,
+      "sha256": "7ad0ffd9f0878cfc2fe2761f0cd493dbb60735bf180ba2bcfd3631f8ed9c41fb"
+    },
+    {
+      "id": "broccoli-cheese-scrambled-eggs",
+      "path": "supabase/catalog/photos/new/broccoli-cheese-scrambled-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 568421,
+      "sha256": "336be99ff9e1dcc1d6ed47797bc2a4f218d82db8af896316c0beff34102ecd0d"
+    },
+    {
+      "id": "pepper-tomato-scrambled-eggs",
+      "path": "supabase/catalog/photos/new/pepper-tomato-scrambled-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 533967,
+      "sha256": "8e628841e9343b6624230cd279908c65a92d59a6c9858f7ab8a073aa3a3c1607"
+    },
+    {
+      "id": "zucchini-herb-scrambled-eggs",
+      "path": "supabase/catalog/photos/new/zucchini-herb-scrambled-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 601657,
+      "sha256": "a4396ab103e5b605c4a029f9b1e9b9376b09c04293f2fbf5b92d4ba62d55b707"
+    },
+    {
+      "id": "spinach-black-bean-scrambled-eggs",
+      "path": "supabase/catalog/photos/new/spinach-black-bean-scrambled-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 636987,
+      "sha256": "277f07f21ed9c750e3bc6b3dc7b7082475d984ea8d6e285c5a900fdd75c4f92d"
+    },
+    {
+      "id": "spinach-mushroom-cheese-omelet",
+      "path": "supabase/catalog/photos/new/spinach-mushroom-cheese-omelet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 537643,
+      "sha256": "8527783b95c37ab4c6a0135feb30c562e14c63e8649c1d4d6539941c58f6223b"
+    },
+    {
+      "id": "tomato-basil-omelet",
+      "path": "supabase/catalog/photos/new/tomato-basil-omelet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 540312,
+      "sha256": "e2d138824f3ef534ded7a12db48ead286393b50a7742dd2a7239f9982546fcf4"
+    },
+    {
+      "id": "mushroom-broccoli-omelet",
+      "path": "supabase/catalog/photos/new/mushroom-broccoli-omelet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 547405,
+      "sha256": "ed545a19f60a44eed9ec6dea729a0686735ade2d3361f36702eca287ceddc9f8"
+    },
+    {
+      "id": "pepper-onion-omelet",
+      "path": "supabase/catalog/photos/new/pepper-onion-omelet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 538245,
+      "sha256": "58a1e86fa9410f7226a1bd70d247e68beccc6a5d1557a5c78f76f09a4b1974d7"
+    },
+    {
+      "id": "zucchini-cheese-omelet",
+      "path": "supabase/catalog/photos/new/zucchini-cheese-omelet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 540329,
+      "sha256": "28f5e63c642fcbc7969800a53158568b03a365a3b57138fda203dd0a0bf76888"
+    },
+    {
+      "id": "avocado-tomato-omelet",
+      "path": "supabase/catalog/photos/new/avocado-tomato-omelet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 523645,
+      "sha256": "026a36c9913afff707a26236762ba47500a76760568166c17a6ed6d18e53cad2"
+    },
+    {
+      "id": "avocado-egg-tomato-toast",
+      "path": "supabase/catalog/photos/new/avocado-egg-tomato-toast.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 520206,
+      "sha256": "58c3da35ba9280ed1da75e3749e1eb2046f5717dd086185f104d36bc1456e16c"
+    },
+    {
+      "id": "tuna-tomato-toast",
+      "path": "supabase/catalog/photos/new/tuna-tomato-toast.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 527893,
+      "sha256": "3358d490f0841bee68289e1d63e462cbc7fb7c231d6e6f931ced8cb88a74f5db"
+    },
+    {
+      "id": "apple-peanut-toast",
+      "path": "supabase/catalog/photos/new/apple-peanut-toast.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 540101,
+      "sha256": "2bd84a0b4da0bded085e4940db05cce898fcc98c1bea2a1c82dacda72dceb3e3"
+    },
+    {
+      "id": "cheesy-mushroom-toast",
+      "path": "supabase/catalog/photos/new/cheesy-mushroom-toast.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 586453,
+      "sha256": "fe4433ea8339ad967219962a4a5e4b75a0586d6f7bc9ad4e8d36d7774c31fc19"
+    },
+    {
+      "id": "egg-spinach-toast",
+      "path": "supabase/catalog/photos/new/egg-spinach-toast.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 539214,
+      "sha256": "14f1b58056cfa5b12b32d095bb6de616563c4a887c75751da582cf7444adcb23"
+    },
+    {
+      "id": "tomato-basil-toast",
+      "path": "supabase/catalog/photos/new/tomato-basil-toast.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 513489,
+      "sha256": "ff6ce3bccdebc4dbebc9b51a1ec1b3655acdc4fa4262bedf90860c2588bb33f4"
+    },
+    {
+      "id": "egg-tomato-sandwich",
+      "path": "supabase/catalog/photos/new/egg-tomato-sandwich.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 513247,
+      "sha256": "5ff4a471daeead2231ad5218fd03ddabaef4149a1089b1e60bcb46c349492caa"
+    },
+    {
+      "id": "chicken-avocado-sandwich",
+      "path": "supabase/catalog/photos/new/chicken-avocado-sandwich.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 530011,
+      "sha256": "0d18a6c3a69d9fbbfcd3db9e8b33e923ae6d4198f3e8fcaed4982a80329f9a0e"
+    },
+    {
+      "id": "tuna-cucumber-sandwich",
+      "path": "supabase/catalog/photos/new/tuna-cucumber-sandwich.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 580608,
+      "sha256": "1b8ed4f1843237ebe9ee8855aceeaf0b1732ad88e4074a92bff07acfc91341dd"
+    },
+    {
+      "id": "cheese-spinach-sandwich",
+      "path": "supabase/catalog/photos/new/cheese-spinach-sandwich.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 602091,
+      "sha256": "7f758afdf03afd00116e3c44dd4b122067cd026371aa9c1be7fb4c1e35925071"
+    },
+    {
+      "id": "egg-pepper-sandwich",
+      "path": "supabase/catalog/photos/new/egg-pepper-sandwich.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 484069,
+      "sha256": "c2b9ced2a4ed0c3a63142e1fb9d199fe27b4eac45d954e9a82f316fc7c90c781"
+    },
+    {
+      "id": "chickpea-tomato-sandwich",
+      "path": "supabase/catalog/photos/new/chickpea-tomato-sandwich.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 538338,
+      "sha256": "6ca096c5393016c30dafe43a256afc87282650ddd2611274acde4ce49bdc8bae"
+    },
+    {
+      "id": "egg-spinach-potato-hash",
+      "path": "supabase/catalog/photos/new/egg-spinach-potato-hash.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 606471,
+      "sha256": "dbc0c8c62becf8151c49858c7e9e504bc2cf7255bbb2c47e794181dbe4e090f9"
+    },
+    {
+      "id": "chicken-pepper-potato-hash",
+      "path": "supabase/catalog/photos/new/chicken-pepper-potato-hash.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 636417,
+      "sha256": "105a56f6a961974784c0a5eea9d0200a7a16059b362eec57eac1a1ba7db4a902"
+    },
+    {
+      "id": "beef-tomato-potato-hash",
+      "path": "supabase/catalog/photos/new/beef-tomato-potato-hash.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 648243,
+      "sha256": "73225076c72b989938e3a68f31b0411c304d18613663e4fa29518001d71b81c5"
+    },
+    {
+      "id": "mushroom-cheese-potato-hash",
+      "path": "supabase/catalog/photos/new/mushroom-cheese-potato-hash.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 621302,
+      "sha256": "2e97783fc3270de9c333a8e919f2b8a1783e739f564df11877fa6e9a82329baa"
+    },
+    {
+      "id": "broccoli-egg-potato-hash",
+      "path": "supabase/catalog/photos/new/broccoli-egg-potato-hash.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 625308,
+      "sha256": "54a386944f41bd8cb294320d98f5884c6706db49a4dd44be5db4f830aa3225d7"
+    },
+    {
+      "id": "black-bean-potato-hash",
+      "path": "supabase/catalog/photos/new/black-bean-potato-hash.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 581725,
+      "sha256": "66b857d7adff0d1c0943a5f727b50c0e586fd809f94a2167a037c741f2657160"
+    },
+    {
+      "id": "spinach-tomato-quesadilla",
+      "path": "supabase/catalog/photos/new/spinach-tomato-quesadilla.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 521551,
+      "sha256": "495bb159eb981a5b1362a580598d4ce1cd52af7a830ae4518dfff4c2c56963a6"
+    },
+    {
+      "id": "egg-pepper-quesadilla",
+      "path": "supabase/catalog/photos/new/egg-pepper-quesadilla.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 568746,
+      "sha256": "a4c6f96598eac70ebda2f876ece9433ba75c73d45dc92eba480482487c30bbf6"
+    },
+    {
+      "id": "mushroom-onion-quesadilla",
+      "path": "supabase/catalog/photos/new/mushroom-onion-quesadilla.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 544555,
+      "sha256": "c9ddc951128edf607920c384119afe3d57087f90dc13ec2261b253b0b250c5d8"
+    },
+    {
+      "id": "black-bean-quesadilla",
+      "path": "supabase/catalog/photos/new/black-bean-quesadilla.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 535631,
+      "sha256": "08833447dadd69e3369d53f075bd98e601cacbb460c604dc8b3dd15843d0f4e1"
+    },
+    {
+      "id": "chicken-spinach-quesadilla",
+      "path": "supabase/catalog/photos/new/chicken-spinach-quesadilla.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 496570,
+      "sha256": "aaf2978bf6986427aa400dfedd1b8ad8e7fdfae1bdc6864c047456eab2a21d52"
+    },
+    {
+      "id": "zucchini-herb-quesadilla",
+      "path": "supabase/catalog/photos/new/zucchini-herb-quesadilla.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 577858,
+      "sha256": "835db0fe1d7ff30c6f304c7d37f23666ac4bf861546f41da5db003b287f665ca"
+    },
+    {
+      "id": "chicken-broccoli-carrot-rice-bowl",
+      "path": "supabase/catalog/photos/new/chicken-broccoli-carrot-rice-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 595031,
+      "sha256": "ddb40bacd6f8ca4a6276320a85e58c3a4744cdf7af607a5710e279d174ecb2a7"
+    },
+    {
+      "id": "chicken-pepper-onion-rice-bowl",
+      "path": "supabase/catalog/photos/new/chicken-pepper-onion-rice-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 559187,
+      "sha256": "ed218c2d9a0fde639a470abd05f3b26c7fe8c5e275318393b55fb9448e10b381"
+    },
+    {
+      "id": "chicken-spinach-tomato-rice-bowl",
+      "path": "supabase/catalog/photos/new/chicken-spinach-tomato-rice-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 609138,
+      "sha256": "5c3b41f184741e3703c680c7fa55784ddce8c5853546ea00047d5ca31ffac91f"
+    },
+    {
+      "id": "chicken-zucchini-garlic-rice-bowl",
+      "path": "supabase/catalog/photos/new/chicken-zucchini-garlic-rice-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 701811,
+      "sha256": "f8abd33ce5ebe007a77f474c37c8961a8525bdbe75c4f10065db79fe9a9aede5"
+    },
+    {
+      "id": "chicken-mushroom-rice-bowl",
+      "path": "supabase/catalog/photos/new/chicken-mushroom-rice-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 623614,
+      "sha256": "5fd2d80eb3cfdcf015512594076d6b0b26360dcca563398754a6a604d26a4818"
+    },
+    {
+      "id": "pineapple-pepper-chicken-rice-bowl",
+      "path": "supabase/catalog/photos/new/pineapple-pepper-chicken-rice-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 645858,
+      "sha256": "1afeb3c12411b572872bcdd6983e3d2e0f6f4734705a48dcfca8dadbb161e57d"
+    },
+    {
+      "id": "chicken-avocado-tomato-rice-bowl",
+      "path": "supabase/catalog/photos/new/chicken-avocado-tomato-rice-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 648344,
+      "sha256": "9f5691b17ee2d537ac359deff589a97ea18e68388bc4162c7e309977b4b8a01d"
+    },
+    {
+      "id": "chicken-black-bean-rice-bowl",
+      "path": "supabase/catalog/photos/new/chicken-black-bean-rice-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 634929,
+      "sha256": "a8faea214ccb1709b385396dd0603ae98c329ae0a76b152d0adf5541c939b6a1"
+    },
+    {
+      "id": "tuna-cucumber-tomato-quinoa",
+      "path": "supabase/catalog/photos/new/tuna-cucumber-tomato-quinoa.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 648989,
+      "sha256": "b6a0b75e1c8353aa1e95218cee3249a3bdc508d4cd608e4a25b191fcab25a975"
+    },
+    {
+      "id": "tuna-avocado-quinoa",
+      "path": "supabase/catalog/photos/new/tuna-avocado-quinoa.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 542946,
+      "sha256": "67c76ba36ed19b4f0206b0d17160e0d0cc7ece37c64c859edf845668dd995bd0"
+    },
+    {
+      "id": "tuna-spinach-quinoa",
+      "path": "supabase/catalog/photos/new/tuna-spinach-quinoa.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 553135,
+      "sha256": "1ac80a01d3b8f28541ffb797dd9cf6feeb1510a1a7660c23afed02e781a30e80"
+    },
+    {
+      "id": "tuna-pepper-onion-quinoa",
+      "path": "supabase/catalog/photos/new/tuna-pepper-onion-quinoa.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 596780,
+      "sha256": "fa591837ee33c2328a392ea91c582b7c0183285059832581106b4f0f92e4d824"
+    },
+    {
+      "id": "tuna-chickpea-quinoa",
+      "path": "supabase/catalog/photos/new/tuna-chickpea-quinoa.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 642231,
+      "sha256": "3e0e62960de470a908256cf43d8c80bd741a2e16620baa4514bccd110275d043"
+    },
+    {
+      "id": "tuna-broccoli-lemon-quinoa",
+      "path": "supabase/catalog/photos/new/tuna-broccoli-lemon-quinoa.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 604259,
+      "sha256": "18a0a5531cb4d53e7d3fa0b086d100dcdfe225d995f7ea5f9ea2fc769a9ca0e4"
+    },
+    {
+      "id": "tuna-mushroom-quinoa",
+      "path": "supabase/catalog/photos/new/tuna-mushroom-quinoa.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 645294,
+      "sha256": "48035767801b31f7fdfe909db0a60a505ec0105a3efd63f24516f5d34e9c862d"
+    },
+    {
+      "id": "pineapple-tuna-quinoa",
+      "path": "supabase/catalog/photos/new/pineapple-tuna-quinoa.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 536929,
+      "sha256": "dee075ea52fa76cc93a9f5b746962a335d2662aaf1c9e310a4e1674bcf81b09c"
+    },
+    {
+      "id": "black-bean-pepper-rice",
+      "path": "supabase/catalog/photos/new/black-bean-pepper-rice.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 574296,
+      "sha256": "1d9c096fb13738f7fa3465cdc673908d67c233c660c7a068294daa8a51fb7450"
+    },
+    {
+      "id": "chickpea-carrot-rice",
+      "path": "supabase/catalog/photos/new/chickpea-carrot-rice.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 589722,
+      "sha256": "4e81dcc974c4c2aedcc2f0f81ee5ed662a27326ae9214a3ce920455e4326e1c2"
+    },
+    {
+      "id": "tofu-broccoli-carrot-rice",
+      "path": "supabase/catalog/photos/new/tofu-broccoli-carrot-rice.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 594933,
+      "sha256": "8db7d7ca1ad6f6700ff9b009a05b55de3405b69b97ba606ba162c6692f59507f"
+    },
+    {
+      "id": "egg-spinach-rice",
+      "path": "supabase/catalog/photos/new/egg-spinach-rice.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 602068,
+      "sha256": "3cabd6f18707cdcc74dd0bbff79e092f4711a182794026a636ca355ccf9630ff"
+    },
+    {
+      "id": "lentil-tomato-rice",
+      "path": "supabase/catalog/photos/new/lentil-tomato-rice.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 580088,
+      "sha256": "fbbce0b43765b0dd457e38becb623ad7f5967c98f93fd668fbbfa09ce3233492"
+    },
+    {
+      "id": "mushroom-zucchini-rice",
+      "path": "supabase/catalog/photos/new/mushroom-zucchini-rice.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 591482,
+      "sha256": "40dd4317f8ec6c12d36090b9c8808337e393b918267cd745b4fa8aa0064857f9"
+    },
+    {
+      "id": "tuna-carrot-rice",
+      "path": "supabase/catalog/photos/new/tuna-carrot-rice.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 597437,
+      "sha256": "67fceef69b6ab346d01b3622e3233ec1a868112b3fffe44d82fa1bbf405b8d9d"
+    },
+    {
+      "id": "chicken-green-veggie-rice",
+      "path": "supabase/catalog/photos/new/chicken-green-veggie-rice.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 638461,
+      "sha256": "04ad974c2c881dae433b95fa52fc403087f2910c13193a4fc94519e08520ef59"
+    },
+    {
+      "id": "tuna-cucumber-pasta-salad",
+      "path": "supabase/catalog/photos/new/tuna-cucumber-pasta-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 585197,
+      "sha256": "9bc3a623dd8cb72b0a26a608c85d732f5da73f4f397ca700dfdaf8bca1ac3896"
+    },
+    {
+      "id": "chicken-tomato-pasta-salad",
+      "path": "supabase/catalog/photos/new/chicken-tomato-pasta-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 601774,
+      "sha256": "a7f8c84b32ae92e11cb7b6a687243f1cb3e882e5d429da508ee26ac342139df5"
+    },
+    {
+      "id": "chickpea-pasta-salad",
+      "path": "supabase/catalog/photos/new/chickpea-pasta-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 573823,
+      "sha256": "4ab5cbb6b2dae1727a3b6e2efe04daf5525949b98a3bb27dc7792af3c1bbcb25"
+    },
+    {
+      "id": "cheese-basil-pasta-salad",
+      "path": "supabase/catalog/photos/new/cheese-basil-pasta-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 645989,
+      "sha256": "c596de5cc343245599f43c6970e709510fe6814dc54a530c8452634b3eab66ac"
+    },
+    {
+      "id": "broccoli-pasta-salad",
+      "path": "supabase/catalog/photos/new/broccoli-pasta-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 652221,
+      "sha256": "5d73d58acaff048b24a01ee2e8da20cbc6fbd23a8915f4fd3aec5a65f1193a0c"
+    },
+    {
+      "id": "spinach-mushroom-pasta-salad",
+      "path": "supabase/catalog/photos/new/spinach-mushroom-pasta-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 679079,
+      "sha256": "6a4c8459306b98792bc34deddb96059eeda9123ac8e0636791caedfff52bcd85"
+    },
+    {
+      "id": "avocado-tomato-pasta-salad",
+      "path": "supabase/catalog/photos/new/avocado-tomato-pasta-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 564905,
+      "sha256": "9cbc79f969d391d09e16a3320084ad95c79843ca5cb16c84ec8e35b9edfb51e0"
+    },
+    {
+      "id": "pineapple-chicken-pasta-salad",
+      "path": "supabase/catalog/photos/new/pineapple-chicken-pasta-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 571098,
+      "sha256": "6e04018b4ebfdabae6df5c90782d64a7ac719b70c8ebded5930d2537c5dedbc2"
+    },
+    {
+      "id": "chicken-spinach-tomato-pasta",
+      "path": "supabase/catalog/photos/new/chicken-spinach-tomato-pasta.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 646922,
+      "sha256": "532969b13b509d242266c877a7b516cb7a7ac9818e52172787612dc3d4ccc393"
+    },
+    {
+      "id": "tuna-basil-tomato-pasta",
+      "path": "supabase/catalog/photos/new/tuna-basil-tomato-pasta.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 597355,
+      "sha256": "726bb8227f26874083403757c83e20106a9d799b252b3b7acd34d22174e274bb"
+    },
+    {
+      "id": "mushroom-cheese-tomato-pasta",
+      "path": "supabase/catalog/photos/new/mushroom-cheese-tomato-pasta.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 610477,
+      "sha256": "c70f49bf27658a208700849890a87c1ee9415c4c0e3efa913f509541ac7087bc"
+    },
+    {
+      "id": "ground-beef-pepper-pasta",
+      "path": "supabase/catalog/photos/new/ground-beef-pepper-pasta.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 656823,
+      "sha256": "311ae5338fdb9592b934c2677e576ec4c3b7d257ce9510d7eb79365afa89bfbd"
+    },
+    {
+      "id": "chickpea-spinach-pasta",
+      "path": "supabase/catalog/photos/new/chickpea-spinach-pasta.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 601440,
+      "sha256": "8e19d3a125840858337c1c410bdcbf0dcda52f7e451ebac75ce7096138a52b95"
+    },
+    {
+      "id": "zucchini-basil-tomato-pasta",
+      "path": "supabase/catalog/photos/new/zucchini-basil-tomato-pasta.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 591286,
+      "sha256": "d433b48e7f0ebf805162cc4e682c76cf5e4d4349da9e8b505a18f0629d4e2f65"
+    },
+    {
+      "id": "broccoli-chicken-tomato-pasta",
+      "path": "supabase/catalog/photos/new/broccoli-chicken-tomato-pasta.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 586316,
+      "sha256": "384c6f993e0374cbf1e9bd341dcfb397751852e7a432e688208498a5106fb248"
+    },
+    {
+      "id": "lentil-carrot-tomato-pasta",
+      "path": "supabase/catalog/photos/new/lentil-carrot-tomato-pasta.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 633474,
+      "sha256": "3303e61687a275431464314e51ac34058f53d8feaf0edb2c7f37555f4bb821c1"
+    },
+    {
+      "id": "chickpea-cucumber-tomato-salad",
+      "path": "supabase/catalog/photos/new/chickpea-cucumber-tomato-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 542936,
+      "sha256": "e554abe72339b4a9a5b9dd590163c53a0e4446f48e1268d1d82747ebd751a00e"
+    },
+    {
+      "id": "chickpea-tuna-salad",
+      "path": "supabase/catalog/photos/new/chickpea-tuna-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 618062,
+      "sha256": "c034a9169a0bef563d8d91ca817938d579c0006413ccd021b4e543a77f7d39c2"
+    },
+    {
+      "id": "chickpea-avocado-salad",
+      "path": "supabase/catalog/photos/new/chickpea-avocado-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 596625,
+      "sha256": "ee22ee4f09b8ecaaa1c175e1f86d099cfceafc8d7d4ac85207a0500680b35ec8"
+    },
+    {
+      "id": "chickpea-spinach-salad",
+      "path": "supabase/catalog/photos/new/chickpea-spinach-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 518855,
+      "sha256": "67ce72985f9e30f9152359fb0c8fbea35ec9758dd427a85824cbfec161d50def"
+    },
+    {
+      "id": "chickpea-quinoa-salad",
+      "path": "supabase/catalog/photos/new/chickpea-quinoa-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 549868,
+      "sha256": "3367b01b683038eb0846a828d3003285d597fdb871c2b51d757477c4c4144e1c"
+    },
+    {
+      "id": "chickpea-carrot-salad",
+      "path": "supabase/catalog/photos/new/chickpea-carrot-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 595143,
+      "sha256": "7d0d7111fc315416d0e81c6ba8ead625c78a9e44ae6a5aff45e9e524cba1c8f1"
+    },
+    {
+      "id": "chickpea-broccoli-salad",
+      "path": "supabase/catalog/photos/new/chickpea-broccoli-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 616772,
+      "sha256": "f830c07e8c06839ef1ce464a1f00430524742d6e653cd854ffe128c7ee873a8c"
+    },
+    {
+      "id": "chickpea-cheese-salad",
+      "path": "supabase/catalog/photos/new/chickpea-cheese-salad.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 563973,
+      "sha256": "5662927cf9ee52586257b050bd1c225b5335389f24074c2d34d195114c816de3"
+    },
+    {
+      "id": "carrot-tomato-lentil-bowl",
+      "path": "supabase/catalog/photos/new/carrot-tomato-lentil-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 619430,
+      "sha256": "cccf3a9dea6c68975dd32e51fca9b7f5a1461b79f9a44ed013062ce62a48422a"
+    },
+    {
+      "id": "broccoli-spinach-lentil-bowl",
+      "path": "supabase/catalog/photos/new/broccoli-spinach-lentil-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 602731,
+      "sha256": "994d553216ad068e4fd271d9bd7c1d10979f7dc19165a33d9e0e6d302a9a3ebc"
+    },
+    {
+      "id": "zucchini-lentil-bowl",
+      "path": "supabase/catalog/photos/new/zucchini-lentil-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 632916,
+      "sha256": "48c7116efb6d103bc28cb8fc225b40cd41d222a26ade4ed047aba26fd1c77e5e"
+    },
+    {
+      "id": "potato-carrot-lentil-bowl",
+      "path": "supabase/catalog/photos/new/potato-carrot-lentil-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 610412,
+      "sha256": "9c7761f25269c72789a791554dbf40575dec0f754eddd39a6141aa464728b4cf"
+    },
+    {
+      "id": "quinoa-pepper-lentil-bowl",
+      "path": "supabase/catalog/photos/new/quinoa-pepper-lentil-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 620663,
+      "sha256": "144793d2ad535257330d1d285685313e35e9803386e778e8a06b6fdac7644341"
+    },
+    {
+      "id": "rice-tomato-lentil-bowl",
+      "path": "supabase/catalog/photos/new/rice-tomato-lentil-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 663037,
+      "sha256": "c961ec4ddef866f71346544dfd2cfd60ce692b23a27ed7f7f22680061f13536c"
+    },
+    {
+      "id": "tofu-broccoli-lentil-bowl",
+      "path": "supabase/catalog/photos/new/tofu-broccoli-lentil-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 576321,
+      "sha256": "4330833db01c355832b3e39695fa667c7e8d5ff7ee202bade8fc0d10bde9d605"
+    },
+    {
+      "id": "mushroom-spinach-lentil-bowl",
+      "path": "supabase/catalog/photos/new/mushroom-spinach-lentil-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 588050,
+      "sha256": "033178498c23174e0cf31dc15c2d30d2c2ffedd5b84a9f14e28114326f3e48f1"
+    },
+    {
+      "id": "chicken-avocado-tomato-wrap",
+      "path": "supabase/catalog/photos/new/chicken-avocado-tomato-wrap.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 538612,
+      "sha256": "4119303938a1b2bc2437cdc30df291ec39178b244d1bad02fca3bbe479278635"
+    },
+    {
+      "id": "tuna-cucumber-wrap",
+      "path": "supabase/catalog/photos/new/tuna-cucumber-wrap.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 485868,
+      "sha256": "06d754846fb808e038c92091f9e0f9f19085db778c33a8484f4eca97ed3e4124"
+    },
+    {
+      "id": "chickpea-spinach-wrap",
+      "path": "supabase/catalog/photos/new/chickpea-spinach-wrap.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 469602,
+      "sha256": "6dbdb7a891c60056937130f730c2092c7e50069aefcb7b1cc0c63d3ed29b6bff"
+    },
+    {
+      "id": "ground-beef-pepper-wrap",
+      "path": "supabase/catalog/photos/new/ground-beef-pepper-wrap.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 584806,
+      "sha256": "fd3506fa64dec358a96b1d9fba850be732cf32082ac5b42c87794f0445bb8fe7"
+    },
+    {
+      "id": "egg-cheese-wrap",
+      "path": "supabase/catalog/photos/new/egg-cheese-wrap.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 531269,
+      "sha256": "ad90258310bbd726cd8ab592d90ad08516ea78501c319bce6c14aabf75bfa1c7"
+    },
+    {
+      "id": "black-bean-avocado-wrap",
+      "path": "supabase/catalog/photos/new/black-bean-avocado-wrap.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 499846,
+      "sha256": "372ca2f888ae73a948944b930fae0d188126f14d2111fd6e9298ef0dc461147c"
+    },
+    {
+      "id": "tofu-broccoli-wrap",
+      "path": "supabase/catalog/photos/new/tofu-broccoli-wrap.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 559344,
+      "sha256": "2fcc2f38e5578f744846f92436d0480b896372581ef6d4cd4d616f5ebe7a75ff"
+    },
+    {
+      "id": "chicken-mushroom-wrap",
+      "path": "supabase/catalog/photos/new/chicken-mushroom-wrap.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 529891,
+      "sha256": "b1bab36d604d57e6e05ca789d11e4d96afc0d7718d884704de0a3701497c3c9e"
+    },
+    {
+      "id": "chicken-potato-carrot-soup",
+      "path": "supabase/catalog/photos/new/chicken-potato-carrot-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 578430,
+      "sha256": "24b80be55bf6513eebc9e07dc7733397fcc74017d9f5ce4ea1efc5c526bf6f45"
+    },
+    {
+      "id": "chicken-rice-spinach-soup",
+      "path": "supabase/catalog/photos/new/chicken-rice-spinach-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 547226,
+      "sha256": "6edd5aad83162fb8a12490c94c9d1813bd90ddb1d2c209ce73701cd4084af2d1"
+    },
+    {
+      "id": "chicken-broccoli-soup",
+      "path": "supabase/catalog/photos/new/chicken-broccoli-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 606510,
+      "sha256": "565a1a1f0af2770d8e57e920f4b429f8e2775f44085a73cd124d8447520c212b"
+    },
+    {
+      "id": "chicken-lentil-soup",
+      "path": "supabase/catalog/photos/new/chicken-lentil-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 657356,
+      "sha256": "0d80cd65518147aaa116e3a8d87f228278b84d63632ed9d61a4809719df9a0a8"
+    },
+    {
+      "id": "chicken-zucchini-soup",
+      "path": "supabase/catalog/photos/new/chicken-zucchini-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 587826,
+      "sha256": "5c083f1ccbd7adfb7f80a418d1a128bbff7d5a1a63daf7bab47b8b36b29f6817"
+    },
+    {
+      "id": "chicken-quinoa-soup",
+      "path": "supabase/catalog/photos/new/chicken-quinoa-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 599143,
+      "sha256": "ca46720984f4ddd7ac0b1cd2b3f1d8cac706b849e93cc880e758d242b991afcb"
+    },
+    {
+      "id": "chicken-mushroom-soup",
+      "path": "supabase/catalog/photos/new/chicken-mushroom-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 630453,
+      "sha256": "1c88044a9d05a85254e4c39d5ed640c1a4efaf9736f0d9a3131113a6221be7f0"
+    },
+    {
+      "id": "chicken-chickpea-soup",
+      "path": "supabase/catalog/photos/new/chicken-chickpea-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 589569,
+      "sha256": "645b133d84fecd466e8acf2aab5cfe0b4e6de298464f5de6cbaa1b1d0bc971d4"
+    },
+    {
+      "id": "tofu-broccoli-carrot-stir-fry",
+      "path": "supabase/catalog/photos/new/tofu-broccoli-carrot-stir-fry.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 603585,
+      "sha256": "9823229781678b7fd84a7052355d0748cbb118876abd9c5fa36344378c9a640d"
+    },
+    {
+      "id": "tofu-pepper-mushroom-stir-fry",
+      "path": "supabase/catalog/photos/new/tofu-pepper-mushroom-stir-fry.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 587437,
+      "sha256": "18d554137733e34ae7ab67f861cbe4ed2e5ec7c8eb6f0d474e5399389e485112"
+    },
+    {
+      "id": "tofu-zucchini-tomato-stir-fry",
+      "path": "supabase/catalog/photos/new/tofu-zucchini-tomato-stir-fry.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 715078,
+      "sha256": "c333f101015fe0cfdaddbbec5886e73cb599f59ad494117664d574fd61dda2e2"
+    },
+    {
+      "id": "tofu-rice-spinach-stir-fry",
+      "path": "supabase/catalog/photos/new/tofu-rice-spinach-stir-fry.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 603531,
+      "sha256": "9bfaa30a41954ab13f2d5d50c6b2d01aaf6328b746512f22fedbd4efce85f354"
+    },
+    {
+      "id": "tofu-quinoa-broccoli-stir-fry",
+      "path": "supabase/catalog/photos/new/tofu-quinoa-broccoli-stir-fry.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 664635,
+      "sha256": "019c901755266733421b6f0e9dbddc591cb270a71c3b0d675e4d97b1da8b9d1d"
+    },
+    {
+      "id": "tofu-pineapple-pepper-stir-fry",
+      "path": "supabase/catalog/photos/new/tofu-pineapple-pepper-stir-fry.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 547803,
+      "sha256": "629e927fa7e9c80b8e0f83534a9bb23f094c33e193d7a94f05d9c7caab83ffde"
+    },
+    {
+      "id": "tofu-black-bean-stir-fry",
+      "path": "supabase/catalog/photos/new/tofu-black-bean-stir-fry.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 614447,
+      "sha256": "775b57282e160acf3efc08e829a7c95073cbf7b61995984707986c052b3d4b12"
+    },
+    {
+      "id": "tofu-potato-mushroom-stir-fry",
+      "path": "supabase/catalog/photos/new/tofu-potato-mushroom-stir-fry.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 611483,
+      "sha256": "062ef79ed2d906ca9528ba1661b59537e27dcd3fd4f28bb1f69707e88cb061ec"
+    },
+    {
+      "id": "salmon-potato-broccoli-traybake",
+      "path": "supabase/catalog/photos/new/salmon-potato-broccoli-traybake.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 618845,
+      "sha256": "922edffd4a166b9ec3bfa900dad1f3fa8b800e34e6660d7f52b8e7d3d386480f"
+    },
+    {
+      "id": "salmon-sweet-potato-spinach-traybake",
+      "path": "supabase/catalog/photos/new/salmon-sweet-potato-spinach-traybake.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 627714,
+      "sha256": "656a27fae075cf4125a0c0f188db3506a1343a860aa790b799fa4a459981b43a"
+    },
+    {
+      "id": "salmon-carrot-zucchini-traybake",
+      "path": "supabase/catalog/photos/new/salmon-carrot-zucchini-traybake.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 678821,
+      "sha256": "feed24e53da5de04e9c3f94548c75ee541e785a6af3bab66ee11b4b0d9b6158e"
+    },
+    {
+      "id": "salmon-quinoa-tomato-traybake",
+      "path": "supabase/catalog/photos/new/salmon-quinoa-tomato-traybake.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 636301,
+      "sha256": "63e8d78f1b128781065a6448954a364e7e3bb7f90fb1969f2cab9540d6bb26e1"
+    },
+    {
+      "id": "salmon-mushroom-garlic-traybake",
+      "path": "supabase/catalog/photos/new/salmon-mushroom-garlic-traybake.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 588444,
+      "sha256": "be87c4446cfce419f3ad788d874fb4afcfd478a5396a8be8cf25bc8fc056bcb1"
+    },
+    {
+      "id": "salmon-pepper-onion-traybake",
+      "path": "supabase/catalog/photos/new/salmon-pepper-onion-traybake.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 643919,
+      "sha256": "b7bd95ada428ec95a143d498965b67654da306f2b7301c66fc14589d4cc25d53"
+    },
+    {
+      "id": "salmon-broccoli-chickpea-traybake",
+      "path": "supabase/catalog/photos/new/salmon-broccoli-chickpea-traybake.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 619350,
+      "sha256": "6e0bb3615d1c4197efc4193538c934a4f74f9f98b2fd1bc68c3a7cfc22595225"
+    },
+    {
+      "id": "beef-potato-carrot-skillet",
+      "path": "supabase/catalog/photos/new/beef-potato-carrot-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 710735,
+      "sha256": "0403df091c7c4c5636653d8d92d6440e4d522de27a0a41ed526b8778402ca65c"
+    },
+    {
+      "id": "beef-rice-pepper-skillet",
+      "path": "supabase/catalog/photos/new/beef-rice-pepper-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 643452,
+      "sha256": "9ec2fb96616d8df4046da7433ce765bc7a6ea2a5f9086b2f80259848549f059b"
+    },
+    {
+      "id": "beef-zucchini-tomato-skillet",
+      "path": "supabase/catalog/photos/new/beef-zucchini-tomato-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 639578,
+      "sha256": "8a481df335c89647f93a97b28a238276f1b7cba112b725ac1a54c328672ff2be"
+    },
+    {
+      "id": "beef-black-bean-skillet",
+      "path": "supabase/catalog/photos/new/beef-black-bean-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 682966,
+      "sha256": "ab628195beb2491f64d021893e6d63fcf8cf779767873d9a085dfd59e043a228"
+    },
+    {
+      "id": "beef-mushroom-spinach-skillet",
+      "path": "supabase/catalog/photos/new/beef-mushroom-spinach-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 621116,
+      "sha256": "3726861037fcc5a7abbbcdc2c0f2ef4c335b70a5f18ad3a32fd8023665275c9b"
+    },
+    {
+      "id": "beef-sweet-potato-broccoli-skillet",
+      "path": "supabase/catalog/photos/new/beef-sweet-potato-broccoli-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 633196,
+      "sha256": "292ff79a46b5dba424df72ba20d557477b59f9d39c8a73f2f7f64dbefc7ba424"
+    },
+    {
+      "id": "beef-quinoa-tomato-skillet",
+      "path": "supabase/catalog/photos/new/beef-quinoa-tomato-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 657025,
+      "sha256": "5f48f655515ab4b8afcc218c218a691fae40f126175ad5b35332609888007f42"
+    },
+    {
+      "id": "quinoa-chickpea-stuffed-peppers",
+      "path": "supabase/catalog/photos/new/quinoa-chickpea-stuffed-peppers.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 636548,
+      "sha256": "9378e1b5e1027565d6d7d54ba41932d0d9a3df56b02e305d46bb17120e6bfad5"
+    },
+    {
+      "id": "chicken-rice-stuffed-peppers",
+      "path": "supabase/catalog/photos/new/chicken-rice-stuffed-peppers.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 608815,
+      "sha256": "4020a812e89456f2f5eeaabd2a4215d97056f4ba102d95013f968cc9f0f29728"
+    },
+    {
+      "id": "beef-lentil-stuffed-peppers",
+      "path": "supabase/catalog/photos/new/beef-lentil-stuffed-peppers.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 581438,
+      "sha256": "9f2cd4372d6343f91029fea7340e7c47a1125fcd9ffe3cc6312f2a2e474bbe2c"
+    },
+    {
+      "id": "tuna-potato-stuffed-peppers",
+      "path": "supabase/catalog/photos/new/tuna-potato-stuffed-peppers.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 533800,
+      "sha256": "bfb68e29ea8d470fd4a98ecbb901fb4442d796fb41cdde70c307931aa35f5ac2"
+    },
+    {
+      "id": "tofu-mushroom-stuffed-peppers",
+      "path": "supabase/catalog/photos/new/tofu-mushroom-stuffed-peppers.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 662851,
+      "sha256": "22d9b03fd21bc4ea3b079dad848d23ab10c85632d5bccb539c313b92a1bbfd38"
+    },
+    {
+      "id": "black-bean-cheese-stuffed-peppers",
+      "path": "supabase/catalog/photos/new/black-bean-cheese-stuffed-peppers.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 620666,
+      "sha256": "806757802d1f82005b31c4a9b978e56258353b79c2ead2aafa9d4b3cdf1edc9f"
+    },
+    {
+      "id": "rice-spinach-stuffed-peppers",
+      "path": "supabase/catalog/photos/new/rice-spinach-stuffed-peppers.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 638255,
+      "sha256": "288c6c20af874a97c351d0efe7ad07323f4ed4e7f0346c40772597be2f707a38"
+    },
+    {
+      "id": "tuna-yogurt-baked-potatoes",
+      "path": "supabase/catalog/photos/new/tuna-yogurt-baked-potatoes.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 580283,
+      "sha256": "9e9b42774af7b4fae3cc64492a15a666f48116a74f35b422391410409d5bb2c1"
+    },
+    {
+      "id": "chicken-broccoli-baked-potatoes",
+      "path": "supabase/catalog/photos/new/chicken-broccoli-baked-potatoes.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 663194,
+      "sha256": "603024267f8c9c83ce1afeb15fde7e897f1270e02a4e155a3600eaf47d8db074"
+    },
+    {
+      "id": "black-bean-baked-potatoes",
+      "path": "supabase/catalog/photos/new/black-bean-baked-potatoes.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 586688,
+      "sha256": "4b31ba05b4805c58110816e788e90edc7cb4fadd0728cb8f5f8f57ea4f75f37d"
+    },
+    {
+      "id": "mushroom-cheese-baked-potatoes",
+      "path": "supabase/catalog/photos/new/mushroom-cheese-baked-potatoes.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 583869,
+      "sha256": "7f38333f82fe79ee92556b68d27040512e069b1c1d5cfb955bab108cb7a8947d"
+    },
+    {
+      "id": "chickpea-spinach-baked-potatoes",
+      "path": "supabase/catalog/photos/new/chickpea-spinach-baked-potatoes.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 612760,
+      "sha256": "177105df456026a6a8abdc3e26bb6c85099f8f6b8fa6ced45f493e9973fc1b5f"
+    },
+    {
+      "id": "beef-tomato-baked-potatoes",
+      "path": "supabase/catalog/photos/new/beef-tomato-baked-potatoes.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 621182,
+      "sha256": "e4b641935946e8cfe0ed338f91108c78a3a7d9d4e7dcbe380ff24663e62bd8d5"
+    },
+    {
+      "id": "egg-pepper-baked-potatoes",
+      "path": "supabase/catalog/photos/new/egg-pepper-baked-potatoes.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 674853,
+      "sha256": "0989643e06bfda9324c8548eb29d7073cb1026846fe2b08b6295f1cf96ce7a75"
+    },
+    {
+      "id": "chicken-spinach-sweet-potato-bowl",
+      "path": "supabase/catalog/photos/new/chicken-spinach-sweet-potato-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 592560,
+      "sha256": "2aeaeb3fd3a0ce7349062f0ad3fb185f3b3c5f88b536b6390c86e93cb95882a0"
+    },
+    {
+      "id": "tofu-broccoli-sweet-potato-bowl",
+      "path": "supabase/catalog/photos/new/tofu-broccoli-sweet-potato-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 673807,
+      "sha256": "8e7309d5f4502c1eca334a759918f38ac0167b3c717f580efa1b2e71eb4c10d5"
+    },
+    {
+      "id": "chickpea-tomato-sweet-potato-bowl",
+      "path": "supabase/catalog/photos/new/chickpea-tomato-sweet-potato-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 628459,
+      "sha256": "93024b614b523c177f229c347c6e7929a0e7937d0081b51156f65e49ec788bc5"
+    },
+    {
+      "id": "beef-pepper-sweet-potato-bowl",
+      "path": "supabase/catalog/photos/new/beef-pepper-sweet-potato-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 562164,
+      "sha256": "9bb9935efa25302f45ce9ce43f8d02a2d0b0946e31cde426140bbf723a401a06"
+    },
+    {
+      "id": "egg-avocado-sweet-potato-bowl",
+      "path": "supabase/catalog/photos/new/egg-avocado-sweet-potato-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 579623,
+      "sha256": "2c9872d865be05aa486461d6b694652877cb461e1486b0b709b4940b3995e62e"
+    },
+    {
+      "id": "lentil-mushroom-sweet-potato-bowl",
+      "path": "supabase/catalog/photos/new/lentil-mushroom-sweet-potato-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 603619,
+      "sha256": "b25843529898b26fff91832654a1a3492a33981184276df528b1a61b2fda7c56"
+    },
+    {
+      "id": "tuna-cucumber-sweet-potato-bowl",
+      "path": "supabase/catalog/photos/new/tuna-cucumber-sweet-potato-bowl.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 558342,
+      "sha256": "41367e08d50bdde87ac4651333b9a7e3d80dfaee47c215cf244282ccee00fd40"
+    },
+    {
+      "id": "spinach-tomato-skillet-eggs",
+      "path": "supabase/catalog/photos/new/spinach-tomato-skillet-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 649650,
+      "sha256": "3897cb117befb324133aab724a04f9442cc93a5c4082797cb9f1863f3a59c32f"
+    },
+    {
+      "id": "pepper-tomato-skillet-eggs",
+      "path": "supabase/catalog/photos/new/pepper-tomato-skillet-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 621738,
+      "sha256": "2c97368cf1a55da31234094df4ef9343a4ca7ede75ce5ebea3c53ae3a6e30946"
+    },
+    {
+      "id": "chickpea-tomato-skillet-eggs",
+      "path": "supabase/catalog/photos/new/chickpea-tomato-skillet-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 647245,
+      "sha256": "ea4e414d7a32ac4ac0a19c4610bad0a80742295c5aeb83624be549df47a082ff"
+    },
+    {
+      "id": "mushroom-tomato-skillet-eggs",
+      "path": "supabase/catalog/photos/new/mushroom-tomato-skillet-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 670203,
+      "sha256": "dab73ff7245e83f8336048bccf3fa73b0133d235e0f0847058d22eca700630f3"
+    },
+    {
+      "id": "cheese-tomato-skillet-eggs",
+      "path": "supabase/catalog/photos/new/cheese-tomato-skillet-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 630845,
+      "sha256": "0f4940ed23e030c230d1bef245a6354610eb00f4eabc5c65fa381c7d7201255f"
+    },
+    {
+      "id": "black-bean-tomato-skillet-eggs",
+      "path": "supabase/catalog/photos/new/black-bean-tomato-skillet-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 645983,
+      "sha256": "0f210bf6c65b96d7656c33b91f521c952f4978dac7055b06241af54d8d8d7091"
+    },
+    {
+      "id": "zucchini-tomato-skillet-eggs",
+      "path": "supabase/catalog/photos/new/zucchini-tomato-skillet-eggs.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 580706,
+      "sha256": "6c6847da4ba1222e024be29f2bec5ffb9b2611bffa81d33f5f1c7447715a4f33"
+    },
+    {
+      "id": "chicken-broccoli-quinoa-skillet",
+      "path": "supabase/catalog/photos/new/chicken-broccoli-quinoa-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 604661,
+      "sha256": "f07af555d0e0bbc2217c66894fa524cab404712d5e36a6c3d678175ddb6dc31c"
+    },
+    {
+      "id": "tofu-spinach-quinoa-skillet",
+      "path": "supabase/catalog/photos/new/tofu-spinach-quinoa-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 650564,
+      "sha256": "6cccaf40460d11d51ce1ccd9a3dc629918a263c04008f4b598946482599e86f8"
+    },
+    {
+      "id": "tuna-tomato-quinoa-skillet",
+      "path": "supabase/catalog/photos/new/tuna-tomato-quinoa-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 712455,
+      "sha256": "02f5f3642868d717a5934349ce768c64f7ec8a1a98ef542805bfc2a17a658bfb"
+    },
+    {
+      "id": "chickpea-zucchini-quinoa-skillet",
+      "path": "supabase/catalog/photos/new/chickpea-zucchini-quinoa-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 626745,
+      "sha256": "5b4a6717e817a33c94d285e4103c897077854bbdb6b893831d38654559f05654"
+    },
+    {
+      "id": "beef-pepper-quinoa-skillet",
+      "path": "supabase/catalog/photos/new/beef-pepper-quinoa-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 649557,
+      "sha256": "8a2a1ab14ac579b9f80f37c743176ff20dcfe1b9f13626cf9f26939d2d36a9e0"
+    },
+    {
+      "id": "lentil-carrot-quinoa-skillet",
+      "path": "supabase/catalog/photos/new/lentil-carrot-quinoa-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 612382,
+      "sha256": "fceb5f85c899294bd976236141c67a9184d34a9456bf08daf6eb6698693cceb7"
+    },
+    {
+      "id": "mushroom-cheese-quinoa-skillet",
+      "path": "supabase/catalog/photos/new/mushroom-cheese-quinoa-skillet.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 611591,
+      "sha256": "5749c6020ed87fe6b71e09aa709331421e6b330349f8a39e08a3b099fb9ab28c"
+    },
+    {
+      "id": "potato-lentil-soup",
+      "path": "supabase/catalog/photos/new/potato-lentil-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 656444,
+      "sha256": "d5dc551b7d34f213073ee41154705f584acf618055c80561efe229229e91bf69"
+    },
+    {
+      "id": "spinach-lentil-soup",
+      "path": "supabase/catalog/photos/new/spinach-lentil-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 549244,
+      "sha256": "678e2d7e6568b3304f1da66e82317b9288a62ce1dd58ca55eeeeffd5da43b125"
+    },
+    {
+      "id": "broccoli-lentil-soup",
+      "path": "supabase/catalog/photos/new/broccoli-lentil-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 576370,
+      "sha256": "3f507a3edb8128de653d62943fd7597b614f8823ff32b2a92604204017fe851b"
+    },
+    {
+      "id": "sweet-potato-lentil-soup",
+      "path": "supabase/catalog/photos/new/sweet-potato-lentil-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 612286,
+      "sha256": "d867d0beef31bbd329e62210d0484fb75904cffbe05c4fa5b6fea9dcdb4a86d9"
+    },
+    {
+      "id": "zucchini-lentil-soup",
+      "path": "supabase/catalog/photos/new/zucchini-lentil-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 601202,
+      "sha256": "be1c115636da54c87f44b21b2b8042e50085dd3880b7db8de30d7eaefdd5630a"
+    },
+    {
+      "id": "mushroom-lentil-soup",
+      "path": "supabase/catalog/photos/new/mushroom-lentil-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 664462,
+      "sha256": "bb287c94f0feabc57d9c7a80dc3a254d58ba83d71f1c12fd331a3e5455177cc5"
+    },
+    {
+      "id": "quinoa-lentil-soup",
+      "path": "supabase/catalog/photos/new/quinoa-lentil-soup.jpg",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 682289,
+      "sha256": "8c8e3bbb684cae0d66482e2007f2b38d55526fa2bd8b54f32caa26ce002474e4"
+    }
+  ]
+}

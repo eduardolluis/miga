@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/rls.mjs && node ../tool/import_recipes.test.mjs"
+    "test": "node tests/rls.mjs && node ../tool/import_recipes.test.mjs && node --test ../tool/verify_recipe_backend.test.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.14"

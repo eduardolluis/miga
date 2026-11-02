@@ -14,7 +14,7 @@ abstract final class RecipeCatalog {
             as List)
       Recipe.fromJson(
         json as Map<String, dynamic>,
-        imageBaseUrl: 'assets/images/recipes/v2/',
+        imageBaseUrl: 'https://example.test/storage/v1/object/public/recipe-photos/',
       ),
   ];
   static List<Recipe> forSlot(MealSlot slot) =>
