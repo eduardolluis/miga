@@ -64,6 +64,13 @@ void main() {
           page == totalPages - 1 ? RecipeCatalog.all.length - page * 6 : 6,
         );
         expect(find.text('Page ${page + 1} of $totalPages'), findsOneWidget);
+        // Guard the human-readable range against generated l10n argument order.
+        final first = page * 6 + 1;
+        final last = (first + visible.length - 1);
+        expect(
+          find.text('Showing $first–$last of ${RecipeCatalog.all.length} recipes'),
+          findsOneWidget,
+        );
         ids.addAll(visible);
         if (page < totalPages - 1) {
           await tester.tap(find.byKey(const ValueKey('recipes-next-bottom')));

@@ -28,6 +28,7 @@ class BudgetRecipeSuggestions extends StatefulWidget {
     this.priceRevision = 0,
     this.ingredientPrices,
     this.favorites = const {},
+    this.rotationIndex = 0,
     this.onFavorite,
   });
 
@@ -39,6 +40,7 @@ class BudgetRecipeSuggestions extends StatefulWidget {
   final ValueChanged<Recipe> onRecipe;
   final VoidCallback? onSeeAll;
   final Set<String> favorites;
+  final int rotationIndex;
   final ValueChanged<String>? onFavorite;
   final Future<List<RecipeCost>> Function(List<Recipe>)? estimate;
   final RecipeCost Function(Recipe)? costFor;
@@ -55,11 +57,26 @@ class BudgetRecipeSuggestions extends StatefulWidget {
 class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
   final _estimator = RecipeCostEstimator();
   late Future<List<RecipeCost>> _request = _load();
+  List<RecipeCost>? _orderedCosts;
+  List<RecipeCost> _budgetFits = const [];
+  List<RecipeCost>? _orderedSource;
+  int? _orderedAllowance;
 
   // Recipe discovery must not disappear if pricing is unavailable or the user
   // has not configured a budget. In that situation, costs remain unpriced.
   Future<List<RecipeCost>> _load() async {
     try {
+      final costFor = widget.costFor;
+      if (costFor != null) {
+        final costs = <RecipeCost>[];
+        for (var offset = 0; offset < widget.recipes.length; offset += 24) {
+          costs.addAll(widget.recipes.skip(offset).take(24).map(costFor));
+          if (offset + 24 < widget.recipes.length) {
+            await Future<void>.delayed(Duration.zero);
+          }
+        }
+        return costs;
+      }
       if (widget.estimate != null) {
         return await widget.estimate!(widget.recipes);
       }
@@ -85,17 +102,58 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
   @override
   void didUpdateWidget(BudgetRecipeSuggestions oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.costFor != null) return;
-    if (oldWidget.budget?.currency != widget.budget?.currency ||
+    final recipesChanged = !identical(widget.recipes, oldWidget.recipes);
+    if (widget.costFor != null) {
+      if (recipesChanged ||
+          widget.costFor != oldWidget.costFor ||
+          widget.priceRevision != oldWidget.priceRevision ||
+          widget.currency != oldWidget.currency) {
+        _request = _load();
+        _orderedCosts = null;
+        _orderedSource = null;
+      }
+      return;
+    }
+    if (recipesChanged ||
+        widget.estimate != oldWidget.estimate ||
+        oldWidget.budget?.currency != widget.budget?.currency ||
         oldWidget.budget?.limit != widget.budget?.limit ||
         oldWidget.budget?.spent != widget.budget?.spent ||
         oldWidget.currency != widget.currency ||
         oldWidget.priceRevision != widget.priceRevision ||
-        !identical(oldWidget.ingredientPrices, widget.ingredientPrices) ||
-        oldWidget.recipes.map((r) => '${r.id}:${r.servings}').join() !=
-            widget.recipes.map((r) => '${r.id}:${r.servings}').join()) {
+        !identical(oldWidget.ingredientPrices, widget.ingredientPrices)) {
       _request = _load();
+      _orderedCosts = null;
+      _orderedSource = null;
     }
+  }
+
+  void _ensureOrderedCosts(List<RecipeCost> costs, int? allowance) {
+    if (identical(_orderedSource, costs) &&
+        _orderedAllowance == allowance &&
+        _orderedCosts != null) {
+      return;
+    }
+    final ordered = List<RecipeCost>.of(costs);
+    ordered.sort((a, b) {
+      if (allowance != null) {
+        final fit = (b.fits(allowance) ? 1 : 0).compareTo(
+          a.fits(allowance) ? 1 : 0,
+        );
+        if (fit != 0) return fit;
+      }
+      if (a.complete != b.complete) return a.complete ? -1 : 1;
+      final amount = a.subtotalCents.compareTo(b.subtotalCents);
+      return amount != 0
+          ? amount
+          : a.recipe.sortOrder.compareTo(b.recipe.sortOrder);
+    });
+    _orderedSource = costs;
+    _orderedAllowance = allowance;
+    _orderedCosts = ordered;
+    _budgetFits = allowance == null
+        ? const []
+        : ordered.where((cost) => cost.fits(allowance)).toList(growable: false);
   }
 
   void _details(RecipeCost cost) => showModalBottomSheet<void>(
@@ -142,14 +200,8 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
         ),
         const SizedBox(height: 14),
         FutureBuilder<List<RecipeCost>>(
-          future: widget.costFor == null ? _request : null,
+          future: _request,
           builder: (context, snapshot) {
-            if (widget.costFor != null) {
-              snapshot = AsyncSnapshot.withData(
-                ConnectionState.done,
-                widget.recipes.map(widget.costFor!).toList(),
-              );
-            }
             if (snapshot.connectionState != ConnectionState.done &&
                 !snapshot.hasData) {
               return const SkeletonRecipeCards();
@@ -157,7 +209,9 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
             if (snapshot.hasError) {
               return Text(l.groceryEstimateUnavailable);
             }
-            final allCosts = List<RecipeCost>.of(snapshot.data ?? []);
+            final costs = snapshot.data ?? const <RecipeCost>[];
+            _ensureOrderedCosts(costs, allowance);
+            final allCosts = _orderedCosts!;
             if (allCosts.isEmpty) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -179,33 +233,22 @@ class _BudgetRecipeSuggestionsState extends State<BudgetRecipeSuggestions> {
                 ],
               );
             }
-            allCosts.sort((a, b) {
-              // Only a real, configured budget can establish affordability.
-              if (allowance != null) {
-                final fit = (b.fits(allowance) ? 1 : 0).compareTo(
-                  a.fits(allowance) ? 1 : 0,
-                );
-                if (fit != 0) return fit;
+            final fits = _budgetFits;
+            // Rotate within eligible budget fits first, then supplement with
+            // other real recipes. The cursor advances on each app launch, not
+            // on every FutureBuilder rebuild, favorite tap, or price refresh.
+            final featured = <RecipeCost>[];
+            for (final pool in [fits, allCosts]) {
+              if (pool.isEmpty || featured.length == 2) continue;
+              final start = widget.rotationIndex % pool.length;
+              for (
+                var index = 0;
+                index < pool.length && featured.length < 2;
+                index++
+              ) {
+                final candidate = pool[(start + index) % pool.length];
+                if (!featured.contains(candidate)) featured.add(candidate);
               }
-              if (a.complete != b.complete) return a.complete ? -1 : 1;
-              // Consistent ordering makes the preview stable across rebuilds.
-              final amount = a.subtotalCents.compareTo(b.subtotalCents);
-              return amount != 0
-                  ? amount
-                  : a.recipe.sortOrder.compareTo(b.recipe.sortOrder);
-            });
-            final fits = allowance == null
-                ? <RecipeCost>[]
-                : allCosts.where((cost) => cost.fits(allowance)).toList();
-            final featured = <RecipeCost>[
-              if (allowance != null) ...fits.take(2),
-            ];
-            // If not enough confirmed matches exist, show clearly unconfirmed
-            // suggestions rather than an empty screen. Never label these as
-            // fitting the user's budget.
-            for (final candidate in allCosts) {
-              if (featured.length >= 2) break;
-              if (!featured.contains(candidate)) featured.add(candidate);
             }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,

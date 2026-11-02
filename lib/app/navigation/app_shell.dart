@@ -84,13 +84,7 @@ class AppShell extends StatefulWidget {
   State<AppShell> createState() => _AppShellState();
 }
 
-class _AppShellState extends State<AppShell>
-    with WidgetsBindingObserver, SingleTickerProviderStateMixin {
-  late final _tabAnimation = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 170),
-    value: 1,
-  );
+class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   late final HomeController _controller;
   late final RecipeRepository _recipes;
   AppTab _tab = AppTab.home;
@@ -102,7 +96,6 @@ class _AppShellState extends State<AppShell>
   String? _lastSurpriseRecipe;
 
   void _selectTab(AppTab tab) {
-    final changed = tab != _tab;
     if (tab == AppTab.plan && _purchases?.active != true) {
       _openPro();
       return;
@@ -116,9 +109,6 @@ class _AppShellState extends State<AppShell>
         _pantryRecipeFilterRequest = 0;
       }
     });
-    if (changed && !MediaQuery.disableAnimationsOf(context)) {
-      _tabAnimation.forward(from: 0);
-    }
   }
 
   void _viewBudgetRecipes() {
@@ -167,6 +157,7 @@ class _AppShellState extends State<AppShell>
         );
     _controller = HomeController(
       recipeRepository: _recipes,
+      rotationNamespace: userId,
       today: widget.today ?? DateTime.now(),
       planStore:
           widget.planStore ??
@@ -208,7 +199,6 @@ class _AppShellState extends State<AppShell>
 
   @override
   void dispose() {
-    _tabAnimation.dispose();
     _clockTimer?.cancel();
     _syncTimer?.cancel();
     _cloud?.removeListener(_cloudChanged);
@@ -1098,6 +1088,7 @@ class _AppShellState extends State<AppShell>
     ),
     AppTab.recipes => RecipesPage(
       repository: _recipes,
+      rotationIndex: _controller.featuredRotation,
       onBack: () => setState(() => _tab = AppTab.home),
       budgetFilterRequest: _budgetRecipeFilterRequest,
       pantryFilterRequest: _pantryRecipeFilterRequest,
@@ -1125,6 +1116,9 @@ class _AppShellState extends State<AppShell>
             }
           : null,
       onEdit: _controller.canEdit ? _openGroceries : null,
+      onToggleAll: _controller.canEdit
+          ? (items) => _controller.saveGroceries(items)
+          : null,
       onToggle: _controller.canEdit
           ? (changed) async {
               final items = List<GroceryItem>.of(_controller.details.groceries);
@@ -1184,6 +1178,7 @@ class _AppShellState extends State<AppShell>
 
   @override
   Widget build(BuildContext context) {
+    _controller.setLanguage(Localizations.localeOf(context).languageCode);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
       child: Theme(
@@ -1195,49 +1190,43 @@ class _AppShellState extends State<AppShell>
             child: Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 640),
-                child: ListenableBuilder(
-                  listenable: _controller,
-                  builder: (context, _) {
-                    _controller.setLanguage(
-                      Localizations.localeOf(context).languageCode,
-                    );
-                    return Stack(
+                child: Stack(
+                  children: [
+                    IndexedStack(
+                      index: _tab.index,
                       children: [
-                        FadeTransition(
-                          opacity: Tween<double>(begin: .84, end: 1)
-                              .chain(CurveTween(curve: Curves.easeOut))
-                              .animate(_tabAnimation),
-                          child: IndexedStack(
-                            index: _tab.index,
-                            children: [
-                              for (final tab in AppTab.values)
-                                TickerMode(
-                                  enabled: tab == _tab,
-                                  child: SkeletonContent(
-                                    loading: _controller.loading,
-                                    skeleton: AppPageSkeleton(tab: tab),
-                                    child: TickerMode(
-                                      enabled: !_controller.loading,
-                                      child: _body(tab),
-                                    ),
-                                  ),
+                        for (final tab in AppTab.values)
+                          TickerMode(
+                            enabled: tab == _tab,
+                            child: _TabContent(
+                              active: tab == _tab,
+                              listenable: _controller,
+                              builder: () => SkeletonContent(
+                                loading: _controller.loading,
+                                skeleton: AppPageSkeleton(tab: tab),
+                                child: TickerMode(
+                                  enabled: !_controller.loading,
+                                  child: _body(tab),
                                 ),
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          child: IgnorePointer(
-                            child: DeferredProgress(
-                              active: _controller.saving || _controller.loading,
+                              ),
                             ),
                           ),
-                        ),
                       ],
-                    );
-                  },
+                    ),
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      child: ListenableBuilder(
+                        listenable: _controller,
+                        builder: (context, _) => IgnorePointer(
+                          child: DeferredProgress(
+                            active: _controller.saving || _controller.loading,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -1249,5 +1238,67 @@ class _AppShellState extends State<AppShell>
         ),
       ),
     );
+  }
+}
+
+class _TabContent extends StatefulWidget {
+  const _TabContent({
+    required this.active,
+    required this.listenable,
+    required this.builder,
+  });
+
+  final bool active;
+  final Listenable listenable;
+  final Widget Function() builder;
+
+  @override
+  State<_TabContent> createState() => _TabContentState();
+}
+
+class _TabContentState extends State<_TabContent> {
+  Widget? _cachedChild;
+  bool _listening = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _syncListener();
+  }
+
+  @override
+  void didUpdateWidget(covariant _TabContent oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.listenable != widget.listenable ||
+        oldWidget.active != widget.active) {
+      _syncListener();
+    }
+  }
+
+  void _syncListener() {
+    if (widget.active && !_listening) {
+      widget.listenable.addListener(_handleChange);
+      _listening = true;
+    } else if (!widget.active && _listening) {
+      widget.listenable.removeListener(_handleChange);
+      _listening = false;
+    }
+  }
+
+  void _handleChange() {
+    if (mounted && widget.active) setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!widget.active && _cachedChild != null) return _cachedChild!;
+    if (!widget.active) return const SizedBox.shrink();
+    return _cachedChild = widget.builder();
+  }
+
+  @override
+  void dispose() {
+    if (_listening) widget.listenable.removeListener(_handleChange);
+    super.dispose();
   }
 }

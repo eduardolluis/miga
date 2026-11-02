@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show setEquals;
 
 import 'package:miga/core/theme/app_colors.dart';
 import 'package:miga/core/ui/miga_skeleton.dart';
@@ -25,6 +28,7 @@ class RecipesPage extends StatefulWidget {
     super.key,
     required this.onOpenRecipe,
     required this.repository,
+    this.rotationIndex = 0,
     this.onBack,
     this.preferences = const HouseholdPreferences(),
     this.pantry = const {},
@@ -41,6 +45,7 @@ class RecipesPage extends StatefulWidget {
 
   final ValueChanged<Recipe>? onOpenRecipe;
   final RecipeRepository repository;
+  final int rotationIndex;
   final VoidCallback? onBack;
   final HouseholdPreferences preferences;
   final Set<RecipeIngredient> pantry;
@@ -69,29 +74,60 @@ class _RecipesPageState extends State<RecipesPage> {
   bool _cheap = false;
   bool _favorites = false;
   bool _pantry = false;
-  _RecipeSort _sort = _RecipeSort.newest;
+  _RecipeSort _sort = _RecipeSort.recommended;
   final ScrollController _scroll = ScrollController(keepScrollOffset: false);
   final TextEditingController _search = TextEditingController();
+  Timer? _searchDebounce;
+  List<Recipe>? _eligibleCache;
+  int _eligibleCacheVersion = 0;
+  int _observedRepositoryRevision = 0;
+  String? _eligibleCacheLanguage;
 
   @override
   void initState() {
     super.initState();
     _cheap = widget.budgetFilterRequest > 0;
     _pantry = widget.pantryFilterRequest > 0;
+    _observedRepositoryRevision = widget.repository.revision;
   }
 
   @override
   void didUpdateWidget(covariant RecipesPage oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (_page > 0) {
-      final count =
-          (_filtered(Localizations.localeOf(context).languageCode).length /
-                  _pageSize)
-              .ceil();
-      _page = count == 0 ? 0 : _page.clamp(0, count - 1);
+    final preferencesChanged =
+        widget.preferences.country != oldWidget.preferences.country ||
+        widget.preferences.currency != oldWidget.preferences.currency ||
+        widget.preferences.language != oldWidget.preferences.language ||
+        widget.preferences.members != oldWidget.preferences.members ||
+        !setEquals(
+          widget.preferences.restrictions,
+          oldWidget.preferences.restrictions,
+        ) ||
+        !setEquals(widget.preferences.disliked, oldWidget.preferences.disliked);
+    final budgetChanged =
+        widget.budget?.limit != oldWidget.budget?.limit ||
+        widget.budget?.spent != oldWidget.budget?.spent ||
+        widget.budget?.currency != oldWidget.budget?.currency;
+    final favoritesChanged = !setEquals(widget.favorites, oldWidget.favorites);
+    final activeFavoritesChanged = _favorites && favoritesChanged;
+    final filtersChanged =
+        preferencesChanged ||
+        budgetChanged ||
+        activeFavoritesChanged ||
+        !setEquals(widget.pantry, oldWidget.pantry) ||
+        widget.rotationIndex != oldWidget.rotationIndex ||
+        widget.budgetFilterRequest != oldWidget.budgetFilterRequest ||
+        widget.pantryFilterRequest != oldWidget.pantryFilterRequest ||
+        widget.costFor != oldWidget.costFor ||
+        widget.portionFor != oldWidget.portionFor ||
+        widget.now != oldWidget.now;
+    if (filtersChanged || !identical(widget.repository, oldWidget.repository)) {
+      _invalidateEligibleCache();
+      _page = 0;
     }
     if (widget.budgetFilterRequest != oldWidget.budgetFilterRequest ||
         widget.pantryFilterRequest != oldWidget.pantryFilterRequest) {
+      _searchDebounce?.cancel();
       // Each Home shortcut opens a fresh filtered catalog, even if already
       // mounted in IndexedStack.
       _page = 0;
@@ -119,11 +155,47 @@ class _RecipesPageState extends State<RecipesPage> {
   }
 
   void _changeFilters(VoidCallback change) {
+    final oldSlot = _slot;
+    final oldAvailable = {..._available};
+    final oldQuick = _quick;
+    final oldProtein = _protein;
+    final oldCheap = _cheap;
+    final oldFavorites = _favorites;
+    final oldPantry = _pantry;
+    final oldSort = _sort;
+    var changed = false;
     setState(() {
       change();
-      _page = 0;
+      changed =
+          oldSlot != _slot ||
+          !setEquals(oldAvailable, _available) ||
+          oldQuick != _quick ||
+          oldProtein != _protein ||
+          oldCheap != _cheap ||
+          oldFavorites != _favorites ||
+          oldPantry != _pantry ||
+          oldSort != _sort;
+      if (changed) _page = 0;
     });
+    if (!changed) return;
+    _invalidateEligibleCache();
     _scrollToStart();
+  }
+
+  void _invalidateEligibleCache() {
+    _eligibleCache = null;
+    _eligibleCacheLanguage = null;
+    _eligibleCacheVersion++;
+  }
+
+  List<Recipe> _eligibleRecipes(String language) {
+    if (_eligibleCacheLanguage != language) _invalidateEligibleCache();
+    final cached = _eligibleCache;
+    if (cached != null) return cached;
+    final recipes = _filtered(language, includeSearch: false);
+    _eligibleCache = recipes;
+    _eligibleCacheLanguage = language;
+    return recipes;
   }
 
   void _goToPage(int page) {
@@ -134,6 +206,7 @@ class _RecipesPageState extends State<RecipesPage> {
 
   @override
   void dispose() {
+    _searchDebounce?.cancel();
     _scroll.dispose();
     _search.dispose();
     super.dispose();
@@ -193,26 +266,33 @@ class _RecipesPageState extends State<RecipesPage> {
     final available = {..._available, if (_pantry) ...widget.pantry};
     final allowance = _allowance;
     final query = _query.toLowerCase().trim();
-    final recipes = widget.repository.all
-        .where(widget.preferences.allows)
-        .map((r) => widget.portionFor?.call(r) ?? r)
-        .where((r) {
-          if (_quick && r.minutes > 20) return false;
-          if (_protein && (r.nutrition?.proteinGrams ?? 0) < 25) return false;
-          if (_favorites && !widget.favorites.contains(r.id)) return false;
-          if (includeSearch && _slot != null && r.slot != _slot) return false;
-          if (available.isNotEmpty && r.matchingIngredients(available) == 0) {
-            return false;
-          }
-          if (_cheap &&
-              (allowance == null ||
-                  !(widget.costFor?.call(r).fits(allowance) ?? false))) {
-            return false;
-          }
-          return !includeSearch ||
-              r.contentFor(language).title.toLowerCase().contains(query);
-        })
-        .toList();
+    final matchesById = <String, int>{};
+    final costsById = <String, RecipeCost>{};
+    final recipes = <Recipe>[];
+    for (final original in widget.repository.all) {
+      if (!widget.preferences.allows(original)) continue;
+      final recipe = widget.portionFor?.call(original) ?? original;
+      if (_quick && recipe.minutes > 20) continue;
+      if (_protein && (recipe.nutrition?.proteinGrams ?? 0) < 25) continue;
+      if (_favorites && !widget.favorites.contains(recipe.id)) continue;
+      if (includeSearch && _slot != null && recipe.slot != _slot) continue;
+      if (available.isNotEmpty) {
+        final matches = recipe.matchingIngredients(available);
+        if (matches == 0) continue;
+        matchesById[recipe.id] = matches;
+      }
+      if (_cheap) {
+        if (allowance == null || widget.costFor == null) continue;
+        final cost = widget.costFor!(recipe);
+        if (!cost.fits(allowance)) continue;
+        costsById[recipe.id] = cost;
+      }
+      if (includeSearch &&
+          !recipe.contentFor(language).title.toLowerCase().contains(query)) {
+        continue;
+      }
+      recipes.add(recipe);
+    }
     recipes.sort((a, b) {
       if (_sort == _RecipeSort.newest) {
         return b.sortOrder.compareTo(a.sortOrder);
@@ -221,18 +301,22 @@ class _RecipesPageState extends State<RecipesPage> {
         return a.minutes.compareTo(b.minutes);
       }
       if (available.isNotEmpty) {
-        final match = b
-            .matchingIngredients(available)
-            .compareTo(a.matchingIngredients(available));
+        final match = matchesById[b.id]!.compareTo(matchesById[a.id]!);
         if (match != 0) return match;
       }
       if (_cheap && widget.costFor != null) {
-        return widget.costFor!(a).subtotalCents.compareTo(
-          widget.costFor!(b).subtotalCents,
+        return costsById[a.id]!.subtotalCents.compareTo(
+          costsById[b.id]!.subtotalCents,
         );
       }
       return a.sortOrder.compareTo(b.sortOrder);
     });
+    // Recommended mode changes across app launches, but never within a
+    // session. Explicit Newest/Quickest ordering remains deterministic.
+    if (_sort == _RecipeSort.recommended && recipes.length > 1) {
+      final start = widget.rotationIndex % recipes.length;
+      return [...recipes.skip(start), ...recipes.take(start)];
+    }
     return recipes;
   }
 
@@ -246,10 +330,14 @@ class _RecipesPageState extends State<RecipesPage> {
   );
 
   Widget _buildCatalog(BuildContext context) {
+    if (_observedRepositoryRevision != widget.repository.revision) {
+      _observedRepositoryRevision = widget.repository.revision;
+      _invalidateEligibleCache();
+    }
     final language = Localizations.localeOf(context).languageCode;
-    final eligible = _filtered(language, includeSearch: false);
+    final eligible = _eligibleRecipes(language);
     final key =
-        '${widget.repository.revision}|${widget.repository.offline}|$_page|$_query|$_slot|$language|${eligible.map((r) => '${r.id}:${r.servings}').join(',')}';
+        '${widget.repository.revision}|${widget.repository.offline}|${widget.rotationIndex}|$_page|$_query|$_slot|$language|$_eligibleCacheVersion';
     if (_requestKey != key) {
       _requestKey = key;
       _request = widget.repository.search(
@@ -262,7 +350,6 @@ class _RecipesPageState extends State<RecipesPage> {
       );
     }
     return FutureBuilder<RecipePage>(
-      key: ValueKey(key),
       future: _request,
       builder: (context, snapshot) => _buildPage(context, snapshot),
     );
@@ -288,6 +375,7 @@ class _RecipesPageState extends State<RecipesPage> {
         _available.length;
     final hasBudget =
         widget.budget != null && widget.costFor != null && _allowance != null;
+    final available = {..._available, if (_pantry) ...widget.pantry};
 
     return CustomScrollView(
       key: const PageStorageKey('recipes-catalog'),
@@ -334,8 +422,20 @@ class _RecipesPageState extends State<RecipesPage> {
                     Expanded(
                       child: TextField(
                         key: const ValueKey('recipe-search'),
-                        onChanged: (value) =>
-                            _changeFilters(() => _query = value),
+                        onChanged: (value) {
+                          _searchDebounce?.cancel();
+                          _searchDebounce = Timer(
+                            const Duration(milliseconds: 250),
+                            () {
+                              if (!mounted || _query == value) return;
+                              setState(() {
+                                _query = value;
+                                _page = 0;
+                              });
+                              _scrollToStart();
+                            },
+                          );
+                        },
                         controller: _search,
                         decoration: InputDecoration(
                           hintText: l.recipeSearch,
@@ -455,8 +555,9 @@ class _RecipesPageState extends State<RecipesPage> {
                   ),
                   TextButton(
                     onPressed: () async {
+                      _invalidateEligibleCache();
+                      setState(() => _requestKey = null);
                       await widget.repository.refresh();
-                      if (mounted) setState(() => _requestKey = null);
                     },
                     child: Text(l.homeRetry),
                   ),
@@ -512,9 +613,11 @@ class _RecipesPageState extends State<RecipesPage> {
                 if (pages > 1) ...[
                   const SizedBox(height: 16),
                   Text(
+                    // The generated l10n method orders its arguments as
+                    // (end, start, total), not as shown in the ARB template.
                     l.recipePageRange(
-                      start + 1,
                       start + visibleRecipes.length,
+                      start + 1,
                       total,
                     ),
                     style: const TextStyle(
@@ -560,57 +663,49 @@ class _RecipesPageState extends State<RecipesPage> {
         else
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(22, 6, 22, 18),
-            sliver: SliverLayoutBuilder(
-              builder: (context, constraints) {
-                return SliverGrid.builder(
-                  itemCount: visibleRecipes.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 12,
-                    childAspectRatio:
-                        MediaQuery.textScalerOf(context).scale(14) > 19
-                        ? .48
-                        : .83,
-                  ),
-                  itemBuilder: (context, index) {
-                    final recipe = visibleRecipes[index];
-                    final cost = widget.costFor?.call(recipe);
-                    final available = {
-                      ..._available,
-                      if (_pantry) ...widget.pantry,
-                    };
-                    final priced = cost?.ingredients
-                        .where((line) => line.cents != null)
-                        .length;
-                    final costLabel = cost == null
-                        ? null
-                        : cost.complete
-                        ? '≈ ${widget.budget?.format(cost.subtotalCents / 100) ?? WeeklyBudget(limit: 0, spent: 0, currency: widget.preferences.currency).format(cost.subtotalCents / 100)}'
-                        : MigaUiCopy.incompletePrices(
-                            context,
-                            priced ?? 0,
-                            cost.ingredients.length,
-                          );
-                    return RecipeCard(
-                      recipe: recipe,
-                      favorite: widget.favorites.contains(recipe.id),
-                      onFavorite: widget.onFavorite == null
-                          ? null
-                          : () => widget.onFavorite!(recipe.id),
-                      costLabel: costLabel,
-                      ingredientSummary: available.isEmpty
-                          ? null
-                          : l.recipeIngredientMatch(
-                              recipe.matchingIngredients(available),
-                              recipe.ingredients.length -
-                                  recipe.matchingIngredients(available),
-                            ),
-                      onTap: widget.onOpenRecipe == null
-                          ? null
-                          : () => widget.onOpenRecipe!(recipe),
-                    );
-                  },
+            sliver: SliverGrid.builder(
+              itemCount: visibleRecipes.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+                childAspectRatio:
+                    MediaQuery.textScalerOf(context).scale(14) > 19 ? .48 : .83,
+              ),
+              itemBuilder: (context, index) {
+                final recipe = visibleRecipes[index];
+                final cost = widget.costFor?.call(recipe);
+                final matches = available.isEmpty
+                    ? null
+                    : recipe.matchingIngredients(available);
+                final priced = cost?.ingredients
+                    .where((line) => line.cents != null)
+                    .length;
+                final costLabel = cost == null
+                    ? null
+                    : cost.complete
+                    ? '≈ ${widget.budget?.format(cost.subtotalCents / 100) ?? WeeklyBudget(limit: 0, spent: 0, currency: widget.preferences.currency).format(cost.subtotalCents / 100)}'
+                    : MigaUiCopy.incompletePrices(
+                        context,
+                        priced ?? 0,
+                        cost.ingredients.length,
+                      );
+                return RecipeCard(
+                  recipe: recipe,
+                  favorite: widget.favorites.contains(recipe.id),
+                  onFavorite: widget.onFavorite == null
+                      ? null
+                      : () => widget.onFavorite!(recipe.id),
+                  costLabel: costLabel,
+                  ingredientSummary: matches == null
+                      ? null
+                      : l.recipeIngredientMatch(
+                          matches,
+                          recipe.ingredients.length - matches,
+                        ),
+                  onTap: widget.onOpenRecipe == null
+                      ? null
+                      : () => widget.onOpenRecipe!(recipe),
                 );
               },
             ),

@@ -165,13 +165,11 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         BudgetRecipeSuggestions(
+          rotationIndex: controller.featuredRotation,
           budget: controller.budgetCurrencyMatches ? controller.budget : null,
           currency: controller.preferences.currency,
           now: controller.now,
-          recipes: controller.recipes.all
-              .where(controller.preferences.allows)
-              .map(controller.portionFor)
-              .toList(),
+          recipes: controller.homeEligibleRecipes,
           costFor: controller.costFor,
           pricing:
               controller.pricing ||

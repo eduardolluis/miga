@@ -15,6 +15,7 @@ import 'package:miga/features/budget/domain/weekly_budget.dart';
 import 'package:miga/features/groceries/domain/grocery_item.dart';
 import 'package:miga/features/groceries/domain/grocery_purchase.dart';
 import 'package:miga/features/home/domain/home_details.dart';
+import 'package:miga/features/home/data/featured_recipe_rotation_store.dart';
 import 'package:miga/features/home/domain/home_details_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_plan_store.dart';
 import 'package:miga/features/meal_plan/domain/meal_slot.dart';
@@ -29,6 +30,8 @@ class HomeController extends ChangeNotifier {
     required this.detailsStore,
     this.costEstimator,
     RecipeRepository? recipeRepository,
+    this.rotationNamespace = 'guest',
+    this.rotationStore = const LocalFeaturedRecipeRotationStore(),
   }) : recipes = recipeRepository ?? RecipeRepository.memory(const []),
        _now = today,
        selectedSlot = MealSlot.forTime(today),
@@ -36,7 +39,13 @@ class HomeController extends ChangeNotifier {
     recipes.addListener(_catalogChanged);
   }
   final RecipeRepository recipes;
+  final String rotationNamespace;
+  final FeaturedRecipeRotationStore rotationStore;
+  int featuredRotation = 0;
+  bool _rotationAdvanced = false;
   int _catalogRevision = -1;
+  String? _homeRecipeCacheKey;
+  List<Recipe>? _homeRecipeCache;
   void _catalogChanged() {
     if (_catalogRevision != recipes.revision) {
       _catalogRevision = recipes.revision;
@@ -87,6 +96,34 @@ class HomeController extends ChangeNotifier {
       resolveMeal(_meals[slot.keyFor(date)]);
   Recipe portionFor(Recipe recipe) =>
       recipe.withServings(details.servings[recipe.id] ?? preferences.members);
+
+  List<Recipe> get homeEligibleRecipes {
+    final currentPreferences = preferences;
+    final restrictions =
+        currentPreferences.restrictions.map((value) => value.name).toList()
+          ..sort();
+    final disliked =
+        currentPreferences.disliked.map((value) => value.name).toList()..sort();
+    final servings = details.servings.entries.toList()
+      ..sort((a, b) => a.key.compareTo(b.key));
+    final key = [
+      recipes.revision,
+      currentPreferences.members,
+      ...restrictions,
+      '|',
+      ...disliked,
+      '|',
+      for (final entry in servings) '${entry.key}:${entry.value}',
+    ].join('|');
+    if (_homeRecipeCacheKey != key || _homeRecipeCache == null) {
+      _homeRecipeCacheKey = key;
+      _homeRecipeCache = recipes.all
+          .where(currentPreferences.allows)
+          .map(portionFor)
+          .toList(growable: false);
+    }
+    return _homeRecipeCache!;
+  }
 
   RecipeCost costFor(Recipe recipe) {
     final cached = costEstimator?.costFromCache(recipe);
@@ -155,13 +192,10 @@ class HomeController extends ChangeNotifier {
     pricing = true;
     _emit();
     try {
-      for (final cost in await costEstimator!.estimate(
-        recipes.all,
-        onProgress: () {
-          _priceRevision++;
-          _emit();
-        },
-      )) {
+      // Prices become available together when estimate completes. Emitting on
+      // each ingredient used to rebuild the entire IndexedStack (including the
+      // photo-heavy Recipes grid) dozens of times for no visible change.
+      for (final cost in await costEstimator!.estimate(recipes.all)) {
         _costs[cost.recipe.id] = cost;
       }
     } catch (_) {
@@ -303,6 +337,15 @@ class HomeController extends ChangeNotifier {
           : (await planStore.load(), await detailsStore.load());
       _meals = meals;
       details = homeDetails;
+      // A failed preference write must not prevent the user's real data from loading.
+      if (!_rotationAdvanced) {
+        _rotationAdvanced = true;
+        try {
+          featuredRotation = await rotationStore.advance(rotationNamespace);
+        } catch (_) {
+          featuredRotation = 0;
+        }
+      }
       await costEstimator?.restorePrices();
       unawaited(refreshPrices());
     } catch (_) {
@@ -418,7 +461,11 @@ class HomeController extends ChangeNotifier {
         (paidTotalCents != null && paidTotalCents < 0)) {
       return Future.value(false);
     }
-    final totals = GroceryTotals(items, preferences.currency);
+    final totals = GroceryTotals(
+      items,
+      preferences.currency,
+      includeBudgetEstimates: true,
+    );
     final completedAt = DateTime.now();
     final purchase = GroceryPurchase(
       id: 'purchase-${completedAt.microsecondsSinceEpoch}',
