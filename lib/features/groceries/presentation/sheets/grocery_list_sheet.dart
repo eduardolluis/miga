@@ -511,11 +511,12 @@ class _GroceryListState extends State<_GroceryList> {
     final item = _items[index];
     final ingredient = item.ingredientForPricing;
     final eggPrice = groceryEggUnitPrice(item, l);
-    final price = _loading.contains(item.name)
-        ? l.groceryEstimating
-        : item.totalCents == null
-        ? l.groceryEstimateUnavailable
-        : '${item.isEstimated ? '≈ ' : ''}${item.formatCents(item.totalCents!)}';
+    final estimate = item.displayTotalCents;
+    final price = estimate == null
+        ? _loading.contains(item.name)
+              ? l.groceryEstimating
+              : l.groceryEstimateUnavailable
+        : '${item.displayPriceIsEstimated ? '≈ ' : ''}${item.formatCents(estimate)}';
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),

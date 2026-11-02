@@ -374,6 +374,12 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get grocerySelectAll => 'Seleccionar todo';
+
+  @override
+  String get groceryDeselectAll => 'Deseleccionar todo';
+
+  @override
   String get homeStores => 'Tiendas cercanas';
 
   @override
@@ -683,7 +689,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get groceryEstimateNote =>
-      'Basado en tus precios y las referencias fechadas que elegiste. El precio al pagar puede cambiar.';
+      'Los importes con ≈ son estimados de presupuesto: usan tarifas dominicanas aproximadas por ingrediente o RD\$75 por producto no identificado. No son cotizaciones actuales; revisa el precio real al pagar.';
 
   @override
   String get storeCompare => 'Comparar precios de supermercados';

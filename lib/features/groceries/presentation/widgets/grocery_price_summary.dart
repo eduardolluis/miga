@@ -47,7 +47,7 @@ class GroceryPriceSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final totals = GroceryTotals(items, currency);
+    final totals = GroceryTotals(items, currency, includeBudgetEstimates: true);
     final checked = items.where((item) => item.checked).length;
     return Container(
       padding: const EdgeInsets.all(18),
@@ -75,10 +75,7 @@ class GroceryPriceSummary extends StatelessWidget {
             Text(
               totals.priced == 0
                   ? '—'
-                  : GroceryItem(
-                      '',
-                      currency: currency,
-                    ).formatCents(totals.subtotalCents),
+                  : '${totals.estimated > 0 ? '≈ ' : ''}${GroceryItem('', currency: currency).formatCents(totals.subtotalCents)}',
               style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.w700,
@@ -92,6 +89,13 @@ class GroceryPriceSummary extends StatelessWidget {
                   ? l.groceryEstimating
                   : l.groceryPricesMissing(totals.missing),
               style: const TextStyle(fontSize: 12, color: AppColors.muted),
+            ),
+          ],
+          if (totals.estimated > 0) ...[
+            const SizedBox(height: 5),
+            Text(
+              l.groceryEstimateNote,
+              style: const TextStyle(fontSize: 11, color: AppColors.muted),
             ),
           ],
           const SizedBox(height: 14),

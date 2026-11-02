@@ -2,6 +2,7 @@ import 'package:miga/core/region/supported_regions.dart';
 import 'package:miga/features/recipes/domain/recipe_ingredient.dart';
 import 'package:miga/features/groceries/domain/grocery_price_reference.dart';
 import 'package:miga/features/groceries/domain/grocery_product.dart';
+import 'package:miga/features/groceries/domain/grocery_budget_estimator.dart';
 import 'package:miga/features/groceries/domain/supermarket_offer.dart';
 import 'package:miga/features/budget/domain/recipe_amount.dart';
 import 'package:miga/features/budget/application/recipe_cost_estimator.dart';
@@ -126,6 +127,17 @@ class GroceryItem {
               RecipeCostEstimator.packageForOffer(offer!)?.$2 != requiredUnit)
       ? null
       : unitPriceCents! * quantity;
+  int? get budgetEstimateTotalCents =>
+      GroceryBudgetEstimator.estimateTotalCents(
+        ingredient: ingredientForPricing,
+        requiredAmount: requiredAmount,
+        requiredUnit: requiredUnit,
+        quantity: quantity,
+        currency: currency,
+      );
+  int? get displayTotalCents => totalCents ?? budgetEstimateTotalCents;
+  bool get displayPriceIsEstimated =>
+      isEstimated || (totalCents == null && budgetEstimateTotalCents != null);
 
   GroceryItem withChecked(bool value) => copyWith(checked: value);
 
@@ -206,11 +218,21 @@ class GroceryTotals {
     List<GroceryItem> items,
     String currency, {
     bool includeChecked = true,
+    bool includeBudgetEstimates = false,
   }) {
     for (final item in items) {
       if (!includeChecked && item.checked) continue;
       if (item.currency != currency || item.totalCents == null) {
-        missing++;
+        final estimate = includeBudgetEstimates && item.currency == currency
+            ? item.budgetEstimateTotalCents
+            : null;
+        if (estimate == null) {
+          missing++;
+        } else {
+          subtotalCents += estimate;
+          priced++;
+          estimated++;
+        }
       } else {
         subtotalCents += item.totalCents!;
         priced++;
@@ -220,4 +242,5 @@ class GroceryTotals {
   int subtotalCents = 0;
   int missing = 0;
   int priced = 0;
+  int estimated = 0;
 }

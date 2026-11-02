@@ -370,6 +370,12 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get grocerySelectAll => 'Select all';
+
+  @override
+  String get groceryDeselectAll => 'Deselect all';
+
+  @override
   String get homeStores => 'Nearby stores';
 
   @override
@@ -675,7 +681,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get groceryEstimateNote =>
-      'Based on your prices and any dated references you chose. Actual checkout prices may differ.';
+      'Amounts marked ≈ are budget estimates: they use approximate Dominican rates per ingredient or RD\$75 per unrecognized item. They are not current store quotes; check actual checkout prices.';
 
   @override
   String get storeCompare => 'Compare supermarket prices';

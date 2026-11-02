@@ -55,7 +55,11 @@ class _CheckoutState extends State<_Checkout> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final totals = GroceryTotals(widget.items, widget.currency);
+    final totals = GroceryTotals(
+      widget.items,
+      widget.currency,
+      includeBudgetEstimates: true,
+    );
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
       child: SafeArea(
@@ -95,10 +99,7 @@ class _CheckoutState extends State<_Checkout> {
               const SizedBox(height: 18),
               Text(
                 l.groceryEstimate(
-                  GroceryItem(
-                    '',
-                    currency: widget.currency,
-                  ).formatCents(totals.subtotalCents),
+                  '${totals.estimated > 0 ? '≈ ' : ''}${GroceryItem('', currency: widget.currency).formatCents(totals.subtotalCents)}',
                 ),
                 style: const TextStyle(fontSize: 13, color: AppColors.muted),
               ),

@@ -19,6 +19,7 @@ class GroceriesTabPage extends StatefulWidget {
     this.onGenerate,
     this.onComplete,
     this.onCompare,
+    this.onToggleAll,
     this.onUpgrade,
     this.isPro = false,
     this.currency = 'DOP',
@@ -26,6 +27,7 @@ class GroceriesTabPage extends StatefulWidget {
 
   final List<GroceryItem> items;
   final Future<void> Function()? onEdit, onGenerate, onCompare, onComplete;
+  final Future<bool> Function(List<GroceryItem>)? onToggleAll;
   final VoidCallback? onUpgrade;
   final bool isPro;
   final String currency;
@@ -40,6 +42,30 @@ class _GroceriesTabPageState extends State<GroceriesTabPage> {
   final Set<int> _saving = {};
   bool _editing = false;
   bool _completing = false;
+  bool _togglingAll = false;
+
+  Future<void> _toggleAll(bool allChecked) async {
+    final save = widget.onToggleAll;
+    if (save == null || _togglingAll || _saving.isNotEmpty) return;
+    final checked = !allChecked;
+    final items = widget.items
+        .map((item) => item.withChecked(checked))
+        .toList();
+    setState(() => _togglingAll = true);
+    bool saved = false;
+    try {
+      saved = await save(items);
+    } catch (_) {
+      saved = false;
+    }
+    if (!mounted) return;
+    setState(() => _togglingAll = false);
+    if (!saved) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context)!.homeSaveError)),
+      );
+    }
+  }
 
   Future<void> _complete() async {
     if (_completing || widget.onComplete == null || _saving.isNotEmpty) return;
@@ -142,17 +168,49 @@ class _GroceriesTabPageState extends State<GroceriesTabPage> {
     final allChecked =
         widget.items.isNotEmpty && widget.items.every((item) => item.checked);
     final pendingCount = widget.items.where((item) => !item.checked).length;
-    return ListView(
-      key: const PageStorageKey('groceries-tab'),
-      padding: const EdgeInsets.fromLTRB(22, 25, 22, 34),
+    final header = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          MigaUiCopy.shopping(context),
-          style: const TextStyle(
-            fontFamily: 'Georgia',
-            fontSize: 32,
-            color: AppColors.ink,
-          ),
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                MigaUiCopy.shopping(context),
+                style: const TextStyle(
+                  fontFamily: 'Georgia',
+                  fontSize: 32,
+                  color: AppColors.ink,
+                ),
+              ),
+            ),
+            if (widget.items.isNotEmpty && widget.onToggleAll != null)
+              TextButton.icon(
+                key: const ValueKey('grocery-toggle-all'),
+                onPressed: _togglingAll || _saving.isNotEmpty
+                    ? null
+                    : () => _toggleAll(allChecked),
+                icon: _togglingAll
+                    ? const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : Icon(
+                        allChecked
+                            ? Icons.check_box_rounded
+                            : Icons.check_box_outline_blank_rounded,
+                        size: 19,
+                      ),
+                label: Text(
+                  allChecked ? l.groceryDeselectAll : l.grocerySelectAll,
+                ),
+                style: TextButton.styleFrom(
+                  foregroundColor: AppColors.olive,
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  visualDensity: VisualDensity.compact,
+                ),
+              ),
+          ],
         ),
         const SizedBox(height: 7),
         Text(
@@ -194,10 +252,11 @@ class _GroceriesTabPageState extends State<GroceriesTabPage> {
               ],
             ),
           ),
-        for (var i = 0; i < widget.items.length; i++) ...[
-          _shoppingRow(context, i),
-          const SizedBox(height: 9),
-        ],
+      ],
+    );
+    final footer = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
         const SizedBox(height: 18),
         if (allChecked && widget.onComplete != null) ...[
           FilledButton.icon(
@@ -226,6 +285,19 @@ class _GroceriesTabPageState extends State<GroceriesTabPage> {
           label: Text(MigaUiCopy.openShopping(context)),
         ),
       ],
+    );
+    return ListView.builder(
+      key: const PageStorageKey('groceries-tab'),
+      padding: const EdgeInsets.fromLTRB(22, 25, 22, 34),
+      itemCount: widget.items.length + 2,
+      itemBuilder: (context, index) {
+        if (index == 0) return header;
+        if (index == widget.items.length + 1) return footer;
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 9),
+          child: _shoppingRow(context, index - 1),
+        );
+      },
     );
   }
 
@@ -326,10 +398,10 @@ class _GroceriesTabPageState extends State<GroceriesTabPage> {
                         fontSize: 12,
                       ),
                     ),
-                    if (item.totalCents != null) ...[
+                    if (item.displayTotalCents != null) ...[
                       const SizedBox(height: 4),
                       Text(
-                        '≈ ${item.formatCents(item.totalCents!)}',
+                        '${item.displayPriceIsEstimated ? '≈ ' : ''}${item.formatCents(item.displayTotalCents!)}',
                         style: const TextStyle(
                           color: AppColors.olive,
                           fontWeight: FontWeight.w700,

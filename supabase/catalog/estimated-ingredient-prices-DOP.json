@@ -1,0 +1,302 @@
+{
+  "currency": "DOP",
+  "as_of": "2026-11-01",
+  "market": "Dominican Republic",
+  "kind": "budget_estimate",
+  "basis": "portion-used; not a live supermarket quote",
+  "rates_per_canonical_unit": {
+    "oats": {
+      "unit": "grams",
+      "rate_dop": 0.18,
+      "es": "avena",
+      "en": "oats"
+    },
+    "milk": {
+      "unit": "milliliters",
+      "rate_dop": 0.085,
+      "es": "leche",
+      "en": "milk"
+    },
+    "banana": {
+      "unit": "pieces",
+      "rate_dop": 13,
+      "es": "banana",
+      "en": "banana"
+    },
+    "walnuts": {
+      "unit": "grams",
+      "rate_dop": 1.6,
+      "es": "nueces",
+      "en": "walnuts"
+    },
+    "cinnamon": {
+      "unit": "grams",
+      "rate_dop": 1.2,
+      "es": "canela",
+      "en": "cinnamon"
+    },
+    "bread": {
+      "unit": "grams",
+      "rate_dop": 0.2,
+      "es": "pan",
+      "en": "bread"
+    },
+    "avocado": {
+      "unit": "pieces",
+      "rate_dop": 65,
+      "es": "aguacate",
+      "en": "avocado"
+    },
+    "eggs": {
+      "unit": "pieces",
+      "rate_dop": 10,
+      "es": "huevos",
+      "en": "eggs"
+    },
+    "tomatoes": {
+      "unit": "grams",
+      "rate_dop": 0.12,
+      "es": "tomate",
+      "en": "tomatoes"
+    },
+    "oliveOil": {
+      "unit": "milliliters",
+      "rate_dop": 1.15,
+      "es": "aceite de oliva",
+      "en": "olive oil"
+    },
+    "salt": {
+      "unit": "grams",
+      "rate_dop": 0.12,
+      "es": "sal",
+      "en": "salt"
+    },
+    "pepper": {
+      "unit": "grams",
+      "rate_dop": 2.1,
+      "es": "pimienta",
+      "en": "pepper"
+    },
+    "yogurt": {
+      "unit": "grams",
+      "rate_dop": 0.42,
+      "es": "yogur natural",
+      "en": "plain yogurt"
+    },
+    "mango": {
+      "unit": "pieces",
+      "rate_dop": 55,
+      "es": "mango",
+      "en": "mango"
+    },
+    "strawberries": {
+      "unit": "grams",
+      "rate_dop": 0.68,
+      "es": "fresas",
+      "en": "strawberries"
+    },
+    "granola": {
+      "unit": "grams",
+      "rate_dop": 0.47,
+      "es": "granola",
+      "en": "granola"
+    },
+    "salmon": {
+      "unit": "grams",
+      "rate_dop": 1.75,
+      "es": "salmón",
+      "en": "salmon"
+    },
+    "potatoes": {
+      "unit": "grams",
+      "rate_dop": 0.105,
+      "es": "papa",
+      "en": "potatoes"
+    },
+    "broccoli": {
+      "unit": "grams",
+      "rate_dop": 0.3,
+      "es": "brócoli",
+      "en": "broccoli"
+    },
+    "lemon": {
+      "unit": "pieces",
+      "rate_dop": 16,
+      "es": "limón",
+      "en": "lemon"
+    },
+    "herbs": {
+      "unit": "grams",
+      "rate_dop": 1.3,
+      "es": "hierbas frescas",
+      "en": "fresh herbs"
+    },
+    "chicken": {
+      "unit": "grams",
+      "rate_dop": 0.46,
+      "es": "pechuga de pollo",
+      "en": "chicken breast"
+    },
+    "rice": {
+      "unit": "grams",
+      "rate_dop": 0.082,
+      "es": "arroz crudo",
+      "en": "dry rice"
+    },
+    "carrot": {
+      "unit": "grams",
+      "rate_dop": 0.09,
+      "es": "zanahoria",
+      "en": "carrot"
+    },
+    "garlic": {
+      "unit": "grams",
+      "rate_dop": 0.4,
+      "es": "ajo",
+      "en": "garlic"
+    },
+    "chickpeas": {
+      "unit": "grams",
+      "rate_dop": 0.22,
+      "es": "garbanzos cocidos",
+      "en": "cooked chickpeas"
+    },
+    "cucumber": {
+      "unit": "grams",
+      "rate_dop": 0.15,
+      "es": "pepino",
+      "en": "cucumber"
+    },
+    "onion": {
+      "unit": "grams",
+      "rate_dop": 0.125,
+      "es": "cebolla",
+      "en": "onion"
+    },
+    "pasta": {
+      "unit": "grams",
+      "rate_dop": 0.13,
+      "es": "pasta seca",
+      "en": "dry pasta"
+    },
+    "basil": {
+      "unit": "grams",
+      "rate_dop": 2,
+      "es": "albahaca",
+      "en": "basil"
+    },
+    "cheese": {
+      "unit": "grams",
+      "rate_dop": 0.75,
+      "es": "queso",
+      "en": "cheese"
+    },
+    "sweetPotato": {
+      "unit": "grams",
+      "rate_dop": 0.14,
+      "es": "batata",
+      "en": "sweet potato"
+    },
+    "spinach": {
+      "unit": "grams",
+      "rate_dop": 0.33,
+      "es": "espinaca",
+      "en": "spinach"
+    },
+    "lentils": {
+      "unit": "grams",
+      "rate_dop": 0.21,
+      "es": "lentejas cocidas",
+      "en": "cooked lentils"
+    },
+    "celery": {
+      "unit": "grams",
+      "rate_dop": 0.18,
+      "es": "apio",
+      "en": "celery"
+    },
+    "vegetableStock": {
+      "unit": "milliliters",
+      "rate_dop": 0.055,
+      "es": "caldo de vegetales",
+      "en": "vegetable broth"
+    },
+    "apple": {
+      "unit": "pieces",
+      "rate_dop": 32,
+      "es": "manzana",
+      "en": "apple"
+    },
+    "peanutButter": {
+      "unit": "grams",
+      "rate_dop": 0.9,
+      "es": "mantequilla de maní",
+      "en": "peanut butter"
+    },
+    "tortilla": {
+      "unit": "pieces",
+      "rate_dop": 22,
+      "es": "tortilla de trigo",
+      "en": "wheat tortilla"
+    },
+    "blackBeans": {
+      "unit": "grams",
+      "rate_dop": 0.18,
+      "es": "habichuelas negras cocidas",
+      "en": "cooked black beans"
+    },
+    "tuna": {
+      "unit": "grams",
+      "rate_dop": 0.84,
+      "es": "atún escurrido",
+      "en": "drained tuna"
+    },
+    "groundBeef": {
+      "unit": "grams",
+      "rate_dop": 0.7,
+      "es": "carne molida",
+      "en": "ground beef"
+    },
+    "bellPepper": {
+      "unit": "grams",
+      "rate_dop": 0.22,
+      "es": "pimiento",
+      "en": "bell pepper"
+    },
+    "mushrooms": {
+      "unit": "grams",
+      "rate_dop": 0.68,
+      "es": "champiñones",
+      "en": "mushrooms"
+    },
+    "zucchini": {
+      "unit": "grams",
+      "rate_dop": 0.24,
+      "es": "calabacín",
+      "en": "zucchini"
+    },
+    "pineapple": {
+      "unit": "grams",
+      "rate_dop": 0.18,
+      "es": "piña",
+      "en": "pineapple"
+    },
+    "tofu": {
+      "unit": "grams",
+      "rate_dop": 0.75,
+      "es": "tofu firme",
+      "en": "firm tofu"
+    },
+    "quinoa": {
+      "unit": "grams",
+      "rate_dop": 0.48,
+      "es": "quinoa cruda",
+      "en": "dry quinoa"
+    }
+  },
+  "grounding": [
+    "ProConsumidor SIDIP 23-09-2026, representative items",
+    "Ministerio de Agricultura 20-03-2026, representative staples",
+    "Retail observed examples; other rates assumptions"
+  ]
+}

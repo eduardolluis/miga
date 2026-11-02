@@ -26,6 +26,7 @@ class HomeBudgetSummary extends StatelessWidget {
       groceries,
       value?.currency ?? 'DOP',
       includeChecked: false,
+      includeBudgetEstimates: true,
     );
     final projected = (value?.spent ?? 0) + totals.subtotalCents / 100;
     return Material(
@@ -85,7 +86,7 @@ class HomeBudgetSummary extends StatelessWidget {
                 const SizedBox(height: 12),
                 Text(
                   l10n.groceryEstimate(
-                    value.format(totals.subtotalCents / 100),
+                    '${totals.estimated > 0 ? '≈ ' : ''}${value.format(totals.subtotalCents / 100)}',
                   ),
                   style: const TextStyle(fontWeight: FontWeight.w600),
                 ),

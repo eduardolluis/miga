@@ -758,6 +758,18 @@ abstract class AppLocalizations {
   /// **'{count, plural, =1{1 item to pick up} other{{count} items to pick up}}'**
   String homeGroceryCount(int count);
 
+  /// No description provided for @grocerySelectAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Select all'**
+  String get grocerySelectAll;
+
+  /// No description provided for @groceryDeselectAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Deselect all'**
+  String get groceryDeselectAll;
+
   /// No description provided for @homeStores.
   ///
   /// In en, this message translates to:
